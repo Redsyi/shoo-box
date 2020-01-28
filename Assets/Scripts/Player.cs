@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public GameObject model;
     public BoxCollider hitBox;
     public float boxSpeedMultiplier;
+    public Collider succArea;
 
     private Vector3 currentMovement;
     private float currRotation;
