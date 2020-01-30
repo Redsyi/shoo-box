@@ -8,7 +8,6 @@ public class Player : MonoBehaviour
     public Rigidbody rigidbody;
     public Animator animator;
     public float speed;
-    public float walkRotation;
     public GameObject model;
     public BoxCollider hitBox;
     public float boxSpeedMultiplier;
@@ -40,7 +39,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.eulerAngles = new Vector3(walkRotation, currRotation, transform.eulerAngles.z);
+        transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, currRotation, transform.localEulerAngles.z);
         transform.position += currentMovement;
     }
 
