@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public BoxCollider hitBox;
     public float boxSpeedMultiplier;
     public Collider succArea;
+    public Detector detector;
 
     private Vector3 currentMovement;
     private float currRotation;
@@ -64,8 +65,21 @@ public class Player : MonoBehaviour
 
     public void OnRotate(InputValue value)
     {
-        CameraScript.RotationDirection direction = (value.Get<float>() > 0 ? CameraScript.RotationDirection.COUNTERCLOCKWISE : CameraScript.RotationDirection.CLOCKWISE);
+        CameraScript.RotationDirection direction = (value.Get<float>() > 0 ? CameraScript.RotationDirection.CLOCKWISE : CameraScript.RotationDirection.COUNTERCLOCKWISE);
         myCamera.Rotate(direction);
+    }
+
+    public void OnInteract(InputValue value)
+    { 
+
+        if (detector.currentItem && legForm)
+        {
+            detector.currentItem.GetComponent<Collider>().enabled = false;
+            detector.currentItem.transform.parent.SetParent(model.transform, false);
+            detector.currentItem.transform.parent.localPosition = Vector3.zero;
+            detector.currentItem = null;
+        }
+
     }
 
 }

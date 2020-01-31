@@ -312,6 +312,7 @@ MonoBehaviour:
   hitBox: {fileID: 78230038}
   boxSpeedMultiplier: 0.5
   succArea: {fileID: 0}
+  detector: {fileID: 787526954}
 --- !u!95 &242782780
 Animator:
   serializedVersion: 3
@@ -675,6 +676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4141113881510f440ab463528d6e69ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentItem: {fileID: 0}
 --- !u!1 &1014727685
 GameObject:
   m_ObjectHideFlags: 0
@@ -985,8 +987,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraSnapRotateSpeed: 360
-  cameraRotateSpeed: 0
-  snap: 1
 --- !u!4 &1759311155
 Transform:
   m_ObjectHideFlags: 0
