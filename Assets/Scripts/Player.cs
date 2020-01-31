@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     private float currRotation;
     private bool legForm;
     private CameraScript myCamera;
+    private Shoe currShoe;
     
 
     private void Start()
@@ -77,9 +78,27 @@ public class Player : MonoBehaviour
             detector.currentItem.GetComponent<Collider>().enabled = false;
             detector.currentItem.transform.parent.SetParent(model.transform, false);
             detector.currentItem.transform.parent.localPosition = Vector3.zero;
+            currShoe = detector.currentItem.GetComponentInParent<Shoe>();
             detector.currentItem = null;
         }
 
+    }
+
+    public void OnAction()
+    {
+        if (legForm && currShoe)
+        {
+            switch(currShoe.shoeType)
+            {
+                case ShoeType.BOOTS:
+                    animator.SetTrigger("Kick");
+                    currShoe.GetComponentInChildren<Kicker>().Kick();
+                    break;
+                default:
+                    Debug.Log("you dun fucked up boi");
+                    break;
+            }
+        }
     }
 
 }
