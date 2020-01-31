@@ -22,14 +22,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Action",
-                    "type": "Button",
-                    "id": "4335896a-3783-4157-b362-1c954fb247f0",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "ChangeForm",
                     "type": "Button",
                     "id": "367b40c6-de91-4c39-be7e-0f81e71cb3e5",
@@ -49,6 +41,22 @@
                     "name": "Interact",
                     "type": "Button",
                     "id": "71c79077-ec0c-4980-9e0c-7434a2e1c7df",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "PauseMenu",
+                    "type": "Button",
+                    "id": "be177e41-a584-41e7-92a4-3550f7b45661",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "Action",
+                    "type": "Button",
+                    "id": "c5d94928-6383-46ec-b24e-b1cf9949e049",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "Press"
@@ -211,28 +219,6 @@
                 },
                 {
                     "name": "",
-                    "id": "2765bb1c-5b31-4f64-939a-3884e7adbf12",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Action",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ac7f9849-5dad-4473-af74-b035946e259e",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Action",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "c90356b2-4fce-46f0-ab06-11619ff05c81",
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "",
@@ -327,6 +313,61 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "666217bf-fa89-4012-9b4a-d975cf1abe90",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1e37b372-28dd-4718-8daa-836026a1eaf0",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "PauseMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "13da32dc-4eb6-4796-85a3-307952611075",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "PauseMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2e7ff6bb-9c7b-43fc-a49d-12a0f76341c6",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d566ce71-2352-4cca-89e6-bd4f06dcd284",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
