@@ -16,18 +16,16 @@ public class Player : MonoBehaviour
     private Vector3 currentMovement;
     private float currRotation;
     private bool legForm;
-    private CameraScript myCamera;
     
 
     private void Start()
     {
-        myCamera = FindObjectOfType<CameraScript>();
         //legForm = false;
     }
 
     public void OnMove(InputValue value)
     {
-        Vector2 movement = Utilities.RotateVectorDegrees(value.Get<Vector2>().normalized * speed * (legForm ? 1: boxSpeedMultiplier), 135 - myCamera.transform.eulerAngles.y);
+        Vector2 movement = Utilities.RotateVectorDegrees(value.Get<Vector2>().normalized * speed * (legForm ? 1: boxSpeedMultiplier), 135);
         
         if(movement.sqrMagnitude != 0)
         {
@@ -62,10 +60,5 @@ public class Player : MonoBehaviour
 
     }
 
-    public void OnRotate(InputValue value)
-    {
-        CameraScript.RotationDirection direction = (value.Get<float>() > 0 ? CameraScript.RotationDirection.COUNTERCLOCKWISE : CameraScript.RotationDirection.CLOCKWISE);
-        myCamera.Rotate(direction);
-    }
 
 }
