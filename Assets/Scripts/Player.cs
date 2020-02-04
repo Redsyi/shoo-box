@@ -14,9 +14,9 @@ public class Player : MonoBehaviour
     public Collider succArea;
     public Detector detector;
 
-    private Vector3 currentMovement;
+    public Vector3 currentMovement;
     private float currRotation;
-    private bool legForm;
+    public bool legForm;
     private CameraScript myCamera;
     private Shoe currShoe;
     
@@ -56,7 +56,6 @@ public class Player : MonoBehaviour
         }
 
         legForm = !legForm;
-        print("Legform = " + legForm);
 
         model.transform.localPosition = new Vector3(model.transform.localPosition.x, (legForm ? 0: -.65f), model.transform.localPosition.z);
         hitBox.transform.localPosition = new Vector3(hitBox.transform.localPosition.x, (legForm ? .5f : .2f), hitBox.transform.localPosition.z);
