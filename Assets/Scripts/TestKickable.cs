@@ -30,6 +30,7 @@ public class TestKickable : MonoBehaviour, IKickable, IAIInteractable
     {
         myRigidbody.AddForce((transform.position - kicker.transform.position).normalized * kickForce);
         broken = true;
+        AudioManager.MakeNoise(transform.position, 1.5f, null, 1);
     }
 
     public bool NeedsInteraction()

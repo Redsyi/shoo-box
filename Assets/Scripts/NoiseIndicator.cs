@@ -36,8 +36,8 @@ public class NoiseIndicator : MonoBehaviour
         float size = 0;
         while(size < radius)
         {
-            waveRenderer.transform.localScale = new Vector3(size, size, 1);
-            size += Time.deltaTime * 5;
+            waveRenderer.transform.localScale = new Vector3(size/10f, size/10f, 1);
+            size += Time.deltaTime * radius * 2;
             yield return null;
         }
         waveRenderer.enabled = false;

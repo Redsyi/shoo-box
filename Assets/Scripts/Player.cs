@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         myCamera = FindObjectOfType<CameraScript>();
+        ClearRumble();
         //legForm = false;
     }
 
@@ -156,6 +157,14 @@ public class Player : MonoBehaviour
                     (inputSystem.devices[0] as Gamepad).SetMotorSpeeds(0f, 0f);
                 }
             }
+        }
+    }
+
+    private void ClearRumble() {
+        if (inputSystem?.currentControlScheme == "Gamepad")
+        {
+            (inputSystem.devices[0] as Gamepad).SetMotorSpeeds(0f, 0f);
+            rumbleTime = 0f;
         }
     }
 }
