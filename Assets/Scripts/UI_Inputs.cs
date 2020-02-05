@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class UI_Inputs : MonoBehaviour
 {
@@ -72,5 +73,15 @@ public class UI_Inputs : MonoBehaviour
         //switch active and inactive tags
         //OR just give them their actual names (combatBoots, noShoes, etc)
 
+    }
+
+    public void RetryButton()
+    {
+        SceneManager.LoadScene("OwnerRoomScene");
+    }
+
+    public void MenuButton()
+    {
+        SceneManager.LoadScene("OwnerRoomScene");
     }
 }
