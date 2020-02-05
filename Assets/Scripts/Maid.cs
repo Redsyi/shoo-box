@@ -31,6 +31,9 @@ public class Maid : MonoBehaviour
         prevPos = transform.position;
     }
 
+    /// <summary>
+    /// Tell the AI to go to idle mode
+    /// </summary>
     public void Idle()
     {
         stoppedTime = 0f;
@@ -38,6 +41,11 @@ public class Maid : MonoBehaviour
         currState.location = patrolPoint;
     }
 
+    /// <summary>
+    /// Tell the AI to investigate an object
+    /// </summary>
+    /// <param name="location">Transform to investigate</param>
+    /// <param name="forceOverrideChase">Whether this trigger can interrupt a chase state</param>
     public void Investigate(GameObject location, bool forceOverrideChase = false)
     {
         if (currState.state != AIState.CHASE || forceOverrideChase)
@@ -48,6 +56,10 @@ public class Maid : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Tell the AI to interact with an object. Will add to back of interact queue if already interacting with
+    /// something else or AI currently busy chasing player
+    /// </summary>
     public void Interact(IAIInteractable interactable)
     {
         if (!thingsToInteractWith.Contains(interactable))
@@ -63,6 +75,10 @@ public class Maid : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Chase the player
+    /// </summary>
+    /// <param name="player"></param>
     public void Chase(Player player)
     {
         stoppedTime = 0f;
@@ -70,6 +86,9 @@ public class Maid : MonoBehaviour
         currState.location = player.transform;
     }
 
+    /// <summary>
+    /// Notify the AI that is has lost sight of the player
+    /// </summary>
     public void LosePlayer(Player player)
     {
         GameObject target = Instantiate(targetPrefab, player.transform.position, Quaternion.identity);
@@ -94,6 +113,7 @@ public class Maid : MonoBehaviour
         if (debug)
             print(currState.state + ", " + currState.location + ", " + thingsToInteractWith.Count + " | " + stoppedTime);
 
+        //take action depending on the current state
         switch(currState.state)
         {
             case AIState.IDLE:
@@ -109,7 +129,7 @@ public class Maid : MonoBehaviour
                 } else
                 {
                     currState.state = AIState.INVESTIGATING;
-                    timer = 3;
+                    timer = 3; //magic numbers, mike scott would be disappointed
                 }
                 break;
             case AIState.INVESTIGATING:
@@ -162,6 +182,7 @@ public class Maid : MonoBehaviour
                     pathfinder.destination = currState.location.position;
                 } else
                 {
+                    //this is the part where the player fucking dies
                     SceneManager.LoadScene(0);
                 }
                 break;

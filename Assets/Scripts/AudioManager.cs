@@ -13,6 +13,13 @@ public class AudioManager : MonoBehaviour
         noiseIndicatorPrefab = initial;
     }
 
+    /// <summary>
+    /// Make a noise in the world
+    /// </summary>
+    /// <param name="pos">World position of the noise</param>
+    /// <param name="radius">How far away AI will notice the noise, 0 for "silent"</param>
+    /// <param name="clip">AudioClip to play, null for nothing</param>
+    /// <param name="volume">Volume (range 0..1) at which to play the AudioClip</param>
     public static void MakeNoise(Vector3 pos, float radius, AudioClip clip, float volume)
     {
         NoiseIndicator noise = Instantiate(noiseIndicatorPrefab, pos, Quaternion.identity);

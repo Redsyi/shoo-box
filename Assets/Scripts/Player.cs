@@ -31,9 +31,11 @@ public class Player : MonoBehaviour
     {
         myCamera = FindObjectOfType<CameraScript>();
         ClearRumble();
-        //legForm = false;
     }
 
+    /// <summary>
+    /// Sets the movement vector for the player
+    /// </summary>
     public void OnMove(InputValue value)
     {
         Vector2 movement = Utilities.RotateVectorDegrees(value.Get<Vector2>().normalized * speed * (legForm ? 1: currBoxSpeed), 135 - myCamera.transform.eulerAngles.y);
@@ -62,11 +64,15 @@ public class Player : MonoBehaviour
         if (!legForm) Slide();
     }
 
+    //slows down current box speed multiplier until it reaches the base multiplier
     private void Slide()
     {
         currBoxSpeed = Mathf.Max(boxSpeedMultiplier, currBoxSpeed - Time.deltaTime * boxSlideSlowdownRate * (1-boxSpeedMultiplier));
     }
 
+    /// <summary>
+    /// Toggle between box and leg form
+    /// </summary>
     public void OnChangeForm(InputValue value)
     {
         if(!legForm)
@@ -84,12 +90,18 @@ public class Player : MonoBehaviour
         currBoxSpeed = 1;
     }
 
+    /// <summary>
+    /// Rotate camera 90 degrees around player
+    /// </summary>
     public void OnRotate(InputValue value)
     {
         CameraScript.RotationDirection direction = (value.Get<float>() > 0 ? CameraScript.RotationDirection.CLOCKWISE : CameraScript.RotationDirection.COUNTERCLOCKWISE);
         myCamera.Rotate(direction);
     }
 
+    /// <summary>
+    /// Interact button pressed
+    /// </summary>
     public void OnInteract(InputValue value)
     { 
 
@@ -107,6 +119,9 @@ public class Player : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Action button pressed
+    /// </summary>
     public void OnAction()
     {
         if (legForm && currShoe)
@@ -124,11 +139,17 @@ public class Player : MonoBehaviour
         }
     }
 
+    //tell UI to pause or unpause
     public void OnPauseMenu(InputValue value)
     {
         FindObjectOfType<UI_Inputs>().OnPauseMenu(value);
     }
 
+    /// <summary>
+    /// Rumbles the player controller (if applicable)
+    /// </summary>
+    /// <param name="strength">rumble strength</param>
+    /// <param name="time">how long to rumble for</param>
     public void Rumble(RumbleStrength strength, float time)
     {
         if (inputSystem.currentControlScheme == "Gamepad")
@@ -161,6 +182,7 @@ public class Player : MonoBehaviour
         }
     }
 
+    //automatically turns off controller rumble once time is up
     private void UpdateRumble() {
         if (inputSystem?.currentControlScheme == "Gamepad")
         {
@@ -175,6 +197,7 @@ public class Player : MonoBehaviour
         }
     }
 
+    //cancels any rumbling in the controller
     private void ClearRumble() {
         if (inputSystem?.currentControlScheme == "Gamepad")
         {
@@ -183,16 +206,21 @@ public class Player : MonoBehaviour
         }
     }
 
+    //makes a footstep noise every footstepTiming seconds, auto cancels once movement stops
     IEnumerator DoFootsteps()
     {
-        yield return new WaitForSeconds(footstepSoundOffset);
+        if (footstepSoundOffset > 0f)
+            yield return new WaitForSeconds(footstepSoundOffset);
+        float timeSinceLast = footstepTiming;
         while (currentMovement != Vector3.zero)
         {
-            if (legForm)
+            timeSinceLast += Time.deltaTime;
+            if (legForm && timeSinceLast >= footstepTiming)
             {
                 AudioManager.MakeNoise(transform.position, 1.3f, null, 1);
+                timeSinceLast = 0f;
             }
-            yield return new WaitForSeconds(footstepTiming);
+            yield return null;
         }
     }
 }
