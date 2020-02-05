@@ -12,6 +12,10 @@ public class Maid : MonoBehaviour
     public Queue<IAIInteractable> thingsToInteractWith;
     float timer;
     public GameObject targetPrefab;
+    private bool stopped;
+    private Vector3 prevPos;
+    private float stoppedTime = 0f;
+    private const float giveUpTime = 1f;
 
     void Start()
     {
@@ -20,13 +24,22 @@ public class Maid : MonoBehaviour
         Idle();
     }
 
+    private void FixedUpdate()
+    {
+        stopped = prevPos == transform.position;
+        prevPos = transform.position;
+    }
+
     public void Idle()
-    {   currState.state = AIState.IDLE;
+    {
+        stoppedTime = 0f;
+        currState.state = AIState.IDLE;
         currState.location = patrolPoint;
     }
 
     public void Investigate(GameObject location)
     {
+        stoppedTime = 0f;
         currState.state = AIState.INVESTIGATE;
         currState.location = location.transform;
     }
@@ -41,12 +54,14 @@ public class Maid : MonoBehaviour
                 currState.state = AIState.INTERACT;
                 currState.location = (interactable as MonoBehaviour).transform;
                 timer = interactable.AIInteractTime();
+                stoppedTime = 0f;
             }
         }
     }
 
     public void Chase(Player player)
     {
+        stoppedTime = 0f;
         currState.state = AIState.CHASE;
         currState.location = player.transform;
     }
@@ -59,14 +74,19 @@ public class Maid : MonoBehaviour
     
     void Update()
     {
-        bool closeToTarget = (transform.position - currState.location.position).sqrMagnitude < 1f;
+        if (stopped)
+            stoppedTime += Time.deltaTime;
+        else
+            stoppedTime = 0f;
+
+        bool closeToTarget = (stoppedTime >= giveUpTime) || (transform.position - currState.location.position).sqrMagnitude < 0.5f;
         if (!closeToTarget)
         {
             transform.LookAt(currState.location);
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
         }
 
-        print(currState.state + ", " + currState.location + ", " + thingsToInteractWith.Count);
+        print(currState.state + ", " + currState.location + ", " + thingsToInteractWith.Count + " | " + stoppedTime);
 
         switch(currState.state)
         {
@@ -96,6 +116,7 @@ public class Maid : MonoBehaviour
                         timer = newInteractable.AIInteractTime();
                         currState.state = AIState.INTERACT;
                         currState.location = (newInteractable as MonoBehaviour).transform;
+                        stoppedTime = 0f;
                     }
                     else
                     {
@@ -121,6 +142,7 @@ public class Maid : MonoBehaviour
                             IAIInteractable newInteractable = thingsToInteractWith.Peek();
                             timer = newInteractable.AIInteractTime();
                             currState.location = (newInteractable as MonoBehaviour).transform;
+                            stoppedTime = 0f;
                         } else
                         {
                             Idle();
