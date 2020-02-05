@@ -74,6 +74,7 @@ public class Player : MonoBehaviour
 
         if (detector.currentItem && legForm)
         {
+          //  FindObjectOfType<UI_Inputs>().WearShoes();
             detector.currentItem.GetComponent<Collider>().enabled = false;
             detector.currentItem.transform.parent.SetParent(model.transform, false);
             detector.currentItem.transform.parent.localPosition = Vector3.zero;
@@ -98,6 +99,11 @@ public class Player : MonoBehaviour
                     break;
             }
         }
+    }
+
+    public void OnPauseMenu(InputValue value)
+    {
+        FindObjectOfType<UI_Inputs>().OnPauseMenu(value);
     }
 
 }
