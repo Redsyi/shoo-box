@@ -39,17 +39,22 @@ public class Player : MonoBehaviour
     public void OnMove(InputValue value)
     {
         Vector2 movement = Utilities.RotateVectorDegrees(value.Get<Vector2>().normalized * speed * (legForm ? 1: currBoxSpeed), 135 - myCamera.transform.eulerAngles.y);
-        
-        if(movement.sqrMagnitude != 0)
+        bool startFootsteps = false;
+        bool moving = movement.sqrMagnitude != 0;
+
+        if (moving)
         {
             if (currentMovement == Vector3.zero)
-                StartCoroutine(DoFootsteps());
+                startFootsteps = true;
             currRotation = -Utilities.VectorToDegrees(movement);
         }
         currentMovement.x = movement.x;
         currentMovement.z = movement.y;
 
-        animator.SetBool("walking", movement.sqrMagnitude > 0);
+        if (startFootsteps)
+            StartCoroutine(DoFootsteps());
+
+        animator.SetBool("walking", moving);
     }
 
     private void FixedUpdate()

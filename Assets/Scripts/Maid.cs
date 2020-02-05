@@ -17,6 +17,8 @@ public class Maid : MonoBehaviour
     private float stoppedTime = 0f;
     private const float giveUpTime = 1f;
     public bool debug;
+    public float walkSpeed;
+    public float runSpeed;
 
     void Start()
     {
@@ -36,6 +38,7 @@ public class Maid : MonoBehaviour
     /// </summary>
     public void Idle()
     {
+        pathfinder.speed = walkSpeed;
         stoppedTime = 0f;
         currState.state = AIState.IDLE;
         currState.location = patrolPoint;
@@ -50,6 +53,7 @@ public class Maid : MonoBehaviour
     {
         if (currState.state != AIState.CHASE || forceOverrideChase)
         {
+            pathfinder.speed = walkSpeed;
             stoppedTime = 0f;
             currState.state = AIState.INVESTIGATE;
             currState.location = location.transform;
@@ -67,6 +71,7 @@ public class Maid : MonoBehaviour
             thingsToInteractWith.Enqueue(interactable);
             if (currState.state != AIState.CHASE)
             {
+                pathfinder.speed = runSpeed;
                 currState.state = AIState.INTERACT;
                 currState.location = (interactable as MonoBehaviour).transform;
                 timer = interactable.AIInteractTime();
@@ -81,6 +86,7 @@ public class Maid : MonoBehaviour
     /// <param name="player"></param>
     public void Chase(Player player)
     {
+        pathfinder.speed = runSpeed;
         stoppedTime = 0f;
         currState.state = AIState.CHASE;
         currState.location = player.transform;
