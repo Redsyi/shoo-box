@@ -9,7 +9,7 @@ public class Phone : MonoBehaviour, IKickable
 
     public void OnKick(GameObject kicker)
     {
-        AudioManager.MakeNoise(door.transform.position, 6, clip, 1);
-        //FindObjectOfType<Maid>().Investigate(door);
+        FindObjectOfType<Maid>().Investigate(door);
+        AudioManager.MakeNoise(transform.position, 3, clip, 1);
     }
 }

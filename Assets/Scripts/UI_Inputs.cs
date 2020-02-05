@@ -39,6 +39,11 @@ public class UI_Inputs : MonoBehaviour
         }
     }
 
+    public void WearShoes()
+    {
+        StartCoroutine(TagSwitcher());
+    }
+
     public void OnPauseMenu(InputValue value)
     {
         isPaused = !isPaused;
@@ -50,6 +55,7 @@ public class UI_Inputs : MonoBehaviour
             player = GameObject.FindGameObjectWithTag("Player");
             //player.GetComponent<Player>().OnMove( );
         }
+        Time.timeScale = (isPaused ? 0 : 1);
         
     }
 
