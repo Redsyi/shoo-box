@@ -5,6 +5,7 @@ using UnityEngine;
 public class Kicker : MonoBehaviour
 {
     public Collider hitbox;
+    public AudioClip kickClip;
 
     private void Start()
     {
@@ -29,6 +30,7 @@ public class Kicker : MonoBehaviour
     private IEnumerator DoKick(float hitboxActiveTime)
     {
         hitbox.enabled = true;
+        AudioManager.MakeNoise(hitbox.transform.position, 1, kickClip, 0.8f);
         yield return new WaitForSeconds(hitboxActiveTime);
         hitbox.enabled = false;
     }
