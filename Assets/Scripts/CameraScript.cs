@@ -15,8 +15,8 @@ public class CameraScript : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
     }
-
-    // Update is called once per frame
+    
+    //Attach to player in lateupdate so there is no visual lag
     void LateUpdate()
     {
         transform.position = player.transform.position;
@@ -31,6 +31,9 @@ public class CameraScript : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Rotate the camera 90 degrees in the specified direction
+    /// </summary>
     public void Rotate(RotationDirection direction)
     {
         int rotationDirection = (direction == RotationDirection.CLOCKWISE ? -1 : 1);

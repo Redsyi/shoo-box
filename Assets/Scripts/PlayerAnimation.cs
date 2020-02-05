@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Temporary class until we have "real" animations
+/// </summary>
 public class PlayerAnimation : MonoBehaviour
 {
     public float walkRotation;

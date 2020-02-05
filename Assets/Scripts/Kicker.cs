@@ -17,6 +17,7 @@ public class Kicker : MonoBehaviour
         if (kickable != null)
         {
             kickable.OnKick(gameObject);
+            GetComponentInParent<Player>().Rumble(RumbleStrength.MEDIUM, 0.15f);
         }
     }
 
