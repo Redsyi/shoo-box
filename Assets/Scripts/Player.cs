@@ -13,12 +13,14 @@ public class Player : MonoBehaviour
     public float boxSpeedMultiplier;
     public Collider succArea;
     public Detector detector;
+    public PlayerInput inputSystem;
 
     public Vector3 currentMovement;
     private float currRotation;
     public bool legForm;
     private CameraScript myCamera;
     private Shoe currShoe;
+    private float rumbleTime;
     
 
     private void Start()
@@ -45,6 +47,11 @@ public class Player : MonoBehaviour
     {
         transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, currRotation, transform.localEulerAngles.z);
         transform.position += currentMovement;
+    }
+
+    private void Update()
+    {
+        UpdateRumble();
     }
 
     public void OnChangeForm(InputValue value)
@@ -106,4 +113,49 @@ public class Player : MonoBehaviour
         FindObjectOfType<UI_Inputs>().OnPauseMenu(value);
     }
 
+    public void Rumble(RumbleStrength strength, float time)
+    {
+        if (inputSystem.currentControlScheme == "Gamepad")
+        {
+            float lowFreqSpeed = 0f;
+            float highFreqSpeed = 0f;
+            switch (strength)
+            {
+                case RumbleStrength.WEAK:
+                    lowFreqSpeed = 0.25f;
+                    break;
+                case RumbleStrength.MEDIUM:
+                    lowFreqSpeed = 0.35f;
+                    highFreqSpeed = 0.65f;
+                    break;
+                case RumbleStrength.INTENSE:
+                    lowFreqSpeed = 1f;
+                    highFreqSpeed = 1f;
+                    break;
+            }
+            try
+            {
+                (inputSystem.devices[0] as Gamepad).SetMotorSpeeds(lowFreqSpeed, highFreqSpeed);
+                rumbleTime = Mathf.Max(rumbleTime, time);
+            }
+            catch
+            {
+                print("tried to rumble something that wasn't a controller");
+            }
+        }
+    }
+
+    private void UpdateRumble() {
+        if (inputSystem?.currentControlScheme == "Gamepad")
+        {
+            if (rumbleTime > 0f)
+            {
+                rumbleTime -= Time.unscaledDeltaTime;
+                if (rumbleTime <= 0f)
+                {
+                    (inputSystem.devices[0] as Gamepad).SetMotorSpeeds(0f, 0f);
+                }
+            }
+        }
+    }
 }

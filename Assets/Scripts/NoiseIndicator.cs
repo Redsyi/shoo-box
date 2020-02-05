@@ -5,7 +5,7 @@ using UnityEngine;
 public class NoiseIndicator : MonoBehaviour
 {
     public AudioSource source;
-    public SpriteRenderer sprite;
+    public SpriteRenderer waveRenderer;
 
     public void MakeNoise(float radius, AudioClip clip, float volume)
     {
@@ -36,11 +36,11 @@ public class NoiseIndicator : MonoBehaviour
         float size = 0;
         while(size < radius)
         {
-            sprite.transform.localScale = new Vector3(size, size, 1);
+            waveRenderer.transform.localScale = new Vector3(size, size, 1);
             size += Time.deltaTime * 5;
             yield return null;
         }
-        sprite.enabled = false;
+        waveRenderer.enabled = false;
     }
 
     private void Sudoku()
