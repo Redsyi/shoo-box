@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     private CameraScript myCamera;
     private Shoe currShoe;
     private float rumbleTime;
+    private float currBoxSpeed;
+    public float boxSlideSlowdownRate;
     
 
     private void Start()
@@ -34,7 +36,7 @@ public class Player : MonoBehaviour
 
     public void OnMove(InputValue value)
     {
-        Vector2 movement = Utilities.RotateVectorDegrees(value.Get<Vector2>().normalized * speed * (legForm ? 1: boxSpeedMultiplier), 135 - myCamera.transform.eulerAngles.y);
+        Vector2 movement = Utilities.RotateVectorDegrees(value.Get<Vector2>().normalized * speed * (legForm ? 1: currBoxSpeed), 135 - myCamera.transform.eulerAngles.y);
         
         if(movement.sqrMagnitude != 0)
         {
@@ -57,6 +59,12 @@ public class Player : MonoBehaviour
     private void Update()
     {
         UpdateRumble();
+        if (!legForm) Slide();
+    }
+
+    private void Slide()
+    {
+        currBoxSpeed = Mathf.Max(boxSpeedMultiplier, currBoxSpeed - Time.deltaTime * boxSlideSlowdownRate * (1-boxSpeedMultiplier));
     }
 
     public void OnChangeForm(InputValue value)
@@ -73,6 +81,7 @@ public class Player : MonoBehaviour
         hitBox.transform.localPosition = new Vector3(hitBox.transform.localPosition.x, (legForm ? .5f : .2f), hitBox.transform.localPosition.z);
         hitBox.size = new Vector3(hitBox.size.x, (legForm ? 1 : .3f), hitBox.size.z);
 
+        currBoxSpeed = 1;
     }
 
     public void OnRotate(InputValue value)
@@ -86,7 +95,9 @@ public class Player : MonoBehaviour
 
         if (detector.currentItem && legForm)
         {
-          //  FindObjectOfType<UI_Inputs>().WearShoes();
+            UI_Inputs ui = FindObjectOfType<UI_Inputs>();
+            if (ui)
+                ui.WearShoes();
             detector.currentItem.GetComponent<Collider>().enabled = false;
             detector.currentItem.transform.parent.SetParent(model.transform, false);
             detector.currentItem.transform.parent.localPosition = Vector3.zero;
