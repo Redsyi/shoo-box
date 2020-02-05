@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
     /// </summary>
     public void OnMove(InputValue value)
     {
-        Vector2 movement = Utilities.RotateVectorDegrees(value.Get<Vector2>().normalized * speed * (legForm ? 1: currBoxSpeed), 135 - myCamera.transform.eulerAngles.y);
+        Vector2 movement = Utilities.RotateVectorDegrees(value.Get<Vector2>().normalized * speed * (legForm ? 0.8f: currBoxSpeed), 135 - myCamera.transform.eulerAngles.y);
         bool startFootsteps = false;
         bool moving = movement.sqrMagnitude != 0;
 
