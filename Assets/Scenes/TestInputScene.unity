@@ -174,8 +174,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 121765491}
+  - component: {fileID: 121765492}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: AudioManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -193,8 +194,21 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &121765492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121765490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cba231644edeee644940ca162844159a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initial: {fileID: 6080628629144216316, guid: 8f334953159648f448a707884e0e6402, type: 3}
 --- !u!1 &142794185
 GameObject:
   m_ObjectHideFlags: 0
@@ -1957,7 +1971,7 @@ Transform:
   m_Children:
   - {fileID: 1338343613}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1778515688
 MonoBehaviour:
@@ -1972,6 +1986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 142794185}
+  clip: {fileID: 8300000, guid: a23203acc31e7d445903d9c1490a8342, type: 3}
 --- !u!1 &1805324847
 GameObject:
   m_ObjectHideFlags: 0
