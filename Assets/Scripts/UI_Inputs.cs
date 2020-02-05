@@ -63,6 +63,7 @@ public class UI_Inputs : MonoBehaviour
     {
         shoeTagActive.GetComponent<Animator>().SetTrigger("Switch");
         yield return new WaitForSeconds(0.3f);
+        print("Switch");
         //set active tag inactive
         shoeTagActive.SetActive(false);
         //set inactive tag active

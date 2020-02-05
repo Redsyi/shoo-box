@@ -9,7 +9,6 @@ public class Detector : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         currentItem = other.gameObject;
-        print("item");
     }
 
     private void OnTriggerExit(Collider other)

@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     public Collider succArea;
     public Detector detector;
     public PlayerInput inputSystem;
+    public float footstepTiming;
+    public float footstepSoundOffset;
 
     public Vector3 currentMovement;
     private float currRotation;
@@ -36,6 +38,8 @@ public class Player : MonoBehaviour
         
         if(movement.sqrMagnitude != 0)
         {
+            if (currentMovement == Vector3.zero)
+                StartCoroutine(DoFootsteps());
             currRotation = -Utilities.VectorToDegrees(movement);
         }
         currentMovement.x = movement.x;
@@ -165,6 +169,19 @@ public class Player : MonoBehaviour
         {
             (inputSystem.devices[0] as Gamepad).SetMotorSpeeds(0f, 0f);
             rumbleTime = 0f;
+        }
+    }
+
+    IEnumerator DoFootsteps()
+    {
+        yield return new WaitForSeconds(footstepSoundOffset);
+        while (currentMovement != Vector3.zero)
+        {
+            if (legForm)
+            {
+                AudioManager.MakeNoise(transform.position, 1.3f, null, 1);
+            }
+            yield return new WaitForSeconds(footstepTiming);
         }
     }
 }

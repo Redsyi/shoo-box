@@ -16,6 +16,7 @@ public class Maid : MonoBehaviour
     private Vector3 prevPos;
     private float stoppedTime = 0f;
     private const float giveUpTime = 1f;
+    public bool debug;
 
     void Start()
     {
@@ -37,11 +38,14 @@ public class Maid : MonoBehaviour
         currState.location = patrolPoint;
     }
 
-    public void Investigate(GameObject location)
+    public void Investigate(GameObject location, bool forceOverrideChase = false)
     {
-        stoppedTime = 0f;
-        currState.state = AIState.INVESTIGATE;
-        currState.location = location.transform;
+        if (currState.state != AIState.CHASE || forceOverrideChase)
+        {
+            stoppedTime = 0f;
+            currState.state = AIState.INVESTIGATE;
+            currState.location = location.transform;
+        }
     }
 
     public void Interact(IAIInteractable interactable)
@@ -69,7 +73,7 @@ public class Maid : MonoBehaviour
     public void LosePlayer(Player player)
     {
         GameObject target = Instantiate(targetPrefab, player.transform.position, Quaternion.identity);
-        Investigate(target);
+        Investigate(target, true);
     }
     
     void Update()
@@ -79,25 +83,27 @@ public class Maid : MonoBehaviour
         else
             stoppedTime = 0f;
 
-        bool closeToTarget = (stoppedTime >= giveUpTime) || (transform.position - currState.location.position).sqrMagnitude < 0.5f;
+        bool closeToTarget = (transform.position - currState.location.position).sqrMagnitude < 0.4f;
+        bool closeEnough = (stoppedTime >= giveUpTime) || closeToTarget;
         if (!closeToTarget)
         {
             transform.LookAt(currState.location);
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
         }
 
-        print(currState.state + ", " + currState.location + ", " + thingsToInteractWith.Count + " | " + stoppedTime);
+        if (debug)
+            print(currState.state + ", " + currState.location + ", " + thingsToInteractWith.Count + " | " + stoppedTime);
 
         switch(currState.state)
         {
             case AIState.IDLE:
-                if (!closeToTarget)
+                if (!closeEnough)
                 {
                     pathfinder.destination = currState.location.position;
                 }
                 break;
             case AIState.INVESTIGATE:
-                if (!closeToTarget)
+                if (!closeEnough)
                 {
                     pathfinder.destination = currState.location.position;
                 } else
@@ -125,7 +131,7 @@ public class Maid : MonoBehaviour
                 }
                 break;
             case AIState.INTERACT:
-                if (!closeToTarget)
+                if (!closeEnough)
                 {
                     pathfinder.destination = currState.location.position;
                 } else

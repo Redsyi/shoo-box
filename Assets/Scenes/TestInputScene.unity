@@ -495,6 +495,8 @@ MonoBehaviour:
   succArea: {fileID: 0}
   detector: {fileID: 787526954}
   inputSystem: {fileID: 242782778}
+  footstepTiming: 0.25
+  footstepSoundOffset: 0
   currentMovement: {x: 0, y: 0, z: 0}
   legForm: 0
 --- !u!95 &242782780
@@ -1642,7 +1644,7 @@ NavMeshAgent:
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
+  m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
@@ -1856,8 +1858,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0312834, y: 1.3949685, z: 0.942142}
-  m_Center: {x: 0.01564169, y: -0.7194979, z: 0.028928995}
+  m_Size: {x: 1.0312834, y: 2.7433333, z: 0.942142}
+  m_Center: {x: 0.01564169, y: -1.3936803, z: 0.028928995}
 --- !u!114 &1670788831
 MonoBehaviour:
   m_ObjectHideFlags: 0
