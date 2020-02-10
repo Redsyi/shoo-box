@@ -40,7 +40,7 @@ public class AIVision : MonoBehaviour
                 if (justEntered)
                     collidersTouchingPlayer++;
             }
-            if (player != null && (player.legForm || player.currentMovement != Vector3.zero))
+            if (player != null && (player.legForm || player.moving))
             {
                 bool canSeeObj = !Physics.Raycast(transform.position, other.gameObject.transform.position - transform.position, (other.gameObject.transform.position - transform.position).magnitude, LayerMask.GetMask("VisionObstruction"));
                 if (canSeeObj)

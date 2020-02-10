@@ -7,18 +7,21 @@ public class Player : MonoBehaviour
 {
     public Rigidbody rigidbody;
     public Animator animator;
-    public float speed;
+    public float baseSpeed;
     public GameObject model;
-    public BoxCollider hitBox;
+    public BoxCollider legformHitbox;
+    public BoxCollider boxformHitbox;
     public float boxSpeedMultiplier;
-    public Collider succArea;
     //public Detector detector;
     public PlayerInput inputSystem;
     public float footstepTiming;
     public float footstepSoundOffset;
+    public bool moving => currMovementInput != Vector2.zero;
+    private bool makingFootsteps;
 
-    public Vector3 currentMovement;
+    private Vector2 currMovementInput;
     private float currRotation;
+    public float rotationSpeed;
     public bool legForm;
     private CameraScript myCamera;
     //private Shoe currShoe;
@@ -31,6 +34,7 @@ public class Player : MonoBehaviour
     {
         myCamera = FindObjectOfType<CameraScript>();
         ClearRumble();
+        currBoxSpeed = boxSpeedMultiplier;
     }
 
     /// <summary>
@@ -38,6 +42,13 @@ public class Player : MonoBehaviour
     /// </summary>
     public void OnMove(InputValue value)
     {
+        bool wasMoving = (currMovementInput == Vector2.zero);
+        currMovementInput = value.Get<Vector2>();
+        if (currMovementInput != Vector2.zero && !wasMoving && !makingFootsteps)
+            StartCoroutine(DoFootsteps());
+
+        if (currMovementInput.sqrMagnitude > 1)
+            currMovementInput = currMovementInput.normalized;
         /*
         Vector2 movement = Utilities.RotateVectorDegrees(value.Get<Vector2>().normalized * speed * (legForm ? 0.8f: currBoxSpeed), 135 - myCamera.transform.eulerAngles.y);
         bool startFootsteps = false;
@@ -63,22 +74,47 @@ public class Player : MonoBehaviour
     {
         /*
         transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, currRotation, transform.localEulerAngles.z);
-        transform.position += currentMovement;
         */
+        transform.position += CalculateMovementVector();
+    }
+
+    private Vector3 CalculateMovementVector()
+    {
+        Vector2 adjustedMovement = Utilities.RotateVectorDegrees(currMovementInput * baseSpeed * (legForm ? 1 : currBoxSpeed) * Time.fixedDeltaTime, 135 - myCamera.transform.eulerAngles.y);
+        return new Vector3(adjustedMovement.x, 0, adjustedMovement.y);
     }
 
     private void Update()
     {
-        /*
+        
         UpdateRumble();
         if (!legForm) Slide();
-        */
+        InterpolateRotation();
+    }
+
+    private void InterpolateRotation()
+    {
+        if (currMovementInput != Vector2.zero)
+        {
+            float desiredRotation = Utilities.ClampAngle0360(-Utilities.VectorToDegrees(Utilities.RotateVectorDegrees(currMovementInput, 135 - myCamera.transform.eulerAngles.y)));
+            float rotationDiff = desiredRotation - currRotation;
+            //print($"{currRotation}, {desiredRotation}");
+            if (Mathf.Abs(rotationDiff) < 10f)
+            {
+                currRotation = desiredRotation;
+            }
+            else
+            {
+                currRotation = Utilities.ClampAngle0360(currRotation + rotationSpeed * Time.deltaTime * Utilities.DirectionToRotate(currRotation, desiredRotation));
+            }
+            transform.eulerAngles = new Vector3(0, currRotation);
+        }
     }
 
     //slows down current box speed multiplier until it reaches the base multiplier
     private void Slide()
     {
-        currBoxSpeed = Mathf.Max(boxSpeedMultiplier, currBoxSpeed - Time.deltaTime * boxSlideSlowdownRate * (1-boxSpeedMultiplier));
+        currBoxSpeed = Mathf.Max(boxSpeedMultiplier, currBoxSpeed - Time.deltaTime / boxSlideSlowdownRate * (1-boxSpeedMultiplier));
     }
 
     /// <summary>
@@ -86,7 +122,7 @@ public class Player : MonoBehaviour
     /// </summary>
     public void OnChangeForm(InputValue value)
     {
-        /*
+        
         if(!legForm)
         {
             if (Physics.Raycast(transform.position, Vector3.up, 1, LayerMask.GetMask("Obstacle")))
@@ -95,12 +131,14 @@ public class Player : MonoBehaviour
 
         legForm = !legForm;
 
-        model.transform.localPosition = new Vector3(model.transform.localPosition.x, (legForm ? 0: -.65f), model.transform.localPosition.z);
-        hitBox.transform.localPosition = new Vector3(hitBox.transform.localPosition.x, (legForm ? .5f : .2f), hitBox.transform.localPosition.z);
-        hitBox.size = new Vector3(hitBox.size.x, (legForm ? 1 : .3f), hitBox.size.z);
+        legformHitbox.enabled = legForm;
+        boxformHitbox.enabled = !legForm;
+        if (legForm)
+        {
+            transform.position += new Vector3(0, 0.65f);
+        }
 
         currBoxSpeed = 1;
-        */
     }
 
     /// <summary>
@@ -224,10 +262,11 @@ public class Player : MonoBehaviour
     //makes a footstep noise every footstepTiming seconds, auto cancels once movement stops
     IEnumerator DoFootsteps()
     {
+        makingFootsteps = true;
         if (footstepSoundOffset > 0f)
             yield return new WaitForSeconds(footstepSoundOffset);
         float timeSinceLast = footstepTiming;
-        while (currentMovement != Vector3.zero)
+        while (moving)
         {
             timeSinceLast += Time.deltaTime;
             if (legForm && timeSinceLast >= footstepTiming)
@@ -237,5 +276,6 @@ public class Player : MonoBehaviour
             }
             yield return null;
         }
+        makingFootsteps = false;
     }
 }
