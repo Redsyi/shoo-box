@@ -34,6 +34,25 @@ public static class Utilities
         return Mathf.Atan2(vector.y, vector.x)*Mathf.Rad2Deg;
     }
 
+    /// <summary>
+    /// clamps an angle between 0 and 360 degrees
+    /// </summary>
+    public static float ClampAngle0360(float angle)
+    {
+        while (angle < 0)
+            angle += 360;
+        while (angle >= 360)
+            angle -= 360;
+        return angle;
+    }
+
+    public static int DirectionToRotate(float angleFrom, float angleTo)
+    {
+        float diff = angleTo - angleFrom;
+        float absDiff = Mathf.Abs(diff);
+        return (diff > 0 ? 1 : -1) * (absDiff > 180 ? -1 : 1);
+    }
+
 #if UNITY_EDITOR
     //todo we can add our own scenes here
     /*[MenuItem("Utilities/Go to main scene")]
