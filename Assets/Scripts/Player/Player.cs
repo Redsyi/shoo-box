@@ -90,6 +90,27 @@ public class Player : MonoBehaviour
         UpdateRumble();
         if (!legForm) Slide();
         InterpolateRotation();
+        UpdateAnimator();
+    }
+
+    private void UpdateAnimator()
+    {
+        if (moving)
+        {
+            if (legForm)
+            {
+                animator.SetBool("Walking", true);
+                animator.SetBool("Shuffling", false);
+            } else
+            {
+                animator.SetBool("Shuffling", true);
+                animator.SetBool("Walking", false);
+            }
+        } else
+        {
+            animator.SetBool("Shuffling", false);
+            animator.SetBool("Walking", false);
+        }
     }
 
     private void InterpolateRotation()
