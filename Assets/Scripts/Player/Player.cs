@@ -12,7 +12,8 @@ public class Player : MonoBehaviour
     public BoxCollider legformHitbox;
     public BoxCollider boxformHitbox;
     public float boxSpeedMultiplier;
-    //public Detector detector;
+    public ShoeSniffer shoeSniffer;
+    public PlayerShoeManager shoeManager;
     public PlayerInput inputSystem;
     public float footstepTiming;
     public float footstepSoundOffset;
@@ -49,32 +50,10 @@ public class Player : MonoBehaviour
 
         if (currMovementInput.sqrMagnitude > 1)
             currMovementInput = currMovementInput.normalized;
-        /*
-        Vector2 movement = Utilities.RotateVectorDegrees(value.Get<Vector2>().normalized * speed * (legForm ? 0.8f: currBoxSpeed), 135 - myCamera.transform.eulerAngles.y);
-        bool startFootsteps = false;
-        bool moving = movement.sqrMagnitude != 0;
-
-        if (moving)
-        {
-            if (currentMovement == Vector3.zero)
-                startFootsteps = true;
-            currRotation = -Utilities.VectorToDegrees(movement);
-        }
-        currentMovement.x = movement.x;
-        currentMovement.z = movement.y;
-
-        if (startFootsteps)
-            StartCoroutine(DoFootsteps());
-
-        animator.SetBool("walking", moving);
-        */
     }
 
     private void FixedUpdate()
     {
-        /*
-        transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, currRotation, transform.localEulerAngles.z);
-        */
         transform.position += CalculateMovementVector();
     }
 
@@ -86,7 +65,6 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        
         UpdateRumble();
         if (!legForm) Slide();
         InterpolateRotation();
@@ -146,7 +124,7 @@ public class Player : MonoBehaviour
         
         if(!legForm)
         {
-            if (Physics.Raycast(transform.position, Vector3.up, 1, LayerMask.GetMask("Obstacle")))
+            if (Physics.Raycast(transform.position, Vector3.up, 1, LayerMask.GetMask("Obstructions", "Transparent Obstructions")))
                 return;
         }
 
@@ -176,19 +154,12 @@ public class Player : MonoBehaviour
     /// </summary>
     public void OnInteract(InputValue value)
     { 
-        /*
-        if (detector.currentItem && legForm)
+        if (shoeSniffer.detectedShoe && legForm)
         {
-            UI_Inputs ui = FindObjectOfType<UI_Inputs>();
-            if (ui)
-                ui.WearShoes();
-            detector.currentItem.GetComponent<Collider>().enabled = false;
-            detector.currentItem.transform.parent.SetParent(model.transform, false);
-            detector.currentItem.transform.parent.localPosition = Vector3.zero;
-            currShoe = detector.currentItem.GetComponentInParent<Shoe>();
-            detector.currentItem = null;
+            //TODO: UI trigger
+            shoeManager.SwitchTo(shoeSniffer.detectedShoe.shoeType);
+            Destroy(shoeSniffer.detectedShoe.gameObject);
         }
-        */
     }
 
     /// <summary>
@@ -196,21 +167,20 @@ public class Player : MonoBehaviour
     /// </summary>
     public void OnAction()
     {
-        /*
-        if (legForm && currShoe)
+        if (legForm)
         {
-            switch(currShoe.shoeType)
+            switch(shoeManager.currShoe)
             {
+                case ShoeType.BAREFOOT:
+                    break;
                 case ShoeType.BOOTS:
                     animator.SetTrigger("Kick");
-                    currShoe.GetComponentInChildren<Kicker>().Kick();
                     break;
                 default:
                     Debug.Log("you dun fucked up boi");
                     break;
             }
         }
-        */
     }
 
     //tell UI to pause or unpause

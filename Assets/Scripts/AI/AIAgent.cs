@@ -120,7 +120,7 @@ public class AIAgent : MonoBehaviour
         }
 
         if (debug)
-            print(currState.state + ", " + currState.location + ", " + thingsToInteractWith.Count + " | " + stoppedTime);
+            print($"{currState.state}, {currState.location}, {thingsToInteractWith.Count} | {stoppedTime}");
 
         //take action depending on the current state
         switch(currState.state)

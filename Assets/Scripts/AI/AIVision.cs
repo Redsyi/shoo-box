@@ -28,7 +28,7 @@ public class AIVision : MonoBehaviour
         IAIInteractable interactable = other.GetComponent<IAIInteractable>();
         if (interactable != null && interactable.NeedsInteraction())
         {
-            bool canSeeObj = !Physics.Raycast(transform.position, other.gameObject.transform.position - transform.position, (other.gameObject.transform.position - transform.position).magnitude, LayerMask.GetMask("VisionObstruction"));
+            bool canSeeObj = !Physics.Raycast(transform.position, other.gameObject.transform.position - transform.position, (other.gameObject.transform.position - transform.position).magnitude, LayerMask.GetMask("Obstructions", "AI Blinders"));
             if (canSeeObj)
                 ai.Interact(interactable);
         }
@@ -42,7 +42,7 @@ public class AIVision : MonoBehaviour
             }
             if (player != null && (player.legForm || player.moving))
             {
-                bool canSeeObj = !Physics.Raycast(transform.position, other.gameObject.transform.position - transform.position, (other.gameObject.transform.position - transform.position).magnitude, LayerMask.GetMask("VisionObstruction"));
+                bool canSeeObj = !Physics.Raycast(transform.position, other.gameObject.transform.position - transform.position, (other.gameObject.transform.position - transform.position).magnitude, LayerMask.GetMask("Obstructions", "AI Blinders"));
                 if (canSeeObj)
                 {
                     ai.Chase(player);
