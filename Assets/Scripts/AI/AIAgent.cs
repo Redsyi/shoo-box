@@ -12,6 +12,7 @@ public class AIAgent : MonoBehaviour
     public Queue<IAIInteractable> thingsToInteractWith;
     float timer;
     public GameObject targetPrefab;
+    private GameObject instantiatedTarget;
     private bool stopped;
     private Vector3 prevPos;
     private float stoppedTime = 0f;
@@ -19,6 +20,7 @@ public class AIAgent : MonoBehaviour
     public bool debug;
     public float walkSpeed;
     public float runSpeed;
+    public AIInterest[] interests;
 
     void Start()
     {
@@ -100,8 +102,14 @@ public class AIAgent : MonoBehaviour
     /// </summary>
     public void LosePlayer(Player player)
     {
-        GameObject target = Instantiate(targetPrefab, player.transform.position, Quaternion.identity);
-        Investigate(target, true);
+        if (instantiatedTarget == null)
+        {
+            instantiatedTarget = Instantiate(targetPrefab, player.transform.position, Quaternion.identity);
+        } else
+        {
+            instantiatedTarget.transform.position = player.transform.position;
+        }
+        Investigate(instantiatedTarget, true);
     }
     
     void Update()
@@ -187,15 +195,37 @@ public class AIAgent : MonoBehaviour
                 }
                 break;
             case AIState.CHASE:
-                if (!closeToTarget)
+                if (!closeToTarget && !closeEnough)
                 {
                     pathfinder.destination = currState.location.position;
+                } else if (!closeToTarget)
+                {
+                    //TODO: Player considered too far away to catch while in box mode.
+                    //Consider switching to trigger collider to catch player instead
+                    print("lost player during chase");
+                    LosePlayer(FindObjectOfType<Player>());
                 } else
                 {
                     //this is the part where the player fucking dies
                     SceneManager.LoadScene(0);
                 }
                 break;
+        }
+    }
+
+
+    public static void SummonAI(GameObject to, params AIInterest[] interests)
+    {
+        foreach (AIAgent agent in FindObjectsOfType<AIAgent>())
+        {
+            foreach (AIInterest interest in interests)
+            {
+                if (System.Array.Exists<AIInterest>(agent.interests, element => element == interest))
+                {
+                    agent.Investigate(to);
+                    break;
+                }
+            }
         }
     }
 }
