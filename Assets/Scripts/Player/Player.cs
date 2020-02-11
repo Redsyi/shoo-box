@@ -175,6 +175,7 @@ public class Player : MonoBehaviour
                     break;
                 case ShoeType.BOOTS:
                     animator.SetTrigger("Kick");
+                    shoeManager.UseShoes();
                     break;
                 default:
                     Debug.Log("you dun fucked up boi");

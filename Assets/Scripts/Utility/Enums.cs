@@ -16,3 +16,8 @@ public enum ShoeType
     BOOTS,
     FLIPFLOPS
 }
+
+public enum AIInterest
+{
+    MAID
+}
