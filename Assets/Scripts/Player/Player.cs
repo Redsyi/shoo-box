@@ -137,6 +137,8 @@ public class Player : MonoBehaviour
             transform.position += new Vector3(0, 0.65f);
         }
 
+        animator.SetFloat("Idle Speed", (legForm ? 1f : 0f));
+
         currBoxSpeed = 1;
     }
 

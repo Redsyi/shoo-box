@@ -38,7 +38,7 @@ public class PlayerShoeManager : MonoBehaviour
             case ShoeType.BAREFOOT:
                 break;
             case ShoeType.BOOTS:
-                boots.GetComponent<BootKicker>().Kick();
+                boots.GetComponentInChildren<BootKicker>().Kick();
                 break;
             default:
                 break;
