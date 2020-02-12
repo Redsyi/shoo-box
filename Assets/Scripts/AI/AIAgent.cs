@@ -228,4 +228,34 @@ public class AIAgent : MonoBehaviour
             }
         }
     }
+
+#if UNITY_EDITOR
+
+    private void OnDrawGizmos()
+    {
+        if (currState != null)
+        {
+            switch (currState.state)
+            {
+                case AIState.IDLE:
+                    Gizmos.color = Color.white;
+                    break;
+                case AIState.CHASE:
+                    Gizmos.color = Color.red;
+                    break;
+                case AIState.INTERACT:
+                    Gizmos.color = Color.green;
+                    break;
+                case AIState.INVESTIGATE:
+                    Gizmos.color = Color.blue;
+                    break;
+                case AIState.INVESTIGATING:
+                    Gizmos.color = Color.cyan;
+                    break;
+            }
+            Gizmos.DrawLine(transform.position, currState.location.position);
+        }
+    }
+
+#endif
 }

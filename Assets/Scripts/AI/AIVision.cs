@@ -25,7 +25,7 @@ public class AIVision : MonoBehaviour
 
     private void ProcessItemInVision(Collider other, bool justEntered = false)
     {
-        IAIInteractable interactable = other.GetComponent<IAIInteractable>();
+        IAIInteractable interactable = other.gameObject.GetComponent<IAIInteractable>();
         if (interactable != null && interactable.NeedsInteraction())
         {
             foreach (AIInterest interest in interactable.InterestingToWhatAI())
