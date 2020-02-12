@@ -12,6 +12,9 @@ public class AIAgent : MonoBehaviour
     public Queue<IAIInteractable> thingsToInteractWith;
     float timer;
     public GameObject targetPrefab;
+    public UINPCBubble bubblePrefab;
+    public Transform bubbleAnchor;
+    private UINPCBubble myBubble;
     private GameObject instantiatedTarget;
     private bool stopped;
     private Vector3 prevPos;
@@ -30,6 +33,12 @@ public class AIAgent : MonoBehaviour
 
         if (pathfinder == null)
             Debug.LogError("AIAgent has null NavMeshAgent!");
+
+        GameObject bubbleCanvas = GameObject.FindGameObjectWithTag("NPC Bubble Canvas");
+        if (bubbleCanvas == null)
+            Debug.LogError("AIAgent couldn't find bubble canvas");
+        myBubble = Instantiate(bubblePrefab, bubbleCanvas.transform);
+        myBubble.worldAnchor = bubbleAnchor;
     }
 
     private void FixedUpdate()
@@ -91,6 +100,10 @@ public class AIAgent : MonoBehaviour
     /// <param name="player"></param>
     public void Chase(Player player)
     {
+        if (currState.state != AIState.CHASE)
+        {
+            myBubble.Spotted();
+        }
         pathfinder.speed = runSpeed;
         stoppedTime = 0f;
         currState.state = AIState.CHASE;
@@ -138,6 +151,7 @@ public class AIAgent : MonoBehaviour
                 {
                     pathfinder.destination = currState.location.position;
                 }
+                myBubble.StopInvestigating();
                 break;
             case AIState.INVESTIGATE:
                 if (!closeEnough)
@@ -148,6 +162,7 @@ public class AIAgent : MonoBehaviour
                     currState.state = AIState.INVESTIGATING;
                     timer = 3; //magic numbers, mike scott would be disappointed
                 }
+                myBubble.Investigating();
                 break;
             case AIState.INVESTIGATING:
                 timer -= Time.deltaTime;
@@ -165,6 +180,10 @@ public class AIAgent : MonoBehaviour
                     {
                         Idle();
                     }
+                }
+                else
+                {
+                    myBubble.Investigating();
                 }
                 break;
             case AIState.INTERACT:
@@ -193,6 +212,7 @@ public class AIAgent : MonoBehaviour
                         }
                     }
                 }
+                myBubble.StopInvestigating();
                 break;
             case AIState.CHASE:
                 if (!closeToTarget && !closeEnough)
@@ -209,6 +229,7 @@ public class AIAgent : MonoBehaviour
                     //this is the part where the player fucking dies
                     SceneManager.LoadScene(0);
                 }
+                myBubble.StopInvestigating();
                 break;
         }
     }
