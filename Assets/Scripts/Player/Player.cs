@@ -29,13 +29,20 @@ public class Player : MonoBehaviour
     private float rumbleTime;
     private float currBoxSpeed;
     public float boxSlideSlowdownRate;
+    private UIShoeTag shoeTagUI;
     
 
     private void Start()
     {
         myCamera = FindObjectOfType<CameraScript>();
+        if (myCamera == null)
+            Debug.LogError("Player couldn't find camera script");
         ClearRumble();
         currBoxSpeed = boxSpeedMultiplier;
+        shoeTagUI = FindObjectOfType<UIShoeTag>();
+        if (shoeTagUI == null)
+            Debug.LogError("Player couldn't find shoe tag UI");
+
     }
 
     /// <summary>
@@ -160,6 +167,7 @@ public class Player : MonoBehaviour
         {
             //TODO: UI trigger
             shoeManager.SwitchTo(shoeSniffer.detectedShoe.shoeType);
+            shoeTagUI.SwitchTo(shoeSniffer.detectedShoe.shoeType);
             Destroy(shoeSniffer.detectedShoe.gameObject);
         }
     }
@@ -189,7 +197,7 @@ public class Player : MonoBehaviour
     //tell UI to pause or unpause
     public void OnPauseMenu(InputValue value)
     {
-        //FindObjectOfType<UI_Inputs>().OnPauseMenu(value);
+        UIPauseMenu.instance.TogglePause();
     }
 
     /// <summary>
