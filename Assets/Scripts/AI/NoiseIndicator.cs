@@ -42,7 +42,7 @@ public class NoiseIndicator : MonoBehaviour
                 }
             }
         }
-        Invoke("Sudoku", 5);
+        Invoke("Sudoku", 25);
     }
 
     //animates the sound wave

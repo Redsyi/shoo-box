@@ -9,8 +9,7 @@ public class BootKicker : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        IKickable kickable = other.gameObject.GetComponent<IKickable>();
-        if (kickable != null)
+        foreach (IKickable kickable in other.gameObject.GetComponents<IKickable>())
         {
             kickable.OnKick(gameObject);
             GetComponentInParent<Player>().Rumble(RumbleStrength.MEDIUM, 0.15f);

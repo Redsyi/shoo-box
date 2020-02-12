@@ -19,5 +19,7 @@ public enum ShoeType
 
 public enum AIInterest
 {
-    MAID
+    MAID,
+    TEST_AI_1,
+    TEST_AI_2
 }
