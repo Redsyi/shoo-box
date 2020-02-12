@@ -17,6 +17,6 @@ public class ForceOnKick : MonoBehaviour, IKickable
     {
         rigidbody = GetComponentInChildren<Rigidbody>();
         if (rigidbody == null)
-            Debug.LogError("ForceOnKick component cannot find rigidbody");
+            Debug.LogError($"ForceOnKick component on {gameObject.name} cannot find rigidbody");
     }
 }
