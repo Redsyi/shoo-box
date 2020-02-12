@@ -24,6 +24,7 @@ public class AIAgent : MonoBehaviour
     public float walkSpeed;
     public float runSpeed;
     public AIInterest[] interests;
+    public bool beingRepelled;
 
     void Start()
     {
@@ -134,7 +135,7 @@ public class AIAgent : MonoBehaviour
 
         bool closeToTarget = (transform.position - currState.location.position).sqrMagnitude < 0.4f;
         bool closeEnough = (stoppedTime >= giveUpTime) || closeToTarget;
-        if (!closeToTarget)
+        if (!closeToTarget && !beingRepelled)
         {
             transform.LookAt(currState.location);
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
