@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class AIAgent : MonoBehaviour
 {
     public Transform patrolPoint;
+    public Animator animator;
     public AIStateNode currState;
     public NavMeshAgent pathfinder;
     public Queue<IAIInteractable> thingsToInteractWith;
@@ -141,6 +142,10 @@ public class AIAgent : MonoBehaviour
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
         }
 
+        animator.SetBool("Moving", stoppedTime < 0.15f);
+        animator.SetBool("Running", currState.state == AIState.CHASE || currState.state == AIState.INTERACT);
+        animator.SetBool("Interacting", currState.state == AIState.INTERACT && closeEnough);
+
         if (debug)
             print($"{currState.state}, {currState.location}, {thingsToInteractWith.Count} | {stoppedTime}");
 
@@ -162,6 +167,7 @@ public class AIAgent : MonoBehaviour
                 {
                     currState.state = AIState.INVESTIGATING;
                     timer = 3; //magic numbers, mike scott would be disappointed
+                    animator.SetTrigger("Investigate");
                 }
                 myBubble.Investigating();
                 break;
