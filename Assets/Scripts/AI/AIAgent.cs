@@ -142,9 +142,9 @@ public class AIAgent : MonoBehaviour
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
         }
 
-        animator.SetBool("Moving", !stopped);
+        animator.SetBool("Moving", stoppedTime < 0.15f);
         animator.SetBool("Running", currState.state == AIState.CHASE || currState.state == AIState.INTERACT);
-        animator.SetBool("Interacting", currState.state == AIState.INTERACT);
+        animator.SetBool("Interacting", currState.state == AIState.INTERACT && closeEnough);
 
         if (debug)
             print($"{currState.state}, {currState.location}, {thingsToInteractWith.Count} | {stoppedTime}");

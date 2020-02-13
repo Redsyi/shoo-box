@@ -280,4 +280,9 @@ public class Player : MonoBehaviour
         }
         makingFootsteps = false;
     }
+
+    public void OnTest()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+    }
 }
