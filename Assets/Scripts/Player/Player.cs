@@ -5,30 +5,42 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    [Header("Component References")]
     public Rigidbody rigidbody;
     public Animator animator;
-    public float baseSpeed;
     public GameObject model;
     public BoxCollider legformHitbox;
     public BoxCollider boxformHitbox;
-    public float boxSpeedMultiplier;
     public ShoeSniffer shoeSniffer;
     public PlayerShoeManager shoeManager;
     public PlayerInput inputSystem;
+    public ParticleSystem walkingParticleSystem;
+
+    [Header("Stats")]
+    public float baseSpeed;
+    public float boxSpeedMultiplier;
+    public float boxSlideSlowdownRate;
+    public float rotationSpeed;
+    public bool legForm;
+
+    [Header("Footsteps")]
     public float footstepTiming;
     public float footstepSoundOffset;
     public bool moving => currMovementInput != Vector2.zero;
     private bool makingFootsteps;
 
+    [Header("Effects")]
+    public Transform legParticlesPosition;
+    public Transform boxParticlesPosition;
+    public int walkingParticleEmissionRate;
+    public int shuffleParticleEmissionRate;
+
     private Vector2 currMovementInput;
     private float currRotation;
-    public float rotationSpeed;
-    public bool legForm;
     private CameraScript myCamera;
     //private Shoe currShoe;
     private float rumbleTime;
     private float currBoxSpeed;
-    public float boxSlideSlowdownRate;
     private UIShoeTag shoeTagUI;
     
 
@@ -76,6 +88,7 @@ public class Player : MonoBehaviour
         if (!legForm) Slide();
         InterpolateRotation();
         UpdateAnimator();
+        UpdateParticles();
     }
 
     private void UpdateAnimator()
@@ -96,6 +109,12 @@ public class Player : MonoBehaviour
             animator.SetBool("Shuffling", false);
             animator.SetBool("Walking", false);
         }
+    }
+
+    private void UpdateParticles()
+    {
+        ParticleSystem.EmissionModule walkingParticleEmissions = walkingParticleSystem.emission;
+        walkingParticleEmissions.rateOverTime = (moving ? (legForm ? walkingParticleEmissionRate : shuffleParticleEmissionRate) : 0);
     }
 
     private void InterpolateRotation()
@@ -143,6 +162,7 @@ public class Player : MonoBehaviour
         {
             transform.position += new Vector3(0, 0.65f);
         }
+        walkingParticleSystem.transform.localPosition = (legForm ? legParticlesPosition.localPosition : boxParticlesPosition.localPosition);
 
         animator.SetFloat("Idle Speed", (legForm ? 1f : 0f));
 
