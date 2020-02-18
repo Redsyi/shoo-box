@@ -15,6 +15,7 @@ public class AnimatedFixable : MonoBehaviour, IAIInteractable
     {
         broken = false;
         animator.SetTrigger(fixTriggerName);
+        animator.ResetTrigger(breakTriggerName);
     }
 
     public void AIInteracting(float interactProgress)
