@@ -6,13 +6,21 @@ public class BootKicker : MonoBehaviour
 {
     public Collider hitbox;
     public AudioClip kickClip;
+    public ParticleSystem kickParticleSystem;
 
     private void OnTriggerEnter(Collider other)
     {
+        bool hitSomething = false;
         foreach (IKickable kickable in other.gameObject.GetComponents<IKickable>())
         {
+            hitSomething = true;
             kickable.OnKick(gameObject);
+        }
+        if (hitSomething)
+        {
             GetComponentInParent<Player>().Rumble(RumbleStrength.MEDIUM, 0.15f);
+            CameraScript.current.ShakeScreen(ShakeStrength.MEDIUM, ShakeLength.SHORT);
+            kickParticleSystem.Emit(15);
         }
     }
 
