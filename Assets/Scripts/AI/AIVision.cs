@@ -28,7 +28,6 @@ public class AIVision : MonoBehaviour
         IAIInteractable interactable = other.gameObject.GetComponent<IAIInteractable>();
         if (interactable != null && interactable.NeedsInteraction())
         {
-            print($"Found interactable {other.gameObject.name}");
             foreach (AIInterest interest in interactable.InterestingToWhatAI())
             {
                 if (System.Array.Exists<AIInterest>(ai.interests, element => element == interest))
@@ -45,14 +44,18 @@ public class AIVision : MonoBehaviour
             Player player = other.GetComponentInParent<Player>();
             if (player != null)
             {
+                print("Found player");
                 if (justEntered)
                     collidersTouchingPlayer++;
             }
             if (player != null && (player.legForm || player.moving))
             {
-                bool canSeeObj = !Physics.Raycast(transform.position, other.gameObject.transform.position - transform.position, (other.gameObject.transform.position - transform.position).magnitude, LayerMask.GetMask("Obstructions", "AI Blinders"));
+                print("player spotted");
+                Vector3 vectToPlayer = player.AISpotPoint.position - transform.position;
+                bool canSeeObj = !Physics.Raycast(transform.position, vectToPlayer, vectToPlayer.magnitude, LayerMask.GetMask("Obstructions", "AI Blinders"));
                 if (canSeeObj)
                 {
+                    print("player visible");
                     ai.Chase(player);
                 }
                 else if (ai.currState.state == AIState.CHASE)
