@@ -28,6 +28,7 @@ public class AIVision : MonoBehaviour
         IAIInteractable interactable = other.gameObject.GetComponent<IAIInteractable>();
         if (interactable != null && interactable.NeedsInteraction())
         {
+            print($"Found interactable {other.gameObject.name}");
             foreach (AIInterest interest in interactable.InterestingToWhatAI())
             {
                 if (System.Array.Exists<AIInterest>(ai.interests, element => element == interest))

@@ -54,7 +54,7 @@ public class UINPCBubble : MonoBehaviour
         if (worldAnchor != null) {
             if (spotting || investigating)
             {
-                Vector2 canvasPoint = (Vector2)Camera.main.WorldToScreenPoint(worldAnchor.position) + offset;
+                Vector2 canvasPoint = (Vector2)CameraScript.current.camera.WorldToScreenPoint(worldAnchor.position) + offset;
                 transform.position = canvasPoint;
             }
         } else

@@ -5,6 +5,20 @@
     INTENSE
 }
 
+public enum ShakeStrength
+{
+    WEAK,
+    MEDIUM,
+    INTENSE
+}
+
+public enum ShakeLength
+{
+    SHORT,
+    MEDIUM,
+    LONG
+}
+
 public enum RotationDirection {
     CLOCKWISE, 
     COUNTERCLOCKWISE
