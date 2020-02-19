@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     [Header("Footsteps")]
     public float footstepTiming;
     public float footstepSoundOffset;
+    public AudioClip footstepSound;
     public bool moving => currMovementInput != Vector2.zero;
     private bool makingFootsteps;
 
@@ -294,7 +295,7 @@ public class Player : MonoBehaviour
             timeSinceLast += Time.deltaTime;
             if (legForm && timeSinceLast >= footstepTiming)
             {
-                AudioManager.MakeNoise(transform.position, 1.3f, null, 1);
+                AudioManager.MakeNoise(transform.position, 1.3f, footstepSound, 1);
                 timeSinceLast = 0f;
             }
             yield return null;

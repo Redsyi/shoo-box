@@ -6,6 +6,7 @@ public class UIPauseMenu : MonoBehaviour
 {
     public bool paused { get; private set; }
     public static UIPauseMenu instance;
+    public AudioClip pauseSound;
 
     private void Start()
     {
@@ -18,6 +19,7 @@ public class UIPauseMenu : MonoBehaviour
         paused = !paused;
         gameObject.SetActive(paused);
         Time.timeScale = (paused ? 0 : 1);
+        AudioManager.MakeNoise(Vector3.zero, 0, pauseSound, 0.65f);
     }
 
     public void OnRetryPressed()

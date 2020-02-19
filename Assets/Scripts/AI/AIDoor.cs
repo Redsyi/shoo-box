@@ -12,6 +12,7 @@ public class AIDoor : MonoBehaviour
     private float currAngle;
     private int openDir;
     public Transform hinge;
+    public AudioClip doorOpenClip;
 
     private void Start()
     {
@@ -46,6 +47,7 @@ public class AIDoor : MonoBehaviour
     {
         while (animating)
             yield return null;
+        AudioManager.MakeNoise(transform.position, 0, doorOpenClip, 1);
         animating = true;
         while (openDir > 0 ? currAngle < openAngle : currAngle > openAngle)
         {
@@ -63,6 +65,7 @@ public class AIDoor : MonoBehaviour
     {
         while (animating)
             yield return null;
+        AudioManager.MakeNoise(transform.position, 0, doorOpenClip, 1);
         animating = true;
         while (openDir < 0 ? currAngle < closedAngle : currAngle > closedAngle)
         {

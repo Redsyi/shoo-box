@@ -21,6 +21,7 @@ public class BootKicker : MonoBehaviour
             GetComponentInParent<Player>().Rumble(RumbleStrength.MEDIUM, 0.15f);
             CameraScript.current.ShakeScreen(ShakeStrength.MEDIUM, ShakeLength.SHORT);
             kickParticleSystem.Emit(15);
+            AudioManager.MakeNoise(hitbox.transform.position, 1, kickClip, 0.8f);
         }
     }
 
@@ -32,7 +33,6 @@ public class BootKicker : MonoBehaviour
     private IEnumerator DoKick(float hitboxActiveTime)
     {
         hitbox.enabled = true;
-        AudioManager.MakeNoise(hitbox.transform.position, 1, kickClip, 0.8f);
         yield return new WaitForSeconds(hitboxActiveTime);
         hitbox.enabled = false;
     }

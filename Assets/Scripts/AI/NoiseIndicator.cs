@@ -41,6 +41,9 @@ public class NoiseIndicator : MonoBehaviour
                     AI.Investigate(gameObject);
                 }
             }
+        } else
+        {
+            waveRenderer.enabled = false;
         }
         Invoke("Sudoku", 25);
     }
