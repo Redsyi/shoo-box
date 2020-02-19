@@ -10,18 +10,24 @@ public class ScreenShake
 
 public class CameraScript : MonoBehaviour
 {
-    private GameObject player;
+    private Player player;
     public float cameraSnapRotateSpeed;
     private float remainingRotation;
     private LinkedList<ScreenShake> currShakes;
     private Vector3 currScreenShake;
     public static CameraScript current;
+    [HideInInspector]
     public Camera camera;
     private const float shakeUpdateFreq = 0.03f;
+    [Header("Zoom")]
+    public float closeZoomLevel = 2f;
+    public float farZoomLevel = 7f;
+    [Tooltip("How long in seconds it takes to switch between the zoom levels")]
+    public float zoomTime = 0.3f;
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         currShakes = new LinkedList<ScreenShake>();
         current = this;
         camera = GetComponentInChildren<Camera>();
@@ -40,6 +46,15 @@ public class CameraScript : MonoBehaviour
                 rotationAmount = remainingRotation;
             remainingRotation -= rotationAmount;
             transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y + rotationAmount, transform.localEulerAngles.z);
+        }
+
+        if (player.legForm && camera.orthographicSize < farZoomLevel)
+        {
+            camera.orthographicSize = Mathf.Min(farZoomLevel, camera.orthographicSize + (1 / zoomTime) * Time.deltaTime * (farZoomLevel-closeZoomLevel));
+        }
+        else if (!player.legForm && camera.orthographicSize > closeZoomLevel)
+        {
+            camera.orthographicSize = Mathf.Max(closeZoomLevel, camera.orthographicSize - (1 / zoomTime) * Time.deltaTime * (farZoomLevel - closeZoomLevel));
         }
     }
 
