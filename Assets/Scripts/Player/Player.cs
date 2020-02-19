@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     public PlayerShoeManager shoeManager;
     public PlayerInput inputSystem;
     public ParticleSystem walkingParticleSystem;
+    public Transform AISpotPoint;
 
     [Header("Stats")]
     public float baseSpeed;
