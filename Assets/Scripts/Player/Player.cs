@@ -75,7 +75,8 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.position += CalculateMovementVector();
+        //transform.position += CalculateMovementVector();
+        rigidbody.velocity = CalculateMovementVector();
     }
 
     private Vector3 CalculateMovementVector()
