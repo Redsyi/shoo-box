@@ -75,14 +75,13 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //transform.position += CalculateMovementVector();
         rigidbody.velocity = CalculateMovementVector();
     }
 
     private Vector3 CalculateMovementVector()
     {
         Vector2 adjustedMovement = Utilities.RotateVectorDegrees(currMovementInput * baseSpeed * (legForm ? 1 : currBoxSpeed) * Time.fixedDeltaTime, 135 - myCamera.transform.eulerAngles.y);
-        return new Vector3(adjustedMovement.x, 0, adjustedMovement.y);
+        return new Vector3(adjustedMovement.x, rigidbody.velocity.y, adjustedMovement.y);
     }
 
     private void Update()
@@ -153,7 +152,7 @@ public class Player : MonoBehaviour
         
         if(!legForm)
         {
-            if (Physics.Raycast(transform.position, Vector3.up, 1, LayerMask.GetMask("Obstructions", "Transparent Obstructions")))
+            if (Physics.Raycast(AISpotPoint.transform.position, Vector3.up, 1, LayerMask.GetMask("Obstructions", "Transparent Obstructions")))
                 return;
         }
 
@@ -164,6 +163,10 @@ public class Player : MonoBehaviour
         if (legForm)
         {
             transform.position += new Vector3(0, 0.65f);
+        }
+        else
+        {
+            transform.position -= new Vector3(0, 0.65f);
         }
         walkingParticleSystem.transform.localPosition = (legForm ? legParticlesPosition.localPosition : boxParticlesPosition.localPosition);
 

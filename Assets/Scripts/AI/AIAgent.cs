@@ -41,12 +41,20 @@ public class AIAgent : MonoBehaviour
             Debug.LogError("AIAgent couldn't find bubble canvas");
         myBubble = Instantiate(bubblePrefab, bubbleCanvas.transform);
         myBubble.worldAnchor = bubbleAnchor;
+
+        StartCoroutine(CheckPos());
     }
 
-    private void FixedUpdate()
+    IEnumerator CheckPos()
     {
-        stopped = prevPos == transform.position;
-        prevPos = transform.position;
+        while (true)
+        {
+            stopped = prevPos == transform.position;
+            print(stopped);
+            prevPos = transform.position;
+            yield return new WaitForSeconds(.2f);
+        }
+     
     }
 
     /// <summary>
@@ -85,7 +93,7 @@ public class AIAgent : MonoBehaviour
         if (!thingsToInteractWith.Contains(interactable))
         {
             thingsToInteractWith.Enqueue(interactable);
-            if (currState.state != AIState.CHASE)
+            if (currState.state != AIState.CHASE && currState.state != AIState.INTERACT)
             {
                 pathfinder.speed = runSpeed;
                 currState.state = AIState.INTERACT;
@@ -136,6 +144,7 @@ public class AIAgent : MonoBehaviour
 
         bool closeToTarget = (transform.position - currState.location.position).sqrMagnitude < 0.4f;
         bool closeEnough = (stoppedTime >= giveUpTime) || closeToTarget;
+        //print(stoppedTime);
         if (!closeToTarget && !beingRepelled)
         {
             transform.LookAt(currState.location);

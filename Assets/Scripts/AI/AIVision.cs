@@ -28,13 +28,21 @@ public class AIVision : MonoBehaviour
         IAIInteractable interactable = other.gameObject.GetComponent<IAIInteractable>();
         if (interactable != null && interactable.NeedsInteraction())
         {
+            print("There is an object that's broken");
             foreach (AIInterest interest in interactable.InterestingToWhatAI())
             {
                 if (System.Array.Exists<AIInterest>(ai.interests, element => element == interest))
                 {
                     bool canSeeObj = !Physics.Raycast(transform.position, other.gameObject.transform.position - transform.position, (other.gameObject.transform.position - transform.position).magnitude, LayerMask.GetMask("Obstructions", "AI Blinders"));
                     if (canSeeObj)
+                    {
+                        print("Can see object");
                         ai.Interact(interactable);
+                    }
+                    else
+                    {
+                        print("Can't see object");
+                    }
                     break;
                 }
             }

@@ -30,7 +30,7 @@ public class BreakHingeKickable : MonoBehaviour, IKickable, IAIInteractable
         {
             if (!preBroken && !broken)
             {
-                preBroken = Instantiate(gameObject);
+                preBroken = Instantiate(gameObject, transform.parent);
                 preBroken.SetActive(false);
             }
             int randIndex = Random.Range(0, _hingeJoints.Count);
