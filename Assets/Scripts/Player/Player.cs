@@ -224,6 +224,10 @@ public class Player : MonoBehaviour
     public void OnPauseMenu(InputValue value)
     {
         UIPauseMenu.instance.TogglePause();
+        if(UIPauseMenu.instance.paused)
+            inputSystem.SwitchCurrentActionMap("UI");
+        else
+            inputSystem.SwitchCurrentActionMap("Player");
     }
 
     /// <summary>
