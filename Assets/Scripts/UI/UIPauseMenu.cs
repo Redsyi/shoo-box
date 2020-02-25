@@ -1,12 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class UIPauseMenu : MonoBehaviour
 {
     public bool paused { get; private set; }
     public static UIPauseMenu instance;
     public AudioClip pauseSound;
+    public AudioClip unpauseSound;
+    public AudioClip confirmSound;
+    public GameObject defaultSelected;
 
     private void Start()
     {
@@ -17,18 +22,34 @@ public class UIPauseMenu : MonoBehaviour
     public void TogglePause()
     {
         paused = !paused;
+
+        if(paused)
+            AudioManager.instance.Pause();
+        else
+            AudioManager.instance.UnPause();
+
         gameObject.SetActive(paused);
+
+        if (paused)
+            EventSystem.current.SetSelectedGameObject(defaultSelected);
+
         Time.timeScale = (paused ? 0 : 1);
-        AudioManager.MakeNoise(Vector3.zero, 0, pauseSound, 0.65f);
+        AudioManager.MakeNoise(Vector3.zero, 0, (paused ? pauseSound:unpauseSound), 0.65f);
+
     }
 
     public void OnRetryPressed()
-    {
-        Debug.Log("Retry");
+    { 
+        Time.timeScale = 1;
+        AudioManager.MakeNoise(Vector3.zero, 0, confirmSound, 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
     }
 
     public void OnExitPressed()
-    {
-        Debug.Log("Exit");
+    { 
+        Time.timeScale = 1;
+        AudioManager.MakeNoise(Vector3.zero, 0, confirmSound, 1);
+        SceneManager.LoadScene(0);
     }
 }

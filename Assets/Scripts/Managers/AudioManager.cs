@@ -6,10 +6,15 @@ public class AudioManager : MonoBehaviour
 {
     public static NoiseIndicator noiseIndicatorPrefab;
     public NoiseIndicator initial;
+    public AudioSource gameMusic;
+    public AudioSource menuMusic;
+    public static AudioManager instance;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
         noiseIndicatorPrefab = initial;
     }
 
@@ -25,5 +30,18 @@ public class AudioManager : MonoBehaviour
         NoiseIndicator noise = Instantiate(noiseIndicatorPrefab, pos, Quaternion.identity);
         noise.MakeNoise(radius, clip, volume);
     }
+
+    public void Pause()
+    {
+        gameMusic.volume = 0;
+        menuMusic.volume = 1;
+    }
+
+    public void UnPause()
+    {
+        gameMusic.volume = 1;
+        menuMusic.volume = 0;
+    }
+
 
 }
