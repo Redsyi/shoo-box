@@ -50,7 +50,6 @@ public class AIAgent : MonoBehaviour
         while (true)
         {
             stopped = prevPos == transform.position;
-            print(stopped);
             prevPos = transform.position;
             yield return new WaitForSeconds(.2f);
         }
@@ -133,6 +132,12 @@ public class AIAgent : MonoBehaviour
             instantiatedTarget.transform.position = player.transform.position;
         }
         Investigate(instantiatedTarget, true);
+    }
+
+    public void CatchPlayer(Player player)
+    {
+        //this is the part where the player fucking dies
+        SceneManager.LoadScene(0);
     }
     
     void Update()
@@ -234,16 +239,10 @@ public class AIAgent : MonoBehaviour
                 if (!closeToTarget && !closeEnough)
                 {
                     pathfinder.destination = currState.location.position;
-                } else if (!closeToTarget)
+                }
+                else if (!closeToTarget)
                 {
-                    //TODO: Player considered too far away to catch while in box mode.
-                    //Consider switching to trigger collider to catch player instead
-                    print("lost player during chase");
                     LosePlayer(FindObjectOfType<Player>());
-                } else
-                {
-                    //this is the part where the player fucking dies
-                    SceneManager.LoadScene(0);
                 }
                 myBubble.StopInvestigating();
                 break;
