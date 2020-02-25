@@ -12,10 +12,8 @@ GameObject:
   - component: {fileID: 1367511069}
   - component: {fileID: 1367511070}
   - component: {fileID: 1367511071}
-  - component: {fileID: 1367511073}
-  - component: {fileID: 1367511072}
-  - component: {fileID: 1367511074}
-  - component: {fileID: 1367511075}
+  - component: {fileID: 4375678538677513207}
+  - component: {fileID: 8998023926740351155}
   m_Layer: 0
   m_Name: Standing TV
   m_TagString: Untagged
@@ -51,7 +49,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -81,26 +79,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2.0578253, z: 1}
   m_Center: {x: 0, y: 0.5289129, z: 0}
---- !u!95 &1367511073
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 267974479075039609}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 447784044df65324da4a9fa1ac8a402b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1367511072
+--- !u!114 &4375678538677513207
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,15 +88,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 267974479075039609}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a271616f9e7a5e94b82e10070b12be14, type: 3}
+  m_Script: {fileID: 11500000, guid: 442f00f9482dee54ca2463dbc1f6e3cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 1367511073}
-  breakTriggerName: Break
-  fixTriggerName: Fix
-  fixTime: 4
-  interestLayers: 00000000
---- !u!114 &1367511074
+  force: {x: 250, y: -250, z: 0}
+--- !u!114 &8998023926740351155
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,41 +101,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 267974479075039609}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 999e593f431710346af26fd48f01b3ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ab16c0e4909e0d44a21888b039f4ea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggers:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1367511072}
-        m_MethodName: Break
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1367511075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 267974479075039609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b772a6665a6b325488fbd254c5add6da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  affectXAxis: 0
-  affectYAxis: 0
-  affectZAxis: 0
-  xAxisAngle: 0
-  yAxisAngle: 0
-  zAxisAngle: 0
+  interactTime: 3
+  interestMask: 00000000
 --- !u!95 &3503394555882177847
 Animator:
   serializedVersion: 3
