@@ -35,5 +35,9 @@ public enum AIInterest
 {
     MAID,
     TEST_AI_1,
-    TEST_AI_2
+    TEST_AI_2,
+    RECEPTIONIST,
+    SUITCASE_PACKER,
+    STOOL_BOI,
+    BARTENDER
 }

@@ -36,7 +36,7 @@ public class NoiseIndicator : MonoBehaviour
             foreach (AIAgent AI in FindObjectsOfType<AIAgent>())
             {
                 Vector3 distance = AI.transform.position - transform.position;
-                if (distance.sqrMagnitude <= radius * radius)
+                if (AI.interests.Length > 0 && distance.sqrMagnitude <= radius * radius)
                 {
                     AI.Investigate(gameObject);
                 }
