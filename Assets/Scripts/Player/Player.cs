@@ -45,7 +45,9 @@ public class Player : MonoBehaviour
     private float rumbleTime;
     private float currBoxSpeed;
     private UIShoeTag shoeTagUI;
-    
+    [HideInInspector]
+    public float verticalBoost;
+
 
     private void Start()
     {
@@ -81,6 +83,10 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         rigidbody.velocity = CalculateMovementVector();
+        if (verticalBoost != 0 && rigidbody.velocity != Vector3.zero)
+        {
+            transform.Translate(Vector3.up * verticalBoost);
+        }
     }
 
     private Vector3 CalculateMovementVector()
