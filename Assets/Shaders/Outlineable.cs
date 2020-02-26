@@ -15,7 +15,11 @@ public class Outlineable : MonoBehaviour
     void Start()
     {
         List<Material> allMats = new List<Material>();
-        GetComponent<MeshRenderer>().GetMaterials(allMats);
+        MeshRenderer renderer = GetComponent<MeshRenderer>();
+        if (renderer)
+            GetComponent<MeshRenderer>().GetMaterials(allMats);
+        else
+            GetComponent<SkinnedMeshRenderer>().GetMaterials(allMats);
         materials = new List<Material>();
         foreach (Material material in allMats)
         {
