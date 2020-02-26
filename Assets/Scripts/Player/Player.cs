@@ -50,6 +50,7 @@ public class Player : MonoBehaviour
     private UIShoeTag shoeTagUI;
     [HideInInspector]
     public float verticalBoost;
+    public bool usingController => inputSystem.currentControlScheme.Equals("Gamepad");
 
 
     private void Start()
