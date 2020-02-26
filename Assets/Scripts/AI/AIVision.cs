@@ -60,7 +60,7 @@ public class AIVision : MonoBehaviour
             {
                 print("player spotted");
                 Vector3 vectToPlayer = player.AISpotPoint.position - transform.position;
-                bool canSeeObj = !Physics.Raycast(transform.position, vectToPlayer, vectToPlayer.magnitude, LayerMask.GetMask("Obstructions", "AI Blinders"));
+                bool canSeeObj = !AIAgent.blindAll && !Physics.Raycast(transform.position, vectToPlayer, vectToPlayer.magnitude, LayerMask.GetMask("Obstructions", "AI Blinders"));
                 if (canSeeObj)
                 {
                     print("player visible");

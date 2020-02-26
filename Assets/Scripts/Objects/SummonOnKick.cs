@@ -6,6 +6,7 @@ public class SummonOnKick : MonoBehaviour, IKickable
 {
     public AIInterest[] AIs;
     public GameObject to;
+    public float investigateTime = 3f;
 
     private void Start()
     {
@@ -17,6 +18,6 @@ public class SummonOnKick : MonoBehaviour, IKickable
 
     public void OnKick(GameObject kicker)
     {
-        AIAgent.SummonAI(to, AIs);
+        AIAgent.SummonAI(to, investigateTime, AIs);
     }
 }

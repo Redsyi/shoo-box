@@ -26,9 +26,11 @@ public class AIAgent : MonoBehaviour
     public float runSpeed;
     public AIInterest[] interests;
     public bool beingRepelled;
+    public static bool blindAll;
 
     void Start()
     {
+        blindAll = false;
         currState = new AIStateNode();
         thingsToInteractWith = new Queue<IAIInteractable>();
         Idle();
@@ -72,7 +74,7 @@ public class AIAgent : MonoBehaviour
     /// </summary>
     /// <param name="location">Transform to investigate</param>
     /// <param name="forceOverrideChase">Whether this trigger can interrupt a chase state</param>
-    public void Investigate(GameObject location, bool forceOverrideChase = false)
+    public void Investigate(GameObject location, float investigateTime = 3f, bool forceOverrideChase = false)
     {
         if (currState.state != AIState.CHASE || forceOverrideChase)
         {
@@ -80,6 +82,7 @@ public class AIAgent : MonoBehaviour
             stoppedTime = 0f;
             currState.state = AIState.INVESTIGATE;
             currState.location = location.transform;
+            timer = investigateTime;
         }
     }
 
@@ -131,13 +134,13 @@ public class AIAgent : MonoBehaviour
         {
             instantiatedTarget.transform.position = player.transform.position;
         }
-        Investigate(instantiatedTarget, true);
+        Investigate(instantiatedTarget, forceOverrideChase: true);
     }
 
     public void CatchPlayer(Player player)
     {
         //this is the part where the player fucking dies
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     
     void Update()
@@ -180,7 +183,6 @@ public class AIAgent : MonoBehaviour
                 } else
                 {
                     currState.state = AIState.INVESTIGATING;
-                    timer = 3; //magic numbers, mike scott would be disappointed
                     animator.SetTrigger("Investigate");
                 }
                 myBubble.Investigating();
@@ -250,7 +252,7 @@ public class AIAgent : MonoBehaviour
     }
 
 
-    public static void SummonAI(GameObject to, params AIInterest[] interests)
+    public static void SummonAI(GameObject to, float investigateTime, params AIInterest[] interests)
     {
         foreach (AIAgent agent in FindObjectsOfType<AIAgent>())
         {
@@ -258,7 +260,7 @@ public class AIAgent : MonoBehaviour
             {
                 if (System.Array.Exists<AIInterest>(agent.interests, element => element == interest))
                 {
-                    agent.Investigate(to);
+                    agent.Investigate(to, investigateTime);
                     break;
                 }
             }

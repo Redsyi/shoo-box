@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public Transform AISpotPoint;
 
     [Header("Stats")]
+    public ShoeType[] startingShoes;
     public float baseSpeed;
     public float boxSpeedMultiplier;
     public float boxSlideSlowdownRate;
@@ -57,6 +58,10 @@ public class Player : MonoBehaviour
         if (shoeTagUI == null)
             Debug.LogError("Player couldn't find shoe tag UI");
 
+        foreach (ShoeType shoeType in startingShoes)
+        {
+            EquipShoe(shoeType);
+        }
     }
 
     /// <summary>
@@ -191,11 +196,15 @@ public class Player : MonoBehaviour
     { 
         if (shoeSniffer.detectedShoe && legForm)
         {
-            //TODO: UI trigger
-            shoeManager.SwitchTo(shoeSniffer.detectedShoe.shoeType);
-            shoeTagUI.SwitchTo(shoeSniffer.detectedShoe.shoeType);
+            EquipShoe(shoeSniffer.detectedShoe.shoeType);
             Destroy(shoeSniffer.detectedShoe.gameObject);
         }
+    }
+
+    private void EquipShoe(ShoeType shoeType)
+    {
+        shoeManager.SwitchTo(shoeType);
+        shoeTagUI.SwitchTo(shoeType);
     }
 
     /// <summary>

@@ -5,13 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class ChangeLevel : MonoBehaviour
 {
-
     public int scene;
+    public bool canChangeLevels = true;
     public void OnTriggerEnter(Collider other)
     {
-        print(other.transform.parent.gameObject.name);
-
-        if (other.transform.parent.gameObject.name == "Player")
+        if (canChangeLevels && other.gameObject.CompareTag("Player"))
         {
             SceneManager.LoadScene(scene);
         }
