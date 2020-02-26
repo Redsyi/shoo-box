@@ -28,7 +28,7 @@ public class CameraScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponentInParent<Player>();
         currShakes = new LinkedList<ScreenShake>();
         current = this;
         camera = GetComponentInChildren<Camera>();
