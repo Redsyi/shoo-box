@@ -28,7 +28,10 @@ public class Player : MonoBehaviour
     [Header("Footsteps")]
     public float footstepTiming;
     public float footstepSoundOffset;
-    public AudioClip footstepSound;
+    public List<AudioClip> barefootSounds;
+    public List<AudioClip> bootSounds;
+    private int currFootSoundIdx;
+    private Dictionary<ShoeType, List<AudioClip>> footSounds;
     public bool moving => currMovementInput != Vector2.zero;
     private bool makingFootsteps;
 
@@ -64,6 +67,10 @@ public class Player : MonoBehaviour
         {
             EquipShoe(shoeType);
         }
+
+        footSounds = new Dictionary<ShoeType, List<AudioClip>>();
+        footSounds[ShoeType.BAREFOOT] = barefootSounds;
+        footSounds[ShoeType.BOOTS] = bootSounds;
     }
 
     /// <summary>
@@ -315,12 +322,15 @@ public class Player : MonoBehaviour
         float timeSinceLast = footstepTiming;
         while (moving)
         {
+            List<AudioClip> currClips = footSounds[shoeManager.currShoe];
+            currFootSoundIdx = currFootSoundIdx % currClips.Count;
             timeSinceLast += Time.deltaTime;
             if (legForm && timeSinceLast >= footstepTiming)
             {
-                AudioManager.MakeNoise(transform.position, 1.3f, footstepSound, 1);
+                AudioManager.MakeNoise(transform.position, 1.3f, currClips[currFootSoundIdx], 1);
                 timeSinceLast = 0f;
             }
+            ++currFootSoundIdx;
             yield return null;
         }
         makingFootsteps = false;
