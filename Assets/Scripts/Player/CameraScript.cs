@@ -24,6 +24,7 @@ public class CameraScript : MonoBehaviour
     public float farZoomLevel = 7f;
     [Tooltip("How long in seconds it takes to switch between the zoom levels")]
     public float zoomTime = 0.3f;
+    public bool zoomed => !player.legForm;
     // Start is called before the first frame update
     void Start()
     {
