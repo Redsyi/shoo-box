@@ -52,6 +52,7 @@ public class SandalProjectile : MonoBehaviour
         transform.Translate(Vector3.forward * speed * Time.fixedDeltaTime);
         if (reversing && (transform.position - slinger.transform.position).sqrMagnitude <= 0.5f)
         {
+            slinger.slinging = false;
             Destroy(gameObject);
         }
     }
