@@ -67,12 +67,14 @@ public class Player : MonoBehaviour
 
         foreach (ShoeType shoeType in startingShoes)
         {
+            shoeManager.Acquire(shoeType);
             EquipShoe(shoeType);
         }
 
         footSounds = new Dictionary<ShoeType, List<AudioClip>>();
         footSounds[ShoeType.BAREFOOT] = barefootSounds;
         footSounds[ShoeType.BOOTS] = bootSounds;
+        footSounds[ShoeType.FLIPFLOPS] = barefootSounds; //todo change this
     }
 
     /// <summary>
@@ -211,15 +213,22 @@ public class Player : MonoBehaviour
     { 
         if (shoeSniffer.detectedShoe && legForm)
         {
+            shoeManager.Acquire(shoeSniffer.detectedShoe.shoeType);
             EquipShoe(shoeSniffer.detectedShoe.shoeType);
             Destroy(shoeSniffer.detectedShoe.gameObject);
         }
     }
 
+    public void OnChangeShoes(InputValue value)
+    {
+        float shoeVal = value.Get<float>();
+        ShoeType shoeType = (ShoeType)shoeVal;
+        EquipShoe(shoeType);
+    }
+
     private void EquipShoe(ShoeType shoeType)
     {
         shoeManager.SwitchTo(shoeType);
-        shoeTagUI.SwitchTo(shoeType);
     }
 
     /// <summary>
@@ -234,6 +243,10 @@ public class Player : MonoBehaviour
                 case ShoeType.BAREFOOT:
                     break;
                 case ShoeType.BOOTS:
+                    animator.SetTrigger("Kick");
+                    shoeManager.UseShoes();
+                    break;
+                case ShoeType.FLIPFLOPS:
                     animator.SetTrigger("Kick");
                     shoeManager.UseShoes();
                     break;
@@ -331,8 +344,7 @@ public class Player : MonoBehaviour
             {
                 AudioManager.MakeNoise(transform.position, 1.3f, currClips[currFootSoundIdx], 1);
                 timeSinceLast = 0f;
-               onStep.Post(gameObject);
-                print("Step c:");
+                onStep.Post(gameObject);
             }
             ++currFootSoundIdx;
             yield return null;
