@@ -68,6 +68,14 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "Press"
+                },
+                {
+                    "name": "ChangeShoes",
+                    "type": "Value",
+                    "id": "d5df3e97-6c16-4aad-88e4-7322e32796a0",
+                    "expectedControlType": "Analog",
+                    "processors": "",
+                    "interactions": "Press"
                 }
             ],
             "bindings": [
@@ -398,6 +406,50 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Test",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f143202b-81d1-45cb-8539-ca912221f02d",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "Clamp(min=1,max=1)",
+                    "groups": "Keyboard&Mouse",
+                    "action": "ChangeShoes",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9520a8ef-5a81-46ea-a638-9f73f9889e15",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "Clamp(min=2,max=2)",
+                    "groups": "Keyboard&Mouse",
+                    "action": "ChangeShoes",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cbf2b00f-f421-4d5d-b4d1-d5ca858617ce",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "Clamp(min=1,max=1)",
+                    "groups": "Gamepad",
+                    "action": "ChangeShoes",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cbf6895a-79a8-480b-9097-df4f8276b1f8",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "Clamp(min=2,max=2)",
+                    "groups": "Gamepad",
+                    "action": "ChangeShoes",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
