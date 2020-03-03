@@ -11,7 +11,6 @@ public class SandalSlinger : MonoBehaviour
     {
         if (!slinging)
         {
-            print("sling");
             SandalProjectile sandal = Instantiate(sandalPrefab, transform.position, transform.rotation);
             sandal.slinger = this;
             slinging = true;
