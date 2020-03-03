@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
     private Dictionary<ShoeType, List<AudioClip>> footSounds;
     public bool moving => currMovementInput != Vector2.zero;
     private bool makingFootsteps;
+    public AK.Wwise.Event onStep;
 
     [Header("Effects")]
     public Transform legParticlesPosition;
@@ -330,6 +331,8 @@ public class Player : MonoBehaviour
             {
                 AudioManager.MakeNoise(transform.position, 1.3f, currClips[currFootSoundIdx], 1);
                 timeSinceLast = 0f;
+               onStep.Post(gameObject);
+                print("Step c:");
             }
             ++currFootSoundIdx;
             yield return null;
