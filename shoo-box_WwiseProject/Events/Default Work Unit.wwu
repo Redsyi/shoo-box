@@ -3,17 +3,22 @@
 	<Events>
 		<WorkUnit Name="Default Work Unit" ID="{99A03157-66C3-46F4-A8D3-E5D78B47C9B8}" PersistMode="Standalone">
 			<ChildrenList>
-				<Event Name="Footstep" ID="{0A8AC497-222B-41ED-A489-C4B3D762B824}">
+				<Event Name="Walk" ID="{0A8AC497-222B-41ED-A489-C4B3D762B824}">
 					<ChildrenList>
 						<Action Name="" ID="{AD507C7B-EF3D-4B58-BD55-8DB76F43F407}" ShortID="813866611">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Boots - Concrete" ID="{9A8B36AE-FB67-416B-8BE8-CD212A4F199E}" WorkUnitID="{0D09995C-EA37-4F92-A59C-C7ACB78759E9}"/>
+									<ObjectRef Name="Boots - Concrete" ID="{9A8B36AE-FB67-416B-8BE8-CD212A4F199E}" WorkUnitID="{5012AB73-5FB1-4956-B3EB-62E652E93F69}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Kick" ID="{EB217E88-864A-47B6-8689-801DD45634C9}"/>
+				<Event Name="Jump" ID="{DADCDD27-341B-4896-9F9B-E48EEBA54D7A}"/>
+				<Event Name="Fling" ID="{BEC2F0CC-94EF-45A9-A81F-A610736AC630}"/>
+				<Event Name="Transform" ID="{98DC3162-A4D9-4978-9A05-78F11B011B5E}"/>
+				<Event Name="Talk" ID="{FD295ACE-2580-4352-B307-83EF09592F23}"/>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
