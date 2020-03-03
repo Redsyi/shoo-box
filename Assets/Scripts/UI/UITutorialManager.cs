@@ -18,12 +18,17 @@ public class UITutorialManager : MonoBehaviour
     public Animator legformAni;
     public Animator interactAni;
     public Animator useAni;
+    [HideInInspector]
     public bool controller;
+    private static bool finishedTutorial;
 
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("ShowMovement", 2);
+        if (!finishedTutorial)
+        {
+            Invoke("ShowMovement", 2);
+        }
         boots = FindObjectOfType<ShoePickup>();
     }
 
@@ -101,6 +106,7 @@ public class UITutorialManager : MonoBehaviour
         {
             useAni.gameObject.SetActive(false);
             currAnimator = null;
+            finishedTutorial = true;
         }
     }
 }
