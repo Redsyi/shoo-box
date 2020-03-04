@@ -33,14 +33,18 @@ public class AudioManager : MonoBehaviour
 
     public void Pause()
     {
-        gameMusic.volume = 0;
-        menuMusic.volume = 1;
+        if(gameMusic)
+            gameMusic.volume = 0;
+        if(menuMusic)
+            menuMusic.volume = 1;
     }
 
     public void UnPause()
     {
-        gameMusic.volume = 1;
-        menuMusic.volume = 0;
+        if(gameMusic)
+            gameMusic.volume = 1;
+        if(menuMusic)
+            menuMusic.volume = 0;
     }
 
 
