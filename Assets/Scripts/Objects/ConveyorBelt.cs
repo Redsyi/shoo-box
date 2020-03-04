@@ -7,6 +7,13 @@ public class ConveyorBelt : MonoBehaviour
     public Vector3 move;
     public float speed;
     public static bool active = true;
+    private MeshRenderer renderer;
+    private float beltOffset;
+
+    private void Start()
+    {
+        renderer = GetComponent<MeshRenderer>();
+    }
 
     public void OnTriggerStay(Collider other)
     {
@@ -19,12 +26,18 @@ public class ConveyorBelt : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (active)
+        {
+            beltOffset += Time.deltaTime * speed;
+            renderer.material.SetFloat("_Offset", beltOffset);
+        }
+    }
+
     public static void ToggleActive()
     {
         active = !active;
-
-        foreach (ConveyorBelt conveyorBelt in FindObjectsOfType<ConveyorBelt>())
-            conveyorBelt.GetComponent<MeshRenderer>().material.SetFloat("_MoveSpeed", (active ? 1 : 0));
     }
     
 }
