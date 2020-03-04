@@ -21,8 +21,10 @@ public class ConveyorBelt : MonoBehaviour
         {
             Player player = other.GetComponentInParent<Player>();
 
-            if(player)
+            if (player)
                 player.transform.position += move * speed * Time.fixedDeltaTime;
+            else
+                other.transform.position += move * speed * Time.fixedDeltaTime;
         }
     }
 
