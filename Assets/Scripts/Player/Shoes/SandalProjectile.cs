@@ -19,15 +19,19 @@ public class SandalProjectile : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (!collision.collider.isTrigger)
-        {
             reversing = true;
             hitbox.enabled = false;
-        }
+ 
 
+        
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
         if (!triggeredSomething)
         {
-            foreach (ISandalable sandalable in collision.collider.GetComponents<ISandalable>())
+            print("Triggered something");
+            foreach (ISandalable sandalable in other.GetComponents<ISandalable>())
             {
                 triggeredSomething = true;
                 sandalable.HitBySandal();
