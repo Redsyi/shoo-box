@@ -13,6 +13,7 @@ public class ConveyorBelt : MonoBehaviour
     private void Start()
     {
         renderer = GetComponent<MeshRenderer>();
+        active = true;
     }
 
     public void OnTriggerStay(Collider other)
