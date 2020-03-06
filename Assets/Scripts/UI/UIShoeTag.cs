@@ -11,6 +11,7 @@ public class UIShoeTag : MonoBehaviour
 
     public Sprite noShoeSprite;
     public Sprite bootSprite;
+    public Sprite sandalSprite;
 
     public void SwitchTo(ShoeType shoe)
     {
@@ -20,8 +21,7 @@ public class UIShoeTag : MonoBehaviour
                 inactiveTag.sprite = bootSprite;
                 break;
             case ShoeType.FLIPFLOPS:
-                //todo replace with sandal ui image
-                inactiveTag.sprite = bootSprite;
+                inactiveTag.sprite = sandalSprite;
                 break;
             default:
                 Debug.LogWarning("Shoe Tag UI switching to unsupported shoe type");

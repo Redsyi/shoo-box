@@ -8,6 +8,7 @@ public class PlayerShoeManager : MonoBehaviour
 
     private GameObject currShoeGameObject;
     public GameObject boots;
+    public GameObject sandals;
     public SandalSlinger sandalSlinger;
     private UIShoeTag shoeTagUI;
     private bool[] acquiredShoes;
@@ -37,8 +38,8 @@ public class PlayerShoeManager : MonoBehaviour
                     break;
                 case ShoeType.FLIPFLOPS:
                     //todo activate sandals
-                    boots.SetActive(true);
-                    currShoeGameObject = boots;
+                    sandals.SetActive(true);
+                    currShoeGameObject = sandals;
                     break;
                 default:
                     currShoeGameObject = null;
