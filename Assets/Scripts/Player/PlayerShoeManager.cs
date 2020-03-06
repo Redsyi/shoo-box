@@ -11,12 +11,10 @@ public class PlayerShoeManager : MonoBehaviour
     public GameObject sandals;
     public SandalSlinger sandalSlinger;
     private UIShoeTag shoeTagUI;
-    private bool[] acquiredShoes;
+    private bool[] acquiredShoes = { true, false, false, false };
 
-    private void Start()
+    private void Awake()
     {
-        acquiredShoes = new bool[4];
-        acquiredShoes[(int)ShoeType.BAREFOOT] = true;
         shoeTagUI = FindObjectOfType<UIShoeTag>();
     }
 
