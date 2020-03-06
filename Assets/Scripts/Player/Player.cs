@@ -105,6 +105,13 @@ public class Player : MonoBehaviour
         InterpolateRotation();
         UpdateAnimator();
         UpdateParticles();
+
+        if (shoeSniffer.detectedShoe && legForm)
+        {
+            shoeManager.Acquire(shoeSniffer.detectedShoe.shoeType);
+            EquipShoe(shoeSniffer.detectedShoe.shoeType);
+            Destroy(shoeSniffer.detectedShoe.gameObject);
+        }
     }
 
     private void UpdateAnimator()
@@ -198,19 +205,6 @@ public class Player : MonoBehaviour
     {
         RotationDirection direction = (value.Get<float>() > 0 ? RotationDirection.CLOCKWISE : RotationDirection.COUNTERCLOCKWISE);
         myCamera.Rotate(direction);
-    }
-
-    /// <summary>
-    /// Interact button pressed
-    /// </summary>
-    public void OnInteract(InputValue value)
-    { 
-        if (shoeSniffer.detectedShoe && legForm)
-        {
-            shoeManager.Acquire(shoeSniffer.detectedShoe.shoeType);
-            EquipShoe(shoeSniffer.detectedShoe.shoeType);
-            Destroy(shoeSniffer.detectedShoe.gameObject);
-        }
     }
 
     public void OnChangeShoes(InputValue value)
