@@ -26,8 +26,8 @@ public class ObjectiveTracker : MonoBehaviour
     {
         for (int i = currObjective ; i < objectiveNum + 1; ++i)
         {
-            objectiveUIs[i].Complete();
         }
+        objectiveUIs[objectiveNum].Complete();
         currObjective = objectiveNum;
     }
 }

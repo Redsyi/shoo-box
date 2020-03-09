@@ -6,9 +6,14 @@ public class UIObjective : MonoBehaviour
 {
     public Animator animator;
     public Text text;
+    private bool complete;
     public void Complete()
     {
-        animator.SetTrigger("Complete");
+        if (!complete)
+        {
+            animator.SetTrigger("Complete");
+            complete = true;
+        }
     }
 
     public void SetText(string newText)

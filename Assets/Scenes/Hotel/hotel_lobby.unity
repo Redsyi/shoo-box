@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -774,7 +774,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 9b75ec9c80e8e034b8d15410042b1ebf,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 29.98
+      value: -3.22
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 9b75ec9c80e8e034b8d15410042b1ebf,
         type: 3}
@@ -784,7 +784,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 9b75ec9c80e8e034b8d15410042b1ebf,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 23.35
+      value: 2.92
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 9b75ec9c80e8e034b8d15410042b1ebf,
         type: 3}
@@ -1254,6 +1254,7 @@ GameObject:
   - component: {fileID: 660843750}
   - component: {fileID: 660843752}
   - component: {fileID: 660843751}
+  - component: {fileID: 660843753}
   m_Layer: 0
   m_Name: Open Suitcase
   m_TagString: Untagged
@@ -1269,7 +1270,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 660843749}
   m_LocalRotation: {x: -0, y: -0.47410867, z: -0, w: 0.8804664}
-  m_LocalPosition: {x: -11.61, y: 0, z: 13.96}
+  m_LocalPosition: {x: -10.08, y: 0, z: 51.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 474571327}
@@ -1287,8 +1288,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.4664145, y: 1, z: 1.8604574}
-  m_Center: {x: 33.4, y: 0.7, z: 20.66}
+  m_Size: {x: 1.4591962, y: 0.6425214, z: 1.9308076}
+  m_Center: {x: 0.0049932166, y: 0.17873931, z: 0.33861336}
 --- !u!114 &660843752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1303,6 +1304,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scene: 3
   canChangeLevels: 1
+--- !u!114 &660843753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660843749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deb44153f50da6a4fa95d8801af1277a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectiveNum: 0
+  padding: 50
 --- !u!1 &714177440
 GameObject:
   m_ObjectHideFlags: 0
@@ -1962,6 +1977,7 @@ GameObject:
   - component: {fileID: 1093549921}
   - component: {fileID: 1093549922}
   - component: {fileID: 1093549923}
+  - component: {fileID: 1093549924}
   m_Layer: 0
   m_Name: Light Switch
   m_TagString: Untagged
@@ -2059,6 +2075,19 @@ MonoBehaviour:
   clip: {fileID: 8300000, guid: e299b69fc7bdf57468a176acc48a3061, type: 3}
   AIRadius: 0
   volume: 1
+--- !u!114 &1093549924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093549917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e429925e4038b0c41b341db468573747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectiveNum: 1
 --- !u!1 &1131176531
 GameObject:
   m_ObjectHideFlags: 0
@@ -4052,6 +4081,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 286286649681662964, guid: af045fe6ba44be247951af92825e16b3,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 286286649681662964, guid: af045fe6ba44be247951af92825e16b3,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1039022451171143356, guid: af045fe6ba44be247951af92825e16b3,
         type: 3}
       propertyPath: m_Text
@@ -4181,6 +4220,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3763203740898367856, guid: af045fe6ba44be247951af92825e16b3,
+        type: 3}
+      propertyPath: objectives.Array.data[0]
+      value: Find a <color=#FF4040>Suitcase</color>
+      objectReference: {fileID: 0}
+    - target: {fileID: 3763203740898367856, guid: af045fe6ba44be247951af92825e16b3,
+        type: 3}
+      propertyPath: objectives.Array.data[1]
+      value: Find a way to get past the <color=#FF4040>Guests</color>
+      objectReference: {fileID: 0}
+    - target: {fileID: 3763203740898367856, guid: af045fe6ba44be247951af92825e16b3,
+        type: 3}
+      propertyPath: objectives.Array.data[2]
+      value: Get in the <color=#FF4040>Suitcase</color>
       objectReference: {fileID: 0}
     - target: {fileID: 6470095794774433874, guid: af045fe6ba44be247951af92825e16b3,
         type: 3}
