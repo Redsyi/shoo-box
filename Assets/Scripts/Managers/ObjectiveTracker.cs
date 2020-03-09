@@ -6,36 +6,28 @@ public class ObjectiveTracker : MonoBehaviour
 {
     public string[] objectives;
     private int currObjective;
-    private int currAnimatedObjective;
     public static ObjectiveTracker instance;
-    private bool animating;
-    public Animator animator;
-    public TextMesh text;
+    private List<UIObjective> objectiveUIs;
+    public UIObjective objectivePrefab;
 
     private void Start()
     {
         instance = this;
-    }
-
-    private void Update()
-    {
-        if (!animating && currAnimatedObjective < currObjective)
+        objectiveUIs = new List<UIObjective>();
+        foreach (string objectiveText in objectives)
         {
-            ++currAnimatedObjective;
-            animating = true;
+            UIObjective newObjective = Instantiate(objectivePrefab, transform);
+            newObjective.SetText(objectiveText);
+            objectiveUIs.Add(newObjective);
         }
-    }
-
-    IEnumerator AnimateObjective()
-    {
-        animating = true;
-        animator.SetTrigger("Complete");
-        yield return null;
     }
 
     public void CompleteObjective(int objectiveNum)
     {
-        if (objectiveNum > currObjective)
-            currObjective = objectiveNum;
+        for (int i = currObjective ; i < objectiveNum + 1; ++i)
+        {
+            objectiveUIs[i].Complete();
+        }
+        currObjective = objectiveNum;
     }
 }
