@@ -5,11 +5,16 @@ using UnityEngine;
 public class StealFocusWhenSeen : MonoBehaviour
 {
     private bool focusStolen;
+    [Tooltip("How far from the edge of the screen until this object is considered \"seen\"")]
     public float padding;
     public static StealFocusWhenSeen activeThief;
+    [Tooltip("Target zoom level")]
     public float cameraSize;
+    [Tooltip("Time (in seconds) for camera to reach here")]
     public float cameraScrollSpeed;
+    [Tooltip("Time (in seconds) for camera to zoom in")]
     public float cameraZoomSpeed;
+    [Tooltip("Time (in seconds) that camera lingers")]
     public float cameraStealTime;
 
     private void Start()
