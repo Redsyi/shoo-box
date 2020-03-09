@@ -13,7 +13,6 @@ public class CompleteObjectiveWhenSeen : MonoBehaviour
         {
             Camera camera = CameraScript.current.camera;
             Vector3 screenPos = camera.WorldToScreenPoint(transform.position);
-            print($"{screenPos}, {camera.pixelRect}");
             if (screenPos.x >= padding && screenPos.x <= camera.pixelWidth - padding && screenPos.y >= padding && screenPos.y <= camera.pixelHeight - padding)
             {
                 complete = true;

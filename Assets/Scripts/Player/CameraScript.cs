@@ -38,7 +38,6 @@ public class CameraScript : MonoBehaviour
     //Attach to player in lateupdate so there is no visual lag
     void LateUpdate()
     {
-        transform.position = player.transform.position + currScreenShake;
         if (remainingRotation != 0f)
         {
             int direction = (remainingRotation > 0f ? 1 : -1);
@@ -49,13 +48,17 @@ public class CameraScript : MonoBehaviour
             transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y + rotationAmount, transform.localEulerAngles.z);
         }
 
-        if (player.legForm && camera.orthographicSize < farZoomLevel)
+        if (StealFocusWhenSeen.activeThief == null)
         {
-            camera.orthographicSize = Mathf.Min(farZoomLevel, camera.orthographicSize + (1 / zoomTime) * Time.deltaTime * (farZoomLevel-closeZoomLevel));
-        }
-        else if (!player.legForm && camera.orthographicSize > closeZoomLevel)
-        {
-            camera.orthographicSize = Mathf.Max(closeZoomLevel, camera.orthographicSize - (1 / zoomTime) * Time.deltaTime * (farZoomLevel - closeZoomLevel));
+            transform.position = player.transform.position + currScreenShake;
+            if (player.legForm && camera.orthographicSize < farZoomLevel)
+            {
+                camera.orthographicSize = Mathf.Min(farZoomLevel, camera.orthographicSize + (1 / zoomTime) * Time.deltaTime * (farZoomLevel - closeZoomLevel));
+            }
+            else if (!player.legForm && camera.orthographicSize > closeZoomLevel)
+            {
+                camera.orthographicSize = Mathf.Max(closeZoomLevel, camera.orthographicSize - (1 / zoomTime) * Time.deltaTime * (farZoomLevel - closeZoomLevel));
+            }
         }
     }
 
