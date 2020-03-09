@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     public PlayerInput inputSystem;
     public ParticleSystem walkingParticleSystem;
     public Transform AISpotPoint;
+    public GameObject leggs;
 
     [Header("Stats")]
     public ShoeType[] startingShoes;
@@ -28,10 +29,6 @@ public class Player : MonoBehaviour
     [Header("Footsteps")]
     public float footstepTiming;
     public float footstepSoundOffset;
-    public List<AudioClip> barefootSounds;
-    public List<AudioClip> bootSounds;
-    private int currFootSoundIdx;
-    private Dictionary<ShoeType, List<AudioClip>> footSounds;
     public bool moving => currMovementInput != Vector2.zero;
     private bool makingFootsteps;
     public AK.Wwise.Event onStep;
@@ -70,11 +67,6 @@ public class Player : MonoBehaviour
             shoeManager.Acquire(shoeType);
             EquipShoe(shoeType);
         }
-
-        footSounds = new Dictionary<ShoeType, List<AudioClip>>();
-        footSounds[ShoeType.BAREFOOT] = barefootSounds;
-        footSounds[ShoeType.BOOTS] = bootSounds;
-        footSounds[ShoeType.FLIPFLOPS] = barefootSounds; //todo change this
     }
 
     /// <summary>
@@ -113,6 +105,13 @@ public class Player : MonoBehaviour
         InterpolateRotation();
         UpdateAnimator();
         UpdateParticles();
+
+        if (shoeSniffer.detectedShoe && legForm)
+        {
+            shoeManager.Acquire(shoeSniffer.detectedShoe.shoeType);
+            EquipShoe(shoeSniffer.detectedShoe.shoeType);
+            Destroy(shoeSniffer.detectedShoe.gameObject);
+        }
     }
 
     private void UpdateAnimator()
@@ -182,6 +181,8 @@ public class Player : MonoBehaviour
 
         legformHitbox.enabled = legForm;
         boxformHitbox.enabled = !legForm;
+
+        leggs.SetActive(legForm);
         if (legForm)
         {
             transform.position += new Vector3(0, 0.65f);
@@ -204,19 +205,6 @@ public class Player : MonoBehaviour
     {
         RotationDirection direction = (value.Get<float>() > 0 ? RotationDirection.CLOCKWISE : RotationDirection.COUNTERCLOCKWISE);
         myCamera.Rotate(direction);
-    }
-
-    /// <summary>
-    /// Interact button pressed
-    /// </summary>
-    public void OnInteract(InputValue value)
-    { 
-        if (shoeSniffer.detectedShoe && legForm)
-        {
-            shoeManager.Acquire(shoeSniffer.detectedShoe.shoeType);
-            EquipShoe(shoeSniffer.detectedShoe.shoeType);
-            Destroy(shoeSniffer.detectedShoe.gameObject);
-        }
     }
 
     public void OnChangeShoes(InputValue value)
@@ -337,16 +325,13 @@ public class Player : MonoBehaviour
         float timeSinceLast = footstepTiming;
         while (moving)
         {
-            List<AudioClip> currClips = footSounds[shoeManager.currShoe];
-            currFootSoundIdx = currFootSoundIdx % currClips.Count;
             timeSinceLast += Time.deltaTime;
             if (legForm && timeSinceLast >= footstepTiming)
             {
-                AudioManager.MakeNoise(transform.position, 1.3f, currClips[currFootSoundIdx], 1);
+                AudioManager.MakeNoise(transform.position, 1.3f, null, 0);
                 timeSinceLast = 0f;
                 onStep.Post(gameObject);
             }
-            ++currFootSoundIdx;
             yield return null;
         }
         makingFootsteps = false;

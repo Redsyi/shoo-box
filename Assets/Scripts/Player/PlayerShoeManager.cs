@@ -8,14 +8,13 @@ public class PlayerShoeManager : MonoBehaviour
 
     private GameObject currShoeGameObject;
     public GameObject boots;
+    public GameObject sandals;
     public SandalSlinger sandalSlinger;
     private UIShoeTag shoeTagUI;
-    private bool[] acquiredShoes;
+    private bool[] acquiredShoes = { true, false, false, false };
 
-    private void Start()
+    private void Awake()
     {
-        acquiredShoes = new bool[4];
-        acquiredShoes[(int)ShoeType.BAREFOOT] = true;
         shoeTagUI = FindObjectOfType<UIShoeTag>();
     }
 
@@ -37,8 +36,8 @@ public class PlayerShoeManager : MonoBehaviour
                     break;
                 case ShoeType.FLIPFLOPS:
                     //todo activate sandals
-                    boots.SetActive(true);
-                    currShoeGameObject = boots;
+                    sandals.SetActive(true);
+                    currShoeGameObject = sandals;
                     break;
                 default:
                     currShoeGameObject = null;

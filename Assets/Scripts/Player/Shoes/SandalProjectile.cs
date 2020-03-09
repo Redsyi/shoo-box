@@ -21,16 +21,12 @@ public class SandalProjectile : MonoBehaviour
     {
             reversing = true;
             hitbox.enabled = false;
- 
-
-        
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (!triggeredSomething)
         {
-            print("Triggered something");
             foreach (ISandalable sandalable in other.GetComponents<ISandalable>())
             {
                 triggeredSomething = true;
