@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public Animator animator;
     public GameObject model;
     public BoxCollider legformHitbox;
+    public BoxCollider legformHitbox2;
     public BoxCollider boxformHitbox;
     public ShoeSniffer shoeSniffer;
     public PlayerShoeManager shoeManager;
@@ -180,6 +181,8 @@ public class Player : MonoBehaviour
         legForm = !legForm;
 
         legformHitbox.enabled = legForm;
+        if (legformHitbox2)
+            legformHitbox2.enabled = legForm;
         boxformHitbox.enabled = !legForm;
 
         leggs.SetActive(legForm);
