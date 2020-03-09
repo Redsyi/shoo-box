@@ -103,4 +103,9 @@ public class AIVision : MonoBehaviour
         visibleCone.transform.localEulerAngles = new Vector3(0, 0, -(360-arc) / 2f);
         visibleCone.fillAmount = arc / 360f;
     }
+
+    private void Update()
+    {
+        visibleCone.enabled = !AIAgent.blindAll;
+    }
 }
