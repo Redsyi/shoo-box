@@ -87,6 +87,17 @@ public class AIAgent : MonoBehaviour
     }
 
     /// <summary>
+    /// Tell the AI to investigate a location
+    /// </summary>
+    /// <param name="location">location to investigate</param>
+    /// <param name="forceOverrideChase">Whether this trigger can interrupt a chase state</param>
+    public void Investigate(Vector3 location, float investigateTime = 3f, bool forceOverrideChase = false)
+    {
+        GameObject target = Instantiate(targetPrefab, location, Quaternion.identity);
+        Investigate(target, investigateTime, forceOverrideChase);
+    }
+
+    /// <summary>
     /// Tell the AI to interact with an object. Will add to back of interact queue if already interacting with
     /// something else or AI currently busy chasing player
     /// </summary>

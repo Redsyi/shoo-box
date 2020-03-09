@@ -39,5 +39,7 @@ public enum AIInterest
     RECEPTIONIST,
     SUITCASE_PACKER,
     STOOL_BOI,
-    BARTENDER
+    BARTENDER,
+    TSA,
+    AIRPORT_CROWD
 }
