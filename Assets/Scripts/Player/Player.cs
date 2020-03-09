@@ -85,10 +85,13 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rigidbody.velocity = CalculateMovementVector();
-        if (verticalBoost != 0 && rigidbody.velocity != Vector3.zero)
+        if (StealFocusWhenSeen.activeThief == null)
         {
-            transform.Translate(Vector3.up * verticalBoost);
+            rigidbody.velocity = CalculateMovementVector();
+            if (verticalBoost != 0 && rigidbody.velocity != Vector3.zero)
+            {
+                transform.Translate(Vector3.up * verticalBoost);
+            }
         }
     }
 
