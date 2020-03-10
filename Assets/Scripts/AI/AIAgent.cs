@@ -27,6 +27,7 @@ public class AIAgent : MonoBehaviour
     public AIInterest[] interests;
     public bool beingRepelled;
     public static bool blindAll;
+    public bool deaf;
 
     void Start()
     {
@@ -161,6 +162,10 @@ public class AIAgent : MonoBehaviour
         else
             stoppedTime = 0f;
 
+        if (currState.state != AIState.IDLE && !currState.location)
+        {
+            Idle();
+        }
         bool closeToTarget = (transform.position - currState.location.position).sqrMagnitude < 0.4f;
         bool closeEnough = (stoppedTime >= giveUpTime) || closeToTarget;
         //print(stoppedTime);
