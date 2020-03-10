@@ -51,7 +51,7 @@ public class AIAgent : MonoBehaviour
     {
         while (true)
         {
-            stopped = prevPos == transform.position;
+            stopped = (prevPos - transform.position).sqrMagnitude < 0.2f;
             prevPos = transform.position;
             yield return new WaitForSeconds(.2f);
         }
