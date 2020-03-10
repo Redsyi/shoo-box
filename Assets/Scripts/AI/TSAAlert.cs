@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TSAAlert : MonoBehaviour, IAIInteractable
 {
@@ -9,6 +10,9 @@ public class TSAAlert : MonoBehaviour, IAIInteractable
     public float alertTimeRemaining;
     public bool player;
     public AIInterest[] interestMask = { AIInterest.TSA };
+    [Header("UI")]
+    public Transform alertBarCanvas;
+    public Image alertProgressBar;
 
     public void AIFinishInteract()
     {
@@ -42,6 +46,14 @@ public class TSAAlert : MonoBehaviour, IAIInteractable
 
     void Update()
     {
+        if (alertBarCanvas)
+        {
+            alertBarCanvas.eulerAngles = new Vector3(0, CameraScript.current.transform.eulerAngles.y + 45);
+            float alertProgress = (alertTime - alertTimeRemaining) / alertTime;
+            alertBarCanvas.gameObject.SetActive(alertProgress > 0.01f);
+            alertProgressBar.fillAmount = alertProgress;
+        }
+
         if (alertTimeRemaining > 0)
         {
             alertTimeRemaining -= Time.deltaTime;
