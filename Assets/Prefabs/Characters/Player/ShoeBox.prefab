@@ -5797,16 +5797,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 2212071707321504982}
-  animator: {fileID: 4465052588572984542}
-  model: {fileID: 2580331460220766698}
+  animators:
+  - {fileID: 4465052588572984542}
   legformHitbox: {fileID: 2212071707485408970}
+  legformHitbox2: {fileID: 0}
   boxformHitbox: {fileID: 2212071706219189586}
   shoeSniffer: {fileID: 2212071706009473644}
   shoeManager: {fileID: 2212071705680582277}
   inputSystem: {fileID: 2212071707321504983}
   walkingParticleSystem: {fileID: 8771040371585125096}
   AISpotPoint: {fileID: 2047831534786856520}
-  leggs: {fileID: 7767701544792444691}
+  leggs:
+  - {fileID: 7767701544792444691}
   startingShoes: 
   baseSpeed: 200
   boxSpeedMultiplier: 0.3

@@ -7,8 +7,7 @@ public class Player : MonoBehaviour
 {
     [Header("Component References")]
     public Rigidbody rigidbody;
-    public Animator animator;
-    public GameObject model;
+    public Animator[] animators;
     public BoxCollider legformHitbox;
     public BoxCollider legformHitbox2;
     public BoxCollider boxformHitbox;
@@ -17,7 +16,7 @@ public class Player : MonoBehaviour
     public PlayerInput inputSystem;
     public ParticleSystem walkingParticleSystem;
     public Transform AISpotPoint;
-    public GameObject leggs;
+    public GameObject[] leggs;
 
     [Header("Stats")]
     public ShoeType[] startingShoes;
@@ -120,21 +119,30 @@ public class Player : MonoBehaviour
 
     private void UpdateAnimator()
     {
-        if (moving)
+        foreach (Animator animator in animators)
         {
-            if (legForm)
+            if (animator)
             {
-                animator.SetBool("Walking", true);
-                animator.SetBool("Shuffling", false);
-            } else
-            {
-                animator.SetBool("Shuffling", true);
-                animator.SetBool("Walking", false);
+                if (moving)
+                {
+                    if (legForm)
+                    {
+
+                        animator.SetBool("Walking", true);
+                        animator.SetBool("Shuffling", false);
+                    }
+                    else
+                    {
+                        animator.SetBool("Shuffling", true);
+                        animator.SetBool("Walking", false);
+                    }
+                }
+                else
+                {
+                    animator.SetBool("Shuffling", false);
+                    animator.SetBool("Walking", false);
+                }
             }
-        } else
-        {
-            animator.SetBool("Shuffling", false);
-            animator.SetBool("Walking", false);
         }
     }
 
@@ -188,7 +196,8 @@ public class Player : MonoBehaviour
             legformHitbox2.enabled = legForm;
         boxformHitbox.enabled = !legForm;
 
-        leggs.SetActive(legForm);
+        foreach(GameObject legg in leggs) 
+            legg.SetActive(legForm);
         if (legForm)
         {
             transform.position += new Vector3(0, 0.65f);
@@ -199,7 +208,8 @@ public class Player : MonoBehaviour
         }
         walkingParticleSystem.transform.localPosition = (legForm ? legParticlesPosition.localPosition : boxParticlesPosition.localPosition);
 
-        animator.SetFloat("Idle Speed", (legForm ? 1f : 0f));
+        foreach(Animator animator in animators)
+            animator.SetFloat("Idle Speed", (legForm ? 1f : 0f));
 
         currBoxSpeed = 1;
     }
@@ -237,11 +247,13 @@ public class Player : MonoBehaviour
                 case ShoeType.BAREFOOT:
                     break;
                 case ShoeType.BOOTS:
-                    animator.SetTrigger("Kick");
+                    foreach(Animator animator in animators)
+                        animator.SetTrigger("Kick");
                     shoeManager.UseShoes();
                     break;
                 case ShoeType.FLIPFLOPS:
-                    animator.SetTrigger("Kick");
+                    foreach (Animator animator in animators)
+                        animator.SetTrigger("Fling");
                     shoeManager.UseShoes();
                     break;
                 default:
