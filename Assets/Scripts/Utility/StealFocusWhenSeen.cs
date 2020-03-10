@@ -34,6 +34,14 @@ public class StealFocusWhenSeen : MonoBehaviour
         }
     }
 
+    public void Trigger()
+    {
+        if (!focusStolen && activeThief == null)
+        {
+            StartCoroutine(StealFocus());
+        }
+    }
+
     //sorry for how messy this looks
     IEnumerator StealFocus()
     {

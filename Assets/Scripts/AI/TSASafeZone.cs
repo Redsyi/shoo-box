@@ -7,7 +7,6 @@ public class TSASafeZone : MonoBehaviour
     public float radius = 1f;
     public SpriteRenderer indicator;
     public CapsuleCollider hitbox;
-
     private void OnTriggerEnter(Collider other)
     {
         TSAAlert alert = other.GetComponent<TSAAlert>();
@@ -45,13 +44,18 @@ public class TSASafeZone : MonoBehaviour
 
     private void Start()
     {
-        indicator.transform.localScale = new Vector3(radius / 10f, radius / 10f, 1);
-        hitbox.radius = radius;
+        AdjustIndicator();
     }
 
     private void OnDrawGizmosSelected()
     {
-        indicator.transform.localScale = new Vector3(radius / 10f, radius / 10f, 1);
-        hitbox.radius = radius;
+        AdjustIndicator();
+    }
+
+    private void AdjustIndicator()
+    {
+        indicator.transform.localScale = new Vector3(radius / 5f, radius / 5f, 1);
+        hitbox.radius = 5;// radius;
+        hitbox.height = 10;
     }
 }
