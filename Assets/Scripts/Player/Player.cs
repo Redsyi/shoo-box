@@ -142,6 +142,7 @@ public class Player : MonoBehaviour
                     animator.SetBool("Shuffling", false);
                     animator.SetBool("Walking", false);
                 }
+                animator.SetFloat("Idle Speed", (legForm ? 1f : 0f));
             }
         }
     }
@@ -208,8 +209,6 @@ public class Player : MonoBehaviour
         }
         walkingParticleSystem.transform.localPosition = (legForm ? legParticlesPosition.localPosition : boxParticlesPosition.localPosition);
 
-        foreach(Animator animator in animators)
-            animator.SetFloat("Idle Speed", (legForm ? 1f : 0f));
 
         currBoxSpeed = 1;
     }
