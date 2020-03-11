@@ -29,6 +29,7 @@ public class AIAgent : MonoBehaviour
     public static bool blindAll;
     public bool deaf;
     private bool reachedInteractable;
+    private AKEventNPC wwiseComponent;
 
     void Start()
     {
@@ -47,6 +48,7 @@ public class AIAgent : MonoBehaviour
         myBubble.worldAnchor = bubbleAnchor;
 
         StartCoroutine(CheckPos());
+        wwiseComponent = GetComponent<AKEventNPC>();
     }
 
     IEnumerator CheckPos()
@@ -84,6 +86,7 @@ public class AIAgent : MonoBehaviour
             stoppedTime = 0f;
             currState.state = AIState.INVESTIGATE;
             currState.location = location.transform;
+            wwiseComponent?.StartedInvestigation();
             timer = investigateTime;
         }
     }
@@ -110,6 +113,7 @@ public class AIAgent : MonoBehaviour
             thingsToInteractWith.Enqueue(interactable);
             if (currState.state != AIState.CHASE && currState.state != AIState.INTERACT)
             {
+                wwiseComponent?.SomethingWrong();
                 pathfinder.speed = runSpeed;
                 currState.state = AIState.INTERACT;
                 currState.location = (interactable as MonoBehaviour).transform;
@@ -127,6 +131,7 @@ public class AIAgent : MonoBehaviour
     {
         if (currState.state != AIState.CHASE)
         {
+            wwiseComponent?.PlayerSpotted();
             myBubble.Spotted();
         }
         pathfinder.speed = runSpeed;
@@ -153,6 +158,7 @@ public class AIAgent : MonoBehaviour
     public void CatchPlayer(Player player)
     {
         //this is the part where the player fucking dies
+        wwiseComponent?.PlayerCaught();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     
@@ -218,6 +224,7 @@ public class AIAgent : MonoBehaviour
                     }
                     else
                     {
+                        wwiseComponent?.GiveUp();
                         Idle();
                     }
                 }
@@ -232,6 +239,8 @@ public class AIAgent : MonoBehaviour
                     pathfinder.destination = currState.location.position;
                 } else
                 {
+                    if (!reachedInteractable)
+                        wwiseComponent?.Fixing();
                     reachedInteractable = true;
                     if (timer >= 0)
                     {
