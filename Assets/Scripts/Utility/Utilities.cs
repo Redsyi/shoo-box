@@ -54,13 +54,29 @@ public static class Utilities
     }
 
 #if UNITY_EDITOR
-    //todo we can add our own scenes here
-    /*[MenuItem("Utilities/Go to main scene")]
-    public static void MainScene()
+    [MenuItem("Scenes/Main/Hotel Top Floor")] public static void TopFloorScene() => 
+        OpenScene("Assets/Scenes/Hotel/hotel_top_level.unity");
+    [MenuItem("Scenes/Main/Hotel Lobby")] public static void LobbyScene() => 
+        OpenScene("Assets/Scenes/Hotel/hotel_lobby.unity");
+    [MenuItem("Scenes/Main/Airport Conveyors 1")] public static void Conveyors1() => 
+        OpenScene("Assets/Scenes/Airport/conveyorBeltWarehouse.unity");
+    [MenuItem("Scenes/Main/Airport Terminal 1")] public static void Terminal1() => 
+        OpenScene("Assets/Scenes/testing and temp scenes/TSATest.unity");
+    [MenuItem("Scenes/Main/City")] public static void City() => 
+        OpenScene("Assets/Scenes/Whitebox/city_WB.unity");
+    [MenuItem("Scenes/Cutscenes/Intro Cutscene")] public static void IntroCS() => 
+        OpenScene("Assets/Scenes/Cutscenes/IntroCutscene.unity");
+    [MenuItem("Scenes/Cutscenes/Airport Cutscene")] public static void AirportCS() => 
+        OpenScene("Assets/Scenes/Cutscenes/AirportCutscene.unity");
+    [MenuItem("Scenes/Testing/Jake's Shadow Test")] public static void ShadowTest() => 
+        OpenScene("Assets/Scenes/Hotel/jake-hotel-test.unity");
+    [MenuItem("Scenes/Add or Edit Scene Menu Options")] public static void EditMenu() =>
+        AssetDatabase.OpenAsset(AssetDatabase.LoadAssetAtPath("Assets/Scripts/Utility/Utilities.cs", typeof(Object)), 56);
+    private static void OpenScene(string scenePath)
     {
-        EditorSceneManager.SaveOpenScenes();
-        EditorSceneManager.OpenScene("Assets/Scenes/MainScene.unity");
-    }*/
+        EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
+        EditorSceneManager.OpenScene(scenePath);
+    }
 #endif
 
     //this one was somewhat niche but i'll keep it in in case we need it
