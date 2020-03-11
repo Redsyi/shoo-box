@@ -16,6 +16,7 @@ public class StealFocusWhenSeen : MonoBehaviour
     public float cameraZoomSpeed;
     [Tooltip("Time (in seconds) that camera lingers")]
     public float cameraStealTime;
+    private bool skip;
 
     private void Start()
     {
@@ -42,6 +43,14 @@ public class StealFocusWhenSeen : MonoBehaviour
         }
     }
 
+    public void Skip()
+    {
+        if (focusStolen)
+        {
+            skip = true;
+        }
+    }
+
     //sorry for how messy this looks
     IEnumerator StealFocus()
     {
@@ -54,7 +63,7 @@ public class StealFocusWhenSeen : MonoBehaviour
         float zoomDiff = Mathf.Abs(cameraSize - originalZoomLevel);
 
         //part 1: translate camera to current position
-        while ((vectToDest).sqrMagnitude > 0.3f)
+        while ((vectToDest).sqrMagnitude > 0.4f && !skip)
         {
             CameraScript.current.transform.position += vectToDest.normalized * Time.deltaTime * (1/cameraScrollSpeed) * dist;
             
@@ -70,7 +79,7 @@ public class StealFocusWhenSeen : MonoBehaviour
 
         //part 2: remain focused on current position
         float focusTimeLeft = cameraStealTime;
-        while (focusTimeLeft > 0)
+        while (focusTimeLeft > 0 && !skip)
         {
             CameraScript.current.transform.position = transform.position;
 
@@ -87,7 +96,7 @@ public class StealFocusWhenSeen : MonoBehaviour
         //part 3: go back to player
         Player player = FindObjectOfType<Player>();
         vectToDest = player.transform.position - CameraScript.current.transform.position;
-        while ((vectToDest).sqrMagnitude > 0.3f)
+        while ((vectToDest).sqrMagnitude > 0.4f)
         {
             CameraScript.current.transform.position += vectToDest.normalized * Time.deltaTime * (1 / cameraScrollSpeed) * dist;
 
@@ -101,5 +110,13 @@ public class StealFocusWhenSeen : MonoBehaviour
             vectToDest = player.transform.position - CameraScript.current.transform.position;
         }
         activeThief = null;
+    }
+
+    public static void SkipActive()
+    {
+        foreach (StealFocusWhenSeen instance in FindObjectsOfType<StealFocusWhenSeen>())
+        {
+            instance.Skip();
+        }
     }
 }
