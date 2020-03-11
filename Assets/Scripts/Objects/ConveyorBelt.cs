@@ -24,7 +24,7 @@ public class ConveyorBelt : MonoBehaviour
 
             if (player)
                 player.transform.position += move * speed * Time.fixedDeltaTime;
-            else
+            else if(other.CompareTag("Luggage"))
                 other.transform.position += move * speed * Time.fixedDeltaTime;
         }
     }

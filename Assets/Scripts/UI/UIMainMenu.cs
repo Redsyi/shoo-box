@@ -14,6 +14,6 @@ public class UIMainMenu : MonoBehaviour
     }
     public void PlayButton()
     {
-        SceneManager.LoadScene(9);
+        SceneManager.LoadScene(1);
     }
 }
