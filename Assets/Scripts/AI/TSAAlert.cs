@@ -33,7 +33,7 @@ public class TSAAlert : MonoBehaviour, IAIInteractable
 
     public float AIInteractTime()
     {
-        return 1;
+        return 2;
     }
 
     public AIInterest[] InterestingToWhatAI()
@@ -63,7 +63,7 @@ public class TSAAlert : MonoBehaviour, IAIInteractable
             alertTimeRemaining -= Time.deltaTime;
             if (alertTimeRemaining <= 0)
             {
-                AIAgent.SummonAI(gameObject, 1, interestMask);
+                AIAgent.SummonAI(gameObject, 2, interestMask);
             }
         }
     }

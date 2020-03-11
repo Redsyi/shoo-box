@@ -14,6 +14,7 @@ public class AIVision : MonoBehaviour
     public float arc = 100;
     public Image visibleCone;
     public CapsuleCollider collider;
+    public float viewFloor = 5f;
 
     private void Start()
     {
@@ -34,6 +35,8 @@ public class AIVision : MonoBehaviour
 
     private void ProcessItemInVision(Collider other, bool justEntered = false)
     {
+        if (transform.position.y - other.transform.position.y > viewFloor)
+            return;
         Vector2 vectToItem = new Vector2(other.transform.position.x - transform.position.x, other.transform.position.z - transform.position.z).normalized;
         Vector2 forwardVect = new Vector2(transform.forward.x, transform.forward.z);
         float angleDiff = Mathf.Acos(Vector2.Dot(forwardVect, vectToItem))*Mathf.Rad2Deg;
@@ -102,6 +105,8 @@ public class AIVision : MonoBehaviour
         collider.radius = radius;
         visibleCone.transform.localEulerAngles = new Vector3(0, 0, -(360-arc) / 2f);
         visibleCone.fillAmount = arc / 360f;
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawLine(transform.position, transform.position + new Vector3(0, -viewFloor));
     }
 
     private void Update()
