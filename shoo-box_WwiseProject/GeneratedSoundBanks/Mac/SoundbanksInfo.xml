@@ -21,6 +21,9 @@
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<IncludedEvents>
+				<Event Id="3925202398" Name="Detonation" ObjectPath="\Events\Default Work Unit\City\Detonation" DurationType="OneShot" DurationMin="6.750750" DurationMax="6.750750"/>
+				<Event Id="2249769530" Name="UI_Click" ObjectPath="\Events\Default Work Unit\UI\UI_Click" DurationType="OneShot" DurationMin="1.354313" DurationMax="1.354313"/>
+				<Event Id="216067002" Name="UI_Confirm" ObjectPath="\Events\Default Work Unit\UI\UI_Confirm" DurationType="OneShot" DurationMin="1.354313" DurationMax="1.354313"/>
 				<Event Id="2108779966" Name="Walk" ObjectPath="\Events\Default Work Unit\Walk" DurationType="OneShot" DurationMin="1.354313" DurationMax="1.354313"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
@@ -48,9 +51,17 @@
 					<ShortName>Boots_Concrete_4.wav</ShortName>
 					<Path>SFX/Boots_Concrete_4_10C4C929.wem</Path>
 				</File>
+				<File Id="570299354" Language="SFX">
+					<ShortName>Building Detonation.wav</ShortName>
+					<Path>SFX/Building Detonation_10C4C929.wem</Path>
+				</File>
 				<File Id="811582187" Language="SFX">
 					<ShortName>Boots_Concrete_8.wav</ShortName>
 					<Path>SFX/Boots_Concrete_8_10C4C929.wem</Path>
+				</File>
+				<File Id="978201923" Language="SFX">
+					<ShortName>Confirmation.wav</ShortName>
+					<Path>SFX/Confirmation_10C4C929.wem</Path>
 				</File>
 				<File Id="1048682405" Language="SFX">
 					<ShortName>Boots_Concrete_7.wav</ShortName>
