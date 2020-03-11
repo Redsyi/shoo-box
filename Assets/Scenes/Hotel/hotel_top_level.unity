@@ -2761,6 +2761,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 379127797267723427, guid: c8e3c6001654d7a488a7857ce0a5ed63,
+        type: 3}
+      propertyPath: KickSound.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: 9e6b1840b2ea64b64afdd7e845782ed2,
+        type: 2}
     - target: {fileID: 2083412320873808712, guid: c8e3c6001654d7a488a7857ce0a5ed63,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4213,6 +4219,8 @@ GameObject:
   - component: {fileID: 939174329}
   - component: {fileID: 939174328}
   - component: {fileID: 939174330}
+  - component: {fileID: 939174332}
+  - component: {fileID: 939174331}
   m_Layer: 0
   m_Name: WwiseGlobal
   m_TagString: Untagged
@@ -4286,6 +4294,61 @@ MonoBehaviour:
   unloadTriggerList: 958ca0ea
   bankNameInternal: 
   valueGuidInternal: 
+--- !u!114 &939174331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939174327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aad678c49d20d428eb99133415a08138, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  enableActionOnEvent: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  useCallbacks: 0
+  Callbacks: []
+  playingId: 0
+  soundEmitterObject: {fileID: 0}
+  transitionDuration: 0
+  eventIdInternal: 0
+  valueGuidInternal: 
+  m_callbackDataInternal: {fileID: 0}
+  MultiPositionType: 1
+  multiPositionTypeLabel: 0
+  LargeModePositions: []
+  multiPositionArray: []
+--- !u!114 &939174332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939174327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebaedeee7fdd14c278a6fee3bfa0e513, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_listeners:
+    initialListenerList: []
+    useDefaultListeners: 1
+  isEnvironmentAware: 0
+  isStaticObject: 0
+  m_positionOffsetData:
+    KeepMe: 0
+    positionOffset: {x: 0, y: 0, z: 0}
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
 --- !u!64 &941393167
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5270,6 +5333,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -398348750555227762, guid: 37084fbaa1134394cbf7dd29faf262f8,
+        type: 3}
+      propertyPath: KickSound.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: 953db9994d77443c4bc309e0e6c2b9e6,
+        type: 2}
     - target: {fileID: 267974479075039609, guid: 37084fbaa1134394cbf7dd29faf262f8,
         type: 3}
       propertyPath: m_Name
@@ -6068,6 +6137,22 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1318415211}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1318415213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318415212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42877852c9da54bba9025ef0ed61f04c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KickSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
 --- !u!1 &1324019576
 GameObject:
   m_ObjectHideFlags: 0
@@ -7318,6 +7403,64 @@ PrefabInstance:
       objectReference: {fileID: 1424625471}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 400d7b0c55a87e54f965dbbf1b04d0b4, type: 3}
+--- !u!1 &1706749854 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 354231032036217346, guid: cee4bf99430ad9a45a4ef4c03a2abcb3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1520576966}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1706749859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706749854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65fa2774fcf9c4c108c6a8b57048434f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7f422d6
+  useOtherObject: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  enableActionOnEvent: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 953db9994d77443c4bc309e0e6c2b9e6,
+      type: 2}
+  useCallbacks: 0
+  Callbacks: []
+  playingId: 0
+  soundEmitterObject: {fileID: 0}
+  transitionDuration: 0
+  eventIdInternal: 0
+  valueGuidInternal: 
+  m_callbackDataInternal: {fileID: 0}
+--- !u!114 &1706749860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706749854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebaedeee7fdd14c278a6fee3bfa0e513, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_listeners:
+    initialListenerList: []
+    useDefaultListeners: 1
+  isEnvironmentAware: 1
+  isStaticObject: 0
+  m_positionOffsetData:
+    KeepMe: 0
+    positionOffset: {x: 0, y: 0, z: 0}
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
 --- !u!114 &1725715347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8271,6 +8414,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5361188077801061111, guid: 8d7dc027074ac35488ee43bd3f507548,
+        type: 3}
+      propertyPath: KickSound.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: 953db9994d77443c4bc309e0e6c2b9e6,
+        type: 2}
     - target: {fileID: 4423601689488482, guid: 8d7dc027074ac35488ee43bd3f507548, type: 3}
       propertyPath: m_ConnectedAnchor.x
       value: 0.00000017881393

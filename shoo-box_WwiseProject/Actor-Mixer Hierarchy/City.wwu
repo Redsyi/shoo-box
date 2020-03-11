@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{ED283715-517C-46E9-9FF8-F0DF71A35DB0}" SchemaVersion="94">
+	<AudioObjects>
+		<WorkUnit Name="City" ID="{ED283715-517C-46E9-9FF8-F0DF71A35DB0}" PersistMode="Standalone">
+			<ChildrenList>
+				<Sound Name="City Detonation" ID="{9911C370-81AB-4647-8BB5-8B15984E0F94}" ShortID="742205991">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Building Detonation" ID="{8FEC3F70-414F-4E2E-8DFC-84CADE7033E1}" ShortID="570299354">
+							<Language>SFX</Language>
+							<AudioFile>Building Detonation.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Building Detonation" ID="{8FEC3F70-414F-4E2E-8DFC-84CADE7033E1}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>
