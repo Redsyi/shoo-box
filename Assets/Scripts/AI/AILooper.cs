@@ -13,7 +13,9 @@ public class AILooper : MonoBehaviour
         AIAgent AI = other.GetComponentInParent<AIAgent>();
         if (AI && System.Array.Find(AI.interests, (AIInterest interest) => interest == loopType) != AIInterest.MAID)
         {
-            AI.transform.position = transform.position + loopPosition + new Vector3(Random.Range(-variation, variation), 0, Random.Range(-variation, variation));
+            Vector3 offset = AI.transform.position - transform.position;
+            Vector3 newVect = transform.position + loopPosition + new Vector3(Random.Range(-variation, variation), 0, Random.Range(-variation, variation));
+            AI.pathfinder.Warp(newVect + offset);
         }
     }
 

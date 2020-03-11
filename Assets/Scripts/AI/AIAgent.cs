@@ -28,6 +28,7 @@ public class AIAgent : MonoBehaviour
     public bool beingRepelled;
     public static bool blindAll;
     public bool deaf;
+    private bool reachedInteractable;
 
     void Start()
     {
@@ -52,7 +53,7 @@ public class AIAgent : MonoBehaviour
     {
         while (true)
         {
-            stopped = (prevPos - transform.position).sqrMagnitude < 0.2f;
+            stopped = (prevPos - transform.position).sqrMagnitude < walkSpeed*.05f;
             prevPos = transform.position;
             yield return new WaitForSeconds(.2f);
         }
@@ -167,7 +168,7 @@ public class AIAgent : MonoBehaviour
             Idle();
         }
         bool closeToTarget = (transform.position - currState.location.position).sqrMagnitude < 0.4f;
-        bool closeEnough = (stoppedTime >= giveUpTime) || closeToTarget;
+        bool closeEnough = (reachedInteractable && currState.state == AIState.INTERACT) || (stoppedTime >= giveUpTime) || closeToTarget;
         //print(stoppedTime);
         if (!closeToTarget && !beingRepelled)
         {
@@ -231,6 +232,7 @@ public class AIAgent : MonoBehaviour
                     pathfinder.destination = currState.location.position;
                 } else
                 {
+                    reachedInteractable = true;
                     if (timer >= 0)
                     {
                         timer -= Time.deltaTime;
@@ -249,6 +251,7 @@ public class AIAgent : MonoBehaviour
                         {
                             Idle();
                         }
+                        reachedInteractable = false;
                     }
                 }
                 myBubble.StopInvestigating();
