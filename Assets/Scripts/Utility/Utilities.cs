@@ -63,7 +63,7 @@ public static class Utilities
     [MenuItem("Scenes/Main/Airport Terminal 1")] public static void Terminal1() => 
         OpenScene("Assets/Scenes/testing and temp scenes/TSATest.unity");
     [MenuItem("Scenes/Main/City")] public static void City() => 
-        OpenScene("Assets/Scenes/Whitebox/city_WB.unity");
+        OpenScene("Assets/Scenes/City/city.unity");
     [MenuItem("Scenes/Cutscenes/Intro Cutscene")] public static void IntroCS() => 
         OpenScene("Assets/Scenes/Cutscenes/IntroCutscene.unity");
     [MenuItem("Scenes/Cutscenes/Airport Cutscene")] public static void AirportCS() => 
