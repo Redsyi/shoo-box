@@ -53,9 +53,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 517b9f59465fbd74697ec95dd8083fcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseSound: {fileID: 8300000, guid: 60543338b7c019945a1e476a6bd7e3be, type: 3}
-  unpauseSound: {fileID: 8300000, guid: 86dd96d6e9d30d64bb6e5912816e5511, type: 3}
-  confirmSound: {fileID: 8300000, guid: aa1f1adf385a4a6499fab7a5a750b40b, type: 3}
+  pauseSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  unpauseSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
   defaultSelected: {fileID: 8827649469846997233}
 --- !u!1 &8827649469846997233
 GameObject:
@@ -70,10 +75,8 @@ GameObject:
   - component: {fileID: 8827649469846997234}
   - component: {fileID: 8827649469846997235}
   - component: {fileID: 1387529319}
-  - component: {fileID: 3655526434765356691}
-  - component: {fileID: 6725197434167807828}
-  - component: {fileID: 8273497688052547831}
-  - component: {fileID: 2066228062341984394}
+  - component: {fileID: 5887544874192640188}
+  - component: {fileID: 9141883537339437704}
   m_Layer: 5
   m_Name: Retry
   m_TagString: Untagged
@@ -99,7 +102,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -252, y: -190.43}
-  m_SizeDelta: {x: 361, y: 250.5}
+  m_SizeDelta: {x: 283, y: 211}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8827649469846997245
 CanvasRenderer:
@@ -207,7 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b57c5dbb32ee81242a972660e37766b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3655526434765356691
+--- !u!114 &5887544874192640188
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -222,14 +225,14 @@ MonoBehaviour:
   m_listeners:
     initialListenerList: []
     useDefaultListeners: 1
-  isEnvironmentAware: 0
+  isEnvironmentAware: 1
   isStaticObject: 0
   m_positionOffsetData:
     KeepMe: 0
     positionOffset: {x: 0, y: 0, z: 0}
   m_posOffsetData: {fileID: 0}
   listenerMask: 1
---- !u!114 &6725197434167807828
+--- !u!114 &9141883537339437704
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -238,65 +241,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 8827649469846997233}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65fa2774fcf9c4c108c6a8b57048434f, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b62e5debcf27cc4792b57cb76082e07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerList: fe6ae587
-  useOtherObject: 0
-  actionOnEventType: 0
-  curveInterpolation: 4
-  enableActionOnEvent: 0
-  data:
+  hoverSound:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 9e6b1840b2ea64b64afdd7e845782ed2,
+    WwiseObjectReference: {fileID: 0}
+  clickSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 953db9994d77443c4bc309e0e6c2b9e6,
       type: 2}
-  useCallbacks: 0
-  Callbacks: []
-  playingId: 0
-  soundEmitterObject: {fileID: 0}
-  transitionDuration: 0
-  eventIdInternal: 0
-  valueGuidInternal: 
-  m_callbackDataInternal: {fileID: 0}
---- !u!114 &8273497688052547831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8827649469846997233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00420d4a8e0144f53a9e71826ea7c657, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!61 &2066228062341984394
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8827649469846997233}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.007461548, y: -13.398804}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 305.49484, y: 211.42593}
-  m_EdgeRadius: 0
 --- !u!1 &8827649470784351348
 GameObject:
   m_ObjectHideFlags: 0
