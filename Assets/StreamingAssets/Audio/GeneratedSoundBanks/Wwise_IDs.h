@@ -14,6 +14,7 @@ namespace AK
     namespace EVENTS
     {
         static const AkUniqueID DETONATION = 3925202398U;
+        static const AkUniqueID MUSIC_HOTEL = 3138446709U;
         static const AkUniqueID UI_CLICK = 2249769530U;
         static const AkUniqueID UI_CONFIRM = 216067002U;
         static const AkUniqueID WALK = 2108779966U;
