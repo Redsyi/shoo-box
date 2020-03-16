@@ -102,6 +102,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4727109721145832124}
+  - component: {fileID: 159409882811436785}
+  - component: {fileID: 4358126676880327729}
+  - component: {fileID: 3682556216065241539}
   m_Layer: 0
   m_Name: Two Seat Sofa
   m_TagString: Untagged
@@ -124,3 +127,46 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &159409882811436785
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 972383237218757488}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 31.524391, y: 8.815368, z: 15}
+  m_Center: {x: -0.4555092, y: 0.59231615, z: -4}
+--- !u!65 &4358126676880327729
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 972383237218757488}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.5077896, y: 8.40309, z: 5.837391}
+  m_Center: {x: 16.798683, y: 0.38797092, z: 0.3655491}
+--- !u!114 &3682556216065241539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 972383237218757488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42877852c9da54bba9025ef0ed61f04c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KickSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 953db9994d77443c4bc309e0e6c2b9e6,
+      type: 2}

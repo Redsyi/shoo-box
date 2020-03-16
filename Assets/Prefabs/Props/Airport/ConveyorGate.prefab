@@ -1,0 +1,163 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &903440672359532603
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 903440672359532607}
+  - component: {fileID: 903440672359532600}
+  - component: {fileID: 903440672359532604}
+  m_Layer: 0
+  m_Name: ConveyorGate
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &903440672359532607
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903440672359532603}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.67, y: 2.91, z: -1.42}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2677717125607068988}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &903440672359532600
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903440672359532603}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.22, y: 1.4638855, z: 3.5051913}
+  m_Center: {x: 0, y: 0.069906116, z: 0.1418047}
+--- !u!114 &903440672359532604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903440672359532603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eec6a17990f0ef44bf985f06fadf080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closedPos: {x: 0, y: 0, z: 0}
+  openPos: {x: 0, y: 0, z: -3.08}
+  speed: 3
+--- !u!1001 &6941064380609183270
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 903440672359532607}
+    m_Modifications:
+    - target: {fileID: -8592858287993436296, guid: 628f0dd934ac2024fa49b89371a063b4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -194
+      objectReference: {fileID: 0}
+    - target: {fileID: -8592858287993436296, guid: 628f0dd934ac2024fa49b89371a063b4,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 424
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 628f0dd934ac2024fa49b89371a063b4,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.43
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 628f0dd934ac2024fa49b89371a063b4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 628f0dd934ac2024fa49b89371a063b4,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.49
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 628f0dd934ac2024fa49b89371a063b4,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 628f0dd934ac2024fa49b89371a063b4,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 628f0dd934ac2024fa49b89371a063b4,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 628f0dd934ac2024fa49b89371a063b4,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 628f0dd934ac2024fa49b89371a063b4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 628f0dd934ac2024fa49b89371a063b4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 628f0dd934ac2024fa49b89371a063b4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 628f0dd934ac2024fa49b89371a063b4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 628f0dd934ac2024fa49b89371a063b4,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.008090394
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 628f0dd934ac2024fa49b89371a063b4,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.005163936
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 628f0dd934ac2024fa49b89371a063b4,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.006124212
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 628f0dd934ac2024fa49b89371a063b4,
+        type: 3}
+      propertyPath: m_Name
+      value: GateForConveyorBelt
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 628f0dd934ac2024fa49b89371a063b4, type: 3}
+--- !u!4 &2677717125607068988 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 628f0dd934ac2024fa49b89371a063b4,
+    type: 3}
+  m_PrefabInstance: {fileID: 6941064380609183270}
+  m_PrefabAsset: {fileID: 0}

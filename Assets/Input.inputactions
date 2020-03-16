@@ -68,6 +68,14 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "Press"
+                },
+                {
+                    "name": "ChangeShoes",
+                    "type": "Value",
+                    "id": "d5df3e97-6c16-4aad-88e4-7322e32796a0",
+                    "expectedControlType": "Analog",
+                    "processors": "",
+                    "interactions": "Press"
                 }
             ],
             "bindings": [
@@ -239,7 +247,7 @@
                 {
                     "name": "",
                     "id": "39b98b9e-e232-4938-a87c-67ce7b3c03b0",
-                    "path": "<Keyboard>/ctrl",
+                    "path": "<Keyboard>/shift",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -261,7 +269,7 @@
                 {
                     "name": "negative",
                     "id": "a440289b-09c6-46ef-af01-eda2ad2efe53",
-                    "path": "<Gamepad>/rightStick/left",
+                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -272,7 +280,7 @@
                 {
                     "name": "positive",
                     "id": "0692165b-ff7b-416b-b15e-aafb566acb40",
-                    "path": "<Gamepad>/rightStick/right",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -398,6 +406,50 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Test",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f143202b-81d1-45cb-8539-ca912221f02d",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "Clamp(min=1,max=1)",
+                    "groups": "Keyboard&Mouse",
+                    "action": "ChangeShoes",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9520a8ef-5a81-46ea-a638-9f73f9889e15",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "Clamp(min=2,max=2)",
+                    "groups": "Keyboard&Mouse",
+                    "action": "ChangeShoes",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cbf2b00f-f421-4d5d-b4d1-d5ca858617ce",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "Clamp(min=1,max=1)",
+                    "groups": "Gamepad",
+                    "action": "ChangeShoes",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cbf6895a-79a8-480b-9097-df4f8276b1f8",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "Clamp(min=2,max=2)",
+                    "groups": "Gamepad",
+                    "action": "ChangeShoes",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -931,6 +983,44 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "PauseMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Cutscene",
+            "id": "f8941946-3be7-451b-99a8-b5657942dbe1",
+            "actions": [
+                {
+                    "name": "Skip",
+                    "type": "Button",
+                    "id": "9d2c490a-749e-4a50-94c9-52179fa30fd3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f22821f6-cb75-40db-acd1-d44b03423a61",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "465d7388-b04e-447e-89a6-4712433b6f9e",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Skip",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

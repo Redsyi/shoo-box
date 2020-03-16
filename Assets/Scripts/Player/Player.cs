@@ -7,15 +7,16 @@ public class Player : MonoBehaviour
 {
     [Header("Component References")]
     public Rigidbody rigidbody;
-    public Animator animator;
-    public GameObject model;
+    public Animator[] animators;
     public BoxCollider legformHitbox;
+    public BoxCollider legformHitbox2;
     public BoxCollider boxformHitbox;
     public ShoeSniffer shoeSniffer;
     public PlayerShoeManager shoeManager;
     public PlayerInput inputSystem;
     public ParticleSystem walkingParticleSystem;
     public Transform AISpotPoint;
+    public GameObject[] leggs;
 
     [Header("Stats")]
     public ShoeType[] startingShoes;
@@ -28,12 +29,9 @@ public class Player : MonoBehaviour
     [Header("Footsteps")]
     public float footstepTiming;
     public float footstepSoundOffset;
-    public List<AudioClip> barefootSounds;
-    public List<AudioClip> bootSounds;
-    private int currFootSoundIdx;
-    private Dictionary<ShoeType, List<AudioClip>> footSounds;
     public bool moving => currMovementInput != Vector2.zero;
     private bool makingFootsteps;
+    public AK.Wwise.Event onStep;
 
     [Header("Effects")]
     public Transform legParticlesPosition;
@@ -66,12 +64,9 @@ public class Player : MonoBehaviour
 
         foreach (ShoeType shoeType in startingShoes)
         {
+            shoeManager.Acquire(shoeType);
             EquipShoe(shoeType);
         }
-
-        footSounds = new Dictionary<ShoeType, List<AudioClip>>();
-        footSounds[ShoeType.BAREFOOT] = barefootSounds;
-        footSounds[ShoeType.BOOTS] = bootSounds;
     }
 
     /// <summary>
@@ -90,10 +85,13 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rigidbody.velocity = CalculateMovementVector();
-        if (verticalBoost != 0 && rigidbody.velocity != Vector3.zero)
+        if (StealFocusWhenSeen.activeThief == null)
         {
-            transform.Translate(Vector3.up * verticalBoost);
+            rigidbody.velocity = CalculateMovementVector();
+            if (verticalBoost != 0 && rigidbody.velocity != Vector3.zero)
+            {
+                transform.Translate(Vector3.up * verticalBoost);
+            }
         }
     }
 
@@ -110,25 +108,42 @@ public class Player : MonoBehaviour
         InterpolateRotation();
         UpdateAnimator();
         UpdateParticles();
+
+        if (shoeSniffer.detectedShoe && legForm)
+        {
+            shoeManager.Acquire(shoeSniffer.detectedShoe.shoeType);
+            EquipShoe(shoeSniffer.detectedShoe.shoeType);
+            Destroy(shoeSniffer.detectedShoe.gameObject);
+        }
     }
 
     private void UpdateAnimator()
     {
-        if (moving)
+        foreach (Animator animator in animators)
         {
-            if (legForm)
+            if (animator)
             {
-                animator.SetBool("Walking", true);
-                animator.SetBool("Shuffling", false);
-            } else
-            {
-                animator.SetBool("Shuffling", true);
-                animator.SetBool("Walking", false);
+                if (moving)
+                {
+                    if (legForm)
+                    {
+
+                        animator.SetBool("Walking", true);
+                        animator.SetBool("Shuffling", false);
+                    }
+                    else
+                    {
+                        animator.SetBool("Shuffling", true);
+                        animator.SetBool("Walking", false);
+                    }
+                }
+                else
+                {
+                    animator.SetBool("Shuffling", false);
+                    animator.SetBool("Walking", false);
+                }
+                animator.SetFloat("Idle Speed", (legForm ? 1f : 0f));
             }
-        } else
-        {
-            animator.SetBool("Shuffling", false);
-            animator.SetBool("Walking", false);
         }
     }
 
@@ -178,7 +193,12 @@ public class Player : MonoBehaviour
         legForm = !legForm;
 
         legformHitbox.enabled = legForm;
+        if (legformHitbox2)
+            legformHitbox2.enabled = legForm;
         boxformHitbox.enabled = !legForm;
+
+        foreach(GameObject legg in leggs) 
+            legg.SetActive(legForm);
         if (legForm)
         {
             transform.position += new Vector3(0, 0.65f);
@@ -189,7 +209,6 @@ public class Player : MonoBehaviour
         }
         walkingParticleSystem.transform.localPosition = (legForm ? legParticlesPosition.localPosition : boxParticlesPosition.localPosition);
 
-        animator.SetFloat("Idle Speed", (legForm ? 1f : 0f));
 
         currBoxSpeed = 1;
     }
@@ -203,22 +222,16 @@ public class Player : MonoBehaviour
         myCamera.Rotate(direction);
     }
 
-    /// <summary>
-    /// Interact button pressed
-    /// </summary>
-    public void OnInteract(InputValue value)
-    { 
-        if (shoeSniffer.detectedShoe && legForm)
-        {
-            EquipShoe(shoeSniffer.detectedShoe.shoeType);
-            Destroy(shoeSniffer.detectedShoe.gameObject);
-        }
+    public void OnChangeShoes(InputValue value)
+    {
+        float shoeVal = value.Get<float>();
+        ShoeType shoeType = (ShoeType)shoeVal;
+        EquipShoe(shoeType);
     }
 
     private void EquipShoe(ShoeType shoeType)
     {
         shoeManager.SwitchTo(shoeType);
-        shoeTagUI.SwitchTo(shoeType);
     }
 
     /// <summary>
@@ -233,7 +246,13 @@ public class Player : MonoBehaviour
                 case ShoeType.BAREFOOT:
                     break;
                 case ShoeType.BOOTS:
-                    animator.SetTrigger("Kick");
+                    foreach(Animator animator in animators)
+                        animator.SetTrigger("Kick");
+                    shoeManager.UseShoes();
+                    break;
+                case ShoeType.FLIPFLOPS:
+                    foreach (Animator animator in animators)
+                        animator.SetTrigger("Fling");
                     shoeManager.UseShoes();
                     break;
                 default:
@@ -246,11 +265,17 @@ public class Player : MonoBehaviour
     //tell UI to pause or unpause
     public void OnPauseMenu(InputValue value)
     {
-        UIPauseMenu.instance.TogglePause();
-        if(UIPauseMenu.instance.paused)
-            inputSystem.SwitchCurrentActionMap("UI");
-        else
-            inputSystem.SwitchCurrentActionMap("Player");
+        if (StealFocusWhenSeen.activeThief == null)
+        {
+            UIPauseMenu.instance.TogglePause();
+            if (UIPauseMenu.instance.paused)
+                inputSystem.SwitchCurrentActionMap("UI");
+            else
+                inputSystem.SwitchCurrentActionMap("Player");
+        } else
+        {
+            StealFocusWhenSeen.SkipActive();
+        }
     }
 
     /// <summary>
@@ -323,15 +348,13 @@ public class Player : MonoBehaviour
         float timeSinceLast = footstepTiming;
         while (moving)
         {
-            List<AudioClip> currClips = footSounds[shoeManager.currShoe];
-            currFootSoundIdx = currFootSoundIdx % currClips.Count;
             timeSinceLast += Time.deltaTime;
             if (legForm && timeSinceLast >= footstepTiming)
             {
-                AudioManager.MakeNoise(transform.position, 1.3f, currClips[currFootSoundIdx], 1);
+                AudioManager.MakeNoise(transform.position, 1.3f, null, 0);
                 timeSinceLast = 0f;
+                onStep.Post(gameObject);
             }
-            ++currFootSoundIdx;
             yield return null;
         }
         makingFootsteps = false;
