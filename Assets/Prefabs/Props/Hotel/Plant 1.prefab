@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1192643566006354836}
   - component: {fileID: 1192643566006354837}
   - component: {fileID: 1192643566006354835}
+  - component: {fileID: 8167856025678866115}
   m_Layer: 0
   m_Name: Plant 1
   m_TagString: Untagged
@@ -128,19 +129,23 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &6497535060136271113
+--- !u!114 &8167856025678866115
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3898986169214333847}
+  m_GameObject: {fileID: 1192643566006354825}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 412755c12f73f904fb666590a14e5efc, type: 3}
+  m_Script: {fileID: 11500000, guid: 42877852c9da54bba9025ef0ed61f04c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animate: 1
+  KickSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 953db9994d77443c4bc309e0e6c2b9e6,
+      type: 2}
 --- !u!1 &1192643567575634163
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,6 +225,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &6497535060136271113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3898986169214333847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 412755c12f73f904fb666590a14e5efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animate: 1
 --- !u!1001 &1192643566704081829
 PrefabInstance:
   m_ObjectHideFlags: 0

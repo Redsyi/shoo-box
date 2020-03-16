@@ -8,27 +8,48 @@ public class PlayerShoeManager : MonoBehaviour
 
     private GameObject currShoeGameObject;
     public GameObject boots;
+    public GameObject sandals;
+    public SandalSlinger sandalSlinger;
+    private UIShoeTag shoeTagUI;
+    private bool[] acquiredShoes = { true, false, false, false };
+
+    private void Awake()
+    {
+        shoeTagUI = FindObjectOfType<UIShoeTag>();
+    }
 
     public void SwitchTo(ShoeType shoe)
     {
-        if (currShoeGameObject != null)
-            currShoeGameObject.SetActive(false);
-
-        switch (shoe)
+        if (acquiredShoes[(int)shoe])
         {
-            case ShoeType.BAREFOOT:
-                currShoeGameObject = null;
-                break;
-            case ShoeType.BOOTS:
-                boots.SetActive(true);
-                currShoeGameObject = boots;
-                break;
-            default:
-                currShoeGameObject = null;
-                break;
-        }
+            if (currShoeGameObject != null)
+                currShoeGameObject.SetActive(false);
 
-        currShoe = shoe;
+            switch (shoe)
+            {
+                case ShoeType.BAREFOOT:
+                    currShoeGameObject = null;
+                    break;
+                case ShoeType.BOOTS:
+                    boots.SetActive(true);
+                    currShoeGameObject = boots;
+                    break;
+                case ShoeType.FLIPFLOPS:
+                    //todo activate sandals
+                    sandals.SetActive(true);
+                    currShoeGameObject = sandals;
+                    break;
+                default:
+                    currShoeGameObject = null;
+                    break;
+            }
+
+            currShoe = shoe;
+            shoeTagUI.SwitchTo(shoe);
+        } else
+        {
+            shoeTagUI.Wiggle();
+        }
     }
 
     public void UseShoes()
@@ -40,8 +61,16 @@ public class PlayerShoeManager : MonoBehaviour
             case ShoeType.BOOTS:
                 boots.GetComponentInChildren<BootKicker>().Kick();
                 break;
+            case ShoeType.FLIPFLOPS:
+                sandalSlinger.Sling();
+                break;
             default:
                 break;
         }
+    }
+
+    public void Acquire(ShoeType shoe)
+    {
+        acquiredShoes[(int)shoe] = true;
     }
 }

@@ -59,7 +59,8 @@ public class Outlineable : MonoBehaviour
 
         foreach (Material material in materials)
         {
-            material.SetFloat("_NormalsSensitivity", (cameraScript.zoomed ? 1 : 0.75f));
+            if (cameraScript)
+                material.SetFloat("_NormalsSensitivity", (cameraScript.zoomed ? 1 : 0.75f));
             if (animate)
                 material.SetColor("_OutlineColor", outlineColor);
         }

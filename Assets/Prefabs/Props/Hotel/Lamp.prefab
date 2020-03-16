@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1658050251339257061}
   - component: {fileID: 4628433178413432210}
   - component: {fileID: -5921835363700492840}
+  - component: {fileID: 8015978076999984242}
   m_Layer: 0
   m_Name: Lamp
   m_TagString: Untagged
@@ -49,8 +50,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.8817523, z: 1.095839}
-  m_Center: {x: 0, y: 0.07863748, z: -0.04791951}
+  m_Size: {x: 1, y: 1.8817523, z: 1.1630397}
+  m_Center: {x: 0, y: 0.07863748, z: -0.08151984}
 --- !u!54 &874560301395732782
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -144,6 +145,23 @@ MonoBehaviour:
   clip: {fileID: 8300000, guid: e299b69fc7bdf57468a176acc48a3061, type: 3}
   AIRadius: 0
   volume: 1
+--- !u!114 &8015978076999984242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794987149289159132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42877852c9da54bba9025ef0ed61f04c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KickSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 953db9994d77443c4bc309e0e6c2b9e6,
+      type: 2}
 --- !u!1 &3778170043866980842
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,13 +186,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3778170043866980842}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.082, y: 0.931, z: -0.242}
+  m_LocalRotation: {x: 0.61462945, y: 0, z: 0, w: 0.78881603}
+  m_LocalPosition: {x: 0.031, y: 0.931, z: -0.242}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1041733405154145210}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 75.85, y: 0, z: 0}
 --- !u!108 &3013539720182068041
 Light:
   m_ObjectHideFlags: 0
@@ -184,12 +202,12 @@ Light:
   m_GameObject: {fileID: 3778170043866980842}
   m_Enabled: 1
   serializedVersion: 10
-  m_Type: 2
+  m_Type: 0
   m_Shape: 0
   m_Color: {r: 0.9339623, g: 0.81296486, b: 0.2819509, a: 1}
-  m_Intensity: 25
-  m_Range: 50
-  m_SpotAngle: 30
+  m_Intensity: 8.2
+  m_Range: 30.8
+  m_SpotAngle: 64.09524
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
