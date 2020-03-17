@@ -121,6 +121,7 @@ GameObject:
   - component: {fileID: 5567573035820658164}
   - component: {fileID: 5567573035820658167}
   - component: {fileID: 5567573035820658166}
+  - component: {fileID: 2527709128333595743}
   m_Layer: 0
   m_Name: Maid
   m_TagString: Untagged
@@ -181,7 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b2f666398a565843b8ca12a5d16f059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolPoint: {fileID: 0}
+  patrolPoints: []
   animator: {fileID: 1998002592483699888}
   pathfinder: {fileID: 5567573035820658167}
   targetPrefab: {fileID: 1146112242645686859, guid: fc24d7070b2a9d2499e6d4fe165d1da6,
@@ -194,6 +195,20 @@ MonoBehaviour:
   runSpeed: 5
   interests: 00000000
   beingRepelled: 0
+  deaf: 0
+--- !u!114 &2527709128333595743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5567573035820658165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7095d354cf4ec3742927c9a164929f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
 --- !u!95 &1998002592483699888
 Animator:
   serializedVersion: 3

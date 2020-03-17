@@ -5756,6 +5756,7 @@ GameObject:
   - component: {fileID: 2212071707321504984}
   - component: {fileID: 2212071707321504983}
   - component: {fileID: 2212071707321504982}
+  - component: {fileID: 3745959127944599250}
   m_Layer: 0
   m_Name: ShoeBox
   m_TagString: Player
@@ -5809,6 +5810,7 @@ MonoBehaviour:
   AISpotPoint: {fileID: 2047831534786856520}
   leggs:
   - {fileID: 7767701544792444691}
+  shoeSight: {fileID: 3745959127944599250}
   startingShoes: 
   baseSpeed: 200
   boxSpeedMultiplier: 0.3
@@ -5874,6 +5876,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &3745959127944599250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2212071707321504980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61daea9be82f4e941857bc89658d6e7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2212071707485408968
 GameObject:
   m_ObjectHideFlags: 0
