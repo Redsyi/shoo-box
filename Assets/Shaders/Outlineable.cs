@@ -35,7 +35,7 @@ public class Outlineable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (animate)
+        /*if (animate)
         {
             if (animatingToWhite)
             {
@@ -54,15 +54,15 @@ public class Outlineable : MonoBehaviour
                 }
             }
             outlineColor.r = outlineColor.g = outlineColor.b = currShade;
-        }
+        }*/
 
 
         foreach (Material material in materials)
         {
             if (cameraScript)
                 material.SetFloat("_NormalsSensitivity", (cameraScript.zoomed ? 1 : 0.75f));
-            if (animate)
-                material.SetColor("_OutlineColor", outlineColor);
+            /*if (animate)
+                material.SetColor("_OutlineColor", outlineColor);*/
         }
     }
 }

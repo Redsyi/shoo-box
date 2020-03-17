@@ -43,3 +43,10 @@ public enum AIInterest
     TSA,
     AIRPORT_CROWD
 }
+
+public enum ShoeSightType
+{
+    INTERACTABLE,
+    ENEMY,
+    OBJECTIVE
+}

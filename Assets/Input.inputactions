@@ -76,6 +76,14 @@
                     "expectedControlType": "Analog",
                     "processors": "",
                     "interactions": "Press"
+                },
+                {
+                    "name": "ShoeSight",
+                    "type": "Button",
+                    "id": "e430d3f4-e254-45fb-a450-e5e3018e19c7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press"
                 }
             ],
             "bindings": [
@@ -450,6 +458,28 @@
                     "processors": "Clamp(min=2,max=2)",
                     "groups": "Gamepad",
                     "action": "ChangeShoes",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "497591b5-0312-4068-bed4-adf3ac43b1a8",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "ShoeSight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "88d305cc-f43b-4ecd-a53e-bb513815e74d",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "ShoeSight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

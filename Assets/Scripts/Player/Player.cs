@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     public ParticleSystem walkingParticleSystem;
     public Transform AISpotPoint;
     public GameObject[] leggs;
+    public ShoeSight shoeSight;
 
     [Header("Stats")]
     public ShoeType[] startingShoes;
@@ -276,6 +277,11 @@ public class Player : MonoBehaviour
         {
             StealFocusWhenSeen.SkipActive();
         }
+    }
+
+    public void OnShoeSight()
+    {
+        shoeSight.ActivateSight();
     }
 
     /// <summary>
