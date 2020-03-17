@@ -11,6 +11,9 @@ public class ShoePickup : MonoBehaviour
         if (shoeType == ShoeType.BOOTS)
         {
             ObjectiveTracker.instance.CompleteObjective(0);
+        } else if (shoeType == ShoeType.FLIPFLOPS)
+        {
+            ObjectiveTracker.instance.CompleteObjective(1);
         }
     }
 }

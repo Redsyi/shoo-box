@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 163345623258312482}
   - component: {fileID: 163345623258312481}
   - component: {fileID: 163345623258312480}
+  - component: {fileID: 5261151827160055188}
   m_Layer: 0
   m_Name: Terminal Walker
   m_TagString: Untagged
@@ -71,7 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b2f666398a565843b8ca12a5d16f059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolPoint: {fileID: 0}
+  patrolPoints: []
   animator: {fileID: 8118281788187723320}
   pathfinder: {fileID: 163345623258312481}
   targetPrefab: {fileID: 1146112242645686859, guid: fc24d7070b2a9d2499e6d4fe165d1da6,
@@ -85,6 +86,19 @@ MonoBehaviour:
   interests: 08000000
   beingRepelled: 0
   deaf: 1
+--- !u!114 &5261151827160055188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163345623258312483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7095d354cf4ec3742927c9a164929f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 2
 --- !u!1 &2845972140082328720
 GameObject:
   m_ObjectHideFlags: 0

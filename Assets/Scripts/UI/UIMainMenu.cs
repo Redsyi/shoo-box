@@ -6,7 +6,10 @@ using UnityEngine.EventSystems;
 
 public class UIMainMenu : MonoBehaviour
 {
+    public bool options { get; private set; }
     public GameObject initialButton;
+    public GameObject optionsMenu;
+    public GameObject mainMenu;
 
     private void Start()
     {
@@ -15,5 +18,18 @@ public class UIMainMenu : MonoBehaviour
     public void PlayButton()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void OptionsButton()
+    {
+        options = !options;
+        optionsMenu.SetActive(options);
+        mainMenu.SetActive(!options);
+
+    }
+
+    public void QuitButton()
+    {
+        Application.Quit();
     }
 }

@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     public ParticleSystem walkingParticleSystem;
     public Transform AISpotPoint;
     public GameObject[] leggs;
+    public ShoeSight shoeSight;
 
     [Header("Stats")]
     public ShoeType[] startingShoes;
@@ -265,11 +266,22 @@ public class Player : MonoBehaviour
     //tell UI to pause or unpause
     public void OnPauseMenu(InputValue value)
     {
-        UIPauseMenu.instance.TogglePause();
-        if(UIPauseMenu.instance.paused)
-            inputSystem.SwitchCurrentActionMap("UI");
-        else
-            inputSystem.SwitchCurrentActionMap("Player");
+        if (StealFocusWhenSeen.activeThief == null)
+        {
+            UIPauseMenu.instance.TogglePause();
+            if (UIPauseMenu.instance.paused)
+                inputSystem.SwitchCurrentActionMap("UI");
+            else
+                inputSystem.SwitchCurrentActionMap("Player");
+        } else
+        {
+            StealFocusWhenSeen.SkipActive();
+        }
+    }
+
+    public void OnShoeSight()
+    {
+        shoeSight.ActivateSight();
     }
 
     /// <summary>

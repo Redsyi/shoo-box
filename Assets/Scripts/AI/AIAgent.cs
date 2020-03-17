@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class AIAgent : MonoBehaviour
 {
-    public Transform patrolPoint;
+    public Transform[] patrolPoints;
     public Animator animator;
     public AIStateNode currState;
     public NavMeshAgent pathfinder;
@@ -29,6 +29,8 @@ public class AIAgent : MonoBehaviour
     public static bool blindAll;
     public bool deaf;
     private bool reachedInteractable;
+    private AKEventNPC wwiseComponent;
+    private int currPatrolPoint;
 
     void Start()
     {
@@ -47,13 +49,23 @@ public class AIAgent : MonoBehaviour
         myBubble.worldAnchor = bubbleAnchor;
 
         StartCoroutine(CheckPos());
+        wwiseComponent = GetComponent<AKEventNPC>();
     }
 
     IEnumerator CheckPos()
     {
         while (true)
         {
-            stopped = (prevPos - transform.position).sqrMagnitude < walkSpeed*.05f;
+            stopped = (prevPos - transform.position).sqrMagnitude <= walkSpeed*.05f;
+            /*if (!stopped)
+            {
+                transform.LookAt(transform.position + (transform.position - prevPos));
+            }
+            else */if (stopped && currState.state != AIState.IDLE)
+            {
+                transform.LookAt(currState.location);
+                transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y);
+            }
             prevPos = transform.position;
             yield return new WaitForSeconds(.2f);
         }
@@ -65,10 +77,13 @@ public class AIAgent : MonoBehaviour
     /// </summary>
     public void Idle()
     {
-        pathfinder.speed = walkSpeed;
-        stoppedTime = 0f;
-        currState.state = AIState.IDLE;
-        currState.location = patrolPoint;
+        if (currState.state != AIState.IDLE || patrolPoints.Length > 1 || !currState.location)
+        {
+            pathfinder.speed = walkSpeed;
+            stoppedTime = 0f;
+            currState.state = AIState.IDLE;
+            currState.location = patrolPoints[currPatrolPoint];
+        }
     }
 
     /// <summary>
@@ -84,6 +99,7 @@ public class AIAgent : MonoBehaviour
             stoppedTime = 0f;
             currState.state = AIState.INVESTIGATE;
             currState.location = location.transform;
+            wwiseComponent?.StartedInvestigation();
             timer = investigateTime;
         }
     }
@@ -110,6 +126,7 @@ public class AIAgent : MonoBehaviour
             thingsToInteractWith.Enqueue(interactable);
             if (currState.state != AIState.CHASE && currState.state != AIState.INTERACT)
             {
+                wwiseComponent?.SomethingWrong();
                 pathfinder.speed = runSpeed;
                 currState.state = AIState.INTERACT;
                 currState.location = (interactable as MonoBehaviour).transform;
@@ -127,6 +144,7 @@ public class AIAgent : MonoBehaviour
     {
         if (currState.state != AIState.CHASE)
         {
+            wwiseComponent?.PlayerSpotted();
             myBubble.Spotted();
         }
         pathfinder.speed = runSpeed;
@@ -153,6 +171,7 @@ public class AIAgent : MonoBehaviour
     public void CatchPlayer(Player player)
     {
         //this is the part where the player fucking dies
+        wwiseComponent?.PlayerCaught();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     
@@ -169,14 +188,8 @@ public class AIAgent : MonoBehaviour
         }
         bool closeToTarget = (transform.position - currState.location.position).sqrMagnitude < 0.4f;
         bool closeEnough = (reachedInteractable && currState.state == AIState.INTERACT) || (stoppedTime >= giveUpTime) || closeToTarget;
-        //print(stoppedTime);
-        if (!closeToTarget && !beingRepelled)
-        {
-            transform.LookAt(currState.location);
-            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
-        }
-
-        animator.SetBool("Moving", stoppedTime < 0.15f);
+        
+        animator.SetBool("Moving", stoppedTime < 0.1f);
         animator.SetBool("Running", currState.state == AIState.CHASE || currState.state == AIState.INTERACT);
         animator.SetBool("Interacting", currState.state == AIState.INTERACT && closeEnough);
 
@@ -190,6 +203,24 @@ public class AIAgent : MonoBehaviour
                 if (!closeEnough)
                 {
                     pathfinder.destination = currState.location.position;
+                    timer = -1;
+                } else if (timer == -1)
+                {
+                    AIPatrolPoint patrolPoint = patrolPoints[currPatrolPoint].GetComponent<AIPatrolPoint>();
+                    timer = patrolPoint.stopTime;
+                } else
+                {
+                    timer -= Time.deltaTime;
+                    if (timer <= 0)
+                    {
+                        currPatrolPoint = (currPatrolPoint + 1) % patrolPoints.Length;
+                        Idle();
+                    }
+                    AIPatrolPoint patrolPoint = patrolPoints[currPatrolPoint].GetComponent<AIPatrolPoint>();
+                    if (patrolPoint.faceDirection)
+                    {
+                        transform.rotation = patrolPoint.transform.rotation;
+                    }
                 }
                 myBubble.StopInvestigating();
                 break;
@@ -218,6 +249,7 @@ public class AIAgent : MonoBehaviour
                     }
                     else
                     {
+                        wwiseComponent?.GiveUp();
                         Idle();
                     }
                 }
@@ -232,6 +264,8 @@ public class AIAgent : MonoBehaviour
                     pathfinder.destination = currState.location.position;
                 } else
                 {
+                    if (!reachedInteractable)
+                        wwiseComponent?.Fixing();
                     reachedInteractable = true;
                     if (timer >= 0)
                     {
@@ -290,7 +324,7 @@ public class AIAgent : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if (currState != null)
+        if (currState != null && currState.location)
         {
             switch (currState.state)
             {

@@ -110,6 +110,8 @@ GameObject:
   - component: {fileID: 3991350790992361261}
   - component: {fileID: 2919955986540112079}
   - component: {fileID: 1279972217461807197}
+  - component: {fileID: 8994824025002927154}
+  - component: {fileID: 6725365927589094084}
   m_Layer: 0
   m_Name: Chair 1
   m_TagString: Untagged
@@ -269,3 +271,33 @@ MonoBehaviour:
   clip: {fileID: 8300000, guid: 3d89d256d8ef5204abb34e782b312fe0, type: 3}
   AIRadius: 0
   volume: 1
+--- !u!114 &8994824025002927154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3991350790992361268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42877852c9da54bba9025ef0ed61f04c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KickSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 953db9994d77443c4bc309e0e6c2b9e6,
+      type: 2}
+--- !u!114 &6725365927589094084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3991350790992361268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7095d354cf4ec3742927c9a164929f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
