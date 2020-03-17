@@ -54,6 +54,8 @@ public static class Utilities
     }
 
 #if UNITY_EDITOR
+    [MenuItem("Scenes/Main Menu")] public static void MainMenuScene() => 
+        OpenScene("Assets/Scenes/MainMenu.unity");
     [MenuItem("Scenes/Main/Hotel Top Floor")] public static void TopFloorScene() => 
         OpenScene("Assets/Scenes/Hotel/hotel_top_level.unity");
     [MenuItem("Scenes/Main/Hotel Lobby")] public static void LobbyScene() => 
@@ -63,7 +65,7 @@ public static class Utilities
     [MenuItem("Scenes/Main/Airport Terminal 1")] public static void Terminal1() => 
         OpenScene("Assets/Scenes/testing and temp scenes/TSATest.unity");
     [MenuItem("Scenes/Main/City")] public static void City() => 
-        OpenScene("Assets/Scenes/Whitebox/city_WB.unity");
+        OpenScene("Assets/Scenes/City/city.unity");
     [MenuItem("Scenes/Cutscenes/Intro Cutscene")] public static void IntroCS() => 
         OpenScene("Assets/Scenes/Cutscenes/IntroCutscene.unity");
     [MenuItem("Scenes/Cutscenes/Airport Cutscene")] public static void AirportCS() => 

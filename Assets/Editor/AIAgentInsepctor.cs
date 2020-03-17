@@ -13,10 +13,10 @@ public class AIAgentInsepctor : Editor
         {
             GameObject patrolPoint = PrefabUtility.InstantiatePrefab(agent.targetPrefab) as GameObject;
             patrolPoint.transform.position = agent.transform.position;
-            patrolPoint.name = $"{agent.gameObject.name} patrol point";
+            patrolPoint.name = $"{agent.gameObject.name} patrol point {agent.patrolPoints.Length + 1}";
             EditorUtility.SetDirty(target);
             //Undo.RecordObject(target, "Set Patrol Point");
-            agent.patrolPoint = patrolPoint.transform;
+            ArrayUtility.Insert(ref agent.patrolPoints, agent.patrolPoints.Length, patrolPoint.transform);
         }
     }
 }

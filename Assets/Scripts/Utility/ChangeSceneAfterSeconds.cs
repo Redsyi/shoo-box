@@ -17,4 +17,15 @@ public class ChangeSceneAfterSeconds : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(destinationScene);
     }
+
+    public void Skip()
+    {
+        CancelInvoke("ChangeScene");
+        ChangeScene();
+    }
+
+    public void OnSkip()
+    {
+        Skip();
+    }
 }

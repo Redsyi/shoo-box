@@ -13917,6 +13917,7 @@ GameObject:
   - component: {fileID: 6614859515079621532}
   - component: {fileID: 6614859515079621523}
   - component: {fileID: 6614859515079621522}
+  - component: {fileID: 1991632579927642834}
   m_Layer: 0
   m_Name: Suitcase
   m_TagString: Player
@@ -13973,6 +13974,7 @@ MonoBehaviour:
   leggs:
   - {fileID: 7513194807761336763}
   - {fileID: 6649645348659425129}
+  shoeSight: {fileID: 1991632579927642834}
   startingShoes: 0100000002000000
   baseSpeed: 400
   boxSpeedMultiplier: 0.3
@@ -14038,6 +14040,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1991632579927642834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6614859515079621520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61daea9be82f4e941857bc89658d6e7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6614859516181412372
 GameObject:
   m_ObjectHideFlags: 0
