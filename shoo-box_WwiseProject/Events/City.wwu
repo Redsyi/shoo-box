@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{291AF7F8-0154-47C2-A002-3E583ECD445B}" SchemaVersion="94" RootDocumentID="{99A03157-66C3-46F4-A8D3-E5D78B47C9B8}">
+<WwiseDocument Type="WorkUnit" ID="{2E870825-6604-414D-BA93-DE8F10D15E6B}" SchemaVersion="94">
 	<Events>
-		<WorkUnit Name="City" ID="{291AF7F8-0154-47C2-A002-3E583ECD445B}" OwnerID="{99A03157-66C3-46F4-A8D3-E5D78B47C9B8}" PersistMode="Nested">
+		<WorkUnit Name="City" ID="{2E870825-6604-414D-BA93-DE8F10D15E6B}" PersistMode="Standalone">
 			<ChildrenList>
-				<Event Name="Detonation" ID="{CD91878E-18BD-4342-9B24-57565DBA9A4C}">
+				<Event Name="City_Detonation" ID="{1D7BB682-8287-4993-A26F-650EB3D27271}">
 					<ChildrenList>
-						<Action Name="" ID="{B3E0CE58-4F0F-4D83-8668-7D2111A3E5FE}" ShortID="523860004">
+						<Action Name="" ID="{23C5390A-92AC-463F-8E49-6F7EBDF88A49}" ShortID="22523870">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="City Detonation" ID="{9911C370-81AB-4647-8BB5-8B15984E0F94}" WorkUnitID="{ED283715-517C-46E9-9FF8-F0DF71A35DB0}"/>
+									<ObjectRef Name="City_Detonation_Explosion" ID="{CA8D11F8-2271-4AC8-952A-1B3DAF14E704}" WorkUnitID="{ED283715-517C-46E9-9FF8-F0DF71A35DB0}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{17B1C9A8-9A81-42A5-B51B-C59F66B0CD91}" ShortID="408754389">
+							<PropertyList>
+								<Property Name="Delay" Type="Real64" Value="0.05"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="City_Detonation_BrickFalling" ID="{8C6F747D-3930-4AC9-9760-D23D71716031}" WorkUnitID="{ED283715-517C-46E9-9FF8-F0DF71A35DB0}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

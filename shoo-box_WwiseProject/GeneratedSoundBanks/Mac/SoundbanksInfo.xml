@@ -21,11 +21,17 @@
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<IncludedEvents>
-				<Event Id="3925202398" Name="Detonation" ObjectPath="\Events\Default Work Unit\City\Detonation" DurationType="OneShot" DurationMin="6.750750" DurationMax="6.750750"/>
+				<Event Id="3821011336" Name="City_Detonation" ObjectPath="\Events\City\City_Detonation" DurationType="OneShot" DurationMin="1.957249" DurationMax="7.828995"/>
+				<Event Id="3710703494" Name="Door_Squeak" ObjectPath="\Events\Hotel\Door_Squeak" DurationType="OneShot" DurationMin="0.398979" DurationMax="0.398979"/>
 				<Event Id="3138446709" Name="Music_Hotel" ObjectPath="\Events\Music\Music_Hotel" DurationType="OneShot" DurationMin="36.960136" DurationMax="36.960136"/>
+				<Event Id="2969002452" Name="Object_Fall" ObjectPath="\Events\Hotel\Object_Fall" DurationType="OneShot" DurationMin="0.985937" DurationMax="0.985937"/>
+				<Event Id="3401439988" Name="Phone_Ring" ObjectPath="\Events\Hotel\Phone_Ring" DurationType="OneShot" DurationMin="4.498437" DurationMax="4.498437"/>
+				<Event Id="3767407452" Name="Player_City_Walk" ObjectPath="\Events\Player\Player_City_Walk" DurationType="OneShot" DurationMin="1.224521" DurationMax="1.542800"/>
+				<Event Id="3116711629" Name="Toilet_Flush" ObjectPath="\Events\Hotel\Toilet_Flush" DurationType="OneShot" DurationMin="15.845959" DurationMax="15.845959"/>
+				<Event Id="616544330" Name="Trash_Can" ObjectPath="\Events\Hotel\Trash_Can" DurationType="OneShot" DurationMin="0.985937" DurationMax="0.985937"/>
 				<Event Id="2249769530" Name="UI_Click" ObjectPath="\Events\Default Work Unit\UI\UI_Click" DurationType="OneShot" DurationMin="1.354313" DurationMax="1.354313"/>
 				<Event Id="216067002" Name="UI_Confirm" ObjectPath="\Events\Default Work Unit\UI\UI_Confirm" DurationType="OneShot" DurationMin="1.354313" DurationMax="1.354313"/>
-				<Event Id="2108779966" Name="Walk" ObjectPath="\Events\Default Work Unit\Walk" DurationType="OneShot" DurationMin="1.354313" DurationMax="1.354313"/>
+				<Event Id="2108779966" Name="Walk" ObjectPath="\Events\Default Work Unit\Walk" DurationType="OneShot" DurationMin="0.898689" DurationMax="0.898689"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
 				<File Id="36077417" Language="SFX">
@@ -40,37 +46,81 @@
 					<ShortName>Boots_Concrete_6.wav</ShortName>
 					<Path>SFX/Boots_Concrete_6_10C4C929.wem</Path>
 				</File>
+				<File Id="227284115" Language="SFX">
+					<ShortName>Player_CityWalk_3.wav</ShortName>
+					<Path>SFX/Player_CityWalk_3_10C4C929.wem</Path>
+				</File>
 				<File Id="249889442" Language="SFX">
 					<ShortName>Boots_Concrete_1.wav</ShortName>
 					<Path>SFX/Boots_Concrete_1_10C4C929.wem</Path>
+				</File>
+				<File Id="307602047" Language="SFX">
+					<ShortName>Player_CityWalk_5.wav</ShortName>
+					<Path>SFX/Player_CityWalk_5_10C4C929.wem</Path>
 				</File>
 				<File Id="366139683" Language="SFX">
 					<ShortName>Boots_Concrete_3.wav</ShortName>
 					<Path>SFX/Boots_Concrete_3_10C4C929.wem</Path>
 				</File>
+				<File Id="372205802" Language="SFX">
+					<ShortName>Toilet Flush.wav</ShortName>
+					<Path>SFX/Toilet Flush_10C4C929.wem</Path>
+				</File>
+				<File Id="436847761" Language="SFX">
+					<ShortName>Player_CityWalk_6.wav</ShortName>
+					<Path>SFX/Player_CityWalk_6_10C4C929.wem</Path>
+				</File>
+				<File Id="488709360" Language="SFX">
+					<ShortName>Phone Ring.wav</ShortName>
+					<Path>SFX/Phone Ring_10C4C929.wem</Path>
+				</File>
 				<File Id="567189631" Language="SFX">
 					<ShortName>Boots_Concrete_4.wav</ShortName>
 					<Path>SFX/Boots_Concrete_4_10C4C929.wem</Path>
-				</File>
-				<File Id="570299354" Language="SFX">
-					<ShortName>Building Detonation.wav</ShortName>
-					<Path>SFX/Building Detonation_10C4C929.wem</Path>
 				</File>
 				<File Id="765584950" Language="SFX">
 					<ShortName>4_16M_Chase3.wav</ShortName>
 					<Path>SFX/4_16M_Chase3_D79FB2B7.wem</Path>
 				</File>
+				<File Id="789488181" Language="SFX">
+					<ShortName>Player_CityWalk_4.wav</ShortName>
+					<Path>SFX/Player_CityWalk_4_10C4C929.wem</Path>
+				</File>
+				<File Id="791544164" Language="SFX">
+					<ShortName>Player_CityWalk_2.wav</ShortName>
+					<Path>SFX/Player_CityWalk_2_10C4C929.wem</Path>
+				</File>
 				<File Id="811582187" Language="SFX">
 					<ShortName>Boots_Concrete_8.wav</ShortName>
 					<Path>SFX/Boots_Concrete_8_10C4C929.wem</Path>
+				</File>
+				<File Id="827320432" Language="SFX">
+					<ShortName>Breaker Switch.wav</ShortName>
+					<Path>SFX/Breaker Switch_10C4C929.wem</Path>
 				</File>
 				<File Id="978201923" Language="SFX">
 					<ShortName>Confirmation.wav</ShortName>
 					<Path>SFX/Confirmation_10C4C929.wem</Path>
 				</File>
+				<File Id="998939333" Language="SFX">
+					<ShortName>City_Detonation_Explosion.wav</ShortName>
+					<Path>SFX/City_Detonation_Explosion_DB4ED11D.wem</Path>
+				</File>
+				<File Id="1028398700" Language="SFX">
+					<ShortName>General Object Fall.wav</ShortName>
+					<Path>SFX/General Object Fall_10C4C929.wem</Path>
+				</File>
 				<File Id="1048682405" Language="SFX">
 					<ShortName>Boots_Concrete_7.wav</ShortName>
 					<Path>SFX/Boots_Concrete_7_10C4C929.wem</Path>
+				</File>
+				<File Id="1054519165" Language="SFX">
+					<ShortName>Player_CityWalk_1.wav</ShortName>
+					<Path>SFX/Player_CityWalk_1_10C4C929.wem</Path>
+				</File>
+				<File Id="1063661741" Language="SFX">
+					<ShortName>City_Detonation_BrickFalling.wav</ShortName>
+					<Path>SFX/City_Detonation_BrickFalling_85B2AE61.wem</Path>
 				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>

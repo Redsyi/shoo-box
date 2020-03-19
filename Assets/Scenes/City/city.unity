@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 70593981}
   - component: {fileID: 70593980}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Sideawalk Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -318,7 +318,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 15.825001, y: -44.341003, z: -0.082}
 --- !u!1 &413339379
 GameObject:
@@ -435,7 +435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e09517d1b900f4119a872b3ef36df52f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerList: f7e1664c
+  triggerList: ae8d9d44
   useOtherObject: 0
   data:
     idInternal: 0
@@ -479,7 +479,7 @@ Transform:
   m_LocalScale: {x: 2.1661932, y: 2.707741, z: 1.348374}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!64 &722681332
 MeshCollider:
@@ -554,7 +554,7 @@ GameObject:
   - component: {fileID: 1046688301}
   - component: {fileID: 1046688300}
   m_Layer: 0
-  m_Name: Plane (6)
+  m_Name: Sideawalk Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -747,7 +747,7 @@ GameObject:
   - component: {fileID: 1243857306}
   - component: {fileID: 1243857305}
   m_Layer: 0
-  m_Name: Plane (5)
+  m_Name: Sideawalk Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -881,6 +881,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7342634219722088932, guid: 7e33d4d71a9dc1c4f8debe5f5d00d743,
+        type: 3}
+      propertyPath: KickSound.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: 5a35aaf5db66240f8b7fb8ba6d5a1a94,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e33d4d71a9dc1c4f8debe5f5d00d743, type: 3}
 --- !u!1 &1714430215
@@ -895,7 +901,7 @@ GameObject:
   - component: {fileID: 1714430217}
   - component: {fileID: 1714430216}
   m_Layer: 0
-  m_Name: Plane (2)
+  m_Name: 'Sideawalk Line '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -962,6 +968,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1746729729 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2939763836190038457, guid: e884bba79b02d3c40a2e140b47809ac2,
+    type: 3}
+  m_PrefabInstance: {fileID: 6524572073966097128}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1746729733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1746729729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42877852c9da54bba9025ef0ed61f04c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KickSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 5a35aaf5db66240f8b7fb8ba6d5a1a94,
+      type: 2}
 --- !u!1 &1845474402
 GameObject:
   m_ObjectHideFlags: 0
@@ -974,7 +1003,7 @@ GameObject:
   - component: {fileID: 1845474404}
   - component: {fileID: 1845474403}
   m_Layer: 0
-  m_Name: Plane (3)
+  m_Name: Sideawalk Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1053,7 +1082,7 @@ GameObject:
   - component: {fileID: 1954834298}
   - component: {fileID: 1954834297}
   m_Layer: 0
-  m_Name: Plane (4)
+  m_Name: Sideawalk Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9273,7 +9302,7 @@ GameObject:
   - component: {fileID: 6141127185640715390}
   - component: {fileID: 4745078454951745107}
   m_Layer: 0
-  m_Name: pasted__pCylinder2
+  m_Name: Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

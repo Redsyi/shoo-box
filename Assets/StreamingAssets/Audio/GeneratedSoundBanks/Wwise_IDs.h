@@ -13,8 +13,14 @@ namespace AK
 {
     namespace EVENTS
     {
-        static const AkUniqueID DETONATION = 3925202398U;
+        static const AkUniqueID CITY_DETONATION = 3821011336U;
+        static const AkUniqueID DOOR_SQUEAK = 3710703494U;
         static const AkUniqueID MUSIC_HOTEL = 3138446709U;
+        static const AkUniqueID OBJECT_FALL = 2969002452U;
+        static const AkUniqueID PHONE_RING = 3401439988U;
+        static const AkUniqueID PLAYER_CITY_WALK = 3767407452U;
+        static const AkUniqueID TOILET_FLUSH = 3116711629U;
+        static const AkUniqueID TRASH_CAN = 616544330U;
         static const AkUniqueID UI_CLICK = 2249769530U;
         static const AkUniqueID UI_CONFIRM = 216067002U;
         static const AkUniqueID WALK = 2108779966U;

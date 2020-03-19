@@ -338,6 +338,12 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.95
       objectReference: {fileID: 0}
+    - target: {fileID: 9054308630356748184, guid: 8462516345875d247bef8768e3addded,
+        type: 3}
+      propertyPath: KickSound.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: b922117b5124e47708d2fab6ccaecb52,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8462516345875d247bef8768e3addded, type: 3}
 --- !u!1001 &26470741
@@ -1610,6 +1616,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lamp (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8015978076999984242, guid: 1b933d0c97b206b4a9d2fde0c01f1ef3,
+        type: 3}
+      propertyPath: KickSound.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: b922117b5124e47708d2fab6ccaecb52,
+        type: 2}
     - target: {fileID: 9186981451922761257, guid: 1b933d0c97b206b4a9d2fde0c01f1ef3,
         type: 3}
       propertyPath: m_Size.z
@@ -2784,6 +2796,12 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 2068243574865263976, guid: 360267dac4e9d3d4ea6406da7f5cae6b,
+        type: 3}
+      propertyPath: KickSound.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: b922117b5124e47708d2fab6ccaecb52,
+        type: 2}
     - target: {fileID: 2735994298237889603, guid: 360267dac4e9d3d4ea6406da7f5cae6b,
         type: 3}
       propertyPath: m_Layer
@@ -3462,6 +3480,12 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7315607617140194819, guid: dffef4d40bfeeca40a68f1e3f1c636b4,
+        type: 3}
+      propertyPath: KickSound.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: c669a9996ae7c4cfeb3f98d0ea1f9c85,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dffef4d40bfeeca40a68f1e3f1c636b4, type: 3}
 --- !u!1 &743641783 stripped
@@ -4774,6 +4798,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 7140179386771930445, guid: 541ce2f9135f8154e8389bc1d9e64e95,
+        type: 3}
+      propertyPath: KickSound.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: b922117b5124e47708d2fab6ccaecb52,
+        type: 2}
     - target: {fileID: 8465754623683371254, guid: 541ce2f9135f8154e8389bc1d9e64e95,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
@@ -5138,6 +5168,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8105881437851243299}
     m_Modifications:
+    - target: {fileID: -5361188077801061111, guid: 8d7dc027074ac35488ee43bd3f507548,
+        type: 3}
+      propertyPath: KickSound.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: b922117b5124e47708d2fab6ccaecb52,
+        type: 2}
     - target: {fileID: 4423601689488482, guid: 8d7dc027074ac35488ee43bd3f507548, type: 3}
       propertyPath: m_ConnectedAnchor.x
       value: -0.00000011920929
@@ -5869,7 +5905,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1214011162}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65fa2774fcf9c4c108c6a8b57048434f, type: 3}
+  m_Script: {fileID: 11500000, guid: aad678c49d20d428eb99133415a08138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   triggerList: f7e1664c
@@ -5880,8 +5916,7 @@ MonoBehaviour:
   data:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 6f2392baad1b044cc99c7150ddb12438,
-      type: 2}
+    WwiseObjectReference: {fileID: 0}
   useCallbacks: 0
   Callbacks: []
   playingId: 0
@@ -5890,6 +5925,10 @@ MonoBehaviour:
   eventIdInternal: 0
   valueGuidInternal: 
   m_callbackDataInternal: {fileID: 0}
+  MultiPositionType: 1
+  multiPositionTypeLabel: 0
+  LargeModePositions: []
+  multiPositionArray: []
 --- !u!114 &1214011164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5905,7 +5944,7 @@ MonoBehaviour:
   m_listeners:
     initialListenerList: []
     useDefaultListeners: 1
-  isEnvironmentAware: 1
+  isEnvironmentAware: 0
   isStaticObject: 0
   m_positionOffsetData:
     KeepMe: 0
@@ -5920,7 +5959,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1214011162}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.087577, y: 1.9088428, z: 0.10314846}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6331,6 +6370,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7382485142787424087, guid: 1e6e01a94acc771439340658bb75a395,
+        type: 3}
+      propertyPath: KickSound.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: b922117b5124e47708d2fab6ccaecb52,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e6e01a94acc771439340658bb75a395, type: 3}
 --- !u!1 &1318415212 stripped
@@ -6339,22 +6384,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1318415211}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1318415213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1318415212}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42877852c9da54bba9025ef0ed61f04c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  KickSound:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 0}
 --- !u!1 &1324019576
 GameObject:
   m_ObjectHideFlags: 0
@@ -9025,6 +9054,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8105881437851243299}
     m_Modifications:
+    - target: {fileID: -398348750555227762, guid: 37084fbaa1134394cbf7dd29faf262f8,
+        type: 3}
+      propertyPath: KickSound.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: b922117b5124e47708d2fab6ccaecb52,
+        type: 2}
     - target: {fileID: 1367511070, guid: 37084fbaa1134394cbf7dd29faf262f8, type: 3}
       propertyPath: m_Size.y
       value: 1.2998234
@@ -10447,6 +10482,12 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2629925140011485214, guid: 6627dfe1b13580544b7b0631b1c987a7,
+        type: 3}
+      propertyPath: KickSound.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: 7f47c1c82792440f1a79382cf05a27c8,
+        type: 2}
     - target: {fileID: 3382438256838085419, guid: 6627dfe1b13580544b7b0631b1c987a7,
         type: 3}
       propertyPath: m_Size.x
