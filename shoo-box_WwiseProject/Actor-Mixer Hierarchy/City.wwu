@@ -3,7 +3,36 @@
 	<AudioObjects>
 		<WorkUnit Name="City" ID="{ED283715-517C-46E9-9FF8-F0DF71A35DB0}" PersistMode="Standalone">
 			<ChildrenList>
-				<Sound Name="City Detonation" ID="{9911C370-81AB-4647-8BB5-8B15984E0F94}" ShortID="742205991">
+				<Sound Name="City_Detonation_Explosion" ID="{CA8D11F8-2271-4AC8-952A-1B3DAF14E704}" ShortID="264553213">
+					<PropertyList>
+						<Property Name="Lowpass" Type="int16">
+							<ValueList>
+								<Value>8</Value>
+							</ValueList>
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{63206619-75B7-44D3-A459-72A74BDB6B7F}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+						<Property Name="Pitch" Type="int32">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{24065A04-F77C-496F-ABB3-0E4EC94035F3}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Max" Type="Real64" Value="1200"/>
+											<Property Name="Min" Type="Real64" Value="-1200"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
@@ -13,13 +42,60 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<AudioFileSource Name="Building Detonation" ID="{8FEC3F70-414F-4E2E-8DFC-84CADE7033E1}" ShortID="570299354">
+						<AudioFileSource Name="City_Detonation_Explosion" ID="{4C8BD8C9-5AC2-4271-B09A-DF6DC00ED905}" ShortID="998939333">
+							<PropertyList>
+								<Property Name="FadeOutDuration" Type="Real64" Value="1.27748567708333"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="3.91449739583333"/>
+							</PropertyList>
 							<Language>SFX</Language>
-							<AudioFile>Building Detonation.wav</AudioFile>
+							<AudioFile>City_Detonation_Explosion.wav</AudioFile>
 						</AudioFileSource>
 					</ChildrenList>
 					<ActiveSourceList>
-						<ActiveSource Name="Building Detonation" ID="{8FEC3F70-414F-4E2E-8DFC-84CADE7033E1}" Platform="Linked"/>
+						<ActiveSource Name="City_Detonation_Explosion" ID="{4C8BD8C9-5AC2-4271-B09A-DF6DC00ED905}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="City_Detonation_BrickFalling" ID="{8C6F747D-3930-4AC9-9760-D23D71716031}" ShortID="682405678">
+					<PropertyList>
+						<Property Name="Pitch" Type="int32">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{2B0E8554-7B6C-4B26-94BE-95BAFE637A7E}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Max" Type="Real64" Value="300"/>
+											<Property Name="Min" Type="Real64" Value="-1200"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+						</Reference>
+						<Reference Name="Effect0" CompanyID="4095" PluginID="65535" PluginType="15">
+							<ObjectRef Name="One_Tap_Half_Second" ID="{B8FE0D3B-7AAB-4344-89FE-177602B7BF19}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="City_Detonation_BrickFalling" ID="{D8AD8E2E-D26D-4A95-9BDF-7BE8863B8FB6}" ShortID="1063661741">
+							<PropertyList>
+								<Property Name="FadeOutDuration" Type="Real64" Value="0.364106336805555"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="1.47947005208333"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>City_Detonation_BrickFalling.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="City_Detonation_BrickFalling" ID="{D8AD8E2E-D26D-4A95-9BDF-7BE8863B8FB6}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
 			</ChildrenList>

@@ -31,7 +31,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 22178d79115b0b47a78389e1469b9d8a
     GuidInternal: 
-    m_lastTime: -8586176475284775808
+    m_lastTime: -8586169559474775808
     List:
     - name: Main
       guid: cab15ff7703b3c4683e28bb16d5b7aab
@@ -43,11 +43,29 @@ MonoBehaviour:
         ObjectType: 7
       Path: Default Work Unit/Main
   EventWwu:
+  - PhysicalPath: Events/City.wwu
+    ParentPhysicalPath: 
+    guid: 2508872e04664d41ba93de8f10d15e6b
+    GuidInternal: 
+    m_lastTime: -8586169600974775808
+    List:
+    - name: City_Detonation
+      guid: 82b67b1d87829349a26f650eb3d27271
+      id: 3821011336
+      PathAndIcons:
+      - ElementName: City
+        ObjectType: 12
+      - ElementName: City_Detonation
+        ObjectType: 3
+      Path: City/City_Detonation
+      maxAttenuation: 0
+      maxDuration: 7.828995
+      minDuration: 1.957249
   - PhysicalPath: Events/Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: 5731a099c366f446a8d3e5d78b47c9b8
     GuidInternal: 
-    m_lastTime: -8586176475284775808
+    m_lastTime: -8586169659514775808
     List:
     - name: Fling
       guid: ccf0c2beef94a945a81fa610736ac630
@@ -119,6 +137,142 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit/Walk
       maxAttenuation: 0
+      maxDuration: 0.898689
+      minDuration: 0.898689
+  - PhysicalPath: Events/Hotel.wwu
+    ParentPhysicalPath: 
+    guid: cafbdd67d35b684a8ffe463fd892eec0
+    GuidInternal: 
+    m_lastTime: -8586169676224775808
+    List:
+    - name: Door_Squeak
+      guid: f8bac18490a01244a167bebb7702f537
+      id: 3710703494
+      PathAndIcons:
+      - ElementName: Hotel
+        ObjectType: 12
+      - ElementName: Door_Squeak
+        ObjectType: 3
+      Path: Hotel/Door_Squeak
+      maxAttenuation: 0
+      maxDuration: 0.398979
+      minDuration: 0.398979
+    - name: Object_Fall
+      guid: 1978024f6f09f24cb7a6838ca294aa55
+      id: 2969002452
+      PathAndIcons:
+      - ElementName: Hotel
+        ObjectType: 12
+      - ElementName: Object_Fall
+        ObjectType: 3
+      Path: Hotel/Object_Fall
+      maxAttenuation: 0
+      maxDuration: 0.985937
+      minDuration: 0.985937
+    - name: Phone_Ring
+      guid: 071a74e277500f418543a24c032ccdcb
+      id: 3401439988
+      PathAndIcons:
+      - ElementName: Hotel
+        ObjectType: 12
+      - ElementName: Phone_Ring
+        ObjectType: 3
+      Path: Hotel/Phone_Ring
+      maxAttenuation: 0
+      maxDuration: 4.498437
+      minDuration: 4.498437
+    - name: Toilet_Flush
+      guid: ccf1e0755b7f3a4e9496d21ed041c856
+      id: 3116711629
+      PathAndIcons:
+      - ElementName: Hotel
+        ObjectType: 12
+      - ElementName: Toilet_Flush
+        ObjectType: 3
+      Path: Hotel/Toilet_Flush
+      maxAttenuation: 0
+      maxDuration: 15.845959
+      minDuration: 15.845959
+    - name: Trash_Can
+      guid: f4d8bedd014cc148861a28616272bbf3
+      id: 616544330
+      PathAndIcons:
+      - ElementName: Hotel
+        ObjectType: 12
+      - ElementName: Trash_Can
+        ObjectType: 3
+      Path: Hotel/Trash_Can
+      maxAttenuation: 0
+      maxDuration: 0.985937
+      minDuration: 0.985937
+  - PhysicalPath: Events/Music.wwu
+    ParentPhysicalPath: 
+    guid: ab03b092fabf95478df983da98b8aca7
+    GuidInternal: 
+    m_lastTime: -8586176371914775808
+    List:
+    - name: Music_Hotel
+      guid: c11670449ec29e4bbae6bb4961726f1c
+      id: 3138446709
+      PathAndIcons:
+      - ElementName: Music
+        ObjectType: 12
+      - ElementName: Music_Hotel
+        ObjectType: 3
+      Path: Music/Music_Hotel
+      maxAttenuation: 0
+      maxDuration: 36.960136
+      minDuration: 36.960136
+  - PhysicalPath: Events/Player.wwu
+    ParentPhysicalPath: 
+    guid: c96a7a88d220c54e8d68a4bf6260e576
+    GuidInternal: 
+    m_lastTime: -8586169559474775808
+    List:
+    - name: Player_City_Walk
+      guid: cb515a05ca2e49429eb85b3b64ef44f8
+      id: 3767407452
+      PathAndIcons:
+      - ElementName: Player
+        ObjectType: 12
+      - ElementName: Player_City_Walk
+        ObjectType: 3
+      Path: Player/Player_City_Walk
+      maxAttenuation: 0
+      maxDuration: 1.5428
+      minDuration: 1.224521
+  - PhysicalPath: Events/UI.wwu
+    ParentPhysicalPath: Events/Default Work Unit.wwu
+    guid: 8da93751e862e943b1a413eb176f964b
+    GuidInternal: 
+    m_lastTime: -8586176449554775808
+    List:
+    - name: UI_Click
+      guid: b38dc65d42726344b8ec8a0a98b0821a
+      id: 2249769530
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: UI
+        ObjectType: 12
+      - ElementName: UI_Click
+        ObjectType: 3
+      Path: Default Work Unit/UI/UI_Click
+      maxAttenuation: 0
+      maxDuration: 1.354313
+      minDuration: 1.354313
+    - name: UI_Confirm
+      guid: ddd91762359c7a409de416326472e17c
+      id: 216067002
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: UI
+        ObjectType: 12
+      - ElementName: UI_Confirm
+        ObjectType: 3
+      Path: Default Work Unit/UI/UI_Confirm
+      maxAttenuation: 0
       maxDuration: 1.354313
       minDuration: 1.354313
   RtpcWwu:
@@ -152,6 +306,5 @@ MonoBehaviour:
   ExpandedItems:
   - /shoo-box_WwiseProject
   - /shoo-box_WwiseProject/Events
-  - /shoo-box_WwiseProject/Events/Default Work Unit
   autoPopulateEnabled: 1
   CurrentPluginConfig: 
