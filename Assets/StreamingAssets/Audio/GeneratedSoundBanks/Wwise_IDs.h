@@ -13,6 +13,12 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID AIRPORT_CART_ROLLING = 3899537369U;
+        static const AkUniqueID AIRPORT_CONVEYOR_BELT_AMBIENCE = 3714526777U;
+        static const AkUniqueID AIRPORT_FLIGHT_TAKING_OFF = 1943100584U;
+        static const AkUniqueID AIRPORT_LEVER = 3818725779U;
+        static const AkUniqueID AIRPORT_SLIDING_GATE = 877897713U;
+        static const AkUniqueID AIRPORT_TUNNEL_AMBIENCE = 1588910018U;
         static const AkUniqueID CITY_DETONATION = 3821011336U;
         static const AkUniqueID DOOR_SQUEAK = 3710703494U;
         static const AkUniqueID MUSIC_HOTEL = 3138446709U;
