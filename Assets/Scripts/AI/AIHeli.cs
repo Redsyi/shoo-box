@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [SelectionBase]
-public class AIHeli : MonoBehaviour
+public class AIHeli : MonoBehaviour, IKickable
 {
     private Transform intersections;
     private Transform currIntersection;
@@ -21,6 +21,11 @@ public class AIHeli : MonoBehaviour
     private float fireDelay => 1 / roundsPerSecond;
     private bool hasLineOfSight;
     public HeliBullet bulletPrefab;
+    private bool destroyed;
+    public ParticleSystem heliSwirl;
+    private float initialSwirlRate;
+    public float swirlDestroyedCDTime;
+    private float currSwirlCDTime;
 
     void Start()
     {
@@ -28,14 +33,29 @@ public class AIHeli : MonoBehaviour
         player = FindObjectOfType<Player>();
         StartCoroutine(FireGuns());
         StartCoroutine(RecalculateBestIntersection());
+        initialSwirlRate = heliSwirl.emission.rateOverTime.constant;
     }
 
 
     void Update()
     {
-        if (player)
+        if (!destroyed && player)
         {
             model.LookAt(player.AISpotPoint);
+            if (model.localEulerAngles.x > 70)
+            {
+                model.localEulerAngles = new Vector3(70, model.localEulerAngles.y, model.localEulerAngles.z);
+            }
+        } else if (destroyed)
+        {
+            if (currSwirlCDTime < swirlDestroyedCDTime)
+            {
+                currSwirlCDTime = Mathf.Min(currSwirlCDTime + Time.deltaTime, swirlDestroyedCDTime);
+                ParticleSystem.EmissionModule emission = heliSwirl.emission;
+                ParticleSystem.MinMaxCurve rate = emission.rateOverTime;
+                rate.constant = Mathf.Lerp(initialSwirlRate, 0, currSwirlCDTime / swirlDestroyedCDTime);
+                emission.rateOverTime = rate;
+            }
         }
     }
 
@@ -46,14 +66,37 @@ public class AIHeli : MonoBehaviour
             while (!InRange())
                 yield return null;
             int currGunIndex = 0;
+            foreach (GameObject gun in guns)
+            {
+                gun.GetComponentInParent<Animator>()?.SetBool("Firing", true);
+            }
             while (InRange())
             {
                 //fire gun
-                HeliBullet bullet = Instantiate(bulletPrefab, guns[currGunIndex].transform.position, guns[currGunIndex].transform.rotation);
+                HeliBullet bullet = GetBullet(guns[currGunIndex]);
                 bullet.Fire();
                 currGunIndex = (currGunIndex + 1) % guns.Length;
                 yield return new WaitForSeconds(fireDelay);
             }
+            foreach (GameObject gun in guns)
+            {
+                gun.GetComponentInParent<Animator>()?.SetBool("Firing", false);
+            }
+        }
+    }
+
+    HeliBullet GetBullet(GameObject gun)
+    {
+        if (HeliBullet.reusableBullets == null || HeliBullet.reusableBullets.Count == 0)
+            return Instantiate(bulletPrefab, gun.transform.position, gun.transform.rotation);
+        else
+        {
+            HeliBullet bullet = HeliBullet.reusableBullets.Dequeue();
+            bullet.gameObject.SetActive(true);
+            bullet.transform.position = gun.transform.position;
+            bullet.transform.rotation = gun.transform.rotation;
+            bullet.Reactivate();
+            return bullet;
         }
     }
 
@@ -114,6 +157,33 @@ public class AIHeli : MonoBehaviour
         {
             Gizmos.color = Color.green;
             Gizmos.DrawCube(currIntersection.position, Vector3.one * 3);
+        }
+    }
+
+    public void OnKick(GameObject kicker)
+    {
+        if (!destroyed)
+        {
+            Destroy();
+        }
+    }
+
+    public void Destroy()
+    {
+        destroyed = true;
+        foreach (Animator animator in GetComponentsInChildren<Animator>())
+        {
+            animator.SetTrigger("Destroyed");
+        }
+        StopAllCoroutines();
+        pathfinder.enabled = false;
+        foreach (Collider collider in model.GetComponentsInChildren<Collider>())
+        {
+            collider.enabled = true;
+        }
+        foreach (Rigidbody rigidbody in model.GetComponentsInChildren<Rigidbody>())
+        {
+            rigidbody.isKinematic = false;
         }
     }
 }
