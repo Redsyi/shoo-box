@@ -4,6 +4,77 @@ using UnityEngine;
 
 public class HeliBullet : MonoBehaviour
 {
+    public Rigidbody rigidbody;
+    public Collider collider;
+    public ParticleSystem particleSystem;
+    public TrailRenderer trailRenderer;
+    public float velocity;
+    public static Queue<HeliBullet> reusableBullets;
+    public float lifetime;
+    private float currLifetime;
+    private bool active;
+
+    private void Awake()
+    {
+        if (reusableBullets == null)
+        {
+            reusableBullets = new Queue<HeliBullet>();
+        }
+        currLifetime = lifetime;
+        active = true;
+    }
+
+    private void Update()
+    {
+        if (active)
+        {
+            currLifetime -= Time.deltaTime;
+            if (currLifetime <= 0)
+            {
+                Deactivate();
+            }
+        }
+    }
+
+    public void Fire()
+    {
+        rigidbody.AddForce(transform.forward * velocity);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        rigidbody.velocity = Vector3.zero;
+        rigidbody.isKinematic = true;
+        collider.enabled = false;
+        particleSystem.Play();
+    }
+
+    public void Deactivate()
+    {
+        active = false;
+        rigidbody.velocity = Vector3.zero;
+        currLifetime = lifetime;
+        rigidbody.isKinematic = true;
+        particleSystem.Stop();
+        trailRenderer.enabled = false;
+        Invoke("Queue", 0.05f);
+        //gameObject.SetActive(false);
+    }
+
+    private void Queue()
+    {
+        reusableBullets.Enqueue(this);
+    }
+
+    public void Reactivate()
+    {
+        active = true;
+        rigidbody.isKinematic = false;
+        collider.enabled = true;
+        trailRenderer.enabled = true;
+    }
+
+    /* old linerenderer-based bullet code
     public float trailLifetime;
     public LineRenderer renderer;
 
@@ -27,4 +98,5 @@ public class HeliBullet : MonoBehaviour
         yield return new WaitForSeconds(trailLifetime);
         Destroy(gameObject);
     }
+    */
 }

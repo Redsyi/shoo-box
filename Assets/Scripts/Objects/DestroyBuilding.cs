@@ -56,7 +56,8 @@ public class DestroyBuilding : MonoBehaviour, IKickable
             Gizmos.color = Color.red;
             foreach (MeshFilter filter in buildingModel.GetComponentsInChildren<MeshFilter>())
             {
-                Gizmos.DrawWireMesh(filter.sharedMesh, filter.transform.position + new Vector3(0, positions[viewPosition]), Quaternion.identity, buildingModel.transform.localScale);
+                Vector3 scale = new Vector3(filter.transform.localScale.x * buildingModel.transform.localScale.x, filter.transform.localScale.y * buildingModel.transform.localScale.y, filter.transform.localScale.z * buildingModel.transform.localScale.z);
+                Gizmos.DrawWireMesh(filter.sharedMesh, filter.transform.position + new Vector3(0, positions[viewPosition]), buildingModel.transform.rotation, scale);
             }
         }
     }
