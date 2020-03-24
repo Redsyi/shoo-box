@@ -4,6 +4,24 @@
 		<WorkUnit Name="Airport" ID="{108D3B17-C2F4-4C2B-9E92-EC8A6FB93613}" PersistMode="Standalone">
 			<ChildrenList>
 				<Sound Name="Airport_Ambience_ConveyorBelt" ID="{2E61B428-D3DA-486D-930E-E0CFEBDD9452}" ShortID="977026639">
+					<PropertyList>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+						<Property Name="Lowpass" Type="int16">
+							<ValueList>
+								<Value>35</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Pitch" Type="int32">
+							<ValueList>
+								<Value>-100</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-8</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>

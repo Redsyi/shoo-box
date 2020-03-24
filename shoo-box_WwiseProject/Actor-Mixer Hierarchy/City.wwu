@@ -98,6 +98,38 @@
 						<ActiveSource Name="City_Detonation_BrickFalling" ID="{D8AD8E2E-D26D-4A95-9BDF-7BE8863B8FB6}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="City_Helicopter" ID="{89A74827-7372-4D47-99AB-AB62DB15A020}" ShortID="50596743">
+					<PropertyList>
+						<Property Name="Highpass" Type="int16">
+							<ValueList>
+								<Value>14</Value>
+							</ValueList>
+						</Property>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+						<Property Name="Pitch" Type="int32">
+							<ValueList>
+								<Value>510</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="City_Helicopter" ID="{04C54E81-BD08-4E82-B06F-BB4AB47E98BF}" ShortID="644295424">
+							<Language>SFX</Language>
+							<AudioFile>City_Helicopter.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="City_Helicopter" ID="{04C54E81-BD08-4E82-B06F-BB4AB47E98BF}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>
