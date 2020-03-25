@@ -123,7 +123,7 @@ public class AIAgent : MonoBehaviour
     {
         if (!thingsToInteractWith.Contains(interactable))
         {
-            print(interactable.ToString());
+        
             thingsToInteractWith.Enqueue(interactable);
 
             if (currState.state != AIState.CHASE && currState.state != AIState.INTERACT)
