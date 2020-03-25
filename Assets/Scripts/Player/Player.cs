@@ -50,6 +50,19 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public float verticalBoost;
     public bool usingController => inputSystem.currentControlScheme.Equals("Gamepad");
+    private int _npcsChasing;
+    public int npcsChasing
+    {
+        get => _npcsChasing;
+        set
+        {
+            if (_npcsChasing == 0 && value > 0)
+                OnChaseStarted();
+            else if (_npcsChasing > 0 && value == 0)
+                OnChaseEnded();
+            _npcsChasing = value;
+        }
+    }
 
 
     private void Start()
@@ -366,8 +379,20 @@ public class Player : MonoBehaviour
         makingFootsteps = false;
     }
 
+#if UNITY_EDITOR
     public void OnTest()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+    }
+#endif
+
+    private void OnChaseStarted()
+    {
+        Debug.Log("player chase begins");
+    }
+
+    private void OnChaseEnded()
+    {
+        Debug.Log("player chase ends");
     }
 }

@@ -148,6 +148,7 @@ public class AIAgent : MonoBehaviour
         {
             wwiseComponent?.PlayerSpotted();
             myBubble.Spotted();
+            player.npcsChasing++;
         }
         pathfinder.speed = runSpeed;
         stoppedTime = 0f;
@@ -160,6 +161,10 @@ public class AIAgent : MonoBehaviour
     /// </summary>
     public void LosePlayer(Player player)
     {
+        if (currState.state == AIState.CHASE)
+        {
+            player.npcsChasing--;
+        }
         if (instantiatedTarget == null)
         {
             instantiatedTarget = Instantiate(targetPrefab, player.transform.position, Quaternion.identity);
