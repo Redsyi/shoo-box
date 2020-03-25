@@ -191,7 +191,16 @@ public class AIAgent : MonoBehaviour
 
         if (currState.state != AIState.IDLE && !currState.location)
         {
-            Idle();
+            if (thingsToInteractWith.Count > 0)
+            {
+                IAIInteractable newInteractable = thingsToInteractWith.Peek();
+                timer = newInteractable.AIInteractTime();
+                currState.state = AIState.INTERACT;
+                currState.location = (newInteractable as MonoBehaviour).transform;
+                stoppedTime = 0f;
+            }
+            else
+                Idle();
         }
         bool closeToTarget = (transform.position - currState.location.position).sqrMagnitude < 0.4f;
         bool closeEnough = (reachedInteractable && currState.state == AIState.INTERACT) || (stoppedTime >= giveUpTime) || closeToTarget;
@@ -201,7 +210,7 @@ public class AIAgent : MonoBehaviour
         animator.SetBool("Interacting", currState.state == AIState.INTERACT && closeEnough);
 
         if (debug)
-            print($"{currState.state}, {currState.location}, {thingsToInteractWith.Count} | {stoppedTime}");
+            print($"{gameObject.name}: {currState.state}, {currState.location}, {thingsToInteractWith.Count} | {stoppedTime}");
 
         //take action depending on the current state
         switch(currState.state)
@@ -274,7 +283,7 @@ public class AIAgent : MonoBehaviour
                     if (!reachedInteractable)
                         wwiseComponent?.Fixing();
                     reachedInteractable = true;
-                    if (timer >= 0)
+                    if (timer >= 0 && )
                     {
                         timer -= Time.deltaTime;
                         //TODO: call interactable.AIInteracting(float progress)

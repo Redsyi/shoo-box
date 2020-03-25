@@ -40,6 +40,14 @@ public class Player : MonoBehaviour
     public int walkingParticleEmissionRate;
     public int shuffleParticleEmissionRate;
 
+    [Header("Starting Properties")]
+    public int wigglesRequired;
+    public bool lockChangeForm;
+    public bool lockShoeSight;
+
+    private const float wiggleCD = 0.9f;
+    private float currWiggleCD;
+    
     private Vector2 currMovementInput;
     private float currRotation;
     private CameraScript myCamera;
@@ -101,10 +109,28 @@ public class Player : MonoBehaviour
     {
         if (StealFocusWhenSeen.activeThief == null)
         {
-            rigidbody.velocity = CalculateMovementVector();
-            if (verticalBoost != 0 && rigidbody.velocity != Vector3.zero)
+            Vector3 movementVector = CalculateMovementVector();
+            if (wigglesRequired == 0)
             {
-                transform.Translate(Vector3.up * verticalBoost);
+                rigidbody.velocity = movementVector;
+                if (verticalBoost != 0 && movementVector != Vector3.zero)
+                {
+                    transform.Translate(Vector3.up * verticalBoost);
+                }
+            } else if (currWiggleCD <= 0f && movementVector != Vector3.zero)
+            {
+                currWiggleCD = wiggleCD;
+                foreach (Animator animator in animators)
+                {
+                    animator?.SetTrigger("Wiggle");
+                }
+            } else if (currWiggleCD > 0f)
+            {
+                currWiggleCD -= Time.fixedDeltaTime;
+                if (currWiggleCD <= 0f)
+                {
+                    wigglesRequired--;
+                }
             }
         }
     }
@@ -137,7 +163,7 @@ public class Player : MonoBehaviour
         {
             if (animator)
             {
-                if (moving)
+                if (moving && wigglesRequired == 0)
                 {
                     if (legForm)
                     {
@@ -169,7 +195,7 @@ public class Player : MonoBehaviour
 
     private void InterpolateRotation()
     {
-        if (currMovementInput != Vector2.zero)
+        if (currMovementInput != Vector2.zero && wigglesRequired == 0)
         {
             float desiredRotation = Utilities.ClampAngle0360(-Utilities.VectorToDegrees(Utilities.RotateVectorDegrees(currMovementInput, 135 - myCamera.transform.eulerAngles.y)));
             float rotationDiff = desiredRotation - currRotation;
@@ -197,34 +223,36 @@ public class Player : MonoBehaviour
     /// </summary>
     public void OnChangeForm(InputValue value)
     {
-        
-        if(!legForm)
+        if (!lockChangeForm)
         {
-            if (Physics.Raycast(AISpotPoint.transform.position, Vector3.up, 1, LayerMask.GetMask("Obstructions", "Transparent Obstructions")))
-                return;
+            if (!legForm)
+            {
+                if (Physics.Raycast(AISpotPoint.transform.position, Vector3.up, 1, LayerMask.GetMask("Obstructions", "Transparent Obstructions")))
+                    return;
+            }
+
+            legForm = !legForm;
+
+            legformHitbox.enabled = legForm;
+            if (legformHitbox2)
+                legformHitbox2.enabled = legForm;
+            boxformHitbox.enabled = !legForm;
+
+            foreach (GameObject legg in leggs)
+                legg.SetActive(legForm);
+            if (legForm)
+            {
+                transform.position += new Vector3(0, 0.65f);
+            }
+            else
+            {
+                transform.position -= new Vector3(0, 0.65f);
+            }
+            walkingParticleSystem.transform.localPosition = (legForm ? legParticlesPosition.localPosition : boxParticlesPosition.localPosition);
+
+
+            currBoxSpeed = 1;
         }
-
-        legForm = !legForm;
-
-        legformHitbox.enabled = legForm;
-        if (legformHitbox2)
-            legformHitbox2.enabled = legForm;
-        boxformHitbox.enabled = !legForm;
-
-        foreach(GameObject legg in leggs) 
-            legg.SetActive(legForm);
-        if (legForm)
-        {
-            transform.position += new Vector3(0, 0.65f);
-        }
-        else
-        {
-            transform.position -= new Vector3(0, 0.65f);
-        }
-        walkingParticleSystem.transform.localPosition = (legForm ? legParticlesPosition.localPosition : boxParticlesPosition.localPosition);
-
-
-        currBoxSpeed = 1;
     }
 
     /// <summary>
@@ -232,8 +260,11 @@ public class Player : MonoBehaviour
     /// </summary>
     public void OnRotate(InputValue value)
     {
-        RotationDirection direction = (value.Get<float>() > 0 ? RotationDirection.CLOCKWISE : RotationDirection.COUNTERCLOCKWISE);
-        myCamera.Rotate(direction);
+        if (wigglesRequired == 0)
+        {
+            RotationDirection direction = (value.Get<float>() > 0 ? RotationDirection.CLOCKWISE : RotationDirection.COUNTERCLOCKWISE);
+            myCamera.Rotate(direction);
+        }
     }
 
     public void OnChangeShoes(InputValue value)
@@ -294,7 +325,8 @@ public class Player : MonoBehaviour
 
     public void OnShoeSight()
     {
-        shoeSight.ActivateSight();
+        if (!lockShoeSight)
+            shoeSight.ActivateSight();
     }
 
     /// <summary>
