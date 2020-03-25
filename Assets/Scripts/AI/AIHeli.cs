@@ -6,8 +6,7 @@ using UnityEngine.AI;
 [SelectionBase]
 public class AIHeli : MonoBehaviour, IKickable
 {
-    private Transform intersections;
-    private Transform currIntersection;
+    private CityIntersection currIntersection;
     private Player player;
     public Transform model;
     public float roundsPerSecond;
@@ -29,7 +28,6 @@ public class AIHeli : MonoBehaviour, IKickable
 
     void Start()
     {
-        intersections = GameObject.FindGameObjectWithTag("Intersections")?.transform;
         player = FindObjectOfType<Player>();
         StartCoroutine(FireGuns());
         StartCoroutine(RecalculateBestIntersection());
@@ -103,40 +101,46 @@ public class AIHeli : MonoBehaviour, IKickable
     //checks if its current intersection is non-ideal, if so, find a new intersection
     IEnumerator RecalculateBestIntersection()
     {
+        yield return null;
         bool firstTime = true;
-        currIntersection = intersections.GetChild(0);
+        currIntersection = CityIntersection.intersections[0];
         while (true)
         {
-            float intersectionDistToPlayer = (currIntersection.position - player.transform.position).sqrMagnitude;
+            float intersectionDistToPlayer = (currIntersection.transform.position - player.transform.position).sqrMagnitude;
             float minCloseness = Mathf.Abs(intersectionDistToPlayer - idealDist);
-            Vector3 vectToPlayer = player.AISpotPoint.position - (currIntersection.position + model.localPosition);
+            Vector3 vectToPlayer = player.AISpotPoint.position - (currIntersection.transform.position + model.localPosition);
             hasLineOfSight = !Physics.Raycast(model.transform.position, vectToPlayer, vectToPlayer.magnitude, LayerMask.GetMask("Obstructions"));
 
             //check if invalid: either we haven't calculated any destination yet, or we are too close, or too far, or there is something obstructing us
             if (firstTime || intersectionDistToPlayer < playerMinDistSqrd || intersectionDistToPlayer > playerMaxDistSqrd || !hasLineOfSight)
             {
+                currIntersection.assignedHeli = false;
                 //find new candidate
-                foreach (Transform intersection in intersections)
+                foreach (CityIntersection intersection in CityIntersection.intersections)
                 {
-                    //we want the intersection that's closest to the average distance between min and max
-                    float dist = (intersection.position - player.transform.position).sqrMagnitude;
-                    float closeness = Mathf.Abs(dist - idealDist);
-                    if (dist >= playerMinDistSqrd && dist <= playerMaxDistSqrd && closeness < minCloseness)
+                    if (!intersection.assignedHeli)
                     {
-                        vectToPlayer = player.AISpotPoint.position - (intersection.position + model.localPosition);
-                        Vector3 vectToDest = intersection.position - transform.position;
-
-                        //make sure selected candidate has line-of-sight to player, and we don't cross over the player when trying to get there
-                        if (!Physics.Raycast(model.transform.position, vectToPlayer, vectToPlayer.magnitude, LayerMask.GetMask("Obstructions")) &&
-                            !Physics.Raycast(transform.position + Vector3.up, vectToDest, vectToDest.magnitude, LayerMask.GetMask("Player")))
+                        //we want the intersection that's closest to the average distance between min and max
+                        float dist = (intersection.transform.position - player.transform.position).sqrMagnitude;
+                        float closeness = Mathf.Abs(dist - idealDist);
+                        if (dist >= playerMinDistSqrd && dist <= playerMaxDistSqrd && closeness < minCloseness)
                         {
-                            minCloseness = closeness;
-                            currIntersection = intersection;
-                            firstTime = false;
+                            vectToPlayer = player.AISpotPoint.position - (intersection.transform.position + model.localPosition);
+                            Vector3 vectToDest = intersection.transform.position - transform.position;
+
+                            //make sure selected candidate has line-of-sight to player, and we don't cross over the player when trying to get there
+                            if (!Physics.Raycast(model.transform.position, vectToPlayer, vectToPlayer.magnitude, LayerMask.GetMask("Obstructions")) &&
+                                !Physics.Raycast(transform.position + Vector3.up, vectToDest, vectToDest.magnitude, LayerMask.GetMask("Player")))
+                            {
+                                minCloseness = closeness;
+                                currIntersection = intersection;
+                                firstTime = false;
+                            }
                         }
                     }
                 }
-                pathfinder.SetDestination(currIntersection.position);
+                currIntersection.assignedHeli = true;
+                pathfinder.SetDestination(currIntersection.transform.position);
             }
             yield return new WaitForSeconds(0.1f);
         }
@@ -144,7 +148,7 @@ public class AIHeli : MonoBehaviour, IKickable
 
     bool InRange()
     {
-        return hasLineOfSight && (currIntersection.position - player.transform.position).sqrMagnitude < playerMaxDistSqrd;
+        return hasLineOfSight && (currIntersection.transform.position - player.transform.position).sqrMagnitude < playerMaxDistSqrd;
     }
 
     private void OnDrawGizmosSelected()
@@ -156,7 +160,7 @@ public class AIHeli : MonoBehaviour, IKickable
         if (currIntersection)
         {
             Gizmos.color = Color.green;
-            Gizmos.DrawCube(currIntersection.position, Vector3.one * 3);
+            Gizmos.DrawCube(currIntersection.transform.position, Vector3.one * 3);
         }
     }
 
