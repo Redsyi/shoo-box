@@ -11,7 +11,7 @@ public class UIObjective : MonoBehaviour
     {
         if (!complete)
         {
-            animator.SetTrigger("Complete");
+            animator?.SetTrigger("Complete");
             complete = true;
         }
     }
