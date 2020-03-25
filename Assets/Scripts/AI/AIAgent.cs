@@ -123,7 +123,9 @@ public class AIAgent : MonoBehaviour
     {
         if (!thingsToInteractWith.Contains(interactable))
         {
+        
             thingsToInteractWith.Enqueue(interactable);
+
             if (currState.state != AIState.CHASE && currState.state != AIState.INTERACT)
             {
                 wwiseComponent?.SomethingWrong();

@@ -1,5 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
+using UnityEngine.Events;
+using UnityEditor.Events;
 using UnityEngine;
 
 public class BreakHingeKickable : MonoBehaviour, IKickable, IAIInteractable
@@ -11,6 +14,7 @@ public class BreakHingeKickable : MonoBehaviour, IKickable, IAIInteractable
     private bool broken;
     [SerializeField] private int fixTime = 4;
     public AIInterest[] aIInterests;
+    public GameObject fixables;
     
     void Start()
     {
@@ -19,6 +23,7 @@ public class BreakHingeKickable : MonoBehaviour, IKickable, IAIInteractable
 
     public void OnKick(GameObject kicker)
     {
+        
         if (breakAllHinges)
         {
             foreach (var hinge in _hingeJoints)
@@ -33,14 +38,14 @@ public class BreakHingeKickable : MonoBehaviour, IKickable, IAIInteractable
                 preBroken = Instantiate(gameObject, transform.parent);
                 preBroken.SetActive(false);
             }
-            int randIndex = Random.Range(0, _hingeJoints.Count);
+            int randIndex = UnityEngine.Random.Range(0, _hingeJoints.Count);
             HingeJoint hingeJoint = _hingeJoints[randIndex];
             _hingeJoints.RemoveAt(randIndex);
             Destroy(hingeJoint);
         }
         broken = true;
     }
-    
+        
     public bool NeedsInteraction()
     {
         return broken;
@@ -59,7 +64,6 @@ public class BreakHingeKickable : MonoBehaviour, IKickable, IAIInteractable
     {
         broken = false;
         preBroken.SetActive(true);
-        preBroken = null;
         Destroy(gameObject);
     }
 

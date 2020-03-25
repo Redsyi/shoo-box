@@ -16,7 +16,7 @@ public class AIRedirectTrigger : MonoBehaviour
                 if (fixable.GetComponent<IAIInteractable>().NeedsInteraction())
                 {
                     ai.Investigate(fixable.gameObject);
-                    break;
+                    //break;
                 }
             }
         }
