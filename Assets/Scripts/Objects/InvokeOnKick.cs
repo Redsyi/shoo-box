@@ -6,9 +6,10 @@ using UnityEngine.Events;
 public class InvokeOnKick : MonoBehaviour, IKickable
 {
     public UnityEvent triggers;
+    
 
     public void OnKick(GameObject kicker)
     {
-        triggers.Invoke();
+           triggers.Invoke();
     }
 }
