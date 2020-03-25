@@ -36,7 +36,9 @@ public class AIVision : MonoBehaviour
     private void ProcessItemInVision(Collider other, bool justEntered = false)
     {
         if (transform.position.y - other.transform.position.y > viewFloor)
+        {
             return;
+        }
         Vector2 vectToItem = new Vector2(other.transform.position.x - transform.position.x, other.transform.position.z - transform.position.z).normalized;
         Vector2 forwardVect = new Vector2(transform.forward.x, transform.forward.z);
         float angleDiff = Mathf.Acos(Vector2.Dot(forwardVect, vectToItem))*Mathf.Rad2Deg;
@@ -45,6 +47,7 @@ public class AIVision : MonoBehaviour
             return;
         }
 
+        
         IAIInteractable interactable = other.gameObject.GetComponent<IAIInteractable>();
         if (interactable != null && interactable.NeedsInteraction())
         {
@@ -55,10 +58,12 @@ public class AIVision : MonoBehaviour
                     bool canSeeObj = !Physics.Raycast(transform.position, other.gameObject.transform.position - transform.position, (other.gameObject.transform.position - transform.position).magnitude, LayerMask.GetMask("Obstructions", "AI Blinders"));
                     if (canSeeObj)
                     {
+                       
                         ai.Interact(interactable);
                     }
                     else
                     {
+                       
                     }
                     break;
                 }

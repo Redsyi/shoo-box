@@ -33,7 +33,7 @@ public class AnimatedFixable : MonoBehaviour, IAIInteractable
     }
 
     public bool NeedsInteraction()
-    {
+    {    
         return broken;
     }
 
