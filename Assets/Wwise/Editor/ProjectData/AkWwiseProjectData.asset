@@ -31,7 +31,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 22178d79115b0b47a78389e1469b9d8a
     GuidInternal: 
-    m_lastTime: -8586168713554775808
+    m_lastTime: -8586164506674775808
     List:
     - name: Main
       guid: cab15ff7703b3c4683e28bb16d5b7aab
@@ -47,7 +47,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: c3818a4cfc0a4d498c3dfbd299d2df34
     GuidInternal: 
-    m_lastTime: -8586167942364775808
+    m_lastTime: -8586164514184775808
     List:
     - name: Airport_Cart_Rolling
       guid: e0006efc273ca541aaa6d3ca9934d0d0
@@ -71,8 +71,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Airport/Airport_Conveyor_Belt_Ambience
       maxAttenuation: 0
-      maxDuration: 16.5
-      minDuration: 16.5
+      maxDuration: -1
+      minDuration: -1
     - name: Airport_Flight_Taking_Off
       guid: 2b52dda5bf21da4ba965bc441886aeeb
       id: 1943100584
@@ -109,23 +109,11 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 2.589854
       minDuration: 2.589854
-    - name: Airport_Tunnel_Ambience
-      guid: 257c806409187e4e979a9973a6b242c1
-      id: 1588910018
-      PathAndIcons:
-      - ElementName: Airport
-        ObjectType: 12
-      - ElementName: Airport_Tunnel_Ambience
-        ObjectType: 3
-      Path: Airport/Airport_Tunnel_Ambience
-      maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
   - PhysicalPath: Events/City.wwu
     ParentPhysicalPath: 
     guid: 2508872e04664d41ba93de8f10d15e6b
     GuidInternal: 
-    m_lastTime: -8586169600974775808
+    m_lastTime: -8586166268154775808
     List:
     - name: City_Detonation
       guid: 82b67b1d87829349a26f650eb3d27271
@@ -139,6 +127,18 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 7.828995
       minDuration: 1.957249
+    - name: City_Helicopter
+      guid: 5f1acdbdbe65fb48ae5bea65500b3498
+      id: 2664170936
+      PathAndIcons:
+      - ElementName: City
+        ObjectType: 12
+      - ElementName: City_Helicopter
+        ObjectType: 3
+      Path: City/City_Helicopter
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
   - PhysicalPath: Events/Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: 5731a099c366f446a8d3e5d78b47c9b8
@@ -287,8 +287,32 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: ab03b092fabf95478df983da98b8aca7
     GuidInternal: 
-    m_lastTime: -8586176371914775808
+    m_lastTime: -8586164516254775808
     List:
+    - name: Music_City
+      guid: 9c815e6e5afeaf4a8263295153fcf480
+      id: 3946025416
+      PathAndIcons:
+      - ElementName: Music
+        ObjectType: 12
+      - ElementName: Music_City
+        ObjectType: 3
+      Path: Music/Music_City
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Music_Cut_Scenes
+      guid: 036197d195517d43b28e073bc53770b2
+      id: 1286490421
+      PathAndIcons:
+      - ElementName: Music
+        ObjectType: 12
+      - ElementName: Music_Cut_Scenes
+        ObjectType: 3
+      Path: Music/Music_Cut_Scenes
+      maxAttenuation: 0
+      maxDuration: 44.390522
+      minDuration: 44.390522
     - name: Music_Hotel
       guid: c11670449ec29e4bbae6bb4961726f1c
       id: 3138446709
@@ -301,6 +325,18 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 36.960136
       minDuration: 36.960136
+    - name: Music_Menu
+      guid: a13fd50fcf60534f98dc111e5629ed55
+      id: 1598298728
+      PathAndIcons:
+      - ElementName: Music
+        ObjectType: 12
+      - ElementName: Music_Menu
+        ObjectType: 3
+      Path: Music/Music_Menu
+      maxAttenuation: 0
+      maxDuration: 65.1956
+      minDuration: 65.1956
   - PhysicalPath: Events/Player.wwu
     ParentPhysicalPath: 
     guid: c96a7a88d220c54e8d68a4bf6260e576
@@ -385,5 +421,9 @@ MonoBehaviour:
   - /shoo-box_WwiseProject
   - /shoo-box_WwiseProject/Events
   - /shoo-box_WwiseProject/Events/Airport
+  - /shoo-box_WwiseProject/Events/City
+  - /shoo-box_WwiseProject/Events/Default Work Unit
+  - /shoo-box_WwiseProject/Events/Default Work Unit/UI
+  - /shoo-box_WwiseProject/Events/Music
   autoPopulateEnabled: 1
   CurrentPluginConfig: 
