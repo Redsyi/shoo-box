@@ -16,6 +16,7 @@ public class StealFocusWhenSeen : MonoBehaviour
     public float cameraZoomSpeed;
     [Tooltip("Time (in seconds) that camera lingers")]
     public float cameraStealTime;
+
     private bool skip;
 
     private void Start()
