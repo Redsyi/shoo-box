@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1771,6 +1771,11 @@ PrefabInstance:
       propertyPath: m_UseGravity
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5622666943561797409, guid: 02a6f84e417532d49b914ee440111696,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5622666943561797411, guid: 02a6f84e417532d49b914ee440111696,
         type: 3}
       propertyPath: m_Name
@@ -2305,7 +2310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33e44624bf18d945b1e5e86b56235f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: 7
+  scene: 8
   canChangeLevels: 1
 --- !u!65 &562528550
 BoxCollider:
