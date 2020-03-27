@@ -197,11 +197,6 @@
 				</Sound>
 				<RandomSequenceContainer Name="Ricochet" ID="{E608A4B4-9ECF-4E99-A68B-C7D9AC743B65}" ShortID="591332246">
 					<PropertyList>
-						<Property Name="Lowpass" Type="int16">
-							<ValueList>
-								<Value>28</Value>
-							</ValueList>
-						</Property>
 						<Property Name="MaxSoundPerInstance" Type="int16">
 							<ValueList>
 								<Value>5</Value>
@@ -230,7 +225,7 @@
 						</Property>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>-17</Value>
+								<Value>-14</Value>
 							</ValueList>
 							<ModifierList>
 								<ModifierInfo>
@@ -584,6 +579,116 @@
 						<ActiveSource Name="City_Helicopter_Explosion" ID="{2DD4C502-89B2-41F9-816B-08075B3E419E}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<RandomSequenceContainer Name="Player Hit" ID="{A9C662E7-1323-44A8-8D25-E060CEBFF1D0}" ShortID="105550284">
+					<PropertyList>
+						<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="Mario Grunt_0" ID="{A73E50E6-AC22-4C6B-882B-772A5A024DE8}" ShortID="720540510">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Mario Grunt_0" ID="{27DEF99C-D590-499C-B0AB-5E97270C2BF5}" ShortID="81356439">
+									<Language>SFX</Language>
+									<AudioFile>Mario Grunt_0.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Mario Grunt_0" ID="{27DEF99C-D590-499C-B0AB-5E97270C2BF5}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Mario Grunt_1" ID="{340C0013-0217-4F73-BBD8-6805646ADCBD}" ShortID="988711952">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Mario Grunt_1" ID="{349CE5C3-1A0E-45F7-BB16-FDC1D3B6ED12}" ShortID="524555010">
+									<Language>SFX</Language>
+									<AudioFile>Mario Grunt_1.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Mario Grunt_1" ID="{349CE5C3-1A0E-45F7-BB16-FDC1D3B6ED12}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Mario Grunt_2" ID="{D02230A5-DBF7-408B-9126-05661DDAD575}" ShortID="605028626">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Mario Grunt_2" ID="{404FFD9B-61C3-4027-8AE2-A5BDB338D5C2}" ShortID="833544824">
+									<Language>SFX</Language>
+									<AudioFile>Mario Grunt_2.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Mario Grunt_2" ID="{404FFD9B-61C3-4027-8AE2-A5BDB338D5C2}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Mario Grunt_3" ID="{5E85F58A-ACE0-4052-9E95-CBED2EE4679C}" ShortID="969938231">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Mario Grunt_3" ID="{F51A576F-4726-487B-A458-1969AF9BD254}" ShortID="898913339">
+									<Language>SFX</Language>
+									<AudioFile>Mario Grunt_3.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Mario Grunt_3" ID="{F51A576F-4726-487B-A458-1969AF9BD254}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Mario Grunt_4" ID="{051734CC-AEEE-4666-9DC2-2CEBE1B68222}" ShortID="25001408">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Mario Grunt_4" ID="{8AFADD8E-9904-4541-8D91-09B90626D496}" ShortID="883732656">
+									<Language>SFX</Language>
+									<AudioFile>Mario Grunt_4.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Mario Grunt_4" ID="{8AFADD8E-9904-4541-8D91-09B90626D496}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</RandomSequenceContainer>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>
