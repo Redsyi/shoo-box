@@ -25,6 +25,9 @@ public class AIHeli : MonoBehaviour, IKickable
     private float initialSwirlRate;
     public float swirlDestroyedCDTime;
     private float currSwirlCDTime;
+    public AK.Wwise.Event onHit; 
+    public AK.Wwise.Event onFly;
+    public AK.Wwise.Event onHitAfter;
 
     void Start()
     {
@@ -32,6 +35,7 @@ public class AIHeli : MonoBehaviour, IKickable
         StartCoroutine(FireGuns());
         StartCoroutine(RecalculateBestIntersection());
         initialSwirlRate = heliSwirl.emission.rateOverTime.constant;
+        onFly.Post(gameObject);
     }
 
 
@@ -175,6 +179,8 @@ public class AIHeli : MonoBehaviour, IKickable
     public void Destroy()
     {
         destroyed = true;
+        onHit. Post(gameObject);
+        onHitAfter.Post(gameObject);
         foreach (Animator animator in GetComponentsInChildren<Animator>())
         {
             animator.SetTrigger("Destroyed");

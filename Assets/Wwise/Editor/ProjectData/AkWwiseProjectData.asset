@@ -31,7 +31,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 22178d79115b0b47a78389e1469b9d8a
     GuidInternal: 
-    m_lastTime: -8586164506674775808
+    m_lastTime: -8586163209414775808
     List:
     - name: Main
       guid: cab15ff7703b3c4683e28bb16d5b7aab
@@ -113,7 +113,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 2508872e04664d41ba93de8f10d15e6b
     GuidInternal: 
-    m_lastTime: -8586166268154775808
+    m_lastTime: -8586163209414775808
     List:
     - name: City_Detonation
       guid: 82b67b1d87829349a26f650eb3d27271
@@ -127,15 +127,63 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 7.828995
       minDuration: 1.957249
-    - name: City_Helicopter
-      guid: 5f1acdbdbe65fb48ae5bea65500b3498
-      id: 2664170936
+    - name: City_Helicopter_Blade
+      guid: 3911815434cb24479bc7adf911c4ec58
+      id: 2209014619
       PathAndIcons:
       - ElementName: City
         ObjectType: 12
-      - ElementName: City_Helicopter
+      - ElementName: City_Helicopter_Blade
         ObjectType: 3
-      Path: City/City_Helicopter
+      Path: City/City_Helicopter_Blade
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: City_Helicopter_Bullet
+      guid: a9c1ba2872f996469b62b45931075087
+      id: 1796419571
+      PathAndIcons:
+      - ElementName: City
+        ObjectType: 12
+      - ElementName: City_Helicopter_Bullet
+        ObjectType: 3
+      Path: City/City_Helicopter_Bullet
+      maxAttenuation: 0
+      maxDuration: 2.526854
+      minDuration: 2.526854
+    - name: City_Helicopter_Explosion
+      guid: b9aacf710defce4780b76d30b2e60619
+      id: 2567698640
+      PathAndIcons:
+      - ElementName: City
+        ObjectType: 12
+      - ElementName: City_Helicopter_Explosion
+        ObjectType: 3
+      Path: City/City_Helicopter_Explosion
+      maxAttenuation: 0
+      maxDuration: 3.464783
+      minDuration: 3.464783
+    - name: City_Helicopter_Mayday
+      guid: d80f86cecd550f43bc583b2e7d255ee0
+      id: 1743448332
+      PathAndIcons:
+      - ElementName: City
+        ObjectType: 12
+      - ElementName: City_Helicopter_Mayday
+        ObjectType: 3
+      Path: City/City_Helicopter_Mayday
+      maxAttenuation: 0
+      maxDuration: 4.841362
+      minDuration: 3.423359
+    - name: City_Helicopter_Ricochet
+      guid: 1de1dcd4011f794b9e4a4c43d3ab1196
+      id: 712668924
+      PathAndIcons:
+      - ElementName: City
+        ObjectType: 12
+      - ElementName: City_Helicopter_Ricochet
+        ObjectType: 3
+      Path: City/City_Helicopter_Ricochet
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -422,8 +470,5 @@ MonoBehaviour:
   - /shoo-box_WwiseProject/Events
   - /shoo-box_WwiseProject/Events/Airport
   - /shoo-box_WwiseProject/Events/City
-  - /shoo-box_WwiseProject/Events/Default Work Unit
-  - /shoo-box_WwiseProject/Events/Default Work Unit/UI
-  - /shoo-box_WwiseProject/Events/Music
   autoPopulateEnabled: 1
   CurrentPluginConfig: 
