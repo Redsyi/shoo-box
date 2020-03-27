@@ -31,7 +31,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 22178d79115b0b47a78389e1469b9d8a
     GuidInternal: 
-    m_lastTime: -8586163209414775808
+    m_lastTime: -8586162679084775808
     List:
     - name: Main
       guid: cab15ff7703b3c4683e28bb16d5b7aab
@@ -113,7 +113,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 2508872e04664d41ba93de8f10d15e6b
     GuidInternal: 
-    m_lastTime: -8586163209414775808
+    m_lastTime: -8586162683034775808
     List:
     - name: City_Detonation
       guid: 82b67b1d87829349a26f650eb3d27271
@@ -163,6 +163,18 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 4.120345
       minDuration: 2.913524
+    - name: City_Helicopter_HitPlayer
+      guid: 802381dcae5fa741af2fc38a6d3c2a85
+      id: 1977658369
+      PathAndIcons:
+      - ElementName: City
+        ObjectType: 12
+      - ElementName: City_Helicopter_HitPlayer
+        ObjectType: 3
+      Path: City/City_Helicopter_HitPlayer
+      maxAttenuation: 0
+      maxDuration: 1.161521
+      minDuration: 1.161521
     - name: City_Helicopter_Mayday
       guid: d80f86cecd550f43bc583b2e7d255ee0
       id: 1743448332
@@ -191,7 +203,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 5731a099c366f446a8d3e5d78b47c9b8
     GuidInternal: 
-    m_lastTime: -8586169659514775808
+    m_lastTime: -8586162683034775808
     List:
     - name: Fling
       guid: ccf0c2beef94a945a81fa610736ac630
@@ -203,8 +215,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit/Fling
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: Jump
       guid: 27dddcda1b3496489f9be48eeba54d7a
       id: 3833651337
@@ -215,8 +227,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit/Jump
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: Kick
       guid: 887e21eb4a86b6478689801dd45634c9
       id: 2181839183
@@ -227,8 +239,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit/Kick
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: Talk
       guid: ce5a29fd80255243b30783ef09592f23
       id: 3173192383
@@ -239,8 +251,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit/Talk
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: Transform
       guid: 6231dc98d9a478499a0578f11b011b5e
       id: 1422622395
@@ -251,8 +263,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit/Transform
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: Walk
       guid: 97c48a0a2b22ed41a489c4b3d762b824
       id: 2108779966
@@ -404,22 +416,32 @@ MonoBehaviour:
       maxDuration: 1.5428
       minDuration: 1.224521
   - PhysicalPath: Events/UI.wwu
-    ParentPhysicalPath: Events/Default Work Unit.wwu
+    ParentPhysicalPath: 
     guid: 8da93751e862e943b1a413eb176f964b
     GuidInternal: 
-    m_lastTime: -8586176449554775808
+    m_lastTime: -8586162679084775808
     List:
+    - name: UI_Check
+      guid: 2e10e96b51dc0c469f5725a7a88926a8
+      id: 945383418
+      PathAndIcons:
+      - ElementName: UI
+        ObjectType: 12
+      - ElementName: UI_Check
+        ObjectType: 3
+      Path: UI/UI_Check
+      maxAttenuation: 0
+      maxDuration: 1.230589
+      minDuration: 0.976719
     - name: UI_Click
       guid: b38dc65d42726344b8ec8a0a98b0821a
       id: 2249769530
       PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
       - ElementName: UI
         ObjectType: 12
       - ElementName: UI_Click
         ObjectType: 3
-      Path: Default Work Unit/UI/UI_Click
+      Path: UI/UI_Click
       maxAttenuation: 0
       maxDuration: 1.354313
       minDuration: 1.354313
@@ -427,13 +449,11 @@ MonoBehaviour:
       guid: ddd91762359c7a409de416326472e17c
       id: 216067002
       PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
       - ElementName: UI
         ObjectType: 12
       - ElementName: UI_Confirm
         ObjectType: 3
-      Path: Default Work Unit/UI/UI_Confirm
+      Path: UI/UI_Confirm
       maxAttenuation: 0
       maxDuration: 1.354313
       minDuration: 1.354313
@@ -468,7 +488,6 @@ MonoBehaviour:
   ExpandedItems:
   - /shoo-box_WwiseProject
   - /shoo-box_WwiseProject/Events
-  - /shoo-box_WwiseProject/Events/Airport
-  - /shoo-box_WwiseProject/Events/City
+  - /shoo-box_WwiseProject/Events/UI
   autoPopulateEnabled: 1
   CurrentPluginConfig: 
