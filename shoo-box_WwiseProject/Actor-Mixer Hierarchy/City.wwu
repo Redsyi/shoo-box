@@ -108,17 +108,12 @@
 						<ActiveSource Name="City_Detonation_BrickFalling" ID="{D8AD8E2E-D26D-4A95-9BDF-7BE8863B8FB6}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
-				<Sound Name="City_Helicopter" ID="{89A74827-7372-4D47-99AB-AB62DB15A020}" ShortID="50596743">
+				<Sound Name="City_Helicopter_Blade" ID="{99B88052-1C14-4477-9CE8-93141EAEB69A}" ShortID="933735112">
 					<PropertyList>
-						<Property Name="Highpass" Type="int16">
-							<ValueList>
-								<Value>14</Value>
-							</ValueList>
-						</Property>
 						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
-						<Property Name="Pitch" Type="int32">
+						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>510</Value>
+								<Value>-25</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -131,13 +126,432 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<AudioFileSource Name="City_Helicopter" ID="{04C54E81-BD08-4E82-B06F-BB4AB47E98BF}" ShortID="644295424">
+						<AudioFileSource Name="City_Helicopter_Blade" ID="{BD29E27E-9A55-40ED-A85D-9B806C1C7427}" ShortID="681403098">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="24.4597063648294"/>
+							</PropertyList>
 							<Language>SFX</Language>
-							<AudioFile>City_Helicopter.wav</AudioFile>
+							<AudioFile>City_Helicopter_Blade.wav</AudioFile>
 						</AudioFileSource>
 					</ChildrenList>
 					<ActiveSourceList>
-						<ActiveSource Name="City_Helicopter" ID="{04C54E81-BD08-4E82-B06F-BB4AB47E98BF}" Platform="Linked"/>
+						<ActiveSource Name="City_Helicopter_Blade" ID="{BD29E27E-9A55-40ED-A85D-9B806C1C7427}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="City_Helicopter_Bullet" ID="{85D82974-47FF-4494-A4F4-88E639869AFD}" ShortID="524723048">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="City_Helicopter_Bullet" ID="{4F3E5DD4-4750-4D08-9429-4CAE1F35C1CE}" ShortID="291188019">
+							<Language>SFX</Language>
+							<AudioFile>City_Helicopter_Bullet.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="City_Helicopter_Bullet" ID="{4F3E5DD4-4750-4D08-9429-4CAE1F35C1CE}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="City_Helicopter_Mayday" ID="{DE55F8D5-873E-4ED5-9007-8C008E3D0E39}" ShortID="709894469">
+					<PropertyList>
+						<Property Name="Pitch" Type="int32">
+							<ValueList>
+								<Value>-50</Value>
+							</ValueList>
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{180AC785-E8B7-4A0A-AC46-BC771DD863C3}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Max" Type="Real64" Value="300"/>
+											<Property Name="Min" Type="Real64" Value="-300"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="City_Helicopter_Mayday" ID="{8716B4BB-1257-4434-8069-700A8A268EC8}" ShortID="260910888">
+							<Language>SFX</Language>
+							<AudioFile>City_Helicopter_Mayday.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="City_Helicopter_Mayday" ID="{8716B4BB-1257-4434-8069-700A8A268EC8}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<RandomSequenceContainer Name="Ricochet" ID="{E608A4B4-9ECF-4E99-A68B-C7D9AC743B65}" ShortID="591332246">
+					<PropertyList>
+						<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+						<Property Name="Pitch" Type="int32">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{E20F645B-85EB-41BF-A3F1-3868E6A88E23}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Max" Type="Real64" Value="12"/>
+											<Property Name="Min" Type="Real64" Value="-6"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+						<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+						<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+						<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="3"/>
+						<Property Name="Volume" Type="Real64">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{3BE039CE-3C03-4C70-ABC7-49C808259A68}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Min" Type="Real64" Value="-5"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="City_Helicopter_Ricochet" ID="{8E677094-BA83-4A6F-9203-80BFD6986205}" ShortID="784732611">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="City_Helicopter_Ricochet" ID="{DB358461-E1F9-4105-982A-FA3DA3381B89}" ShortID="880382148">
+									<PropertyList>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.19892375328084"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="0.603073965567129"/>
+										<Property Name="TrimEnd" Type="Real64" Value="1.64474717881945"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>City_Helicopter_Ricochet.wav</AudioFile>
+									<ConvertedFileIDList>
+										<File ID="485526598"/>
+									</ConvertedFileIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="City_Helicopter_Ricochet" ID="{DB358461-E1F9-4105-982A-FA3DA3381B89}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="City_Helicopter_Ricochet_01" ID="{1E847298-E944-4087-8479-CD37E6F1DB9A}" ShortID="26702292">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="City_Helicopter_Ricochet" ID="{C1B146CC-A0B2-4B3F-9E86-B1E7C378DA88}" ShortID="662394793">
+									<PropertyList>
+										<Property Name="FadeInDuration" Type="Real64" Value="0.19892375328084"/>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.39784750656168"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="1.9892375328084"/>
+										<Property Name="TrimEnd" Type="Real64" Value="3.03358723753281"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>City_Helicopter_Ricochet.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="City_Helicopter_Ricochet" ID="{C1B146CC-A0B2-4B3F-9E86-B1E7C378DA88}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="City_Helicopter_Ricochet_02" ID="{42008FC3-042C-4634-BA00-67F1A291DD64}" ShortID="47788801">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="City_Helicopter_Ricochet" ID="{2307EF3C-43A3-444A-ABFE-0777B263048D}" ShortID="494096527">
+									<PropertyList>
+										<Property Name="FadeInDuration" Type="Real64" Value="0.04973093832021"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="3.28224192913386"/>
+										<Property Name="TrimEnd" Type="Real64" Value="4.22712975721785"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>City_Helicopter_Ricochet.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="City_Helicopter_Ricochet" ID="{2307EF3C-43A3-444A-ABFE-0777B263048D}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="City_Helicopter_Ricochet_03" ID="{A1DC0B36-62BB-4244-9B62-E4DB66E48E62}" ShortID="397232018">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="City_Helicopter_Ricochet" ID="{7B740BD9-6612-4316-81F6-97BCA86B9034}" ShortID="909603923">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="4.32659163385827"/>
+										<Property Name="TrimEnd" Type="Real64" Value="5.32121040026246"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>City_Helicopter_Ricochet.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="City_Helicopter_Ricochet" ID="{7B740BD9-6612-4316-81F6-97BCA86B9034}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="City_Helicopter_Ricochet_04" ID="{14F265E3-6DCD-4C66-866A-BCF06BE6A621}" ShortID="955880991">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="City_Helicopter_Ricochet" ID="{A69B31A3-96FF-4EA8-90F1-C81326BBA427}" ShortID="485526598">
+									<PropertyList>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.64650219816273"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="5.56986509186352"/>
+										<Property Name="TrimEnd" Type="Real64" Value="6.61421479658793"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>City_Helicopter_Ricochet.wav</AudioFile>
+									<ConvertedFileIDList>
+										<File ID="868425349"/>
+									</ConvertedFileIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="City_Helicopter_Ricochet" ID="{A69B31A3-96FF-4EA8-90F1-C81326BBA427}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="City_Helicopter_Ricochet_05" ID="{975EF123-84F6-4415-8594-BC0B04D5EC1D}" ShortID="856276821">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="City_Helicopter_Ricochet" ID="{04BC102E-257B-4022-B1DA-C40D6420BE83}" ShortID="868425349">
+									<PropertyList>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.54704032152231"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="6.61421479658793"/>
+										<Property Name="TrimEnd" Type="Real64" Value="7.80775731627297"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>City_Helicopter_Ricochet.wav</AudioFile>
+									<ConvertedFileIDList>
+										<File ID="880382148"/>
+									</ConvertedFileIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="City_Helicopter_Ricochet" ID="{04BC102E-257B-4022-B1DA-C40D6420BE83}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="City_Helicopter_Ricochet_06" ID="{62DC7163-4805-44CF-B511-63C31CC70FDA}" ShortID="267605147">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="City_Helicopter_Ricochet" ID="{708ABD06-FB7D-430B-BABA-F2EB23C9EFD1}" ShortID="540142649">
+									<PropertyList>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.19892375328084"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="8.06271471359863"/>
+										<Property Name="TrimEnd" Type="Real64" Value="8.9081406650422"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>City_Helicopter_Ricochet.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="City_Helicopter_Ricochet" ID="{708ABD06-FB7D-430B-BABA-F2EB23C9EFD1}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="City_Helicopter_Ricochet_07" ID="{9E61328E-A29C-4BEF-9F30-A5F21A432F16}" ShortID="115264100">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="City_Helicopter_Ricochet" ID="{E317FE45-47C0-4DDC-AD05-865C39A2D938}" ShortID="222397000">
+									<PropertyList>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.19892375328084"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="9.4551809865645"/>
+										<Property Name="TrimEnd" Type="Real64" Value="10.5989925679293"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>City_Helicopter_Ricochet.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="City_Helicopter_Ricochet" ID="{E317FE45-47C0-4DDC-AD05-865C39A2D938}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="City_Helicopter_Ricochet_08" ID="{07315E07-9215-48BA-90F8-4815A3399D7F}" ShortID="854529857">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="City_Helicopter_Ricochet" ID="{C4C37D09-3D85-487D-979C-9FDE2F16E439}" ShortID="86628858">
+									<PropertyList>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.19892375328084"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="10.8973781978506"/>
+										<Property Name="TrimEnd" Type="Real64" Value="11.8919969642548"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>City_Helicopter_Ricochet.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="City_Helicopter_Ricochet" ID="{C4C37D09-3D85-487D-979C-9FDE2F16E439}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="City_Helicopter_Ricochet_09" ID="{2ABA6C85-E6AD-4B1D-A9E1-A402C45067AA}" ShortID="108657677">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="City_Helicopter_Ricochet" ID="{443BC88E-7235-4B6C-BA2B-FF1903E5694F}" ShortID="667694593">
+									<PropertyList>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.19892375328084"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="12.1903825941761"/>
+										<Property Name="TrimEnd" Type="Real64" Value="13.1850013605802"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>City_Helicopter_Ricochet.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="City_Helicopter_Ricochet" ID="{443BC88E-7235-4B6C-BA2B-FF1903E5694F}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="City_Helicopter_Ricochet_10" ID="{0EC623DB-516B-4463-94B4-C7CA2905CCC5}" ShortID="737327233">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="City_Helicopter_Ricochet" ID="{13604B89-5D51-4326-A822-7DB914123391}" ShortID="996264775">
+									<PropertyList>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.19892375328084"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="13.831503558743"/>
+										<Property Name="TrimEnd" Type="Real64" Value="14.8758532634674"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>City_Helicopter_Ricochet.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="City_Helicopter_Ricochet" ID="{13604B89-5D51-4326-A822-7DB914123391}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</RandomSequenceContainer>
+				<Sound Name="City_Helicopter_Explosion" ID="{895E4076-B49C-4A6C-9A14-AEF1A2CB9902}" ShortID="308321623">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-10</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="City_Helicopter_Explosion" ID="{2DD4C502-89B2-41F9-816B-08075B3E419E}" ShortID="892655967">
+							<PropertyList>
+								<Property Name="FadeOutDuration" Type="Real64" Value="1.2286464191976"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimBegin" Type="Real64" Value="0.3071616047994"/>
+								<Property Name="TrimEnd" Type="Real64" Value="3.77194450693663"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>City_Helicopter_Explosion.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="City_Helicopter_Explosion" ID="{2DD4C502-89B2-41F9-816B-08075B3E419E}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
 			</ChildrenList>
