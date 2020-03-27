@@ -19,6 +19,11 @@ namespace AK
         static const AkUniqueID AIRPORT_LEVER = 3818725779U;
         static const AkUniqueID AIRPORT_SLIDING_GATE = 877897713U;
         static const AkUniqueID CITY_DETONATION = 3821011336U;
+        static const AkUniqueID CITY_HELICOPTER_BLADE = 2209014619U;
+        static const AkUniqueID CITY_HELICOPTER_BULLET = 1796419571U;
+        static const AkUniqueID CITY_HELICOPTER_EXPLOSION = 2567698640U;
+        static const AkUniqueID CITY_HELICOPTER_MAYDAY = 1743448332U;
+        static const AkUniqueID CITY_HELICOPTER_RICOCHET = 712668924U;
         static const AkUniqueID DOOR_SQUEAK = 3710703494U;
         static const AkUniqueID MUSIC_CITY = 3946025416U;
         static const AkUniqueID MUSIC_CUT_SCENES = 1286490421U;
