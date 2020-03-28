@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{5137A98D-62E8-43E9-B1A4-13EB176F964B}" SchemaVersion="94" RootDocumentID="{99A03157-66C3-46F4-A8D3-E5D78B47C9B8}">
+<WwiseDocument Type="WorkUnit" ID="{5137A98D-62E8-43E9-B1A4-13EB176F964B}" SchemaVersion="94">
 	<Events>
-		<WorkUnit Name="UI" ID="{5137A98D-62E8-43E9-B1A4-13EB176F964B}" OwnerID="{99A03157-66C3-46F4-A8D3-E5D78B47C9B8}" PersistMode="Nested">
+		<WorkUnit Name="UI" ID="{5137A98D-62E8-43E9-B1A4-13EB176F964B}" PersistMode="Standalone">
 			<ChildrenList>
 				<Event Name="UI_Click" ID="{5DC68DB3-7242-4463-B8EC-8A0A98B0821A}">
 					<ChildrenList>
@@ -20,6 +20,17 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Confirmation" ID="{73CAE4AB-8381-435D-BAB9-2F381753AC8F}" WorkUnitID="{557CB3A4-64BA-4D7A-A2D0-4505830D5F1A}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="UI_Check" ID="{6BE9102E-DC51-460C-9F57-25A7A88926A8}">
+					<ChildrenList>
+						<Action Name="" ID="{A3D5185F-D47E-4159-8674-C89CEEC954F2}" ShortID="644096571">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="UI_Check" ID="{434E7915-2A14-42A2-B858-45F37B5F5A0A}" WorkUnitID="{557CB3A4-64BA-4D7A-A2D0-4505830D5F1A}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

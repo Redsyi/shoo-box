@@ -7,6 +7,9 @@ public class UIObjective : MonoBehaviour
     public Animator animator;
     public Text text;
     private bool complete;
+    public AK.Wwise.Event onCheck;
+
+
     public void Complete()
     {
         if (!complete)
@@ -14,6 +17,8 @@ public class UIObjective : MonoBehaviour
             if (animator)
                 animator.SetTrigger("Complete");
             complete = true;
+            if (gameObject)
+                onCheck.Post(gameObject);
         }
     }
 

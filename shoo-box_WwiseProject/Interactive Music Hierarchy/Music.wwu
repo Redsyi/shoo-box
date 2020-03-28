@@ -346,13 +346,16 @@
 					<PropertyList>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>-10</Value>
+								<Value>-2</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+						</Reference>
+						<Reference Name="Effect0" PluginName="Wwise Compressor" CompanyID="0" PluginID="108" PluginType="3">
+							<ObjectRef Name="Hard_Knee_Minus_3dB_RMS" ID="{D083BAE5-F9EF-426B-A311-D9DF8DFE8807}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
 						</Reference>
 						<Reference Name="OutputBus">
 							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
