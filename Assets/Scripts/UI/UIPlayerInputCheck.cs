@@ -25,17 +25,20 @@ public class UIPlayerInputCheck : MonoBehaviour
 
     public void OnMove()
     {
-        manager.ShowCamera();
+        if (player.wigglesRequired == 0)
+        {
+            manager.ShowCamera();
+        }
     }
 
     public void OnRotate()
     {
-        manager.ShowLegform();
-    }
-
-    public void OnChangeForm()
-    {
-        manager.ShowInteract();
+        if (player.wigglesRequired == 0)
+        {
+            manager.toiletFocusStealer.stealAfterTime = 4f;
+        }
+        manager.FinishCamera();
+        //manager.ShowLegform();
     }
 
     public void OnAction()

@@ -56,6 +56,8 @@ public static class Utilities
 #if UNITY_EDITOR
     [MenuItem("Scenes/Main Menu")] public static void MainMenuScene() => 
         OpenScene("Assets/Scenes/MainMenu.unity");
+    [MenuItem("Scenes/Main/Hotel Tutorial")] public static void TutorialScene() => 
+        OpenScene("Assets/Scenes/Hotel/hotel_tutorial.unity");
     [MenuItem("Scenes/Main/Hotel Top Floor")] public static void TopFloorScene() => 
         OpenScene("Assets/Scenes/Hotel/hotel_top_level.unity");
     [MenuItem("Scenes/Main/Hotel Lobby")] public static void LobbyScene() => 

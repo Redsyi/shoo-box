@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
     public bool lockChangeForm;
     public bool lockShoeSight;
 
-    private const float wiggleCD = 0.9f;
+    private const float wiggleCD = 0.7f;
     private float currWiggleCD;
     
     private Vector2 currMovementInput;
@@ -71,6 +71,7 @@ public class Player : MonoBehaviour
             _npcsChasing = value;
         }
     }
+    private UITutorialManager tutorial;
 
 
     private void Start()
@@ -89,6 +90,8 @@ public class Player : MonoBehaviour
             shoeManager.Acquire(shoeType);
             EquipShoe(shoeType);
         }
+
+        tutorial = FindObjectOfType<UITutorialManager>();
     }
 
     /// <summary>
@@ -107,7 +110,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (StealFocusWhenSeen.activeThief == null)
+        if (StealFocusWhenSeen.activeThief == null || !StealFocusWhenSeen.activeThief.lockMovement)
         {
             Vector3 movementVector = CalculateMovementVector();
             if (wigglesRequired == 0)
@@ -130,6 +133,13 @@ public class Player : MonoBehaviour
                 if (currWiggleCD <= 0f)
                 {
                     wigglesRequired--;
+                    if (wigglesRequired == 0)
+                    {
+                        if (UITutorialManager.instance)
+                        {
+                            UITutorialManager.instance.initialFocusStealer.Skip();
+                        }
+                    }
                 }
             }
         }
@@ -154,6 +164,10 @@ public class Player : MonoBehaviour
             shoeManager.Acquire(shoeSniffer.detectedShoe.shoeType);
             EquipShoe(shoeSniffer.detectedShoe.shoeType);
             Destroy(shoeSniffer.detectedShoe.gameObject);
+            if (tutorial)
+            {
+                tutorial.DoKickTutorial();
+            }
         }
     }
 
@@ -195,20 +209,23 @@ public class Player : MonoBehaviour
 
     private void InterpolateRotation()
     {
-        if (currMovementInput != Vector2.zero && wigglesRequired == 0)
+        if (StealFocusWhenSeen.activeThief == null || !StealFocusWhenSeen.activeThief.lockMovement)
         {
-            float desiredRotation = Utilities.ClampAngle0360(-Utilities.VectorToDegrees(Utilities.RotateVectorDegrees(currMovementInput, 135 - myCamera.transform.eulerAngles.y)));
-            float rotationDiff = desiredRotation - currRotation;
-            //print($"{currRotation}, {desiredRotation}");
-            if (Mathf.Abs(rotationDiff) < 10f)
+            if (currMovementInput != Vector2.zero && wigglesRequired == 0)
             {
-                currRotation = desiredRotation;
+                float desiredRotation = Utilities.ClampAngle0360(-Utilities.VectorToDegrees(Utilities.RotateVectorDegrees(currMovementInput, 135 - myCamera.transform.eulerAngles.y)));
+                float rotationDiff = desiredRotation - currRotation;
+                //print($"{currRotation}, {desiredRotation}");
+                if (Mathf.Abs(rotationDiff) < 10f)
+                {
+                    currRotation = desiredRotation;
+                }
+                else
+                {
+                    currRotation = Utilities.ClampAngle0360(currRotation + rotationSpeed * Time.deltaTime * Utilities.DirectionToRotate(currRotation, desiredRotation));
+                }
+                transform.eulerAngles = new Vector3(0, currRotation);
             }
-            else
-            {
-                currRotation = Utilities.ClampAngle0360(currRotation + rotationSpeed * Time.deltaTime * Utilities.DirectionToRotate(currRotation, desiredRotation));
-            }
-            transform.eulerAngles = new Vector3(0, currRotation);
         }
     }
 
@@ -231,6 +248,10 @@ public class Player : MonoBehaviour
                     return;
             }
 
+            if (tutorial)
+            {
+                tutorial.DidLegForm();
+            }
             legForm = !legForm;
 
             legformHitbox.enabled = legForm;
@@ -315,7 +336,7 @@ public class Player : MonoBehaviour
             UIPauseMenu.instance.TogglePause();
             if (UIPauseMenu.instance.paused)
                 inputSystem.SwitchCurrentActionMap("UI");
-            else
+            else if (!UIPopup.popupActive)
                 inputSystem.SwitchCurrentActionMap("Player");
         } else
         {
@@ -326,7 +347,16 @@ public class Player : MonoBehaviour
     public void OnShoeSight()
     {
         if (!lockShoeSight)
+        {
             shoeSight.ActivateSight();
+            UIShoeSightReminder.instance.ShoeSightUsed();
+        }
+    }
+
+    public void OnTutorialContinue()
+    {
+        if (UIPopup.popupActive)
+            UIPopup.activePopup.Dismiss();
     }
 
     /// <summary>
