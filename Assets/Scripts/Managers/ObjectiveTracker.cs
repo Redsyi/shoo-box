@@ -24,9 +24,7 @@ public class ObjectiveTracker : MonoBehaviour
 
     public void CompleteObjective(int objectiveNum)
     {
-        for (int i = currObjective ; i < objectiveNum + 1; ++i)
-        {
-        }
+        UIShoeSightReminder.instance.ObjectiveCompleted();
         objectiveUIs[objectiveNum].Complete();
         currObjective = objectiveNum;
     }

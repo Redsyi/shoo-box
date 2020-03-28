@@ -16,7 +16,16 @@ public class StealFocusWhenSeen : MonoBehaviour
     public float cameraZoomSpeed;
     [Tooltip("Time (in seconds) that camera lingers")]
     public float cameraStealTime;
-
+    [Tooltip("Custom methods to run when this camera steal triggers")]
+    public UnityEngine.Events.UnityEvent onSteal;
+    [Tooltip("Custom methods to run when this camera steal ends")]
+    public UnityEngine.Events.UnityEvent onStealEnd;
+    [Tooltip("(NOT YET IMPLEMENTED) Freeze time while this steal is active?")]
+    public bool freezeTime;
+    [Tooltip("Automatically steal focus after this many seconds has passed, -1 for no time-based steal")]
+    public float stealAfterTime = -1;
+    [Tooltip("Should this stealer lock player movement?")]
+    public bool lockMovement = true;
     private bool skip;
 
     private void Start()
@@ -29,11 +38,13 @@ public class StealFocusWhenSeen : MonoBehaviour
         {
             Camera camera = CameraScript.current.camera;
             Vector3 screenPos = camera.WorldToScreenPoint(transform.position);
-            if (screenPos.x >= padding && screenPos.x <= camera.pixelWidth - padding && screenPos.y >= padding && screenPos.y <= camera.pixelHeight - padding)
+            if ((stealAfterTime != -1 && stealAfterTime <= 0f) || (screenPos.x >= padding && screenPos.x <= camera.pixelWidth - padding && screenPos.y >= padding && screenPos.y <= camera.pixelHeight - padding))
             {
                 StartCoroutine(StealFocus());
             }
         }
+        if (stealAfterTime != -1 && stealAfterTime > 0)
+            stealAfterTime -= Time.deltaTime;
     }
 
     public void Trigger()
@@ -62,6 +73,8 @@ public class StealFocusWhenSeen : MonoBehaviour
         Vector3 vectToDest = transform.position - CameraScript.current.transform.position;
         float dist = vectToDest.magnitude;
         float zoomDiff = Mathf.Abs(cameraSize - originalZoomLevel);
+
+        onSteal.Invoke();
 
         //part 1: translate camera to current position
         while ((vectToDest).sqrMagnitude > 0.4f && !skip)
@@ -96,20 +109,33 @@ public class StealFocusWhenSeen : MonoBehaviour
 
         //part 3: go back to player
         Player player = FindObjectOfType<Player>();
+        float finalZoomLevel = (player.legForm ? CameraScript.current.farZoomLevel : CameraScript.current.closeZoomLevel);
+        zoomDiff = Mathf.Abs(finalZoomLevel - cameraSize);
         vectToDest = player.transform.position - CameraScript.current.transform.position;
         while ((vectToDest).sqrMagnitude > 0.4f)
         {
             CameraScript.current.transform.position += vectToDest.normalized * Time.deltaTime * (1 / cameraScrollSpeed) * dist;
 
             //zoom camera if necessary
-            if (camera.orthographicSize < originalZoomLevel)
-                camera.orthographicSize = Mathf.Min(originalZoomLevel, camera.orthographicSize + Time.deltaTime * (1 / cameraZoomSpeed) * zoomDiff);
-            else if (camera.orthographicSize > originalZoomLevel)
-                camera.orthographicSize = Mathf.Max(originalZoomLevel, camera.orthographicSize - Time.deltaTime * (1 / cameraZoomSpeed) * zoomDiff);
+            if (camera.orthographicSize < finalZoomLevel)
+                camera.orthographicSize = Mathf.Min(finalZoomLevel, camera.orthographicSize + Time.deltaTime * (1 / cameraZoomSpeed) * zoomDiff);
+            else if (camera.orthographicSize > finalZoomLevel)
+                camera.orthographicSize = Mathf.Max(finalZoomLevel, camera.orthographicSize - Time.deltaTime * (1 / cameraZoomSpeed) * zoomDiff);
             
             yield return null;
             vectToDest = player.transform.position - CameraScript.current.transform.position;
         }
+
+        //finish any leftover zoom
+        while (camera.orthographicSize != finalZoomLevel)
+        {
+            if (camera.orthographicSize < finalZoomLevel)
+                camera.orthographicSize = Mathf.Min(finalZoomLevel, camera.orthographicSize + Time.deltaTime * (1 / cameraZoomSpeed) * zoomDiff);
+            else if (camera.orthographicSize > finalZoomLevel)
+                camera.orthographicSize = Mathf.Max(finalZoomLevel, camera.orthographicSize - Time.deltaTime * (1 / cameraZoomSpeed) * zoomDiff);
+            yield return null;
+        }
+        onStealEnd.Invoke();
         activeThief = null;
     }
 

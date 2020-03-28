@@ -91,9 +91,9 @@ public class AIAgent : MonoBehaviour
     /// </summary>
     /// <param name="location">Transform to investigate</param>
     /// <param name="forceOverrideChase">Whether this trigger can interrupt a chase state</param>
-    public void Investigate(GameObject location, float investigateTime = 3f, bool forceOverrideChase = false)
+    public void Investigate(GameObject location, float investigateTime = 3f, bool forceOverrideChase = false, bool forceOverrideInteract = true)
     {
-        if (currState.state != AIState.CHASE || forceOverrideChase)
+        if ((currState.state != AIState.CHASE || forceOverrideChase) && (currState.state != AIState.INTERACT || forceOverrideInteract))
         {
             pathfinder.speed = walkSpeed;
             stoppedTime = 0f;
@@ -109,7 +109,7 @@ public class AIAgent : MonoBehaviour
     /// </summary>
     /// <param name="location">location to investigate</param>
     /// <param name="forceOverrideChase">Whether this trigger can interrupt a chase state</param>
-    public void Investigate(Vector3 location, float investigateTime = 3f, bool forceOverrideChase = false)
+    public void Investigate(Vector3 location, float investigateTime = 3f, bool forceOverrideChase = false, bool forceOverrideInteract = true)
     {
         GameObject target = Instantiate(targetPrefab, location, Quaternion.identity);
         Investigate(target, investigateTime, forceOverrideChase);
@@ -123,10 +123,9 @@ public class AIAgent : MonoBehaviour
     {
         if (!thingsToInteractWith.Contains(interactable))
         {
-        
             thingsToInteractWith.Enqueue(interactable);
 
-            if (currState.state != AIState.CHASE && currState.state != AIState.INTERACT)
+            if (currState.state != AIState.CHASE && currState.state != AIState.INTERACT && thingsToInteractWith.Count == 1)
             {
                 wwiseComponent?.SomethingWrong();
                 pathfinder.speed = runSpeed;
@@ -134,6 +133,7 @@ public class AIAgent : MonoBehaviour
                 currState.location = (interactable as MonoBehaviour).transform;
                 timer = interactable.AIInteractTime();
                 stoppedTime = 0f;
+                reachedInteractable = false;
             }
         }
     }
@@ -191,16 +191,27 @@ public class AIAgent : MonoBehaviour
 
         if (currState.state != AIState.IDLE && !currState.location)
         {
-            if (thingsToInteractWith.Count > 0)
+            if (currState.state == AIState.INTERACT)
             {
-                IAIInteractable newInteractable = thingsToInteractWith.Peek();
-                timer = newInteractable.AIInteractTime();
-                currState.state = AIState.INTERACT;
-                currState.location = (newInteractable as MonoBehaviour).transform;
-                stoppedTime = 0f;
+                IAIInteractable invalid = thingsToInteractWith.Dequeue();
+                while (thingsToInteractWith.Count > 0)
+                {
+                    IAIInteractable newInteractable = thingsToInteractWith.Peek();
+                    if (newInteractable as MonoBehaviour) {
+                        timer = newInteractable.AIInteractTime();
+                        currState.state = AIState.INTERACT;
+                        currState.location = (newInteractable as MonoBehaviour).transform;
+                        stoppedTime = 0f;
+                        reachedInteractable = false;
+                        break;
+                    } else
+                    {
+                        thingsToInteractWith.Dequeue();
+                    }
+                }
+                if (thingsToInteractWith.Count == 0)
+                    Idle();
             }
-            else
-                Idle();
         }
         bool closeToTarget = (transform.position - currState.location.position).sqrMagnitude < 0.4f;
         bool closeEnough = (reachedInteractable && currState.state == AIState.INTERACT) || (stoppedTime >= giveUpTime) || closeToTarget;
@@ -262,6 +273,7 @@ public class AIAgent : MonoBehaviour
                         currState.state = AIState.INTERACT;
                         currState.location = (newInteractable as MonoBehaviour).transform;
                         stoppedTime = 0f;
+                        reachedInteractable = false;
                     }
                     else
                     {
@@ -283,7 +295,7 @@ public class AIAgent : MonoBehaviour
                     if (!reachedInteractable)
                         wwiseComponent?.Fixing();
                     reachedInteractable = true;
-                    if (timer >= 0 && )
+                    if (timer >= 0)
                     {
                         timer -= Time.deltaTime;
                         //TODO: call interactable.AIInteracting(float progress)
