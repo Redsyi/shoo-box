@@ -79,6 +79,40 @@
 						<ActiveSource Name="UI Theme" ID="{68A63733-FD0A-4C1B-BA4E-00C807FFD10A}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="UI_Check" ID="{434E7915-2A14-42A2-B858-45F37B5F5A0A}" ShortID="809852972">
+					<PropertyList>
+						<Property Name="Pitch" Type="int32">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{0D1AFA73-07E5-41CE-8F7A-49E39FA01EFF}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Max" Type="Real64" Value="300"/>
+											<Property Name="Min" Type="Real64" Value="-100"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="UI_Check" ID="{43E58E91-E74C-43E8-86B4-7163AB2860BE}" ShortID="740458">
+							<Language>SFX</Language>
+							<AudioFile>UI_Check.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="UI_Check" ID="{43E58E91-E74C-43E8-86B4-7163AB2860BE}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

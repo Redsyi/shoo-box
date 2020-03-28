@@ -29,10 +29,14 @@
 				<Event Id="3821011336" Name="City_Detonation" ObjectPath="\Events\City\City_Detonation" DurationType="OneShot" DurationMin="1.957249" DurationMax="7.828995"/>
 				<Event Id="2209014619" Name="City_Helicopter_Blade" ObjectPath="\Events\City\City_Helicopter_Blade" DurationType="Infinite"/>
 				<Event Id="1796419571" Name="City_Helicopter_Bullet" ObjectPath="\Events\City\City_Helicopter_Bullet" DurationType="OneShot" DurationMin="2.526854" DurationMax="2.526854"/>
-				<Event Id="2567698640" Name="City_Helicopter_Explosion" ObjectPath="\Events\City\City_Helicopter_Explosion" DurationType="OneShot" DurationMin="3.464783" DurationMax="3.464783"/>
+				<Event Id="2567698640" Name="City_Helicopter_Explosion" ObjectPath="\Events\City\City_Helicopter_Explosion" DurationType="OneShot" DurationMin="2.913524" DurationMax="4.120345"/>
+				<Event Id="1977658369" Name="City_Helicopter_HitPlayer" ObjectPath="\Events\City\City_Helicopter_HitPlayer" DurationType="OneShot" DurationMin="1.161521" DurationMax="1.161521"/>
 				<Event Id="1743448332" Name="City_Helicopter_Mayday" ObjectPath="\Events\City\City_Helicopter_Mayday" DurationType="OneShot" DurationMin="3.423359" DurationMax="4.841362"/>
-				<Event Id="712668924" Name="City_Helicopter_Ricochet" ObjectPath="\Events\City\City_Helicopter_Ricochet" DurationType="Infinite"/>
+				<Event Id="712668924" Name="City_Helicopter_Ricochet" ObjectPath="\Events\City\City_Helicopter_Ricochet" DurationType="OneShot" DurationMin="0.839586" DurationMax="1.197686"/>
 				<Event Id="3710703494" Name="Door_Squeak" ObjectPath="\Events\Hotel\Door_Squeak" DurationType="OneShot" DurationMin="0.398979" DurationMax="0.398979"/>
+				<Event Id="1608609705" Name="Fling" ObjectPath="\Events\Default Work Unit\Fling" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="3833651337" Name="Jump" ObjectPath="\Events\Default Work Unit\Jump" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="2181839183" Name="Kick" ObjectPath="\Events\Default Work Unit\Kick" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="3946025416" Name="Music_City" ObjectPath="\Events\Music\Music_City" DurationType="Infinite"/>
 				<Event Id="1286490421" Name="Music_Cut_Scenes" ObjectPath="\Events\Music\Music_Cut_Scenes" DurationType="OneShot" DurationMin="44.390522" DurationMax="44.390522"/>
 				<Event Id="3138446709" Name="Music_Hotel" ObjectPath="\Events\Music\Music_Hotel" DurationType="OneShot" DurationMin="36.960136" DurationMax="36.960136"/>
@@ -40,13 +44,20 @@
 				<Event Id="2969002452" Name="Object_Fall" ObjectPath="\Events\Hotel\Object_Fall" DurationType="OneShot" DurationMin="0.985937" DurationMax="0.985937"/>
 				<Event Id="3401439988" Name="Phone_Ring" ObjectPath="\Events\Hotel\Phone_Ring" DurationType="OneShot" DurationMin="4.498437" DurationMax="4.498437"/>
 				<Event Id="3767407452" Name="Player_City_Walk" ObjectPath="\Events\Player\Player_City_Walk" DurationType="OneShot" DurationMin="1.224521" DurationMax="1.542800"/>
+				<Event Id="3173192383" Name="Talk" ObjectPath="\Events\Default Work Unit\Talk" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="3116711629" Name="Toilet_Flush" ObjectPath="\Events\Hotel\Toilet_Flush" DurationType="OneShot" DurationMin="15.845959" DurationMax="15.845959"/>
+				<Event Id="1422622395" Name="Transform" ObjectPath="\Events\Default Work Unit\Transform" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="616544330" Name="Trash_Can" ObjectPath="\Events\Hotel\Trash_Can" DurationType="OneShot" DurationMin="0.985937" DurationMax="0.985937"/>
-				<Event Id="2249769530" Name="UI_Click" ObjectPath="\Events\Default Work Unit\UI\UI_Click" DurationType="OneShot" DurationMin="1.354313" DurationMax="1.354313"/>
-				<Event Id="216067002" Name="UI_Confirm" ObjectPath="\Events\Default Work Unit\UI\UI_Confirm" DurationType="OneShot" DurationMin="1.354313" DurationMax="1.354313"/>
+				<Event Id="945383418" Name="UI_Check" ObjectPath="\Events\UI\UI_Check" DurationType="OneShot" DurationMin="0.976719" DurationMax="1.230589"/>
+				<Event Id="2249769530" Name="UI_Click" ObjectPath="\Events\UI\UI_Click" DurationType="OneShot" DurationMin="1.354313" DurationMax="1.354313"/>
+				<Event Id="216067002" Name="UI_Confirm" ObjectPath="\Events\UI\UI_Confirm" DurationType="OneShot" DurationMin="1.354313" DurationMax="1.354313"/>
 				<Event Id="2108779966" Name="Walk" ObjectPath="\Events\Default Work Unit\Walk" DurationType="OneShot" DurationMin="0.898689" DurationMax="0.898689"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
+				<File Id="740458" Language="SFX">
+					<ShortName>UI_Check.wav</ShortName>
+					<Path>SFX/UI_Check_10C4C929.wem</Path>
+				</File>
 				<File Id="36077417" Language="SFX">
 					<ShortName>Boots_Concrete_5.wav</ShortName>
 					<Path>SFX/Boots_Concrete_5_10C4C929.wem</Path>
@@ -54,6 +65,10 @@
 				<File Id="47634011" Language="SFX">
 					<ShortName>Boots_Concrete_2.wav</ShortName>
 					<Path>SFX/Boots_Concrete_2_10C4C929.wem</Path>
+				</File>
+				<File Id="81356439" Language="SFX">
+					<ShortName>Mario Grunt_0.wav</ShortName>
+					<Path>SFX/Mario Grunt_0_10C4C929.wem</Path>
 				</File>
 				<File Id="86628858" Language="SFX">
 					<ShortName>City_Helicopter_Ricochet.wav</ShortName>
@@ -127,6 +142,10 @@
 					<ShortName>City_Helicopter_Ricochet.wav</ShortName>
 					<Path>SFX/City_Helicopter_Ricochet_7942464A.wem</Path>
 				</File>
+				<File Id="524555010" Language="SFX">
+					<ShortName>Mario Grunt_1.wav</ShortName>
+					<Path>SFX/Mario Grunt_1_10C4C929.wem</Path>
+				</File>
 				<File Id="540142649" Language="SFX">
 					<ShortName>City_Helicopter_Ricochet.wav</ShortName>
 					<Path>SFX/City_Helicopter_Ricochet_8F43DBE3.wem</Path>
@@ -175,6 +194,10 @@
 					<ShortName>Breaker Switch.wav</ShortName>
 					<Path>SFX/Breaker Switch_10C4C929.wem</Path>
 				</File>
+				<File Id="833544824" Language="SFX">
+					<ShortName>Mario Grunt_2.wav</ShortName>
+					<Path>SFX/Mario Grunt_2_10C4C929.wem</Path>
+				</File>
 				<File Id="868425349" Language="SFX">
 					<ShortName>City_Helicopter_Ricochet.wav</ShortName>
 					<Path>SFX/City_Helicopter_Ricochet_56FF3D37.wem</Path>
@@ -183,9 +206,17 @@
 					<ShortName>City_Helicopter_Ricochet.wav</ShortName>
 					<Path>SFX/City_Helicopter_Ricochet_FF8D0469.wem</Path>
 				</File>
+				<File Id="883732656" Language="SFX">
+					<ShortName>Mario Grunt_4.wav</ShortName>
+					<Path>SFX/Mario Grunt_4_10C4C929.wem</Path>
+				</File>
 				<File Id="892655967" Language="SFX">
 					<ShortName>City_Helicopter_Explosion.wav</ShortName>
 					<Path>SFX/City_Helicopter_Explosion_2D27E99D.wem</Path>
+				</File>
+				<File Id="898913339" Language="SFX">
+					<ShortName>Mario Grunt_3.wav</ShortName>
+					<Path>SFX/Mario Grunt_3_10C4C929.wem</Path>
 				</File>
 				<File Id="909603923" Language="SFX">
 					<ShortName>City_Helicopter_Ricochet.wav</ShortName>

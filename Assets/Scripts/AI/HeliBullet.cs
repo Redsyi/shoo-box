@@ -14,8 +14,8 @@ public class HeliBullet : MonoBehaviour
     private float currLifetime;
     private bool active;
     public AK.Wwise.Event onFire;
-    public AK.Wwise.Event onBuilding;
     public AK.Wwise.Event onPlayer;
+    static int impacts;
 
     private void Awake()
     {
@@ -51,7 +51,14 @@ public class HeliBullet : MonoBehaviour
         rigidbody.isKinematic = true;
         collider.enabled = false;
         particleSystem.Play();
-        onBuilding.Post(gameObject);
+
+        impacts++;
+        if(impacts %30 == 0){
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                onPlayer.Post(gameObject);
+            }
+        }
     }
 
     public void Deactivate()
