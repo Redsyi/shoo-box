@@ -31,10 +31,12 @@ public class DestroyBuilding : MonoBehaviour, IKickable
     {
         numDestroys++;
         CameraScript.current.ShakeScreen(ShakeStrength.INTENSE, ShakeLength.MEDIUM);
+        Player.ControllerRumble(RumbleStrength.INTENSE, 0.1f);
         dust.gameObject.SetActive(true);
         while(transform.position.y > newY)
         {
             transform.position -= new Vector3(0, speed * Time.deltaTime / numDestroys, 0);
+            Player.ControllerRumble(RumbleStrength.MEDIUM, 0.1f);
             yield return null;
         }
         yield return new WaitForSeconds(1.5f);
