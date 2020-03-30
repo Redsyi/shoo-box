@@ -28,6 +28,7 @@ public class AIHeli : MonoBehaviour, IKickable
     public AK.Wwise.Event onHit; 
     public AK.Wwise.Event onFly;
     public AK.Wwise.Event onHitAfter;
+    public ForceOnKick[] onDestroyKickables;
 
     void Start()
     {
@@ -75,7 +76,7 @@ public class AIHeli : MonoBehaviour, IKickable
             while (InRange())
             {
                 //fire gun
-                HeliBullet bullet = GetBullet(guns[currGunIndex]);
+                HeliBullet bullet = HeliBullet.SpawnBullet(bulletPrefab, guns[currGunIndex].transform.position, guns[currGunIndex].transform.rotation);
                 bullet.Fire();
                 currGunIndex = (currGunIndex + 1) % guns.Length;
                 yield return new WaitForSeconds(fireDelay);
@@ -86,21 +87,7 @@ public class AIHeli : MonoBehaviour, IKickable
             }
         }
     }
-
-    HeliBullet GetBullet(GameObject gun)
-    {
-        if (HeliBullet.reusableBullets == null || HeliBullet.reusableBullets.Count == 0)
-            return Instantiate(bulletPrefab, gun.transform.position, gun.transform.rotation);
-        else
-        {
-            HeliBullet bullet = HeliBullet.reusableBullets.Dequeue();
-            bullet.gameObject.SetActive(true);
-            bullet.transform.position = gun.transform.position;
-            bullet.transform.rotation = gun.transform.rotation;
-            bullet.Reactivate();
-            return bullet;
-        }
-    }
+    
 
     //checks if its current intersection is non-ideal, if so, find a new intersection
     IEnumerator RecalculateBestIntersection()
@@ -114,6 +101,8 @@ public class AIHeli : MonoBehaviour, IKickable
             float minCloseness = Mathf.Abs(intersectionDistToPlayer - idealDist);
             Vector3 vectToPlayer = player.AISpotPoint.position - (currIntersection.transform.position + model.localPosition);
             hasLineOfSight = !Physics.Raycast(model.transform.position, vectToPlayer, vectToPlayer.magnitude, LayerMask.GetMask("Obstructions"));
+            if (!hasLineOfSight)
+                minCloseness = 1000000;
 
             //check if invalid: either we haven't calculated any destination yet, or we are too close, or too far, or there is something obstructing us
             if (firstTime || intersectionDistToPlayer < playerMinDistSqrd || intersectionDistToPlayer > playerMaxDistSqrd || !hasLineOfSight)
@@ -132,9 +121,8 @@ public class AIHeli : MonoBehaviour, IKickable
                             vectToPlayer = player.AISpotPoint.position - (intersection.transform.position + model.localPosition);
                             Vector3 vectToDest = intersection.transform.position - transform.position;
 
-                            //make sure selected candidate has line-of-sight to player, and we don't cross over the player when trying to get there
-                            if (!Physics.Raycast(model.transform.position, vectToPlayer, vectToPlayer.magnitude, LayerMask.GetMask("Obstructions")) &&
-                                !Physics.Raycast(transform.position + Vector3.up, vectToDest, vectToDest.magnitude, LayerMask.GetMask("Player")))
+                            //make sure selected candidate has line-of-sight to player
+                            if (!Physics.Raycast(intersection.transform.position + model.localPosition, vectToPlayer, vectToPlayer.magnitude, LayerMask.GetMask("Obstructions")))
                             {
                                 minCloseness = closeness;
                                 currIntersection = intersection;
@@ -164,7 +152,7 @@ public class AIHeli : MonoBehaviour, IKickable
         if (currIntersection)
         {
             Gizmos.color = Color.green;
-            Gizmos.DrawCube(currIntersection.transform.position, Vector3.one * 3);
+            Gizmos.DrawCube(currIntersection.transform.position + model.localPosition, Vector3.one * 2);
         }
     }
 
@@ -194,6 +182,11 @@ public class AIHeli : MonoBehaviour, IKickable
         foreach (Rigidbody rigidbody in model.GetComponentsInChildren<Rigidbody>())
         {
             rigidbody.isKinematic = false;
+        }
+
+        foreach (ForceOnKick kickable in onDestroyKickables)
+        {
+            kickable.kickEnabled = true;
         }
     }
 }

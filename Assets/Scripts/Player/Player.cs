@@ -52,7 +52,9 @@ public class Player : MonoBehaviour
     private float currRotation;
     private CameraScript myCamera;
     //private Shoe currShoe;
-    private float rumbleTime;
+    private static float intenseRumbleTime;
+    private static float mediumRumbleTime;
+    private static float weakRumbleTime;
     private float currBoxSpeed;
     private UIShoeTag shoeTagUI;
     [HideInInspector]
@@ -72,6 +74,7 @@ public class Player : MonoBehaviour
         }
     }
     private UITutorialManager tutorial;
+    private static Player instance;
 
 
     private void Start()
@@ -79,7 +82,6 @@ public class Player : MonoBehaviour
         myCamera = FindObjectOfType<CameraScript>();
         if (myCamera == null)
             Debug.LogError("Player couldn't find camera script");
-        ClearRumble();
         currBoxSpeed = boxSpeedMultiplier;
         shoeTagUI = FindObjectOfType<UIShoeTag>();
         if (shoeTagUI == null)
@@ -92,6 +94,7 @@ public class Player : MonoBehaviour
         }
 
         tutorial = FindObjectOfType<UITutorialManager>();
+        instance = this;
     }
 
     /// <summary>
@@ -373,37 +376,67 @@ public class Player : MonoBehaviour
             switch (strength)
             {
                 case RumbleStrength.WEAK:
-                    lowFreqSpeed = 0.25f;
+                    lowFreqSpeed = 0.2f;
+                    if (weakRumbleTime <= 0f && mediumRumbleTime <= 0f && intenseRumbleTime <= 0f)
+                        (inputSystem.devices[0] as Gamepad).SetMotorSpeeds(lowFreqSpeed, highFreqSpeed);
+                    weakRumbleTime = Mathf.Max(time, weakRumbleTime);
                     break;
                 case RumbleStrength.MEDIUM:
                     lowFreqSpeed = 0.35f;
                     highFreqSpeed = 0.65f;
+                    if (mediumRumbleTime <= 0f && intenseRumbleTime <= 0f)
+                        (inputSystem.devices[0] as Gamepad).SetMotorSpeeds(lowFreqSpeed, highFreqSpeed);
+                    mediumRumbleTime = Mathf.Max(time, mediumRumbleTime);
                     break;
                 case RumbleStrength.INTENSE:
                     lowFreqSpeed = 1f;
                     highFreqSpeed = 1f;
+                    if (intenseRumbleTime <= 0f)
+                        (inputSystem.devices[0] as Gamepad).SetMotorSpeeds(lowFreqSpeed, highFreqSpeed);
+                    intenseRumbleTime = Mathf.Max(time, intenseRumbleTime);
                     break;
             }
-            try
-            {
-                (inputSystem.devices[0] as Gamepad).SetMotorSpeeds(lowFreqSpeed, highFreqSpeed);
-                rumbleTime = Mathf.Max(rumbleTime, time);
-            }
-            catch
-            {
-                print("tried to rumble something that wasn't a controller");
-            }
         }
+    }
+
+    public static void ControllerRumble(RumbleStrength strength, float time)
+    {
+        if (instance)
+            instance.Rumble(strength, time);
     }
 
     //automatically turns off controller rumble once time is up
     private void UpdateRumble() {
         if (inputSystem?.currentControlScheme == "Gamepad")
         {
-            if (rumbleTime > 0f)
+            if (intenseRumbleTime > 0f)
             {
-                rumbleTime -= Time.unscaledDeltaTime;
-                if (rumbleTime <= 0f)
+                intenseRumbleTime -= Time.unscaledDeltaTime;
+                if (intenseRumbleTime <= 0f)
+                {
+                    if (mediumRumbleTime > 0f)
+                        (inputSystem.devices[0] as Gamepad).SetMotorSpeeds(0.35f, 0.65f);
+                    else if (weakRumbleTime > 0f)
+                        (inputSystem.devices[0] as Gamepad).SetMotorSpeeds(0.2f, 0f);
+                    else
+                        (inputSystem.devices[0] as Gamepad).SetMotorSpeeds(0f, 0f);
+                }
+            }
+            if (mediumRumbleTime > 0f)
+            {
+                mediumRumbleTime -= Time.unscaledDeltaTime;
+                if (mediumRumbleTime <= 0f && intenseRumbleTime <= 0f)
+                {
+                    if (weakRumbleTime > 0f)
+                        (inputSystem.devices[0] as Gamepad).SetMotorSpeeds(0.2f, 0f);
+                    else
+                        (inputSystem.devices[0] as Gamepad).SetMotorSpeeds(0f, 0f);
+                }
+            }
+            if (weakRumbleTime > 0f)
+            {
+                weakRumbleTime -= Time.unscaledDeltaTime;
+                if (weakRumbleTime <= 0f && intenseRumbleTime <= 0f && mediumRumbleTime <= 0f)
                 {
                     (inputSystem.devices[0] as Gamepad).SetMotorSpeeds(0f, 0f);
                 }
@@ -416,7 +449,9 @@ public class Player : MonoBehaviour
         if (inputSystem?.currentControlScheme == "Gamepad")
         {
             (inputSystem.devices[0] as Gamepad).SetMotorSpeeds(0f, 0f);
-            rumbleTime = 0f;
+            intenseRumbleTime = 0f;
+            mediumRumbleTime = 0f;
+            weakRumbleTime = 0f;
         }
     }
 

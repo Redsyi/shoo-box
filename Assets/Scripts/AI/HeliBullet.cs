@@ -53,9 +53,10 @@ public class HeliBullet : MonoBehaviour
         particleSystem.Play();
 
         impacts++;
-        if(impacts %30 == 0){
-            if (collision.gameObject.CompareTag("Player"))
-            {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Player.ControllerRumble(RumbleStrength.WEAK, 0.1f);
+            if (impacts %30 == 0){
                 onPlayer.Post(gameObject);
             }
         }
@@ -86,29 +87,27 @@ public class HeliBullet : MonoBehaviour
         trailRenderer.enabled = true;
     }
 
-    /* old linerenderer-based bullet code
-    public float trailLifetime;
-    public LineRenderer renderer;
-
-    public void Fire()
+    public static HeliBullet SpawnBullet(HeliBullet prefab, Vector3 location, Quaternion rotation)
     {
-        StartCoroutine(DoFire());
-    }
-
-    IEnumerator DoFire()
-    {
-        RaycastHit raycastHit;
-        renderer.SetPosition(0, transform.position);
-        if (Physics.Raycast(transform.position, transform.forward, out raycastHit, 40, LayerMask.GetMask("Player", "Obstructions")))
+        if (reusableBullets == null || reusableBullets.Count == 0)
         {
-            renderer.SetPosition(1, raycastHit.point);
-        } else
-        {
-            renderer.SetPosition(1, transform.position + transform.forward * 40);
+            return Instantiate(prefab, location, rotation);
         }
-        renderer.enabled = true;
-        yield return new WaitForSeconds(trailLifetime);
-        Destroy(gameObject);
+        else
+        {
+            HeliBullet bullet = reusableBullets.Dequeue();
+            bullet.transform.position = location;
+            bullet.transform.rotation = rotation;
+            bullet.Reactivate();
+            return bullet;
+        }
     }
-    */
+
+    private void OnDestroy()
+    {
+        if (reusableBullets != null)
+        {
+            reusableBullets = null;
+        }
+    }
 }

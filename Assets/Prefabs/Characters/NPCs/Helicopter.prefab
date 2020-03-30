@@ -524,6 +524,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5471721419415582919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170909113621463926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f184147b86236a8418afb44ca5772243, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 700
+  kickEnabled: 0
+  additionalForceVector: {x: 0, y: 1, z: 0}
 --- !u!1 &170909113755184323
 GameObject:
   m_ObjectHideFlags: 0
@@ -13301,6 +13316,20 @@ MonoBehaviour:
     type: 3}
   heliSwirl: {fileID: 6019503866090017681}
   swirlDestroyedCDTime: 2
+  onHit:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  onFly:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  onHitAfter:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  onDestroyKickables:
+  - {fileID: 5471721419415582919}
 --- !u!195 &6019503867305180632
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -18991,12 +19020,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8178218032824603548}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &170909113519901333 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 74f48ebc4454f754d92696ffeff595cd,
-    type: 3}
-  m_PrefabInstance: {fileID: 8178218032824603548}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8112767335719443695 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -9085859347102740621, guid: 74f48ebc4454f754d92696ffeff595cd,
@@ -19006,6 +19029,12 @@ Transform:
 --- !u!1 &5476866496385809948 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4431367172486606208, guid: 74f48ebc4454f754d92696ffeff595cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 8178218032824603548}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &170909113519901333 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 74f48ebc4454f754d92696ffeff595cd,
     type: 3}
   m_PrefabInstance: {fileID: 8178218032824603548}
   m_PrefabAsset: {fileID: 0}
