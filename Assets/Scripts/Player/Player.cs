@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     public float boxSlideSlowdownRate;
     public float rotationSpeed;
     public bool legForm;
+    public float timeToFling;
 
     [Header("Footsteps")]
     public float footstepTiming;
@@ -75,6 +76,8 @@ public class Player : MonoBehaviour
     }
     private UITutorialManager tutorial;
     private static Player instance;
+    bool holdingAction;
+    bool inFlingRoutine;
 
 
     private void Start()
@@ -115,35 +118,43 @@ public class Player : MonoBehaviour
     {
         if (StealFocusWhenSeen.activeThief == null || !StealFocusWhenSeen.activeThief.lockMovement)
         {
-            Vector3 movementVector = CalculateMovementVector();
-            if (wigglesRequired == 0)
+            if (!inFlingRoutine)
             {
-                rigidbody.velocity = movementVector;
-                if (verticalBoost != 0 && movementVector != Vector3.zero)
+                Vector3 movementVector = CalculateMovementVector();
+                if (wigglesRequired == 0)
                 {
-                    transform.Translate(Vector3.up * verticalBoost);
-                }
-            } else if (currWiggleCD <= 0f && movementVector != Vector3.zero)
-            {
-                currWiggleCD = wiggleCD;
-                foreach (Animator animator in animators)
-                {
-                    animator?.SetTrigger("Wiggle");
-                }
-            } else if (currWiggleCD > 0f)
-            {
-                currWiggleCD -= Time.fixedDeltaTime;
-                if (currWiggleCD <= 0f)
-                {
-                    wigglesRequired--;
-                    if (wigglesRequired == 0)
+                    rigidbody.velocity = movementVector;
+                    if (verticalBoost != 0 && movementVector != Vector3.zero)
                     {
-                        if (UITutorialManager.instance)
+                        transform.Translate(Vector3.up * verticalBoost);
+                    }
+                }
+                else if (currWiggleCD <= 0f && movementVector != Vector3.zero)
+                {
+                    currWiggleCD = wiggleCD;
+                    foreach (Animator animator in animators)
+                    {
+                        animator?.SetTrigger("Wiggle");
+                    }
+                }
+                else if (currWiggleCD > 0f)
+                {
+                    currWiggleCD -= Time.fixedDeltaTime;
+                    if (currWiggleCD <= 0f)
+                    {
+                        wigglesRequired--;
+                        if (wigglesRequired == 0)
                         {
-                            UITutorialManager.instance.initialFocusStealer.Skip();
+                            if (UITutorialManager.instance)
+                            {
+                                UITutorialManager.instance.initialFocusStealer.Skip();
+                            }
                         }
                     }
                 }
+            } else
+            {
+                rigidbody.velocity = Vector3.zero;
             }
         }
     }
@@ -161,6 +172,7 @@ public class Player : MonoBehaviour
         InterpolateRotation();
         UpdateAnimator();
         UpdateParticles();
+        UpdateFling();
 
         if (shoeSniffer.detectedShoe && legForm)
         {
@@ -214,11 +226,15 @@ public class Player : MonoBehaviour
     {
         if (StealFocusWhenSeen.activeThief == null || !StealFocusWhenSeen.activeThief.lockMovement)
         {
-            if (currMovementInput != Vector2.zero && wigglesRequired == 0)
+            if (shoeManager.currShoe == ShoeType.FLIPFLOPS && shoeManager.sandalSlinger.currTarget && inFlingRoutine)
+            {
+                transform.LookAt(shoeManager.sandalSlinger.currTarget);
+                transform.eulerAngles = new Vector3(0, transform.eulerAngles.y - 90, 0);
+            }
+            else if (currMovementInput != Vector2.zero && wigglesRequired == 0)
             {
                 float desiredRotation = Utilities.ClampAngle0360(-Utilities.VectorToDegrees(Utilities.RotateVectorDegrees(currMovementInput, 135 - myCamera.transform.eulerAngles.y)));
                 float rotationDiff = desiredRotation - currRotation;
-                //print($"{currRotation}, {desiredRotation}");
                 if (Mathf.Abs(rotationDiff) < 10f)
                 {
                     currRotation = desiredRotation;
@@ -306,9 +322,10 @@ public class Player : MonoBehaviour
     /// <summary>
     /// Action button pressed
     /// </summary>
-    public void OnAction()
+    public void OnAction(InputValue value)
     {
-        if (legForm)
+        holdingAction = value.Get<float>() >= 0.5f;
+        if (legForm && holdingAction)
         {
             switch(shoeManager.currShoe)
             {
@@ -320,15 +337,67 @@ public class Player : MonoBehaviour
                     shoeManager.UseShoes();
                     break;
                 case ShoeType.FLIPFLOPS:
-                    foreach (Animator animator in animators)
-                        animator.SetTrigger("Fling");
-                    shoeManager.UseShoes();
                     break;
                 default:
                     Debug.Log("you dun fucked up boi");
                     break;
             }
         }
+    }
+
+    void UpdateFling()
+    {
+        if (holdingAction && !shoeManager.sandalSlinger.slinging && !inFlingRoutine && shoeManager.currShoe == ShoeType.FLIPFLOPS)
+            StartCoroutine(DoFling());
+        if (inFlingRoutine)
+        {
+            if (currMovementInput != Vector2.zero)
+            {
+                shoeManager.sandalSlinger.desiredForward = Utilities.RotateVectorDegrees(currMovementInput, 135 - myCamera.transform.eulerAngles.y);
+            }
+        }
+    }
+
+    IEnumerator DoFling()
+    {
+        inFlingRoutine = true;
+        shoeManager.sandalSlinger.holdingShot = true;
+        foreach (Animator animator in animators)
+        {
+            if (animator)
+            {
+                animator.SetTrigger("Fling");
+                animator.SetFloat("FlingSpeed", 1.2f);
+            }
+        }
+        yield return new WaitForSeconds(timeToFling);
+        foreach (Animator animator in animators)
+        {
+            if (animator)
+            {
+                animator.SetFloat("FlingSpeed", 0);
+            }
+        }
+        while (holdingAction)
+        {
+            if (shoeManager.currShoe != ShoeType.FLIPFLOPS || !legForm)
+            {
+                inFlingRoutine = false;
+                shoeManager.sandalSlinger.holdingShot = false;
+                yield break;
+            }
+            yield return null;
+        }
+        foreach (Animator animator in animators)
+        {
+            if (animator)
+            {
+                animator.SetFloat("FlingSpeed", 1);
+            }
+        }
+        shoeManager.UseShoes();
+        shoeManager.sandalSlinger.holdingShot = false;
+        inFlingRoutine = false;
     }
 
     //tell UI to pause or unpause
