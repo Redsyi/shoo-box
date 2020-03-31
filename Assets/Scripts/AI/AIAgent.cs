@@ -34,6 +34,8 @@ public class AIAgent : MonoBehaviour
     private float throwTime;
     private AKEventNPC wwiseComponent;
     private int currPatrolPoint;
+    private CustomShoeSight shoeSightColoring;
+    private ShoeSightType originalSightColoring;
 
     void Start()
     {
@@ -53,6 +55,11 @@ public class AIAgent : MonoBehaviour
 
         StartCoroutine(CheckPos());
         wwiseComponent = GetComponent<AKEventNPC>();
+        shoeSightColoring = GetComponent<CustomShoeSight>();
+        if (shoeSightColoring)
+        {
+            originalSightColoring = shoeSightColoring.type;
+        }
     }
 
     IEnumerator CheckPos()
@@ -225,6 +232,17 @@ public class AIAgent : MonoBehaviour
 
         if (debug)
             print($"{gameObject.name}: {currState.state}, {currState.location}, {thingsToInteractWith.Count} | {stoppedTime}");
+
+        if (shoeSightColoring)
+        {
+            if (blindAll)
+            {
+                shoeSightColoring.SetType(ShoeSightType.BLIND_ENEMY);
+            } else
+            {
+                shoeSightColoring.SetType(originalSightColoring);
+            }
+        }
 
         //take action depending on the current state
         switch(currState.state)
