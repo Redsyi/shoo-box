@@ -50,5 +50,6 @@ public enum ShoeSightType
 {
     INTERACTABLE,
     ENEMY,
-    OBJECTIVE
+    OBJECTIVE,
+    BLIND_ENEMY
 }
