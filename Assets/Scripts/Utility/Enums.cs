@@ -41,7 +41,9 @@ public enum AIInterest
     STOOL_BOI,
     BARTENDER,
     TSA,
-    AIRPORT_CROWD
+    AIRPORT_CROWD,
+    AIRPORT_WORKER,
+    AIRPORT_RESTAURANT_WORKER
 }
 
 public enum ShoeSightType

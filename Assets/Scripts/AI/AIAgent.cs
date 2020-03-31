@@ -28,7 +28,10 @@ public class AIAgent : MonoBehaviour
     public bool beingRepelled;
     public static bool blindAll;
     public bool deaf;
+    public ThrowItem thrower;
     private bool reachedInteractable;
+    public float throwWaitTime;
+    private float throwTime;
     private AKEventNPC wwiseComponent;
     private int currPatrolPoint;
 
@@ -327,6 +330,18 @@ public class AIAgent : MonoBehaviour
                 {
                     LosePlayer(FindObjectOfType<Player>());
                 }
+                if (thrower)
+                {
+                    //new WaitForSeconds(2.0f);
+                    throwTime--;
+                    if (throwTime <= 0)
+                    {
+                        throwTime = throwWaitTime;
+                        thrower.Throw(currState.location);
+                    }
+
+                }
+                    
                 myBubble.StopInvestigating();
                 break;
         }
