@@ -37,11 +37,14 @@ public class AITank : MonoBehaviour, IKickable
     public float bubbleLaunchVelocity;
     public float gunLaunchVelocity;
     public ForceOnKick[] onDestroyKickables;
+    public AK.Wwise.Event onStart;
+    public AK.Wwise.Event onHit;
 
     void Start()
     {
         player = FindObjectOfType<Player>();
         StartCoroutine(RecalculateBestIntersection());
+        onStart.Post (gameObject);
         movementParticles = movementParticleRoot.GetComponentsInChildren<ParticleSystem>();
         foreach (ParticleSystem moveParticles in movementParticles)
         {
@@ -164,6 +167,7 @@ public class AITank : MonoBehaviour, IKickable
         destroyed = true;
         mainCollider.enabled = false;
         mainRigidbody.isKinematic = true;
+        onHit.Post(gameObject);
         foreach (Animator animator in onDestroyAnimators)
         {
             if (!animator.enabled)

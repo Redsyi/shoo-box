@@ -9,9 +9,10 @@ public class UIPauseMenu : MonoBehaviour
 {
     public bool paused { get; private set; }
     public static UIPauseMenu instance;
+    public GameObject defaultSelected;
+    public Event onPause;
     public Event pauseSound;
     public Event unpauseSound;
-    public GameObject defaultSelected;
 
     private void Start()
     {
@@ -23,6 +24,13 @@ public class UIPauseMenu : MonoBehaviour
     {
         paused = !paused;
 
+        if (paused)
+            //AudioManager.instance.Pause();
+            onPause.Post(gameObject);
+        else
+            //AudioManager.instance.UnPause()；
+
+            gameObject.SetActive(paused);
         if(paused)
             AudioManager.instance.Pause();
         else

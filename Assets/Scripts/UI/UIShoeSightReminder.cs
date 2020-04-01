@@ -12,6 +12,7 @@ public class UIShoeSightReminder : MonoBehaviour
     public static UIShoeSightReminder instance;
     private bool active;
     private Player player;
+    public AK.Wwise.Event onShoeSight;
 
     private void Start()
     {
@@ -41,6 +42,7 @@ public class UIShoeSightReminder : MonoBehaviour
     public void ShoeSightUsed()
     {
         timeSinceShoeSightUsed = 0f;
+        onShoeSight.Post(gameObject);
     }
 
     public void ObjectiveCompleted()

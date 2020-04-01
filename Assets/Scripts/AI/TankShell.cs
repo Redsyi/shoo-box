@@ -16,6 +16,7 @@ public class TankShell : MonoBehaviour
     public Animator animator;
     public GameObject impactParticles;
     public float hitForce;
+    public AK.Wwise.Event onFire;
 
     public void Fire()
     {
@@ -61,6 +62,7 @@ public class TankShell : MonoBehaviour
         RaycastHit raycastHit;
         animator.SetTrigger("Fire");
         renderer.SetPosition(0, transform.position);
+        onFire.Post(gameObject);
         if (Physics.Raycast(transform.position, transform.forward, out raycastHit, 40, LayerMask.GetMask("Player", "Obstructions")))
         {
             renderer.SetPosition(1, raycastHit.point);
