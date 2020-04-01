@@ -12,6 +12,8 @@ public class UIPopup : MonoBehaviour
     public static bool popupActive => activePopup != null;
     public static UIPopup activePopup;
     public UnityEvent invokeOnDismissed;
+    public AK.Wwise.Event onActivation;
+    public AK.Wwise.Event onDismissal;
 
     void Start()
     {
@@ -28,6 +30,7 @@ public class UIPopup : MonoBehaviour
             inputSystem.SwitchCurrentActionMap("UI");
             activePopup = this;
             active = true;
+            //onActivation.Post(gameObject);
         }
     }
 
@@ -41,6 +44,7 @@ public class UIPopup : MonoBehaviour
             activePopup = null;
             active = false;
             invokeOnDismissed.Invoke();
+            //onDismissal.Post(gameObject);
         }
     }
 

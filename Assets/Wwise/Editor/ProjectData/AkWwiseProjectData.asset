@@ -31,7 +31,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 22178d79115b0b47a78389e1469b9d8a
     GuidInternal: 
-    m_lastTime: -8586162679084775808
+    m_lastTime: -8586158465034775808
     List:
     - name: Main
       guid: cab15ff7703b3c4683e28bb16d5b7aab
@@ -43,12 +43,66 @@ MonoBehaviour:
         ObjectType: 7
       Path: Default Work Unit/Main
   EventWwu:
+  - PhysicalPath: Events/AI.wwu
+    ParentPhysicalPath: 
+    guid: a10c1617807fb84a98fd030ab8f29867
+    GuidInternal: 
+    m_lastTime: -8586158980284775808
+    List:
+    - name: AI_Exclamation
+      guid: c1e470b0b671af4f932951d4ccd0581e
+      id: 3757163913
+      PathAndIcons:
+      - ElementName: AI
+        ObjectType: 12
+      - ElementName: AI_Exclamation
+        ObjectType: 3
+      Path: AI/AI_Exclamation
+      maxAttenuation: 0
+      maxDuration: 1.161521
+      minDuration: 1.161521
+    - name: AI_Question
+      guid: 9cca75a5c61d244aa41de011345dbcbb
+      id: 1201896862
+      PathAndIcons:
+      - ElementName: AI
+        ObjectType: 12
+      - ElementName: AI_Question
+        ObjectType: 3
+      Path: AI/AI_Question
+      maxAttenuation: 0
+      maxDuration: 1.161521
+      minDuration: 1.161521
   - PhysicalPath: Events/Airport.wwu
     ParentPhysicalPath: 
     guid: c3818a4cfc0a4d498c3dfbd299d2df34
     GuidInternal: 
-    m_lastTime: -8586164514184775808
+    m_lastTime: -8586159061344775808
     List:
+    - name: Airport_Ambience_ConveyorBelt
+      guid: e5a47524e6cb5f4ab34acc8f18dbfa5f
+      id: 1235370484
+      PathAndIcons:
+      - ElementName: Airport
+        ObjectType: 12
+      - ElementName: Airport_Ambience_ConveyorBelt
+        ObjectType: 3
+      Path: Airport/Airport_Ambience_ConveyorBelt
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Airport_Ambience_Tunnel
+      guid: 81035867a81fdf499e687ced0893e14a
+      id: 938863674
+      PathAndIcons:
+      - ElementName: Airport
+        ObjectType: 12
+      - ElementName: Airport_Ambience_Tunnel
+        ObjectType: 3
+      Path: Airport/Airport_Ambience_Tunnel
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: Airport_Cart_Rolling
       guid: e0006efc273ca541aaa6d3ca9934d0d0
       id: 3899537369
@@ -61,18 +115,6 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
-    - name: Airport_Conveyor_Belt_Ambience
-      guid: e5a47524e6cb5f4ab34acc8f18dbfa5f
-      id: 3714526777
-      PathAndIcons:
-      - ElementName: Airport
-        ObjectType: 12
-      - ElementName: Airport_Conveyor_Belt_Ambience
-        ObjectType: 3
-      Path: Airport/Airport_Conveyor_Belt_Ambience
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
     - name: Airport_Flight_Taking_Off
       guid: 2b52dda5bf21da4ba965bc441886aeeb
       id: 1943100584
@@ -113,8 +155,20 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 2508872e04664d41ba93de8f10d15e6b
     GuidInternal: 
-    m_lastTime: -8586162683034775808
+    m_lastTime: -8586158981084775808
     List:
+    - name: City_Ambience
+      guid: de181f9f2dd7c9478357338c2db50554
+      id: 3276472951
+      PathAndIcons:
+      - ElementName: City
+        ObjectType: 12
+      - ElementName: City_Ambience
+        ObjectType: 3
+      Path: City/City_Ambience
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: City_Detonation
       guid: 82b67b1d87829349a26f650eb3d27271
       id: 3821011336
@@ -199,72 +253,36 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 1.197686
       minDuration: 0.839586
+    - name: City_Tank_Fire
+      guid: d7690d8e59c1ea4f8e0bbb799af5b03c
+      id: 838123530
+      PathAndIcons:
+      - ElementName: City
+        ObjectType: 12
+      - ElementName: City_Tank_Fire
+        ObjectType: 3
+      Path: City/City_Tank_Fire
+      maxAttenuation: 0
+      maxDuration: 5.816133
+      minDuration: 2.136204
+    - name: City_Tank_Movement
+      guid: a23f3a2790877348982333c741076154
+      id: 1140222393
+      PathAndIcons:
+      - ElementName: City
+        ObjectType: 12
+      - ElementName: City_Tank_Movement
+        ObjectType: 3
+      Path: City/City_Tank_Movement
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
   - PhysicalPath: Events/Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: 5731a099c366f446a8d3e5d78b47c9b8
     GuidInternal: 
-    m_lastTime: -8586162683034775808
+    m_lastTime: -8586158976294775808
     List:
-    - name: Fling
-      guid: ccf0c2beef94a945a81fa610736ac630
-      id: 1608609705
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: Fling
-        ObjectType: 3
-      Path: Default Work Unit/Fling
-      maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
-    - name: Jump
-      guid: 27dddcda1b3496489f9be48eeba54d7a
-      id: 3833651337
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: Jump
-        ObjectType: 3
-      Path: Default Work Unit/Jump
-      maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
-    - name: Kick
-      guid: 887e21eb4a86b6478689801dd45634c9
-      id: 2181839183
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: Kick
-        ObjectType: 3
-      Path: Default Work Unit/Kick
-      maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
-    - name: Talk
-      guid: ce5a29fd80255243b30783ef09592f23
-      id: 3173192383
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: Talk
-        ObjectType: 3
-      Path: Default Work Unit/Talk
-      maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
-    - name: Transform
-      guid: 6231dc98d9a478499a0578f11b011b5e
-      id: 1422622395
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: Transform
-        ObjectType: 3
-      Path: Default Work Unit/Transform
-      maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
     - name: Walk
       guid: 97c48a0a2b22ed41a489c4b3d762b824
       id: 2108779966
@@ -281,65 +299,113 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: cafbdd67d35b684a8ffe463fd892eec0
     GuidInternal: 
-    m_lastTime: -8586169676224775808
+    m_lastTime: -8586158976294775808
     List:
-    - name: Door_Squeak
-      guid: f8bac18490a01244a167bebb7702f537
-      id: 3710703494
+    - name: Hotel_Ambience_Lobby
+      guid: 438add41a6cf944d9f94666ebb73a97b
+      id: 1861298689
       PathAndIcons:
       - ElementName: Hotel
         ObjectType: 12
-      - ElementName: Door_Squeak
+      - ElementName: Hotel_Ambience_Lobby
         ObjectType: 3
-      Path: Hotel/Door_Squeak
+      Path: Hotel/Hotel_Ambience_Lobby
+      maxAttenuation: 0
+      maxDuration: 103.75431
+      minDuration: 103.75431
+    - name: Hotel_Ambience_Room
+      guid: b312ff007b73ff46b88e6402edee7027
+      id: 3727140126
+      PathAndIcons:
+      - ElementName: Hotel
+        ObjectType: 12
+      - ElementName: Hotel_Ambience_Room
+        ObjectType: 3
+      Path: Hotel/Hotel_Ambience_Room
+      maxAttenuation: 0
+      maxDuration: 102.38898
+      minDuration: 102.38898
+    - name: Hotel_Door_Squeak
+      guid: f8bac18490a01244a167bebb7702f537
+      id: 442557581
+      PathAndIcons:
+      - ElementName: Hotel
+        ObjectType: 12
+      - ElementName: Hotel_Door_Squeak
+        ObjectType: 3
+      Path: Hotel/Hotel_Door_Squeak
       maxAttenuation: 0
       maxDuration: 0.398979
       minDuration: 0.398979
-    - name: Object_Fall
-      guid: 1978024f6f09f24cb7a6838ca294aa55
-      id: 2969002452
+    - name: Hotel_ElevatorDing
+      guid: 8915236f8bda5d49aa8905c282880a49
+      id: 378060898
       PathAndIcons:
       - ElementName: Hotel
         ObjectType: 12
-      - ElementName: Object_Fall
+      - ElementName: Hotel_ElevatorDing
         ObjectType: 3
-      Path: Hotel/Object_Fall
+      Path: Hotel/Hotel_ElevatorDing
+      maxAttenuation: 0
+      maxDuration: 3.892188
+      minDuration: 3.892188
+    - name: Hotel_LightSwitch
+      guid: d16046de508d9e43877c13e8bcbc821b
+      id: 1408096024
+      PathAndIcons:
+      - ElementName: Hotel
+        ObjectType: 12
+      - ElementName: Hotel_LightSwitch
+        ObjectType: 3
+      Path: Hotel/Hotel_LightSwitch
+      maxAttenuation: 0
+      maxDuration: 0.398979
+      minDuration: 0.398979
+    - name: Hotel_Object_Fall
+      guid: 1978024f6f09f24cb7a6838ca294aa55
+      id: 3472592499
+      PathAndIcons:
+      - ElementName: Hotel
+        ObjectType: 12
+      - ElementName: Hotel_Object_Fall
+        ObjectType: 3
+      Path: Hotel/Hotel_Object_Fall
       maxAttenuation: 0
       maxDuration: 0.985937
       minDuration: 0.985937
-    - name: Phone_Ring
+    - name: Hotel_Phone_Ring
       guid: 071a74e277500f418543a24c032ccdcb
-      id: 3401439988
+      id: 1462261549
       PathAndIcons:
       - ElementName: Hotel
         ObjectType: 12
-      - ElementName: Phone_Ring
+      - ElementName: Hotel_Phone_Ring
         ObjectType: 3
-      Path: Hotel/Phone_Ring
+      Path: Hotel/Hotel_Phone_Ring
       maxAttenuation: 0
       maxDuration: 4.498437
       minDuration: 4.498437
-    - name: Toilet_Flush
+    - name: Hotel_Toilet_Flush
       guid: ccf1e0755b7f3a4e9496d21ed041c856
-      id: 3116711629
+      id: 3926086744
       PathAndIcons:
       - ElementName: Hotel
         ObjectType: 12
-      - ElementName: Toilet_Flush
+      - ElementName: Hotel_Toilet_Flush
         ObjectType: 3
-      Path: Hotel/Toilet_Flush
+      Path: Hotel/Hotel_Toilet_Flush
       maxAttenuation: 0
       maxDuration: 15.845959
       minDuration: 15.845959
-    - name: Trash_Can
+    - name: Hotel_Trash_Can
       guid: f4d8bedd014cc148861a28616272bbf3
-      id: 616544330
+      id: 4174056649
       PathAndIcons:
       - ElementName: Hotel
         ObjectType: 12
-      - ElementName: Trash_Can
+      - ElementName: Hotel_Trash_Can
         ObjectType: 3
-      Path: Hotel/Trash_Can
+      Path: Hotel/Hotel_Trash_Can
       maxAttenuation: 0
       maxDuration: 0.985937
       minDuration: 0.985937
@@ -401,7 +467,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: c96a7a88d220c54e8d68a4bf6260e576
     GuidInternal: 
-    m_lastTime: -8586169559474775808
+    m_lastTime: -8586158976294775808
     List:
     - name: Player_City_Walk
       guid: cb515a05ca2e49429eb85b3b64ef44f8
@@ -415,11 +481,47 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 1.5428
       minDuration: 1.224521
+    - name: Player_Fling
+      guid: f57e4a1065039b4bb652f43919fc2f43
+      id: 2962968925
+      PathAndIcons:
+      - ElementName: Player
+        ObjectType: 12
+      - ElementName: Player_Fling
+        ObjectType: 3
+      Path: Player/Player_Fling
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Player_Kick
+      guid: 4d6b48fe81d70942abd8b0e2b2f76f64
+      id: 4076006907
+      PathAndIcons:
+      - ElementName: Player
+        ObjectType: 12
+      - ElementName: Player_Kick
+        ObjectType: 3
+      Path: Player/Player_Kick
+      maxAttenuation: 0
+      maxDuration: 1.303763
+      minDuration: 1.034797
+    - name: Player_Transform
+      guid: dafe2e9978050c43bc91e409f957a407
+      id: 1542675207
+      PathAndIcons:
+      - ElementName: Player
+        ObjectType: 12
+      - ElementName: Player_Transform
+        ObjectType: 3
+      Path: Player/Player_Transform
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
   - PhysicalPath: Events/UI.wwu
     ParentPhysicalPath: 
     guid: 8da93751e862e943b1a413eb176f964b
     GuidInternal: 
-    m_lastTime: -8586162679084775808
+    m_lastTime: -8586158465034775808
     List:
     - name: UI_Check
       guid: 2e10e96b51dc0c469f5725a7a88926a8
@@ -433,18 +535,6 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 1.230589
       minDuration: 0.976719
-    - name: UI_Click
-      guid: b38dc65d42726344b8ec8a0a98b0821a
-      id: 2249769530
-      PathAndIcons:
-      - ElementName: UI
-        ObjectType: 12
-      - ElementName: UI_Click
-        ObjectType: 3
-      Path: UI/UI_Click
-      maxAttenuation: 0
-      maxDuration: 1.354313
-      minDuration: 1.354313
     - name: UI_Confirm
       guid: ddd91762359c7a409de416326472e17c
       id: 216067002
@@ -457,6 +547,42 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 1.354313
       minDuration: 1.354313
+    - name: UI_Dismiss
+      guid: a4d0517a0951564dba6653e8146cfbc3
+      id: 1374935150
+      PathAndIcons:
+      - ElementName: UI
+        ObjectType: 12
+      - ElementName: UI_Dismiss
+        ObjectType: 3
+      Path: UI/UI_Dismiss
+      maxAttenuation: 0
+      maxDuration: 1.354313
+      minDuration: 1.354313
+    - name: UI_Open
+      guid: b38dc65d42726344b8ec8a0a98b0821a
+      id: 3282376362
+      PathAndIcons:
+      - ElementName: UI
+        ObjectType: 12
+      - ElementName: UI_Open
+        ObjectType: 3
+      Path: UI/UI_Open
+      maxAttenuation: 0
+      maxDuration: 0.319271
+      minDuration: 0.319271
+    - name: UI_ShoeSight
+      guid: e39e51d912bffe449c7f727632418983
+      id: 238343566
+      PathAndIcons:
+      - ElementName: UI
+        ObjectType: 12
+      - ElementName: UI_ShoeSight
+        ObjectType: 3
+      Path: UI/UI_ShoeSight
+      maxAttenuation: 0
+      maxDuration: 6.622854
+      minDuration: 6.622854
   RtpcWwu:
   - PhysicalPath: Game Parameters/Default Work Unit.wwu
     ParentPhysicalPath: 
@@ -469,7 +595,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 51a7c75c2ee8d643ac9806d759d4ee31
     GuidInternal: 
-    m_lastTime: -8586184189834775808
+    m_lastTime: -8586159199284775808
     List: []
   SwitchWwu:
   - PhysicalPath: Switches/Default Work Unit.wwu
@@ -488,6 +614,7 @@ MonoBehaviour:
   ExpandedItems:
   - /shoo-box_WwiseProject
   - /shoo-box_WwiseProject/Events
+  - /shoo-box_WwiseProject/Events/City
   - /shoo-box_WwiseProject/Events/UI
   autoPopulateEnabled: 1
   CurrentPluginConfig: 

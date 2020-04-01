@@ -690,6 +690,14 @@
 					</ChildrenList>
 				</RandomSequenceContainer>
 				<Sound Name="Tank_Move" ID="{FB725E28-33A1-432C-B8C4-07BFE67C97D3}" ShortID="909482051">
+					<PropertyList>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-6</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
@@ -700,6 +708,11 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="City_Tank_Move" ID="{2D9F7CDC-47FC-43CA-AF41-58BACEF5C0F1}" ShortID="400915011">
+							<PropertyList>
+								<Property Name="FadeOutDuration" Type="Real64" Value="0.066494223933649"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="9.0886609009404"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>City_Tank_Move.wav</AudioFile>
 						</AudioFileSource>

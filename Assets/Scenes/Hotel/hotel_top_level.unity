@@ -780,6 +780,7 @@ GameObject:
   - component: {fileID: 234469981}
   - component: {fileID: 234469982}
   - component: {fileID: 234469983}
+  - component: {fileID: 234469984}
   m_Layer: 0
   m_Name: ElevatorButtons
   m_TagString: Untagged
@@ -931,6 +932,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+--- !u!114 &234469984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234469974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42877852c9da54bba9025ef0ed61f04c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KickSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 3b19aea73de5a4e50b546b06b042843f,
+      type: 2}
 --- !u!1 &264726142 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 272962816458027322, guid: e01d28337a59acb428fc5e1001191eb8,
@@ -1517,6 +1535,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 50
+  kickEnabled: 1
+  additionalForceVector: {x: 0, y: 0, z: 0}
 --- !u!65 &372433034
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2067,6 +2087,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 50
+  kickEnabled: 1
+  additionalForceVector: {x: 0, y: 0, z: 0}
 --- !u!65 &466489365
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2614,6 +2636,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 50
+  kickEnabled: 1
+  additionalForceVector: {x: 0, y: 0, z: 0}
 --- !u!65 &609437653
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2662,6 +2686,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 50
+  kickEnabled: 1
+  additionalForceVector: {x: 0, y: 0, z: 0}
 --- !u!65 &648837178
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3568,6 +3594,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 243081720102442257, guid: af045fe6ba44be247951af92825e16b3,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 243081720102442257, guid: af045fe6ba44be247951af92825e16b3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 243081720102442257, guid: af045fe6ba44be247951af92825e16b3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 243081720102442257, guid: af045fe6ba44be247951af92825e16b3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 243094974905401234, guid: af045fe6ba44be247951af92825e16b3,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -3972,6 +4018,16 @@ PrefabInstance:
       propertyPath: objectives.Array.data[1]
       value: Find a way to leave the <color=#FF4040>Hotel Room</color>
       objectReference: {fileID: 0}
+    - target: {fileID: 3921119617182025205, guid: af045fe6ba44be247951af92825e16b3,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3921119617182025205, guid: af045fe6ba44be247951af92825e16b3,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3922900512503479399, guid: af045fe6ba44be247951af92825e16b3,
         type: 3}
       propertyPath: isEnvironmentAware
@@ -4170,6 +4226,26 @@ PrefabInstance:
     - target: {fileID: 8697812397065574334, guid: af045fe6ba44be247951af92825e16b3,
         type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8860587220338487209, guid: af045fe6ba44be247951af92825e16b3,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8860587220338487209, guid: af045fe6ba44be247951af92825e16b3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8860587220338487209, guid: af045fe6ba44be247951af92825e16b3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8860587220338487209, guid: af045fe6ba44be247951af92825e16b3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8954063832348170834, guid: af045fe6ba44be247951af92825e16b3,
@@ -4396,6 +4472,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 50
+  kickEnabled: 1
+  additionalForceVector: {x: 0, y: 0, z: 0}
 --- !u!65 &890629711
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4584,6 +4662,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 50
+  kickEnabled: 1
+  additionalForceVector: {x: 0, y: 0, z: 0}
 --- !u!65 &946597153
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5201,6 +5281,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 100
+  kickEnabled: 1
+  additionalForceVector: {x: 0, y: 0, z: 0}
 --- !u!65 &1027621892
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6801,6 +6883,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 100
+  kickEnabled: 1
+  additionalForceVector: {x: 0, y: 0, z: 0}
 --- !u!65 &1354209652
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7834,6 +7918,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 50
+  kickEnabled: 1
+  additionalForceVector: {x: 0, y: 0, z: 0}
 --- !u!65 &1725715348
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8455,6 +8541,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 50
+  kickEnabled: 1
+  additionalForceVector: {x: 0, y: 0, z: 0}
 --- !u!65 &1998087988
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10585,8 +10673,7 @@ PrefabInstance:
         type: 3}
       propertyPath: KickSound.WwiseObjectReference
       value: 
-      objectReference: {fileID: 11400000, guid: 7f47c1c82792440f1a79382cf05a27c8,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 3382438256838085419, guid: 6627dfe1b13580544b7b0631b1c987a7,
         type: 3}
       propertyPath: m_Size.x
@@ -10621,6 +10708,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Phone
+      objectReference: {fileID: 0}
+    - target: {fileID: 8870613023132001099, guid: 6627dfe1b13580544b7b0631b1c987a7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6627dfe1b13580544b7b0631b1c987a7, type: 3}

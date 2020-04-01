@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
-using Event = AK.Wwise.Event;
+//using Event = AK.Wwise.Event;
 
 public class UIPauseMenu : MonoBehaviour
 {
     public bool paused { get; private set; }
     public static UIPauseMenu instance;
-    public Event pauseSound;
-    public Event unpauseSound;
+    //public Event pauseSound;
+    //public Event unpauseSound;
     public GameObject defaultSelected;
+    public AK.Wwise.Event onPause;
 
     private void Start()
     {
@@ -23,18 +24,19 @@ public class UIPauseMenu : MonoBehaviour
     {
         paused = !paused;
 
-        if(paused)
-            AudioManager.instance.Pause();
+        if (paused)
+            //AudioManager.instance.Pause();
+            onPause.Post(gameObject);
         else
-            AudioManager.instance.UnPause();
+            //AudioManager.instance.UnPause()；
 
-        gameObject.SetActive(paused);
+            gameObject.SetActive(paused);
 
         if (paused)
             EventSystem.current.SetSelectedGameObject(defaultSelected);
 
         Time.timeScale = (paused ? 0 : 1);
-        (paused ? pauseSound : unpauseSound)?.Post(gameObject);
+       // (paused ? pauseSound : unpauseSound)?.Post(gameObject);
 
     }
 

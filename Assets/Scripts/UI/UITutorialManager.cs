@@ -34,6 +34,9 @@ public class UITutorialManager : MonoBehaviour
     public Animator objectiveTrackerAnimator;
     public UIPopup kickPopup;
 
+    public AK.Wwise.Event onUIPopUp;
+    public AK.Wwise.Event onSpaceBar;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -92,6 +95,7 @@ public class UITutorialManager : MonoBehaviour
 
     public void ShowLegform()
     {
+        onUIPopUp.Post(gameObject);
         if (camera && !legform)
         {
             legform = true;
@@ -111,6 +115,7 @@ public class UITutorialManager : MonoBehaviour
 
     public void ShowInteract()
     {
+        onUIPopUp.Post(gameObject);
         if (legform && !interact)
         {
             legformAni.gameObject.SetActive(false);
@@ -122,6 +127,7 @@ public class UITutorialManager : MonoBehaviour
 
     public void ShowUse()
     {
+        onUIPopUp.Post(gameObject);
         if (interact && !use)
         {
             interactAni.gameObject.SetActive(false);

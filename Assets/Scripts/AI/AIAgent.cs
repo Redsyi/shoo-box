@@ -36,6 +36,9 @@ public class AIAgent : MonoBehaviour
     private int currPatrolPoint;
     private CustomShoeSight shoeSightColoring;
     private ShoeSightType originalSightColoring;
+    private bool investigateSoundPlayed;
+    public AK.Wwise.Event onSpot;
+    public AK.Wwise.Event onInvestigate;
 
     void Start()
     {
@@ -158,6 +161,7 @@ public class AIAgent : MonoBehaviour
         {
             wwiseComponent?.PlayerSpotted();
             myBubble.Spotted();
+            onSpot.Post(gameObject);
             player.npcsChasing++;
         }
         pathfinder.speed = runSpeed;
@@ -270,6 +274,7 @@ public class AIAgent : MonoBehaviour
                         transform.rotation = patrolPoint.transform.rotation;
                     }
                 }
+                investigateSoundPlayed = false;
                 myBubble.StopInvestigating();
                 break;
             case AIState.INVESTIGATE:
@@ -282,6 +287,12 @@ public class AIAgent : MonoBehaviour
                     animator.SetTrigger("Investigate");
                 }
                 myBubble.Investigating();
+                if (!investigateSoundPlayed)
+                {
+                    investigateSoundPlayed = true;
+                    onInvestigate.Post(gameObject);
+                }
+      
                 break;
             case AIState.INVESTIGATING:
                 timer -= Time.deltaTime;
@@ -305,6 +316,11 @@ public class AIAgent : MonoBehaviour
                 else
                 {
                     myBubble.Investigating();
+                    if (!investigateSoundPlayed)
+                    {
+                        investigateSoundPlayed = true;
+                        onInvestigate.Post(gameObject);
+                    }
                 }
                 break;
             case AIState.INTERACT:
@@ -338,6 +354,7 @@ public class AIAgent : MonoBehaviour
                     }
                 }
                 myBubble.StopInvestigating();
+                investigateSoundPlayed = false;
                 break;
             case AIState.CHASE:
                 if (!closeToTarget && !closeEnough)
@@ -359,7 +376,7 @@ public class AIAgent : MonoBehaviour
                     }
 
                 }
-                    
+                investigateSoundPlayed = false;    
                 myBubble.StopInvestigating();
                 break;
         }
