@@ -90,6 +90,29 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="City_Tank_Movement" ID="{273A3FA2-8790-4873-9823-33C741076154}">
+					<ChildrenList>
+						<Action Name="" ID="{20B27FDD-4211-433E-AFF8-194E14E97DB9}" ShortID="290019453">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Tank_Move" ID="{FB725E28-33A1-432C-B8C4-07BFE67C97D3}" WorkUnitID="{ED283715-517C-46E9-9FF8-F0DF71A35DB0}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="City_Tank_Fire" ID="{8E0D69D7-C159-4FEA-8E0B-BB799AF5B03C}">
+					<ChildrenList>
+						<Action Name="" ID="{0B2EEB9D-2236-44E3-85E2-4C3E921C4EE5}" ShortID="175345937">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Tank Fire" ID="{F90C082D-8053-46C1-A2E0-52DA23A25C66}" WorkUnitID="{ED283715-517C-46E9-9FF8-F0DF71A35DB0}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="City_Ambience" ID="{9F1F18DE-D72D-47C9-8357-338C2DB50554}"/>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

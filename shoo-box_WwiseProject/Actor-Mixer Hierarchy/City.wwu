@@ -689,6 +689,132 @@
 						</Sound>
 					</ChildrenList>
 				</RandomSequenceContainer>
+				<Sound Name="Tank_Move" ID="{FB725E28-33A1-432C-B8C4-07BFE67C97D3}" ShortID="909482051">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="City_Tank_Move" ID="{2D9F7CDC-47FC-43CA-AF41-58BACEF5C0F1}" ShortID="400915011">
+							<Language>SFX</Language>
+							<AudioFile>City_Tank_Move.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="City_Tank_Move" ID="{2D9F7CDC-47FC-43CA-AF41-58BACEF5C0F1}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<RandomSequenceContainer Name="Tank Fire" ID="{F90C082D-8053-46C1-A2E0-52DA23A25C66}" ShortID="913418574">
+					<PropertyList>
+						<Property Name="Pitch" Type="int32">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{EF6A4BED-3BD8-429D-8F9A-900DA1C22228}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Max" Type="Real64" Value="200"/>
+											<Property Name="Min" Type="Real64" Value="-300"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="City_Tank_Fire" ID="{C081A02D-7617-402D-B1DF-CAC8AE18D62E}" ShortID="388037558">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="City_Tank_FIre" ID="{A361DFA8-A073-45ED-8B25-FE83F2993EBD}" ShortID="787023167">
+									<PropertyList>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.361574114173228"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimEnd" Type="Real64" Value="3.42543897637795"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>City_Tank_FIre.wav</AudioFile>
+									<ConvertedFileIDList>
+										<File ID="9148480"/>
+									</ConvertedFileIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="City_Tank_FIre" ID="{A361DFA8-A073-45ED-8B25-FE83F2993EBD}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="City_Tank_Fire_01" ID="{83F8138A-93A3-4066-AA56-9918A1857503}" ShortID="299660332">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="City_Tank_FIre" ID="{0E71825C-24F6-416F-AFDC-B660F826D69D}" ShortID="591021477">
+									<PropertyList>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.418664763779528"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="3.48252962598425"/>
+										<Property Name="TrimEnd" Type="Real64" Value="8.37329527559056"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>City_Tank_FIre.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="City_Tank_FIre" ID="{0E71825C-24F6-416F-AFDC-B660F826D69D}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="City_Tank_Fire_02" ID="{51FE4472-D1CF-4026-9101-2329BD04DE14}" ShortID="549215485">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="City_Tank_FIre" ID="{D299A973-1526-465C-B3D4-6A81CA6D662A}" ShortID="9148480">
+									<PropertyList>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.152241732283464"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="8.54456722440945"/>
+										<Property Name="TrimEnd" Type="Real64" Value="10.942374507874"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>City_Tank_FIre.wav</AudioFile>
+									<ConvertedFileIDList>
+										<File ID="787023167"/>
+									</ConvertedFileIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="City_Tank_FIre" ID="{D299A973-1526-465C-B3D4-6A81CA6D662A}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</RandomSequenceContainer>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>
