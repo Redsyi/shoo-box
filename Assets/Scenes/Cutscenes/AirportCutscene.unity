@@ -225,7 +225,7 @@ PrefabInstance:
     - target: {fileID: 1798436323383068233, guid: 29ea153ae37d54902863808188a97888,
         type: 3}
       propertyPath: afterSeconds
-      value: 16
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2851143926744149344, guid: 29ea153ae37d54902863808188a97888,
         type: 3}
@@ -320,7 +320,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1062958337}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 76b17cde0d1824e1d9ad8feb1a0c2d68, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: b09a66ca1b7fe4decacd61b9509bd9c5, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 1062958339}
@@ -333,12 +333,14 @@ VideoPlayer:
   m_DataSource: 0
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
-  m_TargetAudioSources: []
-  m_DirectAudioVolumes: []
+  m_TargetAudioSources:
+  - {fileID: 0}
+  m_DirectAudioVolumes:
+  - 1
   m_Url: 
-  m_EnabledAudioTracks: 
-  m_DirectAudioMutes: 
-  m_ControlledAudioTrackCount: 0
+  m_EnabledAudioTracks: 01
+  m_DirectAudioMutes: 00
+  m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 1
   m_SkipOnDrop: 0
   m_Looping: 0
@@ -481,7 +483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destinationScene: 5
-  afterSeconds: 16
+  afterSeconds: 12
   transition: {fileID: 2029924294}
   leftShoeStep: {fileID: 1868819174}
   isCutscene: 1

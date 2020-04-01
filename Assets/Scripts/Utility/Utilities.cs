@@ -58,8 +58,6 @@ public static class Utilities
         OpenScene("Assets/Scenes/MainMenu.unity");
     [MenuItem("Scenes/Main/Hotel Tutorial")] public static void TutorialScene() => 
         OpenScene("Assets/Scenes/Hotel/hotel_tutorial.unity");
-    [MenuItem("Scenes/Main/Hotel Top Floor")] public static void TopFloorScene() => 
-        OpenScene("Assets/Scenes/Hotel/hotel_top_level.unity");
     [MenuItem("Scenes/Main/Hotel Lobby")] public static void LobbyScene() => 
         OpenScene("Assets/Scenes/Hotel/hotel_lobby.unity");
     [MenuItem("Scenes/Main/Airport Conveyors 1")] public static void Conveyors1() => 
@@ -70,6 +68,8 @@ public static class Utilities
         OpenScene("Assets/Scenes/Airport/Terminal_1.unity");
     [MenuItem("Scenes/Main/Airport Terminal 2")] public static void Terminal2() => 
         OpenScene("Assets/Scenes/Airport/Terminal_2.unity");
+    [MenuItem("Scenes/Main/Airport Terminal 3")] public static void Terminal3() =>
+        OpenScene("Assets/Scenes/Airport/Terminal_3.unity");
     [MenuItem("Scenes/Main/City")] public static void City() => 
         OpenScene("Assets/Scenes/City/city.unity");
     [MenuItem("Scenes/Cutscenes/Intro Cutscene")] public static void IntroCS() => 
