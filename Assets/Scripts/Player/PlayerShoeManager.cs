@@ -18,6 +18,7 @@ public class PlayerShoeManager : MonoBehaviour
         shoeTagUI = FindObjectOfType<UIShoeTag>();
     }
 
+
     public void SwitchTo(ShoeType shoe)
     {
         if (acquiredShoes[(int)shoe])

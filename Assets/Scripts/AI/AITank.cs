@@ -201,6 +201,7 @@ public class AITank : MonoBehaviour, IKickable
             moveParticles.Stop();
         }
         pathfinder.enabled = false;
+        StopAllCoroutines();
         Invoke("EnableKickables", 0.5f);
     }
 

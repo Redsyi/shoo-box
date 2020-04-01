@@ -20,10 +20,6 @@ public class SandalProjectile : MonoBehaviour
     private void Start()
     {
         originalPos = transform.position;
-        if (target != null)
-        {
-            transform.LookAt(target);
-        }
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -52,7 +48,11 @@ public class SandalProjectile : MonoBehaviour
             transform.LookAt(slinger.transform);
         } else
         {
-            if ((transform.position - originalPos).sqrMagnitude >= Mathf.Pow(maxDist, 2))
+            if (target != null)
+            {
+                transform.LookAt(target);
+            }
+            if ((transform.position - originalPos).sqrMagnitude >= Mathf.Pow(maxDist, 2) || (target != null && (transform.position - target.position).sqrMagnitude < 1f))
             {
                 reversing = true;
                 hitbox.enabled = false;

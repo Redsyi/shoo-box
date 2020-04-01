@@ -37,6 +37,12 @@ public class SandalSlinger : MonoBehaviour
     public Vector3 vectorToTarget => (currTarget ? (currTarget.position - transform.position) : Vector3.zero);
     public SkinnedMeshRenderer rightSandalModel;
 
+    public void ClearTarget(Transform target)
+    {
+        if (targets.Contains(target))
+            targets.Remove(target);
+    }
+
     private void Start()
     {
         targets = new HashSet<Transform>();

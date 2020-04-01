@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [SelectionBase]
-public class AIHeli : MonoBehaviour, IKickable
+public class AIHeli : MonoBehaviour, ISandalable
 {
     private CityIntersection currIntersection;
     private Player player;
@@ -29,6 +29,7 @@ public class AIHeli : MonoBehaviour, IKickable
     public AK.Wwise.Event onFly;
     public AK.Wwise.Event onHitAfter;
     public ForceOnKick[] onDestroyKickables;
+    public GameObject sandalTarget;
 
     void Start()
     {
@@ -156,7 +157,7 @@ public class AIHeli : MonoBehaviour, IKickable
         }
     }
 
-    public void OnKick(GameObject kicker)
+    public void HitBySandal()
     {
         if (!destroyed)
         {
@@ -188,5 +189,7 @@ public class AIHeli : MonoBehaviour, IKickable
         {
             kickable.kickEnabled = true;
         }
+        player.shoeManager.sandalSlinger.ClearTarget(sandalTarget.transform);
+        sandalTarget.SetActive(false);
     }
 }
