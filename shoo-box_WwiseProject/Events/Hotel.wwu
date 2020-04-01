@@ -3,7 +3,7 @@
 	<Events>
 		<WorkUnit Name="Hotel" ID="{67DDFBCA-5BD3-4A68-8FFE-463FD892EEC0}" PersistMode="Standalone">
 			<ChildrenList>
-				<Event Name="Phone_Ring" ID="{E2741A07-5077-410F-8543-A24C032CCDCB}">
+				<Event Name="Hotel_Phone_Ring" ID="{E2741A07-5077-410F-8543-A24C032CCDCB}">
 					<ChildrenList>
 						<Action Name="" ID="{DF33D0CB-D46B-4647-BB14-585E757C51E8}" ShortID="872367132">
 							<ReferenceList>
@@ -14,7 +14,7 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Trash_Can" ID="{DDBED8F4-4C01-48C1-861A-28616272BBF3}">
+				<Event Name="Hotel_Trash_Can" ID="{DDBED8F4-4C01-48C1-861A-28616272BBF3}">
 					<ChildrenList>
 						<Action Name="" ID="{1008E5D7-5695-4884-AED7-6D2142D2FC8B}" ShortID="564169247">
 							<ReferenceList>
@@ -25,7 +25,7 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Toilet_Flush" ID="{75E0F1CC-7F5B-4E3A-9496-D21ED041C856}">
+				<Event Name="Hotel_Toilet_Flush" ID="{75E0F1CC-7F5B-4E3A-9496-D21ED041C856}">
 					<ChildrenList>
 						<Action Name="" ID="{313466DC-6B2D-42FD-9995-ECC2A66BBB5D}" ShortID="248661404">
 							<ReferenceList>
@@ -36,7 +36,7 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Object_Fall" ID="{4F027819-096F-4CF2-B7A6-838CA294AA55}">
+				<Event Name="Hotel_Object_Fall" ID="{4F027819-096F-4CF2-B7A6-838CA294AA55}">
 					<ChildrenList>
 						<Action Name="" ID="{471371C5-E6C9-47C5-ACDB-C8C7642EB8E3}" ShortID="774259140">
 							<ReferenceList>
@@ -47,9 +47,53 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Door_Squeak" ID="{84C1BAF8-A090-4412-A167-BEBB7702F537}">
+				<Event Name="Hotel_Door_Squeak" ID="{84C1BAF8-A090-4412-A167-BEBB7702F537}">
 					<ChildrenList>
 						<Action Name="" ID="{5A05C291-5568-4C05-8EC0-99CB5B752087}" ShortID="873161776">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Breaker Switch" ID="{3FA5CB96-D0DF-491E-8B50-8CCE3A8560FF}" WorkUnitID="{25563D8B-DCAC-4B3D-B21C-FEBC5B0E321B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Hotel_Ambience_Room" ID="{00FF12B3-737B-46FF-B88E-6402EDEE7027}">
+					<ChildrenList>
+						<Action Name="" ID="{8EDC49B4-F55E-46B4-AF7F-9A8DE574A8F3}" ShortID="655005624">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Hotel Room" ID="{EB44FE95-1E30-4669-81B7-5EB4C525A968}" WorkUnitID="{25563D8B-DCAC-4B3D-B21C-FEBC5B0E321B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Hotel_Ambience_Lobby" ID="{41DD8A43-CFA6-4D94-9F94-666EBB73A97B}">
+					<ChildrenList>
+						<Action Name="" ID="{B20619BF-CF91-4BCD-8AFA-85508C469DDD}" ShortID="111269319">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Hotel Lobby" ID="{C9F1A8D4-B470-43B3-A0DC-A880D092B0ED}" WorkUnitID="{25563D8B-DCAC-4B3D-B21C-FEBC5B0E321B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Hotel_ElevatorDing" ID="{6F231589-DA8B-495D-AA89-05C282880A49}">
+					<ChildrenList>
+						<Action Name="" ID="{DCF45DE3-B04A-4899-A30C-1172DE9FDC45}" ShortID="1040783348">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Elevator Ding" ID="{A50F53FB-35F1-4FDD-A00F-E5CE04AD0974}" WorkUnitID="{25563D8B-DCAC-4B3D-B21C-FEBC5B0E321B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Hotel_LightSwitch" ID="{DE4660D1-8D50-439E-877C-13E8BCBC821B}">
+					<ChildrenList>
+						<Action Name="" ID="{5B68BB7A-7BDC-44C1-86FB-C4F0F6E5199F}" ShortID="94733880">
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Breaker Switch" ID="{3FA5CB96-D0DF-491E-8B50-8CCE3A8560FF}" WorkUnitID="{25563D8B-DCAC-4B3D-B21C-FEBC5B0E321B}"/>

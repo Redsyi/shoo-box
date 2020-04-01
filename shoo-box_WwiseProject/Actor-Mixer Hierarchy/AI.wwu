@@ -3,16 +3,6 @@
 	<AudioObjects>
 		<WorkUnit Name="AI" ID="{8191CCDA-7748-4665-8695-6F1F312C5778}" PersistMode="Standalone">
 			<ChildrenList>
-				<Sound Name="Intercom Announcement" ID="{699079CA-1A78-4D8E-9B6A-CC8BA8008F03}" ShortID="120495479">
-					<ReferenceList>
-						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
-						</Reference>
-						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
-						</Reference>
-					</ReferenceList>
-				</Sound>
 				<RandomSequenceContainer Name="Gibberish" ID="{A3548992-C20D-4347-8321-E020F3DE97E3}" ShortID="122568348">
 					<ReferenceList>
 						<Reference Name="Conversion">
@@ -23,6 +13,44 @@
 						</Reference>
 					</ReferenceList>
 				</RandomSequenceContainer>
+				<Sound Name="AI_Exclamation" ID="{606BE513-24F3-45E6-9C06-E15DB73505A3}" ShortID="6071535">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="AI_Exclamation" ID="{D8128E72-BE22-4B8E-8D6A-5A4925DF5C21}" ShortID="843442942">
+							<Language>SFX</Language>
+							<AudioFile>AI_Exclamation.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="AI_Exclamation" ID="{D8128E72-BE22-4B8E-8D6A-5A4925DF5C21}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="AI_Question" ID="{38AA3D30-5DD4-477F-B82D-447695586406}" ShortID="670208063">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="AI_Question" ID="{812BABE0-7EA1-43FD-8F2F-5088568A39D2}" ShortID="310340041">
+							<Language>SFX</Language>
+							<AudioFile>AI_Question.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="AI_Question" ID="{812BABE0-7EA1-43FD-8F2F-5088568A39D2}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>
