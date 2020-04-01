@@ -347,7 +347,7 @@ public class Player : MonoBehaviour
 
     void UpdateFling()
     {
-        if (holdingAction && !shoeManager.sandalSlinger.slinging && !inFlingRoutine && shoeManager.currShoe == ShoeType.FLIPFLOPS)
+        if (holdingAction && !shoeManager.sandalSlinger.slinging && !inFlingRoutine && shoeManager.currShoe == ShoeType.FLIPFLOPS && legForm)
             StartCoroutine(DoFling());
         if (inFlingRoutine)
         {
