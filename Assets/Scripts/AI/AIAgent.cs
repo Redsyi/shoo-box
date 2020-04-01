@@ -292,7 +292,6 @@ public class AIAgent : MonoBehaviour
                     investigateSoundPlayed = true;
                     onInvestigate.Post(gameObject);
                 }
-      
                 break;
             case AIState.INVESTIGATING:
                 timer -= Time.deltaTime;

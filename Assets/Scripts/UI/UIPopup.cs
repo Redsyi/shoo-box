@@ -30,7 +30,6 @@ public class UIPopup : MonoBehaviour
             inputSystem.SwitchCurrentActionMap("UI");
             activePopup = this;
             active = true;
-            //onActivation.Post(gameObject);
         }
     }
 
@@ -44,7 +43,6 @@ public class UIPopup : MonoBehaviour
             activePopup = null;
             active = false;
             invokeOnDismissed.Invoke();
-            //onDismissal.Post(gameObject);
         }
     }
 

@@ -37,7 +37,6 @@ public class UITutorialManager : MonoBehaviour
     public AK.Wwise.Event onUIPopUp;
     public AK.Wwise.Event onSpaceBar;
 
-    // Start is called before the first frame update
     void Start()
     {
         instance = this;

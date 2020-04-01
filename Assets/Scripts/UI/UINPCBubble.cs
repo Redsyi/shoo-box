@@ -15,7 +15,6 @@ public class UINPCBubble : MonoBehaviour
     private bool spotting;
     private bool investigating;
 
-
     public void Spotted()
     {
         if (!spotting)
