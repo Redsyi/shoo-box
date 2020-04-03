@@ -313,15 +313,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 517b9f59465fbd74697ec95dd8083fcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultSelected: {fileID: 8827649469846997233}
   pauseSound:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 0}
+    WwiseObjectReference: {fileID: 11400000, guid: 1307c2734fbe149ddaefe97773c147a4,
+      type: 2}
   unpauseSound:
     idInternal: 0
     valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: e2fa48790abe14642a01acdce605e3d5,
+      type: 2}
+  onPressed:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: d52a26f86e86d44139b7c316050fef98,
+      type: 2}
+  onHovered:
+    idInternal: 0
+    valueGuidInternal: 
     WwiseObjectReference: {fileID: 0}
-  defaultSelected: {fileID: 8827649469846997233}
 --- !u!1 &8827649469846997233
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,12 +518,12 @@ MonoBehaviour:
   hoverSound:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 0}
+    WwiseObjectReference: {fileID: 11400000, guid: 3519862dc347e49f49237691639d09ea,
+      type: 2}
   clickSound:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 953db9994d77443c4bc309e0e6c2b9e6,
-      type: 2}
+    WwiseObjectReference: {fileID: 0}
 --- !u!1 &8827649470784351348
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,6 +691,8 @@ GameObject:
   - component: {fileID: 8827649471402642962}
   - component: {fileID: 8827649471402642963}
   - component: {fileID: 506810961}
+  - component: {fileID: 1863855342971418555}
+  - component: {fileID: 8704143236741565886}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -813,6 +826,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b57c5dbb32ee81242a972660e37766b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1863855342971418555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8827649471402642961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebaedeee7fdd14c278a6fee3bfa0e513, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_listeners:
+    initialListenerList: []
+    useDefaultListeners: 1
+  isEnvironmentAware: 1
+  isStaticObject: 0
+  m_positionOffsetData:
+    KeepMe: 0
+    positionOffset: {x: 0, y: 0, z: 0}
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
+--- !u!114 &8704143236741565886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8827649471402642961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b62e5debcf27cc4792b57cb76082e07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 3519862dc347e49f49237691639d09ea,
+      type: 2}
+  clickSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
 --- !u!1 &8827649471481431034
 GameObject:
   m_ObjectHideFlags: 0

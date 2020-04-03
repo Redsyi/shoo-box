@@ -13,7 +13,6 @@ namespace AK
 {
     namespace EVENTS
     {
-<<<<<<< HEAD
         static const AkUniqueID AI_EXCLAMATION = 3757163913U;
         static const AkUniqueID AI_QUESTION = 1201896862U;
         static const AkUniqueID AIRPORT_AMBIENCE_CONVEYORBELT = 1235370484U;
@@ -23,13 +22,6 @@ namespace AK
         static const AkUniqueID AIRPORT_LEVER = 3818725779U;
         static const AkUniqueID AIRPORT_SLIDING_GATE = 877897713U;
         static const AkUniqueID CITY_AMBIENCE = 3276472951U;
-=======
-        static const AkUniqueID AIRPORT_CART_ROLLING = 3899537369U;
-        static const AkUniqueID AIRPORT_CONVEYOR_BELT_AMBIENCE = 3714526777U;
-        static const AkUniqueID AIRPORT_FLIGHT_TAKING_OFF = 1943100584U;
-        static const AkUniqueID AIRPORT_LEVER = 3818725779U;
-        static const AkUniqueID AIRPORT_SLIDING_GATE = 877897713U;
->>>>>>> f90bc4aedb04d9e31962288974bef1d692670152
         static const AkUniqueID CITY_DETONATION = 3821011336U;
         static const AkUniqueID CITY_HELICOPTER_BLADE = 2209014619U;
         static const AkUniqueID CITY_HELICOPTER_BULLET = 1796419571U;
@@ -37,7 +29,6 @@ namespace AK
         static const AkUniqueID CITY_HELICOPTER_HITPLAYER = 1977658369U;
         static const AkUniqueID CITY_HELICOPTER_MAYDAY = 1743448332U;
         static const AkUniqueID CITY_HELICOPTER_RICOCHET = 712668924U;
-<<<<<<< HEAD
         static const AkUniqueID CITY_TANK_FIRE = 838123530U;
         static const AkUniqueID CITY_TANK_MOVEMENT = 1140222393U;
         static const AkUniqueID HOTEL_AMBIENCE_LOBBY = 1861298689U;
@@ -49,38 +40,20 @@ namespace AK
         static const AkUniqueID HOTEL_PHONE_RING = 1462261549U;
         static const AkUniqueID HOTEL_TOILET_FLUSH = 3926086744U;
         static const AkUniqueID HOTEL_TRASH_CAN = 4174056649U;
-=======
-        static const AkUniqueID DOOR_SQUEAK = 3710703494U;
-        static const AkUniqueID FLING = 1608609705U;
-        static const AkUniqueID JUMP = 3833651337U;
-        static const AkUniqueID KICK = 2181839183U;
->>>>>>> f90bc4aedb04d9e31962288974bef1d692670152
         static const AkUniqueID MUSIC_CITY = 3946025416U;
         static const AkUniqueID MUSIC_CUT_SCENES = 1286490421U;
         static const AkUniqueID MUSIC_HOTEL = 3138446709U;
         static const AkUniqueID MUSIC_MENU = 1598298728U;
-<<<<<<< HEAD
         static const AkUniqueID PLAYER_CITY_WALK = 3767407452U;
         static const AkUniqueID PLAYER_FLING = 2962968925U;
         static const AkUniqueID PLAYER_KICK = 4076006907U;
         static const AkUniqueID PLAYER_TRANSFORM = 1542675207U;
-        static const AkUniqueID UI_CHECK = 945383418U;
+        static const AkUniqueID UI_CLOSE = 2519197294U;
         static const AkUniqueID UI_CONFIRM = 216067002U;
-        static const AkUniqueID UI_DISMISS = 1374935150U;
+        static const AkUniqueID UI_HOVER = 2118900976U;
+        static const AkUniqueID UI_OBJECTIVECHECK = 1708033489U;
         static const AkUniqueID UI_OPEN = 3282376362U;
         static const AkUniqueID UI_SHOESIGHT = 238343566U;
-=======
-        static const AkUniqueID OBJECT_FALL = 2969002452U;
-        static const AkUniqueID PHONE_RING = 3401439988U;
-        static const AkUniqueID PLAYER_CITY_WALK = 3767407452U;
-        static const AkUniqueID TALK = 3173192383U;
-        static const AkUniqueID TOILET_FLUSH = 3116711629U;
-        static const AkUniqueID TRANSFORM = 1422622395U;
-        static const AkUniqueID TRASH_CAN = 616544330U;
-        static const AkUniqueID UI_CHECK = 945383418U;
-        static const AkUniqueID UI_CLICK = 2249769530U;
-        static const AkUniqueID UI_CONFIRM = 216067002U;
->>>>>>> f90bc4aedb04d9e31962288974bef1d692670152
         static const AkUniqueID WALK = 2108779966U;
     } // namespace EVENTS
 

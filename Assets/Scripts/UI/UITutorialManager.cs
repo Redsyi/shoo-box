@@ -64,7 +64,7 @@ public class UITutorialManager : MonoBehaviour
 
     void ShowMovement()
     {
-
+        onUIPopUp.Post(gameObject);
         if(!movement)
         {
             movement = true;
@@ -75,6 +75,7 @@ public class UITutorialManager : MonoBehaviour
 
     public void ShowCamera()
     {
+        
         if (movement && !camera)
         {
             movementAni.gameObject.SetActive(false);

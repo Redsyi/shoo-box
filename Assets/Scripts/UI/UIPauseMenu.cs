@@ -10,9 +10,10 @@ public class UIPauseMenu : MonoBehaviour
     public bool paused { get; private set; }
     public static UIPauseMenu instance;
     public GameObject defaultSelected;
-    public Event onPause;
     public Event pauseSound;
     public Event unpauseSound;
+    public Event onPressed;
+    public Event onHovered;
 
     private void Start()
     {
@@ -20,42 +21,41 @@ public class UIPauseMenu : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    
     public void TogglePause()
     {
         paused = !paused;
 
         if (paused)
-            //AudioManager.instance.Pause();
-            onPause.Post(gameObject);
+            pauseSound.Post(gameObject);
         else
-            //AudioManager.instance.UnPause()；
-
-            gameObject.SetActive(paused);
-        if(paused)
-            AudioManager.instance.Pause();
-        else
-            AudioManager.instance.UnPause();
+            unpauseSound.Post(gameObject);
 
         gameObject.SetActive(paused);
 
         if (paused)
             EventSystem.current.SetSelectedGameObject(defaultSelected);
 
+        
         Time.timeScale = (paused ? 0 : 1);
         (paused ? pauseSound : unpauseSound)?.Post(gameObject);
 
     }
+    
 
     public void OnRetryPressed()
-    { 
+    {
+        onHovered.Post(gameObject);
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
+        onPressed.Post(gameObject);
     }
 
     public void OnExitPressed()
-    { 
+    {
+        onHovered.Post(gameObject);
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
+        onPressed.Post(gameObject);
     }
 }
