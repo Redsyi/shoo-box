@@ -10,9 +10,6 @@ public class CityIntersection : MonoBehaviour
 
     private void Start()
     {
-        if (intersections == null)
-        {
-            intersections = FindObjectsOfType<CityIntersection>();
-        }
+        intersections = FindObjectsOfType<CityIntersection>();
     }
 }
