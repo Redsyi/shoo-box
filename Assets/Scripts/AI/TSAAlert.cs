@@ -46,7 +46,7 @@ public class TSAAlert : MonoBehaviour, IAIInteractable
         return alertTimeRemaining <= 0;
     }
 
-    void Update()
+    void LateUpdate()
     {
         if (alertBarCanvas)
         {
