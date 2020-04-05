@@ -62,6 +62,11 @@ public class UITutorialManager : MonoBehaviour
         }
     }
 
+    public void CancelTutorial()
+    {
+        CancelInvoke("ShowMovement");
+    }
+
     void ShowMovement()
     {
         onUIPopUp.Post(gameObject);
@@ -149,7 +154,6 @@ public class UITutorialManager : MonoBehaviour
 
     public void SwitchToShower()
     {
-        print("switching to shower");
         StartCoroutine(ShowerSwitch());
     }
 

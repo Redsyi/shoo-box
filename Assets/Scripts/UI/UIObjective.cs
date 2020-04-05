@@ -17,7 +17,7 @@ public class UIObjective : MonoBehaviour
             if (animator)
                 animator.SetTrigger("Complete");
             complete = true;
-            if (gameObject)
+            if (this && gameObject)
                 onCheck.Post(gameObject);
         }
     }

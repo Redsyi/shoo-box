@@ -90,14 +90,19 @@ public class Player : MonoBehaviour
         if (shoeTagUI == null)
             Debug.LogError("Player couldn't find shoe tag UI");
 
+        EquipStartingShoes();
+
+        tutorial = FindObjectOfType<UITutorialManager>();
+        instance = this;
+    }
+
+    public void EquipStartingShoes()
+    {
         foreach (ShoeType shoeType in startingShoes)
         {
             shoeManager.Acquire(shoeType);
             EquipShoe(shoeType);
         }
-
-        tutorial = FindObjectOfType<UITutorialManager>();
-        instance = this;
     }
 
     /// <summary>
@@ -156,6 +161,9 @@ public class Player : MonoBehaviour
             {
                 rigidbody.velocity = Vector3.zero;
             }
+        } else
+        {
+            rigidbody.velocity = Vector3.zero;
         }
     }
 
@@ -257,7 +265,7 @@ public class Player : MonoBehaviour
     /// <summary>
     /// Toggle between box and leg form
     /// </summary>
-    public void OnChangeForm(InputValue value)
+    public void OnChangeForm()
     {
         if (!lockChangeForm)
         {
