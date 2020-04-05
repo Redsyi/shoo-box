@@ -5738,7 +5738,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2212071706219189584}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 6cebb7f1ca7bc6f4cb98223c56ff2ad2, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -5817,6 +5817,7 @@ MonoBehaviour:
   boxSlideSlowdownRate: 2
   rotationSpeed: 360
   legForm: 0
+  timeToFling: 0
   footstepTiming: 0.5
   footstepSoundOffset: 0
   onStep:
@@ -5828,6 +5829,9 @@ MonoBehaviour:
   boxParticlesPosition: {fileID: 6300058587103934878}
   walkingParticleEmissionRate: 10
   shuffleParticleEmissionRate: 5
+  wigglesRequired: 0
+  lockChangeForm: 0
+  lockShoeSight: 0
   verticalBoost: 0
 --- !u!114 &2212071707321504983
 MonoBehaviour:
@@ -5904,7 +5908,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2212071707485408969
 Transform:
   m_ObjectHideFlags: 0
@@ -5926,9 +5930,9 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2212071707485408968}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 6cebb7f1ca7bc6f4cb98223c56ff2ad2, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.4540331, y: 0.934903, z: 0.58469945}
   m_Center: {x: -0.027743444, y: 0.47993416, z: -0.024929792}
@@ -7090,6 +7094,12 @@ MonoBehaviour:
   sandalPrefab: {fileID: 1304311541501803027, guid: 44fc15d645e9a63459ca3e77a7da837a,
     type: 3}
   slinging: 0
+  shotPreview: {fileID: 0}
+  maxDist: 0
+  currTarget: {fileID: 0}
+  desiredForward: {x: 0, y: 0}
+  targetCollider: {fileID: 0}
+  rightSandalModel: {fileID: 0}
 --- !u!1 &5924833009957260933
 GameObject:
   m_ObjectHideFlags: 0
