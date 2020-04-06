@@ -64,6 +64,10 @@ public static class Utilities
         OpenScene("Assets/Scenes/Airport/conveyorBeltWarehouse_1.unity");
     [MenuItem("Scenes/Main/Airport Conveyors 2")] public static void Conveyors2() => 
         OpenScene("Assets/Scenes/Airport/conveyorBeltWarehouse_2.unity");
+    [MenuItem("Scenes/Main/Airport Conveyors 3")] public static void Conveyors3() =>
+        OpenScene("Assets/Scenes/Airport/conveyorBeltWarehouse_3.unity");
+    [MenuItem("Scenes/Main/Airport Conveyors 4")] public static void Conveyors4() =>
+        OpenScene("Assets/Scenes/Airport/conveyorBeltWarehouse_4.unity");
     [MenuItem("Scenes/Main/Airport Terminal 1")] public static void Terminal1() => 
         OpenScene("Assets/Scenes/Airport/Terminal_1.unity");
     [MenuItem("Scenes/Main/Airport Terminal 2")] public static void Terminal2() => 
