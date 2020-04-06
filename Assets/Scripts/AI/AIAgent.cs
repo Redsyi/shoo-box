@@ -39,6 +39,23 @@ public class AIAgent : MonoBehaviour
     private bool investigateSoundPlayed;
     public AK.Wwise.Event onSpot;
     public AK.Wwise.Event onInvestigate;
+    private float _spotProgress;
+    public float spotProgress
+    {
+        get
+        {
+            return _spotProgress;
+        }
+        set
+        {
+            float clampedProgress = Mathf.Clamp01(value);
+            if (_spotProgress != clampedProgress)
+            {
+                _spotProgress = clampedProgress;
+                myBubble.stealthProgress = _spotProgress;
+            }
+        }
+    }
 
     void Start()
     {
@@ -70,11 +87,10 @@ public class AIAgent : MonoBehaviour
         while (true)
         {
             stopped = (prevPos - transform.position).sqrMagnitude <= walkSpeed*.05f;
-            /*if (!stopped)
-            {
-                transform.LookAt(transform.position + (transform.position - prevPos));
-            }
-            else */if (stopped && currState.state != AIState.IDLE)
+
+            Vector2 vectToDest = new Vector2(currState.location.position.x, currState.location.position.z) - new Vector2(transform.position.x, transform.position.z);
+
+            if (stopped && currState.state != AIState.IDLE && vectToDest.sqrMagnitude > 0.25f)
             {
                 transform.LookAt(currState.location);
                 transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y);
@@ -186,6 +202,7 @@ public class AIAgent : MonoBehaviour
         {
             instantiatedTarget.transform.position = player.transform.position;
         }
+        myBubble.Lost();
         Investigate(instantiatedTarget, forceOverrideChase: true);
     }
 

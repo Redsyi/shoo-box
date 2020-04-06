@@ -115,7 +115,7 @@ public class StealFocusWhenSeen : MonoBehaviour
         Player player = FindObjectOfType<Player>();
         float finalZoomLevel = (player.legForm ? cameraScript.farZoomLevel : cameraScript.closeZoomLevel);
         panProgress = 1 - panProgress;
-        timePassed = 0f;
+        timePassed = cameraScrollSpeed - timePassed;
         while (panProgress < 1)
         {
             cameraScript.transform.position = Vector3.Lerp(transform.position, player.transform.position, panProgress);
@@ -128,7 +128,10 @@ public class StealFocusWhenSeen : MonoBehaviour
             panProgress = Mathf.Clamp01(timePassed / cameraScrollSpeed);
             timePassed += Time.unscaledDeltaTime;
         }
-        
+
+        cameraScript.cameraRotation = originalCameraRotation;
+        cameraScript.cameraAngle = originalCameraAngle;
+        cameraScript.cameraDist = originalCameraDist;
         Time.timeScale = originalTimeScale;
         onStealEnd.Invoke();
         activeThief = null;

@@ -21,6 +21,11 @@ public class CameraAngleZone : MonoBehaviour
     {
         if (StealFocusWhenSeen.activeThief == null)
             timeInBounds += Time.deltaTime;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        timeInBounds = Mathf.Clamp01(timeToAdjust - timeOutOfBounds);
         timeOutOfBounds = 0f;
     }
 

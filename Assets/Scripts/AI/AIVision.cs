@@ -15,6 +15,9 @@ public class AIVision : MonoBehaviour
     public Image visibleCone;
     public CapsuleCollider collider;
     public float viewFloor = 5f;
+    public float standingSpotTime = 0.2f;
+    public float shuffleSpotTime = 0.7f;
+    public float spotDecay = 1.2f;
 
     private void Start()
     {
@@ -83,7 +86,9 @@ public class AIVision : MonoBehaviour
                 bool canSeeObj = !AIAgent.blindAll && !Physics.Raycast(transform.position, vectToPlayer, vectToPlayer.magnitude, LayerMask.GetMask("Obstructions", "AI Blinders"));
                 if (canSeeObj)
                 {
-                    ai.Chase(player);
+                    ai.spotProgress += Time.fixedDeltaTime / (player.legForm ? standingSpotTime : shuffleSpotTime);
+                    if (ai.spotProgress == 1f)
+                        ai.Chase(player);
                 }
                 else if (ai.currState.state == AIState.CHASE)
                     ai.LosePlayer(player);
@@ -117,5 +122,6 @@ public class AIVision : MonoBehaviour
     private void Update()
     {
         visibleCone.enabled = !AIAgent.blindAll;
+        ai.spotProgress -= Time.deltaTime / spotDecay;
     }
 }

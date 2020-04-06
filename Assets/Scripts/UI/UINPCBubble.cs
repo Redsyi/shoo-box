@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //TODO: Prevent investigation bubble from showing off-screen and rotate arrow to face NPC when this happens
 //TODO: "speech" bubbles
@@ -11,51 +12,82 @@ public class UINPCBubble : MonoBehaviour
     public GameObject spottedBubble;
     public GameObject investigateBubble;
     public RectTransform investigateBG;
+    public Vector2 investigateOffset;
     public Vector2 offset;
+    public Vector2 investigateBounds;
     private bool spotting;
-    private bool investigating;
+    private bool investigating => (shouldInvestigate || stealthProgress > 0) && !spotting;
+    public GameObject stealthMeter;
+    public Image stealthProgressMeter;
+    private float investigateAngleOffset;
+    public GameObject investigateArrow;
+    private float _stealthProgress;
+    public float stealthProgress
+    {
+        get
+        {
+            return _stealthProgress;
+        }
+        set
+        {
+            _stealthProgress = value;
+            stealthMeter.SetActive(value > 0);
+            stealthProgressMeter.fillAmount = value;
+        }
+    }
+    private bool shouldInvestigate;
+
+    private void Start()
+    {
+        investigateAngleOffset = investigateArrow.transform.localEulerAngles.z;
+        stealthProgress = 0f;
+    }
 
     public void Spotted()
     {
-        if (!spotting)
-            StartCoroutine(Spot());
+        spotting = true;
+        spottedBubble.SetActive(true);
     }
 
-    IEnumerator Spot()
+    public void Lost()
     {
-        spotting = true;
-        investigateBubble.SetActive(false);
-        spottedBubble.SetActive(true);
-        yield return new WaitForSeconds(2);         //magic number
-        spottedBubble.SetActive(false);
         spotting = false;
+        spottedBubble.SetActive(false);
     }
 
     public void Investigating()
     {
-        if (!investigating && !spotting)
-        {
-            investigating = true;
-            investigateBubble.SetActive(true);
-        }
+        shouldInvestigate = true;
     }
 
     public void StopInvestigating()
     {
-        if (investigating)
-        {
-            investigating = false;
-            investigateBubble.SetActive(false);
-        }
+        shouldInvestigate = false;
     }
 
     private void LateUpdate()
     {
+        investigateBubble.SetActive(investigating);
         if (worldAnchor != null) {
             if (spotting || investigating)
             {
-                Vector2 canvasPoint = (Vector2)CameraScript.current.camera.WorldToScreenPoint(worldAnchor.position) + offset;
-                transform.position = canvasPoint;
+                Vector2 desiredPoint = (Vector2)CameraScript.current.camera.WorldToScreenPoint(worldAnchor.position) + offset;
+                if (spotting)
+                {
+                    transform.position = desiredPoint;
+                } else
+                {
+                    Vector2 desiredPosition = desiredPoint + investigateOffset;
+                    Vector2 screenSize = new Vector2(CameraScript.current.camera.pixelWidth, CameraScript.current.camera.pixelHeight);
+                    Vector2 actualPoint = desiredPosition;
+                    actualPoint.x = Mathf.Max(investigateBounds.x, actualPoint.x);
+                    actualPoint.x = Mathf.Min(screenSize.x - investigateBounds.x, actualPoint.x);
+                    actualPoint.y = Mathf.Max(investigateBounds.y, actualPoint.y);
+                    actualPoint.y = Mathf.Min(screenSize.y - investigateBounds.y, actualPoint.y);
+                    float angle = Utilities.VectorToDegrees(desiredPoint - actualPoint);
+                    investigateArrow.transform.localEulerAngles = new Vector3(0, 0, angle + investigateAngleOffset);
+                    transform.position = actualPoint;
+                }
             }
         } else
         {
