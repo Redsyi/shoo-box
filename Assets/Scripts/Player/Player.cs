@@ -169,7 +169,7 @@ public class Player : MonoBehaviour
 
     private Vector3 CalculateMovementVector()
     {
-        Vector2 adjustedMovement = Utilities.RotateVectorDegrees(currMovementInput * baseSpeed * (legForm ? 1 : currBoxSpeed) * Time.fixedDeltaTime, 135 - myCamera.transform.eulerAngles.y);
+        Vector2 adjustedMovement = Utilities.RotateVectorDegrees(currMovementInput * baseSpeed * (legForm ? 1 : currBoxSpeed) * Time.fixedDeltaTime, 180 - myCamera.transform.eulerAngles.y);
         return new Vector3(adjustedMovement.x, rigidbody.velocity.y, adjustedMovement.y);
     }
 
@@ -241,7 +241,7 @@ public class Player : MonoBehaviour
             }
             else if (currMovementInput != Vector2.zero && wigglesRequired == 0)
             {
-                float desiredRotation = Utilities.ClampAngle0360(-Utilities.VectorToDegrees(Utilities.RotateVectorDegrees(currMovementInput, 135 - myCamera.transform.eulerAngles.y)));
+                float desiredRotation = Utilities.ClampAngle0360(-Utilities.VectorToDegrees(Utilities.RotateVectorDegrees(currMovementInput, 180 - myCamera.transform.eulerAngles.y)));
                 float rotationDiff = desiredRotation - currRotation;
                 if (Mathf.Abs(rotationDiff) < 10f)
                 {
@@ -308,7 +308,7 @@ public class Player : MonoBehaviour
     /// </summary>
     public void OnRotate(InputValue value)
     {
-        if (wigglesRequired == 0)
+        if (wigglesRequired == 0 && StealFocusWhenSeen.activeThief == null)
         {
             RotationDirection direction = (value.Get<float>() > 0 ? RotationDirection.CLOCKWISE : RotationDirection.COUNTERCLOCKWISE);
             myCamera.Rotate(direction);
@@ -361,7 +361,7 @@ public class Player : MonoBehaviour
         {
             if (currMovementInput != Vector2.zero)
             {
-                shoeManager.sandalSlinger.desiredForward = Utilities.RotateVectorDegrees(currMovementInput, 135 - myCamera.transform.eulerAngles.y);
+                shoeManager.sandalSlinger.desiredForward = Utilities.RotateVectorDegrees(currMovementInput, 180 - myCamera.transform.eulerAngles.y);
             }
         }
     }

@@ -50,7 +50,7 @@ public class TSAAlert : MonoBehaviour, IAIInteractable
     {
         if (alertBarCanvas)
         {
-            alertBarCanvas.eulerAngles = new Vector3(0, CameraScript.current.transform.eulerAngles.y + 45);
+            alertBarCanvas.eulerAngles = new Vector3(0, CameraScript.current.transform.eulerAngles.y);
             alertBarCanvas.gameObject.SetActive(alertProgress > 0.025f);
             alertProgressBar.fillAmount = alertProgress;
             alertBarTSA.anchorMin = new Vector2(alertBarTSA.anchorMin.x, 1 - alertProgress);

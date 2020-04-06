@@ -12,20 +12,24 @@ public class StealFocusWhenSeen : MonoBehaviour
     public float cameraSize;
     [Tooltip("Time (in seconds) for camera to reach here")]
     public float cameraScrollSpeed;
-    [Tooltip("Time (in seconds) for camera to zoom in")]
-    public float cameraZoomSpeed;
     [Tooltip("Time (in seconds) that camera lingers")]
     public float cameraStealTime;
     [Tooltip("Custom methods to run when this camera steal triggers")]
     public UnityEngine.Events.UnityEvent onSteal;
     [Tooltip("Custom methods to run when this camera steal ends")]
     public UnityEngine.Events.UnityEvent onStealEnd;
-    [Tooltip("(NOT YET IMPLEMENTED) Freeze time while this steal is active?")]
+    [Tooltip("Freeze time while this steal is active?")]
     public bool freezeTime;
     [Tooltip("Automatically steal focus after this many seconds has passed, -1 for no time-based steal")]
     public float stealAfterTime = -1;
     [Tooltip("Should this stealer lock player movement?")]
     public bool lockMovement = true;
+    [Tooltip("Destination camera rotation around the Y axis")]
+    public float destCameraYRotation;
+    [Tooltip("Destination camera rotation around the X axis")]
+    public float destCameraAngle;
+    [Tooltip("How close the camera should be to the source. Default is 20, move closer if there's something in the way")]
+    public float destCameraDist = 20f;
     private bool skip;
 
     private void Start()
@@ -42,9 +46,10 @@ public class StealFocusWhenSeen : MonoBehaviour
             {
                 StartCoroutine(StealFocus());
             }
+
+            if (stealAfterTime != -1 && stealAfterTime > 0)
+                stealAfterTime -= Time.deltaTime;
         }
-        if (stealAfterTime != -1 && stealAfterTime > 0)
-            stealAfterTime -= Time.deltaTime;
     }
 
     public void Trigger()
@@ -68,27 +73,33 @@ public class StealFocusWhenSeen : MonoBehaviour
     {
         focusStolen = true;
         activeThief = this;
-        Camera camera = CameraScript.current.camera;
+        CameraScript cameraScript = CameraScript.current;
+        Camera camera = cameraScript.camera;
         float originalZoomLevel = camera.orthographicSize;
-        Vector3 vectToDest = transform.position - CameraScript.current.transform.position;
-        float dist = vectToDest.magnitude;
-        float zoomDiff = Mathf.Abs(cameraSize - originalZoomLevel);
+        float originalTimeScale = Time.timeScale;
+        if (freezeTime)
+            Time.timeScale = 0f;
+        float panProgress = 0f;
+        float timePassed = 0f;
+        Vector3 originalPosition = cameraScript.transform.position;
+        float originalCameraRotation = cameraScript.cameraRotation;
+        float originalCameraAngle = cameraScript.cameraAngle;
+        float originalCameraDist = cameraScript.cameraDist;
 
         onSteal.Invoke();
 
         //part 1: translate camera to current position
-        while ((vectToDest).sqrMagnitude > 0.4f && !skip)
+        while (panProgress < 1 && !skip)
         {
-            CameraScript.current.transform.position += vectToDest.normalized * Time.deltaTime * (1/cameraScrollSpeed) * dist;
-            
-            //zoom camera if necessary
-            if (camera.orthographicSize < cameraSize)
-                camera.orthographicSize = Mathf.Min(cameraSize, camera.orthographicSize + Time.deltaTime * (1/cameraZoomSpeed) * zoomDiff);
-            else if (camera.orthographicSize > cameraSize)
-                camera.orthographicSize = Mathf.Max(cameraSize, camera.orthographicSize - Time.deltaTime * (1/cameraZoomSpeed) * zoomDiff);
-            
+            cameraScript.transform.position = Vector3.Lerp(originalPosition, transform.position, panProgress);
+            camera.orthographicSize = Mathf.Lerp(originalZoomLevel, cameraSize, panProgress);
+            cameraScript.cameraRotation = Mathf.LerpAngle(originalCameraRotation, destCameraYRotation, panProgress);
+            cameraScript.cameraAngle = Mathf.LerpAngle(originalCameraAngle, destCameraAngle, panProgress);
+            cameraScript.cameraDist = Mathf.LerpAngle(originalCameraDist, destCameraDist, panProgress);
+
             yield return null;
-            vectToDest = transform.position - CameraScript.current.transform.position;
+            panProgress = Mathf.Clamp01(timePassed / cameraScrollSpeed);
+            timePassed += Time.unscaledDeltaTime;
         }
 
         //part 2: remain focused on current position
@@ -96,45 +107,29 @@ public class StealFocusWhenSeen : MonoBehaviour
         while (focusTimeLeft > 0 && !skip)
         {
             CameraScript.current.transform.position = transform.position;
-
-            //zoom camera if necessary
-            if (camera.orthographicSize < cameraSize)
-                camera.orthographicSize = Mathf.Min(cameraSize, camera.orthographicSize + Time.deltaTime * (1 / cameraZoomSpeed) * zoomDiff);
-            else if (camera.orthographicSize > cameraSize)
-                camera.orthographicSize = Mathf.Max(cameraSize, camera.orthographicSize - Time.deltaTime * (1 / cameraZoomSpeed) * zoomDiff);
-            
-            focusTimeLeft -= Time.deltaTime;
+            focusTimeLeft -= Time.unscaledDeltaTime;
             yield return null;
         }
 
         //part 3: go back to player
         Player player = FindObjectOfType<Player>();
-        float finalZoomLevel = (player.legForm ? CameraScript.current.farZoomLevel : CameraScript.current.closeZoomLevel);
-        zoomDiff = Mathf.Abs(finalZoomLevel - cameraSize);
-        vectToDest = player.transform.position - CameraScript.current.transform.position;
-        while ((vectToDest).sqrMagnitude > 0.4f)
+        float finalZoomLevel = (player.legForm ? cameraScript.farZoomLevel : cameraScript.closeZoomLevel);
+        panProgress = 1 - panProgress;
+        timePassed = 0f;
+        while (panProgress < 1)
         {
-            CameraScript.current.transform.position += vectToDest.normalized * Time.deltaTime * (1 / cameraScrollSpeed) * dist;
+            cameraScript.transform.position = Vector3.Lerp(transform.position, player.transform.position, panProgress);
+            camera.orthographicSize = Mathf.Lerp(cameraSize, finalZoomLevel, panProgress);
+            cameraScript.cameraRotation = Mathf.LerpAngle(destCameraYRotation, originalCameraRotation, panProgress);
+            cameraScript.cameraAngle = Mathf.LerpAngle(destCameraAngle, originalCameraAngle, panProgress);
+            cameraScript.cameraDist = Mathf.LerpAngle(destCameraDist, originalCameraDist, panProgress);
 
-            //zoom camera if necessary
-            if (camera.orthographicSize < finalZoomLevel)
-                camera.orthographicSize = Mathf.Min(finalZoomLevel, camera.orthographicSize + Time.deltaTime * (1 / cameraZoomSpeed) * zoomDiff);
-            else if (camera.orthographicSize > finalZoomLevel)
-                camera.orthographicSize = Mathf.Max(finalZoomLevel, camera.orthographicSize - Time.deltaTime * (1 / cameraZoomSpeed) * zoomDiff);
-            
             yield return null;
-            vectToDest = player.transform.position - CameraScript.current.transform.position;
+            panProgress = Mathf.Clamp01(timePassed / cameraScrollSpeed);
+            timePassed += Time.unscaledDeltaTime;
         }
-
-        //finish any leftover zoom
-        while (camera.orthographicSize != finalZoomLevel)
-        {
-            if (camera.orthographicSize < finalZoomLevel)
-                camera.orthographicSize = Mathf.Min(finalZoomLevel, camera.orthographicSize + Time.deltaTime * (1 / cameraZoomSpeed) * zoomDiff);
-            else if (camera.orthographicSize > finalZoomLevel)
-                camera.orthographicSize = Mathf.Max(finalZoomLevel, camera.orthographicSize - Time.deltaTime * (1 / cameraZoomSpeed) * zoomDiff);
-            yield return null;
-        }
+        
+        Time.timeScale = originalTimeScale;
         onStealEnd.Invoke();
         activeThief = null;
     }

@@ -1375,7 +1375,7 @@ PrefabInstance:
     - target: {fileID: 2212071707321504981, guid: 903210885735bc04c82ce1fe71788233,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0018053054
+      value: -0.43443635
       objectReference: {fileID: 0}
     - target: {fileID: 2212071707321504981, guid: 903210885735bc04c82ce1fe71788233,
         type: 3}
@@ -1385,7 +1385,7 @@ PrefabInstance:
     - target: {fileID: 2212071707321504981, guid: 903210885735bc04c82ce1fe71788233,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9999984
+      value: 0.90070254
       objectReference: {fileID: 0}
     - target: {fileID: 2212071707321504981, guid: 903210885735bc04c82ce1fe71788233,
         type: 3}
@@ -1400,7 +1400,7 @@ PrefabInstance:
     - target: {fileID: 2212071707321504981, guid: 903210885735bc04c82ce1fe71788233,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0.20700002
+      value: -51.499
       objectReference: {fileID: 0}
     - target: {fileID: 2212071707321504981, guid: 903210885735bc04c82ce1fe71788233,
         type: 3}
@@ -3333,22 +3333,22 @@ PrefabInstance:
     - target: {fileID: 2042885158363936278, guid: f5b274c1e2fe0c64289084c29b725870,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.35355338
       objectReference: {fileID: 0}
     - target: {fileID: 2042885158363936278, guid: f5b274c1e2fe0c64289084c29b725870,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.35355338
       objectReference: {fileID: 0}
     - target: {fileID: 2042885158363936278, guid: f5b274c1e2fe0c64289084c29b725870,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.1464466
       objectReference: {fileID: 0}
     - target: {fileID: 2042885158363936278, guid: f5b274c1e2fe0c64289084c29b725870,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.8535535
       objectReference: {fileID: 0}
     - target: {fileID: 2042885158363936278, guid: f5b274c1e2fe0c64289084c29b725870,
         type: 3}
@@ -3358,12 +3358,12 @@ PrefabInstance:
     - target: {fileID: 2042885158363936278, guid: f5b274c1e2fe0c64289084c29b725870,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -45
       objectReference: {fileID: 0}
     - target: {fileID: 2042885158363936278, guid: f5b274c1e2fe0c64289084c29b725870,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 2042885158363936278, guid: f5b274c1e2fe0c64289084c29b725870,
         type: 3}
@@ -5516,7 +5516,6 @@ MonoBehaviour:
   padding: 0
   cameraSize: 0.75
   cameraScrollSpeed: 1
-  cameraZoomSpeed: 1
   cameraStealTime: 1e+9
   onSteal:
     m_PersistentCalls:
@@ -5525,8 +5524,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   freezeTime: 0
-  stealAfterTime: -1
+  stealAfterTime: 0
   lockMovement: 0
+  destCameraYRotation: 0
+  destCameraAngle: 35
+  destCameraDist: 4
 --- !u!4 &841426664
 Transform:
   m_ObjectHideFlags: 0
@@ -5535,7 +5537,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 841426662}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.0482596, y: -1.207, z: 1.4974352}
+  m_LocalPosition: {x: -1.0482596, y: -0.432, z: 1.4974352}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1101649134}
@@ -11128,7 +11130,6 @@ MonoBehaviour:
   padding: 5000
   cameraSize: 3.5
   cameraScrollSpeed: 0.6
-  cameraZoomSpeed: 0.6
   cameraStealTime: 10
   onSteal:
     m_PersistentCalls:
@@ -11150,6 +11151,9 @@ MonoBehaviour:
   freezeTime: 0
   stealAfterTime: -1
   lockMovement: 1
+  destCameraYRotation: -120
+  destCameraAngle: 60
+  destCameraDist: 20
 --- !u!4 &2015217503 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7898314405016219437, guid: 37084fbaa1134394cbf7dd29faf262f8,
@@ -19752,7 +19756,6 @@ MonoBehaviour:
   padding: 10
   cameraSize: 4
   cameraScrollSpeed: 0.7
-  cameraZoomSpeed: 0.7
   cameraStealTime: 4
   onSteal:
     m_PersistentCalls:
@@ -19785,6 +19788,9 @@ MonoBehaviour:
   freezeTime: 0
   stealAfterTime: -1
   lockMovement: 1
+  destCameraYRotation: 45
+  destCameraAngle: 50
+  destCameraDist: 20
 --- !u!114 &8572524877357531964
 MonoBehaviour:
   m_ObjectHideFlags: 0

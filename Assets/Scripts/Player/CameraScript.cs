@@ -25,31 +25,92 @@ public class CameraScript : MonoBehaviour
     [Tooltip("How long in seconds it takes to switch between the zoom levels")]
     public float zoomTime = 0.3f;
     public bool zoomed => !player.legForm;
-    // Start is called before the first frame update
+    private float _cameraAngle;
+    public float cameraAngle
+    {
+        get
+        {
+            return _cameraAngle;
+        }
+        set
+        {
+            if (_cameraAngle != value)
+            {
+                _cameraAngle = value;
+                Vector3 eulerAngles = transform.localEulerAngles;
+                eulerAngles.x = -value;
+                transform.localEulerAngles = eulerAngles;
+            }
+        }
+    }
+    private float _cameraRotation;
+    public float cameraRotation
+    {
+        get
+        {
+            return _cameraRotation;
+        }
+        set
+        {
+            if (_cameraRotation != value)
+            {
+                _cameraRotation = value;
+                Vector3 eulerAngles = transform.localEulerAngles;
+                eulerAngles.y = value;
+                transform.localEulerAngles = eulerAngles;
+            }
+        }
+    }
+    private float _cameraDist;
+    public float cameraDist
+    {
+        get
+        {
+            return _cameraDist;
+        }
+        set
+        {
+            if (_cameraDist != value)
+            {
+                _cameraDist = value;
+                Vector3 position = camera.transform.localPosition;
+                position.z = value;
+                camera.transform.localPosition = position;
+            }
+        }
+    }
+
+    private void Awake()
+    {
+        _cameraAngle = -transform.localEulerAngles.x;
+        _cameraRotation = transform.localEulerAngles.y;
+        camera = GetComponentInChildren<Camera>();
+        _cameraDist = camera.transform.localPosition.z;
+        current = this;
+    }
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponentInParent<Player>();
         currShakes = new LinkedList<ScreenShake>();
-        current = this;
-        camera = GetComponentInChildren<Camera>();
         StartCoroutine(UpdateScreenShakes());
     }
     
     //Attach to player in lateupdate so there is no visual lag
     void LateUpdate()
     {
-        if (remainingRotation != 0f)
-        {
-            int direction = (remainingRotation > 0f ? 1 : -1);
-            float rotationAmount = direction * cameraSnapRotateSpeed * Time.deltaTime;
-            if (Mathf.Abs(rotationAmount) > Mathf.Abs(remainingRotation))
-                rotationAmount = remainingRotation;
-            remainingRotation -= rotationAmount;
-            transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y + rotationAmount, transform.localEulerAngles.z);
-        }
-
         if (StealFocusWhenSeen.activeThief == null)
         {
+            if (remainingRotation != 0f)
+            {
+                int direction = (remainingRotation > 0f ? 1 : -1);
+                float rotationAmount = direction * cameraSnapRotateSpeed * Time.deltaTime;
+                if (Mathf.Abs(rotationAmount) > Mathf.Abs(remainingRotation))
+                    rotationAmount = remainingRotation;
+                remainingRotation -= rotationAmount;
+                cameraRotation += rotationAmount;
+            }
+
             transform.position = player.transform.position + currScreenShake;
             if (player.legForm && camera.orthographicSize < farZoomLevel)
             {
