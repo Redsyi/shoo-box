@@ -49,7 +49,7 @@ public class LevelBridge : MonoBehaviour
         Time.timeScale = 1;
         transitionAnimator.SetTrigger("End");
         bridging = false;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.9f);
         SceneManager.UnloadSceneAsync("LevelBridge");
     }
 
