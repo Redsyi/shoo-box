@@ -43,7 +43,9 @@ public enum AIInterest
     TSA,
     AIRPORT_CROWD,
     AIRPORT_WORKER,
-    AIRPORT_RESTAURANT_WORKER
+    AIRPORT_RESTAURANT_WORKER,
+    TSA_2,
+    TSA_3
 }
 
 public enum ShoeSightType
