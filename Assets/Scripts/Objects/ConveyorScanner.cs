@@ -48,7 +48,7 @@ public class ConveyorScanner : MonoBehaviour
             ConveyorBelt.active = false;
             yield return null;
         }
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        LevelBridge.Reload("You were scanned by TSA");
     }
 
     private void OnDrawGizmos()

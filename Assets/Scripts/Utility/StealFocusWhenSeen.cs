@@ -76,7 +76,6 @@ public class StealFocusWhenSeen : MonoBehaviour
         CameraScript cameraScript = CameraScript.current;
         Camera camera = cameraScript.camera;
         float originalZoomLevel = camera.orthographicSize;
-        float originalTimeScale = Time.timeScale;
         if (freezeTime)
             Time.timeScale = 0f;
         float panProgress = 0f;
@@ -132,7 +131,7 @@ public class StealFocusWhenSeen : MonoBehaviour
         cameraScript.cameraRotation = originalCameraRotation;
         cameraScript.cameraAngle = originalCameraAngle;
         cameraScript.cameraDist = originalCameraDist;
-        Time.timeScale = originalTimeScale;
+        Time.timeScale = 1;
         onStealEnd.Invoke();
         activeThief = null;
     }

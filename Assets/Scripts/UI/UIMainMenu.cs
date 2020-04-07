@@ -17,7 +17,7 @@ public class UIMainMenu : MonoBehaviour
     }
     public void PlayButton()
     {
-        SceneManager.LoadScene(1);
+        LevelBridge.BridgeTo(1, "Prologue");
     }
 
     public void OptionsButton()

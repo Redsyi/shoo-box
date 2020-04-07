@@ -7,6 +7,7 @@ public class CutsceneTransition : MonoBehaviour
 {
     public Animator transition;
     public float transitionTime = 1f;
+    public string message;
 
     // Update is called once per frame
     void Update()
@@ -21,8 +22,7 @@ public class CutsceneTransition : MonoBehaviour
 
     IEnumerator TransitionWipe(int levelIndex)
     {
-        transition.SetTrigger("CutsceneStart");
         yield return new WaitForSeconds(transitionTime);
-        SceneManager.LoadScene(levelIndex);
+        LevelBridge.BridgeTo(levelIndex, message);
     }
 }

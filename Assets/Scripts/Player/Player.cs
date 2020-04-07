@@ -556,7 +556,7 @@ public class Player : MonoBehaviour
 #if UNITY_EDITOR
     public void OnTest()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+
     }
 #endif
 

@@ -56,6 +56,7 @@ public class AIAgent : MonoBehaviour
             }
         }
     }
+    public string gameOverName;
 
     void Start()
     {
@@ -210,7 +211,7 @@ public class AIAgent : MonoBehaviour
     {
         //this is the part where the player fucking dies
         wwiseComponent?.PlayerCaught();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        LevelBridge.Reload($"Caught by {gameOverName}");
     }
     
     void Update()

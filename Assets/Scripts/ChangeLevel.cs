@@ -7,11 +7,13 @@ public class ChangeLevel : MonoBehaviour
 {
     public int scene;
     public bool canChangeLevels = true;
+    public string message;
+
     public void OnTriggerEnter(Collider other)
     {
         if (canChangeLevels && other.gameObject.CompareTag("Player"))
         {
-            SceneManager.LoadScene(scene);
+            LevelBridge.BridgeTo(scene, message);
         }
     }
 }
