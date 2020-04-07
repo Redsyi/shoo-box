@@ -57,7 +57,7 @@ public static class Utilities
     [MenuItem("Scenes/Main Menu")] public static void MainMenuScene() => 
         OpenScene("Assets/Scenes/MainMenu.unity");
     [MenuItem("Scenes/Main/Hotel Tutorial")] public static void TutorialScene() => 
-        OpenScene("Assets/Scenes/Hotel/hotel_tutorial.unity");
+        OpenScene("Assets/Scenes/Hotel/hotel_twotorial.unity");
     [MenuItem("Scenes/Main/Hotel Lobby")] public static void LobbyScene() => 
         OpenScene("Assets/Scenes/Hotel/hotel_lobby.unity");
     [MenuItem("Scenes/Main/Airport Conveyors 1")] public static void Conveyors1() => 
