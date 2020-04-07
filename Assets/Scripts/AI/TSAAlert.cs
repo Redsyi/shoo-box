@@ -20,7 +20,7 @@ public class TSAAlert : MonoBehaviour, IAIInteractable
     {
         if (player)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            LevelBridge.Reload("Caught by the TSA");
         } else
         {
             Destroy(gameObject);

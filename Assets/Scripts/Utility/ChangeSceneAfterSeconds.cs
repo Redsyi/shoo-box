@@ -6,9 +6,8 @@ public class ChangeSceneAfterSeconds : MonoBehaviour
 {
     public int destinationScene;
     public float afterSeconds;
-    public Animator transition;
-    public Animation leftShoeStep;
     public bool isCutscene;
+    public string message;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +21,6 @@ public class ChangeSceneAfterSeconds : MonoBehaviour
     void ChangeScene()
     {
         StartCoroutine(TransitionWipe());
-        //UnityEngine.SceneManagement.SceneManager.LoadScene(destinationScene);
     }
 
     public void Skip()
@@ -38,9 +36,7 @@ public class ChangeSceneAfterSeconds : MonoBehaviour
 
     IEnumerator TransitionWipe()
     {
-        transition.SetTrigger("CutsceneStart");
-        leftShoeStep.Play();
         yield return new WaitForSeconds(1f);
-        UnityEngine.SceneManagement.SceneManager.LoadScene(destinationScene);
+        LevelBridge.BridgeTo(destinationScene, message);
     }
 }

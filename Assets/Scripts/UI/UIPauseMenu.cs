@@ -47,7 +47,7 @@ public class UIPauseMenu : MonoBehaviour
     {
         onHovered.Post(gameObject);
         Time.timeScale = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        LevelBridge.Reload("Gave up so easily?");
         onPressed.Post(gameObject);
     }
 
@@ -55,7 +55,7 @@ public class UIPauseMenu : MonoBehaviour
     {
         onHovered.Post(gameObject);
         Time.timeScale = 1;
-        SceneManager.LoadScene(0);
+        LevelBridge.BridgeTo(0, "See ya later!");
         onPressed.Post(gameObject);
     }
 }
