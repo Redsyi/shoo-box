@@ -15,7 +15,10 @@ public class AILooper : MonoBehaviour
         {
             Vector3 offset = AI.transform.position - transform.position;
             Vector3 newVect = transform.position + loopPosition + new Vector3(Random.Range(-variation, variation), 0, Random.Range(-variation, variation));
+            AI.ChangePatrolPoint(0);
+            AI.Idle();
             AI.pathfinder.Warp(newVect + offset);
+            
         }
     }
 

@@ -10,7 +10,7 @@ public class ObjectiveTracker : MonoBehaviour
     private List<UIObjective> objectiveUIs;
     public UIObjective objectivePrefab;
 
-    private void Start()
+    private void Awake()
     {
         instance = this;
         objectiveUIs = new List<UIObjective>();
