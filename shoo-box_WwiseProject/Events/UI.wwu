@@ -69,6 +69,39 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="UI_ShoePickUp" ID="{3B26A8A2-6E2C-45A9-B227-6323570D854F}">
+					<ChildrenList>
+						<Action Name="" ID="{3670E1F9-15BB-411D-8EC9-D8F505FE472E}" ShortID="994022270">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="UI_ShoePickUp" ID="{A954F9CE-CAF5-4397-B6BC-2C3ECDFEE1EC}" WorkUnitID="{557CB3A4-64BA-4D7A-A2D0-4505830D5F1A}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="UI_Shoetag_can_swap" ID="{857F52E5-58E8-4744-BB00-23F21E322FFD}">
+					<ChildrenList>
+						<Action Name="" ID="{935F5BA8-F65A-4D2E-9B88-6FBA5E0E63C6}" ShortID="416527529">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="UI_Shoe Tag Swap" ID="{7EAA8A5A-2D17-40D9-AFC8-F01E197E4E32}" WorkUnitID="{557CB3A4-64BA-4D7A-A2D0-4505830D5F1A}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="UI_shoe_tage_can_not_swap" ID="{82674D67-AF4A-480B-AE4D-07D15BDFA025}">
+					<ChildrenList>
+						<Action Name="" ID="{3FA6BBB4-0F00-4D5D-8941-4B3F102CABFC}" ShortID="927760935">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="UI_Shoe Tag Swap Unable" ID="{E27DFA35-D5ED-4F27-AACD-236FD9C9EC07}" WorkUnitID="{557CB3A4-64BA-4D7A-A2D0-4505830D5F1A}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

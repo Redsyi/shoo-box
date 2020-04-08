@@ -184,6 +184,82 @@
 						<ActiveSource Name="UI_Close" ID="{A884AE16-1EA9-4071-A829-98753C76A3C4}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="UI_ShoePickUp" ID="{A954F9CE-CAF5-4397-B6BC-2C3ECDFEE1EC}" ShortID="608491502">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="UI_ShoePickUp" ID="{6EB1A7E9-30F0-443F-9AD2-0E0954B4D4F1}" ShortID="129166700">
+							<PropertyList>
+								<Property Name="FadeOutDuration" Type="Real64" Value="0.0568841577804108"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="1.12570754344392"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>UI_ShoePickUp.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="UI_ShoePickUp" ID="{6EB1A7E9-30F0-443F-9AD2-0E0954B4D4F1}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="UI_Shoe Tag Swap Unable" ID="{E27DFA35-D5ED-4F27-AACD-236FD9C9EC07}" ShortID="404936421">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-6</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="UI_Shoe Tag Swap Unable" ID="{B16165B0-9C9D-49B0-807B-0B4DED17E678}" ShortID="580463312">
+							<Language>SFX</Language>
+							<AudioFile>UI_Shoe Tag Swap Unable.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="UI_Shoe Tag Swap Unable" ID="{B16165B0-9C9D-49B0-807B-0B4DED17E678}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="UI_Shoe Tag Swap" ID="{7EAA8A5A-2D17-40D9-AFC8-F01E197E4E32}" ShortID="82871881">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-6</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="UI_Shoe Tag Swap" ID="{9DA9136B-F55A-4D19-8215-83B75B0D7266}" ShortID="454841983">
+							<Language>SFX</Language>
+							<AudioFile>UI_Shoe Tag Swap.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="UI_Shoe Tag Swap" ID="{9DA9136B-F55A-4D19-8215-83B75B0D7266}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

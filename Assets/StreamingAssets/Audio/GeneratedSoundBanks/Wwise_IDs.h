@@ -37,9 +37,12 @@ namespace AK
         static const AkUniqueID HOTEL_ELEVATORDING = 378060898U;
         static const AkUniqueID HOTEL_LIGHTSWITCH = 1408096024U;
         static const AkUniqueID HOTEL_OBJECT_FALL = 3472592499U;
+        static const AkUniqueID HOTEL_PAINTING_KICK = 159237369U;
         static const AkUniqueID HOTEL_PHONE_RING = 1462261549U;
+        static const AkUniqueID HOTEL_PLANT_POT_KICK = 1373419364U;
+        static const AkUniqueID HOTEL_STOOL_KICK = 2296459734U;
         static const AkUniqueID HOTEL_TOILET_FLUSH = 3926086744U;
-        static const AkUniqueID HOTEL_TRASH_CAN = 4174056649U;
+        static const AkUniqueID HOTEL_TRASH_CAN_KICK = 1031503006U;
         static const AkUniqueID MUSIC_CITY = 3946025416U;
         static const AkUniqueID MUSIC_CUT_SCENES = 1286490421U;
         static const AkUniqueID MUSIC_HOTEL = 3138446709U;
@@ -53,7 +56,10 @@ namespace AK
         static const AkUniqueID UI_HOVER = 2118900976U;
         static const AkUniqueID UI_OBJECTIVECHECK = 1708033489U;
         static const AkUniqueID UI_OPEN = 3282376362U;
+        static const AkUniqueID UI_SHOE_TAGE_CAN_NOT_SWAP = 4283738236U;
+        static const AkUniqueID UI_SHOEPICKUP = 684423067U;
         static const AkUniqueID UI_SHOESIGHT = 238343566U;
+        static const AkUniqueID UI_SHOETAG_CAN_SWAP = 849543728U;
         static const AkUniqueID WALK = 2108779966U;
     } // namespace EVENTS
 

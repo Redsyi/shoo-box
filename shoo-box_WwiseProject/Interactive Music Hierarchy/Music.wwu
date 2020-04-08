@@ -451,13 +451,9 @@
 						</MusicPlaylistItem>
 					</Playlist>
 				</MusicPlaylistContainer>
-				<MusicPlaylistContainer Name="Menu" ID="{1823C37E-1F1B-4B1A-BA66-098BD40225E6}" ShortID="696313004">
+				<MusicPlaylistContainer Name="Menu Music" ID="{F8C4731F-2700-4E89-A44A-E454342FECDF}" ShortID="556383289">
 					<PropertyList>
-						<Property Name="Volume" Type="Real64">
-							<ValueList>
-								<Value>-5</Value>
-							</ValueList>
-						</Property>
+						<Property Name="TimeSignatureUpper" Type="int16" Value="3"/>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
@@ -468,9 +464,9 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<MusicSegment Name="A Surprising Journey" ID="{3414156F-0468-4387-87FB-BFD6235C52B6}" ShortID="190573657">
+						<MusicSegment Name="UI Theme" ID="{30A81FDB-CD0E-4C8B-A640-F38660384169}" ShortID="279546305">
 							<PropertyList>
-								<Property Name="EndPosition" Type="Real64" Value="65195.6009070295"/>
+								<Property Name="EndPosition" Type="Real64" Value="24000"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -481,20 +477,23 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<MusicTrack Name="A Surprising Journey" ID="{084EBA10-4C9E-46E8-994A-BAC68E9D64EC}" ShortID="11277935">
+								<MusicTrack Name="UI Theme" ID="{74AEBA4E-DC6A-460A-B353-61DFDE59F3EA}" ShortID="76796139">
 									<ReferenceList>
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="A Surprising Journey" ID="{114D1753-E73F-4286-807E-45092BFF5D43}" ShortID="632261462">
+										<AudioFileSource Name="UI Theme" ID="{127B0913-014A-4CB0-BE15-621DB0CD9BCB}" ShortID="911131771">
 											<Language>SFX</Language>
-											<AudioFile>A Surprising Journey.wav</AudioFile>
+											<AudioFile>UI Theme.wav</AudioFile>
+											<ConvertedFileIDList>
+												<File ID="206746285"/>
+											</ConvertedFileIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<TransitionList>
-										<MusicTransition Name="Root" ID="{A7075A00-14F3-40A1-A87D-A0B027B4DA91}">
+										<MusicTransition Name="Root" ID="{7DF2F4D8-B5A6-433C-A7B6-3876280856C2}">
 											<PropertyList>
 												<Property Name="IsFolder" Type="bool" Value="True"/>
 											</PropertyList>
@@ -502,15 +501,15 @@
 										</MusicTransition>
 									</TransitionList>
 									<SequenceList>
-										<MusicTrackSequence Name="" ID="{D87AEAFA-8CD6-475F-8C6F-506AE376176E}">
+										<MusicTrackSequence Name="" ID="{833972C3-EBD7-4D84-8290-AF85EE293317}">
 											<ClipList>
-												<MusicClip Name="A Surprising Journey" ID="{A770B9B9-86BB-4F48-AAF3-6DB0C13B2413}">
+												<MusicClip Name="UI Theme" ID="{294094B0-362A-48DF-B2AD-F67C0A1BF9CC}">
 													<PropertyList>
-														<Property Name="EndTrimOffset" Type="Real64" Value="65195.6009070295"/>
+														<Property Name="EndTrimOffset" Type="Real64" Value="24000"/>
 														<Property Name="FadeInMode" Type="int16" Value="0"/>
-														<Property Name="FadeOutMode" Type="int16" Value="0"/>
+														<Property Name="FadeOutDuration" Type="Real64" Value="236.323851203499"/>
 													</PropertyList>
-													<AudioSourceRef Name="A Surprising Journey" ID="{114D1753-E73F-4286-807E-45092BFF5D43}"/>
+													<AudioSourceRef Name="UI Theme" ID="{127B0913-014A-4CB0-BE15-621DB0CD9BCB}"/>
 												</MusicClip>
 											</ClipList>
 										</MusicTrackSequence>
@@ -518,23 +517,23 @@
 								</MusicTrack>
 							</ChildrenList>
 							<CueList>
-								<MusicCue Name="Entry Cue" ID="{2A5B8E91-B1AF-4D04-A91D-CF1820587880}"/>
-								<MusicCue Name="Exit Cue" ID="{1978BD1E-E3D0-4E50-A4F6-C968E543B9FB}">
+								<MusicCue Name="Entry Cue" ID="{AB7C2136-FC72-4C9A-AC44-D5A02B6C9C4A}"/>
+								<MusicCue Name="Exit Cue" ID="{C99C1FF4-1A00-480E-A392-76399D5DDC6D}">
 									<PropertyList>
 										<Property Name="CueType" Type="int16" Value="1"/>
-										<Property Name="TimeMs" Type="Real64" Value="65195.6009070295"/>
+										<Property Name="TimeMs" Type="Real64" Value="24000"/>
 									</PropertyList>
 								</MusicCue>
 							</CueList>
 						</MusicSegment>
 					</ChildrenList>
 					<TransitionList>
-						<MusicTransition Name="Root" ID="{CBB5D0A1-4365-413C-A261-C371C33F2F05}">
+						<MusicTransition Name="Root" ID="{37EFA690-83F8-47E5-8F9C-2D8C6E26AE65}">
 							<PropertyList>
 								<Property Name="IsFolder" Type="bool" Value="True"/>
 							</PropertyList>
 							<ChildrenList>
-								<MusicTransition Name="Transition" ID="{F2BCD11D-A27E-421D-A17F-B49D998BDB4D}">
+								<MusicTransition Name="Transition" ID="{8657F182-A026-4C8D-B805-7E61B1A6A873}">
 									<TransitionInfo/>
 								</MusicTransition>
 							</ChildrenList>
@@ -542,16 +541,16 @@
 						</MusicTransition>
 					</TransitionList>
 					<Playlist>
-						<MusicPlaylistItem Name="" ID="{DCEAF233-BD31-4299-8D98-C25862FC4074}" ShortID="184708947">
+						<MusicPlaylistItem Name="" ID="{A9B5DCD5-7832-4D98-B4FE-374A8B47A904}" ShortID="714547923">
 							<PropertyList>
 								<Property Name="LoopCount" Type="int16" Value="0"/>
 							</PropertyList>
 							<ChildrenList>
-								<MusicPlaylistItem Name="" ID="{0A9AF9CB-9118-4390-BA28-DC94098AF2FC}" ShortID="590159241">
+								<MusicPlaylistItem Name="" ID="{8B714992-0E39-44B6-94AA-8B5D50DCB333}" ShortID="831034295">
 									<PropertyList>
 										<Property Name="PlaylistItemType" Type="int16" Value="1"/>
 									</PropertyList>
-									<SegmentRef Name="A Surprising Journey" ID="{3414156F-0468-4387-87FB-BFD6235C52B6}"/>
+									<SegmentRef Name="UI Theme" ID="{30A81FDB-CD0E-4C8B-A640-F38660384169}"/>
 								</MusicPlaylistItem>
 							</ChildrenList>
 						</MusicPlaylistItem>
