@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Event = AK.Wwise.Event;
 
 public class UIShoeTag : MonoBehaviour
 {
@@ -13,8 +14,12 @@ public class UIShoeTag : MonoBehaviour
     public Sprite bootSprite;
     public Sprite sandalSprite;
 
+    public Event swapSound;
+    public Event noSwapSound;
+
     public void SwitchTo(ShoeType shoe)
     {
+        swapSound.Post(gameObject);
         switch(shoe)
         {
             case ShoeType.BOOTS:
@@ -33,6 +38,7 @@ public class UIShoeTag : MonoBehaviour
 
     public void Wiggle()
     {
+        noSwapSound.Post(gameObject);
         tagAnimator.SetTrigger("CantSwitch");
     }
 

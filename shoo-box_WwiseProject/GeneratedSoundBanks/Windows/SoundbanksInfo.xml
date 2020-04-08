@@ -45,9 +45,12 @@
 				<Event Id="378060898" Name="Hotel_ElevatorDing" ObjectPath="\Events\Hotel\Hotel_ElevatorDing" DurationType="OneShot" DurationMin="3.892188" DurationMax="3.892188"/>
 				<Event Id="1408096024" Name="Hotel_LightSwitch" ObjectPath="\Events\Hotel\Hotel_LightSwitch" DurationType="OneShot" DurationMin="0.398979" DurationMax="0.398979"/>
 				<Event Id="3472592499" Name="Hotel_Object_Fall" ObjectPath="\Events\Hotel\Hotel_Object_Fall" DurationType="OneShot" DurationMin="0.985937" DurationMax="0.985937"/>
+				<Event Id="159237369" Name="Hotel_Painting_Kick" ObjectPath="\Events\Hotel\Hotel_Painting_Kick" DurationType="OneShot" DurationMin="0.997396" DurationMax="0.997396"/>
 				<Event Id="1462261549" Name="Hotel_Phone_Ring" ObjectPath="\Events\Hotel\Hotel_Phone_Ring" DurationType="OneShot" DurationMin="4.498437" DurationMax="4.498437"/>
+				<Event Id="1373419364" Name="Hotel_Plant_Pot_Kick" ObjectPath="\Events\Hotel\Hotel_Plant_Pot_Kick" DurationType="OneShot" DurationMin="1.500000" DurationMax="1.500000"/>
+				<Event Id="2296459734" Name="Hotel_Stool_Kick" ObjectPath="\Events\Hotel\Hotel_Stool_Kick" DurationType="OneShot" DurationMin="1.373438" DurationMax="1.373438"/>
 				<Event Id="3926086744" Name="Hotel_Toilet_Flush" ObjectPath="\Events\Hotel\Hotel_Toilet_Flush" DurationType="OneShot" DurationMin="15.845959" DurationMax="15.845959"/>
-				<Event Id="4174056649" Name="Hotel_Trash_Can" ObjectPath="\Events\Hotel\Hotel_Trash_Can" DurationType="OneShot" DurationMin="0.985937" DurationMax="0.985937"/>
+				<Event Id="1031503006" Name="Hotel_Trash_Can_Kick" ObjectPath="\Events\Hotel\Hotel_Trash_Can_Kick" DurationType="OneShot" DurationMin="2.526854" DurationMax="2.526854"/>
 				<Event Id="3946025416" Name="Music_City" ObjectPath="\Events\Music\Music_City" DurationType="Infinite"/>
 				<Event Id="1286490421" Name="Music_Cut_Scenes" ObjectPath="\Events\Music\Music_Cut_Scenes" DurationType="OneShot" DurationMin="44.390522" DurationMax="44.390522"/>
 				<Event Id="3138446709" Name="Music_Hotel" ObjectPath="\Events\Music\Music_Hotel" DurationType="OneShot" DurationMin="36.960136" DurationMax="36.960136"/>
@@ -61,7 +64,10 @@
 				<Event Id="2118900976" Name="UI_Hover" ObjectPath="\Events\UI\UI_Hover" DurationType="OneShot" DurationMin="0.129739" DurationMax="0.129739"/>
 				<Event Id="1708033489" Name="UI_ObjectiveCheck" ObjectPath="\Events\UI\UI_ObjectiveCheck" DurationType="OneShot" DurationMin="0.383050" DurationMax="0.482612"/>
 				<Event Id="3282376362" Name="UI_Open" ObjectPath="\Events\UI\UI_Open" DurationType="OneShot" DurationMin="0.270472" DurationMax="0.270472"/>
+				<Event Id="4283738236" Name="UI_shoe_tage_can_not_swap" ObjectPath="\Events\UI\UI_shoe_tage_can_not_swap" DurationType="OneShot" DurationMin="0.231354" DurationMax="0.231354"/>
+				<Event Id="684423067" Name="UI_ShoePickUp" ObjectPath="\Events\UI\UI_ShoePickUp" DurationType="OneShot" DurationMin="1.125708" DurationMax="1.125708"/>
 				<Event Id="238343566" Name="UI_ShoeSight" ObjectPath="\Events\UI\UI_ShoeSight" DurationType="OneShot" DurationMin="3.444826" DurationMax="3.444826"/>
+				<Event Id="849543728" Name="UI_Shoetag_can_swap" ObjectPath="\Events\UI\UI_Shoetag_can_swap" DurationType="OneShot" DurationMin="0.372917" DurationMax="0.372917"/>
 				<Event Id="2108779966" Name="Walk" ObjectPath="\Events\Default Work Unit\Walk" DurationType="OneShot" DurationMin="0.898689" DurationMax="0.898689"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
@@ -101,9 +107,17 @@
 					<ShortName>Boots_Concrete_6.wav</ShortName>
 					<Path>SFX/Boots_Concrete_6_10C4C929.wem</Path>
 				</File>
+				<File Id="129166700" Language="SFX">
+					<ShortName>UI_ShoePickUp.wav</ShortName>
+					<Path>SFX/UI_ShoePickUp_C4ED8561.wem</Path>
+				</File>
 				<File Id="181878464" Language="SFX">
 					<ShortName>UI_Hover.wav</ShortName>
 					<Path>SFX/UI_Hover_4461B856.wem</Path>
+				</File>
+				<File Id="206746285" Language="SFX">
+					<ShortName>UI Theme.wav</ShortName>
+					<Path>SFX/UI Theme_D79FB2B7.wem</Path>
 				</File>
 				<File Id="222397000" Language="SFX">
 					<ShortName>City_Helicopter_Ricochet.wav</ShortName>
@@ -145,6 +159,10 @@
 					<ShortName>AI_Question.wav</ShortName>
 					<Path>SFX/AI_Question_10C4C929.wem</Path>
 				</File>
+				<File Id="326469354" Language="SFX">
+					<ShortName>Hotel_Painting_Kick.wav</ShortName>
+					<Path>SFX/Hotel_Painting_Kick_10C4C929.wem</Path>
+				</File>
 				<File Id="345626767" Language="SFX">
 					<ShortName>Airport\Airport_SlidingGate_1.wav</ShortName>
 					<Path>SFX/Airport/Airport_SlidingGate_1_10C4C929.wem</Path>
@@ -169,6 +187,10 @@
 					<ShortName>Airport\Airport_Ambience_ConveyorBelt.wav</ShortName>
 					<Path>SFX/Airport/Airport_Ambience_ConveyorBelt_D79FB2B7.wem</Path>
 				</File>
+				<File Id="454841983" Language="SFX">
+					<ShortName>UI_Shoe Tag Swap.wav</ShortName>
+					<Path>SFX/UI_Shoe Tag Swap_10C4C929.wem</Path>
+				</File>
 				<File Id="485526598" Language="SFX">
 					<ShortName>City_Helicopter_Ricochet.wav</ShortName>
 					<Path>SFX/City_Helicopter_Ricochet_EE2DC3E9.wem</Path>
@@ -185,6 +207,10 @@
 					<ShortName>Player_Kick_1.wav</ShortName>
 					<Path>SFX/Player_Kick_1_10C4C929.wem</Path>
 				</File>
+				<File Id="518058315" Language="SFX">
+					<ShortName>Hotel_PotKickSpill.wav</ShortName>
+					<Path>SFX/Hotel_PotKickSpill_10C4C929.wem</Path>
+				</File>
 				<File Id="524555010" Language="SFX">
 					<ShortName>Mario Grunt_1.wav</ShortName>
 					<Path>SFX/Mario Grunt_1_10C4C929.wem</Path>
@@ -197,13 +223,17 @@
 					<ShortName>Boots_Concrete_4.wav</ShortName>
 					<Path>SFX/Boots_Concrete_4_10C4C929.wem</Path>
 				</File>
+				<File Id="580463312" Language="SFX">
+					<ShortName>UI_Shoe Tag Swap Unable.wav</ShortName>
+					<Path>SFX/UI_Shoe Tag Swap Unable_10C4C929.wem</Path>
+				</File>
 				<File Id="591021477" Language="SFX">
 					<ShortName>City_Tank_FIre.wav</ShortName>
 					<Path>SFX/City_Tank_FIre_FF52F473.wem</Path>
 				</File>
-				<File Id="632261462" Language="SFX">
-					<ShortName>A Surprising Journey.wav</ShortName>
-					<Path>SFX/A Surprising Journey_D79FB2B7.wem</Path>
+				<File Id="606693075" Language="SFX">
+					<ShortName>Hotel_PlantPotKick.wav</ShortName>
+					<Path>SFX/Hotel_PlantPotKick_10C4C929.wem</Path>
 				</File>
 				<File Id="662394793" Language="SFX">
 					<ShortName>City_Helicopter_Ricochet.wav</ShortName>
@@ -281,6 +311,10 @@
 					<ShortName>Player_Kick_2.wav</ShortName>
 					<Path>SFX/Player_Kick_2_10C4C929.wem</Path>
 				</File>
+				<File Id="892218614" Language="SFX">
+					<ShortName>Hotel_TrashBinKick.wav</ShortName>
+					<Path>SFX/Hotel_TrashBinKick_10C4C929.wem</Path>
+				</File>
 				<File Id="892655967" Language="SFX">
 					<ShortName>City_Helicopter_Explosion.wav</ShortName>
 					<Path>SFX/City_Helicopter_Explosion_2D27E99D.wem</Path>
@@ -296,6 +330,10 @@
 				<File Id="917314590" Language="SFX">
 					<ShortName>Airport\Airport_FlightTakesOff.wav</ShortName>
 					<Path>SFX/Airport/Airport_FlightTakesOff_10C4C929.wem</Path>
+				</File>
+				<File Id="963402483" Language="SFX">
+					<ShortName>Hotel_Stool_Kick.wav</ShortName>
+					<Path>SFX/Hotel_Stool_Kick_10C4C929.wem</Path>
 				</File>
 				<File Id="978201923" Language="SFX">
 					<ShortName>Confirmation.wav</ShortName>

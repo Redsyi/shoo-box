@@ -31,7 +31,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 22178d79115b0b47a78389e1469b9d8a
     GuidInternal: 
-    m_lastTime: -8586157331354775808
+    m_lastTime: -8586152817714775808
     List:
     - name: Main
       guid: cab15ff7703b3c4683e28bb16d5b7aab
@@ -299,7 +299,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: cafbdd67d35b684a8ffe463fd892eec0
     GuidInternal: 
-    m_lastTime: -8586158976294775808
+    m_lastTime: -8586152817714775808
     List:
     - name: Hotel_Ambience_Lobby
       guid: 438add41a6cf944d9f94666ebb73a97b
@@ -373,6 +373,18 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.985937
       minDuration: 0.985937
+    - name: Hotel_Painting_Kick
+      guid: c58092668a89fe45a5498f183f6f3546
+      id: 159237369
+      PathAndIcons:
+      - ElementName: Hotel
+        ObjectType: 12
+      - ElementName: Hotel_Painting_Kick
+        ObjectType: 3
+      Path: Hotel/Hotel_Painting_Kick
+      maxAttenuation: 0
+      maxDuration: 0.997396
+      minDuration: 0.997396
     - name: Hotel_Phone_Ring
       guid: 071a74e277500f418543a24c032ccdcb
       id: 1462261549
@@ -385,6 +397,30 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 4.498437
       minDuration: 4.498437
+    - name: Hotel_Plant_Pot_Kick
+      guid: 05c7f2768fdd0e40a5ce13521d701796
+      id: 1373419364
+      PathAndIcons:
+      - ElementName: Hotel
+        ObjectType: 12
+      - ElementName: Hotel_Plant_Pot_Kick
+        ObjectType: 3
+      Path: Hotel/Hotel_Plant_Pot_Kick
+      maxAttenuation: 0
+      maxDuration: 1.5
+      minDuration: 1.5
+    - name: Hotel_Stool_Kick
+      guid: afef60d7ad320e42a342044212331e45
+      id: 2296459734
+      PathAndIcons:
+      - ElementName: Hotel
+        ObjectType: 12
+      - ElementName: Hotel_Stool_Kick
+        ObjectType: 3
+      Path: Hotel/Hotel_Stool_Kick
+      maxAttenuation: 0
+      maxDuration: 1.373438
+      minDuration: 1.373438
     - name: Hotel_Toilet_Flush
       guid: ccf1e0755b7f3a4e9496d21ed041c856
       id: 3926086744
@@ -397,23 +433,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 15.845959
       minDuration: 15.845959
-    - name: Hotel_Trash_Can
+    - name: Hotel_Trash_Can_Kick
       guid: f4d8bedd014cc148861a28616272bbf3
-      id: 4174056649
+      id: 1031503006
       PathAndIcons:
       - ElementName: Hotel
         ObjectType: 12
-      - ElementName: Hotel_Trash_Can
+      - ElementName: Hotel_Trash_Can_Kick
         ObjectType: 3
-      Path: Hotel/Hotel_Trash_Can
+      Path: Hotel/Hotel_Trash_Can_Kick
       maxAttenuation: 0
-      maxDuration: 0.985937
-      minDuration: 0.985937
+      maxDuration: 2.526854
+      minDuration: 2.526854
   - PhysicalPath: Events/Music.wwu
     ParentPhysicalPath: 
     guid: ab03b092fabf95478df983da98b8aca7
     GuidInternal: 
-    m_lastTime: -8586164516254775808
+    m_lastTime: -8586152903294775808
     List:
     - name: Music_City
       guid: 9c815e6e5afeaf4a8263295153fcf480
@@ -461,8 +497,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Music/Music_Menu
       maxAttenuation: 0
-      maxDuration: 65.1956
-      minDuration: 65.1956
+      maxDuration: -1
+      minDuration: -1
   - PhysicalPath: Events/Player.wwu
     ParentPhysicalPath: 
     guid: c96a7a88d220c54e8d68a4bf6260e576
@@ -521,7 +557,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 8da93751e862e943b1a413eb176f964b
     GuidInternal: 
-    m_lastTime: -8586157331354775808
+    m_lastTime: -8586152848024775808
     List:
     - name: UI_Close
       guid: d34117b033acb34eabb496d9c82d5689
@@ -583,6 +619,30 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.270472
       minDuration: 0.270472
+    - name: UI_shoe_tage_can_not_swap
+      guid: 674d67824aaf0b48ae4d07d15bdfa025
+      id: 4283738236
+      PathAndIcons:
+      - ElementName: UI
+        ObjectType: 12
+      - ElementName: UI_shoe_tage_can_not_swap
+        ObjectType: 3
+      Path: UI/UI_shoe_tage_can_not_swap
+      maxAttenuation: 0
+      maxDuration: 0.231354
+      minDuration: 0.231354
+    - name: UI_ShoePickUp
+      guid: a2a8263b2c6ea945b2276323570d854f
+      id: 684423067
+      PathAndIcons:
+      - ElementName: UI
+        ObjectType: 12
+      - ElementName: UI_ShoePickUp
+        ObjectType: 3
+      Path: UI/UI_ShoePickUp
+      maxAttenuation: 0
+      maxDuration: 1.125708
+      minDuration: 1.125708
     - name: UI_ShoeSight
       guid: e39e51d912bffe449c7f727632418983
       id: 238343566
@@ -595,6 +655,18 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 3.444826
       minDuration: 3.444826
+    - name: UI_Shoetag_can_swap
+      guid: e5527f85e8584447bb0023f21e322ffd
+      id: 849543728
+      PathAndIcons:
+      - ElementName: UI
+        ObjectType: 12
+      - ElementName: UI_Shoetag_can_swap
+        ObjectType: 3
+      Path: UI/UI_Shoetag_can_swap
+      maxAttenuation: 0
+      maxDuration: 0.372917
+      minDuration: 0.372917
   RtpcWwu:
   - PhysicalPath: Game Parameters/Default Work Unit.wwu
     ParentPhysicalPath: 
@@ -626,6 +698,6 @@ MonoBehaviour:
   ExpandedItems:
   - /shoo-box_WwiseProject
   - /shoo-box_WwiseProject/Events
-  - /shoo-box_WwiseProject/Events/UI
+  - /shoo-box_WwiseProject/Events/Hotel
   autoPopulateEnabled: 1
   CurrentPluginConfig: 

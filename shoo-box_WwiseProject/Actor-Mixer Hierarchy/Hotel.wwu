@@ -80,6 +80,13 @@
 					</ActiveSourceList>
 				</Sound>
 				<Sound Name="Elevator Ding" ID="{A50F53FB-35F1-4FDD-A00F-E5CE04AD0974}" ShortID="850269995">
+					<PropertyList>
+						<Property Name="Lowpass" Type="int16">
+							<ValueList>
+								<Value>31</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
@@ -140,6 +147,127 @@
 					</ChildrenList>
 					<ActiveSourceList>
 						<ActiveSource Name="Hotel Lobby" ID="{131B3ADC-AB16-4400-AF2D-79DA472F891E}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Kick Plant Pot" ID="{11DC8748-76DE-4E1F-B1D8-573D01749BA0}" ShortID="291097897">
+					<PropertyList>
+						<Property Name="Lowpass" Type="int16">
+							<ValueList>
+								<Value>33</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Hotel_PlantPotKick" ID="{7F60AE36-55D7-42AC-BA02-CAD665A04113}" ShortID="606693075">
+							<Language>SFX</Language>
+							<AudioFile>Hotel_PlantPotKick.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Hotel_PlantPotKick" ID="{7F60AE36-55D7-42AC-BA02-CAD665A04113}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Kick Plant Spill Over" ID="{4EB3A67A-32F8-4A8B-963C-7AA2A4E2B606}" ShortID="439571779">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-6</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Hotel_PotKickSpill" ID="{08541B73-0274-4C2D-9C54-06E76DAD5A24}" ShortID="518058315">
+							<Language>SFX</Language>
+							<AudioFile>Hotel_PotKickSpill.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Hotel_PotKickSpill" ID="{08541B73-0274-4C2D-9C54-06E76DAD5A24}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Kick Trash Bin" ID="{191BCE4F-1029-4F33-93CC-242F3B3C85B6}" ShortID="419248543">
+					<PropertyList>
+						<Property Name="Lowpass" Type="int16">
+							<ValueList>
+								<Value>33</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-10</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Hotel_TrashBinKick" ID="{BBE0CE30-446D-4B4E-83C5-8799CEA0AE7B}" ShortID="892218614">
+							<Language>SFX</Language>
+							<AudioFile>Hotel_TrashBinKick.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Hotel_TrashBinKick" ID="{BBE0CE30-446D-4B4E-83C5-8799CEA0AE7B}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Hotel_Painting_Kick" ID="{123411BE-428C-4B4E-BA98-4596A196CA52}" ShortID="44837513">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Hotel_Painting_Kick" ID="{7F5B0A09-45FA-4E1A-AA73-F64117513DBF}" ShortID="326469354">
+							<Language>SFX</Language>
+							<AudioFile>Hotel_Painting_Kick.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Hotel_Painting_Kick" ID="{7F5B0A09-45FA-4E1A-AA73-F64117513DBF}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Hotel_Stool_Kick" ID="{20780151-4876-4D57-AE4D-E6205DCE2837}" ShortID="483698227">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Hotel_Stool_Kick" ID="{0D3D9946-8955-4C2D-B331-A2340C7131A2}" ShortID="963402483">
+							<Language>SFX</Language>
+							<AudioFile>Hotel_Stool_Kick.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Hotel_Stool_Kick" ID="{0D3D9946-8955-4C2D-B331-A2340C7131A2}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
 			</ChildrenList>

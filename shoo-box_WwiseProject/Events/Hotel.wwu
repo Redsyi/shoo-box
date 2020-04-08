@@ -14,12 +14,12 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Hotel_Trash_Can" ID="{DDBED8F4-4C01-48C1-861A-28616272BBF3}">
+				<Event Name="Hotel_Trash_Can_Kick" ID="{DDBED8F4-4C01-48C1-861A-28616272BBF3}">
 					<ChildrenList>
-						<Action Name="" ID="{1008E5D7-5695-4884-AED7-6D2142D2FC8B}" ShortID="564169247">
+						<Action Name="" ID="{098EAEA8-3C9B-4100-8429-A57EF89C5E71}" ShortID="180650308">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="General Object Fall" ID="{D5695258-413B-4A78-A7BA-D7B266C2607B}" WorkUnitID="{25563D8B-DCAC-4B3D-B21C-FEBC5B0E321B}"/>
+									<ObjectRef Name="Kick Trash Bin" ID="{191BCE4F-1029-4F33-93CC-242F3B3C85B6}" WorkUnitID="{25563D8B-DCAC-4B3D-B21C-FEBC5B0E321B}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -97,6 +97,46 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Breaker Switch" ID="{3FA5CB96-D0DF-491E-8B50-8CCE3A8560FF}" WorkUnitID="{25563D8B-DCAC-4B3D-B21C-FEBC5B0E321B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Hotel_Plant_Pot_Kick" ID="{76F2C705-DD8F-400E-A5CE-13521D701796}">
+					<ChildrenList>
+						<Action Name="" ID="{D6F29953-3A74-41BA-8BCC-0121BF171A66}" ShortID="370682900">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Kick Plant Pot" ID="{11DC8748-76DE-4E1F-B1D8-573D01749BA0}" WorkUnitID="{25563D8B-DCAC-4B3D-B21C-FEBC5B0E321B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{B41969E8-0533-4A14-87B1-272B4B3DCEAD}" ShortID="575056932">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Kick Plant Spill Over" ID="{4EB3A67A-32F8-4A8B-963C-7AA2A4E2B606}" WorkUnitID="{25563D8B-DCAC-4B3D-B21C-FEBC5B0E321B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Hotel_Painting_Kick" ID="{669280C5-898A-45FE-A549-8F183F6F3546}">
+					<ChildrenList>
+						<Action Name="" ID="{A6EE4D40-FC44-4E85-8A73-DC0B53585303}" ShortID="598404202">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Hotel_Painting_Kick" ID="{123411BE-428C-4B4E-BA98-4596A196CA52}" WorkUnitID="{25563D8B-DCAC-4B3D-B21C-FEBC5B0E321B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Hotel_Stool_Kick" ID="{D760EFAF-32AD-420E-A342-044212331E45}">
+					<ChildrenList>
+						<Action Name="" ID="{A2EEA973-5018-4E1F-B1D4-612932DE485A}" ShortID="774450426">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Hotel_Stool_Kick" ID="{20780151-4876-4D57-AE4D-E6205DCE2837}" WorkUnitID="{25563D8B-DCAC-4B3D-B21C-FEBC5B0E321B}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
