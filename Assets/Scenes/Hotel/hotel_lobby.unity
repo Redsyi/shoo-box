@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2208,7 +2208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef6b3d177b6be7845b9f5bbdd1d40dce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraAngle: 20
+  cameraAngle: 18
   timeToAdjust: 0.5
 --- !u!65 &1084766797
 BoxCollider:
@@ -2221,8 +2221,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 15.16, y: 3.09, z: 14.59}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 15.16, y: 3.09, z: 11.272444}
+  m_Center: {x: 0, y: 0, z: -1.6587782}
 --- !u!4 &1084766798
 Transform:
   m_ObjectHideFlags: 0
@@ -4776,6 +4776,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af045fe6ba44be247951af92825e16b3, type: 3}
+--- !u!1 &1978741388 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2109425743517317382, guid: af045fe6ba44be247951af92825e16b3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1978741387}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1978741389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978741388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a76eab241757cb48905555791e2523b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &1982927811
 BoxCollider:
   m_ObjectHideFlags: 0

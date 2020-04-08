@@ -75,6 +75,7 @@ public class Player : MonoBehaviour
         }
     }
     private UITutorialManager tutorial;
+    private SandalTutorial sandalTutorial;
     private static Player instance;
     bool holdingAction;
     bool inFlingRoutine;
@@ -93,6 +94,7 @@ public class Player : MonoBehaviour
         EquipStartingShoes();
 
         tutorial = FindObjectOfType<UITutorialManager>();
+        sandalTutorial = FindObjectOfType<SandalTutorial>();
         instance = this;
     }
 
@@ -117,6 +119,19 @@ public class Player : MonoBehaviour
 
         if (currMovementInput.sqrMagnitude > 1)
             currMovementInput = currMovementInput.normalized;
+    }
+
+    public void OnSwap()
+    {
+        if (legForm)
+        {
+            if (sandalTutorial)
+                sandalTutorial.HideSwapControls();
+            if (shoeManager.currShoe == ShoeType.BOOTS)
+                shoeManager.SwitchTo(ShoeType.FLIPFLOPS);
+            else if (shoeManager.currShoe == ShoeType.FLIPFLOPS)
+                shoeManager.SwitchTo(ShoeType.BOOTS);
+        }
     }
 
     private void FixedUpdate()
@@ -190,6 +205,10 @@ public class Player : MonoBehaviour
             if (tutorial)
             {
                 tutorial.DoKickTutorial();
+            }
+            if (sandalTutorial)
+            {
+                sandalTutorial.TeachFling();
             }
         }
     }

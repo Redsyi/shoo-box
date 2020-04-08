@@ -10,11 +10,15 @@ public class CheckpointManager : MonoBehaviour
 
     void Start()
     {
-        int level = SceneManager.GetActiveScene().buildIndex;
-        if (level != currLevel)
+        for (int i = 0; i < SceneManager.sceneCount; ++i)
         {
-            currLevel = level;
-            currCheckpoint = 0;
+            Scene scene = SceneManager.GetSceneAt(i);
+            if (scene.name != "LevelBridge" && scene.buildIndex != currLevel)
+            {
+                currLevel = scene.buildIndex;
+                currCheckpoint = 0;
+                break;
+            }
         }
         ReloadCheckpointItems();
     }
