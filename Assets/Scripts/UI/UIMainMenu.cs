@@ -11,6 +11,7 @@ public class UIMainMenu : MonoBehaviour
     public GameObject optionsMenu;
     public GameObject mainMenu;
     public GameObject shoebox;
+    public GameObject optionsInitial;
 
     private void Start()
     {
@@ -28,6 +29,13 @@ public class UIMainMenu : MonoBehaviour
         optionsMenu.SetActive(options);
         mainMenu.SetActive(!options);
         shoebox.SetActive(!options);
+        if (options)
+        {
+            EventSystem.current.SetSelectedGameObject(optionsInitial);
+        } else
+        {
+            EventSystem.current.SetSelectedGameObject(initialButton);
+        }
     }
 
     public void QuitButton()
