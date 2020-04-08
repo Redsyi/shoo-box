@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -4028,7 +4028,17 @@ PrefabInstance:
     - target: {fileID: 5352776085479807276, guid: 638b77931a4af0045af227b12149fd01,
         type: 3}
       propertyPath: move.z
-      value: -1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5352776085479807276, guid: 638b77931a4af0045af227b12149fd01,
+        type: 3}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5352776085479807276, guid: 638b77931a4af0045af227b12149fd01,
+        type: 3}
+      propertyPath: dist
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5352776085479807277, guid: 638b77931a4af0045af227b12149fd01,
         type: 3}
@@ -8333,8 +8343,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move: {x: 0, y: 0, z: 0}
-  speed: 3
-  dist: 5
+  speed: 0
+  dist: 0
 --- !u!1 &6150471930148540340
 GameObject:
   m_ObjectHideFlags: 0
