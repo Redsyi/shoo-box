@@ -72,6 +72,8 @@ public static class Utilities
         OpenScene("Assets/Scenes/Airport/conveyorBeltWarehouse_4.unity");
     [MenuItem("Scenes/Main/Airport Terminal")] public static void Terminal() => 
         OpenScene("Assets/Scenes/Airport/Terminal_All_in_1.unity");
+    [MenuItem("Scenes/Main/City Terminal")] public static void CityTerminal() =>
+        OpenScene("Assets/Scenes/City/City Terminal.unity");
     [MenuItem("Scenes/Main/City")] public static void City() => 
         OpenScene("Assets/Scenes/City/city.unity");
     [MenuItem("Scenes/Cutscenes/Intro Cutscene")] public static void IntroCS() => 
