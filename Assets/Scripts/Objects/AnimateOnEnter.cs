@@ -7,8 +7,9 @@ public class AnimateOnEnter : MonoBehaviour
     public Animator animator;
     public string triggerName;
 
-    public void OnEnter(GameObject kicker)
+    public void OnTriggerEnter(Collider other)
     {
+        print("Should be animating");
         animator.SetTrigger(triggerName);
     }
 
