@@ -25,9 +25,16 @@ public class UIOptionsTabGroup : MonoBehaviour
         //Make first tab sprite automatically selected
         if (selectedTab == null && tabButtons.Count > 2)
         {
-            selectedTab = tabButtons[2];
-            tabButtons[2].background.sprite = tabActive;
-            tabButtons[2].background.color = new Color(0.9f, 0.9f, 0.9f);
+            for (int i= 0; i < tabButtons.Count; i++)
+            {
+                string buttonName = tabButtons[i].gameObject.name;
+                if (buttonName == "Level Select")
+                {
+                    selectedTab = tabButtons[i];
+                }
+            }
+            selectedTab.background.sprite = tabActive;
+            selectedTab.background.color = new Color(0.9f, 0.9f, 0.9f);
         }
     }
 
