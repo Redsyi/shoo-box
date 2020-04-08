@@ -38,6 +38,7 @@ public class AIHeli : MonoBehaviour, ISandalable
         StartCoroutine(RecalculateBestIntersection());
         initialSwirlRate = heliSwirl.emission.rateOverTime.constant;
         onFly.Post(gameObject);
+        CityDirector.numHelis++;
     }
 
 
@@ -191,5 +192,7 @@ public class AIHeli : MonoBehaviour, ISandalable
         }
         player.shoeManager.sandalSlinger.ClearTarget(sandalTarget.transform);
         sandalTarget.SetActive(false);
+        CityDirector.numHelis--;
+        CityDirector.current.IncreaseIntensity(0.4f);
     }
 }

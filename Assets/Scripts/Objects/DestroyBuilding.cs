@@ -29,6 +29,8 @@ public class DestroyBuilding : MonoBehaviour, IKickable
 
     private IEnumerator Destroy()
     {
+        CityDirector.current.SetIntensity(1);
+        CityDirector.current.IncreaseIntensity(0.1f);
         numDestroys++;
         CameraScript.current.ShakeScreen(ShakeStrength.INTENSE, ShakeLength.MEDIUM);
         Player.ControllerRumble(RumbleStrength.INTENSE, 0.1f);
@@ -41,8 +43,10 @@ public class DestroyBuilding : MonoBehaviour, IKickable
         }
         yield return new WaitForSeconds(1.5f);
         numDestroys--;
-        if(numDestroys == 0)
+        if (numDestroys == 0)
+        {
             dust.gameObject.SetActive(false);
+        }
 
     }
 

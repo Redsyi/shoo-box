@@ -50,6 +50,7 @@ public class AITank : MonoBehaviour, IKickable
         {
             moveParticles.Pause();
         }
+        CityDirector.numTanks++;
     }
 
     void Update()
@@ -203,6 +204,9 @@ public class AITank : MonoBehaviour, IKickable
         pathfinder.enabled = false;
         StopAllCoroutines();
         Invoke("EnableKickables", 0.5f);
+
+        CityDirector.numTanks--;
+        CityDirector.current.IncreaseIntensity(0.4f);
     }
 
     void EnableKickables()
