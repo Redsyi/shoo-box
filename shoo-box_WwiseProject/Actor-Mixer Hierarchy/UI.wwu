@@ -136,6 +136,18 @@
 					</ActiveSourceList>
 				</Sound>
 				<Sound Name="UI_Hover" ID="{F0948256-30F2-465A-A723-5959A2DB8C6B}" ShortID="225462978">
+					<PropertyList>
+						<Property Name="Lowpass" Type="int16">
+							<ValueList>
+								<Value>33</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Pitch" Type="int32">
+							<ValueList>
+								<Value>200</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
@@ -185,6 +197,13 @@
 					</ActiveSourceList>
 				</Sound>
 				<Sound Name="UI_ShoePickUp" ID="{A954F9CE-CAF5-4397-B6BC-2C3ECDFEE1EC}" ShortID="608491502">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-6</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>

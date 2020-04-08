@@ -21,6 +21,7 @@ public class SandalProjectile : MonoBehaviour
     {
         originalPos = transform.position;
     }
+
     private void OnCollisionEnter(Collision collision)
     {
         reversing = true;

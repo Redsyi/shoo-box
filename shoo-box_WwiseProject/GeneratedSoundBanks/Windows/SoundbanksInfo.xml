@@ -39,8 +39,8 @@
 				<Event Id="712668924" Name="City_Helicopter_Ricochet" ObjectPath="\Events\City\City_Helicopter_Ricochet" DurationType="OneShot" DurationMin="0.839586" DurationMax="1.197686"/>
 				<Event Id="838123530" Name="City_Tank_Fire" ObjectPath="\Events\City\City_Tank_Fire" DurationType="OneShot" DurationMin="2.136204" DurationMax="5.816133"/>
 				<Event Id="1140222393" Name="City_Tank_Movement" ObjectPath="\Events\City\City_Tank_Movement" DurationType="Infinite"/>
-				<Event Id="1861298689" Name="Hotel_Ambience_Lobby" ObjectPath="\Events\Hotel\Hotel_Ambience_Lobby" DurationType="OneShot" DurationMin="103.754311" DurationMax="103.754311"/>
-				<Event Id="3727140126" Name="Hotel_Ambience_Room" ObjectPath="\Events\Hotel\Hotel_Ambience_Room" DurationType="OneShot" DurationMin="102.388977" DurationMax="102.388977"/>
+				<Event Id="1861298689" Name="Hotel_Ambience_Lobby" ObjectPath="\Events\Hotel\Hotel_Ambience_Lobby" DurationType="Infinite"/>
+				<Event Id="3727140126" Name="Hotel_Ambience_Room" ObjectPath="\Events\Hotel\Hotel_Ambience_Room" DurationType="Infinite"/>
 				<Event Id="442557581" Name="Hotel_Door_Squeak" ObjectPath="\Events\Hotel\Hotel_Door_Squeak" DurationType="OneShot" DurationMin="0.398979" DurationMax="0.398979"/>
 				<Event Id="378060898" Name="Hotel_ElevatorDing" ObjectPath="\Events\Hotel\Hotel_ElevatorDing" DurationType="OneShot" DurationMin="3.892188" DurationMax="3.892188"/>
 				<Event Id="1408096024" Name="Hotel_LightSwitch" ObjectPath="\Events\Hotel\Hotel_LightSwitch" DurationType="OneShot" DurationMin="0.398979" DurationMax="0.398979"/>
@@ -61,7 +61,7 @@
 				<Event Id="1542675207" Name="Player_Transform" ObjectPath="\Events\Player\Player_Transform" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="2519197294" Name="UI_Close" ObjectPath="\Events\UI\UI_Close" DurationType="OneShot" DurationMin="0.355062" DurationMax="0.355062"/>
 				<Event Id="216067002" Name="UI_Confirm" ObjectPath="\Events\UI\UI_Confirm" DurationType="OneShot" DurationMin="1.354313" DurationMax="1.354313"/>
-				<Event Id="2118900976" Name="UI_Hover" ObjectPath="\Events\UI\UI_Hover" DurationType="OneShot" DurationMin="0.129739" DurationMax="0.129739"/>
+				<Event Id="2118900976" Name="UI_Hover" ObjectPath="\Events\UI\UI_Hover" DurationType="OneShot" DurationMin="0.115585" DurationMax="0.115585"/>
 				<Event Id="1708033489" Name="UI_ObjectiveCheck" ObjectPath="\Events\UI\UI_ObjectiveCheck" DurationType="OneShot" DurationMin="0.383050" DurationMax="0.482612"/>
 				<Event Id="3282376362" Name="UI_Open" ObjectPath="\Events\UI\UI_Open" DurationType="OneShot" DurationMin="0.270472" DurationMax="0.270472"/>
 				<Event Id="4283738236" Name="UI_shoe_tage_can_not_swap" ObjectPath="\Events\UI\UI_shoe_tage_can_not_swap" DurationType="OneShot" DurationMin="0.231354" DurationMax="0.231354"/>
@@ -146,10 +146,6 @@
 				<File Id="291188019" Language="SFX">
 					<ShortName>City_Helicopter_Bullet.wav</ShortName>
 					<Path>SFX/City_Helicopter_Bullet_10C4C929.wem</Path>
-				</File>
-				<File Id="301661095" Language="SFX">
-					<ShortName>Hotel Lobby.wav</ShortName>
-					<Path>SFX/Hotel Lobby_10C4C929.wem</Path>
 				</File>
 				<File Id="307602047" Language="SFX">
 					<ShortName>Player_CityWalk_5.wav</ShortName>
@@ -243,6 +239,10 @@
 					<ShortName>City_Helicopter_Ricochet.wav</ShortName>
 					<Path>SFX/City_Helicopter_Ricochet_3DE03578.wem</Path>
 				</File>
+				<File Id="677632531" Language="SFX">
+					<ShortName>Hotel_Lobby.wav</ShortName>
+					<Path>SFX/Hotel_Lobby_D79FB2B7.wem</Path>
+				</File>
 				<File Id="681403098" Language="SFX">
 					<ShortName>City_Helicopter_Blade.wav</ShortName>
 					<Path>SFX/City_Helicopter_Blade_1920D3A6.wem</Path>
@@ -274,10 +274,6 @@
 				<File Id="811582187" Language="SFX">
 					<ShortName>Boots_Concrete_8.wav</ShortName>
 					<Path>SFX/Boots_Concrete_8_10C4C929.wem</Path>
-				</File>
-				<File Id="815121366" Language="SFX">
-					<ShortName>Hotel Room.wav</ShortName>
-					<Path>SFX/Hotel Room_10C4C929.wem</Path>
 				</File>
 				<File Id="827320432" Language="SFX">
 					<ShortName>Breaker Switch.wav</ShortName>
@@ -330,6 +326,10 @@
 				<File Id="917314590" Language="SFX">
 					<ShortName>Airport\Airport_FlightTakesOff.wav</ShortName>
 					<Path>SFX/Airport/Airport_FlightTakesOff_10C4C929.wem</Path>
+				</File>
+				<File Id="924310459" Language="SFX">
+					<ShortName>Hotel Room.wav</ShortName>
+					<Path>SFX/Hotel Room_675D3F9E.wem</Path>
 				</File>
 				<File Id="963402483" Language="SFX">
 					<ShortName>Hotel_Stool_Kick.wav</ShortName>

@@ -69,7 +69,7 @@ public class UITutorialManager : MonoBehaviour
 
     void ShowMovement()
     {
-        onUIPopUp.Post(gameObject);
+
         if(!movement)
         {
             movement = true;
@@ -80,7 +80,6 @@ public class UITutorialManager : MonoBehaviour
 
     public void ShowCamera()
     {
-        
         if (movement && !camera)
         {
             movementAni.gameObject.SetActive(false);
@@ -100,7 +99,6 @@ public class UITutorialManager : MonoBehaviour
 
     public void ShowLegform()
     {
-        onUIPopUp.Post(gameObject);
         if (camera && !legform)
         {
             legform = true;
@@ -120,7 +118,6 @@ public class UITutorialManager : MonoBehaviour
 
     public void ShowInteract()
     {
-        onUIPopUp.Post(gameObject);
         if (legform && !interact)
         {
             legformAni.gameObject.SetActive(false);
@@ -132,7 +129,6 @@ public class UITutorialManager : MonoBehaviour
 
     public void ShowUse()
     {
-        onUIPopUp.Post(gameObject);
         if (interact && !use)
         {
             interactAni.gameObject.SetActive(false);
@@ -160,8 +156,10 @@ public class UITutorialManager : MonoBehaviour
     public void ShowHideTutorial()
     {
         hideTutorialPopup.Activate();
+        onUIPopUp.Post(gameObject);
         hidePointers.SetActive(true);
         TutorialPlayerHideDetector.detectPlayer = true;
+        //onSpaceBar.Post(gameObject);
     }
 
     public void PlayerHid()
@@ -177,6 +175,7 @@ public class UITutorialManager : MonoBehaviour
     public void MaidLeft()
     {
         changeFormPopup.Activate();
+        onUIPopUp.Post(gameObject);
         player.lockChangeForm = false;
     }
 
@@ -188,6 +187,7 @@ public class UITutorialManager : MonoBehaviour
     public void DoKickTutorial()
     {
         kickPopup.Activate();
+        onUIPopUp.Post(gameObject);
     }
 
     public void TeachShoeSight()

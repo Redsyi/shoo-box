@@ -13,9 +13,6 @@ public class UIPopup : MonoBehaviour
     public static UIPopup activePopup;
     public UnityEvent invokeOnDismissed;
 
-    public AK.Wwise.Event onActivation;
-    public AK.Wwise.Event onDismissal;
-
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -32,7 +29,6 @@ public class UIPopup : MonoBehaviour
             activePopup = this;
             active = true;
         }
-        onActivation.Post(gameObject);
     }
 
     public void Dismiss()
@@ -46,7 +42,6 @@ public class UIPopup : MonoBehaviour
             active = false;
             invokeOnDismissed.Invoke();
         }
-        onDismissal.Post(gameObject);
     }
 
     private void OnDestroy()
