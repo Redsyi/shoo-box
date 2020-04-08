@@ -279,6 +279,30 @@
 						<ActiveSource Name="Hotel_Stool_Kick" ID="{0D3D9946-8955-4C2D-B331-A2340C7131A2}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="Door_Open" ID="{D80334A1-AA4F-4D0D-95AC-4E8080F21AB5}" ShortID="991872935">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Door_Open" ID="{E7081D3D-4162-4519-BD86-A5B9538415C0}" ShortID="5879603">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimBegin" Type="Real64" Value="0.283460709718326"/>
+								<Property Name="TrimEnd" Type="Real64" Value="1.45297079021182"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Door_Open.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Door_Open" ID="{E7081D3D-4162-4519-BD86-A5B9538415C0}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

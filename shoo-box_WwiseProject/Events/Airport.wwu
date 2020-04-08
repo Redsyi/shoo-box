@@ -48,7 +48,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Airport_Ambience_Tunnel" ID="{67580381-1FA8-49DF-9E68-7CED0893E14A}"/>
+				<Event Name="Airport_Ambience_Tunnel" ID="{67580381-1FA8-49DF-9E68-7CED0893E14A}">
+					<ChildrenList>
+						<Action Name="" ID="{BAC24A6E-FE1E-4438-B733-3854DFBA31F8}" ShortID="1001872717">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Airport_Annoucement" ID="{DA715ECC-47FF-4E5E-883F-78170FBF9FC5}" WorkUnitID="{108D3B17-C2F4-4C2B-9E92-EC8A6FB93613}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
