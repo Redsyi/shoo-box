@@ -79,6 +79,7 @@ public class Player : MonoBehaviour
     private static Player instance;
     bool holdingAction;
     bool inFlingRoutine;
+    bool holdingForceReload;
 
 
     private void Start()
@@ -576,6 +577,22 @@ public class Player : MonoBehaviour
     public void OnTest()
     {
 
+    }
+
+    public void OnCheckpointLoad(InputValue value)
+    {
+        int checkpoint = Mathf.FloorToInt(value.Get<float>());
+        CheckpointManager checkpointManager = FindObjectOfType<CheckpointManager>();
+        checkpointManager.SetCheckpoint(checkpoint, true);
+        if (!holdingForceReload)
+            checkpointManager.ReloadCheckpointItems();
+        else
+            LevelBridge.Reload($"restarting from checkpoint {checkpoint}");
+    }
+
+    public void OnCheckpointForceReload(InputValue value)
+    {
+        holdingForceReload = (value.Get<float>()) > 0.5f;
     }
 #endif
 
