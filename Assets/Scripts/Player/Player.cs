@@ -80,6 +80,7 @@ public class Player : MonoBehaviour
     bool holdingAction;
     bool inFlingRoutine;
     bool holdingForceReload;
+    public float minY = -10f;
 
 
     private void Start()
@@ -211,6 +212,11 @@ public class Player : MonoBehaviour
             {
                 sandalTutorial.TeachFling();
             }
+        }
+
+        if (transform.position.y < minY)
+        {
+            LevelBridge.Reload("Oops, that's our fault.");
         }
     }
 
