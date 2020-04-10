@@ -74,4 +74,9 @@ public class PlayerShoeManager : MonoBehaviour
     {
         acquiredShoes[(int)shoe] = true;
     }
+
+    public bool Has(ShoeType shoe)
+    {
+        return acquiredShoes[(int)shoe];
+    }
 }

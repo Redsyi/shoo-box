@@ -45,6 +45,8 @@ public class Player : MonoBehaviour
     public int wigglesRequired;
     public bool lockChangeForm;
     public bool lockShoeSight;
+    [HideInInspector]
+    public bool lockMovement;
 
     private const float wiggleCD = 0.7f;
     private float currWiggleCD;
@@ -145,10 +147,13 @@ public class Player : MonoBehaviour
                 Vector3 movementVector = CalculateMovementVector();
                 if (wigglesRequired == 0)
                 {
-                    rigidbody.velocity = movementVector;
-                    if (verticalBoost != 0 && movementVector != Vector3.zero)
+                    if (!lockMovement)
                     {
-                        transform.Translate(Vector3.up * verticalBoost);
+                        rigidbody.velocity = movementVector;
+                        if (verticalBoost != 0 && movementVector != Vector3.zero)
+                        {
+                            transform.Translate(Vector3.up * verticalBoost);
+                        }
                     }
                 }
                 else if (currWiggleCD <= 0f && movementVector != Vector3.zero)
@@ -265,7 +270,7 @@ public class Player : MonoBehaviour
                 transform.LookAt(shoeManager.sandalSlinger.currTarget);
                 transform.eulerAngles = new Vector3(0, transform.eulerAngles.y - 90, 0);
             }
-            else if (currMovementInput != Vector2.zero && wigglesRequired == 0)
+            else if (currMovementInput != Vector2.zero && wigglesRequired == 0 && !lockMovement)
             {
                 float desiredRotation = Utilities.ClampAngle0360(-Utilities.VectorToDegrees(Utilities.RotateVectorDegrees(currMovementInput, 180 - myCamera.transform.eulerAngles.y)));
                 float rotationDiff = desiredRotation - currRotation;
