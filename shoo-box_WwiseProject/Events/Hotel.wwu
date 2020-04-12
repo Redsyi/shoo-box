@@ -60,7 +60,25 @@
 				</Event>
 				<Event Name="Hotel_Ambience_Room" ID="{00FF12B3-737B-46FF-B88E-6402EDEE7027}">
 					<ChildrenList>
+						<Action Name="" ID="{B84ABF99-44F3-4719-B2D2-CEA13638A3A3}" ShortID="136291011">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeOutCurve" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Cut Scene" ID="{42E2892A-647B-4FBC-9C0A-0DA20C788D76}" WorkUnitID="{6263F7BE-C00D-4A45-AEC3-DC8317EEF2A4}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
 						<Action Name="" ID="{8EDC49B4-F55E-46B4-AF7F-9A8DE574A8F3}" ShortID="655005624">
+							<PropertyList>
+								<Property Name="Delay" Type="Real64" Value="0.5"/>
+								<Property Name="FadeInCurve" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Hotel Room" ID="{EB44FE95-1E30-4669-81B7-5EB4C525A968}" WorkUnitID="{25563D8B-DCAC-4B3D-B21C-FEBC5B0E321B}"/>
@@ -71,7 +89,24 @@
 				</Event>
 				<Event Name="Hotel_Ambience_Lobby" ID="{41DD8A43-CFA6-4D94-9F94-666EBB73A97B}">
 					<ChildrenList>
+						<Action Name="" ID="{18481AAE-F90E-4CBA-A3EE-748B146379F5}" ShortID="785070511">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeOutCurve" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Hotel Room" ID="{EB44FE95-1E30-4669-81B7-5EB4C525A968}" WorkUnitID="{25563D8B-DCAC-4B3D-B21C-FEBC5B0E321B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
 						<Action Name="" ID="{B20619BF-CF91-4BCD-8AFA-85508C469DDD}" ShortID="111269319">
+							<PropertyList>
+								<Property Name="Delay" Type="Real64" Value="0.5"/>
+								<Property Name="FadeInCurve" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Hotel Lobby" ID="{C9F1A8D4-B470-43B3-A0DC-A880D092B0ED}" WorkUnitID="{25563D8B-DCAC-4B3D-B21C-FEBC5B0E321B}"/>

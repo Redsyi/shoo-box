@@ -31,8 +31,35 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 22178d79115b0b47a78389e1469b9d8a
     GuidInternal: 
-    m_lastTime: -8586152376874775808
+    m_lastTime: -8586149307014775808
     List:
+    - name: Airport
+      guid: 685580a00462b0419121f5f5c6db4e9e
+      id: 2748908406
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Airport
+        ObjectType: 7
+      Path: Default Work Unit/Airport
+    - name: Cut_Scene
+      guid: f60b28faecaaba43be6632cc904c9e0b
+      id: 245686778
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Cut_Scene
+        ObjectType: 7
+      Path: Default Work Unit/Cut_Scene
+    - name: Hotel
+      guid: 1c6dc095f163a5469ea855f028e6a85b
+      id: 3820998109
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Hotel
+        ObjectType: 7
+      Path: Default Work Unit/Hotel
     - name: Main
       guid: cab15ff7703b3c4683e28bb16d5b7aab
       id: 3161908922
@@ -42,6 +69,15 @@ MonoBehaviour:
       - ElementName: Main
         ObjectType: 7
       Path: Default Work Unit/Main
+    - name: Title_Scene
+      guid: b71049754eaa4b4aaa16543eacf0705d
+      id: 311172864
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Title_Scene
+        ObjectType: 7
+      Path: Default Work Unit/Title_Scene
   EventWwu:
   - PhysicalPath: Events/AI.wwu
     ParentPhysicalPath: 
@@ -77,17 +113,53 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: c3818a4cfc0a4d498c3dfbd299d2df34
     GuidInternal: 
-    m_lastTime: -8586152377094775808
+    m_lastTime: -8586149298494775808
     List:
-    - name: Airport_Ambience_ConveyorBelt
+    - name: Airport_Ambience_ConveyorBelt_01
       guid: e5a47524e6cb5f4ab34acc8f18dbfa5f
-      id: 1235370484
+      id: 4198451418
       PathAndIcons:
       - ElementName: Airport
         ObjectType: 12
-      - ElementName: Airport_Ambience_ConveyorBelt
+      - ElementName: Airport_Ambience_ConveyorBelt_01
         ObjectType: 3
-      Path: Airport/Airport_Ambience_ConveyorBelt
+      Path: Airport/Airport_Ambience_ConveyorBelt_01
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Airport_Ambience_ConveyorBelt_02
+      guid: f09d644eb9c5f142b7029745a3a73ea2
+      id: 4198451417
+      PathAndIcons:
+      - ElementName: Airport
+        ObjectType: 12
+      - ElementName: Airport_Ambience_ConveyorBelt_02
+        ObjectType: 3
+      Path: Airport/Airport_Ambience_ConveyorBelt_02
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Airport_Ambience_ConveyorBelt_03
+      guid: 9f773fce50d3cc438cef0f6863b16638
+      id: 4198451416
+      PathAndIcons:
+      - ElementName: Airport
+        ObjectType: 12
+      - ElementName: Airport_Ambience_ConveyorBelt_03
+        ObjectType: 3
+      Path: Airport/Airport_Ambience_ConveyorBelt_03
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Airport_Ambience_ConveyorBelt_04
+      guid: ad3da09eb31fa542b59cd8d3703621b8
+      id: 4198451423
+      PathAndIcons:
+      - ElementName: Airport
+        ObjectType: 12
+      - ElementName: Airport_Ambience_ConveyorBelt_04
+        ObjectType: 3
+      Path: Airport/Airport_Ambience_ConveyorBelt_04
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -139,6 +211,18 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 2.589854
       minDuration: 2.589854
+    - name: Airport_Scanner
+      guid: c6d472b74c28b543878b1656b70ba035
+      id: 2843912669
+      PathAndIcons:
+      - ElementName: Airport
+        ObjectType: 12
+      - ElementName: Airport_Scanner
+        ObjectType: 3
+      Path: Airport/Airport_Scanner
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: Airport_Sliding_Gate
       guid: 7081c55ba51ee64796b95a240e3f7cad
       id: 877897713
@@ -281,25 +365,13 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 5731a099c366f446a8d3e5d78b47c9b8
     GuidInternal: 
-    m_lastTime: -8586158976294775808
-    List:
-    - name: Walk
-      guid: 97c48a0a2b22ed41a489c4b3d762b824
-      id: 2108779966
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: Walk
-        ObjectType: 3
-      Path: Default Work Unit/Walk
-      maxAttenuation: 0
-      maxDuration: 0.898689
-      minDuration: 0.898689
+    m_lastTime: -8586149356094775808
+    List: []
   - PhysicalPath: Events/Hotel.wwu
     ParentPhysicalPath: 
     guid: cafbdd67d35b684a8ffe463fd892eec0
     GuidInternal: 
-    m_lastTime: -8586152817714775808
+    m_lastTime: -8586149352284775808
     List:
     - name: Hotel_Ambience_Lobby
       guid: 438add41a6cf944d9f94666ebb73a97b
@@ -311,8 +383,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Hotel/Hotel_Ambience_Lobby
       maxAttenuation: 0
-      maxDuration: 103.75431
-      minDuration: 103.75431
+      maxDuration: -1
+      minDuration: -1
     - name: Hotel_Ambience_Room
       guid: b312ff007b73ff46b88e6402edee7027
       id: 3727140126
@@ -323,8 +395,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Hotel/Hotel_Ambience_Room
       maxAttenuation: 0
-      maxDuration: 102.38898
-      minDuration: 102.38898
+      maxDuration: -1
+      minDuration: -1
     - name: Hotel_Door_Squeak
       guid: f8bac18490a01244a167bebb7702f537
       id: 442557581
@@ -449,7 +521,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: ab03b092fabf95478df983da98b8aca7
     GuidInternal: 
-    m_lastTime: -8586152903294775808
+    m_lastTime: -8586149332164775808
     List:
     - name: Music_City
       guid: 9c815e6e5afeaf4a8263295153fcf480
@@ -473,8 +545,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Music/Music_Cut_Scenes
       maxAttenuation: 0
-      maxDuration: 44.390522
-      minDuration: 44.390522
+      maxDuration: 44.890522
+      minDuration: 44.890522
     - name: Music_Hotel
       guid: c11670449ec29e4bbae6bb4961726f1c
       id: 3138446709
@@ -503,7 +575,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: c96a7a88d220c54e8d68a4bf6260e576
     GuidInternal: 
-    m_lastTime: -8586158976294775808
+    m_lastTime: -8586149356094775808
     List:
     - name: Player_City_Walk
       guid: cb515a05ca2e49429eb85b3b64ef44f8
@@ -553,6 +625,18 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
+    - name: Player_Walk
+      guid: 97c48a0a2b22ed41a489c4b3d762b824
+      id: 2147561130
+      PathAndIcons:
+      - ElementName: Player
+        ObjectType: 12
+      - ElementName: Player_Walk
+        ObjectType: 3
+      Path: Player/Player_Walk
+      maxAttenuation: 0
+      maxDuration: 0.898689
+      minDuration: 0.898689
   - PhysicalPath: Events/UI.wwu
     ParentPhysicalPath: 
     guid: 8da93751e862e943b1a413eb176f964b
@@ -699,6 +783,6 @@ MonoBehaviour:
   - /shoo-box_WwiseProject
   - /shoo-box_WwiseProject/Events
   - /shoo-box_WwiseProject/Events/AI
-  - /shoo-box_WwiseProject/Events/Hotel
+  - /shoo-box_WwiseProject/Events/Airport
   autoPopulateEnabled: 1
   CurrentPluginConfig: 

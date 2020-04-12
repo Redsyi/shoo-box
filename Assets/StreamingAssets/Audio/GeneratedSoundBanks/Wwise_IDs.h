@@ -15,11 +15,12 @@ namespace AK
     {
         static const AkUniqueID AI_EXCLAMATION = 3757163913U;
         static const AkUniqueID AI_QUESTION = 1201896862U;
-        static const AkUniqueID AIRPORT_AMBIENCE_CONVEYORBELT = 1235370484U;
+        static const AkUniqueID AIRPORT_AMBIENCE_CONVEYORBELT_01 = 4198451418U;
         static const AkUniqueID AIRPORT_AMBIENCE_TUNNEL = 938863674U;
         static const AkUniqueID AIRPORT_CART_ROLLING = 3899537369U;
         static const AkUniqueID AIRPORT_FLIGHT_TAKING_OFF = 1943100584U;
         static const AkUniqueID AIRPORT_LEVER = 3818725779U;
+        static const AkUniqueID AIRPORT_SCANNER = 2843912669U;
         static const AkUniqueID AIRPORT_SLIDING_GATE = 877897713U;
         static const AkUniqueID CITY_AMBIENCE = 3276472951U;
         static const AkUniqueID CITY_DETONATION = 3821011336U;
@@ -51,6 +52,7 @@ namespace AK
         static const AkUniqueID PLAYER_FLING = 2962968925U;
         static const AkUniqueID PLAYER_KICK = 4076006907U;
         static const AkUniqueID PLAYER_TRANSFORM = 1542675207U;
+        static const AkUniqueID PLAYER_WALK = 2147561130U;
         static const AkUniqueID UI_CLOSE = 2519197294U;
         static const AkUniqueID UI_CONFIRM = 216067002U;
         static const AkUniqueID UI_HOVER = 2118900976U;
@@ -60,13 +62,16 @@ namespace AK
         static const AkUniqueID UI_SHOEPICKUP = 684423067U;
         static const AkUniqueID UI_SHOESIGHT = 238343566U;
         static const AkUniqueID UI_SHOETAG_CAN_SWAP = 849543728U;
-        static const AkUniqueID WALK = 2108779966U;
     } // namespace EVENTS
 
     namespace BANKS
     {
         static const AkUniqueID INIT = 1355168291U;
+        static const AkUniqueID AIRPORT = 2748908406U;
+        static const AkUniqueID CUT_SCENE = 245686778U;
+        static const AkUniqueID HOTEL = 3820998109U;
         static const AkUniqueID MAIN = 3161908922U;
+        static const AkUniqueID TITLE_SCENE = 311172864U;
     } // namespace BANKS
 
     namespace BUSSES

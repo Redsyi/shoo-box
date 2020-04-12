@@ -26,9 +26,27 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Airport_Ambience_ConveyorBelt" ID="{2475A4E5-CBE6-4A5F-B34A-CC8F18DBFA5F}">
+				<Event Name="Airport_Ambience_ConveyorBelt_01" ID="{2475A4E5-CBE6-4A5F-B34A-CC8F18DBFA5F}">
 					<ChildrenList>
+						<Action Name="" ID="{A9F3602E-3B22-4E39-B8EB-294E8E92BE27}" ShortID="662505535">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeOutCurve" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Cut Scene" ID="{42E2892A-647B-4FBC-9C0A-0DA20C788D76}" WorkUnitID="{6263F7BE-C00D-4A45-AEC3-DC8317EEF2A4}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
 						<Action Name="" ID="{C76B782A-F922-42CC-8323-6C712822DB6D}" ShortID="688037850">
+							<PropertyList>
+								<Property Name="Delay" Type="Real64" Value="0.5"/>
+								<Property Name="FadeInCurve" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="1.5"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Airport_Ambience_ConveyorBelt" ID="{2E61B428-D3DA-486D-930E-E0CFEBDD9452}" WorkUnitID="{108D3B17-C2F4-4C2B-9E92-EC8A6FB93613}"/>
@@ -56,6 +74,85 @@
 									<ObjectRef Name="Airport_Annoucement" ID="{DA715ECC-47FF-4E5E-883F-78170FBF9FC5}" WorkUnitID="{108D3B17-C2F4-4C2B-9E92-EC8A6FB93613}"/>
 								</Reference>
 							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Airport_Ambience_ConveyorBelt_02" ID="{4E649DF0-C5B9-42F1-B702-9745A3A73EA2}">
+					<ChildrenList>
+						<Action Name="" ID="{D3E918ED-4871-478B-AA18-BFAEB389149B}" ShortID="197348875">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="3"/>
+								<Property Name="FadeOutCurve" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList/>
+						</Action>
+						<Action Name="" ID="{B9E5DABC-F821-45E5-9AE6-4FFD934A95AE}" ShortID="834611661">
+							<PropertyList>
+								<Property Name="Delay" Type="Real64" Value="0.5"/>
+								<Property Name="FadeInCurve" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Airport_Ambience_ConveyorBelt" ID="{2E61B428-D3DA-486D-930E-E0CFEBDD9452}" WorkUnitID="{108D3B17-C2F4-4C2B-9E92-EC8A6FB93613}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Airport_Ambience_ConveyorBelt_03" ID="{CE3F779F-D350-43CC-8CEF-0F6863B16638}">
+					<ChildrenList>
+						<Action Name="" ID="{99E82FCA-BAE1-4693-94BB-B3B69AE00E72}" ShortID="21877772">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="3"/>
+								<Property Name="FadeOutCurve" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList/>
+						</Action>
+						<Action Name="" ID="{98813C5B-FEF3-49A7-85DD-AF65BED187A1}" ShortID="448472516">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Airport_Ambience_ConveyorBelt" ID="{2E61B428-D3DA-486D-930E-E0CFEBDD9452}" WorkUnitID="{108D3B17-C2F4-4C2B-9E92-EC8A6FB93613}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Airport_Ambience_ConveyorBelt_04" ID="{9EA03DAD-1FB3-42A5-B59C-D8D3703621B8}">
+					<ChildrenList>
+						<Action Name="" ID="{3E5FBE24-2D07-4C7B-9BCB-8BB6FD60DA24}" ShortID="579511534">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="3"/>
+								<Property Name="FadeOutCurve" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList/>
+						</Action>
+						<Action Name="" ID="{2367F49F-C21E-4FCA-8152-179FBA204D47}" ShortID="58676679">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Airport_Ambience_ConveyorBelt" ID="{2E61B428-D3DA-486D-930E-E0CFEBDD9452}" WorkUnitID="{108D3B17-C2F4-4C2B-9E92-EC8A6FB93613}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Airport_Scanner" ID="{B772D4C6-284C-43B5-878B-1656B70BA035}">
+					<ChildrenList>
+						<Action Name="" ID="{C2FF6129-1D5D-4364-A8F7-694EB87D4109}" ShortID="970157810">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="3"/>
+								<Property Name="Delay" Type="Real64" Value="1"/>
+								<Property Name="FadeOutCurve" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList/>
 						</Action>
 					</ChildrenList>
 				</Event>

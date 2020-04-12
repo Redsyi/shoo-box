@@ -195,6 +195,8 @@ GameObject:
   - component: {fileID: 3207262724893055898}
   - component: {fileID: 3207262724893055899}
   - component: {fileID: 3207262724893055892}
+  - component: {fileID: 8056762462195981960}
+  - component: {fileID: 3101223716549687969}
   m_Layer: 18
   m_Name: ConveyorScanner
   m_TagString: Untagged
@@ -244,11 +246,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd265938fecefda4899d2db7f55f4488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCatchPosition: {x: 0, y: 0, z: 0}
   playerCatchWaitTime: 3
   minLightIntensity: 0.2
   maxLightIntensity: 6.2
   lightFluxSpeed: 10
+--- !u!114 &8056762462195981960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3207262724893055897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebaedeee7fdd14c278a6fee3bfa0e513, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_listeners:
+    initialListenerList: []
+    useDefaultListeners: 1
+  isEnvironmentAware: 1
+  isStaticObject: 0
+  m_positionOffsetData:
+    KeepMe: 0
+    positionOffset: {x: 0, y: 0, z: 0}
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
+--- !u!114 &3101223716549687969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3207262724893055897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65fa2774fcf9c4c108c6a8b57048434f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7f422d6
+  useOtherObject: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  enableActionOnEvent: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 2b5145c6feded4804ba1c333d702c908,
+      type: 2}
+  useCallbacks: 0
+  Callbacks: []
+  playingId: 0
+  soundEmitterObject: {fileID: 0}
+  transitionDuration: 0
+  eventIdInternal: 0
+  valueGuidInternal: 
+  m_callbackDataInternal: {fileID: 0}
 --- !u!1001 &3207262724721449705
 PrefabInstance:
   m_ObjectHideFlags: 0
