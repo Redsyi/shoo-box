@@ -84,6 +84,22 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "Press"
+                },
+                {
+                    "name": "CheckpointLoad",
+                    "type": "Value",
+                    "id": "02ce65a2-c548-48da-9ae3-8d50b6ad8c2e",
+                    "expectedControlType": "Analog",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "CheckpointForceReload",
+                    "type": "Button",
+                    "id": "45114c38-a6b1-4e2a-9766-62fc98a1b91d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)"
                 }
             ],
             "bindings": [
@@ -480,6 +496,149 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Swap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2f39c5e1-b67d-4db0-b110-7034d0bd7f04",
+                    "path": "<Keyboard>/f1",
+                    "interactions": "",
+                    "processors": "Clamp",
+                    "groups": "Keyboard&Mouse;Gamepad",
+                    "action": "CheckpointLoad",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "df1ad011-92cf-4c0f-a0ac-f13c30fed7ba",
+                    "path": "<Keyboard>/f2",
+                    "interactions": "",
+                    "processors": "Clamp(min=1,max=1)",
+                    "groups": "Keyboard&Mouse;Gamepad",
+                    "action": "CheckpointLoad",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "72ba6ed3-f3f5-45e5-92d0-8b5d14ccddb2",
+                    "path": "<Keyboard>/f3",
+                    "interactions": "",
+                    "processors": "Clamp(min=2,max=2)",
+                    "groups": "Keyboard&Mouse;Gamepad",
+                    "action": "CheckpointLoad",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "17a433ef-4160-4176-91e2-a37b03b88b4f",
+                    "path": "<Keyboard>/f4",
+                    "interactions": "",
+                    "processors": "Clamp(min=3,max=3)",
+                    "groups": "Keyboard&Mouse;Gamepad",
+                    "action": "CheckpointLoad",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "abfe0474-e343-4608-ab9f-b7bc15ae2382",
+                    "path": "<Keyboard>/f5",
+                    "interactions": "",
+                    "processors": "Clamp(min=4,max=4)",
+                    "groups": "Keyboard&Mouse;Gamepad",
+                    "action": "CheckpointLoad",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "68951754-6347-495e-b006-eb3ab61d45c0",
+                    "path": "<Keyboard>/f6",
+                    "interactions": "",
+                    "processors": "Clamp(min=5,max=5)",
+                    "groups": "Keyboard&Mouse;Gamepad",
+                    "action": "CheckpointLoad",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "93bf6a28-974b-4f5c-b744-b2cc823c34ab",
+                    "path": "<Keyboard>/f7",
+                    "interactions": "",
+                    "processors": "Clamp(min=6,max=6)",
+                    "groups": "Keyboard&Mouse;Gamepad",
+                    "action": "CheckpointLoad",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4901d201-2d9e-4d50-858b-1300f6d260a0",
+                    "path": "<Keyboard>/f8",
+                    "interactions": "",
+                    "processors": "Clamp(min=7,max=7)",
+                    "groups": "Keyboard&Mouse;Gamepad",
+                    "action": "CheckpointLoad",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0f2ee985-cc86-4a33-b421-929ee87adfc1",
+                    "path": "<Keyboard>/f9",
+                    "interactions": "",
+                    "processors": "Clamp(min=8,max=8)",
+                    "groups": "Keyboard&Mouse;Gamepad",
+                    "action": "CheckpointLoad",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e9a85ba0-4a75-4d9f-b43b-b449258d50b9",
+                    "path": "<Keyboard>/f10",
+                    "interactions": "",
+                    "processors": "Clamp(min=9,max=9)",
+                    "groups": "Keyboard&Mouse;Gamepad",
+                    "action": "CheckpointLoad",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c0a179c4-e2b7-4195-973e-3af9f11fce4a",
+                    "path": "<Keyboard>/f11",
+                    "interactions": "",
+                    "processors": "Clamp(min=10,max=10)",
+                    "groups": "Keyboard&Mouse;Gamepad",
+                    "action": "CheckpointLoad",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "78e81eed-79c0-48d9-be2a-17cb655d7f5d",
+                    "path": "<Keyboard>/f12",
+                    "interactions": "",
+                    "processors": "Clamp(min=11,max=11)",
+                    "groups": "Keyboard&Mouse;Gamepad",
+                    "action": "CheckpointLoad",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6c59a39e-7788-4ad0-8f82-25c12bd49640",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse;Gamepad",
+                    "action": "CheckpointForceReload",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

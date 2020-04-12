@@ -17,12 +17,14 @@ public class SandalTutorial : MonoBehaviour
 
     public void TeachSwap()
     {
-        swapPopup.Activate();
+        if (FindObjectOfType<PlayerShoeManager>().Has(ShoeType.FLIPFLOPS))
+            swapPopup.Activate();
     }
 
     public void ShowSwapControls()
     {
-        swapControls.SetActive(true);
+        if (FindObjectOfType<PlayerShoeManager>().Has(ShoeType.FLIPFLOPS))
+            swapControls.SetActive(true);
     }
 
     public void HideSwapControls()

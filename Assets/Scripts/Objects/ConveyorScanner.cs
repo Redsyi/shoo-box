@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class ConveyorScanner : MonoBehaviour
 {
-    public Vector3 playerCatchPosition;
     public float playerCatchWaitTime;
     private Player player;
     private bool caught;
@@ -36,6 +35,8 @@ public class ConveyorScanner : MonoBehaviour
         float remainingWaitTime = playerCatchWaitTime;
         ConveyorBelt.active = false;
         yield return null;
+        player.lockMovement = true;
+        player.lockChangeForm = true;
         while (remainingWaitTime > 0)
         {
             float lightIntensity = Mathf.Lerp(minLightIntensity, maxLightIntensity, (Mathf.Sin((Time.time - alarmTriggerTime) * lightFluxSpeed) + 1) / 2f);
@@ -44,16 +45,9 @@ public class ConveyorScanner : MonoBehaviour
                 light.intensity = lightIntensity;
             }
             remainingWaitTime -= Time.deltaTime;
-            player.transform.position = transform.position + playerCatchPosition;
             ConveyorBelt.active = false;
             yield return null;
         }
         LevelBridge.Reload("You were scanned by TSA");
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(transform.position + playerCatchPosition, 0.25f);
     }
 }

@@ -9,39 +9,42 @@ public class BreakHingeKickable : MonoBehaviour, IKickable, IAIInteractable
     // Start is called before the first frame update
     private List<HingeJoint> _hingeJoints;
     [SerializeField] private bool breakAllHinges;
-    private GameObject preBroken = null;
     private bool broken;
     [SerializeField] private int fixTime = 4;
     public AIInterest[] aIInterests;
     public GameObject fixables;
+    private Queue<Vector3> hingePurgatory;
+    private Vector3 originalPos;
+    private Quaternion originalRot;
     
     void Start()
     {
         _hingeJoints = new List<HingeJoint>(GetComponents<HingeJoint>());
+        originalPos = transform.position;
+        originalRot = transform.rotation;
+        hingePurgatory = new Queue<Vector3>();
     }
 
     public void OnKick(GameObject kicker)
     {
-        
         if (breakAllHinges)
         {
-            foreach (var hinge in _hingeJoints)
-            {
-                Destroy(hinge);
-            }
+            while (_hingeJoints.Count > 0)
+                BreakRandomHinge();
         }
         else if (_hingeJoints.Count > 0)
         {
-            if (!preBroken && !broken)
-            {
-                preBroken = Instantiate(gameObject, transform.parent);
-                preBroken.SetActive(false);
-            }
-            int randIndex = UnityEngine.Random.Range(0, _hingeJoints.Count);
-            HingeJoint hingeJoint = _hingeJoints[randIndex];
-            _hingeJoints.RemoveAt(randIndex);
-            Destroy(hingeJoint);
+            BreakRandomHinge();
         }
+    }
+
+    void BreakRandomHinge()
+    {
+        int randIndex = UnityEngine.Random.Range(0, _hingeJoints.Count);
+        HingeJoint hingeJoint = _hingeJoints[randIndex];
+        _hingeJoints.RemoveAt(randIndex);
+        hingePurgatory.Enqueue(hingeJoint.anchor);
+        Destroy(hingeJoint);
         broken = true;
     }
         
@@ -62,8 +65,17 @@ public class BreakHingeKickable : MonoBehaviour, IKickable, IAIInteractable
     public void AIFinishInteract()
     {
         broken = false;
-        preBroken.SetActive(true);
-        Destroy(gameObject);
+        transform.position = originalPos;
+        transform.rotation = originalRot;
+        while (hingePurgatory.Count > 0)
+        {
+            Vector3 jointAnchor = hingePurgatory.Dequeue();
+            HingeJoint newJoint = gameObject.AddComponent<HingeJoint>();
+            newJoint.anchor = jointAnchor;
+            newJoint.autoConfigureConnectedAnchor = true;
+            newJoint.useSpring = false;
+        }
+        _hingeJoints = new List<HingeJoint>(GetComponents<HingeJoint>());
     }
 
     public void AIInteracting(float interactProgress)
