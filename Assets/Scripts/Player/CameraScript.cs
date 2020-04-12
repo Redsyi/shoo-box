@@ -79,6 +79,7 @@ public class CameraScript : MonoBehaviour
             }
         }
     }
+    public float smoothRotationSpeed;
 
     private void Awake()
     {
@@ -132,6 +133,14 @@ public class CameraScript : MonoBehaviour
         if (remainingRotation == 0f)
         {
             remainingRotation = 90f * rotationDirection;
+        }
+    }
+
+    public void SmoothRotate(float direction)
+    {
+        if (direction != 0)
+        {
+            cameraRotation += direction * Time.deltaTime * smoothRotationSpeed;
         }
     }
 
