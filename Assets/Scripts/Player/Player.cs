@@ -82,7 +82,11 @@ public class Player : MonoBehaviour
     bool holdingAction;
     bool inFlingRoutine;
     bool holdingForceReload;
+    float currSmoothRotation;
+    float currSnapRotate;
+    [Header("Settings")]
     public float minY = -10f;
+    public bool useSnapRotation;
 
 
     private void Start()
@@ -203,6 +207,7 @@ public class Player : MonoBehaviour
         UpdateAnimator();
         UpdateParticles();
         UpdateFling();
+        DoSmoothRotation();
 
         if (shoeSniffer.detectedShoe && legForm)
         {
@@ -341,9 +346,26 @@ public class Player : MonoBehaviour
     {
         if (wigglesRequired == 0 && StealFocusWhenSeen.activeThief == null)
         {
-            RotationDirection direction = (value.Get<float>() > 0 ? RotationDirection.CLOCKWISE : RotationDirection.COUNTERCLOCKWISE);
-            myCamera.Rotate(direction);
+            float val = value.Get<float>();
+            if (useSnapRotation)
+            {
+                if (Mathf.Abs(val) >= 0.5f && (currSnapRotate == 0 || Mathf.Sign(val) != Mathf.Sign(currSnapRotate)))
+                {
+                    RotationDirection direction = (val > 0 ? RotationDirection.CLOCKWISE : RotationDirection.COUNTERCLOCKWISE);
+                    myCamera.Rotate(direction);
+                }
+                currSnapRotate = val;
+            } else
+            {
+                currSmoothRotation = val;
+            }
         }
+    }
+
+    private void DoSmoothRotation()
+    {
+        if (!useSnapRotation && currSmoothRotation != 0)
+            myCamera.SmoothRotate(currSmoothRotation);
     }
 
     public void OnChangeShoes(InputValue value)
