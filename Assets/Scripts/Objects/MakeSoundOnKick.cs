@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class MakeSoundOnKick : MonoBehaviour, IKickable
 {
-    public AudioClip clip;
     public float AIRadius;
-    public float volume = 1;
 
     public void OnKick(GameObject kicker)
     {
-        AudioManager.MakeNoise(transform.position, AIRadius, clip, volume);
+        AudioManager.MakeNoise(transform.position, AIRadius, null, 1);
     }
 }

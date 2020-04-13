@@ -21,13 +21,13 @@ public class TransparentWall : MonoBehaviour
     {
         intervals = new List<Vector2>();
         if (facingPositiveZ)
-            intervals.Add(new Vector2(290, 70));
+            intervals.Add(new Vector2(270, 90));
         if (facingNegativeZ)
-            intervals.Add(new Vector2(110, 250));
+            intervals.Add(new Vector2(90, 270));
         if (facingPositiveX)
-            intervals.Add(new Vector2(20, 160));
+            intervals.Add(new Vector2(0, 180));
         if (facingNegativeX)
-            intervals.Add(new Vector2(200, 340));
+            intervals.Add(new Vector2(180, 360));
 
         materials = new List<Material>();
         foreach(MeshRenderer renderer in GetComponentsInChildren<MeshRenderer>())
@@ -68,7 +68,9 @@ public class TransparentWall : MonoBehaviour
 
     float NormalizeAngle(float angle)
     {
-        return (angle + 360) % 360;
+        while (angle < 0)
+            angle += 360;
+        return angle % 360;
     }
 
     bool AngleBetween(float angle, Vector2 interval)

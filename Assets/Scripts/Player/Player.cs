@@ -344,12 +344,12 @@ public class Player : MonoBehaviour
     /// </summary>
     public void OnRotate(InputValue value)
     {
-        if (wigglesRequired == 0 && StealFocusWhenSeen.activeThief == null)
+        if (wigglesRequired == 0)
         {
             float val = value.Get<float>();
             if (useSnapRotation)
             {
-                if (Mathf.Abs(val) >= 0.5f && (currSnapRotate == 0 || Mathf.Sign(val) != Mathf.Sign(currSnapRotate)))
+                if (Mathf.Abs(val) >= 0.5f && (currSnapRotate == 0 || Mathf.Sign(val) != Mathf.Sign(currSnapRotate)) && StealFocusWhenSeen.activeThief == null)
                 {
                     RotationDirection direction = (val > 0 ? RotationDirection.CLOCKWISE : RotationDirection.COUNTERCLOCKWISE);
                     myCamera.Rotate(direction);
@@ -364,7 +364,7 @@ public class Player : MonoBehaviour
 
     private void DoSmoothRotation()
     {
-        if (!useSnapRotation && currSmoothRotation != 0)
+        if (!useSnapRotation && currSmoothRotation != 0 && StealFocusWhenSeen.activeThief == null)
             myCamera.SmoothRotate(currSmoothRotation);
     }
 

@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class NoiseIndicator : MonoBehaviour
 {
-    public AudioSource source;
     public SpriteRenderer waveRenderer;
 
     private void Start()
     {
-        if (source == null)
-            Debug.LogWarning("Noise Indicator has null AudioSource!");
         if (waveRenderer == null)
             Debug.LogWarning("Noise Indicator has null SpriteRenderer!");
     }
@@ -23,12 +20,6 @@ public class NoiseIndicator : MonoBehaviour
     /// <param name="volume">volume to play clip at (range 0..1)</param>
     public void MakeNoise(float radius, AudioClip clip, float volume)
     {
-        if (clip)
-        {
-            source.clip = clip;
-            source.volume = volume;
-            source.Play();
-        }
 
         if (radius > 0)
         {
