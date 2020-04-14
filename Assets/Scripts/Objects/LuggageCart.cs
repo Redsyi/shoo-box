@@ -21,12 +21,20 @@ public class LuggageCart : MonoBehaviour, IKickable
         kicked = true;
     }
 
+    /*
+     * Move's this object's PARENT 
+     */
     private void FixedUpdate()
     {
         if (kicked && distMoved < dist)
         {
             distMoved += speed * Time.fixedDeltaTime;
-            transform.position += (speed * Time.fixedDeltaTime * move);
+            transform.parent.position += (speed * Time.fixedDeltaTime * move); // Assumes you want to move its parent
+        }
+        else if (distMoved >= dist)
+        {
+            distMoved = 0;
+            kicked = false;
         }
     }
 

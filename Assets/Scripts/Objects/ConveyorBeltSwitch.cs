@@ -28,9 +28,9 @@ public class ConveyorBeltSwitch : MonoBehaviour, IKickable, ISandalable, IAIInte
         }
         else
         {
-            SummonOnFling fling = GetComponent<SummonOnFling>();
+            /*SummonOnFling fling = GetComponentGet<SummonOnFling>();
             if (fling && fling.AIs.Length > 0)
-                fling.OnFling();
+                fling.OnFling();*/
             ChangeLevel changeLevel = FindObjectOfType<ChangeLevel>();
             if (changeLevel)
             {
