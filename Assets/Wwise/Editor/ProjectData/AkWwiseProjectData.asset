@@ -31,7 +31,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 22178d79115b0b47a78389e1469b9d8a
     GuidInternal: 
-    m_lastTime: -8586149307014775808
+    m_lastTime: -8586146970504775808
     List:
     - name: Airport
       guid: 685580a00462b0419121f5f5c6db4e9e
@@ -113,7 +113,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: c3818a4cfc0a4d498c3dfbd299d2df34
     GuidInternal: 
-    m_lastTime: -8586149298494775808
+    m_lastTime: -8586147070734775808
     List:
     - name: Airport_Ambience_ConveyorBelt_01
       guid: e5a47524e6cb5f4ab34acc8f18dbfa5f
@@ -371,7 +371,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: cafbdd67d35b684a8ffe463fd892eec0
     GuidInternal: 
-    m_lastTime: -8586149352284775808
+    m_lastTime: -8586147070734775808
     List:
     - name: Hotel_Ambience_Lobby
       guid: 438add41a6cf944d9f94666ebb73a97b
@@ -521,7 +521,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: ab03b092fabf95478df983da98b8aca7
     GuidInternal: 
-    m_lastTime: -8586149332164775808
+    m_lastTime: -8586147065974775808
     List:
     - name: Music_City
       guid: 9c815e6e5afeaf4a8263295153fcf480
@@ -535,18 +535,42 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
-    - name: Music_Cut_Scenes
-      guid: 036197d195517d43b28e073bc53770b2
-      id: 1286490421
+    - name: Music_Cut_Scene_Finale
+      guid: e3f6649435454948b08d7b11081aeba4
+      id: 3354092612
       PathAndIcons:
       - ElementName: Music
         ObjectType: 12
-      - ElementName: Music_Cut_Scenes
+      - ElementName: Music_Cut_Scene_Finale
         ObjectType: 3
-      Path: Music/Music_Cut_Scenes
+      Path: Music/Music_Cut_Scene_Finale
       maxAttenuation: 0
-      maxDuration: 44.890522
-      minDuration: 44.890522
+      maxDuration: 16.319105
+      minDuration: 16.319105
+    - name: Music_Cut_Scenes_Airport
+      guid: cfe22ed518848342bf2cf3085a1d3e0f
+      id: 2198248117
+      PathAndIcons:
+      - ElementName: Music
+        ObjectType: 12
+      - ElementName: Music_Cut_Scenes_Airport
+        ObjectType: 3
+      Path: Music/Music_Cut_Scenes_Airport
+      maxAttenuation: 0
+      maxDuration: 21.415104
+      minDuration: 21.415104
+    - name: Music_Cut_Scenes_Intro
+      guid: 036197d195517d43b28e073bc53770b2
+      id: 3806072774
+      PathAndIcons:
+      - ElementName: Music
+        ObjectType: 12
+      - ElementName: Music_Cut_Scenes_Intro
+        ObjectType: 3
+      Path: Music/Music_Cut_Scenes_Intro
+      maxAttenuation: 0
+      maxDuration: 21.415104
+      minDuration: 21.415104
     - name: Music_Hotel
       guid: c11670449ec29e4bbae6bb4961726f1c
       id: 3138446709
@@ -557,8 +581,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Music/Music_Hotel
       maxAttenuation: 0
-      maxDuration: 36.960136
-      minDuration: 36.960136
+      maxDuration: -1
+      minDuration: -1
     - name: Music_Menu
       guid: a13fd50fcf60534f98dc111e5629ed55
       id: 1598298728
@@ -569,13 +593,13 @@ MonoBehaviour:
         ObjectType: 3
       Path: Music/Music_Menu
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 32.501904
+      minDuration: 32.501904
   - PhysicalPath: Events/Player.wwu
     ParentPhysicalPath: 
     guid: c96a7a88d220c54e8d68a4bf6260e576
     GuidInternal: 
-    m_lastTime: -8586149356094775808
+    m_lastTime: -8586146970504775808
     List:
     - name: Player_City_Walk
       guid: cb515a05ca2e49429eb85b3b64ef44f8
@@ -625,18 +649,42 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
-    - name: Player_Walk
-      guid: 97c48a0a2b22ed41a489c4b3d762b824
-      id: 2147561130
+    - name: Player_Walk_Barefoot
+      guid: 2d2f7459ce203a4ca1fc535071e438a5
+      id: 1367845377
       PathAndIcons:
       - ElementName: Player
         ObjectType: 12
-      - ElementName: Player_Walk
+      - ElementName: Player_Walk_Barefoot
         ObjectType: 3
-      Path: Player/Player_Walk
+      Path: Player/Player_Walk_Barefoot
       maxAttenuation: 0
-      maxDuration: 0.898689
-      minDuration: 0.898689
+      maxDuration: 0.814554
+      minDuration: 0.302106
+    - name: Player_Walk_Boots
+      guid: 97c48a0a2b22ed41a489c4b3d762b824
+      id: 2951788940
+      PathAndIcons:
+      - ElementName: Player
+        ObjectType: 12
+      - ElementName: Player_Walk_Boots
+        ObjectType: 3
+      Path: Player/Player_Walk_Boots
+      maxAttenuation: 0
+      maxDuration: 0.666563
+      minDuration: 0.191664
+    - name: Player_Walk_Sandals
+      guid: 786e90eea6a24f4583a3bc705709decb
+      id: 472219199
+      PathAndIcons:
+      - ElementName: Player
+        ObjectType: 12
+      - ElementName: Player_Walk_Sandals
+        ObjectType: 3
+      Path: Player/Player_Walk_Sandals
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
   - PhysicalPath: Events/UI.wwu
     ParentPhysicalPath: 
     guid: 8da93751e862e943b1a413eb176f964b
@@ -782,7 +830,6 @@ MonoBehaviour:
   ExpandedItems:
   - /shoo-box_WwiseProject
   - /shoo-box_WwiseProject/Events
-  - /shoo-box_WwiseProject/Events/AI
-  - /shoo-box_WwiseProject/Events/Airport
+  - /shoo-box_WwiseProject/Events/Music
   autoPopulateEnabled: 1
   CurrentPluginConfig: 

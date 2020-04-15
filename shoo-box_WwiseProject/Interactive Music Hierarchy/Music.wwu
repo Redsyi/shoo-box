@@ -239,109 +239,6 @@
 						</MusicCue>
 					</CueList>
 				</MusicSegment>
-				<MusicPlaylistContainer Name="Cut Scene" ID="{42E2892A-647B-4FBC-9C0A-0DA20C788D76}" ShortID="397405480">
-					<PropertyList>
-						<Property Name="Volume" Type="Real64">
-							<ValueList>
-								<Value>-3</Value>
-							</ValueList>
-						</Property>
-					</PropertyList>
-					<ReferenceList>
-						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
-						</Reference>
-						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
-						</Reference>
-					</ReferenceList>
-					<ChildrenList>
-						<MusicSegment Name="Missing You" ID="{AB58BFD6-A6BF-4355-A2CA-507D04139D63}" ShortID="123680472">
-							<PropertyList>
-								<Property Name="EndPosition" Type="Real64" Value="44390.5215419501"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<MusicTrack Name="Missing You" ID="{1A1327E7-DE17-4E54-842D-6E6E077663F3}" ShortID="913612251">
-									<ReferenceList>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Missing You" ID="{7AE3BADB-4F07-494C-BF87-C4BD1EB6688A}" ShortID="1028669091">
-											<Language>SFX</Language>
-											<AudioFile>Missing You.wav</AudioFile>
-										</AudioFileSource>
-									</ChildrenList>
-									<TransitionList>
-										<MusicTransition Name="Root" ID="{E93CC2B7-BFDB-470D-92DF-263DC5D6C540}">
-											<PropertyList>
-												<Property Name="IsFolder" Type="bool" Value="True"/>
-											</PropertyList>
-											<TransitionInfo/>
-										</MusicTransition>
-									</TransitionList>
-									<SequenceList>
-										<MusicTrackSequence Name="" ID="{A77CE9AD-3050-499A-ABA8-B0B0A328FCF1}">
-											<ClipList>
-												<MusicClip Name="Missing You" ID="{A1829EF4-86FB-4472-A328-1BB09EBE9846}">
-													<PropertyList>
-														<Property Name="EndTrimOffset" Type="Real64" Value="44390.5215419501"/>
-														<Property Name="FadeInMode" Type="int16" Value="0"/>
-														<Property Name="FadeOutMode" Type="int16" Value="0"/>
-													</PropertyList>
-													<AudioSourceRef Name="Missing You" ID="{7AE3BADB-4F07-494C-BF87-C4BD1EB6688A}"/>
-												</MusicClip>
-											</ClipList>
-										</MusicTrackSequence>
-									</SequenceList>
-								</MusicTrack>
-							</ChildrenList>
-							<CueList>
-								<MusicCue Name="Entry Cue" ID="{6432DBA8-F04F-44B3-8F3B-454F50376AAE}"/>
-								<MusicCue Name="Exit Cue" ID="{3E633160-C85A-4F73-9B0E-DC9FF10FE4BA}">
-									<PropertyList>
-										<Property Name="CueType" Type="int16" Value="1"/>
-										<Property Name="TimeMs" Type="Real64" Value="44390.5215419501"/>
-									</PropertyList>
-								</MusicCue>
-							</CueList>
-						</MusicSegment>
-					</ChildrenList>
-					<TransitionList>
-						<MusicTransition Name="Root" ID="{BAF3B084-CD50-4CD4-94F4-9D80FE2D6CE0}">
-							<PropertyList>
-								<Property Name="IsFolder" Type="bool" Value="True"/>
-							</PropertyList>
-							<ChildrenList>
-								<MusicTransition Name="Transition" ID="{828E9695-0EBC-45E0-9653-EDF2CF6EA1C6}">
-									<TransitionInfo/>
-								</MusicTransition>
-							</ChildrenList>
-							<TransitionInfo/>
-						</MusicTransition>
-					</TransitionList>
-					<Playlist>
-						<MusicPlaylistItem Name="" ID="{6702BF93-E4D0-43E5-93B8-AF1D8804556D}" ShortID="1067065663">
-							<ChildrenList>
-								<MusicPlaylistItem Name="" ID="{99EF3547-5901-439A-8539-31847A288C18}" ShortID="759971758">
-									<PropertyList>
-										<Property Name="PlaylistItemType" Type="int16" Value="1"/>
-									</PropertyList>
-									<SegmentRef Name="Missing You" ID="{AB58BFD6-A6BF-4355-A2CA-507D04139D63}"/>
-								</MusicPlaylistItem>
-							</ChildrenList>
-						</MusicPlaylistItem>
-					</Playlist>
-				</MusicPlaylistContainer>
 				<MusicPlaylistContainer Name="City Battle" ID="{6516F90C-8707-4CAE-A5B4-9170E9A13616}" ShortID="730884435">
 					<PropertyList>
 						<Property Name="Volume" Type="Real64">
@@ -451,9 +348,9 @@
 						</MusicPlaylistItem>
 					</Playlist>
 				</MusicPlaylistContainer>
-				<MusicPlaylistContainer Name="Menu Music" ID="{F8C4731F-2700-4E89-A44A-E454342FECDF}" ShortID="556383289">
+				<MusicSegment Name="Cutscene _ Finale" ID="{A2A21EDC-F9FE-437D-BE17-EF559E44B7CA}" ShortID="609048088">
 					<PropertyList>
-						<Property Name="TimeSignatureUpper" Type="int16" Value="3"/>
+						<Property Name="EndPosition" Type="Real64" Value="16319.1041666667"/>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
@@ -464,98 +361,173 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<MusicSegment Name="UI Theme" ID="{30A81FDB-CD0E-4C8B-A640-F38660384169}" ShortID="279546305">
-							<PropertyList>
-								<Property Name="EndPosition" Type="Real64" Value="24000"/>
-							</PropertyList>
+						<MusicTrack Name="Shoobox Cutscene _ Finale" ID="{E31C8E98-1A2B-4161-A5BA-DCC21C113BEC}" ShortID="1020519006">
 							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
-								</Reference>
 								<Reference Name="OutputBus">
 									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<MusicTrack Name="UI Theme" ID="{74AEBA4E-DC6A-460A-B353-61DFDE59F3EA}" ShortID="76796139">
-									<ReferenceList>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="UI Theme" ID="{127B0913-014A-4CB0-BE15-621DB0CD9BCB}" ShortID="911131771">
-											<Language>SFX</Language>
-											<AudioFile>UI Theme.wav</AudioFile>
-											<ConvertedFileIDList>
-												<File ID="206746285"/>
-											</ConvertedFileIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<TransitionList>
-										<MusicTransition Name="Root" ID="{7DF2F4D8-B5A6-433C-A7B6-3876280856C2}">
-											<PropertyList>
-												<Property Name="IsFolder" Type="bool" Value="True"/>
-											</PropertyList>
-											<TransitionInfo/>
-										</MusicTransition>
-									</TransitionList>
-									<SequenceList>
-										<MusicTrackSequence Name="" ID="{833972C3-EBD7-4D84-8290-AF85EE293317}">
-											<ClipList>
-												<MusicClip Name="UI Theme" ID="{294094B0-362A-48DF-B2AD-F67C0A1BF9CC}">
-													<PropertyList>
-														<Property Name="EndTrimOffset" Type="Real64" Value="24000"/>
-														<Property Name="FadeInMode" Type="int16" Value="0"/>
-														<Property Name="FadeOutDuration" Type="Real64" Value="236.323851203499"/>
-													</PropertyList>
-													<AudioSourceRef Name="UI Theme" ID="{127B0913-014A-4CB0-BE15-621DB0CD9BCB}"/>
-												</MusicClip>
-											</ClipList>
-										</MusicTrackSequence>
-									</SequenceList>
-								</MusicTrack>
+								<AudioFileSource Name="Shoobox Cutscene _ Finale" ID="{879EB37A-EADE-4E8F-974F-221010CA1D4E}" ShortID="470827279">
+									<Language>SFX</Language>
+									<AudioFile>Shoobox Cutscene _ Finale.wav</AudioFile>
+								</AudioFileSource>
 							</ChildrenList>
-							<CueList>
-								<MusicCue Name="Entry Cue" ID="{AB7C2136-FC72-4C9A-AC44-D5A02B6C9C4A}"/>
-								<MusicCue Name="Exit Cue" ID="{C99C1FF4-1A00-480E-A392-76399D5DDC6D}">
+							<TransitionList>
+								<MusicTransition Name="Root" ID="{855BF577-32F3-4D1C-822D-D0DF457ED396}">
 									<PropertyList>
-										<Property Name="CueType" Type="int16" Value="1"/>
-										<Property Name="TimeMs" Type="Real64" Value="24000"/>
+										<Property Name="IsFolder" Type="bool" Value="True"/>
 									</PropertyList>
-								</MusicCue>
-							</CueList>
-						</MusicSegment>
-					</ChildrenList>
-					<TransitionList>
-						<MusicTransition Name="Root" ID="{37EFA690-83F8-47E5-8F9C-2D8C6E26AE65}">
-							<PropertyList>
-								<Property Name="IsFolder" Type="bool" Value="True"/>
-							</PropertyList>
-							<ChildrenList>
-								<MusicTransition Name="Transition" ID="{8657F182-A026-4C8D-B805-7E61B1A6A873}">
 									<TransitionInfo/>
 								</MusicTransition>
-							</ChildrenList>
-							<TransitionInfo/>
-						</MusicTransition>
-					</TransitionList>
-					<Playlist>
-						<MusicPlaylistItem Name="" ID="{A9B5DCD5-7832-4D98-B4FE-374A8B47A904}" ShortID="714547923">
+							</TransitionList>
+							<SequenceList>
+								<MusicTrackSequence Name="" ID="{013D7C74-7F86-4E24-9C50-E14002044881}">
+									<ClipList>
+										<MusicClip Name="Shoobox Cutscene _ Finale" ID="{3DE8E398-38B1-47D1-8F5C-FDBD8D559130}">
+											<PropertyList>
+												<Property Name="EndTrimOffset" Type="Real64" Value="16319.1041666667"/>
+												<Property Name="FadeInMode" Type="int16" Value="0"/>
+												<Property Name="FadeOutMode" Type="int16" Value="0"/>
+											</PropertyList>
+											<AudioSourceRef Name="Shoobox Cutscene _ Finale" ID="{879EB37A-EADE-4E8F-974F-221010CA1D4E}"/>
+										</MusicClip>
+									</ClipList>
+								</MusicTrackSequence>
+							</SequenceList>
+						</MusicTrack>
+					</ChildrenList>
+					<CueList>
+						<MusicCue Name="Entry Cue" ID="{1EC8445C-AB19-460E-94BC-3375517964C2}"/>
+						<MusicCue Name="Exit Cue" ID="{6E14CB0B-E6B9-462F-AC3E-AB7731AC5066}">
 							<PropertyList>
-								<Property Name="LoopCount" Type="int16" Value="0"/>
+								<Property Name="CueType" Type="int16" Value="1"/>
+								<Property Name="TimeMs" Type="Real64" Value="16319.1041666667"/>
 							</PropertyList>
+						</MusicCue>
+					</CueList>
+				</MusicSegment>
+				<MusicSegment Name="Cutscene _ General" ID="{FFEB2B37-C159-4A86-AC0A-47724D098C64}" ShortID="451844768">
+					<PropertyList>
+						<Property Name="EndPosition" Type="Real64" Value="20415.1041666667"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<MusicTrack Name="Shoobox Cutscene _ General" ID="{8CE776D4-BB0C-4F3B-B474-56868C9CC40D}" ShortID="287324411">
+							<ReferenceList>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+								</Reference>
+							</ReferenceList>
 							<ChildrenList>
-								<MusicPlaylistItem Name="" ID="{8B714992-0E39-44B6-94AA-8B5D50DCB333}" ShortID="831034295">
-									<PropertyList>
-										<Property Name="PlaylistItemType" Type="int16" Value="1"/>
-									</PropertyList>
-									<SegmentRef Name="UI Theme" ID="{30A81FDB-CD0E-4C8B-A640-F38660384169}"/>
-								</MusicPlaylistItem>
+								<AudioFileSource Name="Shoobox Cutscene _ General" ID="{DCD23E90-7049-4874-8F20-16E2BE08F7C8}" ShortID="655589776">
+									<Language>SFX</Language>
+									<AudioFile>Shoobox Cutscene _ General.wav</AudioFile>
+								</AudioFileSource>
 							</ChildrenList>
-						</MusicPlaylistItem>
-					</Playlist>
-				</MusicPlaylistContainer>
+							<TransitionList>
+								<MusicTransition Name="Root" ID="{EFE4D368-3549-489C-A808-54433F6D9602}">
+									<PropertyList>
+										<Property Name="IsFolder" Type="bool" Value="True"/>
+									</PropertyList>
+									<TransitionInfo/>
+								</MusicTransition>
+							</TransitionList>
+							<SequenceList>
+								<MusicTrackSequence Name="" ID="{F98E0C85-4307-4B0A-83B9-2A7445D47A4E}">
+									<ClipList>
+										<MusicClip Name="Shoobox Cutscene _ General" ID="{F8917D9E-159C-49A8-83D9-9E994C43CB76}">
+											<PropertyList>
+												<Property Name="EndTrimOffset" Type="Real64" Value="20415.1041666667"/>
+												<Property Name="FadeInMode" Type="int16" Value="0"/>
+												<Property Name="FadeOutMode" Type="int16" Value="0"/>
+											</PropertyList>
+											<AudioSourceRef Name="Shoobox Cutscene _ General" ID="{DCD23E90-7049-4874-8F20-16E2BE08F7C8}"/>
+										</MusicClip>
+									</ClipList>
+								</MusicTrackSequence>
+							</SequenceList>
+						</MusicTrack>
+					</ChildrenList>
+					<CueList>
+						<MusicCue Name="Entry Cue" ID="{6C9849DE-A541-4A4C-B402-E883B409D578}"/>
+						<MusicCue Name="Exit Cue" ID="{25F05DF2-D209-4B41-A7AD-EFDC2AF51EFE}">
+							<PropertyList>
+								<Property Name="CueType" Type="int16" Value="1"/>
+								<Property Name="TimeMs" Type="Real64" Value="20415.1041666667"/>
+							</PropertyList>
+						</MusicCue>
+					</CueList>
+				</MusicSegment>
+				<MusicSegment Name="Menu Music" ID="{56BBD25B-207F-472B-93E4-9D5F01A32C96}" ShortID="722274790">
+					<PropertyList>
+						<Property Name="EndPosition" Type="Real64" Value="32501.9047619048"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<MusicTrack Name="Shoobox Menu Music" ID="{345CBFC4-E2CE-4345-9CF2-40AA1944D358}" ShortID="853508931">
+							<ReferenceList>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Shoobox Menu Music" ID="{157F1913-3FA9-48A0-8A15-E08F212783D6}" ShortID="498184650">
+									<Language>SFX</Language>
+									<AudioFile>Shoobox Menu Music.wav</AudioFile>
+									<ConvertedFileIDList>
+										<File ID="691341668"/>
+									</ConvertedFileIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<TransitionList>
+								<MusicTransition Name="Root" ID="{B38DD520-9486-4232-BA58-47711D13141E}">
+									<PropertyList>
+										<Property Name="IsFolder" Type="bool" Value="True"/>
+									</PropertyList>
+									<TransitionInfo/>
+								</MusicTransition>
+							</TransitionList>
+							<SequenceList>
+								<MusicTrackSequence Name="" ID="{89E58414-6C38-4E12-8288-56B8A00D4529}">
+									<ClipList>
+										<MusicClip Name="Shoobox Menu Music" ID="{93DC7F41-3BCF-4B40-A4CC-B726249BFC41}">
+											<PropertyList>
+												<Property Name="EndTrimOffset" Type="Real64" Value="32501.9047619048"/>
+												<Property Name="FadeInMode" Type="int16" Value="0"/>
+												<Property Name="FadeOutMode" Type="int16" Value="0"/>
+											</PropertyList>
+											<AudioSourceRef Name="Shoobox Menu Music" ID="{157F1913-3FA9-48A0-8A15-E08F212783D6}"/>
+										</MusicClip>
+									</ClipList>
+								</MusicTrackSequence>
+							</SequenceList>
+						</MusicTrack>
+					</ChildrenList>
+					<CueList>
+						<MusicCue Name="Entry Cue" ID="{A6A6F4E5-91C9-41DC-81D4-1FAF55586D74}"/>
+						<MusicCue Name="Exit Cue" ID="{EA94C376-8D62-4E50-BE76-C6EA887265F3}">
+							<PropertyList>
+								<Property Name="CueType" Type="int16" Value="1"/>
+								<Property Name="TimeMs" Type="Real64" Value="32501.9047619048"/>
+							</PropertyList>
+						</MusicCue>
+					</CueList>
+				</MusicSegment>
 			</ChildrenList>
 		</WorkUnit>
 	</InteractiveMusic>
