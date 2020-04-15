@@ -62,6 +62,8 @@ public class LevelBridge : MonoBehaviour
             destLevel = level;
             message = msg;
             SceneManager.LoadScene("LevelBridge", LoadSceneMode.Additive);
+            CheckpointManager.currCheckpoint = 0;
+            CheckpointTransformSaver.ResetAll();
         }
     }
 

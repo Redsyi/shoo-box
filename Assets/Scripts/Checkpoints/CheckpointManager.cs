@@ -5,7 +5,7 @@ using System.Linq;
 public class CheckpointManager : MonoBehaviour
 {
     private static int currLevel = -1;
-    private static int currCheckpoint = 0;
+    public static int currCheckpoint = 0;
     public static Color[] checkpointColors = { Color.blue, Color.red, Color.green, Color.cyan };
 
     void Start()
@@ -34,6 +34,12 @@ public class CheckpointManager : MonoBehaviour
     public void SetCheckpoint(int checkpointID, bool forceLower = false)
     {
         if (checkpointID > currCheckpoint || forceLower)
+        {
             currCheckpoint = checkpointID;
+            foreach (ICheckpointSave checkpointSaver in FindObjectsOfType<MonoBehaviour>().OfType<ICheckpointSave>())
+            {
+                checkpointSaver.SaveCheckpoint(currCheckpoint);
+            }
+        }
     }
 }
