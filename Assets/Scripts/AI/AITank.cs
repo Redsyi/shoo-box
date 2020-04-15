@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class AITank : MonoBehaviour, IKickable
 {
-    private CityIntersection currIntersection;
+    private CityRoad currIntersection;
     private Player player;
     public Transform model;
     public GameObject gunBarrel;
@@ -50,7 +50,6 @@ public class AITank : MonoBehaviour, IKickable
         {
             moveParticles.Pause();
         }
-        CityDirector.numTanks++;
     }
 
     void Update()
@@ -106,7 +105,7 @@ public class AITank : MonoBehaviour, IKickable
     {
         yield return null;
         bool firstTime = true;
-        currIntersection = CityIntersection.intersections[0];
+        currIntersection = CityRoad.intersections[0];
         while (true)
         {
             float intersectionDistToPlayer = (currIntersection.transform.position - player.transform.position).sqrMagnitude;
@@ -121,7 +120,7 @@ public class AITank : MonoBehaviour, IKickable
             {
                 currIntersection.assignedTank = false;
                 //find new candidate
-                foreach (CityIntersection intersection in CityIntersection.intersections)
+                foreach (CityRoad intersection in CityRoad.intersections)
                 {
                     if (!intersection.assignedTank)
                     {

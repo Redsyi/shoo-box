@@ -6,7 +6,7 @@ using UnityEngine.AI;
 [SelectionBase]
 public class AIHeli : MonoBehaviour, ISandalable
 {
-    private CityIntersection currIntersection;
+    private CityRoad currIntersection;
     private Player player;
     public Transform model;
     public float roundsPerSecond;
@@ -38,7 +38,6 @@ public class AIHeli : MonoBehaviour, ISandalable
         StartCoroutine(RecalculateBestIntersection());
         initialSwirlRate = heliSwirl.emission.rateOverTime.constant;
         onFly.Post(gameObject);
-        CityDirector.numHelis++;
     }
 
 
@@ -96,7 +95,7 @@ public class AIHeli : MonoBehaviour, ISandalable
     {
         yield return null;
         bool firstTime = true;
-        currIntersection = CityIntersection.intersections[0];
+        currIntersection = CityRoad.intersections[0];
         while (true)
         {
             float intersectionDistToPlayer = (currIntersection.transform.position - player.transform.position).sqrMagnitude;
@@ -111,7 +110,7 @@ public class AIHeli : MonoBehaviour, ISandalable
             {
                 currIntersection.assignedHeli = false;
                 //find new candidate
-                foreach (CityIntersection intersection in CityIntersection.intersections)
+                foreach (CityRoad intersection in CityRoad.intersections)
                 {
                     if (!intersection.assignedHeli)
                     {

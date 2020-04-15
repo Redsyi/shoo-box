@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CityDirector : MonoBehaviour
 {
-    private List<Transform> spawnPoints;
     public int intensity;
     float spawnDelay => 20 - intensity;
     private bool shouldSpawn => intensity > 0;
@@ -16,18 +15,17 @@ public class CityDirector : MonoBehaviour
     public AITank tankPrefab;
     public AIHeli heliPrefab;
     public static CityDirector current;
+    public float maxDist;
+    private float maxDistSqrd => maxDist * maxDist;
+    private Player player;
 
     void Start()
     {
-        spawnPoints = new List<Transform>();
-        foreach (Transform child in GameObject.FindGameObjectWithTag("Intersections").transform)
-        {
-            spawnPoints.Add(child);
-        }
         numTanks = 0;
         numHelis = 0;
         StartCoroutine(Spawn());
         current = this;
+        player = FindObjectOfType<Player>();
     }
 
     IEnumerator Spawn()
@@ -36,9 +34,9 @@ public class CityDirector : MonoBehaviour
             yield return null;
         while (true)
         {
-            if (numTanks < tankCap)
+            while (numTanks < tankCap)
                 SpawnTank();
-            if (numHelis < heliCap)
+            while (numHelis < heliCap)
                 SpawnHeli();
             yield return new WaitForSeconds(Mathf.Max(5, spawnDelay));
         }
@@ -46,30 +44,32 @@ public class CityDirector : MonoBehaviour
 
     void SpawnTank()
     {
-        int idx = Random.Range(0, spawnPoints.Count);
+        int idx = Random.Range(0, CityRoad.intersections.Length);
         int maxLoops = 1000;
         int currLoops = 0;
-        while (!coordinatesOffScreen(spawnPoints[idx].position) && currLoops < maxLoops)
+        while ((!coordinatesOffScreen(CityRoad.intersections[idx].transform.position) || (CityRoad.intersections[idx].transform.position - player.transform.position).sqrMagnitude > maxDistSqrd || CityRoad.intersections[idx].assignedTank) && currLoops < maxLoops)
         {
-            idx = Random.Range(0, spawnPoints.Count);
+            idx = Random.Range(0, CityRoad.intersections.Length);
             ++currLoops;
         }
 
-        Instantiate(tankPrefab, spawnPoints[idx].position, Quaternion.identity);
+        numTanks++;
+        Instantiate(tankPrefab, CityRoad.intersections[idx].transform.position, Quaternion.identity);
     }
 
     void SpawnHeli()
     {
-        int idx = Random.Range(0, spawnPoints.Count);
+        int idx = Random.Range(0, CityRoad.intersections.Length);
         int maxLoops = 1000;
         int currLoops = 0;
-        while (!coordinatesOffScreen(spawnPoints[idx].position) && currLoops < maxLoops)
+        while ((!coordinatesOffScreen(CityRoad.intersections[idx].transform.position) || (CityRoad.intersections[idx].transform.position - player.transform.position).sqrMagnitude > maxDistSqrd || CityRoad.intersections[idx].assignedHeli) && currLoops < maxLoops)
         {
-            idx = Random.Range(0, spawnPoints.Count);
+            idx = Random.Range(0, CityRoad.intersections.Length);
             ++currLoops;
         }
 
-        Instantiate(heliPrefab, spawnPoints[idx].position, Quaternion.identity);
+        numHelis++;
+        Instantiate(heliPrefab, CityRoad.intersections[idx].transform.position, Quaternion.identity);
     }
 
     bool coordinatesOffScreen(Vector3 worldCoords)
