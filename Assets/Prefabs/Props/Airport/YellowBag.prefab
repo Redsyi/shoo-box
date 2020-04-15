@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2711863212185874953}
   - component: {fileID: 2711863212185874967}
   - component: {fileID: 2711863212185874952}
+  - component: {fileID: 7944740134259116870}
   m_Layer: 0
   m_Name: YellowBag
   m_TagString: Luggage
@@ -44,8 +45,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.6673975, y: 1.754679, z: 1.674952}
-  m_Center: {x: 0.06284857, y: 0.9382366, z: -0.17394137}
+  m_Size: {x: 0.8142376, y: 1.0927861, z: 1.6227293}
+  m_Center: {x: 0.011763573, y: 0.6478008, z: -0.14783001}
 --- !u!54 &2711863212185874952
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -57,11 +58,26 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7944740134259116870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2711863212185874954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f184147b86236a8418afb44ca5772243, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 200
+  kickEnabled: 1
+  additionalForceVector: {x: 0, y: 1, z: 0}
 --- !u!1 &8592410335977192124
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,13 +103,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8592410335977192124}
-  m_LocalRotation: {x: -0.0069375676, y: 0.68185526, z: 0.0075084637, w: 0.7314157}
+  m_LocalRotation: {x: -0.0066704275, y: 0.70707536, z: 0.00774407, w: 0.7070644}
   m_LocalPosition: {x: -0.034934998, y: 0.7834624, z: -0.1236763}
   m_LocalScale: {x: 45, y: 45, z: 45}
   m_Children: []
   m_Father: {fileID: 2711863212185874953}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -1.1680001, y: 90, z: 0.087000005}
 --- !u!33 &89222186633304520
 MeshFilter:
   m_ObjectHideFlags: 0

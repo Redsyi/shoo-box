@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     public float rotationSpeed;
     public bool legForm;
     public float timeToFling;
+    public float heightDifference = 0.65f;
 
     [Header("Footsteps")]
     public float footstepTiming;
@@ -326,11 +327,11 @@ public class Player : MonoBehaviour
                 legg.SetActive(legForm);
             if (legForm)
             {
-                transform.position += new Vector3(0, 0.65f);
+                transform.position += new Vector3(0, heightDifference);
             }
             else
             {
-                transform.position -= new Vector3(0, 0.65f);
+                transform.position -= new Vector3(0, heightDifference);
             }
             walkingParticleSystem.transform.localPosition = (legForm ? legParticlesPosition.localPosition : boxParticlesPosition.localPosition);
 

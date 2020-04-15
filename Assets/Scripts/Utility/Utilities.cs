@@ -77,7 +77,7 @@ public static class Utilities
     [MenuItem("Scenes/Main/City Terminal")] public static void CityTerminal() =>
         OpenScene("Assets/Scenes/City/City Terminal.unity");
     [MenuItem("Scenes/Main/City")] public static void City() => 
-        OpenScene("Assets/Scenes/City/city.unity");
+        OpenScene("Assets/Scenes/City/city-layout.unity");
     [MenuItem("Scenes/Cutscenes/Intro Cutscene")] public static void IntroCS() => 
         OpenScene("Assets/Scenes/Cutscenes/IntroCutscene.unity");
     [MenuItem("Scenes/Cutscenes/Airport Cutscene")] public static void AirportCS() => 

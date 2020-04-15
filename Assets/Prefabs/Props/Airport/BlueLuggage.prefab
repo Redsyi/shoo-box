@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7835396295148581375}
   - component: {fileID: 7835396295148581345}
   - component: {fileID: 7835396295148581374}
+  - component: {fileID: 2281388988973698853}
   m_Layer: 0
   m_Name: BlueLuggage
   m_TagString: Luggage
@@ -25,14 +26,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7835396295148581372}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.25, y: 2.214, z: -5.07}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -11.25, y: 2.77, z: -5.07}
+  m_LocalScale: {x: 0.8, y: 0.72551197, z: 0.8}
   m_Children:
   - {fileID: 315667482120866112}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!65 &7835396295148581345
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -44,8 +45,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.6673975, y: 2.1880348, z: 1.3690662}
-  m_Center: {x: 0.06284857, y: 1.1549145, z: -0.10995293}
+  m_Size: {x: 0.82509756, y: 2.1880345, z: 1.3690662}
+  m_Center: {x: -0.025190115, y: 1.1549145, z: -0.10995291}
 --- !u!54 &7835396295148581374
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -57,11 +58,26 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2281388988973698853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7835396295148581372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f184147b86236a8418afb44ca5772243, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 200
+  kickEnabled: 1
+  additionalForceVector: {x: 0, y: 1, z: 0}
 --- !u!1 &9023507049722885388
 GameObject:
   m_ObjectHideFlags: 0

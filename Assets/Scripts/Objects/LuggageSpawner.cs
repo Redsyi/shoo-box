@@ -6,6 +6,7 @@ public class LuggageSpawner : MonoBehaviour
 {
     public float spawnFrequency;
     public GameObject[] luggagePrefabs;
+    public Vector3[] rotations;
     private float currSpawnTimer;
 
     void Update()
@@ -19,7 +20,7 @@ public class LuggageSpawner : MonoBehaviour
         {
             currSpawnTimer -= spawnFrequency;
             int randomIdx = Random.Range(0, luggagePrefabs.Length);
-            Instantiate(luggagePrefabs[randomIdx], transform.position, Quaternion.identity);
+            Instantiate(luggagePrefabs[randomIdx], transform.position, luggagePrefabs[randomIdx].transform.rotation);
         }
     }
 }
