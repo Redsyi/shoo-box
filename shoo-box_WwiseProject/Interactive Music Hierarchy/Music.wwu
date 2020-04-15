@@ -466,10 +466,7 @@
 						</MusicCue>
 					</CueList>
 				</MusicSegment>
-				<MusicSegment Name="Menu Music" ID="{56BBD25B-207F-472B-93E4-9D5F01A32C96}" ShortID="722274790">
-					<PropertyList>
-						<Property Name="EndPosition" Type="Real64" Value="32501.9047619048"/>
-					</PropertyList>
+				<MusicPlaylistContainer Name="Menu Music" ID="{29CF82FE-1524-4996-AFB3-2B858ED9D4BD}" ShortID="817036637">
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
@@ -479,55 +476,192 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<MusicTrack Name="Shoobox Menu Music" ID="{345CBFC4-E2CE-4345-9CF2-40AA1944D358}" ShortID="853508931">
+						<MusicSegment Name="Menu Music" ID="{56BBD25B-207F-472B-93E4-9D5F01A32C96}" ShortID="722274790">
+							<PropertyList>
+								<Property Name="EndPosition" Type="Real64" Value="32501.9047619048"/>
+							</PropertyList>
 							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+								</Reference>
 								<Reference Name="OutputBus">
 									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="Shoobox Menu Music" ID="{157F1913-3FA9-48A0-8A15-E08F212783D6}" ShortID="498184650">
-									<Language>SFX</Language>
-									<AudioFile>Shoobox Menu Music.wav</AudioFile>
-									<ConvertedFileIDList>
-										<File ID="691341668"/>
-									</ConvertedFileIDList>
-								</AudioFileSource>
+								<MusicTrack Name="Shoobox Menu Music" ID="{345CBFC4-E2CE-4345-9CF2-40AA1944D358}" ShortID="853508931">
+									<ReferenceList>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Shoobox Menu Music" ID="{157F1913-3FA9-48A0-8A15-E08F212783D6}" ShortID="498184650">
+											<PropertyList>
+												<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Shoobox Menu Music.wav</AudioFile>
+											<ConvertedFileIDList>
+												<File ID="691341668"/>
+											</ConvertedFileIDList>
+											<PluginInnerObjectList>
+												<List Name="Markers">
+													<PluginInnerObject Name="" ID="{BED606A6-2FAF-417F-BA09-3DB64AACB2A2}" PluginName="Marker" CompanyID="0" PluginID="993">
+														<PropertyList>
+															<Property Name="Label" Type="string" Value="Tempo: 100.0"/>
+														</PropertyList>
+													</PluginInnerObject>
+													<PluginInnerObject Name="" ID="{0B7EBF07-65E9-48C2-958D-7ADC8FE7AC70}" PluginName="Marker" CompanyID="0" PluginID="993">
+														<PropertyList>
+															<Property Name="Label" Type="string" Value="Marker 1"/>
+														</PropertyList>
+													</PluginInnerObject>
+													<PluginInnerObject Name="" ID="{63A6F410-3350-48B0-98AD-18E9EE36F457}" PluginName="Marker" CompanyID="0" PluginID="993">
+														<PropertyList>
+															<Property Name="Label" Type="string" Value="Tempo: 90.0"/>
+															<Property Name="Time" Type="Real64" Value="30"/>
+														</PropertyList>
+													</PluginInnerObject>
+													<PluginInnerObject Name="" ID="{8746EE0F-23FE-4F7B-A851-9512E7F9A3A8}" PluginName="Marker" CompanyID="0" PluginID="993">
+														<PropertyList>
+															<Property Name="Label" Type="string" Value="Tempo: 100.0"/>
+															<Property Name="Time" Type="Real64" Value="30.6666666666667"/>
+														</PropertyList>
+													</PluginInnerObject>
+													<PluginInnerObject Name="" ID="{3CCAB7B8-1389-4B4A-9109-5339DFB8F801}" PluginName="Marker" CompanyID="0" PluginID="993">
+														<PropertyList>
+															<Property Name="Label" Type="string" Value="Tempo: 100.0"/>
+															<Property Name="Time" Type="Real64" Value="32.5019047619048"/>
+														</PropertyList>
+													</PluginInnerObject>
+												</List>
+											</PluginInnerObjectList>
+										</AudioFileSource>
+									</ChildrenList>
+									<TransitionList>
+										<MusicTransition Name="Root" ID="{B38DD520-9486-4232-BA58-47711D13141E}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</TransitionList>
+									<SequenceList>
+										<MusicTrackSequence Name="" ID="{89E58414-6C38-4E12-8288-56B8A00D4529}">
+											<ClipList>
+												<MusicClip Name="Shoobox Menu Music" ID="{93DC7F41-3BCF-4B40-A4CC-B726249BFC41}">
+													<PropertyList>
+														<Property Name="EndTrimOffset" Type="Real64" Value="30054.2304526749"/>
+														<Property Name="FadeInMode" Type="int16" Value="0"/>
+														<Property Name="FadeOutMode" Type="int16" Value="0"/>
+													</PropertyList>
+													<AudioSourceRef Name="Shoobox Menu Music" ID="{157F1913-3FA9-48A0-8A15-E08F212783D6}"/>
+													<PropertyCurveList>
+														<PropertyCurve PropertyName="Highpass">
+															<Curve Name="" ID="{471787A1-2C8F-459F-93D7-E6587942261B}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="1"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>0</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>30.05423</XPos>
+																		<YPos>0</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</PropertyCurve>
+														<PropertyCurve PropertyName="Lowpass">
+															<Curve Name="" ID="{E4608A37-42B8-49FB-BB25-178675CFB11E}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="1"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>0</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>30.05423</XPos>
+																		<YPos>0</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</PropertyCurve>
+														<PropertyCurve PropertyName="Volume">
+															<Curve Name="" ID="{D059DAEE-123A-49F4-9829-CBF38B1F0FD0}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>0</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>30.05423</XPos>
+																		<YPos>0</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</PropertyCurve>
+													</PropertyCurveList>
+												</MusicClip>
+											</ClipList>
+										</MusicTrackSequence>
+									</SequenceList>
+								</MusicTrack>
 							</ChildrenList>
-							<TransitionList>
-								<MusicTransition Name="Root" ID="{B38DD520-9486-4232-BA58-47711D13141E}">
+							<CueList>
+								<MusicCue Name="Entry Cue" ID="{A6A6F4E5-91C9-41DC-81D4-1FAF55586D74}"/>
+								<MusicCue Name="Exit Cue" ID="{EA94C376-8D62-4E50-BE76-C6EA887265F3}">
 									<PropertyList>
-										<Property Name="IsFolder" Type="bool" Value="True"/>
+										<Property Name="CueType" Type="int16" Value="1"/>
+										<Property Name="TimeMs" Type="Real64" Value="30094.356261023"/>
 									</PropertyList>
+								</MusicCue>
+							</CueList>
+						</MusicSegment>
+					</ChildrenList>
+					<TransitionList>
+						<MusicTransition Name="Root" ID="{CA61D58E-A71E-411E-B2D7-979460D48DAE}">
+							<PropertyList>
+								<Property Name="IsFolder" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<MusicTransition Name="Transition" ID="{A8B42124-2E16-4E57-A847-5B8234D19EF9}">
 									<TransitionInfo/>
 								</MusicTransition>
-							</TransitionList>
-							<SequenceList>
-								<MusicTrackSequence Name="" ID="{89E58414-6C38-4E12-8288-56B8A00D4529}">
-									<ClipList>
-										<MusicClip Name="Shoobox Menu Music" ID="{93DC7F41-3BCF-4B40-A4CC-B726249BFC41}">
-											<PropertyList>
-												<Property Name="EndTrimOffset" Type="Real64" Value="32501.9047619048"/>
-												<Property Name="FadeInMode" Type="int16" Value="0"/>
-												<Property Name="FadeOutMode" Type="int16" Value="0"/>
-											</PropertyList>
-											<AudioSourceRef Name="Shoobox Menu Music" ID="{157F1913-3FA9-48A0-8A15-E08F212783D6}"/>
-										</MusicClip>
-									</ClipList>
-								</MusicTrackSequence>
-							</SequenceList>
-						</MusicTrack>
-					</ChildrenList>
-					<CueList>
-						<MusicCue Name="Entry Cue" ID="{A6A6F4E5-91C9-41DC-81D4-1FAF55586D74}"/>
-						<MusicCue Name="Exit Cue" ID="{EA94C376-8D62-4E50-BE76-C6EA887265F3}">
+							</ChildrenList>
+							<TransitionInfo/>
+						</MusicTransition>
+					</TransitionList>
+					<Playlist>
+						<MusicPlaylistItem Name="" ID="{13A86038-1090-4BE4-9AD9-4F4DDCD1B0E0}" ShortID="622828696">
 							<PropertyList>
-								<Property Name="CueType" Type="int16" Value="1"/>
-								<Property Name="TimeMs" Type="Real64" Value="32501.9047619048"/>
+								<Property Name="LoopCount" Type="int16" Value="0"/>
 							</PropertyList>
-						</MusicCue>
-					</CueList>
-				</MusicSegment>
+							<ChildrenList>
+								<MusicPlaylistItem Name="" ID="{71DFA0B2-7C08-4D3A-86DE-CC4992486093}" ShortID="492906365">
+									<PropertyList>
+										<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+									</PropertyList>
+									<SegmentRef Name="Menu Music" ID="{56BBD25B-207F-472B-93E4-9D5F01A32C96}"/>
+								</MusicPlaylistItem>
+							</ChildrenList>
+						</MusicPlaylistItem>
+					</Playlist>
+				</MusicPlaylistContainer>
 			</ChildrenList>
 		</WorkUnit>
 	</InteractiveMusic>
