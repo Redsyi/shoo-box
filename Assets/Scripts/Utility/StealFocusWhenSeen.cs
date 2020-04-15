@@ -105,6 +105,7 @@ public class StealFocusWhenSeen : MonoBehaviour
         float focusTimeLeft = cameraStealTime;
         while (focusTimeLeft > 0 && !skip)
         {
+            camera.orthographicSize = cameraSize;
             CameraScript.current.transform.position = transform.position;
             focusTimeLeft -= Time.unscaledDeltaTime;
             yield return null;

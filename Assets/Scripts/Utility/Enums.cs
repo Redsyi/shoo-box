@@ -55,3 +55,13 @@ public enum ShoeSightType
     OBJECTIVE,
     BLIND_ENEMY
 }
+
+public enum StepType
+{
+    MOVE,
+    STAY,
+    INTERACT,
+    INVESTIGATE,
+    RUSH,
+    DIE
+}

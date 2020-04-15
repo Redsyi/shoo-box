@@ -57,6 +57,7 @@ public class AIAgent : MonoBehaviour
         }
     }
     public string gameOverName;
+    ScriptedSequence sequence;
 
     void Start()
     {
@@ -82,6 +83,7 @@ public class AIAgent : MonoBehaviour
         {
             originalSightColoring = shoeSightColoring.type;
         }
+        sequence = GetComponent<ScriptedSequence>();
     }
 
     IEnumerator CheckPos()
@@ -90,17 +92,26 @@ public class AIAgent : MonoBehaviour
         {
             stopped = (prevPos - transform.position).sqrMagnitude <= walkSpeed*.05f;
 
-            Vector2 vectToDest = new Vector2(currState.location.position.x, currState.location.position.z) - new Vector2(transform.position.x, transform.position.z);
-
-            if (stopped && currState.state != AIState.IDLE && vectToDest.sqrMagnitude > 0.25f)
-            {
-                transform.LookAt(currState.location);
-                transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y);
+            if (!sequence) {
+                if (stopped && currState.state != AIState.IDLE)
+                {
+                    Face(currState.location.position);
+                }
             }
             prevPos = transform.position;
             yield return new WaitForSeconds(.2f);
         }
      
+    }
+
+    public void Face(Vector3 position)
+    {
+        Vector2 vectToDest = new Vector2(position.x, position.z) - new Vector2(transform.position.x, transform.position.z);
+        if (vectToDest.sqrMagnitude > 0.25f)
+        {
+            transform.LookAt(position);
+            transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y);
+        }
     }
 
     /// <summary>
@@ -232,183 +243,195 @@ public class AIAgent : MonoBehaviour
         else
             stoppedTime = 0f;
 
-        if (currState.state != AIState.IDLE && !currState.location)
+        if (!sequence)
         {
-            if (currState.state == AIState.INTERACT)
+            if (currState.state != AIState.IDLE && !currState.location)
             {
-                IAIInteractable invalid = thingsToInteractWith.Dequeue();
-                while (thingsToInteractWith.Count > 0)
+                if (currState.state == AIState.INTERACT)
                 {
-                    IAIInteractable newInteractable = thingsToInteractWith.Peek();
-                    if (newInteractable as MonoBehaviour) {
-                        timer = newInteractable.AIInteractTime();
-                        currState.state = AIState.INTERACT;
-                        currState.location = (newInteractable as MonoBehaviour).transform;
-                        stoppedTime = 0f;
-                        reachedInteractable = false;
-                        break;
-                    } else
-                    {
-                        thingsToInteractWith.Dequeue();
-                    }
-                }
-                if (thingsToInteractWith.Count == 0)
-                {
-                    Idle();
-                }
-            }
-        }
-        bool closeToTarget = (transform.position - currState.location.position).sqrMagnitude < 0.4f;
-        bool closeEnough = (reachedInteractable && currState.state == AIState.INTERACT) || (stoppedTime >= giveUpTime) || closeToTarget;
-        
-        animator.SetBool("Moving", stoppedTime < 0.1f);
-        animator.SetBool("Running", currState.state == AIState.CHASE || currState.state == AIState.INTERACT);
-        animator.SetBool("Interacting", currState.state == AIState.INTERACT && closeEnough);
-
-        if (debug)
-            print($"{gameObject.name}: {currState.state}, {currState.location}, {thingsToInteractWith.Count} | {stoppedTime}");
-
-        if (shoeSightColoring)
-        {
-            if (blindAll)
-            {
-                shoeSightColoring.SetType(ShoeSightType.BLIND_ENEMY);
-            } else
-            {
-                shoeSightColoring.SetType(originalSightColoring);
-            }
-        }
-
-        //take action depending on the current state
-        switch(currState.state)
-        {
-            case AIState.IDLE:
-                if (!closeToTarget && pathfinder)
-                {
-                    pathfinder.destination = currState.location.position;
-                    timer = -1;
-                } else if (timer == -1)
-                {
-                    AIPatrolPoint patrolPoint = patrolPoints[currPatrolPoint].GetComponent<AIPatrolPoint>();
-                    timer = patrolPoint.stopTime;
-                }else
-                {
-                    timer -= Time.deltaTime;
-                    if (timer <= 0)
-                    {
-                        currPatrolPoint = (currPatrolPoint + 1) % patrolPoints.Length;
-                        Idle();
-                    }
-                    AIPatrolPoint patrolPoint = patrolPoints[currPatrolPoint].GetComponent<AIPatrolPoint>();
-                    if (patrolPoint.faceDirection)
-                    {
-                        transform.rotation = patrolPoint.transform.rotation;
-                    }
-                }
-                investigateSoundPlayed = false;
-                myBubble.StopInvestigating();
-                break;
-            case AIState.INVESTIGATE:
-                if (!closeEnough && pathfinder)
-                {
-                    pathfinder.destination = currState.location.position;
-                } else
-                {
-                    currState.state = AIState.INVESTIGATING;
-                    animator.SetTrigger("Investigate");
-                }
-                myBubble.Investigating();
-                if (!investigateSoundPlayed)
-                {
-                    investigateSoundPlayed = true;
-                    onInvestigate.Post(gameObject);
-                }
-                break;
-            case AIState.INVESTIGATING:
-                timer -= Time.deltaTime;
-                if (timer <= 0f)
-                {
-                    if (thingsToInteractWith.Count > 0)
+                    IAIInteractable invalid = thingsToInteractWith.Dequeue();
+                    while (thingsToInteractWith.Count > 0)
                     {
                         IAIInteractable newInteractable = thingsToInteractWith.Peek();
-                        timer = newInteractable.AIInteractTime();
-                        currState.state = AIState.INTERACT;
-                        currState.location = (newInteractable as MonoBehaviour).transform;
-                        stoppedTime = 0f;
-                        reachedInteractable = false;
+                        if (newInteractable as MonoBehaviour)
+                        {
+                            timer = newInteractable.AIInteractTime();
+                            currState.state = AIState.INTERACT;
+                            currState.location = (newInteractable as MonoBehaviour).transform;
+                            stoppedTime = 0f;
+                            reachedInteractable = false;
+                            break;
+                        }
+                        else
+                        {
+                            thingsToInteractWith.Dequeue();
+                        }
                     }
-                    else
+                    if (thingsToInteractWith.Count == 0)
                     {
-                        wwiseComponent?.GiveUp();
                         Idle();
                     }
+                }
+            }
+            bool closeToTarget = (transform.position - currState.location.position).sqrMagnitude < 0.4f;
+            bool closeEnough = (reachedInteractable && currState.state == AIState.INTERACT) || (stoppedTime >= giveUpTime) || closeToTarget;
+
+            animator.SetBool("Moving", stoppedTime < 0.1f);
+            animator.SetBool("Running", currState.state == AIState.CHASE || currState.state == AIState.INTERACT);
+            animator.SetBool("Interacting", currState.state == AIState.INTERACT && closeEnough);
+
+            if (debug)
+                print($"{gameObject.name}: {currState.state}, {currState.location}, {thingsToInteractWith.Count} | {stoppedTime}");
+
+            if (shoeSightColoring)
+            {
+                if (blindAll)
+                {
+                    shoeSightColoring.SetType(ShoeSightType.BLIND_ENEMY);
                 }
                 else
                 {
+                    shoeSightColoring.SetType(originalSightColoring);
+                }
+            }
+
+            //take action depending on the current state
+            switch (currState.state)
+            {
+                case AIState.IDLE:
+                    if (!closeToTarget && pathfinder)
+                    {
+                        pathfinder.destination = currState.location.position;
+                        timer = -1;
+                    }
+                    else if (timer == -1)
+                    {
+                        AIPatrolPoint patrolPoint = patrolPoints[currPatrolPoint].GetComponent<AIPatrolPoint>();
+                        timer = patrolPoint.stopTime;
+                    }
+                    else
+                    {
+                        timer -= Time.deltaTime;
+                        if (timer <= 0)
+                        {
+                            currPatrolPoint = (currPatrolPoint + 1) % patrolPoints.Length;
+                            Idle();
+                        }
+                        AIPatrolPoint patrolPoint = patrolPoints[currPatrolPoint].GetComponent<AIPatrolPoint>();
+                        if (patrolPoint.faceDirection)
+                        {
+                            transform.rotation = patrolPoint.transform.rotation;
+                        }
+                    }
+                    investigateSoundPlayed = false;
+                    myBubble.StopInvestigating();
+                    break;
+                case AIState.INVESTIGATE:
+                    if (!closeEnough && pathfinder)
+                    {
+                        pathfinder.destination = currState.location.position;
+                    }
+                    else
+                    {
+                        currState.state = AIState.INVESTIGATING;
+                        animator.SetTrigger("Investigate");
+                    }
                     myBubble.Investigating();
                     if (!investigateSoundPlayed)
                     {
                         investigateSoundPlayed = true;
                         onInvestigate.Post(gameObject);
                     }
-                }
-                break;
-            case AIState.INTERACT:
-                if (!closeEnough && pathfinder)
-                {
-                    pathfinder.destination = currState.location.position;
-                } else
-                {
-                    if (!reachedInteractable)
-                        wwiseComponent?.Fixing();
-                    reachedInteractable = true;
-                    if (timer >= 0)
+                    break;
+                case AIState.INVESTIGATING:
+                    timer -= Time.deltaTime;
+                    if (timer <= 0f)
                     {
-                        timer -= Time.deltaTime;
-                        //TODO: call interactable.AIInteracting(float progress)
-                    } else
-                    {
-                        IAIInteractable interactable = thingsToInteractWith.Dequeue();
-                        interactable.AIFinishInteract();
                         if (thingsToInteractWith.Count > 0)
                         {
                             IAIInteractable newInteractable = thingsToInteractWith.Peek();
                             timer = newInteractable.AIInteractTime();
+                            currState.state = AIState.INTERACT;
                             currState.location = (newInteractable as MonoBehaviour).transform;
                             stoppedTime = 0f;
-                        } else
+                            reachedInteractable = false;
+                        }
+                        else
                         {
+                            wwiseComponent?.GiveUp();
                             Idle();
                         }
-                        reachedInteractable = false;
                     }
-                }
-                myBubble.StopInvestigating();
-                investigateSoundPlayed = false;
-                break;
-            case AIState.CHASE:
-                if (!closeToTarget && !closeEnough && pathfinder)
-                {
-                    pathfinder.destination = currState.location.position;
-                }
-                else if (!closeToTarget)
-                {
-                    LosePlayer(FindObjectOfType<Player>());
-                }
-                if (thrower)
-                {
-                    //new WaitForSeconds(2.0f);
-                    throwTime--;
-                    if (throwTime <= 0)
+                    else
                     {
-                        throwTime = throwWaitTime;
-                        thrower.Throw(currState.location);
+                        myBubble.Investigating();
+                        if (!investigateSoundPlayed)
+                        {
+                            investigateSoundPlayed = true;
+                            onInvestigate.Post(gameObject);
+                        }
                     }
+                    break;
+                case AIState.INTERACT:
+                    if (!closeEnough && pathfinder)
+                    {
+                        pathfinder.destination = currState.location.position;
+                    }
+                    else
+                    {
+                        if (!reachedInteractable)
+                            wwiseComponent?.Fixing();
+                        reachedInteractable = true;
+                        if (timer >= 0)
+                        {
+                            timer -= Time.deltaTime;
+                            //TODO: call interactable.AIInteracting(float progress)
+                        }
+                        else
+                        {
+                            IAIInteractable interactable = thingsToInteractWith.Dequeue();
+                            interactable.AIFinishInteract();
+                            if (thingsToInteractWith.Count > 0)
+                            {
+                                IAIInteractable newInteractable = thingsToInteractWith.Peek();
+                                timer = newInteractable.AIInteractTime();
+                                currState.location = (newInteractable as MonoBehaviour).transform;
+                                stoppedTime = 0f;
+                            }
+                            else
+                            {
+                                Idle();
+                            }
+                            reachedInteractable = false;
+                        }
+                    }
+                    myBubble.StopInvestigating();
+                    investigateSoundPlayed = false;
+                    break;
+                case AIState.CHASE:
+                    if (!closeToTarget && !closeEnough && pathfinder)
+                    {
+                        pathfinder.destination = currState.location.position;
+                    }
+                    else if (!closeToTarget)
+                    {
+                        LosePlayer(FindObjectOfType<Player>());
+                    }
+                    if (thrower)
+                    {
+                        //new WaitForSeconds(2.0f);
+                        throwTime--;
+                        if (throwTime <= 0)
+                        {
+                            throwTime = throwWaitTime;
+                            thrower.Throw(currState.location);
+                        }
 
-                }
-                investigateSoundPlayed = false;    
-                myBubble.StopInvestigating();
-                break;
+                    }
+                    investigateSoundPlayed = false;
+                    myBubble.StopInvestigating();
+                    break;
+            }
         }
     }
 
