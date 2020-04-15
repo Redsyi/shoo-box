@@ -17,7 +17,14 @@ public class ConveyorBeltSwitch : MonoBehaviour, IKickable, ISandalable, IAIInte
     {
         ConveyorBelt.ToggleActive();
         animator.SetTrigger("Trigger");
-        if (ConveyorBelt.active)
+
+        if (!ConveyorBelt.active)
+        {
+            SummonOnFling fling = GetComponent<SummonOnFling>();
+            if (fling && fling.AIs.Length > 0)
+                fling.OnFling();
+        }
+        /*if (ConveyorBelt.active)
         {
             ChangeLevel changeLevel = FindObjectOfType<ChangeLevel>();
             if (changeLevel)
@@ -28,23 +35,24 @@ public class ConveyorBeltSwitch : MonoBehaviour, IKickable, ISandalable, IAIInte
         }
         else
         {
-            /*SummonOnFling fling = GetComponentGet<SummonOnFling>();
+            SummonOnFling fling = GetComponent<SummonOnFling>();
             if (fling && fling.AIs.Length > 0)
-                fling.OnFling();*/
+                fling.OnFling();
             ChangeLevel changeLevel = FindObjectOfType<ChangeLevel>();
             if (changeLevel)
             {
                 print("Unenabling changeLevel");
-                changeLevel.canChangeLevels = false;
+                if(!changeLevel.lockChange)
+                    changeLevel.canChangeLevels = false;
             }
-        }
+        }*/
     }
 
     public void OnKick(GameObject kicker)
     {
         ConveyorBelt.ToggleActive();
         animator.SetTrigger("Trigger");
-        if (ConveyorBelt.active)
+        /*if (ConveyorBelt.active)
         {
             ChangeLevel changeLevel = FindObjectOfType<ChangeLevel>();
             if (changeLevel)
@@ -61,7 +69,7 @@ public class ConveyorBeltSwitch : MonoBehaviour, IKickable, ISandalable, IAIInte
                 print("Unenabling changeLevel");
                 changeLevel.canChangeLevels = false;
             }
-        }
+        }*/
     }
 
     public float AIInteractTime()
@@ -73,7 +81,7 @@ public class ConveyorBeltSwitch : MonoBehaviour, IKickable, ISandalable, IAIInte
     {
         ConveyorBelt.ToggleActive();
         animator.SetTrigger("Trigger");
-        if (ConveyorBelt.active)
+       /* if (ConveyorBelt.active)
         {
             ChangeLevel changeLevel = FindObjectOfType<ChangeLevel>();
             if (changeLevel)
@@ -90,7 +98,7 @@ public class ConveyorBeltSwitch : MonoBehaviour, IKickable, ISandalable, IAIInte
                 print("Unenabling changeLevel");
                 changeLevel.canChangeLevels = false;
             }
-        }
+        }*/
     }
 
     public void AIInteracting(float interactProgress)
