@@ -4,6 +4,24 @@ using UnityEngine;
 
 public class SandalSlinger : MonoBehaviour
 {
+    private class SandalTarget : System.IComparable
+    {
+        public Transform target;
+        public float angleDiff;
+
+        public int CompareTo(object obj)
+        {
+            SandalTarget other = obj as SandalTarget;
+            if (other == null)
+            {
+                return -1;
+            } else
+            {
+                return (int) Mathf.Sign(angleDiff - other.angleDiff);
+            }
+        }
+    }
+
     public SandalProjectile sandalPrefab;
     public bool slinging;
     public LineRenderer shotPreview;
@@ -36,6 +54,8 @@ public class SandalSlinger : MonoBehaviour
     public SphereCollider targetCollider;
     public Vector3 vectorToTarget => (currTarget ? (currTarget.position - transform.position) : Vector3.zero);
     public SkinnedMeshRenderer rightSandalModel;
+    LayerMask previewMask;
+    LayerMask blockingMask;
 
     public void ClearTarget(Transform target)
     {
@@ -46,6 +66,8 @@ public class SandalSlinger : MonoBehaviour
     private void Start()
     {
         targets = new HashSet<Transform>();
+        previewMask = LayerMask.GetMask("Default", "Obstructions");
+        blockingMask = LayerMask.GetMask("Obstructions");
     }
 
     public void Sling()
@@ -72,7 +94,7 @@ public class SandalSlinger : MonoBehaviour
             } else
             {
                 RaycastHit hitResult;
-                if (Physics.Raycast(transform.position, transform.forward, out hitResult, maxDist, LayerMask.GetMask("Default", "Obstructions")))
+                if (Physics.Raycast(transform.position, transform.forward, out hitResult, maxDist, previewMask))
                 {
                     shotPreview.SetPosition(1, hitResult.point);
                 } else
@@ -98,16 +120,24 @@ public class SandalSlinger : MonoBehaviour
             currTarget = null;
             return;
         }
-        float minAngleDiff = 99999;
+        List<SandalTarget> potentialTargets = new List<SandalTarget>();
         foreach (Transform target in targets)
         {
             Vector3 vectToTarget = (target.position - transform.position);
             Vector2 normalizedVectToTarget = new Vector2(vectToTarget.x, vectToTarget.z).normalized;
             float angleDiff = Mathf.Acos(Vector2.Dot(desiredForward, normalizedVectToTarget));
-            if (angleDiff < minAngleDiff)
+            potentialTargets.Add(new SandalTarget() { target = target, angleDiff = angleDiff });
+        }
+
+        currTarget = null;
+        potentialTargets.Sort();
+        foreach (SandalTarget target in potentialTargets)
+        {
+            Vector3 vectToTarget = (target.target.position - transform.position);
+            if (!Physics.Raycast(transform.position, vectToTarget, vectToTarget.magnitude, blockingMask))
             {
-                currTarget = target;
-                minAngleDiff = angleDiff;
+                currTarget = target.target;
+                return;
             }
         }
     }
