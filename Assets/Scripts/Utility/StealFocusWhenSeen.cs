@@ -106,7 +106,10 @@ public class StealFocusWhenSeen : MonoBehaviour
         while (focusTimeLeft > 0 && !skip)
         {
             camera.orthographicSize = cameraSize;
-            CameraScript.current.transform.position = transform.position;
+            cameraScript.transform.position = transform.position;
+            cameraScript.cameraRotation = destCameraYRotation;
+            cameraScript.cameraAngle = destCameraAngle;
+            cameraScript.cameraDist = destCameraDist;
             focusTimeLeft -= Time.unscaledDeltaTime;
             yield return null;
         }
@@ -142,6 +145,26 @@ public class StealFocusWhenSeen : MonoBehaviour
         foreach (StealFocusWhenSeen instance in FindObjectsOfType<StealFocusWhenSeen>())
         {
             instance.Skip();
+        }
+    }
+
+    public void Refocus(Transform newParent)
+    {
+        transform.SetParent(newParent);
+        StartCoroutine(SegueLocation(Vector3.zero, cameraScrollSpeed));
+    }
+
+    IEnumerator SegueLocation(Vector3 destination, float time)
+    {
+        Vector3 original = transform.localPosition;
+        float timePassed = 0;
+        float progress = 0;
+        while (progress < 1)
+        {
+            yield return null;
+            timePassed += Time.unscaledDeltaTime;
+            progress = Mathf.Clamp01(timePassed / time);
+            transform.localPosition = Vector3.Lerp(original, destination, progress);
         }
     }
 }

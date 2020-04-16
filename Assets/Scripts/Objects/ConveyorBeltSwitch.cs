@@ -112,6 +112,11 @@ public class ConveyorBeltSwitch : MonoBehaviour, IKickable, ISandalable, IAIInte
         animator.SetTrigger("Trigger");
     }
 
+    public void ToggleAfterTime(float time)
+    {
+        Invoke("Toggle", time);
+    }
+
     public bool NeedsInteraction()
     {
         return !ConveyorBelt.active;

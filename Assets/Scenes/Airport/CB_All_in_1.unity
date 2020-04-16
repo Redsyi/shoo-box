@@ -1964,12 +1964,17 @@ PrefabInstance:
     - target: {fileID: 8931770475407375309, guid: 781b77a2db56aed41a3a704d03438dbd,
         type: 3}
       propertyPath: destCameraYRotation
-      value: 45
+      value: -45
       objectReference: {fileID: 0}
     - target: {fileID: 8931770475407375309, guid: 781b77a2db56aed41a3a704d03438dbd,
         type: 3}
       propertyPath: cameraSize
-      value: 6
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8931770475407375309, guid: 781b77a2db56aed41a3a704d03438dbd,
+        type: 3}
+      propertyPath: destCameraAngle
+      value: 45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 781b77a2db56aed41a3a704d03438dbd, type: 3}
@@ -6492,6 +6497,12 @@ MonoBehaviour:
   - {x: -45.45, y: 8.12, z: 59.73}
   - {x: -14.38, y: 8.12, z: 65.09}
   - {x: 2.44, y: 8.12, z: 65.46}
+--- !u!4 &514289390 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6614859515079621521, guid: 4c4603c01753d8b42a6082fe2f03eb0a,
+    type: 3}
+  m_PrefabInstance: {fileID: 514289382}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &531573124
 GameObject:
   m_ObjectHideFlags: 0
@@ -11640,8 +11651,8 @@ MonoBehaviour:
     invokeOnStart:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 165188945}
-          m_MethodName: ChangeCutsceneParent
+        - m_Target: {fileID: 1598152972}
+          m_MethodName: Refocus
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 899496325}
@@ -11658,13 +11669,13 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 189315885}
-          m_MethodName: Toggle
-          m_Mode: 1
+          m_MethodName: ToggleAfterTime
+          m_Mode: 4
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
-            m_FloatArgument: 0
+            m_FloatArgument: 0.4
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
@@ -11761,7 +11772,7 @@ MonoBehaviour:
           m_CallState: 2
     position: {x: -42.1, y: 5, z: 37.7}
   - type: 0
-    seconds: 2.5
+    seconds: 2.1
     invokeOnStart:
       m_PersistentCalls:
         m_Calls: []
@@ -11770,7 +11781,29 @@ MonoBehaviour:
     seconds: 0
     invokeOnStart:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 1598152972}
+          m_MethodName: Refocus
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 514289390}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1598152972}
+          m_MethodName: Skip
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     position: {x: -3.32, y: 5, z: 31}
 --- !u!114 &899496328
 MonoBehaviour:
@@ -19489,6 +19522,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1589978111}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1598152972 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8931770475407375309, guid: 781b77a2db56aed41a3a704d03438dbd,
+    type: 3}
+  m_PrefabInstance: {fileID: 165188944}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5012d0ddb349624289909034a16a553, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1607667677
 GameObject:
   m_ObjectHideFlags: 0
