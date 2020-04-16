@@ -53,7 +53,7 @@ public class LevelBridge : MonoBehaviour
         SceneManager.UnloadSceneAsync("LevelBridge");
     }
 
-    public static void BridgeTo(int level, string msg)
+    public static void BridgeTo(int level, string msg, bool resetCheckpoints = true)
     {
         if (!bridging)
         {
@@ -62,13 +62,16 @@ public class LevelBridge : MonoBehaviour
             destLevel = level;
             message = msg;
             SceneManager.LoadScene("LevelBridge", LoadSceneMode.Additive);
-            CheckpointManager.currCheckpoint = 0;
-            CheckpointTransformSaver.ResetAll();
+            if (resetCheckpoints)
+            {
+                CheckpointManager.currCheckpoint = 0;
+                CheckpointTransformSaver.ResetAll();
+            }
         }
     }
 
     public static void Reload(string msg)
     {
-        BridgeTo(SceneManager.GetActiveScene().buildIndex, msg);
+        BridgeTo(SceneManager.GetActiveScene().buildIndex, msg, false);
     }
 }
