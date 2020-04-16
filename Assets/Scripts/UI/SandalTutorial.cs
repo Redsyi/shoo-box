@@ -12,7 +12,6 @@ public class SandalTutorial : MonoBehaviour
     public void TeachFling()
     {
         flingPopup.Activate();
-        FindObjectOfType<CheckpointManager>().SetCheckpoint(1);
     }
 
     public void TeachSwap()
@@ -35,6 +34,5 @@ public class SandalTutorial : MonoBehaviour
     public void SwapPopupDismissed()
     {
         Destroy(swapTeacher);
-        FindObjectOfType<CheckpointManager>().SetCheckpoint(2);
     }
 }

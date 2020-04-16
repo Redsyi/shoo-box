@@ -304,7 +304,7 @@ public class Player : MonoBehaviour
     /// </summary>
     public void OnChangeForm()
     {
-        if (!lockChangeForm)
+        if (!lockChangeForm && (StealFocusWhenSeen.activeThief == null || !StealFocusWhenSeen.activeThief.lockMovement))
         {
             if (!legForm)
             {

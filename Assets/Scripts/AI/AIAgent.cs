@@ -318,7 +318,7 @@ public class AIAgent : MonoBehaviour
                             Idle();
                         }
                         AIPatrolPoint patrolPoint = patrolPoints[currPatrolPoint].GetComponent<AIPatrolPoint>();
-                        if (patrolPoint.faceDirection)
+                        if (patrolPoint && patrolPoint.faceDirection)
                         {
                             transform.rotation = patrolPoint.transform.rotation;
                         }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ConveyorScanner : MonoBehaviour
+public class ConveyorScanner : MonoBehaviour, IAIInteractable
 {
     public float playerCatchWaitTime;
     private Player player;
@@ -14,7 +14,11 @@ public class ConveyorScanner : MonoBehaviour
     public float lightFluxSpeed = 1f;
     private float alarmTriggerTime;
     bool doFalseAlarm;
-    // Start is called before the first frame update
+    public AIInterest[] interestMask;
+    public AIAgent investigatorPrefab;
+    const float spawnDelay = 0.4f;
+    public Vector3 spawnPos;
+
     void Start()
     {
         player = FindObjectOfType<Player>();
@@ -31,8 +35,17 @@ public class ConveyorScanner : MonoBehaviour
         }
     }
 
+    IEnumerator SpawnAgent()
+    {
+        yield return new WaitForSeconds(spawnDelay);
+        AIAgent agent = Instantiate(investigatorPrefab, transform.position + spawnPos, Quaternion.identity);
+        yield return null;
+        agent.Interact(this);
+    }
+
     IEnumerator CatchPlayer()
     {
+        StartCoroutine(SpawnAgent());
         float remainingWaitTime = playerCatchWaitTime;
         ConveyorBelt.active = false;
         yield return null;
@@ -45,9 +58,9 @@ public class ConveyorScanner : MonoBehaviour
             {
                 light.intensity = lightIntensity;
             }
-            remainingWaitTime -= Time.deltaTime;
             ConveyorBelt.active = false;
             yield return null;
+            remainingWaitTime -= Time.deltaTime;
         }
         LevelBridge.Reload("You were scanned by TSA");
     }
@@ -83,5 +96,34 @@ public class ConveyorScanner : MonoBehaviour
             }
             yield return null;
         }
+    }
+
+    public float AIInteractTime()
+    {
+        return 999;
+    }
+
+    public void AIFinishInteract()
+    {
+    }
+
+    public void AIInteracting(float interactProgress)
+    {
+    }
+
+    public bool NeedsInteraction()
+    {
+        return false;
+    }
+
+    public AIInterest[] InterestingToWhatAI()
+    {
+        return interestMask;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawSphere(transform.position + spawnPos, 0.7f);
     }
 }
