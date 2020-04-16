@@ -474,7 +474,12 @@ public class Player : MonoBehaviour
                 inputSystem.SwitchCurrentActionMap("Player");
         } else
         {
-            StealFocusWhenSeen.SkipActive();
+            bool editorOverride = false;
+#if UNITY_EDITOR
+            editorOverride = true;
+#endif
+            if (StealFocusWhenSeen.activeThief.skippable || editorOverride)
+                StealFocusWhenSeen.SkipActive();
         }
     }
 

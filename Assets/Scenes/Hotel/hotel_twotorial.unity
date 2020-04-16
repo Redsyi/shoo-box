@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -9451,6 +9451,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5205658731317049295, guid: af045fe6ba44be247951af92825e16b3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5391078035259314860, guid: af045fe6ba44be247951af92825e16b3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -10094,6 +10099,7 @@ MonoBehaviour:
   destCameraYRotation: 0
   destCameraAngle: 40
   destCameraDist: 4
+  skippable: 0
 --- !u!4 &841426664
 Transform:
   m_ObjectHideFlags: 0
@@ -20645,6 +20651,7 @@ MonoBehaviour:
   destCameraYRotation: -120
   destCameraAngle: 70
   destCameraDist: 20
+  skippable: 0
 --- !u!4 &2015217503 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7898314405016219437, guid: 37084fbaa1134394cbf7dd29faf262f8,
@@ -25906,6 +25913,7 @@ MonoBehaviour:
   destCameraYRotation: 30
   destCameraAngle: 50
   destCameraDist: 20
+  skippable: 1
 --- !u!114 &8572524877357531964
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class UIPlayerInputCheck : MonoBehaviour
 
     private UITutorialManager manager;
     private Player player;
+    bool didRotation;
 
     // Start is called before the first frame update
     void Start()
@@ -33,12 +34,12 @@ public class UIPlayerInputCheck : MonoBehaviour
 
     public void OnRotate()
     {
-        if (player.wigglesRequired == 0)
+        if (player.wigglesRequired == 0 && !didRotation)
         {
             manager.toiletFocusStealer.stealAfterTime = 4f;
+            manager.FinishCamera();
+            didRotation = true;
         }
-        manager.FinishCamera();
-        //manager.ShowLegform();
     }
 
     public void OnAction()

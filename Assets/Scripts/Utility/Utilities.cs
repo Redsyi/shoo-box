@@ -74,6 +74,12 @@ public static class Utilities
         OpenScene("Assets/Scenes/Cutscenes/IntroCutscene.unity");
     [MenuItem("Scenes/Cutscenes/Airport Cutscene")] public static void AirportCS() => 
         OpenScene("Assets/Scenes/Cutscenes/AirportCutscene.unity");
+    [MenuItem("Scenes/Cutscenes/City Terminal Cutscene")] public static void CityTerminalCS() => 
+        OpenScene("Assets/Scenes/Cutscenes/CityTerminalCutscene.unity");
+    [MenuItem("Scenes/Cutscenes/Ending Cutscene")] public static void EndingCS() => 
+        OpenScene("Assets/Scenes/Cutscenes/EndingCutscene.unity");
+    [MenuItem("Scenes/Cutscenes/City Intro Cutscene")] public static void StartCityCS() => 
+        OpenScene("Assets/Scenes/Cutscenes/StartCityCutscene.unity");
     [MenuItem("Scenes/Testing/Jake's Shadow Test")] public static void ShadowTest() => 
         OpenScene("Assets/Scenes/Hotel/jake-hotel-test.unity");
     [MenuItem("Scenes/Add or Edit Scene Menu Options")] public static void EditMenu() =>

@@ -30,6 +30,8 @@ public class StealFocusWhenSeen : MonoBehaviour
     public float destCameraAngle;
     [Tooltip("How close the camera should be to the source. Default is 20, move closer if there's something in the way")]
     public float destCameraDist = 20f;
+    [Tooltip("Is this cutscene skippable? This only applies to the player, scripts are always able to skip cutscenes.")]
+    public bool skippable = true;
     private bool skip;
 
     private void Start()
@@ -84,6 +86,11 @@ public class StealFocusWhenSeen : MonoBehaviour
         float originalCameraRotation = cameraScript.cameraRotation;
         float originalCameraAngle = cameraScript.cameraAngle;
         float originalCameraDist = cameraScript.cameraDist;
+        CanvasGroup skipControls = GameObject.FindGameObjectWithTag("CutsceneSkip")?.GetComponent<CanvasGroup>();
+        if (skipControls && skippable)
+        {
+            skipControls.alpha = 1;
+        }
 
         onSteal.Invoke();
 
@@ -112,6 +119,11 @@ public class StealFocusWhenSeen : MonoBehaviour
             cameraScript.cameraDist = destCameraDist;
             focusTimeLeft -= Time.unscaledDeltaTime;
             yield return null;
+        }
+
+        if (skipControls && skippable)
+        {
+            skipControls.alpha = 0;
         }
 
         //part 3: go back to player
