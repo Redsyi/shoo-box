@@ -10,34 +10,31 @@ public class TutorialPlayerHideDetector : MonoBehaviour
     public float playerTimeRequired;
     private Collider collider;
     public UnityEvent invokeOnCompleted;
+    public UnityEvent invokeOnPlayerLeft;
 
     private void Start()
     {
         detectPlayer = false;
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (detectPlayer)
         {
-            currPlayerTime += Time.deltaTime;
-            if (currPlayerTime >= playerTimeRequired)
-            {
-                invokeOnCompleted.Invoke();
-                detectPlayer = false;
-                foreach (TutorialPlayerHideDetector detector in FindObjectsOfType<TutorialPlayerHideDetector>())
-                {
-                    detector.gameObject.SetActive(false);
-                }
-            }
-        } else
-        {
-            currPlayerTime = 0f;
+            invokeOnCompleted.Invoke();
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        currPlayerTime = 0f;
+        if (detectPlayer)
+        {
+            detectPlayer = false;
+            invokeOnPlayerLeft.Invoke();
+            foreach (TutorialPlayerHideDetector detector in FindObjectsOfType<TutorialPlayerHideDetector>())
+            {
+                detector.gameObject.SetActive(false);
+            }
+        }
     }
 }
