@@ -5,6 +5,13 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    private class PlayerState
+    {
+        public Quaternion rotation;
+        public bool legForm;
+        public ShoeType selectedShoe;
+    }
+
     [Header("Component References")]
     public Rigidbody rigidbody;
     public Animator[] animators;
@@ -48,6 +55,7 @@ public class Player : MonoBehaviour
     public bool lockShoeSight;
     [HideInInspector]
     public bool lockMovement;
+    public bool loadPreviousState;
 
     private const float wiggleCD = 0.7f;
     private float currWiggleCD;
@@ -88,6 +96,7 @@ public class Player : MonoBehaviour
     [Header("Settings")]
     public float minY = -10f;
     public bool useSnapRotation;
+    static PlayerState prevState;
 
 
     private void Start()
@@ -105,6 +114,24 @@ public class Player : MonoBehaviour
         tutorial = FindObjectOfType<UITutorialManager>();
         sandalTutorial = FindObjectOfType<SandalTutorial>();
         instance = this;
+        
+        if (loadPreviousState && prevState != null)
+        {
+            Invoke("LoadPreviousState", 0.1f);
+        }
+    }
+
+    void LoadPreviousState()
+    {
+        transform.rotation = prevState.rotation;
+        if (legForm != prevState.legForm)
+            ToggleForm();
+        EquipShoe(prevState.selectedShoe);
+    }
+
+    private void OnDestroy()
+    {
+        prevState = new PlayerState() { rotation = transform.rotation, legForm = legForm, selectedShoe = shoeManager.currShoe };
     }
 
     public void EquipStartingShoes()
@@ -306,38 +333,43 @@ public class Player : MonoBehaviour
     {
         if (!lockChangeForm && (StealFocusWhenSeen.activeThief == null || !StealFocusWhenSeen.activeThief.lockMovement))
         {
-            if (!legForm)
-            {
-                if (Physics.Raycast(AISpotPoint.transform.position, Vector3.up, 1, LayerMask.GetMask("Obstructions", "Transparent Obstructions")))
-                    return;
-            }
-
-            if (tutorial)
-            {
-                tutorial.DidLegForm();
-            }
-            legForm = !legForm;
-
-            legformHitbox.enabled = legForm;
-            if (legformHitbox2)
-                legformHitbox2.enabled = legForm;
-            boxformHitbox.enabled = !legForm;
-
-            foreach (GameObject legg in leggs)
-                legg.SetActive(legForm);
-            if (legForm)
-            {
-                transform.position += new Vector3(0, heightDifference);
-            }
-            else
-            {
-                transform.position -= new Vector3(0, heightDifference);
-            }
-            walkingParticleSystem.transform.localPosition = (legForm ? legParticlesPosition.localPosition : boxParticlesPosition.localPosition);
-
-
-            currBoxSpeed = 1;
+            ToggleForm();
         }
+    }
+
+    void ToggleForm()
+    {
+        if (!legForm)
+        {
+            if (Physics.Raycast(AISpotPoint.transform.position, Vector3.up, 1, LayerMask.GetMask("Obstructions", "Transparent Obstructions")))
+                return;
+        }
+
+        if (tutorial)
+        {
+            tutorial.DidLegForm();
+        }
+        legForm = !legForm;
+
+        legformHitbox.enabled = legForm;
+        if (legformHitbox2)
+            legformHitbox2.enabled = legForm;
+        boxformHitbox.enabled = !legForm;
+
+        foreach (GameObject legg in leggs)
+            legg.SetActive(legForm);
+        if (legForm)
+        {
+            transform.position += new Vector3(0, heightDifference);
+        }
+        else
+        {
+            transform.position -= new Vector3(0, heightDifference);
+        }
+        walkingParticleSystem.transform.localPosition = (legForm ? legParticlesPosition.localPosition : boxParticlesPosition.localPosition);
+
+
+        currBoxSpeed = 1;
     }
 
     /// <summary>

@@ -854,7 +854,7 @@ GameObject:
   - component: {fileID: 53367153}
   - component: {fileID: 53367152}
   - component: {fileID: 53367151}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6109,7 +6109,7 @@ GameObject:
   - component: {fileID: 493447427}
   - component: {fileID: 493447426}
   - component: {fileID: 493447425}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12519,7 +12519,7 @@ GameObject:
   - component: {fileID: 945656115}
   - component: {fileID: 945656114}
   - component: {fileID: 945656113}
-  m_Layer: 13
+  m_Layer: 8
   m_Name: Wall (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21615,7 +21615,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1706767575}
-  m_Layer: 0
+  - component: {fileID: 1706767576}
+  m_Layer: 8
   m_Name: Side 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21639,6 +21640,23 @@ Transform:
   m_Father: {fileID: 1982025689}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1706767576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706767574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b10edc1370b808941b2cd8b2c9a208e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  facingPositiveZ: 0
+  facingNegativeZ: 0
+  facingPositiveX: 1
+  facingNegativeX: 1
+  debug: 0
 --- !u!1001 &1709205671
 PrefabInstance:
   m_ObjectHideFlags: 0
