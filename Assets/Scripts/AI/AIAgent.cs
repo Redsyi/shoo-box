@@ -92,7 +92,7 @@ public class AIAgent : MonoBehaviour
         {
             stopped = (prevPos - transform.position).sqrMagnitude <= walkSpeed*.05f;
 
-            if (!sequence) {
+            if (!sequence || !sequence.running) {
                 if (stopped && currState.state != AIState.IDLE)
                 {
                     Face(currState.location.position);
@@ -243,7 +243,7 @@ public class AIAgent : MonoBehaviour
         else
             stoppedTime = 0f;
 
-        if (!sequence)
+        if (!sequence || !sequence.running)
         {
             if (currState.state != AIState.IDLE && !currState.location)
             {
