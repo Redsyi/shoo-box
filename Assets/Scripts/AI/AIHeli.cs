@@ -33,7 +33,7 @@ public class AIHeli : MonoBehaviour, ISandalable
 
     void Start()
     {
-        player = FindObjectOfType<Player>();
+        player = Player.current;
         StartCoroutine(FireGuns());
         StartCoroutine(RecalculateBestIntersection());
         initialSwirlRate = heliSwirl.emission.rateOverTime.constant;

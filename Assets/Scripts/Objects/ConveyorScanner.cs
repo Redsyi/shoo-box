@@ -21,7 +21,7 @@ public class ConveyorScanner : MonoBehaviour, IAIInteractable
 
     void Start()
     {
-        player = FindObjectOfType<Player>();
+        player = Player.current;
         warningLights = GetComponentsInChildren<Light>();
     }
 

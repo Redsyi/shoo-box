@@ -21,7 +21,7 @@ public class AIVision : MonoBehaviour
 
     private void Start()
     {
-        player = FindObjectOfType<Player>();
+        player = Player.current;
         if (ai == null)
             ai = GetComponentInParent<AIAgent>();
     }

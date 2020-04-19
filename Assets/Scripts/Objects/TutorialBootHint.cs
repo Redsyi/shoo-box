@@ -10,7 +10,7 @@ public class TutorialBootHint : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        player = FindObjectOfType<Player>();
+        player = Player.current;
     }
     
     void Update()

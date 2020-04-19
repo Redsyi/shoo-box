@@ -97,7 +97,12 @@ public class Player : MonoBehaviour
     public float minY = -10f;
     public bool useSnapRotation;
     static PlayerState prevState;
+    public static Player current;
 
+    private void Awake()
+    {
+        current = this;
+    }
 
     private void Start()
     {
@@ -132,6 +137,8 @@ public class Player : MonoBehaviour
     private void OnDestroy()
     {
         prevState = new PlayerState() { rotation = transform.rotation, legForm = legForm, selectedShoe = shoeManager.currShoe };
+        if (current == this)
+            current = null;
     }
 
     public void EquipStartingShoes()

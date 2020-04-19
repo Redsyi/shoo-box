@@ -14,7 +14,7 @@ public class PhoneBlinker : MonoBehaviour, IKickable
     void Start()
     {
         blinker = GetComponentInChildren<VisualEffect>();
-        player = FindObjectOfType<Player>();
+        player = Player.current;
     }
 
     public void OnKick(GameObject kicker)

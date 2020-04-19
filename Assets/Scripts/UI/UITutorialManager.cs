@@ -46,7 +46,7 @@ public class UITutorialManager : MonoBehaviour
         }
         boots = FindObjectOfType<ShoePickup>();
         StartCoroutine(ActivateShower());
-        player = FindObjectOfType<Player>();
+        player = Player.current;
     }
 
     void Update()

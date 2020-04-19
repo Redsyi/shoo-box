@@ -42,7 +42,7 @@ public class AITank : MonoBehaviour, IKickable
 
     void Start()
     {
-        player = FindObjectOfType<Player>();
+        player = Player.current;
         StartCoroutine(RecalculateBestIntersection());
         onStart.Post (gameObject);
         movementParticles = movementParticleRoot.GetComponentsInChildren<ParticleSystem>();
