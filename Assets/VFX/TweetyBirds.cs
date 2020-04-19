@@ -21,7 +21,7 @@ public class TweetyBirds : MonoBehaviour
             {
                 float sineOffset = (i * 2 * Mathf.PI);
                 float angleOffset = Mathf.Sin((Time.time * deviationSpeed) + sineOffset) * maxDeviation;
-                birds[i].localEulerAngles = new Vector3(angleOffset * Mathf.Rad2Deg, birds[i].localEulerAngles.y);
+                birds[i].localEulerAngles = new Vector3(angleOffset, birds[i].localEulerAngles.y);
             }
         }
     }

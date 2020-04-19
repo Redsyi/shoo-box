@@ -1031,6 +1031,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1908481356}
     m_Modifications:
+    - target: {fileID: 3851730427027700964, guid: 1bf6e43f37c0ee847baa96da71923491,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3851730427027700964, guid: 1bf6e43f37c0ee847baa96da71923491,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4335328239626904148, guid: 1bf6e43f37c0ee847baa96da71923491,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5309,7 +5319,7 @@ PrefabInstance:
     - target: {fileID: 1732203441341445733, guid: 007f3037e51740f4398ac09eb6c169ed,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2623188491257170243, guid: 007f3037e51740f4398ac09eb6c169ed,
         type: 3}
@@ -20655,6 +20665,7 @@ MonoBehaviour:
     WwiseObjectReference: {fileID: 11400000, guid: ab0d7872737f247f7aad460426de7a16,
       type: 2}
   gameOverName: 
+  stunned: 0
 --- !u!195 &1318274175
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -22372,6 +22383,7 @@ MonoBehaviour:
     WwiseObjectReference: {fileID: 11400000, guid: ab0d7872737f247f7aad460426de7a16,
       type: 2}
   gameOverName: 
+  stunned: 0
 --- !u!195 &1402786050
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -26681,6 +26693,7 @@ MonoBehaviour:
     WwiseObjectReference: {fileID: 11400000, guid: ab0d7872737f247f7aad460426de7a16,
       type: 2}
   gameOverName: 
+  stunned: 0
 --- !u!114 &1699156094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44135,6 +44148,7 @@ MonoBehaviour:
     WwiseObjectReference: {fileID: 11400000, guid: ab0d7872737f247f7aad460426de7a16,
       type: 2}
   gameOverName: 
+  stunned: 0
 --- !u!4 &3913322373665717247
 Transform:
   m_ObjectHideFlags: 0
@@ -50255,6 +50269,7 @@ MonoBehaviour:
     WwiseObjectReference: {fileID: 11400000, guid: ab0d7872737f247f7aad460426de7a16,
       type: 2}
   gameOverName: 
+  stunned: 0
 --- !u!1 &4475772727429343838
 GameObject:
   m_ObjectHideFlags: 0
@@ -55552,6 +55567,7 @@ MonoBehaviour:
   heightDifference: 0.65
   footstepTiming: 0.5
   footstepSoundOffset: 0
+  footstepRadius: 1.3
   onStep:
     idInternal: 0
     valueGuidInternal: 
@@ -55565,6 +55581,7 @@ MonoBehaviour:
   lockChangeForm: 0
   lockShoeSight: 0
   lockMovement: 0
+  loadPreviousState: 0
   verticalBoost: 0
   minY: -10
   useSnapRotation: 0
