@@ -44,32 +44,32 @@ public class CityDirector : MonoBehaviour
 
     void SpawnTank()
     {
-        int idx = Random.Range(0, CityRoad.intersections.Length);
+        int idx = Random.Range(0, CityRoad.roads.Length);
         int maxLoops = 1000;
         int currLoops = 0;
-        while ((!coordinatesOffScreen(CityRoad.intersections[idx].transform.position) || (CityRoad.intersections[idx].transform.position - player.transform.position).sqrMagnitude > maxDistSqrd || CityRoad.intersections[idx].assignedTank) && currLoops < maxLoops)
+        while ((!coordinatesOffScreen(CityRoad.roads[idx].transform.position) || (CityRoad.roads[idx].transform.position - player.transform.position).sqrMagnitude > maxDistSqrd || CityRoad.roads[idx].assignedTank) && currLoops < maxLoops)
         {
-            idx = Random.Range(0, CityRoad.intersections.Length);
+            idx = Random.Range(0, CityRoad.roads.Length);
             ++currLoops;
         }
 
         numTanks++;
-        Instantiate(tankPrefab, CityRoad.intersections[idx].transform.position, Quaternion.identity);
+        Instantiate(tankPrefab, CityRoad.roads[idx].transform.position, Quaternion.identity);
     }
 
     void SpawnHeli()
     {
-        int idx = Random.Range(0, CityRoad.intersections.Length);
+        int idx = Random.Range(0, CityRoad.roads.Length);
         int maxLoops = 1000;
         int currLoops = 0;
-        while ((!coordinatesOffScreen(CityRoad.intersections[idx].transform.position) || (CityRoad.intersections[idx].transform.position - player.transform.position).sqrMagnitude > maxDistSqrd || CityRoad.intersections[idx].assignedHeli) && currLoops < maxLoops)
+        while ((!coordinatesOffScreen(CityRoad.roads[idx].transform.position) || (CityRoad.roads[idx].transform.position - player.transform.position).sqrMagnitude > maxDistSqrd || CityRoad.roads[idx].assignedHeli) && currLoops < maxLoops)
         {
-            idx = Random.Range(0, CityRoad.intersections.Length);
+            idx = Random.Range(0, CityRoad.roads.Length);
             ++currLoops;
         }
 
         numHelis++;
-        Instantiate(heliPrefab, CityRoad.intersections[idx].transform.position, Quaternion.identity);
+        Instantiate(heliPrefab, CityRoad.roads[idx].transform.position, Quaternion.identity);
     }
 
     bool coordinatesOffScreen(Vector3 worldCoords)

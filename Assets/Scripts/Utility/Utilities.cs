@@ -41,9 +41,9 @@ public static class Utilities
     {
         while (angle < 0)
             angle += 360;
-        while (angle >= 360)
-            angle -= 360;
-        return angle;
+
+
+        return angle % 360;
     }
 
     public static int DirectionToRotate(float angleFrom, float angleTo)
@@ -105,5 +105,26 @@ public static class Utilities
                 }
             }
         }
+    }
+
+    public static bool VectorsAreClose(Vector3 vectorOne, Vector3 vectorTwo, float tolerance)
+    {
+        Vector3 diffVector = vectorOne - vectorTwo;
+        float xDiff = Mathf.Abs(diffVector.x);
+        float yDiff = Mathf.Abs(diffVector.y);
+        float zDiff = Mathf.Abs(diffVector.z);
+
+        return xDiff <= tolerance && yDiff <= tolerance && zDiff <= tolerance;
+    }
+
+    public static Vector2 Flatten(Vector3 vector)
+    {
+        return new Vector2(vector.z, vector.x);
+    }
+
+    public static bool OnScreen(Vector3 position)
+    {
+        Vector3 screenPos = CameraScript.current.camera.WorldToScreenPoint(position);
+        return (screenPos.x >= 0 && screenPos.x <= Screen.width && screenPos.y >= 0 && screenPos.y <= Screen.height);
     }
 }

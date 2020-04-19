@@ -65,3 +65,18 @@ public enum StepType
     RUSH,
     DIE
 }
+
+public enum Direction
+{
+    NORTH,
+    EAST,
+    SOUTH,
+    WEST
+}
+
+public enum StoplightColor
+{
+    GREEN,
+    YELLOW,
+    RED
+}

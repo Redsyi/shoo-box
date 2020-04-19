@@ -105,7 +105,7 @@ public class AITank : MonoBehaviour, IKickable
     {
         yield return null;
         bool firstTime = true;
-        currIntersection = CityRoad.intersections[0];
+        currIntersection = CityRoad.roads[0];
         while (true)
         {
             float intersectionDistToPlayer = (currIntersection.transform.position - player.transform.position).sqrMagnitude;
@@ -120,7 +120,7 @@ public class AITank : MonoBehaviour, IKickable
             {
                 currIntersection.assignedTank = false;
                 //find new candidate
-                foreach (CityRoad intersection in CityRoad.intersections)
+                foreach (CityRoad intersection in CityRoad.roads)
                 {
                     if (!intersection.assignedTank)
                     {
