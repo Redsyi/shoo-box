@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
     public float footstepTiming;
     public float footstepSoundOffset;
     public bool moving => currMovementInput != Vector2.zero;
+    public float footstepRadius = 1.3f;
     private bool makingFootsteps;
     public AK.Wwise.Event onStep;
 
@@ -635,7 +636,7 @@ public class Player : MonoBehaviour
             timeSinceLast += Time.deltaTime;
             if (legForm && timeSinceLast >= footstepTiming)
             {
-                AudioManager.MakeNoise(transform.position, 1.3f, null, 0);
+                AudioManager.MakeNoise(transform.position, footstepRadius, null, 0);
                 timeSinceLast = 0f;
                 onStep.Post(gameObject);
             }
