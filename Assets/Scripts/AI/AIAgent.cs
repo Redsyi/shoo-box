@@ -407,7 +407,7 @@ public class AIAgent : MonoBehaviour
                     {
                         pathfinder.destination = currState.location.position;
                     }
-                    else if (!closeToTarget)
+                    else if (!closeToTarget && pathfinder)
                     {
                         LosePlayer(Player.current);
                     }

@@ -23,12 +23,12 @@ public class ThrowItem : MonoBehaviour
         GameObject myObject = Instantiate(objectToThrow, transform.parent.position, Quaternion.identity);
         while ((myObject.transform.position - target).sqrMagnitude > 0.1f)
         {
-            print("Target's position: " + target);
-            print("Object's position: " + myObject.transform.position);
+            //print("Target's position: " + target);
+            //print("Object's position: " + myObject.transform.position);
             myObject.transform.position = Vector3.MoveTowards(myObject.transform.position, target, speed * Time.deltaTime);
             yield return null;
         }
-        Debug.Log("Hit player");
+        //Debug.Log("Hit player");
         if(myObject)
             Destroy(myObject);
 

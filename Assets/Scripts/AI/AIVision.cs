@@ -7,7 +7,6 @@ public class AIVision : MonoBehaviour
 {
     public AIAgent ai;
     private Player player;
-    int collidersTouchingPlayer;
     [Range(0, 15)]
     public float radius = 5;
     [Range(0, 360)]
@@ -80,8 +79,6 @@ public class AIVision : MonoBehaviour
             {
                 //print("Player should be in vision cone. Name: " + other.gameObject.name);
                 playerInVision = true;
-                if (justEntered)
-                    collidersTouchingPlayer++;
             }
 
             if (player != null && (player.legForm || player.moving))
@@ -107,8 +104,7 @@ public class AIVision : MonoBehaviour
         {
             //print("Entity leaving. Name: " + other.gameObject.name);
             playerInVision = false;
-            collidersTouchingPlayer--;
-            if (collidersTouchingPlayer == 0 && ai.currState.state == AIState.CHASE)
+            if (ai.currState.state == AIState.CHASE)
             {
                 ai.LosePlayer(player);
             }
