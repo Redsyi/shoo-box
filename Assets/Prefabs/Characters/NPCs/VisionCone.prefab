@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2122578981203800462}
   - component: {fileID: 2328054085374535326}
   m_Layer: 11
-  m_Name: Image
+  m_Name: VisionConeImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -205,6 +205,10 @@ MonoBehaviour:
   arc: 100
   visibleCone: {fileID: 2328054085374535326}
   collider: {fileID: 8772069339955420908}
+  viewFloor: 5
+  standingSpotTime: 0.2
+  shuffleSpotTime: 0.7
+  spotDecay: 1.2
 --- !u!136 &8772069339955420908
 CapsuleCollider:
   m_ObjectHideFlags: 0

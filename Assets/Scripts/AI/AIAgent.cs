@@ -31,7 +31,6 @@ public class AIAgent : MonoBehaviour
     public ThrowItem thrower;
     private bool reachedInteractable;
     public float throwWaitTime;
-    private float throwTime;
     private AKEventNPC wwiseComponent;
     private int currPatrolPoint;
     private CustomShoeSight shoeSightColoring;
@@ -188,6 +187,7 @@ public class AIAgent : MonoBehaviour
             myBubble.Spotted();
             onSpot.Post(gameObject);
             player.npcsChasing++;
+            timer = 0f;
         }
         stoppedTime = 0f;
         currState.state = AIState.CHASE;
@@ -414,11 +414,11 @@ public class AIAgent : MonoBehaviour
                     if (thrower)
                     {
                         //new WaitForSeconds(2.0f);
-                        throwTime--;
-                        if (throwTime <= 0)
+                        timer -= Time.deltaTime;
+                        if (timer <= 0)
                         {
-                            throwTime = throwWaitTime;
-                            thrower.Throw(currState.location);
+                            timer = throwWaitTime;
+                            thrower.Throw(Player.current.AISpotPoint.position);
                         }
 
                     }

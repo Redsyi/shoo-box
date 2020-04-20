@@ -645,6 +645,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9186340266272236760}
   - component: {fileID: 9186340266272236759}
+  - component: {fileID: 3976865127419148606}
   m_Layer: 0
   m_Name: RestaurantWorker
   m_TagString: Untagged
@@ -697,7 +698,7 @@ MonoBehaviour:
   beingRepelled: 0
   deaf: 0
   thrower: {fileID: 9186340266482976148}
-  throwWaitTime: 30
+  throwWaitTime: 0.5
   onSpot:
     idInternal: 0
     valueGuidInternal: 
@@ -709,6 +710,20 @@ MonoBehaviour:
     WwiseObjectReference: {fileID: 11400000, guid: ab0d7872737f247f7aad460426de7a16,
       type: 2}
   gameOverName: 
+  stunned: 0
+--- !u!114 &3976865127419148606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9186340266272236761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7095d354cf4ec3742927c9a164929f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
 --- !u!1 &9186340266482976151
 GameObject:
   m_ObjectHideFlags: 0
@@ -780,9 +795,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a225c4d0be8dfa46b5d41a47eb80be7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToThrow: {fileID: 5419447164666835283, guid: 68251744b5d36514b91506f79b24ec34,
+  objectToThrow: {fileID: 7720379324728440445, guid: 68251744b5d36514b91506f79b24ec34,
     type: 3}
-  speed: 15
+  speed: 1000
+  spin: 100000
 --- !u!1 &9186340266501863908
 GameObject:
   m_ObjectHideFlags: 0
