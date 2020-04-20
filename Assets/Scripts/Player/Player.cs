@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
     public float footstepTiming;
     public float footstepSoundOffset;
     public bool moving => currMovementInput != Vector2.zero;
+    public float footstepRadius = 1.3f;
     private bool makingFootsteps;
     public AK.Wwise.Event onStep;
 
@@ -97,7 +98,12 @@ public class Player : MonoBehaviour
     public float minY = -10f;
     public bool useSnapRotation;
     static PlayerState prevState;
+    public static Player current;
 
+    private void Awake()
+    {
+        current = this;
+    }
 
     private void Start()
     {
@@ -132,6 +138,8 @@ public class Player : MonoBehaviour
     private void OnDestroy()
     {
         prevState = new PlayerState() { rotation = transform.rotation, legForm = legForm, selectedShoe = shoeManager.currShoe };
+        if (current == this)
+            current = null;
     }
 
     public void EquipStartingShoes()
@@ -635,7 +643,7 @@ public class Player : MonoBehaviour
             timeSinceLast += Time.deltaTime;
             if (legForm && timeSinceLast >= footstepTiming)
             {
-                AudioManager.MakeNoise(transform.position, 1.3f, null, 0);
+                AudioManager.MakeNoise(transform.position, footstepRadius, null, 0);
                 timeSinceLast = 0f;
                 onStep.Post(gameObject);
             }

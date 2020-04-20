@@ -119,6 +119,7 @@ GameObject:
   m_Component:
   - component: {fileID: 771909758307835014}
   - component: {fileID: 771909758307835017}
+  - component: {fileID: 2817389625962304649}
   m_Layer: 0
   m_Name: PandaWorker
   m_TagString: Untagged
@@ -171,7 +172,7 @@ MonoBehaviour:
   beingRepelled: 0
   deaf: 0
   thrower: {fileID: 2907134755933143682}
-  throwWaitTime: 30
+  throwWaitTime: 0.5
   onSpot:
     idInternal: 0
     valueGuidInternal: 
@@ -183,6 +184,20 @@ MonoBehaviour:
     WwiseObjectReference: {fileID: 11400000, guid: ab0d7872737f247f7aad460426de7a16,
       type: 2}
   gameOverName: 
+  stunned: 0
+--- !u!114 &2817389625962304649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771909758307835015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7095d354cf4ec3742927c9a164929f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
 --- !u!1 &1114719889280864268
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,9 +454,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a225c4d0be8dfa46b5d41a47eb80be7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToThrow: {fileID: 3520363620519158220, guid: 1fafa380bf42c0541aa7b261529b2632,
+  objectToThrow: {fileID: 5746649808154725179, guid: 1fafa380bf42c0541aa7b261529b2632,
     type: 3}
-  speed: 15
+  speed: 800
+  spin: 200000
 --- !u!1 &3361748970966664025
 GameObject:
   m_ObjectHideFlags: 0

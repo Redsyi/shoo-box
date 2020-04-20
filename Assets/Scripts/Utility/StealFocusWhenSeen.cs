@@ -127,7 +127,7 @@ public class StealFocusWhenSeen : MonoBehaviour
         }
 
         //part 3: go back to player
-        Player player = FindObjectOfType<Player>();
+        Player player = Player.current;
         float finalZoomLevel = (player.legForm ? cameraScript.farZoomLevel : cameraScript.closeZoomLevel);
         panProgress = 1 - panProgress;
         timePassed = cameraScrollSpeed - timePassed;

@@ -17,7 +17,7 @@ public class UIShoeSightReminder : MonoBehaviour
     private void Start()
     {
         instance = this;
-        player = FindObjectOfType<Player>();
+        player = Player.current;
     }
 
     void Update()

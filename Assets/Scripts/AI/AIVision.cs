@@ -7,7 +7,6 @@ public class AIVision : MonoBehaviour
 {
     public AIAgent ai;
     private Player player;
-    int collidersTouchingPlayer;
     [Range(0, 15)]
     public float radius = 5;
     [Range(0, 360)]
@@ -18,10 +17,11 @@ public class AIVision : MonoBehaviour
     public float standingSpotTime = 0.2f;
     public float shuffleSpotTime = 0.7f;
     public float spotDecay = 1.2f;
+    private bool playerInVision;
 
     private void Start()
     {
-        player = FindObjectOfType<Player>();
+        player = Player.current;
         if (ai == null)
             ai = GetComponentInParent<AIAgent>();
     }
@@ -77,9 +77,10 @@ public class AIVision : MonoBehaviour
             Player player = other.GetComponentInParent<Player>();
             if (player != null)
             {
-                if (justEntered)
-                    collidersTouchingPlayer++;
+                //print("Player should be in vision cone. Name: " + other.gameObject.name);
+                playerInVision = true;
             }
+
             if (player != null && (player.legForm || player.moving))
             {
                 Vector3 vectToPlayer = player.AISpotPoint.position - transform.position;
@@ -101,8 +102,9 @@ public class AIVision : MonoBehaviour
         Player player = other.GetComponentInParent<Player>();
         if (player != null)
         {
-            collidersTouchingPlayer--;
-            if (collidersTouchingPlayer == 0 && ai.currState.state == AIState.CHASE)
+            //print("Entity leaving. Name: " + other.gameObject.name);
+            playerInVision = false;
+            if (ai.currState.state == AIState.CHASE)
             {
                 ai.LosePlayer(player);
             }
@@ -122,6 +124,9 @@ public class AIVision : MonoBehaviour
     private void Update()
     {
         visibleCone.enabled = !AIAgent.blindAll;
-        ai.spotProgress -= Time.deltaTime / spotDecay;
+
+        //print("Update, Play in vision: " + playerInVision);
+        if(!playerInVision) // Only decay if the player isn't in the vision
+            ai.spotProgress -= Time.deltaTime / spotDecay;
     }
 }

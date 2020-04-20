@@ -16,17 +16,33 @@ public class ScriptedSequence : MonoBehaviour
     }
 
     public ScriptedStep[] sequence;
+    public bool startImmediately = true;
+
+    [HideInInspector]
+    public bool running;
     AIAgent AI;
     int currStepIdx;
     ScriptedStep currStep => sequence[currStepIdx];
+
     private void Start()
     {
         AI = GetComponent<AIAgent>();
-        StartCoroutine(DoSequence());
+        if (startImmediately)
+            StartCoroutine(DoSequence());
+    }
+
+    public void Trigger()
+    {
+        if (!running)
+        {
+            currStepIdx = 0;
+            StartCoroutine(DoSequence());
+        }
     }
 
     IEnumerator DoSequence()
     {
+        running = true;
         while (currStepIdx < sequence.Length)
         {
             currStep.invokeOnStart.Invoke();
@@ -86,6 +102,7 @@ public class ScriptedSequence : MonoBehaviour
             }
             currStepIdx++;
         }
+        running = false;
     }
 
     private void OnDrawGizmosSelected()

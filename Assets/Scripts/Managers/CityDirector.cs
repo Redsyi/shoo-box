@@ -25,7 +25,7 @@ public class CityDirector : MonoBehaviour
         numHelis = 0;
         StartCoroutine(Spawn());
         current = this;
-        player = FindObjectOfType<Player>();
+        player = Player.current;
     }
 
     IEnumerator Spawn()

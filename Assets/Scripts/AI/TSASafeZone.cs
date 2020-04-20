@@ -6,14 +6,23 @@ public class TSASafeZone : MonoBehaviour
 {
     public float radius = 1f;
     public SpriteRenderer indicator;
+    public SpriteRenderer filledIndicator;
     public CapsuleCollider hitbox;
+    public Color normalColor;
+    public Color normalFilledColor;
+    public Color safeColor;
+    public Color safeFilledColor;
+
     private void OnTriggerEnter(Collider other)
     {
         TSAAlert alert = other.GetComponent<TSAAlert>();
         if (alert)
         {
             if (alert.player)
-                indicator.color = Color.green;
+            {
+                indicator.color = safeColor;
+                filledIndicator.color = safeFilledColor;
+            }
             foreach (AIAgent AI in FindObjectsOfType<AIAgent>())
             {
                 if (AI.currState.state == AIState.INVESTIGATE && AI.currState.location == alert.transform)
@@ -29,7 +38,8 @@ public class TSASafeZone : MonoBehaviour
         TSAAlert alert = other.GetComponent<TSAAlert>();
         if (alert && alert.player)
         {
-            indicator.color = Color.white;
+            indicator.color = normalColor;
+            filledIndicator.color = normalFilledColor;
         }
     }
 
@@ -45,6 +55,8 @@ public class TSASafeZone : MonoBehaviour
     private void Start()
     {
         AdjustIndicator();
+        indicator.color = normalColor;
+        filledIndicator.color = normalFilledColor;
     }
 
     private void OnDrawGizmosSelected()

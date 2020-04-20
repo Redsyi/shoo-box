@@ -31,7 +31,6 @@ public class AIAgent : MonoBehaviour
     public ThrowItem thrower;
     private bool reachedInteractable;
     public float throwWaitTime;
-    private float throwTime;
     private AKEventNPC wwiseComponent;
     private int currPatrolPoint;
     private CustomShoeSight shoeSightColoring;
@@ -57,6 +56,8 @@ public class AIAgent : MonoBehaviour
         }
     }
     public string gameOverName;
+    [HideInInspector]
+    public bool stunned;
     ScriptedSequence sequence;
 
     void Start()
@@ -65,11 +66,7 @@ public class AIAgent : MonoBehaviour
         currState = new AIStateNode();
         thingsToInteractWith = new Queue<IAIInteractable>();
         Idle();
-
-        // Make sure walking AIs have a pathfinder
-        /*if (pathfinder == null)
-            Debug.LogError("AIAgent has null NavMeshAgent!");
-*/
+        
         GameObject bubbleCanvas = GameObject.FindGameObjectWithTag("NPC Bubble Canvas");
         if (bubbleCanvas == null)
             Debug.LogError("AIAgent couldn't find bubble canvas");
@@ -92,7 +89,7 @@ public class AIAgent : MonoBehaviour
         {
             stopped = (prevPos - transform.position).sqrMagnitude <= walkSpeed*.05f;
 
-            if (!sequence) {
+            if ((!sequence || !sequence.running) && !stunned) {
                 if (stopped && currState.state != AIState.IDLE)
                 {
                     Face(currState.location.position);
@@ -121,8 +118,6 @@ public class AIAgent : MonoBehaviour
     {
         if (currState.state != AIState.IDLE || patrolPoints.Length > 1 || !currState.location)
         { 
-            if(pathfinder)
-                pathfinder.speed = walkSpeed;
             stoppedTime = 0f;
             currState.state = AIState.IDLE;
             currState.location = patrolPoints[currPatrolPoint];
@@ -138,12 +133,11 @@ public class AIAgent : MonoBehaviour
     {
         if ((currState.state != AIState.CHASE || forceOverrideChase) && (currState.state != AIState.INTERACT || forceOverrideInteract))
         {
-            if(pathfinder)
-                pathfinder.speed = walkSpeed;
             stoppedTime = 0f;
             currState.state = AIState.INVESTIGATE;
             currState.location = location.transform;
-            wwiseComponent?.StartedInvestigation();
+            if (currState.state != AIState.INVESTIGATE)
+                wwiseComponent?.StartedInvestigation();
             timer = investigateTime;
         }
     }
@@ -172,8 +166,6 @@ public class AIAgent : MonoBehaviour
             if (currState.state != AIState.CHASE && currState.state != AIState.INTERACT && thingsToInteractWith.Count == 1)
             {
                 wwiseComponent?.SomethingWrong();
-                if(pathfinder)
-                    pathfinder.speed = runSpeed;
                 currState.state = AIState.INTERACT;
                 currState.location = (interactable as MonoBehaviour).transform;
                 timer = interactable.AIInteractTime();
@@ -195,9 +187,8 @@ public class AIAgent : MonoBehaviour
             myBubble.Spotted();
             onSpot.Post(gameObject);
             player.npcsChasing++;
+            timer = 0f;
         }
-        if(pathfinder)
-            pathfinder.speed = runSpeed;
         stoppedTime = 0f;
         currState.state = AIState.CHASE;
         currState.location = player.transform;
@@ -243,7 +234,7 @@ public class AIAgent : MonoBehaviour
         else
             stoppedTime = 0f;
 
-        if (!sequence)
+        if (!sequence || !sequence.running)
         {
             if (currState.state != AIState.IDLE && !currState.location)
             {
@@ -276,9 +267,12 @@ public class AIAgent : MonoBehaviour
             bool closeToTarget = (transform.position - currState.location.position).sqrMagnitude < 0.4f;
             bool closeEnough = (reachedInteractable && currState.state == AIState.INTERACT) || (stoppedTime >= giveUpTime) || closeToTarget;
 
-            animator.SetBool("Moving", stoppedTime < 0.1f);
+            if (pathfinder)
+                pathfinder.speed = (stunned ? 0f : (currState.state == AIState.CHASE || currState.state == AIState.INTERACT ? runSpeed : walkSpeed));
+
+            animator.SetBool("Moving", stoppedTime < 0.1f && !stunned);
             animator.SetBool("Running", currState.state == AIState.CHASE || currState.state == AIState.INTERACT);
-            animator.SetBool("Interacting", currState.state == AIState.INTERACT && closeEnough);
+            animator.SetBool("Interacting", currState.state == AIState.INTERACT && closeEnough && !stunned);
 
             if (debug)
                 print($"{gameObject.name}: {currState.state}, {currState.location}, {thingsToInteractWith.Count} | {stoppedTime}");
@@ -413,18 +407,18 @@ public class AIAgent : MonoBehaviour
                     {
                         pathfinder.destination = currState.location.position;
                     }
-                    else if (!closeToTarget)
+                    else if (!closeToTarget && pathfinder)
                     {
-                        LosePlayer(FindObjectOfType<Player>());
+                        LosePlayer(Player.current);
                     }
                     if (thrower)
                     {
                         //new WaitForSeconds(2.0f);
-                        throwTime--;
-                        if (throwTime <= 0)
+                        timer -= Time.deltaTime;
+                        if (timer <= 0)
                         {
-                            throwTime = throwWaitTime;
-                            thrower.Throw(currState.location);
+                            timer = throwWaitTime;
+                            thrower.Throw(Player.current.AISpotPoint.position);
                         }
 
                     }
