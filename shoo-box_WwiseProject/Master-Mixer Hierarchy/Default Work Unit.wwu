@@ -104,6 +104,38 @@
 								</Property>
 							</PropertyList>
 						</Bus>
+						<Bus Name="Ambience" ID="{A8515AC1-BBDF-44F3-B9D6-A6478A6FD597}">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<RTPCList>
+										<RTPC Name="" ID="{A1294607-5B82-451B-ABE9-5C34266FB919}" ShortID="324973986">
+											<ReferenceList>
+												<Reference Name="ControlInput">
+													<ObjectRef Name="Ambience" ID="{AB405249-1703-4B03-BCA4-DD4848DD3077}" WorkUnitID="{8F258225-2703-44D1-AFA8-735674C84535}"/>
+												</Reference>
+											</ReferenceList>
+											<Curve Name="" ID="{955505A1-71EE-474B-ACB6-B085586369CA}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="3"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>-200</YPos>
+														<Flags>5</Flags>
+													</Point>
+													<Point>
+														<XPos>100</XPos>
+														<YPos>0</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</RTPC>
+									</RTPCList>
+								</Property>
+							</PropertyList>
+						</Bus>
 					</ChildrenList>
 				</Bus>
 			</ChildrenList>
