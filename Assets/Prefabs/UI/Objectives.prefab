@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 5969357682389702974}
   - component: {fileID: 2894995863382191119}
   - component: {fileID: 8176085602215319262}
+  - component: {fileID: 386023550573537573}
+  - component: {fileID: 5653318384812314209}
   m_Layer: 0
   m_Name: Objectives
   m_TagString: Untagged
@@ -38,7 +40,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -50, y: -50}
+  m_AnchoredPosition: {x: -731, y: -372}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &6058027749855034503
@@ -56,7 +58,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7239640672833484982}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -128,12 +130,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9673d906d19334a45adcf77814ba7cf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectives:
-  - Pick up <color=#FF4040>Boots</color>
-  - Find a way to leave the <color=#FF4040>Hotel ROom</color>
-  - Get to the <color=#FF4040>Elevator</color>
+  objectives: []
   objectivePrefab: {fileID: 8741323208984939510, guid: 797e9c2cf07f0f1418fd54d8a45d9c2a,
     type: 3}
+  objectiveTagText: {fileID: 0}
 --- !u!225 &8176085602215319262
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -142,7 +142,39 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7239640672833484982}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!95 &386023550573537573
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7239640672833484982}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d87972e25afba644b9fdd43070a78d6c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5653318384812314209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7239640672833484982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 716f4799cef946b42a0706bf7abfb41b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.4
