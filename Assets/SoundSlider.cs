@@ -7,8 +7,34 @@ public class SoundSlider : MonoBehaviour
 {
     [SerializeField] string rtpcName;
 
-    public void OnValueChanged(float volume)
+    public Slider thisSlider;
+    public float masterVolume;
+    public float musicVolume;
+    public float SFXVolume;
+
+
+    public void SetSpecificVolume(string whatValue)
     {
-        AkSoundEngine.SetRTPCValue(rtpcName, volume);
+        float sliderValue = thisSlider.value;
+        
+        if (whatValue == "Master")
+        {
+            masterVolume = thisSlider.value;
+            AkSoundEngine.SetRTPCValue("MatserVolume", masterVolume);
+        }
+
+        if (whatValue == "Music")
+        {
+            masterVolume = thisSlider.value;
+            AkSoundEngine.SetRTPCValue("MusicVolume", masterVolume);
+        }
+
+        if (whatValue == "Master")
+        {
+            masterVolume = thisSlider.value;
+            AkSoundEngine.SetRTPCValue("MatserVolume", masterVolume);
+        }
+
+        //AkSoundEngine.SetRTPCValue(rtpcName, volume);
     }
 }
