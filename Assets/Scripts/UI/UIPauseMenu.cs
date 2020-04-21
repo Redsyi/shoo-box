@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using Event = AK.Wwise.Event;
+using UnityEngine.UI;
 
 public class UIPauseMenu : MonoBehaviour
 {
@@ -18,10 +19,18 @@ public class UIPauseMenu : MonoBehaviour
     public CanvasGroup menu;
     public CanvasGroup controls;
 
+    //Toggle controls view between controller/keyboard
+    public GameObject toggleController;
+    public GameObject toggleKeyboard;
+    public GameObject toggleLabel;
+    private string toggleText;
+    public bool conToggled { get; private set; }
+
     private void Start()
     {
         instance = this;
         gameObject.SetActive(false);
+        conToggled = false;
     }
 
     
@@ -88,5 +97,28 @@ public class UIPauseMenu : MonoBehaviour
         menu.interactable = true;
         controls.alpha = 0f;
         controls.interactable = false;
+    }
+
+    public void OnToggleInputPressed()
+    {
+        /*Feature request: toggle detects which input system is used
+         and automatically switches to the one in use
+         when menu is first opened*/
+        conToggled = !conToggled;
+        toggleKeyboard.SetActive(!conToggled);
+        toggleController.SetActive(conToggled);
+        onPressed.Post(gameObject);
+
+        if (conToggled)
+        {
+            toggleText = "Controller";
+            toggleLabel.GetComponent<Text>().text = toggleText;
+        }
+
+        if (conToggled == false)
+        {
+            toggleText = "Keyboard";
+            toggleLabel.GetComponent<Text>().text = toggleText;
+        }
     }
 }
