@@ -47,7 +47,9 @@ public enum AIInterest
     TSA_2,
     TSA_3,
     MAID_CRISIS,
-    MAID_CRISIS_2
+    MAID_CRISIS_2,
+    SUITCASE_PACKER_2,
+    STOOL_BOI_2
 }
 
 public enum ShoeSightType
