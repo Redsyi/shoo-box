@@ -18,6 +18,9 @@ namespace AK
         static const AkUniqueID AI_QUESTION = 1201896862U;
         static const AkUniqueID AI_QUESTION_MALE = 2287570078U;
         static const AkUniqueID AIRPORT_AMBIENCE_CONVEYORBELT_01 = 4198451418U;
+        static const AkUniqueID AIRPORT_AMBIENCE_CONVEYORBELT_02 = 4198451417U;
+        static const AkUniqueID AIRPORT_AMBIENCE_CONVEYORBELT_03 = 4198451416U;
+        static const AkUniqueID AIRPORT_AMBIENCE_CONVEYORBELT_04 = 4198451423U;
         static const AkUniqueID AIRPORT_AMBIENCE_TUNNEL = 938863674U;
         static const AkUniqueID AIRPORT_CART_ROLLING = 3899537369U;
         static const AkUniqueID AIRPORT_FLIGHT_TAKING_OFF = 1943100584U;
@@ -37,6 +40,8 @@ namespace AK
         static const AkUniqueID CITY_TANK_MOVEMENT = 1140222393U;
         static const AkUniqueID HOTEL_AMBIENCE_LOBBY = 1861298689U;
         static const AkUniqueID HOTEL_AMBIENCE_ROOM = 3727140126U;
+        static const AkUniqueID HOTEL_DOOR_OPEN = 4049972243U;
+        static const AkUniqueID HOTEL_DOOR_SLAM = 142307676U;
         static const AkUniqueID HOTEL_DOOR_SQUEAK = 442557581U;
         static const AkUniqueID HOTEL_ELEVATORDING = 378060898U;
         static const AkUniqueID HOTEL_LIGHTSWITCH = 1408096024U;
@@ -47,6 +52,7 @@ namespace AK
         static const AkUniqueID HOTEL_STOOL_KICK = 2296459734U;
         static const AkUniqueID HOTEL_TOILET_FLUSH = 3926086744U;
         static const AkUniqueID HOTEL_TRASH_CAN_KICK = 1031503006U;
+        static const AkUniqueID HOTEL_VENDINGMACHINE_KICK = 797762127U;
         static const AkUniqueID MUSIC_CUT_SCENE_FINALE = 3354092612U;
         static const AkUniqueID MUSIC_CUT_SCENES_AIRPORT = 2198248117U;
         static const AkUniqueID MUSIC_CUT_SCENES_INTRO = 3806072774U;
@@ -57,6 +63,7 @@ namespace AK
         static const AkUniqueID PLAYER_CITY_WALK = 3767407452U;
         static const AkUniqueID PLAYER_FLING = 2962968925U;
         static const AkUniqueID PLAYER_KICK = 4076006907U;
+        static const AkUniqueID PLAYER_SHIMMYING = 1284718764U;
         static const AkUniqueID PLAYER_TRANSFORM = 1542675207U;
         static const AkUniqueID PLAYER_WALK_BAREFOOT = 1367845377U;
         static const AkUniqueID PLAYER_WALK_BOOTS = 2951788940U;
