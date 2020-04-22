@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class LevelBridge : MonoBehaviour
 {
-    public static int destLevel;
+    public static string destLevel;
     private float timeLeft = 1.5f;
     public static string message;
     public Text messageText;
@@ -45,7 +45,7 @@ public class LevelBridge : MonoBehaviour
             timeLeft -= Time.unscaledDeltaTime;
         }
 
-        SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(destLevel));
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(destLevel));
         Time.timeScale = 1;
         transitionAnimator.SetTrigger("End");
         bridging = false;
@@ -59,7 +59,7 @@ public class LevelBridge : MonoBehaviour
         {
             prevLevel = SceneManager.GetActiveScene().buildIndex;
             bridging = true;
-            destLevel = SceneManager.GetSceneByName(level).buildIndex;
+            destLevel = level;
             message = msg;
             SceneManager.LoadScene("LevelBridge", LoadSceneMode.Additive);
             if (resetCheckpoints)
