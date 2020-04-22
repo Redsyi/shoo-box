@@ -38,6 +38,9 @@ namespace AK
         static const AkUniqueID CITY_HELICOPTER_RICOCHET = 712668924U;
         static const AkUniqueID CITY_TANK_FIRE = 838123530U;
         static const AkUniqueID CITY_TANK_MOVEMENT = 1140222393U;
+        static const AkUniqueID CITY_TRAFFIC_LIGHT = 3591911951U;
+        static const AkUniqueID CITY_TREE_FALL = 1923466129U;
+        static const AkUniqueID CITY_TREE_KICK = 4218188320U;
         static const AkUniqueID HOTEL_AMBIENCE_LOBBY = 1861298689U;
         static const AkUniqueID HOTEL_AMBIENCE_ROOM = 3727140126U;
         static const AkUniqueID HOTEL_DOOR_OPEN = 4049972243U;

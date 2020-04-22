@@ -37,21 +37,56 @@
 			<Path>Title_Scene.bnk</Path>
 			<IncludedEvents>
 				<Event Id="1598298728" Name="Music_Menu" ObjectPath="\Events\Music\Music_Menu" DurationType="Infinite"/>
+				<Event Id="2519197294" Name="UI_Close" ObjectPath="\Events\UI\UI_Close" DurationType="OneShot" DurationMin="0.248427" DurationMax="0.248427"/>
+				<Event Id="216067002" Name="UI_Confirm" ObjectPath="\Events\UI\UI_Confirm" DurationType="OneShot" DurationMin="3.000000" DurationMax="3.000000"/>
 				<Event Id="2118900976" Name="UI_Hover" ObjectPath="\Events\UI\UI_Hover" DurationType="OneShot" DurationMin="0.152002" DurationMax="0.152002"/>
+				<Event Id="1708033489" Name="UI_ObjectiveCheck" ObjectPath="\Events\UI\UI_ObjectiveCheck" DurationType="OneShot" DurationMin="0.383050" DurationMax="0.482612"/>
 				<Event Id="3282376362" Name="UI_Open" ObjectPath="\Events\UI\UI_Open" DurationType="OneShot" DurationMin="0.270472" DurationMax="0.270472"/>
+				<Event Id="4283738236" Name="UI_shoe_tage_can_not_swap" ObjectPath="\Events\UI\UI_shoe_tage_can_not_swap" DurationType="OneShot" DurationMin="0.231354" DurationMax="0.231354"/>
+				<Event Id="684423067" Name="UI_ShoePickUp" ObjectPath="\Events\UI\UI_ShoePickUp" DurationType="OneShot" DurationMin="1.125708" DurationMax="1.125708"/>
+				<Event Id="238343566" Name="UI_ShoeSight" ObjectPath="\Events\UI\UI_ShoeSight" DurationType="OneShot" DurationMin="3.444826" DurationMax="3.444826"/>
+				<Event Id="849543728" Name="UI_Shoetag_can_swap" ObjectPath="\Events\UI\UI_Shoetag_can_swap" DurationType="OneShot" DurationMin="0.372917" DurationMax="0.372917"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
+				<File Id="740458" Language="SFX">
+					<ShortName>UI_Check.wav</ShortName>
+					<Path>SFX/UI_Check_AE9AF346.wem</Path>
+				</File>
 				<File Id="112695585" Language="SFX">
 					<ShortName>Menu Open.wav</ShortName>
 					<Path>SFX/Menu Open_90A83339.wem</Path>
+				</File>
+				<File Id="129166700" Language="SFX">
+					<ShortName>UI_ShoePickUp.wav</ShortName>
+					<Path>SFX/UI_ShoePickUp_C4ED8561.wem</Path>
 				</File>
 				<File Id="181878464" Language="SFX">
 					<ShortName>UI_Hover.wav</ShortName>
 					<Path>SFX/UI_Hover_18652AE2.wem</Path>
 				</File>
+				<File Id="240057628" Language="SFX">
+					<ShortName>UI_ShoeSight.wav</ShortName>
+					<Path>SFX/UI_ShoeSight_C8F54E0E.wem</Path>
+				</File>
+				<File Id="454841983" Language="SFX">
+					<ShortName>UI_Shoe Tag Swap.wav</ShortName>
+					<Path>SFX/UI_Shoe Tag Swap_10C4C929.wem</Path>
+				</File>
+				<File Id="518777889" Language="SFX">
+					<ShortName>UI_Click.wav</ShortName>
+					<Path>SFX/UI_Click_10C4C929.wem</Path>
+				</File>
+				<File Id="580463312" Language="SFX">
+					<ShortName>UI_Shoe Tag Swap Unable.wav</ShortName>
+					<Path>SFX/UI_Shoe Tag Swap Unable_10C4C929.wem</Path>
+				</File>
 				<File Id="691341668" Language="SFX">
 					<ShortName>Shoobox Menu Music.wav</ShortName>
 					<Path>SFX/Shoobox Menu Music_AD1B694F.wem</Path>
+				</File>
+				<File Id="885577297" Language="SFX">
+					<ShortName>UI_Close.wav</ShortName>
+					<Path>SFX/UI_Close_4E357BBA.wem</Path>
 				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>
@@ -798,6 +833,9 @@
 				<Event Id="712668924" Name="City_Helicopter_Ricochet" ObjectPath="\Events\City\City_Helicopter_Ricochet" DurationType="OneShot" DurationMin="0.839586" DurationMax="1.197686"/>
 				<Event Id="838123530" Name="City_Tank_Fire" ObjectPath="\Events\City\City_Tank_Fire" DurationType="OneShot" DurationMin="2.136204" DurationMax="5.816133"/>
 				<Event Id="1140222393" Name="City_Tank_Movement" ObjectPath="\Events\City\City_Tank_Movement" DurationType="Infinite"/>
+				<Event Id="3591911951" Name="City_Traffic_Light" ObjectPath="\Events\City\City_Traffic_Light" DurationType="OneShot" DurationMin="3.892188" DurationMax="3.892188"/>
+				<Event Id="1923466129" Name="City_Tree_Fall" ObjectPath="\Events\City\City_Tree_Fall" DurationType="OneShot" DurationMin="2.526854" DurationMax="2.526854"/>
+				<Event Id="4218188320" Name="City_Tree_Kick" ObjectPath="\Events\City\City_Tree_Kick" DurationType="OneShot" DurationMin="3.892188" DurationMax="3.892188"/>
 				<Event Id="3958178683" Name="Player_City_Boot" ObjectPath="\Events\City\Player_City_Boot" DurationType="OneShot" DurationMin="0.804983" DurationMax="1.022089"/>
 				<Event Id="2791261825" Name="Player_City_BusEngine" ObjectPath="\Events\City\Player_City_BusEngine" DurationType="Infinite"/>
 				<Event Id="168676302" Name="Player_City_Sandal" ObjectPath="\Events\City\Player_City_Sandal" DurationType="OneShot" DurationMin="2.349482" DurationMax="3.010165"/>
@@ -872,6 +910,10 @@
 					<ShortName>City_Tank_Move.wav</ShortName>
 					<Path>SFX/City_Tank_Move_6A0153C7.wem</Path>
 				</File>
+				<File Id="412631030" Language="SFX">
+					<ShortName>City_Kickable_Tree_Fall.wav</ShortName>
+					<Path>SFX/City_Kickable_Tree_Fall_10C4C929.wem</Path>
+				</File>
 				<File Id="453764167" Language="SFX">
 					<ShortName>AI_Question_Male.wav</ShortName>
 					<Path>SFX/AI_Question_Male_10C4C929.wem</Path>
@@ -936,9 +978,17 @@
 					<ShortName>Player_City_Boots_DEMO.wav</ShortName>
 					<Path>SFX/Player_City_Boots_DEMO_73BEE271.wem</Path>
 				</File>
+				<File Id="747883699" Language="SFX">
+					<ShortName>City_TrafficLight_Blinking.wav</ShortName>
+					<Path>SFX/City_TrafficLight_Blinking_10C4C929.wem</Path>
+				</File>
 				<File Id="762895893" Language="SFX">
 					<ShortName>City_Car_Honking_2.wav</ShortName>
 					<Path>SFX/City_Car_Honking_2_4F8C3D01.wem</Path>
+				</File>
+				<File Id="771303977" Language="SFX">
+					<ShortName>City_Kickable_Tree_Uproot.wav</ShortName>
+					<Path>SFX/City_Kickable_Tree_Uproot_10C4C929.wem</Path>
 				</File>
 				<File Id="787023167" Language="SFX">
 					<ShortName>City_Tank_FIre.wav</ShortName>
