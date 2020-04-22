@@ -12,12 +12,15 @@ public class UIPauseMenu : MonoBehaviour
     public static UIPauseMenu instance;
     public GameObject defaultSelected;
     public GameObject backButton;
+    public GameObject settingsDefaultButton;
     public Event pauseSound;
     public Event unpauseSound;
     public Event onPressed;
     public Event onHovered;
     public CanvasGroup menu;
     public CanvasGroup controls;
+    public CanvasGroup settings;
+
 
     //Toggle controls view between controller/keyboard
     public GameObject toggleController;
@@ -83,7 +86,20 @@ public class UIPauseMenu : MonoBehaviour
         menu.interactable = false;
         controls.alpha = 1f;
         controls.interactable = true;
+    }
 
+    public void OnSettingsPressed()
+    {
+        /*displayControls = !displayControls;
+         menu.alpha = (displayControls ? 0 : 1);
+         menu.interactable = displayControls;
+         controls.alpha = (displayControls ? 1 : 0);
+         controls.interactable = displayControls;*/
+        EventSystem.current.SetSelectedGameObject(settingsDefaultButton);
+        menu.alpha = 0f;
+        menu.interactable = false;
+        settings.alpha = 1f;
+        settings.interactable = true;
     }
 
     public void OnBackPressed()
