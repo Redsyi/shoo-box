@@ -37,21 +37,56 @@
 			<Path>Title_Scene.bnk</Path>
 			<IncludedEvents>
 				<Event Id="1598298728" Name="Music_Menu" ObjectPath="\Events\Music\Music_Menu" DurationType="Infinite"/>
+				<Event Id="2519197294" Name="UI_Close" ObjectPath="\Events\UI\UI_Close" DurationType="OneShot" DurationMin="0.248427" DurationMax="0.248427"/>
+				<Event Id="216067002" Name="UI_Confirm" ObjectPath="\Events\UI\UI_Confirm" DurationType="OneShot" DurationMin="3.000000" DurationMax="3.000000"/>
 				<Event Id="2118900976" Name="UI_Hover" ObjectPath="\Events\UI\UI_Hover" DurationType="OneShot" DurationMin="0.152002" DurationMax="0.152002"/>
+				<Event Id="1708033489" Name="UI_ObjectiveCheck" ObjectPath="\Events\UI\UI_ObjectiveCheck" DurationType="OneShot" DurationMin="0.383050" DurationMax="0.482612"/>
 				<Event Id="3282376362" Name="UI_Open" ObjectPath="\Events\UI\UI_Open" DurationType="OneShot" DurationMin="0.270472" DurationMax="0.270472"/>
+				<Event Id="4283738236" Name="UI_shoe_tage_can_not_swap" ObjectPath="\Events\UI\UI_shoe_tage_can_not_swap" DurationType="OneShot" DurationMin="0.231354" DurationMax="0.231354"/>
+				<Event Id="684423067" Name="UI_ShoePickUp" ObjectPath="\Events\UI\UI_ShoePickUp" DurationType="OneShot" DurationMin="1.125708" DurationMax="1.125708"/>
+				<Event Id="238343566" Name="UI_ShoeSight" ObjectPath="\Events\UI\UI_ShoeSight" DurationType="OneShot" DurationMin="3.444826" DurationMax="3.444826"/>
+				<Event Id="849543728" Name="UI_Shoetag_can_swap" ObjectPath="\Events\UI\UI_Shoetag_can_swap" DurationType="OneShot" DurationMin="0.372917" DurationMax="0.372917"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
+				<File Id="740458" Language="SFX">
+					<ShortName>UI_Check.wav</ShortName>
+					<Path>SFX/UI_Check_AE9AF346.wem</Path>
+				</File>
 				<File Id="112695585" Language="SFX">
 					<ShortName>Menu Open.wav</ShortName>
 					<Path>SFX/Menu Open_90A83339.wem</Path>
+				</File>
+				<File Id="129166700" Language="SFX">
+					<ShortName>UI_ShoePickUp.wav</ShortName>
+					<Path>SFX/UI_ShoePickUp_C4ED8561.wem</Path>
 				</File>
 				<File Id="181878464" Language="SFX">
 					<ShortName>UI_Hover.wav</ShortName>
 					<Path>SFX/UI_Hover_18652AE2.wem</Path>
 				</File>
+				<File Id="240057628" Language="SFX">
+					<ShortName>UI_ShoeSight.wav</ShortName>
+					<Path>SFX/UI_ShoeSight_C8F54E0E.wem</Path>
+				</File>
+				<File Id="454841983" Language="SFX">
+					<ShortName>UI_Shoe Tag Swap.wav</ShortName>
+					<Path>SFX/UI_Shoe Tag Swap_10C4C929.wem</Path>
+				</File>
+				<File Id="518777889" Language="SFX">
+					<ShortName>UI_Click.wav</ShortName>
+					<Path>SFX/UI_Click_10C4C929.wem</Path>
+				</File>
+				<File Id="580463312" Language="SFX">
+					<ShortName>UI_Shoe Tag Swap Unable.wav</ShortName>
+					<Path>SFX/UI_Shoe Tag Swap Unable_10C4C929.wem</Path>
+				</File>
 				<File Id="691341668" Language="SFX">
 					<ShortName>Shoobox Menu Music.wav</ShortName>
 					<Path>SFX/Shoobox Menu Music_AD1B694F.wem</Path>
+				</File>
+				<File Id="885577297" Language="SFX">
+					<ShortName>UI_Close.wav</ShortName>
+					<Path>SFX/UI_Close_4E357BBA.wem</Path>
 				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>
@@ -70,16 +105,23 @@
 				<Event Id="1201896862" Name="AI_Question" ObjectPath="\Events\AI\AI_Question" DurationType="OneShot" DurationMin="1.161521" DurationMax="1.161521"/>
 				<Event Id="2287570078" Name="AI_Question_Male" ObjectPath="\Events\AI\AI_Question_Male" DurationType="OneShot" DurationMin="1.161521" DurationMax="1.161521"/>
 				<Event Id="4198451418" Name="Airport_Ambience_ConveyorBelt_01" ObjectPath="\Events\Airport\Airport_Ambience_ConveyorBelt_01" DurationType="Infinite"/>
+				<Event Id="4198451417" Name="Airport_Ambience_ConveyorBelt_02" ObjectPath="\Events\Airport\Airport_Ambience_ConveyorBelt_02" DurationType="Infinite"/>
+				<Event Id="4198451416" Name="Airport_Ambience_ConveyorBelt_03" ObjectPath="\Events\Airport\Airport_Ambience_ConveyorBelt_03" DurationType="Infinite"/>
+				<Event Id="4198451423" Name="Airport_Ambience_ConveyorBelt_04" ObjectPath="\Events\Airport\Airport_Ambience_ConveyorBelt_04" DurationType="Infinite"/>
 				<Event Id="938863674" Name="Airport_Ambience_Tunnel" ObjectPath="\Events\Airport\Airport_Ambience_Tunnel" DurationType="OneShot" DurationMin="48.049068" DurationMax="48.049068"/>
 				<Event Id="3899537369" Name="Airport_Cart_Rolling" ObjectPath="\Events\Airport\Airport_Cart_Rolling" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="1943100584" Name="Airport_Flight_Taking_Off" ObjectPath="\Events\Airport\Airport_Flight_Taking_Off" DurationType="OneShot" DurationMin="29.896521" DurationMax="29.896521"/>
 				<Event Id="3818725779" Name="Airport_Lever" ObjectPath="\Events\Airport\Airport_Lever" DurationType="OneShot" DurationMin="2.589854" DurationMax="2.589854"/>
 				<Event Id="2843912669" Name="Airport_Scanner" ObjectPath="\Events\Airport\Airport_Scanner" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="877897713" Name="Airport_Sliding_Gate" ObjectPath="\Events\Airport\Airport_Sliding_Gate" DurationType="OneShot" DurationMin="2.589854" DurationMax="2.589854"/>
+				<Event Id="3767407452" Name="Player_City_Walk" ObjectPath="\Events\Player\Player_City_Walk" DurationType="OneShot" DurationMin="1.224521" DurationMax="1.542800"/>
 				<Event Id="2962968925" Name="Player_Fling" ObjectPath="\Events\Player\Player_Fling" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="4076006907" Name="Player_Kick" ObjectPath="\Events\Player\Player_Kick" DurationType="OneShot" DurationMin="1.034797" DurationMax="1.303763"/>
+				<Event Id="1284718764" Name="Player_Shimmying" ObjectPath="\Events\Player\Player_Shimmying" DurationType="Infinite"/>
 				<Event Id="1542675207" Name="Player_Transform" ObjectPath="\Events\Player\Player_Transform" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="1367845377" Name="Player_Walk_Barefoot" ObjectPath="\Events\Player\Player_Walk_Barefoot" DurationType="OneShot" DurationMin="0.302106" DurationMax="0.814554"/>
 				<Event Id="2951788940" Name="Player_Walk_Boots" ObjectPath="\Events\Player\Player_Walk_Boots" DurationType="OneShot" DurationMin="0.191664" DurationMax="0.666563"/>
+				<Event Id="472219199" Name="Player_Walk_Sandals" ObjectPath="\Events\Player\Player_Walk_Sandals" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="2519197294" Name="UI_Close" ObjectPath="\Events\UI\UI_Close" DurationType="OneShot" DurationMin="0.248427" DurationMax="0.248427"/>
 				<Event Id="216067002" Name="UI_Confirm" ObjectPath="\Events\UI\UI_Confirm" DurationType="OneShot" DurationMin="3.000000" DurationMax="3.000000"/>
 				<Event Id="2118900976" Name="UI_Hover" ObjectPath="\Events\UI\UI_Hover" DurationType="OneShot" DurationMin="0.152002" DurationMax="0.152002"/>
@@ -103,6 +145,10 @@
 					<ShortName>Boots_Concrete_2.wav</ShortName>
 					<Path>SFX/Boots_Concrete_2_68A562C1.wem</Path>
 				</File>
+				<File Id="101909991" Language="SFX">
+					<ShortName>Bare Footsteps.wav</ShortName>
+					<Path>SFX/Bare Footsteps_F244207D.wem</Path>
+				</File>
 				<File Id="112695585" Language="SFX">
 					<ShortName>Menu Open.wav</ShortName>
 					<Path>SFX/Menu Open_90A83339.wem</Path>
@@ -123,6 +169,10 @@
 					<ShortName>UI_Hover.wav</ShortName>
 					<Path>SFX/UI_Hover_18652AE2.wem</Path>
 				</File>
+				<File Id="227284115" Language="SFX">
+					<ShortName>Player_CityWalk_3.wav</ShortName>
+					<Path>SFX/Player_CityWalk_3_10C4C929.wem</Path>
+				</File>
 				<File Id="240057628" Language="SFX">
 					<ShortName>UI_ShoeSight.wav</ShortName>
 					<Path>SFX/UI_ShoeSight_C8F54E0E.wem</Path>
@@ -135,9 +185,17 @@
 					<ShortName>Airport\Airport_Lever.wav</ShortName>
 					<Path>SFX/Airport/Airport_Lever_10C4C929.wem</Path>
 				</File>
+				<File Id="307602047" Language="SFX">
+					<ShortName>Player_CityWalk_5.wav</ShortName>
+					<Path>SFX/Player_CityWalk_5_10C4C929.wem</Path>
+				</File>
 				<File Id="310340041" Language="SFX">
 					<ShortName>AI_Question.wav</ShortName>
 					<Path>SFX/AI_Question_10C4C929.wem</Path>
+				</File>
+				<File Id="320230204" Language="SFX">
+					<ShortName>Bare Footsteps.wav</ShortName>
+					<Path>SFX/Bare Footsteps_4F9289F2.wem</Path>
 				</File>
 				<File Id="345626767" Language="SFX">
 					<ShortName>Airport\Airport_SlidingGate_1.wav</ShortName>
@@ -147,6 +205,10 @@
 					<ShortName>Boots_Concrete_3.wav</ShortName>
 					<Path>SFX/Boots_Concrete_3_091B445D.wem</Path>
 				</File>
+				<File Id="436847761" Language="SFX">
+					<ShortName>Player_CityWalk_6.wav</ShortName>
+					<Path>SFX/Player_CityWalk_6_10C4C929.wem</Path>
+				</File>
 				<File Id="453764167" Language="SFX">
 					<ShortName>AI_Question_Male.wav</ShortName>
 					<Path>SFX/AI_Question_Male_10C4C929.wem</Path>
@@ -155,6 +217,10 @@
 					<ShortName>UI_Shoe Tag Swap.wav</ShortName>
 					<Path>SFX/UI_Shoe Tag Swap_10C4C929.wem</Path>
 				</File>
+				<File Id="462727856" Language="SFX">
+					<ShortName>Bare Footsteps.wav</ShortName>
+					<Path>SFX/Bare Footsteps_40BD9A72.wem</Path>
+				</File>
 				<File Id="473201607" Language="SFX">
 					<ShortName>Airport_Conveyor_Room_Tone.wav</ShortName>
 					<Path>SFX/Airport_Conveyor_Room_Tone_D79FB2B7.wem</Path>
@@ -162,6 +228,10 @@
 				<File Id="496010635" Language="SFX">
 					<ShortName>Player_Kick_1.wav</ShortName>
 					<Path>SFX/Player_Kick_1_10C4C929.wem</Path>
+				</File>
+				<File Id="517902197" Language="SFX">
+					<ShortName>Player_BoxFormMoving.wav</ShortName>
+					<Path>SFX/Player_BoxFormMoving_D79FB2B7.wem</Path>
 				</File>
 				<File Id="518777889" Language="SFX">
 					<ShortName>UI_Click.wav</ShortName>
@@ -175,9 +245,25 @@
 					<ShortName>UI_Shoe Tag Swap Unable.wav</ShortName>
 					<Path>SFX/UI_Shoe Tag Swap Unable_10C4C929.wem</Path>
 				</File>
+				<File Id="623566033" Language="SFX">
+					<ShortName>Bare Footsteps.wav</ShortName>
+					<Path>SFX/Bare Footsteps_D5536E08.wem</Path>
+				</File>
+				<File Id="692739449" Language="SFX">
+					<ShortName>Bare Footsteps.wav</ShortName>
+					<Path>SFX/Bare Footsteps_6A2AD69F.wem</Path>
+				</File>
 				<File Id="723461947" Language="SFX">
 					<ShortName>Airport\Airport_SlidingGate_2.wav</ShortName>
 					<Path>SFX/Airport/Airport_SlidingGate_2_10C4C929.wem</Path>
+				</File>
+				<File Id="789488181" Language="SFX">
+					<ShortName>Player_CityWalk_4.wav</ShortName>
+					<Path>SFX/Player_CityWalk_4_10C4C929.wem</Path>
+				</File>
+				<File Id="791544164" Language="SFX">
+					<ShortName>Player_CityWalk_2.wav</ShortName>
+					<Path>SFX/Player_CityWalk_2_10C4C929.wem</Path>
 				</File>
 				<File Id="811582187" Language="SFX">
 					<ShortName>Boots_Concrete_8.wav</ShortName>
@@ -199,9 +285,17 @@
 					<ShortName>Airport\Airport_FlightTakesOff.wav</ShortName>
 					<Path>SFX/Airport/Airport_FlightTakesOff_10C4C929.wem</Path>
 				</File>
+				<File Id="971163192" Language="SFX">
+					<ShortName>Bare Footsteps.wav</ShortName>
+					<Path>SFX/Bare Footsteps_B316D79A.wem</Path>
+				</File>
 				<File Id="1048682405" Language="SFX">
 					<ShortName>Boots_Concrete_7.wav</ShortName>
 					<Path>SFX/Boots_Concrete_7_6B854B1A.wem</Path>
+				</File>
+				<File Id="1054519165" Language="SFX">
+					<ShortName>Player_CityWalk_1.wav</ShortName>
+					<Path>SFX/Player_CityWalk_1_10C4C929.wem</Path>
 				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>
@@ -485,6 +579,8 @@
 				<Event Id="2287570078" Name="AI_Question_Male" ObjectPath="\Events\AI\AI_Question_Male" DurationType="OneShot" DurationMin="1.161521" DurationMax="1.161521"/>
 				<Event Id="1861298689" Name="Hotel_Ambience_Lobby" ObjectPath="\Events\Hotel\Hotel_Ambience_Lobby" DurationType="Infinite"/>
 				<Event Id="3727140126" Name="Hotel_Ambience_Room" ObjectPath="\Events\Hotel\Hotel_Ambience_Room" DurationType="Infinite"/>
+				<Event Id="4049972243" Name="Hotel_Door_Open" ObjectPath="\Events\Hotel\Hotel_Door_Open" DurationType="OneShot" DurationMin="1.172187" DurationMax="1.172187"/>
+				<Event Id="142307676" Name="Hotel_Door_Slam" ObjectPath="\Events\Hotel\Hotel_Door_Slam" DurationType="OneShot" DurationMin="1.172187" DurationMax="1.172187"/>
 				<Event Id="442557581" Name="Hotel_Door_Squeak" ObjectPath="\Events\Hotel\Hotel_Door_Squeak" DurationType="OneShot" DurationMin="0.398979" DurationMax="0.398979"/>
 				<Event Id="378060898" Name="Hotel_ElevatorDing" ObjectPath="\Events\Hotel\Hotel_ElevatorDing" DurationType="OneShot" DurationMin="3.892188" DurationMax="3.892188"/>
 				<Event Id="1408096024" Name="Hotel_LightSwitch" ObjectPath="\Events\Hotel\Hotel_LightSwitch" DurationType="OneShot" DurationMin="0.398979" DurationMax="0.398979"/>
@@ -495,11 +591,15 @@
 				<Event Id="2296459734" Name="Hotel_Stool_Kick" ObjectPath="\Events\Hotel\Hotel_Stool_Kick" DurationType="OneShot" DurationMin="1.373438" DurationMax="1.373438"/>
 				<Event Id="3926086744" Name="Hotel_Toilet_Flush" ObjectPath="\Events\Hotel\Hotel_Toilet_Flush" DurationType="OneShot" DurationMin="15.845959" DurationMax="15.845959"/>
 				<Event Id="1031503006" Name="Hotel_Trash_Can_Kick" ObjectPath="\Events\Hotel\Hotel_Trash_Can_Kick" DurationType="OneShot" DurationMin="2.526854" DurationMax="2.526854"/>
+				<Event Id="797762127" Name="Hotel_VendingMachine_Kick" ObjectPath="\Events\Hotel\Hotel_VendingMachine_Kick" DurationType="OneShot" DurationMin="2.526854" DurationMax="2.526854"/>
+				<Event Id="3767407452" Name="Player_City_Walk" ObjectPath="\Events\Player\Player_City_Walk" DurationType="OneShot" DurationMin="1.224521" DurationMax="1.542800"/>
 				<Event Id="2962968925" Name="Player_Fling" ObjectPath="\Events\Player\Player_Fling" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="4076006907" Name="Player_Kick" ObjectPath="\Events\Player\Player_Kick" DurationType="OneShot" DurationMin="1.034797" DurationMax="1.303763"/>
+				<Event Id="1284718764" Name="Player_Shimmying" ObjectPath="\Events\Player\Player_Shimmying" DurationType="Infinite"/>
 				<Event Id="1542675207" Name="Player_Transform" ObjectPath="\Events\Player\Player_Transform" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="1367845377" Name="Player_Walk_Barefoot" ObjectPath="\Events\Player\Player_Walk_Barefoot" DurationType="OneShot" DurationMin="0.302106" DurationMax="0.814554"/>
 				<Event Id="2951788940" Name="Player_Walk_Boots" ObjectPath="\Events\Player\Player_Walk_Boots" DurationType="OneShot" DurationMin="0.191664" DurationMax="0.666563"/>
+				<Event Id="472219199" Name="Player_Walk_Sandals" ObjectPath="\Events\Player\Player_Walk_Sandals" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="2519197294" Name="UI_Close" ObjectPath="\Events\UI\UI_Close" DurationType="OneShot" DurationMin="0.248427" DurationMax="0.248427"/>
 				<Event Id="216067002" Name="UI_Confirm" ObjectPath="\Events\UI\UI_Confirm" DurationType="OneShot" DurationMin="3.000000" DurationMax="3.000000"/>
 				<Event Id="2118900976" Name="UI_Hover" ObjectPath="\Events\UI\UI_Hover" DurationType="OneShot" DurationMin="0.152002" DurationMax="0.152002"/>
@@ -543,6 +643,10 @@
 					<ShortName>UI_Hover.wav</ShortName>
 					<Path>SFX/UI_Hover_18652AE2.wem</Path>
 				</File>
+				<File Id="227284115" Language="SFX">
+					<ShortName>Player_CityWalk_3.wav</ShortName>
+					<Path>SFX/Player_CityWalk_3_10C4C929.wem</Path>
+				</File>
 				<File Id="240057628" Language="SFX">
 					<ShortName>UI_ShoeSight.wav</ShortName>
 					<Path>SFX/UI_ShoeSight_C8F54E0E.wem</Path>
@@ -551,9 +655,17 @@
 					<ShortName>Boots_Concrete_1.wav</ShortName>
 					<Path>SFX/Boots_Concrete_1_A1105911.wem</Path>
 				</File>
+				<File Id="307602047" Language="SFX">
+					<ShortName>Player_CityWalk_5.wav</ShortName>
+					<Path>SFX/Player_CityWalk_5_10C4C929.wem</Path>
+				</File>
 				<File Id="310340041" Language="SFX">
 					<ShortName>AI_Question.wav</ShortName>
 					<Path>SFX/AI_Question_10C4C929.wem</Path>
+				</File>
+				<File Id="313509977" Language="SFX">
+					<ShortName>Player_Hotel_Kickable_VendingMachine.wav</ShortName>
+					<Path>SFX/Player_Hotel_Kickable_VendingMachine_10C4C929.wem</Path>
 				</File>
 				<File Id="320230204" Language="SFX">
 					<ShortName>Bare Footsteps.wav</ShortName>
@@ -570,6 +682,10 @@
 				<File Id="372205802" Language="SFX">
 					<ShortName>Toilet Flush.wav</ShortName>
 					<Path>SFX/Toilet Flush_10C4C929.wem</Path>
+				</File>
+				<File Id="436847761" Language="SFX">
+					<ShortName>Player_CityWalk_6.wav</ShortName>
+					<Path>SFX/Player_CityWalk_6_10C4C929.wem</Path>
 				</File>
 				<File Id="453764167" Language="SFX">
 					<ShortName>AI_Question_Male.wav</ShortName>
@@ -590,6 +706,10 @@
 				<File Id="496010635" Language="SFX">
 					<ShortName>Player_Kick_1.wav</ShortName>
 					<Path>SFX/Player_Kick_1_10C4C929.wem</Path>
+				</File>
+				<File Id="517902197" Language="SFX">
+					<ShortName>Player_BoxFormMoving.wav</ShortName>
+					<Path>SFX/Player_BoxFormMoving_D79FB2B7.wem</Path>
 				</File>
 				<File Id="518058315" Language="SFX">
 					<ShortName>Hotel_PotKickSpill.wav</ShortName>
@@ -619,6 +739,10 @@
 					<ShortName>Hotel_Lobby.wav</ShortName>
 					<Path>SFX/Hotel_Lobby_D79FB2B7.wem</Path>
 				</File>
+				<File Id="688545077" Language="SFX">
+					<ShortName>Hotel_Door_Open.wav</ShortName>
+					<Path>SFX/Hotel_Door_Open_10C4C929.wem</Path>
+				</File>
 				<File Id="692739449" Language="SFX">
 					<ShortName>Bare Footsteps.wav</ShortName>
 					<Path>SFX/Bare Footsteps_6A2AD69F.wem</Path>
@@ -626,6 +750,18 @@
 				<File Id="758634679" Language="SFX">
 					<ShortName>Hotel_ElevatorDing.wav</ShortName>
 					<Path>SFX/Hotel_ElevatorDing_10C4C929.wem</Path>
+				</File>
+				<File Id="789488181" Language="SFX">
+					<ShortName>Player_CityWalk_4.wav</ShortName>
+					<Path>SFX/Player_CityWalk_4_10C4C929.wem</Path>
+				</File>
+				<File Id="791544164" Language="SFX">
+					<ShortName>Player_CityWalk_2.wav</ShortName>
+					<Path>SFX/Player_CityWalk_2_10C4C929.wem</Path>
+				</File>
+				<File Id="809187193" Language="SFX">
+					<ShortName>Hotel_Door_Kickable_Slam.wav</ShortName>
+					<Path>SFX/Hotel_Door_Kickable_Slam_10C4C929.wem</Path>
 				</File>
 				<File Id="811582187" Language="SFX">
 					<ShortName>Boots_Concrete_8.wav</ShortName>
@@ -671,6 +807,10 @@
 					<ShortName>Boots_Concrete_7.wav</ShortName>
 					<Path>SFX/Boots_Concrete_7_6B854B1A.wem</Path>
 				</File>
+				<File Id="1054519165" Language="SFX">
+					<ShortName>Player_CityWalk_1.wav</ShortName>
+					<Path>SFX/Player_CityWalk_1_10C4C929.wem</Path>
+				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>
 		<SoundBank Id="3888786832" Language="SFX">
@@ -693,6 +833,9 @@
 				<Event Id="712668924" Name="City_Helicopter_Ricochet" ObjectPath="\Events\City\City_Helicopter_Ricochet" DurationType="OneShot" DurationMin="0.839586" DurationMax="1.197686"/>
 				<Event Id="838123530" Name="City_Tank_Fire" ObjectPath="\Events\City\City_Tank_Fire" DurationType="OneShot" DurationMin="2.136204" DurationMax="5.816133"/>
 				<Event Id="1140222393" Name="City_Tank_Movement" ObjectPath="\Events\City\City_Tank_Movement" DurationType="Infinite"/>
+				<Event Id="3591911951" Name="City_Traffic_Light" ObjectPath="\Events\City\City_Traffic_Light" DurationType="OneShot" DurationMin="3.892188" DurationMax="3.892188"/>
+				<Event Id="1923466129" Name="City_Tree_Fall" ObjectPath="\Events\City\City_Tree_Fall" DurationType="OneShot" DurationMin="2.526854" DurationMax="2.526854"/>
+				<Event Id="4218188320" Name="City_Tree_Kick" ObjectPath="\Events\City\City_Tree_Kick" DurationType="OneShot" DurationMin="3.892188" DurationMax="3.892188"/>
 				<Event Id="3958178683" Name="Player_City_Boot" ObjectPath="\Events\City\Player_City_Boot" DurationType="OneShot" DurationMin="0.804983" DurationMax="1.022089"/>
 				<Event Id="2791261825" Name="Player_City_BusEngine" ObjectPath="\Events\City\Player_City_BusEngine" DurationType="Infinite"/>
 				<Event Id="168676302" Name="Player_City_Sandal" ObjectPath="\Events\City\Player_City_Sandal" DurationType="OneShot" DurationMin="2.349482" DurationMax="3.010165"/>
@@ -767,6 +910,10 @@
 					<ShortName>City_Tank_Move.wav</ShortName>
 					<Path>SFX/City_Tank_Move_6A0153C7.wem</Path>
 				</File>
+				<File Id="412631030" Language="SFX">
+					<ShortName>City_Kickable_Tree_Fall.wav</ShortName>
+					<Path>SFX/City_Kickable_Tree_Fall_10C4C929.wem</Path>
+				</File>
 				<File Id="453764167" Language="SFX">
 					<ShortName>AI_Question_Male.wav</ShortName>
 					<Path>SFX/AI_Question_Male_10C4C929.wem</Path>
@@ -831,9 +978,17 @@
 					<ShortName>Player_City_Boots_DEMO.wav</ShortName>
 					<Path>SFX/Player_City_Boots_DEMO_73BEE271.wem</Path>
 				</File>
+				<File Id="747883699" Language="SFX">
+					<ShortName>City_TrafficLight_Blinking.wav</ShortName>
+					<Path>SFX/City_TrafficLight_Blinking_10C4C929.wem</Path>
+				</File>
 				<File Id="762895893" Language="SFX">
 					<ShortName>City_Car_Honking_2.wav</ShortName>
 					<Path>SFX/City_Car_Honking_2_4F8C3D01.wem</Path>
+				</File>
+				<File Id="771303977" Language="SFX">
+					<ShortName>City_Kickable_Tree_Uproot.wav</ShortName>
+					<Path>SFX/City_Kickable_Tree_Uproot_10C4C929.wem</Path>
 				</File>
 				<File Id="787023167" Language="SFX">
 					<ShortName>City_Tank_FIre.wav</ShortName>
