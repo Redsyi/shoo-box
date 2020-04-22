@@ -209,8 +209,14 @@ public class UITutorialManager : MonoBehaviour
 
     IEnumerator ShowObjectiveList()
     {
+        
         yield return new WaitForSeconds(1);
-        objectiveTrackerAnimator.SetTrigger("Activate");
+        /*objectiveTrackerAnimator.SetTrigger("Activate");*/
+        FadeEffect list = FindObjectOfType<FadeEffect>();
+        list.Fade();
+        yield return new WaitForSeconds(5);
+        print("Fading objective list out");
+        list.Fade();
     }
 
     IEnumerator ShowerSwitch()
