@@ -8,11 +8,13 @@ public class ShoeSight : MonoBehaviour
     private const float sightSpoolTime = .5f;
     private const float sightTime = 3f;
     private const float sightCooldownTime = 0f;
+    public AK.Wwise.Event onShoeSight;
 
     public void ActivateSight()
     {
         if (!sighting)
         {
+            onShoeSight.Post(gameObject);
             StartCoroutine(DoShoeSight());
         }
     }

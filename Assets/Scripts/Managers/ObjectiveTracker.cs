@@ -38,7 +38,5 @@ public class ObjectiveTracker : MonoBehaviour
         print("Next objeective number: " + currObjective);
         if (currObjective < objectives.Length)
             objectiveTagText.text = objectives[currObjective]; // Update the objective tag with the next 
-        else
-            Debug.LogError("Current objective number is out of range");
     }
 }

@@ -60,6 +60,7 @@ public class AIAgent : MonoBehaviour
     public bool stunned;
     ScriptedSequence[] sequences;
     public UnityEngine.Events.UnityEvent chaseOverride;
+    public float interactSpeedMultiplier = 1;
 
     void Start()
     {
@@ -183,7 +184,7 @@ public class AIAgent : MonoBehaviour
                 wwiseComponent?.SomethingWrong();
                 currState.state = AIState.INTERACT;
                 currState.location = (interactable as MonoBehaviour).transform;
-                timer = interactable.AIInteractTime();
+                timer = interactable.AIInteractTime() * interactSpeedMultiplier;
                 stoppedTime = 0f;
                 reachedInteractable = false;
             }
@@ -265,7 +266,7 @@ public class AIAgent : MonoBehaviour
                         IAIInteractable newInteractable = thingsToInteractWith.Peek();
                         if (newInteractable as MonoBehaviour)
                         {
-                            timer = newInteractable.AIInteractTime();
+                            timer = newInteractable.AIInteractTime() * interactSpeedMultiplier;
                             currState.state = AIState.INTERACT;
                             currState.location = (newInteractable as MonoBehaviour).transform;
                             stoppedTime = 0f;
@@ -363,7 +364,7 @@ public class AIAgent : MonoBehaviour
                         if (thingsToInteractWith.Count > 0)
                         {
                             IAIInteractable newInteractable = thingsToInteractWith.Peek();
-                            timer = newInteractable.AIInteractTime();
+                            timer = newInteractable.AIInteractTime() * interactSpeedMultiplier;
                             currState.state = AIState.INTERACT;
                             currState.location = (newInteractable as MonoBehaviour).transform;
                             stoppedTime = 0f;
@@ -408,7 +409,7 @@ public class AIAgent : MonoBehaviour
                             if (thingsToInteractWith.Count > 0)
                             {
                                 IAIInteractable newInteractable = thingsToInteractWith.Peek();
-                                timer = newInteractable.AIInteractTime();
+                                timer = newInteractable.AIInteractTime() * interactSpeedMultiplier;
                                 currState.location = (newInteractable as MonoBehaviour).transform;
                                 stoppedTime = 0f;
                             }
@@ -460,7 +461,7 @@ public class AIAgent : MonoBehaviour
         myBubble.Investigating();
     }
 
-    public static void SummonAI(GameObject to, float investigateTime, params AIInterest[] interests)
+    public static void SummonAI(GameObject to, float investigateTime, bool interruptInteract = false, params AIInterest[] interests)
     {
         foreach (AIAgent agent in FindObjectsOfType<AIAgent>())
         {
@@ -468,7 +469,7 @@ public class AIAgent : MonoBehaviour
             {
                 if (System.Array.Exists<AIInterest>(agent.interests, element => element == interest))
                 {
-                    agent.Investigate(to, investigateTime);
+                    agent.Investigate(to, investigateTime, forceOverrideInteract: interruptInteract);
                     break;
                 }
             }

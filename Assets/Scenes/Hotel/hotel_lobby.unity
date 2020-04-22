@@ -3072,6 +3072,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 559519558}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &589456647 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1837737337298108957, guid: af045fe6ba44be247951af92825e16b3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1978741387}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &592163168
 GameObject:
   m_ObjectHideFlags: 0
@@ -3628,7 +3640,6 @@ GameObject:
   - component: {fileID: 660843750}
   - component: {fileID: 660843752}
   - component: {fileID: 660843751}
-  - component: {fileID: 660843753}
   - component: {fileID: 660843754}
   - component: {fileID: 660843755}
   - component: {fileID: 660843756}
@@ -3683,20 +3694,6 @@ MonoBehaviour:
   canChangeLevels: 0
   lockChange: 0
   message: And so, the shoebox finds a ride to the airport...
---- !u!114 &660843753
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 660843749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: deb44153f50da6a4fa95d8801af1277a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectiveNum: 0
-  padding: 60
 --- !u!114 &660843754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5970,7 +5967,6 @@ GameObject:
   - component: {fileID: 1093549921}
   - component: {fileID: 1093549922}
   - component: {fileID: 1093549923}
-  - component: {fileID: 1093549924}
   - component: {fileID: 1093549925}
   - component: {fileID: 1093549926}
   - component: {fileID: 1093549927}
@@ -6069,19 +6065,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AIRadius: 0
---- !u!114 &1093549924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1093549917}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e429925e4038b0c41b341db468573747, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectiveNum: 1
 --- !u!114 &1093549925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10881,8 +10864,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3763203740898367856, guid: af045fe6ba44be247951af92825e16b3,
         type: 3}
+      propertyPath: objectives.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3763203740898367856, guid: af045fe6ba44be247951af92825e16b3,
+        type: 3}
       propertyPath: objectives.Array.data[0]
-      value: Find a <color=#FF4040>Suitcase</color>
+      value: Hitch a ride to the airport in a <color=red>suitcase</color>
       objectReference: {fileID: 0}
     - target: {fileID: 3763203740898367856, guid: af045fe6ba44be247951af92825e16b3,
         type: 3}
@@ -10894,6 +10882,11 @@ PrefabInstance:
       propertyPath: objectives.Array.data[2]
       value: Get in the <color=#FF4040>Suitcase</color>
       objectReference: {fileID: 0}
+    - target: {fileID: 3763203740898367856, guid: af045fe6ba44be247951af92825e16b3,
+        type: 3}
+      propertyPath: objectiveTagText
+      value: 
+      objectReference: {fileID: 589456647}
     - target: {fileID: 3921119617182025205, guid: af045fe6ba44be247951af92825e16b3,
         type: 3}
       propertyPath: m_SizeDelta.x

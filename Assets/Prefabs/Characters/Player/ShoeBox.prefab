@@ -6264,8 +6264,10 @@ MonoBehaviour:
   rotationSpeed: 360
   legForm: 0
   timeToFling: 0
+  heightDifference: 0.65
   footstepTiming: 0.5
   footstepSoundOffset: 0
+  footstepRadius: 1.3
   onStep:
     idInternal: 0
     valueGuidInternal: 
@@ -6278,7 +6280,11 @@ MonoBehaviour:
   wigglesRequired: 0
   lockChangeForm: 0
   lockShoeSight: 0
+  lockMovement: 0
+  loadPreviousState: 0
   verticalBoost: 0
+  minY: -10
+  useSnapRotation: 0
 --- !u!114 &2212071707321504983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6338,6 +6344,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61daea9be82f4e941857bc89658d6e7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onShoeSight:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: e87ba497e26db4293a468d386508cae9,
+      type: 2}
 --- !u!1 &2212071707485408968
 GameObject:
   m_ObjectHideFlags: 0

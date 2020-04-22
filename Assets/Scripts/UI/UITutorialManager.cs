@@ -39,6 +39,11 @@ public class UITutorialManager : MonoBehaviour
     public AIPatrolPoint[] dadRoomInvestigatePoints;
     private bool dadDoingRoomCheck;
 
+    public GameObject cart1;
+    public GameObject cart1Fixed;
+    public GameObject cart2;
+    public GameObject cart2Fixed;
+
     public AK.Wwise.Event onUIPopUp;
     public AK.Wwise.Event onSpaceBar;
 
@@ -264,5 +269,17 @@ public class UITutorialManager : MonoBehaviour
             dad.Investigate(point.gameObject, investigateTime: 2);
         }
         dadDoingRoomCheck = false;
+    }
+
+    public void FixFirstCart()
+    {
+        cart1.SetActive(false);
+        cart1Fixed.SetActive(true);
+    }
+
+    public void FixSecondCart()
+    {
+        cart2.SetActive(false);
+        cart2Fixed.SetActive(true);
     }
 }
