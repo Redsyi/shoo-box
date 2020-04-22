@@ -48,7 +48,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &5837550647356415703
 Transform:
@@ -143,6 +143,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6581748413619111559}
   - component: {fileID: 7243551477519760233}
+  - component: {fileID: 1799390148}
   m_Layer: 0
   m_Name: ending machine
   m_TagString: Untagged
@@ -178,9 +179,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb0d86eb7bc1c3a40a628b4e85569e9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possibleSpawns: []
-  spawnForce: 150
+  possibleSpawns:
+  - {fileID: 6625140383304966371, guid: 3f2f2281a906e7b43a21f085b21dd498, type: 3}
+  - {fileID: 5066607888115337882, guid: 69c2bc47dea0fe44ba6cd494d1f00d66, type: 3}
+  - {fileID: 7720294697537489157, guid: d2e82766e74c5184f99873f4f241c6b4, type: 3}
+  - {fileID: 2251250785549890556, guid: 8a39433da7f47724dbc0d6101b7f9cb5, type: 3}
+  - {fileID: 7644813368762103538, guid: ece89c9a703374d4e8288e5b7f75f97f, type: 3}
+  spawnForce: 40
   spawner: {fileID: 9019017116095216999}
+--- !u!65 &1799390148
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7857735265066218644}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2132416, y: 1.7773514, z: 1.4547501}
+  m_Center: {x: -0.10662079, y: 0.3886757, z: 0.04750824}
 --- !u!1 &9019017116095216999
 GameObject:
   m_ObjectHideFlags: 0

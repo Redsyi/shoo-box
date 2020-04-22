@@ -63,7 +63,7 @@ public class TSAAlert : MonoBehaviour, IAIInteractable
             alertTimeRemaining -= Time.deltaTime;
             if (alertTimeRemaining <= 0)
             {
-                AIAgent.SummonAI(gameObject, 2, interestMask);
+                AIAgent.SummonAI(gameObject, 2, true, interestMask);
             }
         }
     }

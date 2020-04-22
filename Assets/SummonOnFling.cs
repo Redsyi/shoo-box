@@ -7,6 +7,7 @@ public class SummonOnFling : MonoBehaviour
     public AIInterest[] AIs;
     public GameObject to;
     public float investigateTime = 3f;
+    public bool interruptInteract = true;
 
     private void Start()
     {
@@ -18,6 +19,6 @@ public class SummonOnFling : MonoBehaviour
 
     public void OnFling()
     {
-        AIAgent.SummonAI(to, investigateTime, AIs);
+        AIAgent.SummonAI(to, investigateTime, interruptInteract, AIs);
     }
 }

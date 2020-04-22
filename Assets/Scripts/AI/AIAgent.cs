@@ -452,7 +452,7 @@ public class AIAgent : MonoBehaviour
     }
 
 
-    public static void SummonAI(GameObject to, float investigateTime, params AIInterest[] interests)
+    public static void SummonAI(GameObject to, float investigateTime, bool interruptInteract = false, params AIInterest[] interests)
     {
         foreach (AIAgent agent in FindObjectsOfType<AIAgent>())
         {
@@ -460,7 +460,7 @@ public class AIAgent : MonoBehaviour
             {
                 if (System.Array.Exists<AIInterest>(agent.interests, element => element == interest))
                 {
-                    agent.Investigate(to, investigateTime);
+                    agent.Investigate(to, investigateTime, forceOverrideInteract: interruptInteract);
                     break;
                 }
             }
