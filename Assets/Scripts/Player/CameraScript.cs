@@ -113,13 +113,17 @@ public class CameraScript : MonoBehaviour
             }
 
             transform.position = player.transform.position + currScreenShake;
-            if (player.legForm && camera.orthographicSize < farZoomLevel)
+
+            if (!CameraZoomZone.active)
             {
-                camera.orthographicSize = Mathf.Min(farZoomLevel, camera.orthographicSize + (1 / zoomTime) * Time.deltaTime * (farZoomLevel - closeZoomLevel));
-            }
-            else if (!player.legForm && camera.orthographicSize > closeZoomLevel)
-            {
-                camera.orthographicSize = Mathf.Max(closeZoomLevel, camera.orthographicSize - (1 / zoomTime) * Time.deltaTime * (farZoomLevel - closeZoomLevel));
+                if (player.legForm && camera.orthographicSize < farZoomLevel)
+                {
+                    camera.orthographicSize = Mathf.Min(farZoomLevel, camera.orthographicSize + (1 / zoomTime) * Time.deltaTime * (farZoomLevel - closeZoomLevel));
+                }
+                else if (!player.legForm && camera.orthographicSize > closeZoomLevel)
+                {
+                    camera.orthographicSize = Mathf.Max(closeZoomLevel, camera.orthographicSize - (1 / zoomTime) * Time.deltaTime * (farZoomLevel - closeZoomLevel));
+                }
             }
         }
     }
