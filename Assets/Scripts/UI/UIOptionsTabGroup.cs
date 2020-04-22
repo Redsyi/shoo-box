@@ -23,9 +23,9 @@ public class UIOptionsTabGroup : MonoBehaviour
         tabButtons.Add(button);
 
         //Make first tab sprite automatically selected
-        if (selectedTab == null && tabButtons.Count > 2)
+        if (selectedTab == null && tabButtons.Count > 3)
         {
-            for (int i= 0; i < tabButtons.Count; i++)
+            for (int i = 0; i < tabButtons.Count; i++)
             {
                 string buttonName = tabButtons[i].gameObject.name;
                 if (buttonName == "Level Select")
@@ -69,8 +69,9 @@ public class UIOptionsTabGroup : MonoBehaviour
         button.background.sprite = tabActive;
 
         //Swap tab pages on select
-        //index incorrect bc using PauseMenu prefab; change later
-        int index = button.transform.GetSiblingIndex() - 7;
+        //index incorrect bc of tab parenting, so do minus 1
+        //Keep OptionsMenu set inactive so list is populated correctly
+        int index = button.transform.GetSiblingIndex() - 1;
         for (int i = 0; i < objectsToSwap.Count; i++)
         {
             if (i == index)
