@@ -12,6 +12,7 @@ public class StoplightIntersection : MonoBehaviour
     public float lightTiming;
     public float yellowLength;
     public float greenDelay;
+    public AK.Wwise.Event lightChangeEvent;
 
     CityRoad road;
     Dictionary<Direction, bool> alwaysOn;
@@ -71,6 +72,8 @@ public class StoplightIntersection : MonoBehaviour
             eastLight.TurnColor(StoplightColor.RED);
             westLight.TurnColor(StoplightColor.RED);
             yield return new WaitForSeconds(greenDelay);
+            if (Utilities.OnScreen(transform.position))
+                lightChangeEvent.Post(gameObject);
             northLight.TurnColor(StoplightColor.GREEN);
             southLight.TurnColor(StoplightColor.GREEN);
             road.canGo[Direction.NORTH] = true;
@@ -87,6 +90,8 @@ public class StoplightIntersection : MonoBehaviour
             northLight.TurnColor(StoplightColor.RED);
             southLight.TurnColor(StoplightColor.RED);
             yield return new WaitForSeconds(greenDelay);
+            if (Utilities.OnScreen(transform.position))
+                lightChangeEvent.Post(gameObject);
             eastLight.TurnColor(StoplightColor.GREEN);
             westLight.TurnColor(StoplightColor.GREEN);
             road.canGo[Direction.EAST] = true;

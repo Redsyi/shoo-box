@@ -7,12 +7,14 @@ public class AICar : MonoBehaviour, IKickable
     public float speed;
     public bool canDrive;
     public float turnRate;
+    public AK.Wwise.Event honkSound;
 
     Direction movingDirection;
     CityRoad currRoad;
     float turnRateMultiplier = 1f;
     [HideInInspector]
     public bool moving;
+    bool stuck;
 
     void Start()
     {
@@ -39,6 +41,20 @@ public class AICar : MonoBehaviour, IKickable
         StartCoroutine(WaitForRoads());
     }
 
+    IEnumerator Honk()
+    {
+        while (canDrive)
+        {
+            if (!moving && Utilities.OnScreen(transform.position))
+            {
+                yield return new WaitForSeconds(Random.Range(0f, 5f));
+                honkSound.Post(gameObject);
+                yield return new WaitForSeconds(Random.Range(4f, 8f));
+            }
+            yield return null;
+        }
+    }
+
     IEnumerator WaitForRoads()
     {
         yield return null;
@@ -60,6 +76,7 @@ public class AICar : MonoBehaviour, IKickable
             if (canDrive)
             {
                 StartCoroutine(Drive());
+                StartCoroutine(Honk());
                 StartCoroutine(AdjustDirection());
             }
         } else

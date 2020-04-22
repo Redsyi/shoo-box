@@ -70,7 +70,7 @@ public class UIPauseMenu : MonoBehaviour
     {
         onHovered.Post(gameObject);
         Time.timeScale = 1;
-        LevelBridge.BridgeTo(0, "See ya later!");
+        LevelBridge.BridgeTo("MainMenu", "See ya later!");
         onPressed.Post(gameObject);
     }
 

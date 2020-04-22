@@ -7,6 +7,7 @@ public class ConveyorBeltSwitch : MonoBehaviour, IKickable, ISandalable, IAIInte
 {
     private Animator animator;
     public AIInterest[] interestMask;
+    public AK.Wwise.Event sound;
 
     private void Start()
     {
@@ -15,8 +16,7 @@ public class ConveyorBeltSwitch : MonoBehaviour, IKickable, ISandalable, IAIInte
 
     public void HitBySandal()
     {
-        ConveyorBelt.ToggleActive();
-        animator.SetTrigger("Trigger");
+        Toggle();
 
         if (!ConveyorBelt.active)
         {
@@ -28,8 +28,7 @@ public class ConveyorBeltSwitch : MonoBehaviour, IKickable, ISandalable, IAIInte
 
     public void OnKick(GameObject kicker)
     {
-        ConveyorBelt.ToggleActive();
-        animator.SetTrigger("Trigger");
+        Toggle();
     }
 
     public float AIInteractTime()
@@ -39,8 +38,7 @@ public class ConveyorBeltSwitch : MonoBehaviour, IKickable, ISandalable, IAIInte
 
     public void AIFinishInteract()
     {
-        ConveyorBelt.ToggleActive();
-        animator.SetTrigger("Trigger");
+        Toggle();
     }
 
     public void AIInteracting(float interactProgress)
@@ -52,6 +50,7 @@ public class ConveyorBeltSwitch : MonoBehaviour, IKickable, ISandalable, IAIInte
     {
         ConveyorBelt.ToggleActive();
         animator.SetTrigger("Trigger");
+        sound.Post(gameObject);
     }
 
     public void ToggleAfterTime(float time)

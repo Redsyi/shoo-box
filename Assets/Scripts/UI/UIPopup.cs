@@ -33,7 +33,7 @@ public class UIPopup : MonoBehaviour
 
     public void Dismiss()
     {
-        if (active && !UIPauseMenu.instance.paused)
+        if (active && (!UIPauseMenu.instance || !UIPauseMenu.instance.paused))
         {
             if (animator)
                 animator.SetTrigger("Dismiss");

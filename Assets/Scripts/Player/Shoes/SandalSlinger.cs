@@ -56,6 +56,7 @@ public class SandalSlinger : MonoBehaviour
     public SkinnedMeshRenderer rightSandalModel;
     LayerMask previewMask;
     LayerMask blockingMask;
+    public AK.Wwise.Event sandalFlingSound;
 
     public void ClearTarget(Transform target)
     {
@@ -80,6 +81,7 @@ public class SandalSlinger : MonoBehaviour
             sandal.target = currTarget;
             rightSandalModel.enabled = false;
             slinging = true;
+            sandalFlingSound.Post(gameObject);
         }
     }
 

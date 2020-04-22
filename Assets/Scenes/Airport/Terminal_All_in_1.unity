@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2295,10 +2295,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33e44624bf18d945b1e5e86b56235f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: 7
+  scene: CityTerminalCutscene
   canChangeLevels: 1
   lockChange: 0
-  message: Our brave shoebox boards the flight
+  message: Our brave shoebox boards the flight...
 --- !u!65 &96172509
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10440,12 +10440,12 @@ MonoBehaviour:
   data:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 9d4aeb82c8f274d62b43a6a6a0fa9caf,
+    WwiseObjectReference: {fileID: 11400000, guid: b7e7ee1054ea44a6a8fb7c360cd25357,
       type: 2}
   decodeBank: 0
   loadAsynchronous: 0
   saveDecodedBank: 0
-  unloadTriggerList: 
+  unloadTriggerList: 958ca0ea
   bankNameInternal: 
   valueGuidInternal: 
 --- !u!1001 &437695492
@@ -44623,6 +44623,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1079682692004621142, guid: 007f3037e51740f4398ac09eb6c169ed,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1079682692004621142, guid: 007f3037e51740f4398ac09eb6c169ed,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1732203441341445733, guid: 007f3037e51740f4398ac09eb6c169ed,
         type: 3}
       propertyPath: m_RootOrder
@@ -44648,10 +44658,15 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3772877572154549359, guid: 007f3037e51740f4398ac09eb6c169ed,
+    - target: {fileID: 3350728747149874838, guid: 007f3037e51740f4398ac09eb6c169ed,
         type: 3}
       propertyPath: m_RootOrder
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3772877572154549359, guid: 007f3037e51740f4398ac09eb6c169ed,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4081463118562731017, guid: 007f3037e51740f4398ac09eb6c169ed,
         type: 3}
@@ -44833,6 +44848,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6446691151452149144, guid: 007f3037e51740f4398ac09eb6c169ed,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6730991492419335454, guid: 007f3037e51740f4398ac09eb6c169ed,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -44866,11 +44886,16 @@ PrefabInstance:
     - target: {fileID: 6759842155964543995, guid: 007f3037e51740f4398ac09eb6c169ed,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 500.28
       objectReference: {fileID: 0}
     - target: {fileID: 6759842155964543995, guid: 007f3037e51740f4398ac09eb6c169ed,
         type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6759842155964543995, guid: 007f3037e51740f4398ac09eb6c169ed,
+        type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7439163609206807878, guid: 007f3037e51740f4398ac09eb6c169ed,
@@ -44881,7 +44906,7 @@ PrefabInstance:
     - target: {fileID: 7564583568564921119, guid: 007f3037e51740f4398ac09eb6c169ed,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7564583568564921119, guid: 007f3037e51740f4398ac09eb6c169ed,
         type: 3}
@@ -50481,24 +50506,28 @@ MonoBehaviour:
     setLegForm: 0
     legForm: 1
     startingShoes: 0100000002000000
+    resetCamera: 1
   - wigglesRequired: 0
     lockChangeForm: 0
     lockShoeSight: 0
     setLegForm: 0
     legForm: 1
     startingShoes: 0100000002000000
+    resetCamera: 1
   - wigglesRequired: 0
     lockChangeForm: 0
     lockShoeSight: 0
     setLegForm: 0
     legForm: 1
     startingShoes: 0100000002000000
+    resetCamera: 1
   - wigglesRequired: 0
     lockChangeForm: 0
     lockShoeSight: 0
     setLegForm: 0
     legForm: 1
     startingShoes: 0100000002000000
+    resetCamera: 1
 --- !u!114 &5007555086076137469
 MonoBehaviour:
   m_ObjectHideFlags: 0

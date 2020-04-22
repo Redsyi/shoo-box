@@ -1487,6 +1487,16 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 277
       objectReference: {fileID: 0}
+    - target: {fileID: 1079682692004621142, guid: 007f3037e51740f4398ac09eb6c169ed,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1079682692004621142, guid: 007f3037e51740f4398ac09eb6c169ed,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2623188491257170243, guid: 007f3037e51740f4398ac09eb6c169ed,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -1660,11 +1670,16 @@ PrefabInstance:
     - target: {fileID: 6759842155964543995, guid: 007f3037e51740f4398ac09eb6c169ed,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 500.28
       objectReference: {fileID: 0}
     - target: {fileID: 6759842155964543995, guid: 007f3037e51740f4398ac09eb6c169ed,
         type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6759842155964543995, guid: 007f3037e51740f4398ac09eb6c169ed,
+        type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7564583568564921119, guid: 007f3037e51740f4398ac09eb6c169ed,
@@ -16005,7 +16020,7 @@ MonoBehaviour:
   decodeBank: 0
   loadAsynchronous: 0
   saveDecodedBank: 0
-  unloadTriggerList: 
+  unloadTriggerList: 958ca0ea
   bankNameInternal: 
   valueGuidInternal: 
 --- !u!1001 &1339247167
@@ -18466,6 +18481,7 @@ MonoBehaviour:
   AIs: 0b000000
   to: {fileID: 1662710357}
   investigateTime: 0.01
+  interruptInteract: 1
 --- !u!114 &1520150695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18481,6 +18497,7 @@ MonoBehaviour:
   AIs: 0b000000
   to: {fileID: 1662710357}
   investigateTime: 0.01
+  interruptInteract: 1
 --- !u!1 &1527855381
 GameObject:
   m_ObjectHideFlags: 0
@@ -20714,6 +20731,7 @@ MonoBehaviour:
   AIs: 0b000000
   to: {fileID: 1662710357}
   investigateTime: 0.01
+  interruptInteract: 1
 --- !u!114 &1662710360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20729,6 +20747,7 @@ MonoBehaviour:
   AIs: 0b000000
   to: {fileID: 1662710357}
   investigateTime: 0.01
+  interruptInteract: 1
 --- !u!1 &1665593483
 GameObject:
   m_ObjectHideFlags: 0
@@ -23746,10 +23765,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33e44624bf18d945b1e5e86b56235f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: 6
+  scene: Terminal_All_in_1
   canChangeLevels: 1
   lockChange: 1
-  message: Finally made it to the terminal
+  message: Our shoebox has made it to the terminal...
 --- !u!1 &1911652251
 GameObject:
   m_ObjectHideFlags: 0
@@ -25450,6 +25469,7 @@ MonoBehaviour:
   AIs: 07000000
   to: {fileID: 1722645178}
   investigateTime: 0.01
+  interruptInteract: 1
 --- !u!114 &2030218861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25465,6 +25485,7 @@ MonoBehaviour:
   AIs: 07000000
   to: {fileID: 1722645178}
   investigateTime: 0.01
+  interruptInteract: 1
 --- !u!1 &2040665085
 GameObject:
   m_ObjectHideFlags: 0
