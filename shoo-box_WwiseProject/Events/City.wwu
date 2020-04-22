@@ -113,6 +113,83 @@
 					</ChildrenList>
 				</Event>
 				<Event Name="City_Ambience" ID="{9F1F18DE-D72D-47C9-8357-338C2DB50554}"/>
+				<Event Name="City_Car_Honking" ID="{E67F4B58-8266-473F-8B92-7C195A8E1254}">
+					<ChildrenList>
+						<Action Name="" ID="{679C6BC0-0528-4EEC-BAF7-3E03BFD836F7}" ShortID="823730263">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Car Honking" ID="{DCC3EC1C-432C-4100-A6C2-9FD68C7AB989}" WorkUnitID="{ED283715-517C-46E9-9FF8-F0DF71A35DB0}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Player_City_Boot" ID="{83673C37-B2A7-4C3B-9F66-4CA265835B4A}">
+					<ChildrenList>
+						<Action Name="" ID="{61EBA6AA-B75F-47BF-98C4-58E672BEF163}" ShortID="833007345">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Player_City_Walk" ID="{B476B239-ECF4-4EE3-9AD9-C756F8779764}" WorkUnitID="{ED283715-517C-46E9-9FF8-F0DF71A35DB0}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Player_City_Sandal" ID="{11DB899A-03FA-4083-9526-E664545488BA}">
+					<ChildrenList>
+						<Action Name="" ID="{CEF54B40-B026-49B1-8A1D-51955A8F68DF}" ShortID="383822324">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Player_City_Sandals_DEMO" ID="{6093468B-8089-446F-9C42-551BF7BD8689}" WorkUnitID="{ED283715-517C-46E9-9FF8-F0DF71A35DB0}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Player_City_BusEngine" ID="{70D327B0-332A-4DB5-8EA0-A64AC252B9A3}">
+					<ChildrenList>
+						<Action Name="" ID="{B2502C80-4EAC-4BCD-9866-ED78E3BD46B7}" ShortID="934568081">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Player_CarEngine_CityLevel" ID="{97BDE745-4BC6-44A9-80F4-F8A8F79A7D08}" WorkUnitID="{ED283715-517C-46E9-9FF8-F0DF71A35DB0}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="City_Tree_Kick" ID="{011386FD-7ED4-4DA3-9B6D-C271B5E44257}">
+					<ChildrenList>
+						<Action Name="" ID="{45078BAE-6D8F-40C3-9143-80E33A03FE8B}" ShortID="484708940">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="City_Kickable_Tree_Uproot" ID="{8DCEC9DA-D8DE-4BF8-8CD1-526C8E30927A}" WorkUnitID="{ED283715-517C-46E9-9FF8-F0DF71A35DB0}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="City_Tree_Fall" ID="{C0CADBB8-C72B-4154-8149-AC7666C7B43B}">
+					<ChildrenList>
+						<Action Name="" ID="{B1C133E9-3D62-4778-BD26-134C0A7F95FE}" ShortID="286816453">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="City_Kickable_Tree_Fall" ID="{1EFB6999-1E48-4BC4-A060-512858CCD90E}" WorkUnitID="{ED283715-517C-46E9-9FF8-F0DF71A35DB0}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="City_Traffic_Light" ID="{7C8144F1-812E-484D-B3AE-1E8C8EA4BE8E}">
+					<ChildrenList>
+						<Action Name="" ID="{88FE0989-0A61-4097-85B4-A9A5401AB97C}" ShortID="90333304">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="City_TrafficLight_Blinking" ID="{AC28DB71-C0EB-4DC3-9D17-913F608C2151}" WorkUnitID="{ED283715-517C-46E9-9FF8-F0DF71A35DB0}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

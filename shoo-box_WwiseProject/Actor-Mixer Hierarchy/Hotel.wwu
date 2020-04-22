@@ -289,7 +289,33 @@
 								<ActiveSource Name="Hotel_ElevatorDing" ID="{F99A4E31-5532-4D95-A746-CB12D6EE565B}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<Sound Name="Door_Open" ID="{D80334A1-AA4F-4D0D-95AC-4E8080F21AB5}" ShortID="991872935">
+						<Sound Name="VendingMachine" ID="{AA86E241-DAED-4CDF-8EE5-7F61EC645254}" ShortID="268191951">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="SFX" ID="{E6E0FB3C-828B-4E03-A458-DEB3207DD893}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Player_Hotel_Kickable_VendingMachine" ID="{C7168F14-3831-494E-AED2-BD8609C997BE}" ShortID="313509977">
+									<Language>SFX</Language>
+									<AudioFile>Player_Hotel_Kickable_VendingMachine.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Player_Hotel_Kickable_VendingMachine" ID="{C7168F14-3831-494E-AED2-BD8609C997BE}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Hotel_Door_Kickable_Slam" ID="{943A3735-11A4-4E2C-BC57-83D9BC4D9726}" ShortID="477894137">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>4</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
@@ -299,18 +325,32 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="Door_Open" ID="{E7081D3D-4162-4519-BD86-A5B9538415C0}" ShortID="5879603">
-									<PropertyList>
-										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-										<Property Name="TrimBegin" Type="Real64" Value="0.283460709718326"/>
-										<Property Name="TrimEnd" Type="Real64" Value="1.45297079021182"/>
-									</PropertyList>
+								<AudioFileSource Name="Hotel_Door_Kickable_Slam" ID="{1B1B4BBF-0793-446C-9EE1-E0CC169F8DB5}" ShortID="809187193">
 									<Language>SFX</Language>
-									<AudioFile>Door_Open.wav</AudioFile>
+									<AudioFile>Hotel_Door_Kickable_Slam.wav</AudioFile>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="Door_Open" ID="{E7081D3D-4162-4519-BD86-A5B9538415C0}" Platform="Linked"/>
+								<ActiveSource Name="Hotel_Door_Kickable_Slam" ID="{1B1B4BBF-0793-446C-9EE1-E0CC169F8DB5}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Hotel_Door_Open" ID="{94E4635C-C9F2-41F7-9DAF-21E3555B4150}" ShortID="119418999">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Hotel_Door_Open" ID="{E75D8872-DDDA-4C59-BBE4-CD19D5966494}" ShortID="688545077">
+									<Language>SFX</Language>
+									<AudioFile>Hotel_Door_Open.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Hotel_Door_Open" ID="{E75D8872-DDDA-4C59-BBE4-CD19D5966494}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>

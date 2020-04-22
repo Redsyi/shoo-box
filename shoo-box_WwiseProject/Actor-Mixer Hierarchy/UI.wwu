@@ -23,13 +23,13 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="Confirmation" ID="{1A02DDF6-CE87-462F-A8C1-187949AB88B3}" ShortID="978201923">
+								<AudioFileSource Name="UI_Click" ID="{569D16F1-1018-4323-B465-57CC33BCB668}" ShortID="518777889">
 									<Language>SFX</Language>
-									<AudioFile>Confirmation.wav</AudioFile>
+									<AudioFile>UI_Click.wav</AudioFile>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="Confirmation" ID="{1A02DDF6-CE87-462F-A8C1-187949AB88B3}" Platform="Linked"/>
+								<ActiveSource Name="UI_Click" ID="{569D16F1-1018-4323-B465-57CC33BCB668}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="UI Theme" ID="{9F8CA536-9AF4-4EDD-B3A3-1B69182D6DDF}" ShortID="952119124">
@@ -72,7 +72,8 @@
 									<PropertyList>
 										<Property Name="FadeOutDuration" Type="Real64" Value="0.0440387045813586"/>
 										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-										<Property Name="TrimEnd" Type="Real64" Value="0.355062055687204"/>
+										<Property Name="TrimBegin" Type="Real64" Value="1.48222748815166"/>
+										<Property Name="TrimEnd" Type="Real64" Value="1.73065447274882"/>
 									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>UI_Close.wav</AudioFile>
@@ -108,8 +109,7 @@
 									<PropertyList>
 										<Property Name="FadeOutDuration" Type="Real64" Value="0.028436018957346"/>
 										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-										<Property Name="TrimBegin" Type="Real64" Value="0.158175355450237"/>
-										<Property Name="TrimEnd" Type="Real64" Value="0.287914691943128"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.170616113744076"/>
 									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>UI_Hover.wav</AudioFile>

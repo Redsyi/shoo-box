@@ -177,6 +177,39 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Hotel_VendingMachine_Kick" ID="{4F907E5E-7122-4B8E-9383-EB591047AC6A}">
+					<ChildrenList>
+						<Action Name="" ID="{8E6073D1-A2D5-48FC-A40B-C2C427F2A57C}" ShortID="713566804">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="VendingMachine" ID="{AA86E241-DAED-4CDF-8EE5-7F61EC645254}" WorkUnitID="{25563D8B-DCAC-4B3D-B21C-FEBC5B0E321B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Hotel_Door_Open" ID="{5A6F22AF-32C5-4DF3-81B2-E818D0A95A8B}">
+					<ChildrenList>
+						<Action Name="" ID="{5CF01442-829B-45D1-8DE7-14B81E908C9B}" ShortID="467504529">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Hotel_Door_Open" ID="{94E4635C-C9F2-41F7-9DAF-21E3555B4150}" WorkUnitID="{25563D8B-DCAC-4B3D-B21C-FEBC5B0E321B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Hotel_Door_Slam" ID="{A53787A4-33B6-4BE1-B73D-3F5BA54EA2C7}">
+					<ChildrenList>
+						<Action Name="" ID="{F2A795A8-2EC2-4766-815A-D251FC2B31C3}" ShortID="337445290">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Hotel_Door_Kickable_Slam" ID="{943A3735-11A4-4E2C-BC57-83D9BC4D9726}" WorkUnitID="{25563D8B-DCAC-4B3D-B21C-FEBC5B0E321B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
