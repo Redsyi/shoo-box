@@ -44,7 +44,7 @@ public class UIOptionsTabGroup : MonoBehaviour
         if (selectedTab == null || button != selectedTab)
         {
             button.background.sprite = tabHover;
-            button.background.color = new Color(0.9f,0.9f,0.9f);
+            button.background.color = new Color(0.9f,0.5f,0.9f);
         }
         
     }
