@@ -10,6 +10,7 @@ public class UIOptionsTabButton : MonoBehaviour, IPointerEnterHandler, IPointerC
 {
     public UIOptionsTabGroup tabGroup;
     public Image background;
+    public Navigation tabNavigation = new Navigation() { mode = Navigation.Mode.Automatic };
     public UnityEvent onTabSelected;
     public UnityEvent onTabDeselected;
 
