@@ -21,11 +21,24 @@ public class UIPauseMenu : MonoBehaviour
     public CanvasGroup controls;
     public CanvasGroup settings;
 
+    public UIButtonPane buttonPane;
+    public GameObject[] panes;
+    public int currPaneIdx;
 
+    GameObject currPane => panes[currPaneIdx];
+    
     //Toggle controls view between controller/keyboard
     public GameObject toggleController;
     public GameObject toggleKeyboard;
     public GameObject toggleLabel;
+
+    public Image leftTabControl;
+    public Image rightTabControl;
+    public Sprite leftTabKeySprite;
+    public Sprite rightTabKeySprite;
+    public Sprite leftTabConSprite;
+    public Sprite rightTabConSprite;
+
     private string toggleText;
     public bool conToggled { get; private set; }
 
@@ -46,17 +59,64 @@ public class UIPauseMenu : MonoBehaviour
         else
             unpauseSound.Post(gameObject);
 
+        if (paused)
+            buttonPane.Activate();
+        else
+            buttonPane.Deactivate();
+
         gameObject.SetActive(paused);
 
         if (paused)
             EventSystem.current.SetSelectedGameObject(defaultSelected);
 
-        
+        bool usingGamepad = (Player.current ? Player.current.usingController : false);
+        toggleController.SetActive(usingGamepad);
+        toggleKeyboard.SetActive(!usingGamepad);
+
+
+        if (usingGamepad)
+        {
+            leftTabControl.sprite = leftTabConSprite;
+            leftTabControl.SetNativeSize();
+            rightTabControl.sprite = rightTabConSprite;
+            rightTabControl.SetNativeSize();
+        }
+        else
+        {
+            leftTabControl.sprite = leftTabKeySprite;
+            leftTabControl.SetNativeSize();
+            rightTabControl.sprite = rightTabKeySprite;
+            rightTabControl.SetNativeSize();
+        }
+
+
         Time.timeScale = (paused ? 0 : 1);
         (paused ? pauseSound : unpauseSound)?.Post(gameObject);
 
     }
-    
+
+    public void NextTab()
+    {
+        if (currPaneIdx < panes.Length - 1)
+        {
+            AnimateOut(currPane, UIDirection.LEFT);
+            currPaneIdx++;
+            AnimateIn(currPane, UIDirection.RIGHT);
+            buttonPane.Select(currPaneIdx);
+        }
+    }
+
+    public void PrevTab()
+    {
+        if (currPaneIdx > 0)
+        {
+            AnimateOut(currPane, UIDirection.RIGHT);
+            currPaneIdx--;
+            AnimateIn(currPane, UIDirection.LEFT);
+            buttonPane.Select(currPaneIdx);
+        }
+    }
+
 
     public void OnRetryPressed()
     {
@@ -136,5 +196,59 @@ public class UIPauseMenu : MonoBehaviour
             toggleText = "Keyboard";
             toggleLabel.GetComponent<Text>().text = toggleText;
         }
+    }
+
+    void AnimateIn(GameObject pane, UIDirection direction)
+    {
+        StartCoroutine(DoAnimateIn(pane, direction));
+    }
+
+    void AnimateOut(GameObject pane, UIDirection direction)
+    {
+        StartCoroutine(DoAnimateOut(pane, direction));
+    }
+
+    IEnumerator DoAnimateIn(GameObject pane, UIDirection direction)
+    {
+        float animationTime = 0.5f;
+        float timePassed = 0f;
+        float progress = 0f;
+        RectTransform rect = pane.GetComponent<RectTransform>();
+        pane.SetActive(true);
+        Vector2 originalPivot = (direction == UIDirection.LEFT ? new Vector2(1, 0.5f) : new Vector2(0, 0.5f));
+        Vector2 originalAnchor = (direction == UIDirection.LEFT ? new Vector2(0, 0.5f) : new Vector2(1, 0.5f));
+        Vector2 destPivot = new Vector2(0.5f, 0.5f);
+        while (progress < 1)
+        {
+            yield return null;
+            timePassed += Time.unscaledDeltaTime;
+            progress = Mathf.Clamp01(timePassed / animationTime);
+            rect.pivot = Vector2.Lerp(originalPivot, destPivot, progress);
+            rect.anchorMin = Vector2.Lerp(originalAnchor, destPivot, progress);
+            rect.anchorMax = Vector2.Lerp(originalAnchor, destPivot, progress);
+            rect.anchoredPosition = Vector2.zero;
+        }
+    }
+
+    IEnumerator DoAnimateOut(GameObject pane, UIDirection direction)
+    {
+        float animationTime = 0.5f;
+        float timePassed = 0f;
+        float progress = 0f;
+        RectTransform rect = pane.GetComponent<RectTransform>();
+        Vector2 destPivot = (direction == UIDirection.LEFT ? new Vector2(1, 0.5f) : new Vector2(0, 0.5f));
+        Vector2 destAnchor = (direction == UIDirection.LEFT ? new Vector2(0, 0.5f) : new Vector2(1, 0.5f));
+        Vector2 originalPivot = new Vector2(0.5f, 0.5f);
+        while (progress < 1)
+        {
+            yield return null;
+            timePassed += Time.unscaledDeltaTime;
+            progress = Mathf.Clamp01(timePassed / animationTime);
+            rect.pivot = Vector2.Lerp(originalPivot, destPivot, progress);
+            rect.anchorMin = Vector2.Lerp(originalPivot, destAnchor, progress);
+            rect.anchorMax = Vector2.Lerp(originalPivot, destAnchor, progress);
+            rect.anchoredPosition = Vector2.zero;
+        }
+        pane.SetActive(false);
     }
 }

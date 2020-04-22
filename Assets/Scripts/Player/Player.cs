@@ -694,11 +694,26 @@ public class Player : MonoBehaviour
 
     private void OnChaseStarted()
     {
-        Debug.Log("player chase begins");
+        //Debug.Log("player chase begins");
     }
 
     private void OnChaseEnded()
     {
-        Debug.Log("player chase ends");
+        //Debug.Log("player chase ends");
+    }
+
+    public void OnChangeTab(InputValue val)
+    {
+        if (UIPauseMenu.instance)
+        {
+            float value = val.Get<float>();
+            if (value > 0)
+            {
+                UIPauseMenu.instance.NextTab();
+            } else
+            {
+                UIPauseMenu.instance.PrevTab();
+            }
+        }
     }
 }

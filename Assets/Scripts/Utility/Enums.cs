@@ -78,6 +78,12 @@ public enum Direction
     WEST
 }
 
+public enum UIDirection
+{
+    LEFT,
+    RIGHT
+}
+
 public enum StoplightColor
 {
     GREEN,
