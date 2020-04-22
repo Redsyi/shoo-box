@@ -11,16 +11,18 @@ public class TutorialPlayerHideDetector : MonoBehaviour
     private Collider collider;
     public UnityEvent invokeOnCompleted;
     public UnityEvent invokeOnPlayerLeft;
+    bool foundPlayer;
 
     private void Start()
     {
         detectPlayer = false;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (detectPlayer)
+        if (detectPlayer && !foundPlayer)
         {
+            foundPlayer = true;
             invokeOnCompleted.Invoke();
         }
     }

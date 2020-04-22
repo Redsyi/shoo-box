@@ -44,11 +44,14 @@ public class UITutorialManager : MonoBehaviour
     public GameObject cart2;
     public GameObject cart2Fixed;
 
+    public GameObject controlsReminder;
+
     public AK.Wwise.Event onUIPopUp;
     public AK.Wwise.Event onSpaceBar;
 
     void Start()
     {
+        controlsReminder.SetActive(false);
         instance = this;
         if (!finishedTutorial)
         {
@@ -192,6 +195,7 @@ public class UITutorialManager : MonoBehaviour
     public void PlayerStoodUp()
     {
         StartCoroutine(ShowObjectiveList());
+        controlsReminder.SetActive(true);
     }
 
     public void DoKickTutorial()
@@ -218,10 +222,13 @@ public class UITutorialManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         /*objectiveTrackerAnimator.SetTrigger("Activate");*/
         FadeEffect list = FindObjectOfType<FadeEffect>();
-        list.Fade();
-        yield return new WaitForSeconds(5);
-        print("Fading objective list out");
-        list.Fade();
+        if (list)
+        {
+            list.Fade();
+            yield return new WaitForSeconds(5);
+            print("Fading objective list out");
+            list.Fade();
+        }
     }
 
     IEnumerator ShowerSwitch()

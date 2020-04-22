@@ -12,6 +12,7 @@ public class UIShoeSightReminder : MonoBehaviour
     public static UIShoeSightReminder instance;
     private bool active;
     private Player player;
+    public bool doReminders = true;
     //public AK.Wwise.Event onShoeSight;
 
     private void Start()
@@ -28,9 +29,9 @@ public class UIShoeSightReminder : MonoBehaviour
         }
         timeSinceObjectiveCompleted += Time.deltaTime;
         bool timeUp = timeSinceObjectiveCompleted >= objectiveCompleteTimeLimit && timeSinceShoeSightUsed >= shoeSightUseTimeLimit;
-        if  (timeUp && !active)
+        if  (timeUp && !active && doReminders)
         {
-            group.alpha = 1f;
+            group.alpha = 0.8f;
             active = true;
         } else if (active && !timeUp)
         {
