@@ -8,6 +8,7 @@ public class BuildingDestroyer : MonoBehaviour
     public float minVelocity;
     float minVelocitySqr => minVelocity * minVelocity;
     Rigidbody rigidbody;
+    public AK.Wwise.Event groundImpactSound;
 
     private void Start()
     {
@@ -30,6 +31,12 @@ public class BuildingDestroyer : MonoBehaviour
                 {
                     Debug.LogWarning($"{building.gameObject.name} has no AkEventOnKick");
                 }
+            }
+        } else if (!collision.gameObject.CompareTag("Player"))
+        {
+            if (rigidbody.velocity.sqrMagnitude >= minVelocitySqr)
+            {
+                groundImpactSound.Post(gameObject);
             }
         }
     }

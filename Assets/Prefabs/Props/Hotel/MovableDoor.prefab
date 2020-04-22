@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7385047807001689347}
   - component: {fileID: 4303102523748026170}
   - component: {fileID: 5210275440326552061}
+  - component: {fileID: 2036096854364568547}
   m_Layer: 8
   m_Name: Hinge
   m_TagString: Untagged
@@ -165,6 +166,23 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &2036096854364568547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083412320186812287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42877852c9da54bba9025ef0ed61f04c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KickSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 34735b8f5f33a3c47bd147ffeead1cbd,
+      type: 2}
 --- !u!1 &2083412320873808715
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,7 +192,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2083412320873808712}
-  - component: {fileID: 379127797267723427}
   m_Layer: 0
   m_Name: MovableDoor
   m_TagString: Untagged
@@ -197,23 +214,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &379127797267723427
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2083412320873808715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42877852c9da54bba9025ef0ed61f04c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  KickSound:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 9843d7be5521640d6b1e6a0e8b28b1af,
-      type: 2}
 --- !u!1 &3803564868686824268
 GameObject:
   m_ObjectHideFlags: 0

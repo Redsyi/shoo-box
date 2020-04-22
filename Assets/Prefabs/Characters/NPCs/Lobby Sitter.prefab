@@ -70,7 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b2f666398a565843b8ca12a5d16f059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolPoint: {fileID: 0}
+  patrolPoints: []
   animator: {fileID: 2585717611578675251}
   pathfinder: {fileID: 1962363799068655543}
   targetPrefab: {fileID: 1146112242645686859, guid: fc24d7070b2a9d2499e6d4fe165d1da6,
@@ -83,6 +83,25 @@ MonoBehaviour:
   runSpeed: 0
   interests: 
   beingRepelled: 0
+  deaf: 0
+  thrower: {fileID: 0}
+  throwWaitTime: 0
+  onSpot:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: ca61a58cb032e6841ac906163354714a,
+      type: 2}
+  onInvestigate:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 56cf2d558f3a8df40a17eea9e4595141,
+      type: 2}
+  gameOverName: 
+  stunned: 0
+  chaseOverride:
+    m_PersistentCalls:
+      m_Calls: []
+  interactSpeedMultiplier: 1
 --- !u!1 &2954704617648714732
 GameObject:
   m_ObjectHideFlags: 0
