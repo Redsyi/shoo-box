@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
@@ -25,6 +26,7 @@ public class Player : MonoBehaviour
     public Transform AISpotPoint;
     public GameObject[] leggs;
     public ShoeSight shoeSight;
+    public Image health;
 
     [Header("Stats")]
     public ShoeType[] startingShoes;
@@ -179,6 +181,18 @@ public class Player : MonoBehaviour
             else if (shoeManager.currShoe == ShoeType.FLIPFLOPS)
                 shoeManager.SwitchTo(ShoeType.BOOTS);
         }
+    }
+
+    public void HitByEnemy(float damage)
+    {
+        health.fillAmount -= damage;
+        print("Health: " + health.fillAmount);
+        if(health.fillAmount <= 0)
+        {
+            //wwiseComponent?.PlayerCaught();
+            LevelBridge.Reload("Oh no! The military got you.");
+        }
+
     }
 
     private void FixedUpdate()
