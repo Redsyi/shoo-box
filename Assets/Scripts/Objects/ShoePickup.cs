@@ -12,10 +12,8 @@ public class ShoePickup : MonoBehaviour
         shoePickUp.Post(gameObject);
         if (shoeType == ShoeType.BOOTS)
         {
-            ObjectiveTracker.instance.CompleteObjective(0);
-        } else if (shoeType == ShoeType.FLIPFLOPS)
-        {
-            ObjectiveTracker.instance.CompleteObjective(1);
-        }
+            print("Picked up boots");
+            ObjectiveTracker.instance.CompleteObjective(0); // Completes first objective in tutorial
+        } 
     }
 }
