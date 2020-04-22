@@ -26,9 +26,9 @@ public class UIMainMenu : MonoBehaviour
     public void OptionsButton()
     {
         options = !options;
-        optionsMenu.GetComponent<CanvasGroup>().interactable = options;
+        //optionsMenu.GetComponent<CanvasGroup>().interactable = options;
         optionsMenu.SetActive(options);
-        mainMenu.GetComponent<CanvasGroup>().interactable = !options;
+        //mainMenu.GetComponent<CanvasGroup>().interactable = !options;
         mainMenu.SetActive(!options);
         shoebox.SetActive(!options);
         if (options)
