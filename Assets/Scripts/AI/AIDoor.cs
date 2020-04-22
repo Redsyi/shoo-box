@@ -12,7 +12,13 @@ public class AIDoor : MonoBehaviour
     private float currAngle;
     private int openDir;
     public Transform hinge;
-    public AudioClip doorOpenClip;
+    public AK.Wwise.Event doorOpenClip;
+    public AIState[] openRequiredStates;
+    public AIState[] closeRequiredStates;
+    public AIInterest[] openFor;
+    public AIInterest[] closeFor;
+    private AIAgent currAI;
+    private bool checkAIExists;
 
     private void Start()
     {
@@ -22,11 +28,13 @@ public class AIDoor : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         AIAgent ai = other.gameObject.GetComponentInParent<AIAgent>();
-        if (ai)
+        if (ai && (openRequiredStates.Length == 0 || System.Array.Exists(openRequiredStates, item => item == ai.currState.state)))
         {
-            if (!open)
+            if (openFor == null || openFor.Length == 0 || System.Array.Exists(openFor, interest => System.Array.Exists(ai.interests, aiinterest => aiinterest == interest)))
             {
-                StartCoroutine(OpenDoor());
+                currAI = ai;
+                checkAIExists = true;
+                Open();
             }
         }
     }
@@ -36,10 +44,38 @@ public class AIDoor : MonoBehaviour
         AIAgent ai = other.gameObject.GetComponentInParent<AIAgent>();
         if (ai)
         {
-            if (open && ai.currState.state == AIState.IDLE)
-            {
-                StartCoroutine(CloseDoor());
-            }
+            currAI = null;
+            checkAIExists = false;
+        }
+        if (ai && (closeRequiredStates.Length == 0 || System.Array.Exists(closeRequiredStates, item => item == ai.currState.state)))
+        {
+            if (closeFor == null || closeFor.Length == 0 || System.Array.Exists(closeFor, interest => System.Array.Exists(ai.interests, aiinterest => aiinterest == interest)))
+                Close();
+        }
+    }
+
+    private void Update()
+    {
+        if (open && checkAIExists && !currAI)
+        {
+            Close();
+            checkAIExists = false;
+        }
+    }
+
+    public void Open()
+    {
+        if (!open)
+        {
+            StartCoroutine(OpenDoor());
+        }
+    }
+
+    public void Close()
+    {
+        if (open)
+        {
+            StartCoroutine(CloseDoor());
         }
     }
 
@@ -47,7 +83,7 @@ public class AIDoor : MonoBehaviour
     {
         while (animating)
             yield return null;
-        AudioManager.MakeNoise(transform.position, 0, doorOpenClip, 1);
+        doorOpenClip.Post(gameObject);
         animating = true;
         while (openDir > 0 ? currAngle < openAngle : currAngle > openAngle)
         {
@@ -65,7 +101,7 @@ public class AIDoor : MonoBehaviour
     {
         while (animating)
             yield return null;
-        AudioManager.MakeNoise(transform.position, 0, doorOpenClip, 1);
+        doorOpenClip.Post(gameObject);
         animating = true;
         while (openDir < 0 ? currAngle < closedAngle : currAngle > closedAngle)
         {

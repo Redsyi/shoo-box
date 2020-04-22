@@ -14,7 +14,7 @@ public class InvokeOnCheckpointLoad : MonoBehaviour, ICheckpointItem
         {
             LoadCheckpointSafe(checkpointID);
         }
-        else if (checkpointID > invocations.Length && invocations.Length != 0)
+        else if (checkpointID >= invocations.Length && invocations.Length != 0)
         {
             LoadCheckpointSafe(invocations.Length - 1);
         }

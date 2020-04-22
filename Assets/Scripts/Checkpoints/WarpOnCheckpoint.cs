@@ -12,7 +12,7 @@ public class WarpOnCheckpoint : MonoBehaviour, ICheckpointItem
         if (checkpointID >= 0 && checkpointID < positions.Length)
         {
             pathfinder.Warp(positions[checkpointID]);
-        } else if (checkpointID > positions.Length && positions.Length != 0)
+        } else if (checkpointID >= positions.Length && positions.Length != 0)
         {
             pathfinder.Warp(positions[positions.Length - 1]);
         }

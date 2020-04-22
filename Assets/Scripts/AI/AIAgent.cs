@@ -58,7 +58,8 @@ public class AIAgent : MonoBehaviour
     public string gameOverName;
     [HideInInspector]
     public bool stunned;
-    ScriptedSequence sequence;
+    ScriptedSequence[] sequences;
+    public UnityEngine.Events.UnityEvent chaseOverride;
 
     void Start()
     {
@@ -80,7 +81,7 @@ public class AIAgent : MonoBehaviour
         {
             originalSightColoring = shoeSightColoring.type;
         }
-        sequence = GetComponent<ScriptedSequence>();
+        sequences = GetComponents<ScriptedSequence>();
     }
 
     IEnumerator CheckPos()
@@ -89,7 +90,7 @@ public class AIAgent : MonoBehaviour
         {
             stopped = (prevPos - transform.position).sqrMagnitude <= walkSpeed*.05f;
 
-            if ((!sequence || !sequence.running) && !stunned) {
+            if (!InSequence() && !stunned) {
                 if (stopped && currState.state != AIState.IDLE)
                 {
                     Face(currState.location.position);
@@ -99,6 +100,20 @@ public class AIAgent : MonoBehaviour
             yield return new WaitForSeconds(.2f);
         }
      
+    }
+
+    bool InSequence()
+    {
+        if (sequences == null || sequences.Length == 0)
+            return false;
+
+        foreach (ScriptedSequence sequence in sequences)
+        {
+            if (sequence.running)
+                return true;
+        }
+
+        return false;
     }
 
     public void Face(Vector3 position)
@@ -188,6 +203,7 @@ public class AIAgent : MonoBehaviour
             onSpot.Post(gameObject);
             player.npcsChasing++;
             timer = 0f;
+            chaseOverride.Invoke();
         }
         stoppedTime = 0f;
         currState.state = AIState.CHASE;
@@ -211,7 +227,10 @@ public class AIAgent : MonoBehaviour
             instantiatedTarget.transform.position = player.transform.position;
         }
         myBubble.Lost();
-        Investigate(instantiatedTarget, forceOverrideChase: true);
+        if (chaseOverride.GetPersistentEventCount() == 0)
+            Investigate(instantiatedTarget, forceOverrideChase: true);
+        else
+            Idle();
     }
 
     public void CatchPlayer(Player player)
@@ -234,7 +253,7 @@ public class AIAgent : MonoBehaviour
         else
             stoppedTime = 0f;
 
-        if (!sequence || !sequence.running)
+        if (!InSequence())
         {
             if (currState.state != AIState.IDLE && !currState.location)
             {
@@ -293,7 +312,7 @@ public class AIAgent : MonoBehaviour
             switch (currState.state)
             {
                 case AIState.IDLE:
-                    if (!closeToTarget && pathfinder)
+                    if (!closeToTarget && pathfinder && pathfinder.enabled)
                     {
                         pathfinder.destination = currState.location.position;
                         timer = -1;
@@ -321,7 +340,7 @@ public class AIAgent : MonoBehaviour
                     myBubble.StopInvestigating();
                     break;
                 case AIState.INVESTIGATE:
-                    if (!closeEnough && pathfinder)
+                    if (!closeEnough && pathfinder && pathfinder.enabled)
                     {
                         pathfinder.destination = currState.location.position;
                     }
@@ -376,7 +395,7 @@ public class AIAgent : MonoBehaviour
                         if (!reachedInteractable)
                             wwiseComponent?.Fixing();
                         reachedInteractable = true;
-                        if (timer >= 0)
+                        if (timer >= 0 && thingsToInteractWith.Peek().NeedsInteraction())
                         {
                             timer -= Time.deltaTime;
                             //TODO: call interactable.AIInteracting(float progress)
@@ -384,7 +403,8 @@ public class AIAgent : MonoBehaviour
                         else
                         {
                             IAIInteractable interactable = thingsToInteractWith.Dequeue();
-                            interactable.AIFinishInteract();
+                            if (interactable.NeedsInteraction())
+                                interactable.AIFinishInteract();
                             if (thingsToInteractWith.Count > 0)
                             {
                                 IAIInteractable newInteractable = thingsToInteractWith.Peek();
@@ -405,7 +425,8 @@ public class AIAgent : MonoBehaviour
                 case AIState.CHASE:
                     if (!closeToTarget && !closeEnough && pathfinder)
                     {
-                        pathfinder.destination = currState.location.position;
+                        if (chaseOverride.GetPersistentEventCount() == 0)
+                            pathfinder.destination = currState.location.position;
                     }
                     else if (!closeToTarget && pathfinder)
                     {

@@ -18,7 +18,7 @@ public class CompleteObjectiveOnCheckpointLoad : MonoBehaviour, ICheckpointItem
                     ObjectiveTracker.instance.CompleteObjective(objectives[i]);
             }
         }
-        else if (checkpointID > objectives.Length && objectives.Length != 0)
+        else if (checkpointID >= objectives.Length && objectives.Length != 0)
         {
             print("Marking off objective: " + objectives[checkpointID]);
             

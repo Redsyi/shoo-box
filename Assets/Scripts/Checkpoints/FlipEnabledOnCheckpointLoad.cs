@@ -12,7 +12,7 @@ public class FlipEnabledOnCheckpointLoad : MonoBehaviour, ICheckpointItem
         {
             LoadCheckpointSafe(checkpointID);
         }
-        else if (checkpointID > checkpoints.Length && checkpoints.Length != 0)
+        else if (checkpointID >= checkpoints.Length && checkpoints.Length != 0)
         {
             LoadCheckpointSafe(checkpoints.Length - 1);
         }

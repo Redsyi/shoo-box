@@ -42,12 +42,12 @@ public class TransparentWall : MonoBehaviour
         float cameraRotation = NormalizeAngle(CameraScript.current.cameraRotation);
         foreach (Vector2 interval in intervals)
         {
+            if (debug)
+            {
+                print($"{cameraRotation}, {interval}");
+            }
             if (AngleBetween(cameraRotation, interval))
             {
-                if (debug)
-                {
-                    print("yes");
-                }
                 float diff = AngleDiff(cameraRotation, interval);
                 if (diff > maxDiff)
                 {

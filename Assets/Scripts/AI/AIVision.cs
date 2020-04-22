@@ -18,6 +18,8 @@ public class AIVision : MonoBehaviour
     public float shuffleSpotTime = 0.7f;
     public float spotDecay = 1.2f;
     private bool playerInVision;
+    public Vector3 headOffset;
+    Vector3 eyePosition => transform.position + headOffset;
 
     private void Start()
     {
@@ -47,6 +49,10 @@ public class AIVision : MonoBehaviour
         float angleDiff = Mathf.Acos(Vector2.Dot(forwardVect, vectToItem))*Mathf.Rad2Deg;
         if (angleDiff > arc / 2)
         {
+            if (other.GetComponentInParent<Player>())
+            {
+                playerInVision = false;
+            }
             return;
         }
 
@@ -58,10 +64,9 @@ public class AIVision : MonoBehaviour
             {
                 if (System.Array.Exists<AIInterest>(ai.interests, element => element == interest))
                 {
-                    bool canSeeObj = !Physics.Raycast(transform.position, other.gameObject.transform.position - transform.position, (other.gameObject.transform.position - transform.position).magnitude, LayerMask.GetMask("Obstructions", "AI Blinders"));
+                    bool canSeeObj = !Physics.Raycast(eyePosition, other.gameObject.transform.position - eyePosition, (other.gameObject.transform.position - eyePosition).magnitude, LayerMask.GetMask("Obstructions", "AI Blinders"));
                     if (canSeeObj)
                     {
-                       
                         ai.Interact(interactable);
                     }
                     else
@@ -75,18 +80,16 @@ public class AIVision : MonoBehaviour
         else if (interactable == null)
         {
             Player player = other.GetComponentInParent<Player>();
-            if (player != null)
-            {
-                //print("Player should be in vision cone. Name: " + other.gameObject.name);
-                playerInVision = true;
-            }
 
             if (player != null && (player.legForm || player.moving))
             {
-                Vector3 vectToPlayer = player.AISpotPoint.position - transform.position;
-                bool canSeeObj = !AIAgent.blindAll && !Physics.Raycast(transform.position, vectToPlayer, vectToPlayer.magnitude, LayerMask.GetMask("Obstructions", "AI Blinders"));
+                playerInVision = false;
+
+                Vector3 vectToPlayer = player.AISpotPoint.position - eyePosition;
+                bool canSeeObj = !AIAgent.blindAll && !Physics.Raycast(eyePosition, vectToPlayer, vectToPlayer.magnitude, LayerMask.GetMask("Obstructions", "AI Blinders"));
                 if (canSeeObj)
                 {
+                    playerInVision = true;
                     ai.spotProgress += Time.fixedDeltaTime / (player.legForm ? standingSpotTime : shuffleSpotTime);
                     if (ai.spotProgress == 1f)
                         ai.Chase(player);

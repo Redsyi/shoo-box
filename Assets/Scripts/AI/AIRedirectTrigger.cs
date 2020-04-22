@@ -13,9 +13,13 @@ public class AIRedirectTrigger : MonoBehaviour
         {
             foreach (GameObject fixable in fixablesToCheck)
             {
-                if (fixable && fixable.GetComponent<IAIInteractable>().NeedsInteraction())
+                if (fixable)
                 {
-                    ai.Investigate(fixable.gameObject, forceOverrideInteract:false);
+                    IAIInteractable interactable = fixable.GetComponentInChildren<IAIInteractable>();
+                    if (interactable.NeedsInteraction())
+                    {
+                        ai.Investigate((interactable as MonoBehaviour).gameObject, forceOverrideInteract: false);
+                    }
                     //break;
                 }
             }

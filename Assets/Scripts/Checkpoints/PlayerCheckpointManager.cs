@@ -13,7 +13,7 @@ public class PlayerCheckpointManager : MonoBehaviour, ICheckpointItem
         {
             LoadCheckpointSafe(checkpointID);
         }
-        else if (checkpointID > checkpoints.Length && checkpoints.Length != 0)
+        else if (checkpointID >= checkpoints.Length && checkpoints.Length != 0)
         {
             LoadCheckpointSafe(checkpoints.Length - 1);
         }
@@ -31,6 +31,10 @@ public class PlayerCheckpointManager : MonoBehaviour, ICheckpointItem
         }
         player.startingShoes = checkpoints[checkpointID].startingShoes;
         player.EquipStartingShoes();
+        if (checkpoints[checkpointID].resetCamera)
+        {
+            CameraScript.current.camera.orthographicSize = (player.legForm ? CameraScript.current.farZoomLevel : CameraScript.current.closeZoomLevel);
+        }
     }
 }
 
@@ -42,4 +46,5 @@ public class PlayerCheckpoint {
     public bool setLegForm;
     public bool legForm;
     public ShoeType[] startingShoes;
+    public bool resetCamera = true;
 }

@@ -13,6 +13,7 @@ public class ScriptedSequence : MonoBehaviour
         public float seconds;
         public UnityEvent invokeOnStart;
         public Vector3 position;
+        public bool continueOnReached;
     }
 
     public ScriptedStep[] sequence;
@@ -40,10 +41,20 @@ public class ScriptedSequence : MonoBehaviour
         }
     }
 
+    public void Interrupt()
+    {
+        running = false;
+        AI.animator.SetBool("Interacting", false);
+        AI.animator.SetBool("Investigating", false);
+        AI.animator.SetBool("Running", false);
+        AI.animator.SetBool("Moving", false);
+        AI.pathfinder.enabled = true;
+    }
+
     IEnumerator DoSequence()
     {
         running = true;
-        while (currStepIdx < sequence.Length)
+        while (currStepIdx < sequence.Length && running)
         {
             currStep.invokeOnStart.Invoke();
             AI.animator.SetBool("Interacting", false);
@@ -84,7 +95,7 @@ public class ScriptedSequence : MonoBehaviour
             }
 
             float timeLeft = currStep.seconds;
-            while (timeLeft > 0)
+            while (timeLeft > 0 && running && (!currStep.continueOnReached || (transform.position - currStep.position).sqrMagnitude > 0.6f))
             {
                 yield return null;
                 timeLeft -= Time.deltaTime;
@@ -103,36 +114,44 @@ public class ScriptedSequence : MonoBehaviour
             currStepIdx++;
         }
         running = false;
+        AI.animator.SetBool("Interacting", false);
+        AI.animator.SetBool("Investigating", false);
+        AI.animator.SetBool("Running", false);
+        AI.animator.SetBool("Moving", false);
+        AI.pathfinder.enabled = true;
     }
 
     private void OnDrawGizmosSelected()
     {
-        foreach (ScriptedStep step in sequence)
+        if (sequence != null)
         {
-            switch (step.type)
+            foreach (ScriptedStep step in sequence)
             {
-                case StepType.MOVE:
-                    Gizmos.color = Color.blue;
-                    break;
-                case StepType.RUSH:
-                    Gizmos.color = Color.cyan;
-                    break;
-                case StepType.INTERACT:
-                    Gizmos.color = Color.green;
-                    break;
-                case StepType.INVESTIGATE:
-                    Gizmos.color = Color.yellow;
-                    break;
-                case StepType.STAY:
-                    Gizmos.color = Color.white;
-                    break;
-                case StepType.DIE:
-                    Gizmos.color = Color.red;
-                    break;
-            }
+                switch (step.type)
+                {
+                    case StepType.MOVE:
+                        Gizmos.color = Color.blue;
+                        break;
+                    case StepType.RUSH:
+                        Gizmos.color = Color.cyan;
+                        break;
+                    case StepType.INTERACT:
+                        Gizmos.color = Color.green;
+                        break;
+                    case StepType.INVESTIGATE:
+                        Gizmos.color = Color.yellow;
+                        break;
+                    case StepType.STAY:
+                        Gizmos.color = Color.white;
+                        break;
+                    case StepType.DIE:
+                        Gizmos.color = Color.red;
+                        break;
+                }
 
-            Gizmos.color = Gizmos.color * new Color(1, 1, 1, 0.5f);
-            Gizmos.DrawSphere(step.position, 0.5f);
+                Gizmos.color = Gizmos.color * new Color(1, 1, 1, 0.5f);
+                Gizmos.DrawSphere(step.position, 0.5f);
+            }
         }
     }
 }

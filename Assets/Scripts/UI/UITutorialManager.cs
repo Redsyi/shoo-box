@@ -34,6 +34,11 @@ public class UITutorialManager : MonoBehaviour
     public Animator objectiveTrackerAnimator;
     public UIPopup kickPopup;
 
+    public AIAgent dad;
+    public GameObject dadHallwayInvestigatePoint;
+    public AIPatrolPoint[] dadRoomInvestigatePoints;
+    private bool dadDoingRoomCheck;
+
     public AK.Wwise.Event onUIPopUp;
     public AK.Wwise.Event onSpaceBar;
 
@@ -219,5 +224,39 @@ public class UITutorialManager : MonoBehaviour
         yield return null;
         yield return null;
         showerDummyFixable.broken = true;
+    }
+
+    public void DadInvestigateHallway()
+    {
+        StartCoroutine(DoDadInvestigateHallway());
+    }
+
+    IEnumerator DoDadInvestigateHallway()
+    {
+        ScriptedSequence dadSequence = dad.GetComponent<ScriptedSequence>();
+        dadSequence.Interrupt();
+        dad.Investigate(dadHallwayInvestigatePoint);
+        yield return new WaitForSeconds(6);
+        dadSequence.Trigger();
+        yield return new WaitForSeconds(4);
+        dadSequence.Interrupt();
+    }
+
+    public void DadRoomCheck()
+    {
+        if (!dadDoingRoomCheck)
+            StartCoroutine(DoDadRoomCheck());
+    }
+
+    IEnumerator DoDadRoomCheck()
+    {
+        dadDoingRoomCheck = true;
+        foreach (AIPatrolPoint point in dadRoomInvestigatePoints)
+        {
+            while (dad.currState.state == AIState.INVESTIGATE || dad.currState.state == AIState.INVESTIGATING || dad.currState.state == AIState.INTERACT)
+                yield return null;
+            dad.Investigate(point.gameObject, investigateTime: 2);
+        }
+        dadDoingRoomCheck = false;
     }
 }

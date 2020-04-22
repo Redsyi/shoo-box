@@ -11,7 +11,7 @@ public class SetPositionOnCheckpoint : MonoBehaviour, ICheckpointItem
         if (checkpointID >= 0 && checkpointID < positions.Length)
         {
             transform.position = positions[checkpointID];
-        } else if (checkpointID > positions.Length && positions.Length != 0)
+        } else if (checkpointID >= positions.Length && positions.Length != 0)
         {
             transform.position = positions[positions.Length - 1];
         }
