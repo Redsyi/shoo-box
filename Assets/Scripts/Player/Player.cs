@@ -99,6 +99,7 @@ public class Player : MonoBehaviour
     public bool useSnapRotation;
     static PlayerState prevState;
     public static Player current;
+    public AK.Wwise.Event idleSound;
 
     private void Awake()
     {
@@ -125,6 +126,8 @@ public class Player : MonoBehaviour
         {
             Invoke("LoadPreviousState", 0.1f);
         }
+
+        idleSound.Post(gameObject);
     }
 
     void LoadPreviousState()

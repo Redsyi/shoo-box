@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChangeSceneAfterSeconds : MonoBehaviour
 {
-    public int destinationScene;
+    public string destinationScene;
     public float afterSeconds;
     public bool isCutscene;
     public string message;

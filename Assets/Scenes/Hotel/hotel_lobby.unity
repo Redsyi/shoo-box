@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1188,6 +1188,7 @@ MonoBehaviour:
   AIs: 10000000
   to: {fileID: 423193252}
   investigateTime: 10
+  interruptInteract: 1
 --- !u!1 &316770927
 GameObject:
   m_ObjectHideFlags: 0
@@ -1707,6 +1708,7 @@ MonoBehaviour:
   AIs: 10000000
   to: {fileID: 423193252}
   investigateTime: 10
+  interruptInteract: 1
 --- !u!1001 &365382701
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6023,6 +6025,7 @@ MonoBehaviour:
   AIs: 03000000
   to: {fileID: 1093549917}
   investigateTime: 1
+  interruptInteract: 1
 --- !u!65 &1093549921
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6476,6 +6479,7 @@ MonoBehaviour:
   AIs: 10000000
   to: {fileID: 423193252}
   investigateTime: 10
+  interruptInteract: 1
 --- !u!1 &1169597517
 GameObject:
   m_ObjectHideFlags: 0
@@ -6783,6 +6787,7 @@ MonoBehaviour:
   AIs: 10000000
   to: {fileID: 423193252}
   investigateTime: 10
+  interruptInteract: 1
 --- !u!4 &1251880792 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6795526054370494242, guid: fc24d7070b2a9d2499e6d4fe165d1da6,
@@ -8852,10 +8857,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33e44624bf18d945b1e5e86b56235f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: 4
+  scene: AirportCutscene
   canChangeLevels: 1
   lockChange: 0
-  message: 
+  message: The shoebox pursues his master...
 --- !u!65 &1591268002
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10715,11 +10720,16 @@ PrefabInstance:
     - target: {fileID: 243081720102442257, guid: af045fe6ba44be247951af92825e16b3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 500.28
       objectReference: {fileID: 0}
     - target: {fileID: 243081720102442257, guid: af045fe6ba44be247951af92825e16b3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 243081720102442257, guid: af045fe6ba44be247951af92825e16b3,
+        type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 286286649681662964, guid: af045fe6ba44be247951af92825e16b3,
@@ -10893,6 +10903,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3921119617182025205, guid: af045fe6ba44be247951af92825e16b3,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5794897528347446716, guid: af045fe6ba44be247951af92825e16b3,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5794897528347446716, guid: af045fe6ba44be247951af92825e16b3,
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0

@@ -18,6 +18,7 @@ public class CityDirector : MonoBehaviour
     public float maxDist;
     private float maxDistSqrd => maxDist * maxDist;
     private Player player;
+    public AK.Wwise.Event music;
 
     void Start()
     {
@@ -83,6 +84,8 @@ public class CityDirector : MonoBehaviour
     {
         if (newIntensity > intensity)
         {
+            if (intensity == 0)
+                music.Post(gameObject);
             intensity = newIntensity;
             internalIntensity = newIntensity;
         }

@@ -17,12 +17,12 @@ public class CutsceneTransition : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        StartCoroutine(TransitionWipe(SceneManager.GetActiveScene().buildIndex + 1));
+        StartCoroutine(TransitionWipe(SceneManager.GetSceneAt(SceneManager.GetActiveScene().buildIndex + 1).name));
     }
 
-    IEnumerator TransitionWipe(int levelIndex)
+    IEnumerator TransitionWipe(string level)
     {
         yield return new WaitForSeconds(transitionTime);
-        LevelBridge.BridgeTo(levelIndex, message);
+        LevelBridge.BridgeTo(level, message);
     }
 }

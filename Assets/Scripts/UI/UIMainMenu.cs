@@ -20,7 +20,7 @@ public class UIMainMenu : MonoBehaviour
     }
     public void PlayButton()
     {
-        LevelBridge.BridgeTo(1, "Prologue");
+        LevelBridge.BridgeTo("IntroCutscene", "Our story begins here...");
     }
 
     public void OptionsButton()

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ChangeLevel : MonoBehaviour
 {
-    public int scene;
+    public string scene;
     public bool canChangeLevels = true;
     public bool lockChange;
     public string message;
