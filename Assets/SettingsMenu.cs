@@ -18,6 +18,7 @@ public class SettingsMenu : MonoBehaviour
     private void Start()
     {
         currentGroup = soundGroup;
+        ApplyToBack();
     }
 
     public void BackToApply()
