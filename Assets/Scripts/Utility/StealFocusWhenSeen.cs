@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StealFocusWhenSeen : MonoBehaviour
 {
-    private bool focusStolen;
+    protected bool focusStolen;
     [Tooltip("How far from the edge of the screen until this object is considered \"seen\"")]
     public float padding;
     public static StealFocusWhenSeen activeThief;
@@ -32,13 +32,13 @@ public class StealFocusWhenSeen : MonoBehaviour
     public float destCameraDist = 20f;
     [Tooltip("Is this cutscene skippable? This only applies to the player, scripts are always able to skip cutscenes.")]
     public bool skippable = true;
-    private bool skip;
+    protected bool skip;
 
     private void Start()
     {
         activeThief = null;
     }
-    void Update()
+    protected virtual void Update()
     {
         if (!focusStolen && activeThief == null)
         {
@@ -54,7 +54,7 @@ public class StealFocusWhenSeen : MonoBehaviour
         }
     }
 
-    public void Trigger()
+    public virtual void Trigger()
     {
         if (!focusStolen && activeThief == null)
         {
@@ -71,7 +71,7 @@ public class StealFocusWhenSeen : MonoBehaviour
     }
 
     //sorry for how messy this looks
-    IEnumerator StealFocus()
+    protected IEnumerator StealFocus()
     {
         focusStolen = true;
         activeThief = this;

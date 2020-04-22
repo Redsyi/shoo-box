@@ -451,6 +451,15 @@ public class AIAgent : MonoBehaviour
         }
     }
 
+    public void ImConfused()
+    {
+        myBubble.Investigating();
+    }
+
+    public void ImNoLongerConfused()
+    {
+        myBubble.Investigating();
+    }
 
     public static void SummonAI(GameObject to, float investigateTime, bool interruptInteract = false, params AIInterest[] interests)
     {
