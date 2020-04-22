@@ -24337,6 +24337,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c59af283dfd81e4096e3f238035a23f, type: 3}
+--- !u!1 &696481439 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5113372376388643691, guid: 007f3037e51740f4398ac09eb6c169ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 1099995100}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &696481442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696481439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e155d1a370be26942afba00473674bed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &704272353
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35233,6 +35251,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 15a25477e89099c45aed853195a3822c,
         type: 2}
+    - target: {fileID: 1461873589410616761, guid: 1e839009347a7644ea054440ee02595b,
+        type: 3}
+      propertyPath: health
+      value: 
+      objectReference: {fileID: 1021058258}
+    - target: {fileID: 2104722110398112413, guid: 1e839009347a7644ea054440ee02595b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2749147473886221406, guid: 1e839009347a7644ea054440ee02595b,
         type: 3}
       propertyPath: m_Size.x
@@ -35340,6 +35368,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a76eab241757cb48905555791e2523b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &988459543
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988459536}
+  m_Material: {fileID: 13400000, guid: 6cebb7f1ca7bc6f4cb98223c56ff2ad2, type: 2}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.226166, y: 1.4985029, z: 1.2916126}
+  m_Center: {x: 0.058598008, y: 1.4520899, z: -0.020438215}
 --- !u!1001 &988620382
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36139,6 +36180,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1020655413}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1021058258 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7107117274700702346, guid: 007f3037e51740f4398ac09eb6c169ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 1099995100}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1024518591
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39889,6 +39942,11 @@ PrefabInstance:
       propertyPath: names.Array.data[1]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6446691151452149144, guid: 007f3037e51740f4398ac09eb6c169ed,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6730991492419335454, guid: 007f3037e51740f4398ac09eb6c169ed,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -39929,6 +39987,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6792654452783951999, guid: 007f3037e51740f4398ac09eb6c169ed,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6807486609967232523, guid: 007f3037e51740f4398ac09eb6c169ed,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -40027,6 +40090,11 @@ PrefabInstance:
     - target: {fileID: 6807486611728842151, guid: 007f3037e51740f4398ac09eb6c169ed,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7107117274700702346, guid: 007f3037e51740f4398ac09eb6c169ed,
+        type: 3}
+      propertyPath: m_FillAmount
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7354646609938002995, guid: 007f3037e51740f4398ac09eb6c169ed,

@@ -31,6 +31,14 @@ public class UIPauseMenu : MonoBehaviour
     public GameObject toggleController;
     public GameObject toggleKeyboard;
     public GameObject toggleLabel;
+
+    public Image leftTabControl;
+    public Image rightTabControl;
+    public Sprite leftTabKeySprite;
+    public Sprite rightTabKeySprite;
+    public Sprite leftTabConSprite;
+    public Sprite rightTabConSprite;
+
     private string toggleText;
     public bool conToggled { get; private set; }
 
@@ -61,7 +69,27 @@ public class UIPauseMenu : MonoBehaviour
         if (paused)
             EventSystem.current.SetSelectedGameObject(defaultSelected);
 
-        
+        bool usingGamepad = (Player.current ? Player.current.usingController : false);
+        toggleController.SetActive(usingGamepad);
+        toggleKeyboard.SetActive(!usingGamepad);
+
+
+        if (usingGamepad)
+        {
+            leftTabControl.sprite = leftTabConSprite;
+            leftTabControl.SetNativeSize();
+            rightTabControl.sprite = rightTabConSprite;
+            rightTabControl.SetNativeSize();
+        }
+        else
+        {
+            leftTabControl.sprite = leftTabKeySprite;
+            leftTabControl.SetNativeSize();
+            rightTabControl.sprite = rightTabKeySprite;
+            rightTabControl.SetNativeSize();
+        }
+
+
         Time.timeScale = (paused ? 0 : 1);
         (paused ? pauseSound : unpauseSound)?.Post(gameObject);
 
@@ -196,8 +224,9 @@ public class UIPauseMenu : MonoBehaviour
             timePassed += Time.unscaledDeltaTime;
             progress = Mathf.Clamp01(timePassed / animationTime);
             rect.pivot = Vector2.Lerp(originalPivot, destPivot, progress);
-            rect.anchoredPosition = Vector2.Lerp(originalAnchor, destPivot, progress);
-            rect.localPosition = Vector3.zero;
+            rect.anchorMin = Vector2.Lerp(originalAnchor, destPivot, progress);
+            rect.anchorMax = Vector2.Lerp(originalAnchor, destPivot, progress);
+            rect.anchoredPosition = Vector2.zero;
         }
     }
 
@@ -216,8 +245,9 @@ public class UIPauseMenu : MonoBehaviour
             timePassed += Time.unscaledDeltaTime;
             progress = Mathf.Clamp01(timePassed / animationTime);
             rect.pivot = Vector2.Lerp(originalPivot, destPivot, progress);
-            rect.anchoredPosition = Vector2.Lerp(originalPivot, destAnchor, progress);
-            rect.localPosition = Vector3.zero;
+            rect.anchorMin = Vector2.Lerp(originalPivot, destAnchor, progress);
+            rect.anchorMax = Vector2.Lerp(originalPivot, destAnchor, progress);
+            rect.anchoredPosition = Vector2.zero;
         }
         pane.SetActive(false);
     }

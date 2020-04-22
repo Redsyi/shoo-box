@@ -547,7 +547,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 546548585274906792}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 22100000, guid: 5131ab51414506a45a4e35775bfd6b1f, type: 2}
   m_CullingMode: 0
@@ -565,7 +565,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 546548585274906792}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c60dfc19b034c48498a3c54c92b83172, type: 3}
   m_Name: 
@@ -1348,7 +1348,7 @@ RectTransform:
   m_GameObject: {fileID: 3042438957657067535}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 4206755453063953018}
   - {fileID: 5393970127450320396}
@@ -2055,7 +2055,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5263348389258596525}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 22100000, guid: e18897fb6d7523041840813f036a1f59, type: 2}
   m_CullingMode: 0
@@ -2073,7 +2073,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5263348389258596525}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c60dfc19b034c48498a3c54c92b83172, type: 3}
   m_Name: 
@@ -2872,7 +2872,7 @@ RectTransform:
   m_GameObject: {fileID: 7509913667846014639}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children:
   - {fileID: 4985319482285824092}
   - {fileID: 6011327987861801030}
@@ -3179,7 +3179,7 @@ RectTransform:
   m_GameObject: {fileID: 8341457943598958366}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 8827649471481430981}
   - {fileID: 8827649470784351351}
@@ -3204,7 +3204,7 @@ CanvasGroup:
   m_Enabled: 1
   m_Alpha: 1
   m_Interactable: 1
-  m_BlocksRaycasts: 0
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!1 &8417332271322236041
 GameObject:
@@ -3665,12 +3665,22 @@ MonoBehaviour:
   settings: {fileID: 0}
   buttonPane: {fileID: 4391488878837822699}
   panes:
-  - {fileID: 8341457943598958366}
   - {fileID: 3042438957657067535}
+  - {fileID: 8341457943598958366}
   currPaneIdx: 1
   toggleController: {fileID: 5888199653164563707}
   toggleKeyboard: {fileID: 7921079539101834900}
   toggleLabel: {fileID: 0}
+  leftTabControl: {fileID: 7002708209965122434}
+  rightTabControl: {fileID: 3305097541351038415}
+  leftTabKeySprite: {fileID: -4903068801080310616, guid: 0adcfb3c53ea7234d93aed169eb41d9e,
+    type: 3}
+  rightTabKeySprite: {fileID: -9212846007044965795, guid: 0adcfb3c53ea7234d93aed169eb41d9e,
+    type: 3}
+  leftTabConSprite: {fileID: 3473887743507542218, guid: 3ca91bec53b1f1d41b68d7a6a4a2b9e8,
+    type: 3}
+  rightTabConSprite: {fileID: 6106124392999442235, guid: 3ca91bec53b1f1d41b68d7a6a4a2b9e8,
+    type: 3}
 --- !u!1 &8827649469846997233
 GameObject:
   m_ObjectHideFlags: 0

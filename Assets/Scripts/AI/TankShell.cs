@@ -16,6 +16,7 @@ public class TankShell : MonoBehaviour
     public Animator animator;
     public GameObject impactParticles;
     public float hitForce;
+    public float damage;
     public AK.Wwise.Event onFire;
 
     public void Fire()
@@ -74,6 +75,13 @@ public class TankShell : MonoBehaviour
             }
             if (raycastHit.collider.CompareTag("Player"))
             {
+                print("Hit player");
+                if (raycastHit.collider.GetComponentInParent<Player>())
+                    print("Found player");
+
+                /*if (raycastHit.collider.gameObject.GetComponent<Player>())
+                    print("Found player");*/
+                raycastHit.collider.GetComponentInParent<Player>().HitByEnemy(damage);
                 raycastHit.rigidbody.AddForce(transform.forward * hitForce);
                 CameraScript.current.ShakeScreen(ShakeStrength.INTENSE, ShakeLength.SHORT);
                 Player.ControllerRumble(RumbleStrength.INTENSE, 0.3f);

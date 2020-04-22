@@ -15,6 +15,7 @@ public class HeliBullet : MonoBehaviour
     private bool active;
     public AK.Wwise.Event onFire;
     public AK.Wwise.Event onPlayer;
+    public float damage;
     static int impacts;
 
     private void Awake()
@@ -55,6 +56,7 @@ public class HeliBullet : MonoBehaviour
         impacts++;
         if (collision.gameObject.CompareTag("Player"))
         {
+            collision.gameObject.GetComponentInParent<Player>().HitByEnemy(damage);
             Player.ControllerRumble(RumbleStrength.WEAK, 0.1f);
             if (impacts %30 == 0){
                 onPlayer.Post(gameObject);
