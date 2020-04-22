@@ -838,8 +838,439 @@
 								<ActiveSource Name="City_Tank_Move" ID="{2D9F7CDC-47FC-43CA-AF41-58BACEF5C0F1}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
+						<Sound Name="City_Kickable_Tree_Fall" ID="{1EFB6999-1E48-4BC4-A060-512858CCD90E}" ShortID="666074426">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="City_Kickable_Tree_Fall" ID="{892B72D5-50AD-4D55-9AC8-594D30C95F6F}" ShortID="412631030">
+									<Language>SFX</Language>
+									<AudioFile>City_Kickable_Tree_Fall.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="City_Kickable_Tree_Fall" ID="{892B72D5-50AD-4D55-9AC8-594D30C95F6F}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="City_Kickable_Tree_Uproot" ID="{8DCEC9DA-D8DE-4BF8-8CD1-526C8E30927A}" ShortID="745327113">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="City_Kickable_Tree_Uproot" ID="{CEBD49DB-0121-4D80-976F-D2C07DC7A4CF}" ShortID="771303977">
+									<Language>SFX</Language>
+									<AudioFile>City_Kickable_Tree_Uproot.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="City_Kickable_Tree_Uproot" ID="{CEBD49DB-0121-4D80-976F-D2C07DC7A4CF}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="City_TrafficLight_Blinking" ID="{AC28DB71-C0EB-4DC3-9D17-913F608C2151}" ShortID="82842801">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="City_TrafficLight_Blinking" ID="{2FC6DEEE-17CF-413E-9C92-73B170A59F81}" ShortID="747883699">
+									<Language>SFX</Language>
+									<AudioFile>City_TrafficLight_Blinking.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="City_TrafficLight_Blinking" ID="{2FC6DEEE-17CF-413E-9C92-73B170A59F81}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<RandomSequenceContainer Name="Car Honking" ID="{DCC3EC1C-432C-4100-A6C2-9FD68C7AB989}" ShortID="309190774">
+							<PropertyList>
+								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{5B6E5BAA-FB33-41B5-8242-A274859B4E98}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="556"/>
+													<Property Name="Min" Type="Real64" Value="-682"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+								<Property Name="Volume" Type="Real64">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{5C2E9311-4A26-4B61-AB9D-C90C058AE2FE}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Min" Type="Real64" Value="-9"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="City_Car_Honking_1" ID="{987C603E-7683-4AE0-AE5F-5E647C97BBF4}" ShortID="360405450">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX" ID="{E6E0FB3C-828B-4E03-A458-DEB3207DD893}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="City_Car_Honking_1" ID="{81B0C912-71A6-46C7-9E55-140F2FC96B36}" ShortID="937670427">
+											<PropertyList>
+												<Property Name="LoopBegin" Type="Real64" Value="0"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.506445102685624"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>City_Car_Honking_1.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="City_Car_Honking_1" ID="{81B0C912-71A6-46C7-9E55-140F2FC96B36}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="City_Car_Honking_2" ID="{0C2CBD9E-17A1-4C0A-88A1-D981FD76F5CD}" ShortID="468480711">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX" ID="{E6E0FB3C-828B-4E03-A458-DEB3207DD893}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="City_Car_Honking_2" ID="{DCA2A0F6-24BF-4127-9A6D-2F259A7D56A4}" ShortID="762895893">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.16167076421801"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="1.39815272018167"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>City_Car_Honking_2.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="City_Car_Honking_2" ID="{DCA2A0F6-24BF-4127-9A6D-2F259A7D56A4}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="City_Car_Honking_3" ID="{F7ECBCFF-A462-42FB-8736-E002267EFD18}" ShortID="513652299">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX" ID="{E6E0FB3C-828B-4E03-A458-DEB3207DD893}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="City_Car_Honking_3" ID="{6A7FF02B-B62B-4B9B-A852-32245B949B61}" ShortID="397666653">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.719409063981043"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="1.97837492594787"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>City_Car_Honking_3.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="City_Car_Honking_3" ID="{6A7FF02B-B62B-4B9B-A852-32245B949B61}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<Sound Name="Player_City_Sandals_DEMO" ID="{6093468B-8089-446F-9C42-551BF7BD8689}" ShortID="24039061">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{9E6F63DA-940F-49C2-BB77-014FE1BE2032}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="126"/>
+													<Property Name="Min" Type="Real64" Value="-303"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Player_City_Sandals_DEMO" ID="{46D9A4E5-FE26-4771-8EAF-1760C61D55E8}" ShortID="1001732072">
+									<Language>SFX</Language>
+									<AudioFile>Player_City_Sandals_DEMO.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Player_City_Sandals_DEMO" ID="{46D9A4E5-FE26-4771-8EAF-1760C61D55E8}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<RandomSequenceContainer Name="Player_City_Walk" ID="{B476B239-ECF4-4EE3-9AD9-C756F8779764}" ShortID="573468483">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{646AB2A5-4244-4D08-9C59-04908827C955}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="101"/>
+													<Property Name="Min" Type="Real64" Value="-101"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Player_City_Boots_DEMO" ID="{41097B01-82B4-4D0D-BB48-4E666657CEAF}" ShortID="623995633">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX" ID="{E6E0FB3C-828B-4E03-A458-DEB3207DD893}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Player_City_Boots_DEMO" ID="{40AF2198-31F8-446D-A7B5-9F8DEA203508}" ShortID="601967331">
+											<PropertyList>
+												<Property Name="LoopBegin" Type="Real64" Value="0"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.853342540481832"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Player_City_Boots_DEMO.wav</AudioFile>
+											<ConvertedFileIDList>
+												<File ID="454755722"/>
+											</ConvertedFileIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Player_City_Boots_DEMO" ID="{40AF2198-31F8-446D-A7B5-9F8DEA203508}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Player_City_Boots_DEMO_01" ID="{9EE1084C-85C8-4024-B520-65E69FF3A0E7}" ShortID="846342346">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX" ID="{E6E0FB3C-828B-4E03-A458-DEB3207DD893}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Player_City_Boots_DEMO" ID="{F837F80A-868D-4AE6-8123-F96B4CC47B44}" ShortID="906103367">
+											<PropertyList>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="1.46287292654028"/>
+												<Property Name="TrimEnd" Type="Real64" Value="2.33838020833333"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Player_City_Boots_DEMO.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Player_City_Boots_DEMO" ID="{F837F80A-868D-4AE6-8123-F96B4CC47B44}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Player_City_Boots_DEMO_02" ID="{8FC7C306-F026-4710-98FA-370C209F3BFF}" ShortID="564173768">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX" ID="{E6E0FB3C-828B-4E03-A458-DEB3207DD893}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Player_City_Boots_DEMO" ID="{07695F38-E3ED-4838-994C-1700F8FD2CED}" ShortID="454755722">
+											<PropertyList>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="2.92574585308057"/>
+												<Property Name="TrimEnd" Type="Real64" Value="3.79017076421801"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Player_City_Boots_DEMO.wav</AudioFile>
+											<ConvertedFileIDList>
+												<File ID="497790713"/>
+											</ConvertedFileIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Player_City_Boots_DEMO" ID="{07695F38-E3ED-4838-994C-1700F8FD2CED}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Player_City_Boots_DEMO_03" ID="{876F4B3F-7227-4693-8B85-77EC8DCDFC55}" ShortID="403638277">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX" ID="{E6E0FB3C-828B-4E03-A458-DEB3207DD893}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Player_City_Boots_DEMO" ID="{8E486452-C2BA-4DCE-81BC-A3983B67F34C}" ShortID="607498576">
+											<PropertyList>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="4.4551130035545"/>
+												<Property Name="TrimEnd" Type="Real64" Value="5.37494976796998"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Player_City_Boots_DEMO.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Player_City_Boots_DEMO" ID="{8E486452-C2BA-4DCE-81BC-A3983B67F34C}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Player_City_Boots_DEMO_04" ID="{79B1D24E-C752-45BF-8039-A6636322E2CA}" ShortID="975229046">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX" ID="{E6E0FB3C-828B-4E03-A458-DEB3207DD893}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Player_City_Boots_DEMO" ID="{F573515E-998F-42CF-8735-12D5D98D3251}" ShortID="707703595">
+											<PropertyList>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="5.97339778337283"/>
+												<Property Name="TrimEnd" Type="Real64" Value="6.89323454778831"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Player_City_Boots_DEMO.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Player_City_Boots_DEMO" ID="{F573515E-998F-42CF-8735-12D5D98D3251}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Player_City_Boots_DEMO_05" ID="{1A86EFC5-7FBB-4A6C-9EC2-9C25A6FF1477}" ShortID="774522372">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX" ID="{E6E0FB3C-828B-4E03-A458-DEB3207DD893}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Player_City_Boots_DEMO" ID="{D35524E1-8BCA-4D5D-834F-7D32BAB5CC7F}" ShortID="794162250">
+											<PropertyList>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="7.44735308056872"/>
+												<Property Name="TrimEnd" Type="Real64" Value="8.41151932760664"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Player_City_Boots_DEMO.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Player_City_Boots_DEMO" ID="{D35524E1-8BCA-4D5D-834F-7D32BAB5CC7F}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<Sound Name="Player_CarEngine_CityLevel" ID="{97BDE745-4BC6-44A9-80F4-F8A8F79A7D08}" ShortID="657986582">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-2</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Player_CarEngine_CityLevel" ID="{B946E24D-2CBC-4B0E-8DC9-1A1BD5B5E6AA}" ShortID="795327038">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimEnd" Type="Real64" Value="8.36718984498421"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>Player_CarEngine_CityLevel.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Player_CarEngine_CityLevel" ID="{B946E24D-2CBC-4B0E-8DC9-1A1BD5B5E6AA}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
 					</ChildrenList>
 				</ActorMixer>
+				<Sound Name="City_Ambience" ID="{AD048CF9-BE95-4892-BE10-901D0D887225}" ShortID="16420419">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="SFX" ID="{E6E0FB3C-828B-4E03-A458-DEB3207DD893}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="City_Ambience" ID="{D5A401C4-8864-4EEE-AF04-4C58622BC587}" ShortID="459660243">
+							<Language>SFX</Language>
+							<AudioFile>City_Ambience.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="City_Ambience" ID="{D5A401C4-8864-4EEE-AF04-4C58622BC587}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

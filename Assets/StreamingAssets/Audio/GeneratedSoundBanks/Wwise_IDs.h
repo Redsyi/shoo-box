@@ -14,7 +14,9 @@ namespace AK
     namespace EVENTS
     {
         static const AkUniqueID AI_EXCLAMATION = 3757163913U;
+        static const AkUniqueID AI_EXCLAMATION_MALE = 1905840283U;
         static const AkUniqueID AI_QUESTION = 1201896862U;
+        static const AkUniqueID AI_QUESTION_MALE = 2287570078U;
         static const AkUniqueID AIRPORT_AMBIENCE_CONVEYORBELT_01 = 4198451418U;
         static const AkUniqueID AIRPORT_AMBIENCE_TUNNEL = 938863674U;
         static const AkUniqueID AIRPORT_CART_ROLLING = 3899537369U;
@@ -23,6 +25,7 @@ namespace AK
         static const AkUniqueID AIRPORT_SCANNER = 2843912669U;
         static const AkUniqueID AIRPORT_SLIDING_GATE = 877897713U;
         static const AkUniqueID CITY_AMBIENCE = 3276472951U;
+        static const AkUniqueID CITY_CAR_HONKING = 3507450316U;
         static const AkUniqueID CITY_DETONATION = 3821011336U;
         static const AkUniqueID CITY_HELICOPTER_BLADE = 2209014619U;
         static const AkUniqueID CITY_HELICOPTER_BULLET = 1796419571U;
@@ -48,6 +51,9 @@ namespace AK
         static const AkUniqueID MUSIC_CUT_SCENES_AIRPORT = 2198248117U;
         static const AkUniqueID MUSIC_CUT_SCENES_INTRO = 3806072774U;
         static const AkUniqueID MUSIC_MENU = 1598298728U;
+        static const AkUniqueID PLAYER_CITY_BOOT = 3958178683U;
+        static const AkUniqueID PLAYER_CITY_BUSENGINE = 2791261825U;
+        static const AkUniqueID PLAYER_CITY_SANDAL = 168676302U;
         static const AkUniqueID PLAYER_CITY_WALK = 3767407452U;
         static const AkUniqueID PLAYER_FLING = 2962968925U;
         static const AkUniqueID PLAYER_KICK = 4076006907U;
@@ -78,6 +84,7 @@ namespace AK
     {
         static const AkUniqueID INIT = 1355168291U;
         static const AkUniqueID AIRPORT = 2748908406U;
+        static const AkUniqueID CITY = 3888786832U;
         static const AkUniqueID CUT_SCENE = 245686778U;
         static const AkUniqueID HOTEL = 3820998109U;
         static const AkUniqueID MAIN = 3161908922U;

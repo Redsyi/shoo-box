@@ -14,6 +14,13 @@
 					</ReferenceList>
 					<ChildrenList>
 						<RandomSequenceContainer Name="Gibberish" ID="{A3548992-C20D-4347-8321-E020F3DE97E3}" ShortID="122568348">
+							<PropertyList>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
@@ -59,6 +66,44 @@
 							</ChildrenList>
 							<ActiveSourceList>
 								<ActiveSource Name="AI_Question" ID="{812BABE0-7EA1-43FD-8F2F-5088568A39D2}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="AI_Exclamation_Male" ID="{3DB531CA-38D8-4CC1-B93D-88ECBE05F11F}" ShortID="384644333">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="AI_Exclamation_Male" ID="{6DF9D4AF-162E-4458-B330-68BFD81D80D7}" ShortID="146839610">
+									<Language>SFX</Language>
+									<AudioFile>AI_Exclamation_Male.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="AI_Exclamation_Male" ID="{6DF9D4AF-162E-4458-B330-68BFD81D80D7}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="AI_Question_Male" ID="{68FB3B27-F6D1-40CD-8482-AF907CBB7AD3}" ShortID="107752589">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="AI_Question_Male" ID="{8E888527-22F7-4F2E-9B0D-231F9445E5D2}" ShortID="453764167">
+									<Language>SFX</Language>
+									<AudioFile>AI_Question_Male.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="AI_Question_Male" ID="{8E888527-22F7-4F2E-9B0D-231F9445E5D2}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
