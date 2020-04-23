@@ -5,10 +5,24 @@
 			<ChildrenList>
 				<Event Name="Music_Hotel" ID="{447016C1-C29E-4B9E-BAE6-BB4961726F1C}">
 					<ChildrenList>
+						<Action Name="" ID="{959873C9-EE7F-45CD-B6C4-41ECF92E559F}" ShortID="549099874">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="3"/>
+								<Property Name="FadeOutCurve" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="5"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList/>
+						</Action>
 						<Action Name="" ID="{448770CF-9A18-4B0D-9339-48BE475ABB80}" ShortID="266908783">
+							<PropertyList>
+								<Property Name="Delay" Type="Real64" Value="2.5"/>
+								<Property Name="FadeInCurve" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="4_16M_Chase3" ID="{103969B7-B67F-4880-820F-12B0FC6E837C}" WorkUnitID="{6263F7BE-C00D-4A45-AEC3-DC8317EEF2A4}"/>
+									<ObjectRef Name="Level Music" ID="{58DE4379-BD74-48C8-8E49-7DF2F88B5B96}" WorkUnitID="{6263F7BE-C00D-4A45-AEC3-DC8317EEF2A4}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -27,6 +41,14 @@
 				</Event>
 				<Event Name="Music_Menu" ID="{0FD53FA1-60CF-4F53-98DC-111E5629ED55}">
 					<ChildrenList>
+						<Action Name="" ID="{4771FA90-A775-44AA-9A93-05BAB1CD6E4C}" ShortID="503863242">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="3"/>
+								<Property Name="FadeOutCurve" Type="int16" Value="6"/>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+							</PropertyList>
+							<ReferenceList/>
+						</Action>
 						<Action Name="" ID="{FC30C015-5715-40A1-8081-1756605CDF53}" ShortID="541402918">
 							<ReferenceList>
 								<Reference Name="Target">
@@ -36,20 +58,16 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Music_Cut_Scenes_Intro" ID="{D1976103-5195-437D-B28E-073BC53770B2}">
+				<Event Name="Music_CS_Intro" ID="{D1976103-5195-437D-B28E-073BC53770B2}">
+					<Comment>Fade the main menu msuic</Comment>
 					<ChildrenList>
 						<Action Name="" ID="{FB9CEEF5-70BA-4854-9680-BBD917D18100}" ShortID="331116528">
 							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="2"/>
-								<Property Name="FadeOutCurve" Type="int16" Value="2"/>
-								<Property Name="FadeTime" Type="Real64" Value="1"/>
+								<Property Name="ActionType" Type="int16" Value="3"/>
+								<Property Name="FadeOutCurve" Type="int16" Value="8"/>
 								<Property Name="Scope" Type="int16" Value="1"/>
 							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="Menu Music" ID="{29CF82FE-1524-4996-AFB3-2B858ED9D4BD}" WorkUnitID="{6263F7BE-C00D-4A45-AEC3-DC8317EEF2A4}"/>
-								</Reference>
-							</ReferenceList>
+							<ReferenceList/>
 						</Action>
 						<Action Name="" ID="{E842B86D-B3FC-40CA-93CB-9644D527E31F}" ShortID="93837295">
 							<PropertyList>
@@ -65,8 +83,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Music_Cut_Scene_Finale" ID="{9464F6E3-4535-4849-B08D-7B11081AEBA4}">
+				<Event Name="Music_CS_Finale" ID="{9464F6E3-4535-4849-B08D-7B11081AEBA4}">
 					<ChildrenList>
+						<Action Name="" ID="{540BE158-F9ED-41FA-9931-3E115A2DE267}" ShortID="1019361775">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="3"/>
+								<Property Name="FadeOutCurve" Type="int16" Value="8"/>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList/>
+						</Action>
 						<Action Name="" ID="{B6C8C086-B1F9-46A3-9874-BA341DDBABBD}" ShortID="322014540">
 							<ReferenceList>
 								<Reference Name="Target">
@@ -76,20 +103,15 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Music_Cut_Scenes_Airport" ID="{D52EE2CF-8418-4283-BF2C-F3085A1D3E0F}">
+				<Event Name="Music_CS_Airport" ID="{D52EE2CF-8418-4283-BF2C-F3085A1D3E0F}">
 					<ChildrenList>
 						<Action Name="" ID="{25DD0E3C-009C-4FD6-A183-B771837656D6}" ShortID="831716464">
 							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="2"/>
-								<Property Name="FadeOutCurve" Type="int16" Value="2"/>
-								<Property Name="FadeTime" Type="Real64" Value="1"/>
+								<Property Name="ActionType" Type="int16" Value="3"/>
+								<Property Name="FadeOutCurve" Type="int16" Value="8"/>
 								<Property Name="Scope" Type="int16" Value="1"/>
 							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="Hotel Lobby" ID="{C9F1A8D4-B470-43B3-A0DC-A880D092B0ED}" WorkUnitID="{25563D8B-DCAC-4B3D-B21C-FEBC5B0E321B}"/>
-								</Reference>
-							</ReferenceList>
+							<ReferenceList/>
 						</Action>
 						<Action Name="" ID="{6CD18947-0805-4973-A994-7DD0880E3033}" ShortID="20076604">
 							<PropertyList>
@@ -97,6 +119,57 @@
 								<Property Name="FadeInCurve" Type="int16" Value="2"/>
 								<Property Name="FadeTime" Type="Real64" Value="1.5"/>
 							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Cutscene _ General" ID="{FFEB2B37-C159-4A86-AC0A-47724D098C64}" WorkUnitID="{6263F7BE-C00D-4A45-AEC3-DC8317EEF2A4}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Music_Level_Bridge_Stop_Music" ID="{AF924A60-81A3-4CBF-82FD-32A49CF6F7AA}">
+					<ChildrenList>
+						<Action Name="" ID="{632A25CA-7230-4331-BF26-EA6FAAF48D99}" ShortID="243073364">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="3"/>
+								<Property Name="FadeOutCurve" Type="int16" Value="6"/>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList/>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Music_CS_City_Terminal" ID="{5644F058-9085-4C41-B2FD-13267E1FBA7F}">
+					<ChildrenList>
+						<Action Name="" ID="{97FD889D-D4C1-467F-A22A-E79ED1F9805B}" ShortID="814119727">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="3"/>
+								<Property Name="FadeOutCurve" Type="int16" Value="8"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList/>
+						</Action>
+						<Action Name="" ID="{9EE855C3-0866-4794-B51A-07CD8514AFD8}" ShortID="1012237736">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Cutscene _ General" ID="{FFEB2B37-C159-4A86-AC0A-47724D098C64}" WorkUnitID="{6263F7BE-C00D-4A45-AEC3-DC8317EEF2A4}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Music_CS_City_Intro" ID="{8F01234F-4AA2-4E67-98F2-60AA53FAA9F2}">
+					<ChildrenList>
+						<Action Name="" ID="{F8093520-C6D8-4AAC-9F21-8EB60D13EE83}" ShortID="14747683">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="3"/>
+								<Property Name="FadeOutCurve" Type="int16" Value="8"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList/>
+						</Action>
+						<Action Name="" ID="{6BD4DA25-1B99-4AFD-831D-F53E293345AE}" ShortID="457021248">
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Cutscene _ General" ID="{FFEB2B37-C159-4A86-AC0A-47724D098C64}" WorkUnitID="{6263F7BE-C00D-4A45-AEC3-DC8317EEF2A4}"/>

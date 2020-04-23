@@ -56,9 +56,13 @@ namespace AK
         static const AkUniqueID HOTEL_TOILET_FLUSH = 3926086744U;
         static const AkUniqueID HOTEL_TRASH_CAN_KICK = 1031503006U;
         static const AkUniqueID HOTEL_VENDINGMACHINE_KICK = 797762127U;
-        static const AkUniqueID MUSIC_CUT_SCENE_FINALE = 3354092612U;
-        static const AkUniqueID MUSIC_CUT_SCENES_AIRPORT = 2198248117U;
-        static const AkUniqueID MUSIC_CUT_SCENES_INTRO = 3806072774U;
+        static const AkUniqueID MUSIC_CS_AIRPORT = 4287883119U;
+        static const AkUniqueID MUSIC_CS_CITY_INTRO = 3892985788U;
+        static const AkUniqueID MUSIC_CS_CITY_TERMINAL = 1047741814U;
+        static const AkUniqueID MUSIC_CS_FINALE = 3704232663U;
+        static const AkUniqueID MUSIC_CS_INTRO = 346610352U;
+        static const AkUniqueID MUSIC_HOTEL = 3138446709U;
+        static const AkUniqueID MUSIC_LEVEL_BRIDGE_STOP_MUSIC = 2343448698U;
         static const AkUniqueID MUSIC_MENU = 1598298728U;
         static const AkUniqueID PLAYER_CITY_BOOT = 3958178683U;
         static const AkUniqueID PLAYER_CITY_BUSENGINE = 2791261825U;

@@ -112,7 +112,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="City_Ambience" ID="{9F1F18DE-D72D-47C9-8357-338C2DB50554}"/>
+				<Event Name="City_Ambience" ID="{9F1F18DE-D72D-47C9-8357-338C2DB50554}">
+					<ChildrenList>
+						<Action Name="" ID="{982034DE-36B2-4B95-BB4E-8F33DCF0E8EF}" ShortID="716746729">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="City_Ambience" ID="{AD048CF9-BE95-4892-BE10-901D0D887225}" WorkUnitID="{ED283715-517C-46E9-9FF8-F0DF71A35DB0}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 				<Event Name="City_Car_Honking" ID="{E67F4B58-8266-473F-8B92-7C195A8E1254}">
 					<ChildrenList>
 						<Action Name="" ID="{679C6BC0-0528-4EEC-BAF7-3E03BFD836F7}" ShortID="823730263">
@@ -187,6 +197,16 @@
 									<ObjectRef Name="City_TrafficLight_Blinking" ID="{AC28DB71-C0EB-4DC3-9D17-913F608C2151}" WorkUnitID="{ED283715-517C-46E9-9FF8-F0DF71A35DB0}"/>
 								</Reference>
 							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="City_Music_Silencer" ID="{64024E74-F8BC-4024-9567-3195B30181F7}">
+					<ChildrenList>
+						<Action Name="" ID="{4E349C1F-5F1F-470F-8EAB-4BEE1E626AFE}" ShortID="406128488">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="3"/>
+							</PropertyList>
+							<ReferenceList/>
 						</Action>
 					</ChildrenList>
 				</Event>

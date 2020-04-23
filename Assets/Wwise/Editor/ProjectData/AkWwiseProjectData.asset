@@ -24,14 +24,14 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 0ac5cf1454f60d4db9d996129aa2a3ec
     GuidInternal: 
-    m_lastTime: -8586141080954775808
+    m_lastTime: -8586141048544775808
     List: []
   BankWwu:
   - PhysicalPath: SoundBanks/Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: 22178d79115b0b47a78389e1469b9d8a
     GuidInternal: 
-    m_lastTime: -8586146309764775808
+    m_lastTime: -8586140036734775808
     List:
     - name: Airport
       guid: 685580a00462b0419121f5f5c6db4e9e
@@ -42,6 +42,15 @@ MonoBehaviour:
       - ElementName: Airport
         ObjectType: 7
       Path: Default Work Unit/Airport
+    - name: City
+      guid: ea799d71ad25424cade7046e2b3cd3ae
+      id: 3888786832
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: City
+        ObjectType: 7
+      Path: Default Work Unit/City
     - name: Cut_Scene
       guid: f60b28faecaaba43be6632cc904c9e0b
       id: 245686778
@@ -83,7 +92,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: a10c1617807fb84a98fd030ab8f29867
     GuidInternal: 
-    m_lastTime: -8586158980284775808
+    m_lastTime: -8586140403844775808
     List:
     - name: AI_Exclamation
       guid: c1e470b0b671af4f932951d4ccd0581e
@@ -94,6 +103,18 @@ MonoBehaviour:
       - ElementName: AI_Exclamation
         ObjectType: 3
       Path: AI/AI_Exclamation
+      maxAttenuation: 0
+      maxDuration: 1.161521
+      minDuration: 1.161521
+    - name: AI_Exclamation_Male
+      guid: 70bd7c9c4421944692c5693c3b76a129
+      id: 1905840283
+      PathAndIcons:
+      - ElementName: AI
+        ObjectType: 12
+      - ElementName: AI_Exclamation_Male
+        ObjectType: 3
+      Path: AI/AI_Exclamation_Male
       maxAttenuation: 0
       maxDuration: 1.161521
       minDuration: 1.161521
@@ -109,11 +130,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 1.161521
       minDuration: 1.161521
+    - name: AI_Question_Male
+      guid: d8fd971cc8373849a7618c361c2ab75e
+      id: 2287570078
+      PathAndIcons:
+      - ElementName: AI
+        ObjectType: 12
+      - ElementName: AI_Question_Male
+        ObjectType: 3
+      Path: AI/AI_Question_Male
+      maxAttenuation: 0
+      maxDuration: 1.161521
+      minDuration: 1.161521
   - PhysicalPath: Events/Airport.wwu
     ParentPhysicalPath: 
     guid: c3818a4cfc0a4d498c3dfbd299d2df34
     GuidInternal: 
-    m_lastTime: -8586146306864775808
+    m_lastTime: -8586141048544775808
     List:
     - name: Airport_Ambience_ConveyorBelt_01
       guid: e5a47524e6cb5f4ab34acc8f18dbfa5f
@@ -239,7 +272,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 2508872e04664d41ba93de8f10d15e6b
     GuidInternal: 
-    m_lastTime: -8586158981084775808
+    m_lastTime: -8586140147794775808
     List:
     - name: City_Ambience
       guid: de181f9f2dd7c9478357338c2db50554
@@ -251,8 +284,20 @@ MonoBehaviour:
         ObjectType: 3
       Path: City/City_Ambience
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: City_Car_Honking
+      guid: 584b7fe666823f478b927c195a8e1254
+      id: 3507450316
+      PathAndIcons:
+      - ElementName: City
+        ObjectType: 12
+      - ElementName: City_Car_Honking
+        ObjectType: 3
+      Path: City/City_Car_Honking
+      maxAttenuation: 0
+      maxDuration: 2.933553
+      minDuration: 0.367329
     - name: City_Detonation
       guid: 82b67b1d87829349a26f650eb3d27271
       id: 3821011336
@@ -337,6 +382,18 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 1.197686
       minDuration: 0.839586
+    - name: City_Music_Silencer
+      guid: 744e0264bcf8244095673195b30181f7
+      id: 574130730
+      PathAndIcons:
+      - ElementName: City
+        ObjectType: 12
+      - ElementName: City_Music_Silencer
+        ObjectType: 3
+      Path: City/City_Music_Silencer
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: City_Tank_Fire
       guid: d7690d8e59c1ea4f8e0bbb799af5b03c
       id: 838123530
@@ -361,6 +418,78 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: City_Traffic_Light
+      guid: f144817c2e814d48b3ae1e8c8ea4be8e
+      id: 3591911951
+      PathAndIcons:
+      - ElementName: City
+        ObjectType: 12
+      - ElementName: City_Traffic_Light
+        ObjectType: 3
+      Path: City/City_Traffic_Light
+      maxAttenuation: 0
+      maxDuration: 3.892188
+      minDuration: 3.892188
+    - name: City_Tree_Fall
+      guid: b8dbcac02bc754418149ac7666c7b43b
+      id: 1923466129
+      PathAndIcons:
+      - ElementName: City
+        ObjectType: 12
+      - ElementName: City_Tree_Fall
+        ObjectType: 3
+      Path: City/City_Tree_Fall
+      maxAttenuation: 0
+      maxDuration: 2.526854
+      minDuration: 2.526854
+    - name: City_Tree_Kick
+      guid: fd861301d47ea34d9b6dc271b5e44257
+      id: 4218188320
+      PathAndIcons:
+      - ElementName: City
+        ObjectType: 12
+      - ElementName: City_Tree_Kick
+        ObjectType: 3
+      Path: City/City_Tree_Kick
+      maxAttenuation: 0
+      maxDuration: 3.892188
+      minDuration: 3.892188
+    - name: Player_City_Boot
+      guid: 373c6783a7b23b4c9f664ca265835b4a
+      id: 3958178683
+      PathAndIcons:
+      - ElementName: City
+        ObjectType: 12
+      - ElementName: Player_City_Boot
+        ObjectType: 3
+      Path: City/Player_City_Boot
+      maxAttenuation: 0
+      maxDuration: 1.022089
+      minDuration: 0.804983
+    - name: Player_City_BusEngine
+      guid: b027d3702a33b54d8ea0a64ac252b9a3
+      id: 2791261825
+      PathAndIcons:
+      - ElementName: City
+        ObjectType: 12
+      - ElementName: Player_City_BusEngine
+        ObjectType: 3
+      Path: City/Player_City_BusEngine
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Player_City_Sandal
+      guid: 9a89db11fa0383409526e664545488ba
+      id: 168676302
+      PathAndIcons:
+      - ElementName: City
+        ObjectType: 12
+      - ElementName: Player_City_Sandal
+        ObjectType: 3
+      Path: City/Player_City_Sandal
+      maxAttenuation: 0
+      maxDuration: 3.010165
+      minDuration: 2.349482
   - PhysicalPath: Events/Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: 5731a099c366f446a8d3e5d78b47c9b8
@@ -371,7 +500,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: cafbdd67d35b684a8ffe463fd892eec0
     GuidInternal: 
-    m_lastTime: -8586146310734775808
+    m_lastTime: -8586140147794775808
     List:
     - name: Hotel_Ambience_Lobby
       guid: 438add41a6cf944d9f94666ebb73a97b
@@ -397,6 +526,30 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: Hotel_Door_Open
+      guid: af226f5ac532f34d81b2e818d0a95a8b
+      id: 4049972243
+      PathAndIcons:
+      - ElementName: Hotel
+        ObjectType: 12
+      - ElementName: Hotel_Door_Open
+        ObjectType: 3
+      Path: Hotel/Hotel_Door_Open
+      maxAttenuation: 0
+      maxDuration: 1.172187
+      minDuration: 1.172187
+    - name: Hotel_Door_Slam
+      guid: a48737a5b633e14bb73d3f5ba54ea2c7
+      id: 142307676
+      PathAndIcons:
+      - ElementName: Hotel
+        ObjectType: 12
+      - ElementName: Hotel_Door_Slam
+        ObjectType: 3
+      Path: Hotel/Hotel_Door_Slam
+      maxAttenuation: 0
+      maxDuration: 1.172187
+      minDuration: 1.172187
     - name: Hotel_Door_Squeak
       guid: f8bac18490a01244a167bebb7702f537
       id: 442557581
@@ -517,11 +670,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 2.526854
       minDuration: 2.526854
+    - name: Hotel_VendingMachine_Kick
+      guid: 5e7e904f22718e4b9383eb591047ac6a
+      id: 797762127
+      PathAndIcons:
+      - ElementName: Hotel
+        ObjectType: 12
+      - ElementName: Hotel_VendingMachine_Kick
+        ObjectType: 3
+      Path: Hotel/Hotel_VendingMachine_Kick
+      maxAttenuation: 0
+      maxDuration: 2.526854
+      minDuration: 2.526854
   - PhysicalPath: Events/Music.wwu
     ParentPhysicalPath: 
     guid: ab03b092fabf95478df983da98b8aca7
     GuidInternal: 
-    m_lastTime: -8586146306864775808
+    m_lastTime: -8586140041634775808
     List:
     - name: Music_City
       guid: 9c815e6e5afeaf4a8263295153fcf480
@@ -535,39 +700,63 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
-    - name: Music_Cut_Scene_Finale
-      guid: e3f6649435454948b08d7b11081aeba4
-      id: 3354092612
-      PathAndIcons:
-      - ElementName: Music
-        ObjectType: 12
-      - ElementName: Music_Cut_Scene_Finale
-        ObjectType: 3
-      Path: Music/Music_Cut_Scene_Finale
-      maxAttenuation: 0
-      maxDuration: 16.319105
-      minDuration: 16.319105
-    - name: Music_Cut_Scenes_Airport
+    - name: Music_CS_Airport
       guid: cfe22ed518848342bf2cf3085a1d3e0f
-      id: 2198248117
+      id: 4287883119
       PathAndIcons:
       - ElementName: Music
         ObjectType: 12
-      - ElementName: Music_Cut_Scenes_Airport
+      - ElementName: Music_CS_Airport
         ObjectType: 3
-      Path: Music/Music_Cut_Scenes_Airport
+      Path: Music/Music_CS_Airport
       maxAttenuation: 0
       maxDuration: 21.415104
       minDuration: 21.415104
-    - name: Music_Cut_Scenes_Intro
-      guid: 036197d195517d43b28e073bc53770b2
-      id: 3806072774
+    - name: Music_CS_City_Intro
+      guid: 4f23018fa24a674e98f260aa53faa9f2
+      id: 3892985788
       PathAndIcons:
       - ElementName: Music
         ObjectType: 12
-      - ElementName: Music_Cut_Scenes_Intro
+      - ElementName: Music_CS_City_Intro
         ObjectType: 3
-      Path: Music/Music_Cut_Scenes_Intro
+      Path: Music/Music_CS_City_Intro
+      maxAttenuation: 0
+      maxDuration: 20.415104
+      minDuration: 20.415104
+    - name: Music_CS_City_Terminal
+      guid: 58f044568590414cb2fd13267e1fba7f
+      id: 1047741814
+      PathAndIcons:
+      - ElementName: Music
+        ObjectType: 12
+      - ElementName: Music_CS_City_Terminal
+        ObjectType: 3
+      Path: Music/Music_CS_City_Terminal
+      maxAttenuation: 0
+      maxDuration: 20.415104
+      minDuration: 20.415104
+    - name: Music_CS_Finale
+      guid: e3f6649435454948b08d7b11081aeba4
+      id: 3704232663
+      PathAndIcons:
+      - ElementName: Music
+        ObjectType: 12
+      - ElementName: Music_CS_Finale
+        ObjectType: 3
+      Path: Music/Music_CS_Finale
+      maxAttenuation: 0
+      maxDuration: 16.319105
+      minDuration: 16.319105
+    - name: Music_CS_Intro
+      guid: 036197d195517d43b28e073bc53770b2
+      id: 346610352
+      PathAndIcons:
+      - ElementName: Music
+        ObjectType: 12
+      - ElementName: Music_CS_Intro
+        ObjectType: 3
+      Path: Music/Music_CS_Intro
       maxAttenuation: 0
       maxDuration: 21.415104
       minDuration: 21.415104
@@ -583,6 +772,18 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: Music_Level_Bridge_Stop_Music
+      guid: 604a92afa381bf4c82fd32a49cf6f7aa
+      id: 2343448698
+      PathAndIcons:
+      - ElementName: Music
+        ObjectType: 12
+      - ElementName: Music_Level_Bridge_Stop_Music
+        ObjectType: 3
+      Path: Music/Music_Level_Bridge_Stop_Music
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: Music_Menu
       guid: a13fd50fcf60534f98dc111e5629ed55
       id: 1598298728
@@ -599,7 +800,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: c96a7a88d220c54e8d68a4bf6260e576
     GuidInternal: 
-    m_lastTime: -8586146970504775808
+    m_lastTime: -8586140370414775808
     List:
     - name: Player_City_Walk
       guid: cb515a05ca2e49429eb85b3b64ef44f8
@@ -637,6 +838,18 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 1.303763
       minDuration: 1.034797
+    - name: Player_Shimmying
+      guid: 8f55a4a28ad3294d92d2072363f08d01
+      id: 1284718764
+      PathAndIcons:
+      - ElementName: Player
+        ObjectType: 12
+      - ElementName: Player_Shimmying
+        ObjectType: 3
+      Path: Player/Player_Shimmying
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: Player_Transform
       guid: dafe2e9978050c43bc91e409f957a407
       id: 1542675207
@@ -689,7 +902,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 8da93751e862e943b1a413eb176f964b
     GuidInternal: 
-    m_lastTime: -8586152848024775808
+    m_lastTime: -8586141048534775808
     List:
     - name: UI_Close
       guid: d34117b033acb34eabb496d9c82d5689
@@ -701,8 +914,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: UI/UI_Close
       maxAttenuation: 0
-      maxDuration: 0.355062
-      minDuration: 0.355062
+      maxDuration: 0.248427
+      minDuration: 0.248427
     - name: UI_Confirm
       guid: ddd91762359c7a409de416326472e17c
       id: 216067002
@@ -713,8 +926,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: UI/UI_Confirm
       maxAttenuation: 0
-      maxDuration: 1.354313
-      minDuration: 1.354313
+      maxDuration: 3
+      minDuration: 3
     - name: UI_Hover
       guid: ab1b9c393ce3084896e6740c09e89137
       id: 2118900976
@@ -725,8 +938,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: UI/UI_Hover
       maxAttenuation: 0
-      maxDuration: 0.115585
-      minDuration: 0.115585
+      maxDuration: 0.152002
+      minDuration: 0.152002
     - name: UI_ObjectiveCheck
       guid: 4b9df2a332ded84c8ba9edce2076df76
       id: 1708033489
@@ -804,8 +1017,19 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 2582258f0327d144afa8735674c84535
     GuidInternal: 
-    m_lastTime: -8586141080954775808
+    m_lastTime: -8586141048534775808
     List:
+    - name: Ambience
+      guid: 495240ab0317034bbca4dd4848dd3077
+      id: 85412153
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Volume
+        ObjectType: 4
+      - ElementName: Ambience
+        ObjectType: 13
+      Path: Default Work Unit/Volume/Ambience
     - name: MasterVolume
       guid: 646956930402b741b02eaf1d35d62220
       id: 2918011349
@@ -863,7 +1087,6 @@ MonoBehaviour:
   ExpandedItems:
   - /shoo-box_WwiseProject
   - /shoo-box_WwiseProject/Events
-  - /shoo-box_WwiseProject/Events/AI
-  - /shoo-box_WwiseProject/Events/Hotel
+  - /shoo-box_WwiseProject/Events/Music
   autoPopulateEnabled: 1
   CurrentPluginConfig: 
