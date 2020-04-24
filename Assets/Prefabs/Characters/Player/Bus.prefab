@@ -6524,6 +6524,7 @@ GameObject:
   - component: {fileID: 1461873589410616758}
   - component: {fileID: 1461873589410616759}
   - component: {fileID: 6063708366144290039}
+  - component: {fileID: -7427042038340676436}
   m_Layer: 0
   m_Name: Bus
   m_TagString: Player
@@ -6586,6 +6587,7 @@ MonoBehaviour:
   - {fileID: 8826006170616843865}
   - {fileID: 7229509633963376334}
   shoeSight: {fileID: 6063708366144290039}
+  health: {fileID: 0}
   startingShoes: 0100000002000000
   baseSpeed: 400
   boxSpeedMultiplier: 0.3
@@ -6614,6 +6616,10 @@ MonoBehaviour:
   verticalBoost: 0
   minY: -10
   useSnapRotation: 0
+  idleSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
 --- !u!114 &1461873589410616758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6678,6 +6684,18 @@ MonoBehaviour:
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: e87ba497e26db4293a468d386508cae9,
       type: 2}
+--- !u!114 &-7427042038340676436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461873589410616757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8edbd6d1877ae564eae9d1652b45834f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1461873589783580585
 GameObject:
   m_ObjectHideFlags: 0
@@ -13599,6 +13617,10 @@ MonoBehaviour:
   desiredForward: {x: 0, y: 0}
   targetCollider: {fileID: 5730036567703554523}
   rightSandalModel: {fileID: 6585914790832565752}
+  sandalFlingSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
 --- !u!54 &5730036567703554522
 Rigidbody:
   m_ObjectHideFlags: 0

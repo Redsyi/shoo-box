@@ -31,7 +31,12 @@ public class CheckpointManager : MonoBehaviour
         }
     }
 
-    public void SetCheckpoint(int checkpointID, bool forceLower = false)
+    public void SetCheckpoint(int checkpointID)
+    {
+        SetCheckpoint(checkpointID, false);
+    }
+
+    public void SetCheckpoint(int checkpointID, bool forceLower)
     {
         if (checkpointID > currCheckpoint || forceLower)
         {
