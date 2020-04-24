@@ -74,7 +74,6 @@ public class Player : MonoBehaviour
     private UIShoeTag shoeTagUI;
     [HideInInspector]
     public float verticalBoost;
-    public bool usingController => inputSystem.currentControlScheme.Equals("Gamepad");
     private int _npcsChasing;
     public int npcsChasing
     {
@@ -559,7 +558,7 @@ public class Player : MonoBehaviour
     /// <param name="time">how long to rumble for</param>
     public void Rumble(RumbleStrength strength, float time)
     {
-        if (inputSystem.currentControlScheme == "Gamepad")
+        if (Controls.usingController)
         {
             float lowFreqSpeed = 0f;
             float highFreqSpeed = 0f;
@@ -597,7 +596,7 @@ public class Player : MonoBehaviour
 
     //automatically turns off controller rumble once time is up
     private void UpdateRumble() {
-        if (inputSystem?.currentControlScheme == "Gamepad")
+        if (Controls.usingController)
         {
             if (intenseRumbleTime > 0f)
             {
@@ -636,7 +635,7 @@ public class Player : MonoBehaviour
 
     //cancels any rumbling in the controller
     private void ClearRumble() {
-        if (inputSystem?.currentControlScheme == "Gamepad")
+        if (Controls.usingController)
         {
             (inputSystem.devices[0] as Gamepad).SetMotorSpeeds(0f, 0f);
             intenseRumbleTime = 0f;

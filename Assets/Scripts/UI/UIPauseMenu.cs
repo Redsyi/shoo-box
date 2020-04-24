@@ -81,7 +81,7 @@ public class UIPauseMenu : MonoBehaviour
 
     public void ControlsPaneLoaded()
     {
-        bool usingGamepad = (Player.current ? Player.current.usingController : false);
+        bool usingGamepad = Controls.usingController;
         toggleController.SetActive(usingGamepad);
         toggleKeyboard.SetActive(!usingGamepad);
     }

@@ -19,7 +19,7 @@ public class UIPlayerInputCheck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        manager.controller = player.usingController;
+        manager.controller = Controls.usingController;
         if (player.shoeManager.currShoe == ShoeType.BOOTS)
             manager.ShowUse();
     }

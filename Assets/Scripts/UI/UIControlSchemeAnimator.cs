@@ -18,7 +18,7 @@ public class UIControlSchemeAnimator : MonoBehaviour
     {
         if (animator)
         {
-            animator.SetBool("Controller", inputSystem.currentControlScheme == "Gamepad");
+            animator.SetBool("Controller", Controls.usingController);
         }
     }
 }
