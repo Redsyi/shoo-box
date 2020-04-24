@@ -4,25 +4,35 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
 
+/// <summary>
+/// class that manages several panes in the UI, allowing the ability to swap between them
+/// </summary>
 public class UIPaneManager : MonoBehaviour
 {
     [System.Serializable]
     public class UIPane
     {
+        [Tooltip("The pane itself")]
         public GameObject pane;
+        [Tooltip("The object in the pane that should be selected by default. Can be left empty.")]
         public GameObject defaultSelected;
+        [Tooltip("Action to perform when this pane is switched to")]
         public UnityEvent onAppear;
+        [Tooltip("Action to perform when this pane is switched from")]
         public UnityEvent onDisappear;
     }
 
+    [Tooltip("The button pane (i.e. tabs) connected to these panes")]
     public UIButtonPane buttonPane;
     public UIPane[] panes;
     public int currPaneIdx;
+    [Tooltip("Time (in seconds) to swap panes")]
     public float paneSwipeSpeed = 0.3f;
+    [Tooltip("Sound played when panes are swapped")]
     public AK.Wwise.Event swipeSound;
+
     int animatorsActive;
     bool currentlySwitchingPanes => animatorsActive > 0;
-
     UIPane currPane => panes[currPaneIdx];
 
     private void Awake()
@@ -30,16 +40,25 @@ public class UIPaneManager : MonoBehaviour
         buttonPane.panes = this;
     }
 
+    /// <summary>
+    /// Advances to the next pane if able
+    /// </summary>
     public void NextPane()
     {
         SwitchToPane(currPaneIdx + 1);
     }
 
+    /// <summary>
+    /// Advances to the previous pane if able
+    /// </summary>
     public void PreviousPane()
     {
         SwitchToPane(currPaneIdx - 1);
     }
 
+    /// <summary>
+    /// Switches to the given pane index if able and different than the current one
+    /// </summary>
     public void SwitchToPane(int paneIdx)
     {
         if (paneIdx >= 0 && paneIdx < panes.Length && paneIdx != currPaneIdx)
@@ -51,6 +70,7 @@ public class UIPaneManager : MonoBehaviour
         }
     }
 
+    //General code to switch from the current pane to a new one
     void Shift(UIDirection newFrom, UIDirection oldTo, int newIndex)
     {
         if (!currentlySwitchingPanes)
@@ -66,6 +86,9 @@ public class UIPaneManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Bring up the pane manager
+    /// </summary>
     public void Appear()
     {
         buttonPane.currTabIdx = currPaneIdx;
@@ -75,6 +98,9 @@ public class UIPaneManager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(currPane.defaultSelected);
     }
 
+    /// <summary>
+    /// Dismiss the pane manager
+    /// </summary>
     public void Disappear()
     {
         currPane.onDisappear.Invoke();
@@ -83,16 +109,20 @@ public class UIPaneManager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
     }
 
+    //kicks off a pane animation in
     void AnimateIn(UIPane pane, UIDirection direction)
     {
         StartCoroutine(DoAnimateIn(pane, direction));
     }
 
+    //kicks off a pane animation out
     void AnimateOut(UIPane pane, UIDirection direction)
     {
         StartCoroutine(DoAnimateOut(pane, direction));
     }
 
+    //performs an animation. I probably would've done this using a unity animation if I had known at the time
+    //that you can set an animation to use unscaled time, but this works fine
     IEnumerator DoAnimateIn(UIPane pane, UIDirection direction)
     {
         animatorsActive++;
@@ -140,6 +170,7 @@ public class UIPaneManager : MonoBehaviour
         animatorsActive--;
     }
 
+    //get the pivot needed to align a pane in the given position
     Vector2 getPivot(UIDirection forDirection)
     {
         if (forDirection == UIDirection.LEFT)
@@ -152,6 +183,7 @@ public class UIPaneManager : MonoBehaviour
             return new Vector2(0.5f, 1);
     }
 
+    //get the anchor needed to align a pane in the given position
     Vector2 getAnchor(UIDirection forDirection)
     {
         if (forDirection == UIDirection.LEFT)

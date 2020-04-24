@@ -6,6 +6,9 @@ using UnityEngine.EventSystems;
 using Event = AK.Wwise.Event;
 using UnityEngine.UI;
 
+/// <summary>
+/// class to manage the pause menu
+/// </summary>
 public class UIPauseMenu : MonoBehaviour
 {
     public bool paused { get; private set; }
@@ -17,6 +20,10 @@ public class UIPauseMenu : MonoBehaviour
     public GameObject toggleController;
     public GameObject toggleKeyboard;
 
+    public Image backgroundPane;
+    public Color paneColor;
+    public Color paneHiddenColor;
+
     private string toggleText;
     public bool conToggled { get; private set; }
 
@@ -26,15 +33,12 @@ public class UIPauseMenu : MonoBehaviour
         conToggled = false;
     }
 
-    
+    /// <summary>
+    /// toggles the game's paused state
+    /// </summary>
     public void TogglePause()
     {
         paused = !paused;
-
-        if (paused)
-            pauseSound.Post(gameObject);
-        else
-            unpauseSound.Post(gameObject);
 
         if (paused)
             panes.Appear();
@@ -43,6 +47,8 @@ public class UIPauseMenu : MonoBehaviour
 
         Time.timeScale = (paused ? 0 : 1);
         (paused ? pauseSound : unpauseSound)?.Post(gameObject);
+
+        backgroundPane.color = (paused ? paneColor : paneHiddenColor);
 
         if (paused)
             Player.current.inputSystem.SwitchCurrentActionMap("UI");

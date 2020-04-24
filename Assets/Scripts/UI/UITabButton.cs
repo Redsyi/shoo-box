@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+/// <summary>
+/// Class to represent a tab in the button pane for a UIPaneManager
+/// </summary>
 public class UITabButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IPointerExitHandler
 {
     [HideInInspector] public Sprite selectedImage;
@@ -42,6 +45,8 @@ public class UITabButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHan
         }
     }
     UIButtonPane parent;
+
+    [Tooltip("Image component for the button")]
     public Image buttonImage;
     public AK.Wwise.Event hoverSound;
     public AK.Wwise.Event clickSound;
