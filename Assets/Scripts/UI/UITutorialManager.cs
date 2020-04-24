@@ -64,11 +64,6 @@ public class UITutorialManager : MonoBehaviour
 
     void Update()
     {
-        if (currAnimator)
-        {
-            currAnimator.SetBool("Controller", controller);
-        }
-
         if (interactAni && boots)
         {
             interactAni.transform.position = CameraScript.current.camera.WorldToScreenPoint(boots.transform.position) + Vector3.down * 150;

@@ -31,12 +31,10 @@ public class ObjectiveTracker : MonoBehaviour
 
     public void CompleteObjective(int objectiveNum)
     {
-        print("Current objective number: " + currObjective);
         UIShoeSightReminder.instance.ObjectiveCompleted();
         //objectiveUIs[objectiveNum].Complete();
         currObjective++;
-        print("Next objeective number: " + currObjective);
-        if (currObjective < objectives.Length)
+        if (currObjective < objectives.Length && objectiveTagText)
             objectiveTagText.text = objectives[currObjective]; // Update the objective tag with the next 
     }
 }

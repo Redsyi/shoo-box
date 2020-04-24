@@ -524,11 +524,8 @@ public class Player : MonoBehaviour
     {
         if (StealFocusWhenSeen.activeThief == null)
         {
-            UIPauseMenu.instance.TogglePause();
-            if (UIPauseMenu.instance.paused)
-                inputSystem.SwitchCurrentActionMap("UI");
-            else if (!UIPopup.popupActive)
-                inputSystem.SwitchCurrentActionMap("Player");
+            if (!UIPopup.popupActive)
+                UIPauseMenu.instance.TogglePause();
         } else
         {
             bool editorOverride = false;

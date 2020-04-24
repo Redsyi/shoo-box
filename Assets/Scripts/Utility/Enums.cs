@@ -81,7 +81,9 @@ public enum Direction
 public enum UIDirection
 {
     LEFT,
-    RIGHT
+    RIGHT,
+    UP,
+    DOWN
 }
 
 public enum StoplightColor
