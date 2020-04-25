@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2297785425713873083}
   - component: {fileID: 56070012267874189}
   - component: {fileID: 1786673425463938145}
-  - component: {fileID: 2783897386243241492}
   - component: {fileID: 567260492984543704}
+  - component: {fileID: 2459633095849680541}
   m_Layer: 0
   m_Name: Terminal Chair
   m_TagString: Untagged
@@ -81,20 +81,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2783897386243241492
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5597633849005959561}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8488918131940115346, guid: 546a3af0e4864de46a2e5ce8d78648b8, type: 3}
 --- !u!114 &567260492984543704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,3 +94,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animate: 0
+--- !u!65 &2459633095849680541
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5597633849005959561}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.076684274, y: 0.07949443, z: 0.06394298}
+  m_Center: {x: 0.000010214205, y: -0.03235647, z: 0.000053181557}

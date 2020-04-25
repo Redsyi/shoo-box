@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5522172600871846966}
   - component: {fileID: 3815305840860501724}
   - component: {fileID: 4562692292345289364}
-  - component: {fileID: 5823958815884643398}
   - component: {fileID: 3051100625441939319}
+  - component: {fileID: 4566388008030708012}
   m_Layer: 0
   m_Name: Terminal Table Variant 2
   m_TagString: Untagged
@@ -81,20 +81,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &5823958815884643398
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4495711844598757392}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -4121606559162394652, guid: 546a3af0e4864de46a2e5ce8d78648b8, type: 3}
 --- !u!114 &3051100625441939319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,3 +94,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animate: 0
+--- !u!65 &4566388008030708012
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4495711844598757392}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.010000001, y: 0.049536597, z: 0.010000002}
+  m_Center: {x: 0.0000000011641531, y: -0.0197683, z: 0.0000000011641532}
