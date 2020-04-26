@@ -11,6 +11,7 @@ public class CameraAngleZone : MonoBehaviour
     private float timeOutOfBounds;
     private bool inBounds => timeInBounds > 0;
     public float timeToAdjust = 1f;
+    float oobTimeout = 1f;
 
     private void Start()
     {
@@ -19,24 +20,32 @@ public class CameraAngleZone : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        oobTimeout = 0f;
         if (StealFocusWhenSeen.activeThief == null)
             timeInBounds += Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        timeInBounds = Mathf.Clamp01(timeToAdjust - timeOutOfBounds);
+        if (timeInBounds < 0.1f)
+            timeInBounds = Mathf.Clamp01(timeToAdjust - timeOutOfBounds);
         timeOutOfBounds = 0f;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        timeOutOfBounds = Mathf.Clamp01(timeToAdjust - timeInBounds);
-        timeInBounds = 0f;
     }
 
     private void Update()
     {
+        //this bit of code is essentially OnTriggerExit. we can't use OnTriggerExit directly because then we get jerky movement
+        //when we toggle forms or kick, doing it this way ensures the game has time to transition hitboxes
+        if (oobTimeout < 0.12f)
+        {
+            oobTimeout += Time.deltaTime;
+            if (oobTimeout > 0.12f)
+            {
+                timeOutOfBounds = Mathf.Clamp01(timeToAdjust - timeInBounds);
+                timeInBounds = 0f;
+            }
+        }
+
         if (StealFocusWhenSeen.activeThief == null)
         {
             timeOutOfBounds += Time.deltaTime;

@@ -6,39 +6,56 @@ using UnityEngine.SceneManagement;
 
 public class AIAgent : MonoBehaviour
 {
-    public Transform[] patrolPoints;
+    [Header("Component refs")]
     public Animator animator;
-    public AIStateNode currState;
     public NavMeshAgent pathfinder;
-    public Queue<IAIInteractable> thingsToInteractWith;
-    float timer;
+    public ThrowItem thrower;
+
+    [Header("Behavior")]
+    public Transform[] patrolPoints;
+    public AIInterest[] interests;
+    public bool deaf;
+    public UnityEngine.Events.UnityEvent chaseOverride;
+    public float stopDist = 1f;
+
+    [Header("Stats")]
+    public float walkSpeed;
+    public float runSpeed;
+    public float throwWaitTime;
+    public float interactSpeedMultiplier = 1;
+
+    [Header("Prefab refs")]
     public GameObject targetPrefab;
     public UINPCBubble bubblePrefab;
     public Transform bubbleAnchor;
-    private UINPCBubble myBubble;
-    private GameObject instantiatedTarget;
-    private bool stopped;
-    private Vector3 prevPos;
-    private float stoppedTime = 0f;
-    private const float giveUpTime = 1f;
-    public bool debug;
-    public float walkSpeed;
-    public float runSpeed;
-    public AIInterest[] interests;
-    public bool beingRepelled;
-    public static bool blindAll;
-    public bool deaf;
-    public ThrowItem thrower;
-    private bool reachedInteractable;
-    public float throwWaitTime;
-    private AKEventNPC wwiseComponent;
-    private int currPatrolPoint;
-    private CustomShoeSight shoeSightColoring;
-    private ShoeSightType originalSightColoring;
-    private bool investigateSoundPlayed;
+
+    [Header("Audio")]
     public AK.Wwise.Event onSpot;
     public AK.Wwise.Event onInvestigate;
+
+    [Header("Misc")]
+    [Tooltip("The name displayed in \"you were caught by _____\" when you get caught")]
+    public string gameOverName;
+    public bool debug;
+
+    private UINPCBubble myBubble;           //reference to instantiated ?/! bubble
+    private GameObject instantiatedTarget;  //reference to a reusable "target point" gameobject
+    private bool stopped;                   //is the agent standing still
+    private Vector3 prevPos;                //used for calculating "stopped"
+    private float stoppedTime = 0f;         //how long agent has been standing still
+    private const float giveUpTime = 1f;    //how long the agent investigates a lost player's position before giving up
+    public static bool blindAll;            //static bool, if toggled on, all AI lose sight
+    private bool reachedInteractable;       //if true, agent goes from navigating to interactable to performing interact animation
+    private AKEventNPC wwiseComponent;      //deprecated
+    private int currPatrolPoint;            //which patrol point in patrolPoints the agent is on
+    private CustomShoeSight shoeSightColoring;      //reference to the shoe sight colorer, we need this ref so we can change from red to yellow
+    private ShoeSightType originalSightColoring;    //original sight coloring, helps us know not to change to red if we weren't originally red
+    private bool investigateSoundPlayed;
     private float _spotProgress;
+
+    /// <summary>
+    /// clamped value from 0..1 representing how "spotted" the player is by this agent
+    /// </summary>
     public float spotProgress
     {
         get
@@ -55,12 +72,14 @@ public class AIAgent : MonoBehaviour
             }
         }
     }
-    public string gameOverName;
     [HideInInspector]
-    public bool stunned;
-    ScriptedSequence[] sequences;
-    public UnityEngine.Events.UnityEvent chaseOverride;
-    public float interactSpeedMultiplier = 1;
+    public bool stunned;    //if this agent is stunned
+    ScriptedSequence[] sequences;   //refs to all possible sequences on this agent
+    float timeSinceLastOnSpot;          //this and below help prevent sound spam with rapid changing of states
+    float timeSinceLastOnInvestigate;
+    public AIStateNode currState;       //the current ai state
+    public Queue<IAIInteractable> thingsToInteractWith; //current list of items the agent has detected need interaction
+    float timer;        //general timer variable used across all states
 
     void Start()
     {
@@ -201,7 +220,11 @@ public class AIAgent : MonoBehaviour
         {
             wwiseComponent?.PlayerSpotted();
             myBubble.Spotted();
-            onSpot.Post(gameObject);
+            if (timeSinceLastOnSpot > 2)
+            {
+                onSpot.Post(gameObject);
+                timeSinceLastOnSpot = 0;
+            }
             player.npcsChasing++;
             timer = 0f;
             chaseOverride.Invoke();
@@ -249,6 +272,9 @@ public class AIAgent : MonoBehaviour
 
     void Update()
     {
+        timeSinceLastOnSpot += Time.deltaTime;
+        timeSinceLastOnInvestigate += Time.deltaTime;
+
         if (stopped)
             stoppedTime += Time.deltaTime;
         else
@@ -284,7 +310,7 @@ public class AIAgent : MonoBehaviour
                     }
                 }
             }
-            bool closeToTarget = (transform.position - currState.location.position).sqrMagnitude < 0.4f;
+            bool closeToTarget = (transform.position - currState.location.position).sqrMagnitude < (stopDist * stopDist);
             bool closeEnough = (reachedInteractable && currState.state == AIState.INTERACT) || (stoppedTime >= giveUpTime) || closeToTarget;
 
             if (pathfinder)
@@ -347,6 +373,8 @@ public class AIAgent : MonoBehaviour
                     }
                     else
                     {
+                        if (pathfinder && pathfinder.enabled)
+                            pathfinder.destination = transform.position;
                         currState.state = AIState.INVESTIGATING;
                         animator.SetTrigger("Investigate");
                     }
@@ -354,7 +382,11 @@ public class AIAgent : MonoBehaviour
                     if (!investigateSoundPlayed)
                     {
                         investigateSoundPlayed = true;
-                        onInvestigate.Post(gameObject);
+                        if (timeSinceLastOnInvestigate > 2)
+                        {
+                            onInvestigate.Post(gameObject);
+                            timeSinceLastOnInvestigate = 0;
+                        }
                     }
                     break;
                 case AIState.INVESTIGATING:
@@ -382,17 +414,23 @@ public class AIAgent : MonoBehaviour
                         if (!investigateSoundPlayed)
                         {
                             investigateSoundPlayed = true;
-                            onInvestigate.Post(gameObject);
+                            if (timeSinceLastOnInvestigate > 2)
+                            {
+                                onInvestigate.Post(gameObject);
+                                timeSinceLastOnInvestigate = 0;
+                            }
                         }
                     }
                     break;
                 case AIState.INTERACT:
-                    if (!closeEnough && pathfinder)
+                    if (!closeEnough && pathfinder && pathfinder.enabled)
                     {
                         pathfinder.destination = currState.location.position;
                     }
                     else
                     {
+                        if (pathfinder && pathfinder.enabled)
+                            pathfinder.destination = transform.position;
                         if (!reachedInteractable)
                             wwiseComponent?.Fixing();
                         reachedInteractable = true;

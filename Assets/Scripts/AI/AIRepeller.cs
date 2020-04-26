@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+//deprecated class
 public class AIRepeller : MonoBehaviour
 {
     public float endRadius;
@@ -43,7 +44,7 @@ public class AIRepeller : MonoBehaviour
         AIAgent agent = other.GetComponentInParent<AIAgent>();
         if (agent)
         {
-            agent.beingRepelled = true;
+            //agent.beingRepelled = true;
             agent.transform.LookAt(transform.position);
             agent.transform.localEulerAngles = new Vector3(agent.transform.localEulerAngles.x, agent.transform.localEulerAngles.y + 180, agent.transform.localEulerAngles.z);
         }
@@ -54,7 +55,7 @@ public class AIRepeller : MonoBehaviour
         AIAgent agent = other.GetComponentInParent<AIAgent>();
         if (agent)
         {
-            agent.beingRepelled = false;
+            //agent.beingRepelled = false;
         }
     }
 }
