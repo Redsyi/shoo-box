@@ -668,7 +668,11 @@ public class Player : MonoBehaviour
 #if UNITY_EDITOR
     public void OnTest()
     {
-
+        GameObject UI = GameObject.Find("UI");
+        if (UI)
+        {
+            UI.SetActive(!UI.activeInHierarchy);
+        }
     }
 
     public void OnCheckpointLoad(InputValue value)
@@ -685,6 +689,32 @@ public class Player : MonoBehaviour
     public void OnCheckpointForceReload(InputValue value)
     {
         holdingForceReload = (value.Get<float>()) > 0.5f;
+    }
+
+    public void OnCinematicAngle(InputValue value)
+    {
+        myCamera.cinematicAngleDelta = value.Get<float>();
+    }
+
+    public void OnCinematicZoom(InputValue value)
+    {
+        myCamera.cinematicZoomDelta = value.Get<float>();
+    }
+
+    public void OnCinematicRaise(InputValue value)
+    {
+        myCamera.cinematicRaiseDelta = value.Get<float>();
+    }
+
+    public void OnCinematicMode()
+    {
+        myCamera.cinematicMode = !myCamera.cinematicMode;
+    }
+
+    public void OnLook(InputValue value)
+    {
+        Vector2 mouseDelta = value.Get<Vector2>();
+        myCamera.mouseDelta = mouseDelta;
     }
 #endif
 

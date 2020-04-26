@@ -44,7 +44,7 @@ public class StealFocusWhenSeen : MonoBehaviour
         {
             Camera camera = CameraScript.current.camera;
             Vector3 screenPos = camera.WorldToScreenPoint(transform.position);
-            if ((stealAfterTime != -1 && stealAfterTime <= 0f) || (screenPos.x >= padding && screenPos.x <= camera.pixelWidth - padding && screenPos.y >= padding && screenPos.y <= camera.pixelHeight - padding))
+            if ((stealAfterTime != -1 && stealAfterTime <= 0f) || (screenPos.x >= padding && screenPos.x <= camera.pixelWidth - padding && screenPos.y >= padding && screenPos.y <= camera.pixelHeight - padding) && !CameraScript.current.cinematicMode)
             {
                 StartCoroutine(StealFocus());
             }
@@ -56,7 +56,7 @@ public class StealFocusWhenSeen : MonoBehaviour
 
     public virtual void Trigger()
     {
-        if (!focusStolen && activeThief == null)
+        if (!focusStolen && activeThief == null && !CameraScript.current.cinematicMode)
         {
             StartCoroutine(StealFocus());
         }

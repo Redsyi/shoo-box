@@ -80,10 +80,41 @@ public class CameraScript : MonoBehaviour
         }
     }
     public float smoothRotationSpeed;
+    bool _cinematicMode;
+    public bool cinematicMode
+    {
+        get
+        {
+            return _cinematicMode;
+        }
+        set
+        {
+            _cinematicMode = value;
+            if (value)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+            } else
+            {
+                Cursor.lockState = CursorLockMode.None;
+                cameraAngle = originalAngle;
+            }
+        }
+    }
+    [HideInInspector] public Vector2 mouseDelta;
+    [HideInInspector] public float cinematicAngleDelta;
+    [HideInInspector] public float cinematicZoomDelta;
+    [HideInInspector] public float cinematicRaiseDelta;
+    public float cinematicSensitivity = 1f;
+    public float cinematicRotateSensitivity = 0.2f;
+    public float cinematicAngleSensitivity = 20;
+    public float cinematicZoomSensitivity = 0.2f;
+    public float cinematicRaiseSensitivity = 0.1f;
+    [HideInInspector] public float originalAngle;
 
     private void Awake()
     {
         _cameraAngle = -transform.localEulerAngles.x;
+        originalAngle = _cameraAngle;
         _cameraRotation = transform.localEulerAngles.y;
         camera = GetComponentInChildren<Camera>();
         _cameraDist = camera.transform.localPosition.z;
@@ -100,7 +131,7 @@ public class CameraScript : MonoBehaviour
     //Attach to player in lateupdate so there is no visual lag
     void LateUpdate()
     {
-        if (StealFocusWhenSeen.activeThief == null)
+        if (StealFocusWhenSeen.activeThief == null && !cinematicMode)
         {
             if (remainingRotation != 0f)
             {
@@ -126,6 +157,30 @@ public class CameraScript : MonoBehaviour
                 }
             }
         }
+        else if (cinematicMode)
+        {
+            if (mouseDelta != Vector2.zero)
+            {
+                Vector2 adjustedMovement = Utilities.RotateVectorDegrees(mouseDelta * cinematicSensitivity, 180 - transform.eulerAngles.y);
+                mouseDelta = Vector2.zero;
+                transform.position += new Vector3(adjustedMovement.x, 0, adjustedMovement.y);
+            }
+            if (cinematicAngleDelta != 0f)
+            {
+                float delta = cinematicAngleDelta * Time.deltaTime * cinematicAngleSensitivity;
+                cameraAngle += delta;
+            }
+            if (cinematicZoomDelta != 0f)
+            {
+                float delta = cinematicZoomDelta * Time.deltaTime * cinematicZoomSensitivity * -1;
+                camera.orthographicSize += delta;
+            }
+            if (cinematicRaiseDelta != 0f)
+            {
+                float delta = cinematicRaiseDelta * Time.deltaTime * cinematicRaiseSensitivity;
+                transform.position += new Vector3(0, delta);
+            }
+        }
     }
 
     /// <summary>
@@ -144,7 +199,7 @@ public class CameraScript : MonoBehaviour
     {
         if (direction != 0)
         {
-            cameraRotation += direction * Time.deltaTime * smoothRotationSpeed;
+            cameraRotation += direction * Time.deltaTime * smoothRotationSpeed * (cinematicMode ? cinematicRotateSensitivity : 1);
         }
     }
 
