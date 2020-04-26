@@ -15,6 +15,7 @@ public class CityRoad : MonoBehaviour
 
     public static CityRoad[] roads;                     //static array of all roads in the city
     const float posOffset = 1.3f;
+    RoadPlayerDetector[] playerDetectors;
 
     private void Awake()
     {
@@ -26,15 +27,35 @@ public class CityRoad : MonoBehaviour
         FillCarPositions();
         surroundingRoads = new Dictionary<Direction, CityRoad>();
         DirectionUtil.FillDict(surroundingRoads, null);
+
+        playerDetectors = GetComponentsInChildren<RoadPlayerDetector>();
+        foreach (RoadPlayerDetector detector in playerDetectors)
+        {
+            if (detector.transform.position.z > transform.position.z)
+                detector.vBlock = Direction.SOUTH;
+            else
+                detector.vBlock = Direction.NORTH;
+            if (detector.transform.position.x < transform.position.x)
+                detector.hBlock = Direction.EAST;
+            else
+                detector.hBlock = Direction.WEST;
+        }
     }
 
+    /// <summary>
+    /// Initialize the static road network
+    /// </summary>
     private void Start()
     {
         if (roads == null || roads.Length == 0)
             roads = FindObjectsOfType<CityRoad>();
         FindSurroundingRoads();
+        StartCoroutine(SleepPlayerDetectors());
     }
 
+    /// <summary>
+    /// Sets the positions cars should aim for on this road in each direction
+    /// </summary>
     void FillCarPositions()
     {
         carPositions[Direction.EAST] = transform.position + new Vector3(-posOffset, 0, -posOffset);
@@ -43,6 +64,9 @@ public class CityRoad : MonoBehaviour
         carPositions[Direction.SOUTH] = transform.position + new Vector3(-posOffset, 0, posOffset);
     }
 
+    /// <summary>
+    /// Finds neighbors from the static road network
+    /// </summary>
     void FindSurroundingRoads()
     {
         foreach (CityRoad road in roads)
@@ -58,6 +82,9 @@ public class CityRoad : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// returns if the other CityRoad is adjacent to this one in the given direction
+    /// </summary>
     bool IsAdjacent(CityRoad other, Direction direction)
     {
         float tolerance = 1;
@@ -91,11 +118,17 @@ public class CityRoad : MonoBehaviour
             roads = null;
     }
 
+    /// <summary>
+    /// returns if it's physically for a car to go the specified direction on this road, not considering red lights
+    /// </summary>
     public bool CanPass(Direction direction)
     {
         return !assignedCar[direction] && surroundingRoads[direction] != null;
     }
 
+    /// <summary>
+    /// Returns a list of directions a car can go from this road, given they are heading currDirection
+    /// </summary>
     public List<Direction> AvailableDirections(Direction currDirection)
     {
         List<Direction> available = new List<Direction>();
@@ -105,16 +138,18 @@ public class CityRoad : MonoBehaviour
             if (direction != DirectionUtil.Opposite(currDirection) && nextRoad != null)
             {
                 if (nextRoad.canGo[currDirection] && //make sure you're allowed to go into the road tile
-                    //conditions to turn left: either the opposite side has a red, the opposite side doesn't exist, or the opposite side has no car on it
-                        (direction != DirectionUtil.Left(currDirection) || 
-                        !nextRoad.canGo[DirectionUtil.Opposite(currDirection)] || 
-                        !nextRoad.surroundingRoads[currDirection] || 
-                            (!nextRoad.surroundingRoads[currDirection].assignedCar[DirectionUtil.Opposite(currDirection)]) && 
+                                                     //conditions to turn left: either the opposite side has a red, the opposite side doesn't exist, or the opposite side has no car on it
+                        (direction != DirectionUtil.Left(currDirection) ||
+                        !nextRoad.canGo[DirectionUtil.Opposite(currDirection)] ||
+                        !nextRoad.surroundingRoads[currDirection] ||
+                            (!nextRoad.surroundingRoads[currDirection].assignedCar[DirectionUtil.Opposite(currDirection)]) &&
                             !nextRoad.assignedCar[DirectionUtil.Opposite(currDirection)] &&
                             !nextRoad.assignedCar[DirectionUtil.Left(currDirection)] &&
                             !nextRoad.assignedCar[DirectionUtil.Right(currDirection)])
                     && nextRoad.CanPass(direction)
                     && !nextRoad.assignedTank
+                    && !nextRoad.BlockedByPlayer(currDirection)
+                    && !nextRoad.BlockedByPlayer(direction)
                     )
                 {
                     available.Add(direction);
@@ -124,7 +159,9 @@ public class CityRoad : MonoBehaviour
         return available;
     }
     
-
+    /// <summary>
+    /// Draws the calculated road paths
+    /// </summary>
     private void OnDrawGizmos()
     {
         if (surroundingRoads != null)
@@ -163,6 +200,49 @@ public class CityRoad : MonoBehaviour
                 Gizmos.DrawCube(carPositions[Direction.NORTH], Vector3.one);
             if (assignedCar[Direction.SOUTH])
                 Gizmos.DrawCube(carPositions[Direction.SOUTH], Vector3.one);
+        }
+    }
+
+    /// <summary>
+    /// Returns true if this road is blocked by the player in the given direction
+    /// </summary>
+    public bool BlockedByPlayer(Direction dir)
+    {
+        foreach (RoadPlayerDetector detector in playerDetectors)
+        {
+            if (detector.IsBlocking(dir))
+                return true;
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// Disables player detector colliders if we're far from the player to cut down on physics overhead
+    /// </summary>
+    IEnumerator SleepPlayerDetectors()
+    {
+        bool sleeping = false;
+        while (true)
+        {
+            Vector3 distToPlayer = transform.position - Player.current.transform.position;
+            bool far = distToPlayer.sqrMagnitude > 180;
+            if (far && !sleeping)
+            {
+                sleeping = true;
+                foreach (RoadPlayerDetector detector in playerDetectors)
+                {
+                    detector.Sleep();
+                }
+            }
+            else if (!far && sleeping)
+            {
+                sleeping = false;
+                foreach (RoadPlayerDetector detector in playerDetectors)
+                {
+                    detector.Wake();
+                }
+            }
+            yield return new WaitForSeconds(.15f);
         }
     }
 }

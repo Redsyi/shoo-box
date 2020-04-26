@@ -45,7 +45,8 @@ public class AICar : MonoBehaviour, IKickable
     {
         while (canDrive)
         {
-            if (!moving && Utilities.OnScreen(transform.position))
+            CityRoad nextRoad = currRoad.surroundingRoads[movingDirection];
+            if (!moving && Utilities.OnScreen(transform.position) && nextRoad && (nextRoad.assignedCar[movingDirection] || nextRoad.assignedTank || nextRoad.BlockedByPlayer(movingDirection)))
             {
                 yield return new WaitForSeconds(Random.Range(0f, 5f));
                 honkSound.Post(gameObject);
