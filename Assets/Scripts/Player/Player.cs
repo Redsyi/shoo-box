@@ -531,7 +531,7 @@ public class Player : MonoBehaviour
 #if UNITY_EDITOR
             editorOverride = true;
 #endif
-            if (StealFocusWhenSeen.activeThief.skippable || editorOverride)
+            if (StealFocusWhenSeen.activeThief.skippable || editorOverride || Devmode.active)
                 StealFocusWhenSeen.SkipActive();
         }
     }
@@ -669,10 +669,15 @@ public class Player : MonoBehaviour
     {
         if (Devmode.active)
         {
-            GameObject UI = GameObject.Find("UI");
+            Canvas UI = GameObject.Find("UI").GetComponent<Canvas>();
             if (UI)
             {
-                UI.SetActive(!UI.activeInHierarchy);
+                UI.enabled = !UI.enabled;
+            }
+            Canvas Tutorial = GameObject.Find("Tutorial").GetComponent<Canvas>();
+            if (Tutorial)
+            {
+                Tutorial.enabled = !Tutorial.enabled;
             }
         }
     }

@@ -8,6 +8,11 @@ public class Devmode : MonoBehaviour
     public static bool active;
     public AK.Wwise.Event activeSound;
 
+    private void Start()
+    {
+        timesLeft = 10;
+    }
+
     public void OnDevmode()
     {
         print(timesLeft);
@@ -18,6 +23,7 @@ public class Devmode : MonoBehaviour
             {
                 active = true;
                 activeSound.Post(gameObject);
+                AkSoundEngine.SetRTPCValue("MusicVolume", 0);
             }
         }
     }
