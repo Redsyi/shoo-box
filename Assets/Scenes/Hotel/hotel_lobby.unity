@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -3745,8 +3745,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 660843750}
-  - component: {fileID: 660843752}
-  - component: {fileID: 660843751}
   - component: {fileID: 660843754}
   - component: {fileID: 660843755}
   - component: {fileID: 660843756}
@@ -3772,35 +3770,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 89
   m_LocalEulerAnglesHint: {x: 0, y: -56.603004, z: 0}
---- !u!65 &660843751
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 660843749}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.4591962, y: 0.6425214, z: 1.9308076}
-  m_Center: {x: 0.0049932166, y: 0.17873931, z: 0.33861336}
---- !u!114 &660843752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 660843749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a33e44624bf18d945b1e5e86b56235f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scene: 4
-  canChangeLevels: 0
-  lockChange: 0
-  message: And so, the shoebox finds a ride to the airport...
 --- !u!114 &660843754
 MonoBehaviour:
   m_ObjectHideFlags: 0
