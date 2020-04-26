@@ -49,7 +49,7 @@ public class CameraZoomZone : MonoBehaviour
             }
         }
 
-        if (StealFocusWhenSeen.activeThief == null)
+        if (StealFocusWhenSeen.activeThief == null && !CameraScript.current.cinematicMode)
         {
             timeOutOfBounds += Time.deltaTime;
             if (inBounds && CameraScript.current.camera.orthographicSize != cameraZoom)

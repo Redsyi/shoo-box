@@ -46,7 +46,7 @@ public class CameraAngleZone : MonoBehaviour
             }
         }
 
-        if (StealFocusWhenSeen.activeThief == null)
+        if (StealFocusWhenSeen.activeThief == null && !CameraScript.current.cinematicMode)
         {
             timeOutOfBounds += Time.deltaTime;
             if (inBounds && CameraScript.current.cameraAngle != cameraAngle)

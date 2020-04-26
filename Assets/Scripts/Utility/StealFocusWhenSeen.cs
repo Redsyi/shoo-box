@@ -97,11 +97,14 @@ public class StealFocusWhenSeen : MonoBehaviour
         //part 1: translate camera to current position
         while (panProgress < 1 && !skip)
         {
-            cameraScript.transform.position = Vector3.Lerp(originalPosition, transform.position, panProgress);
-            camera.orthographicSize = Mathf.Lerp(originalZoomLevel, cameraSize, panProgress);
-            cameraScript.cameraRotation = Mathf.LerpAngle(originalCameraRotation, destCameraYRotation, panProgress);
-            cameraScript.cameraAngle = Mathf.LerpAngle(originalCameraAngle, destCameraAngle, panProgress);
-            cameraScript.cameraDist = Mathf.LerpAngle(originalCameraDist, destCameraDist, panProgress);
+            if (!cameraScript.cinematicMode)
+            {
+                cameraScript.transform.position = Vector3.Lerp(originalPosition, transform.position, panProgress);
+                camera.orthographicSize = Mathf.Lerp(originalZoomLevel, cameraSize, panProgress);
+                cameraScript.cameraRotation = Mathf.LerpAngle(originalCameraRotation, destCameraYRotation, panProgress);
+                cameraScript.cameraAngle = Mathf.LerpAngle(originalCameraAngle, destCameraAngle, panProgress);
+                cameraScript.cameraDist = Mathf.LerpAngle(originalCameraDist, destCameraDist, panProgress);
+            }
 
             yield return null;
             panProgress = Mathf.Clamp01(timePassed / cameraScrollSpeed);
@@ -112,11 +115,14 @@ public class StealFocusWhenSeen : MonoBehaviour
         float focusTimeLeft = cameraStealTime;
         while (focusTimeLeft > 0 && !skip)
         {
-            camera.orthographicSize = cameraSize;
-            cameraScript.transform.position = transform.position;
-            cameraScript.cameraRotation = destCameraYRotation;
-            cameraScript.cameraAngle = destCameraAngle;
-            cameraScript.cameraDist = destCameraDist;
+            if (!cameraScript.cinematicMode)
+            {
+                camera.orthographicSize = cameraSize;
+                cameraScript.transform.position = transform.position;
+                cameraScript.cameraRotation = destCameraYRotation;
+                cameraScript.cameraAngle = destCameraAngle;
+                cameraScript.cameraDist = destCameraDist;
+            }
             focusTimeLeft -= Time.unscaledDeltaTime;
             yield return null;
         }
@@ -133,20 +139,26 @@ public class StealFocusWhenSeen : MonoBehaviour
         timePassed = cameraScrollSpeed - timePassed;
         while (panProgress < 1)
         {
-            cameraScript.transform.position = Vector3.Lerp(transform.position, player.transform.position, panProgress);
-            camera.orthographicSize = Mathf.Lerp(cameraSize, finalZoomLevel, panProgress);
-            cameraScript.cameraRotation = Mathf.LerpAngle(destCameraYRotation, originalCameraRotation, panProgress);
-            cameraScript.cameraAngle = Mathf.LerpAngle(destCameraAngle, originalCameraAngle, panProgress);
-            cameraScript.cameraDist = Mathf.LerpAngle(destCameraDist, originalCameraDist, panProgress);
+            if (!cameraScript.cinematicMode)
+            {
+                cameraScript.transform.position = Vector3.Lerp(transform.position, player.transform.position, panProgress);
+                camera.orthographicSize = Mathf.Lerp(cameraSize, finalZoomLevel, panProgress);
+                cameraScript.cameraRotation = Mathf.LerpAngle(destCameraYRotation, originalCameraRotation, panProgress);
+                cameraScript.cameraAngle = Mathf.LerpAngle(destCameraAngle, originalCameraAngle, panProgress);
+                cameraScript.cameraDist = Mathf.LerpAngle(destCameraDist, originalCameraDist, panProgress);
+            }
 
             yield return null;
             panProgress = Mathf.Clamp01(timePassed / cameraScrollSpeed);
             timePassed += Time.unscaledDeltaTime;
         }
 
-        cameraScript.cameraRotation = originalCameraRotation;
-        cameraScript.cameraAngle = originalCameraAngle;
-        cameraScript.cameraDist = originalCameraDist;
+        if (!cameraScript.cinematicMode)
+        {
+            cameraScript.cameraRotation = originalCameraRotation;
+            cameraScript.cameraAngle = originalCameraAngle;
+            cameraScript.cameraDist = originalCameraDist;
+        }
         Time.timeScale = 1;
         onStealEnd.Invoke();
         activeThief = null;
