@@ -156,23 +156,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b2f666398a565843b8ca12a5d16f059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolPoints:
-  - {fileID: 0}
   animator: {fileID: 2907134755933143681}
   pathfinder: {fileID: 0}
+  thrower: {fileID: 2907134755933143682}
+  patrolPoints:
+  - {fileID: 0}
+  interests: 0a000000
+  deaf: 0
+  chaseOverride:
+    m_PersistentCalls:
+      m_Calls: []
+  stopDist: 1
+  walkSpeed: 0
+  runSpeed: 0
+  throwWaitTime: 0.5
+  interactSpeedMultiplier: 1
   targetPrefab: {fileID: 1146112242645686859, guid: fc24d7070b2a9d2499e6d4fe165d1da6,
     type: 3}
   bubblePrefab: {fileID: 2357252479239045825, guid: 8522aaf13fec9104b99d9a29a33fe02d,
     type: 3}
   bubbleAnchor: {fileID: 771909757948346813}
-  debug: 0
-  walkSpeed: 0
-  runSpeed: 0
-  interests: 0a000000
-  beingRepelled: 0
-  deaf: 0
-  thrower: {fileID: 2907134755933143682}
-  throwWaitTime: 0.5
   onSpot:
     idInternal: 0
     valueGuidInternal: 
@@ -184,6 +187,7 @@ MonoBehaviour:
     WwiseObjectReference: {fileID: 11400000, guid: ab0d7872737f247f7aad460426de7a16,
       type: 2}
   gameOverName: 
+  debug: 0
   stunned: 0
 --- !u!114 &2817389625962304649
 MonoBehaviour:
@@ -197,7 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7095d354cf4ec3742927c9a164929f08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
+  type: 3
 --- !u!1 &1114719889280864268
 GameObject:
   m_ObjectHideFlags: 0
@@ -1142,6 +1146,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FillAmount
       value: 0.20833333
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328054085374535326, guid: 52f9f729b12ff6e4f86bf7afb1f656e0,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328054085374535326, guid: 52f9f729b12ff6e4f86bf7afb1f656e0,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.016
       objectReference: {fileID: 0}
     - target: {fileID: 3932428612226781268, guid: 52f9f729b12ff6e4f86bf7afb1f656e0,
         type: 3}
