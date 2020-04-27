@@ -182,22 +182,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b2f666398a565843b8ca12a5d16f059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolPoints: []
   animator: {fileID: 1998002592483699888}
   pathfinder: {fileID: 5567573035820658167}
+  thrower: {fileID: 0}
+  patrolPoints: []
+  interests: 00000000
+  deaf: 0
+  chaseOverride:
+    m_PersistentCalls:
+      m_Calls: []
+  stopDist: 1
+  walkSpeed: 2
+  runSpeed: 5
+  throwWaitTime: 0
+  interactSpeedMultiplier: 1
   targetPrefab: {fileID: 1146112242645686859, guid: fc24d7070b2a9d2499e6d4fe165d1da6,
     type: 3}
   bubblePrefab: {fileID: 2357252479239045825, guid: 8522aaf13fec9104b99d9a29a33fe02d,
     type: 3}
   bubbleAnchor: {fileID: 9213989314700693923}
-  debug: 0
-  walkSpeed: 2
-  runSpeed: 5
-  interests: 00000000
-  beingRepelled: 0
-  deaf: 0
-  thrower: {fileID: 0}
-  throwWaitTime: 0
   onSpot:
     idInternal: 0
     valueGuidInternal: 
@@ -209,6 +212,8 @@ MonoBehaviour:
     WwiseObjectReference: {fileID: 11400000, guid: ab0d7872737f247f7aad460426de7a16,
       type: 2}
   gameOverName: the maid
+  debug: 0
+  stunned: 0
 --- !u!114 &2527709128333595743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,6 +344,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5567573035820658164}
     m_Modifications:
+    - target: {fileID: 2328054085374535326, guid: 52f9f729b12ff6e4f86bf7afb1f656e0,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328054085374535326, guid: 52f9f729b12ff6e4f86bf7afb1f656e0,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328054085374535326, guid: 52f9f729b12ff6e4f86bf7afb1f656e0,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7439080324536094522, guid: 52f9f729b12ff6e4f86bf7afb1f656e0,
         type: 3}
       propertyPath: m_LocalPosition.x
