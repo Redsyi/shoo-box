@@ -23,14 +23,14 @@ public class AIRotateInPlace : MonoBehaviour
     {
         if(agent.currState.state == AIState.IDLE && (agent.transform.position - agent.currState.location.position).sqrMagnitude < 0.4f)
         {
-            print("Should be rotating");
+            //print("Should be rotating");
             agent.transform.rotation = currDirection.rotation;
         }
 
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
-            print("Should be changing directions");
+            //print("Should be changing directions");
             timer = timeBetweenRotations; 
             facingFirstDirection = !facingFirstDirection;
             currDirection = (facingFirstDirection ? direction1 : direction2);
