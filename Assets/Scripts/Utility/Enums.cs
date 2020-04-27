@@ -92,3 +92,11 @@ public enum StoplightColor
     YELLOW,
     RED
 }
+
+public enum MainMenuState
+{
+    MAIN,
+    PLAY,
+    OPTIONS,
+    JIBBZ
+}
