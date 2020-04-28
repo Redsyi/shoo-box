@@ -100,3 +100,18 @@ public enum MainMenuState
     OPTIONS,
     JIBBZ
 }
+
+public enum SoundSettings
+{
+    MASTER_VOLUME,
+    AMBIENCE_VOLUME,
+    MUSIC_VOLUME,
+    SFX_VOLUME
+}
+
+public enum GraphicsSetting
+{
+    RESOLUTION_INDEX,
+    FULLSCREEN,
+    QUALITY_INDEX
+}
