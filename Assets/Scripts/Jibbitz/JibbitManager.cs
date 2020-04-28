@@ -5,6 +5,8 @@ using UnityEngine;
 public class JibbitManager : MonoBehaviour
 {
     public Jibbit[] jibbitz;
+    public CollectableJibbit collectableJibbitPrefab;
+    static CollectableJibbit _collectableJibbitPrefab;
     static Jibbit[] staticJibs;
     static Dictionary<string, bool> acquired;
     static bool initialLoad;
@@ -17,6 +19,7 @@ public class JibbitManager : MonoBehaviour
             initialLoad = true;
             acquired = new Dictionary<string, bool>();
             LoadJibz();
+            _collectableJibbitPrefab = collectableJibbitPrefab;
         }
     }
 
@@ -46,7 +49,7 @@ public class JibbitManager : MonoBehaviour
     /// </summary>
     public static void AcquireJibbit(string jibbitID)
     {
-        if (acquired.ContainsKey(jibbitID) && !acquired[jibbitID])
+        if (acquired != null && acquired.ContainsKey(jibbitID) && !acquired[jibbitID])
         {
             acquired[jibbitID] = true;
             PlayerPrefs.SetInt("HasJibbit" + jibbitID, 1);
@@ -58,6 +61,23 @@ public class JibbitManager : MonoBehaviour
     /// </summary>
     public static bool HasJibbit(string jibbitID)
     {
-        return (acquired.ContainsKey(jibbitID) && acquired[jibbitID]);
+        return (acquired != null && acquired.ContainsKey(jibbitID) && acquired[jibbitID]);
+    }
+
+    /// <summary>
+    /// Launches a collectable jibbit prefab
+    /// </summary>
+    public static void LaunchCollectableJibbit(Jibbit jibbit, Vector3 position, Vector3 magnitude, float size, Color color, float timeUntilCollectable)
+    {
+        CollectableJibbit newJib;
+        if (_collectableJibbitPrefab == null)
+        {
+            newJib = Instantiate(Resources.Load<CollectableJibbit>("IngameJibbit"), position, Quaternion.identity);
+        } else
+        {
+            newJib = Instantiate(_collectableJibbitPrefab, position, Quaternion.identity);
+        }
+
+        newJib.Launch(magnitude, color, size, jibbit, timeUntilCollectable);
     }
 }

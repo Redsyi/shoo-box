@@ -684,7 +684,11 @@ public class Player : MonoBehaviour
 
     public void OnCheckpointLoad(InputValue value)
     {
-        if (Devmode.active)
+        bool editorOverride = false;
+#if UNITY_EDITOR
+        editorOverride = true;
+#endif
+        if (Devmode.active || editorOverride)
         {
             int checkpoint = Mathf.FloorToInt(value.Get<float>());
             CheckpointManager checkpointManager = FindObjectOfType<CheckpointManager>();
@@ -698,10 +702,7 @@ public class Player : MonoBehaviour
 
     public void OnCheckpointForceReload(InputValue value)
     {
-        if (Devmode.active)
-        {
             holdingForceReload = (value.Get<float>()) > 0.5f;
-        }
     }
 
     public void OnCinematicAngle(InputValue value)
