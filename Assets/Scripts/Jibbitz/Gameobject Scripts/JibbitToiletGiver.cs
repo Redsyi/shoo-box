@@ -8,6 +8,7 @@ public class JibbitToiletGiver : MonoBehaviour, IKickable
     public float launchVelocity;
     public float size;
     public Jibbit jibbit;
+    public CollectableJibbit jibbitPrefab;
 
     bool givenJibbit;
 
@@ -16,7 +17,9 @@ public class JibbitToiletGiver : MonoBehaviour, IKickable
         if (!givenJibbit)
         {
             givenJibbit = true;
-            JibbitManager.LaunchCollectableJibbit(jibbit, transform.position, transform.forward * launchVelocity, size, color, 1);
+            CollectableJibbit jib = Instantiate(jibbitPrefab, transform.position, Quaternion.identity);
+            jib.Launch(transform.forward * launchVelocity, color, size, jibbit, 1);
+            //JibbitManager.LaunchCollectableJibbit(jibbit, transform.position, transform.forward * launchVelocity, size, color, 1);
         }
     }
 }

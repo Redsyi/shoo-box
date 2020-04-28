@@ -9,6 +9,7 @@ public class JibbitTVGiver : MonoBehaviour
     public float size;
     public Jibbit jibbit;
     public float stareTimeRequired;
+    public CollectableJibbit jibbitPrefab;
 
     bool givenJibbit;
     float timeToJibbit;
@@ -22,7 +23,9 @@ public class JibbitTVGiver : MonoBehaviour
                 timeToJibbit += Time.deltaTime;
                 if (timeToJibbit >= stareTimeRequired)
                 {
-                    JibbitManager.LaunchCollectableJibbit(jibbit, transform.position, transform.forward * launchVelocity, size, color, 1);
+                    CollectableJibbit jib = Instantiate(jibbitPrefab, transform.position, Quaternion.identity);
+                    jib.Launch(transform.forward * launchVelocity, color, size, jibbit, 1);
+                    //JibbitManager.LaunchCollectableJibbit(jibbit, transform.position, transform.forward * launchVelocity, size, color, 1);
                     givenJibbit = true;
                 }
             } else
