@@ -104,12 +104,17 @@ public class PlayerData : MonoBehaviour
             Screen.SetResolution(chosenResolution.width, chosenResolution.height, fullScreenMode);
             dirtyGraphicsSettings[GraphicsSetting.FULLSCREEN] = false;
             dirtyGraphicsSettings[GraphicsSetting.RESOLUTION_INDEX] = false;
+
+            PlayerPrefs.SetInt(resolutionSettingName, intSettings[resolutionSettingName]);
+            PlayerPrefs.SetInt(fullscreenSettingName, intSettings[fullscreenSettingName]);
         }
 
         if (dirtyGraphicsSettings[GraphicsSetting.QUALITY_INDEX] || force)
         {
             QualitySettings.SetQualityLevel(intSettings[qualitySettingName]);
             dirtyGraphicsSettings[GraphicsSetting.QUALITY_INDEX] = false;
+
+            PlayerPrefs.SetInt(qualitySettingName, intSettings[qualitySettingName]);
         }
     }
 
