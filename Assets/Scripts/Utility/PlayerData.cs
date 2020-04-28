@@ -55,6 +55,11 @@ public class PlayerData : MonoBehaviour
 
     private void Awake()
     {
+        CheckLoadedData();
+    }
+
+    static void CheckLoadedData()
+    {
         if (!loadedData)
         {
             loadedData = true;
@@ -73,6 +78,7 @@ public class PlayerData : MonoBehaviour
 
     public static void SetResolutionIndex(int index)
     {
+        CheckLoadedData();
         if (index < 0 || index >= resolutions.Length)
             return;
 
@@ -82,12 +88,14 @@ public class PlayerData : MonoBehaviour
 
     public static void SetFullscreen(bool fullscreen)
     {
+        CheckLoadedData();
         intSettings[fullscreenSettingName] = (fullscreen ? 1 : 0);
         dirtyGraphicsSettings[GraphicsSetting.FULLSCREEN] = true;
     }
 
     public static void SetQualityIndex(int index)
     {
+        CheckLoadedData();
         if (index < 0 || index >= qualityNames.Length)
             return;
 
@@ -97,6 +105,7 @@ public class PlayerData : MonoBehaviour
 
     public static void ApplyGraphicsSettings(bool force = false)
     {
+        CheckLoadedData();
         if (dirtyGraphicsSettings[GraphicsSetting.FULLSCREEN] || dirtyGraphicsSettings[GraphicsSetting.RESOLUTION_INDEX] || force)
         {
             Resolution chosenResolution = resolutions[intSettings[resolutionSettingName]];
@@ -120,6 +129,7 @@ public class PlayerData : MonoBehaviour
 
     public static string[] GetResolutionNames()
     {
+        CheckLoadedData();
         string[] results = new string[resolutions.Length];
         for (int i = 0; i < resolutions.Length; ++i)
         {
@@ -130,11 +140,13 @@ public class PlayerData : MonoBehaviour
 
     public static string[] GetQualityNames()
     {
+        CheckLoadedData();
         return qualityNames;
     }
 
     public static int GetGraphicSetting(GraphicsSetting settingName)
     {
+        CheckLoadedData();
         switch (settingName)
         {
             case GraphicsSetting.FULLSCREEN:
@@ -148,8 +160,9 @@ public class PlayerData : MonoBehaviour
         }
     }
 
-    void LoadGraphicsSettings()
+    static void LoadGraphicsSettings()
     {
+        CheckLoadedData();
         dirtyGraphicsSettings[GraphicsSetting.FULLSCREEN] = false;
         dirtyGraphicsSettings[GraphicsSetting.QUALITY_INDEX] = false;
         dirtyGraphicsSettings[GraphicsSetting.RESOLUTION_INDEX] = false;
@@ -194,16 +207,18 @@ public class PlayerData : MonoBehaviour
         ApplyGraphicsSettings(true);
     }
 
-    void LoadSoundSettings()
+    static void LoadSoundSettings()
     {
+        CheckLoadedData();
         LoadVolume(masterSettingName, audioSettingPrefix + masterSettingName);
         LoadVolume(musicSettingName, audioSettingPrefix + musicSettingName);
         LoadVolume(sfxSettingName, audioSettingPrefix + sfxSettingName);
         LoadVolume(ambienceSettingName, audioSettingPrefix + ambienceSettingName);
     }
 
-    void LoadVolume(string rtpcName, string prefsName)
+    static void LoadVolume(string rtpcName, string prefsName)
     {
+        CheckLoadedData();
         if (PlayerPrefs.HasKey(prefsName))
         {
             float volume = PlayerPrefs.GetFloat(prefsName);
@@ -218,6 +233,7 @@ public class PlayerData : MonoBehaviour
 
     public static float GetVolume(SoundSettings type)
     {
+        CheckLoadedData();
         string setting = audioSettingPrefix;
         switch(type)
         {
@@ -239,6 +255,7 @@ public class PlayerData : MonoBehaviour
 
     public static void SetVolume(SoundSettings type, float value)
     {
+        CheckLoadedData();
         string setting = audioSettingPrefix;
         switch (type)
         {
@@ -261,6 +278,7 @@ public class PlayerData : MonoBehaviour
 
     public static string GetVolumeRTPCName(SoundSettings type)
     {
+        CheckLoadedData();
         switch (type)
         {
             case SoundSettings.AMBIENCE_VOLUME:
