@@ -6,135 +6,84 @@ using UnityEngine.UI;
 
 public class GraphicsSettings : MonoBehaviour
 {
-    [SerializeField] Text fullScreenText;
-    [SerializeField] Text qualityText;
     [SerializeField] Text resolutionText;
-    [SerializeField] List<Vector2> resolutionValues;
-    [SerializeField] List<FullScreenMode> fullScreenModes;
-    [SerializeField] UnityEvent onValueChanged;
-    [SerializeField] UnityEvent onValueReverted;
+    [SerializeField] Text qualityText;
+    [SerializeField] Text fullscreenText;
 
-    private List<string> resolutionStrings;
+    private string[] resolutionStrings;
     private string[] qualityStrings;
     private int currentResolution;
     private int currentFullScreenMode;
     private int currentQualityLevel;
-    private int initialResolution;
-    private int initialFullScreenMode;
-    private int initialQualityLevel;
-    private bool dirty;
+    string currQualityName => qualityStrings[currentQualityLevel];
+    string currResolutionName => resolutionStrings[currentResolution];
+    string currFullscreenName => currentFullScreenMode != 0 ? "On" : "Off";
 
-
-    // Start is called before the first frame update
-    void Start()
+    public void LoadSettings()
     {
-        resolutionStrings = new List<string>();
-        int i = 0;
-        foreach(var resolutionValue in resolutionValues)
-        {
-            resolutionStrings.Add(resolutionValue.x + "x" + resolutionValue.y);
-            if (resolutionValue.x == Screen.width && resolutionValue.y == Screen.height)
-            {
-                currentResolution = i;
-                initialResolution = currentResolution;
-            }
-            i++;
-        }
-        resolutionText.text = resolutionStrings[currentResolution];
+        if (resolutionStrings == null || resolutionStrings.Length == 0)
+            resolutionStrings = PlayerData.GetResolutionNames();
+        if (qualityStrings == null || qualityStrings.Length == 0)
+            qualityStrings = PlayerData.GetQualityNames();
+        currentResolution = PlayerData.GetGraphicSetting(GraphicsSetting.RESOLUTION_INDEX);
+        currentFullScreenMode = PlayerData.GetGraphicSetting(GraphicsSetting.FULLSCREEN);
+        currentQualityLevel = PlayerData.GetGraphicSetting(GraphicsSetting.QUALITY_INDEX);
 
-        i = 0;
-        foreach (var mode in fullScreenModes)
-        {
-            if (Screen.fullScreenMode == mode)
-            {
-                currentFullScreenMode = i;
-                initialFullScreenMode = currentFullScreenMode;
-            }
-            i++;
-        }
-        fullScreenText.text = fullScreenModes[currentFullScreenMode].ToString();
-
-        i = 0;
-        qualityStrings = QualitySettings.names;
-        foreach (var qualityName in qualityStrings)
-        {
-            if (QualitySettings.GetQualityLevel() == i)
-            {
-                currentQualityLevel = i;
-                initialQualityLevel = currentQualityLevel;
-            }
-            i++;
-        }
-        qualityText.text = qualityStrings[currentQualityLevel];
+        resolutionText.text = currResolutionName;
+        qualityText.text = currQualityName;
+        fullscreenText.text = currFullscreenName;
     }
 
     public void ResolutionMoveLeft()
     {
-        currentResolution = currentResolution == 0 ? resolutionValues.Count - 1 : currentResolution - 1;
-        resolutionText.text = resolutionStrings[currentResolution];
-        CheckDirty();
+        --currentResolution;
+        if (currentResolution < 0)
+            currentResolution = resolutionStrings.Length - 1;
 
+        resolutionText.text = currResolutionName;
+        PlayerData.SetResolutionIndex(currentResolution);
     }
 
     public void ResolutionMoveRight()
     {
-        currentResolution = currentResolution == resolutionValues.Count - 1 ? 0 : currentResolution + 1;
-        resolutionText.text = resolutionStrings[currentResolution];
-        CheckDirty();
+        ++currentResolution;
+        if (currentResolution >= resolutionStrings.Length)
+            currentResolution = 0;
 
-    }
-    public void FullScreenMoveLeft()
-    {
-        currentFullScreenMode = currentFullScreenMode == 0 ? fullScreenModes.Count - 1 : currentFullScreenMode - 1;
-        fullScreenText.text = fullScreenModes[currentFullScreenMode].ToString();
-        CheckDirty();
-
+        resolutionText.text = currResolutionName;
+        PlayerData.SetResolutionIndex(currentResolution);
     }
 
-    public void FullScreenMoveRight()
+    public void FullScreenToggle()
     {
-        currentFullScreenMode = currentFullScreenMode == fullScreenModes.Count - 1 ? 0 : currentFullScreenMode + 1;
-        fullScreenText.text = fullScreenModes[currentFullScreenMode].ToString();
-        CheckDirty();
+        currentFullScreenMode = (currentFullScreenMode != 0 ? 0 : 1);
 
+        fullscreenText.text = currFullscreenName;
+        PlayerData.SetFullscreen(currentFullScreenMode != 0);
     }
 
     public void QualityMoveLeft()
     {
-        currentQualityLevel = currentQualityLevel == 0 ? qualityStrings.Length - 1 : currentQualityLevel - 1;
-        qualityText.text = qualityStrings[currentQualityLevel];
-        CheckDirty();
+        --currentQualityLevel;
+        if (currentQualityLevel < 0)
+            currentQualityLevel = qualityStrings.Length - 1;
 
+        qualityText.text = currQualityName;
+        PlayerData.SetQualityIndex(currentQualityLevel);
     }
 
     public void QualityMoveRight()
     {
-        currentQualityLevel = currentQualityLevel == qualityStrings.Length - 1 ? 0 : currentQualityLevel + 1;
-        qualityText.text = qualityStrings[currentQualityLevel];
-        CheckDirty();
-    }
+        ++currentQualityLevel;
+        if (currentQualityLevel >= qualityStrings.Length)
+            currentQualityLevel = 0;
 
-    private void CheckDirty()
-    {
-        if (dirty && initialQualityLevel == currentQualityLevel && initialFullScreenMode == currentFullScreenMode && initialResolution == currentFullScreenMode)
-        {
-            dirty = !dirty;
-            onValueChanged.Invoke();
-        }
-        if (!dirty && !(initialQualityLevel == currentQualityLevel && initialFullScreenMode == currentFullScreenMode && initialResolution == currentFullScreenMode))
-        {
-            dirty = !dirty;
-            onValueReverted.Invoke();
-        }
+        qualityText.text = currQualityName;
+        PlayerData.SetQualityIndex(currentQualityLevel);
     }
 
     public void Apply()
     {
-        Screen.SetResolution((int)resolutionValues[currentResolution].x, (int)resolutionValues[currentResolution].y, fullScreenModes[currentFullScreenMode]);
-        QualitySettings.SetQualityLevel(currentQualityLevel);
-        initialFullScreenMode = currentFullScreenMode;
-        initialQualityLevel = currentQualityLevel;
-        initialResolution = currentResolution;
-        CheckDirty();
+        PlayerData.ApplyGraphicsSettings();
     }
 }
