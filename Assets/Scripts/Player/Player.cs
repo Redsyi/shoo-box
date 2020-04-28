@@ -27,6 +27,8 @@ public class Player : MonoBehaviour
     public GameObject[] leggs;
     public ShoeSight shoeSight;
     public Image health;
+    public GameObject boxShadow;
+    public GameObject legShadow;
 
     [Header("Stats")]
     public ShoeType[] startingShoes;
@@ -385,10 +387,14 @@ public class Player : MonoBehaviour
         if (legForm)
         {
             transform.position += new Vector3(0, heightDifference);
+            legShadow?.SetActive(true);
+            boxShadow?.SetActive(false);
         }
         else
         {
             transform.position -= new Vector3(0, heightDifference);
+            legShadow?.SetActive(false);
+            boxShadow?.SetActive(true);
         }
         walkingParticleSystem.transform.localPosition = (legForm ? legParticlesPosition.localPosition : boxParticlesPosition.localPosition);
 
