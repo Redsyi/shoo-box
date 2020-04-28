@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class UIMainMenu : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class UIMainMenu : MonoBehaviour
     }
 
     public bool options { get; private set; }
-    public GameObject shoebox;
+    public Animator shoebox;
     [Header("Main Buttons")]
     public RectTransform mainButtons;
     public GameObject playButton;
@@ -28,8 +29,11 @@ public class UIMainMenu : MonoBehaviour
     public GameObject optionsInitial;
     public UIPaneManager optionsPanes;
     [Header("Jibbitz Group")]
-    public GameObject jibbzGroup;
+    public CanvasGroup jibbzGroup;
     public GameObject jibbzInitial;
+    public Text jibbitNameLabel;
+    public Text jibbitDescriptionLabel;
+    public RectTransform jibbitLabel;
 
     [Header("Camera Info")]
     public Camera camera;
@@ -41,11 +45,13 @@ public class UIMainMenu : MonoBehaviour
 
     int activeAnimators;
     bool animating => activeAnimators > 0;
+    bool jibbitLabelEnabled;
     MainMenuState state;
 
     private void Start()
     {
         EventSystem.current.SetSelectedGameObject(playButton);
+        StartCoroutine(OccassionallyWiggle());
     }
 
     public void PlayButton()
@@ -75,6 +81,13 @@ public class UIMainMenu : MonoBehaviour
                     StartCoroutine(AnimateCanvasGroup(playGroup, false));
                     StartCoroutine(DeactivateDelayed(playGroup.gameObject));
                     EventSystem.current.SetSelectedGameObject(playButton);
+                    break;
+                case MainMenuState.JIBBZ:
+                    StartCoroutine(AnimateCamera(jibbzPos, defaultPos));
+                    StartCoroutine(AnimateCanvasGroup(jibbzGroup, false));
+                    StartCoroutine(DeactivateDelayed(jibbzGroup.gameObject));
+                    EventSystem.current.SetSelectedGameObject(jibbzButton);
+                    shoebox.SetBool("Open", false);
                     break;
                 case MainMenuState.OPTIONS:
                     StartCoroutine(AnimateCamera(settingsPos, defaultPos));
@@ -112,6 +125,32 @@ public class UIMainMenu : MonoBehaviour
         activeAnimators--;
     }
 
+    /// <summary>
+    /// shows the current jibbit label with the given name and description
+    /// </summary>
+    public void ShowJibbitLabel(string name, string description)
+    {
+        if (!jibbitLabelEnabled)
+        {
+            StartCoroutine(AnimateJibbitLabel(true));
+            jibbitLabelEnabled = true;
+        }
+        jibbitNameLabel.text = name;
+        jibbitDescriptionLabel.text = description;
+    }
+
+    /// <summary>
+    /// Hides the current jibbit label if it is active
+    /// </summary>
+    public void HideJibbitLabel()
+    {
+        if (jibbitLabelEnabled)
+        {
+            jibbitLabelEnabled = false;
+            StartCoroutine(AnimateJibbitLabel(false));
+        }
+    }
+
     //Lerps the buttons in or out
     IEnumerator AnimateMainButtons(bool onScreen)
     {
@@ -137,6 +176,24 @@ public class UIMainMenu : MonoBehaviour
         if (!onScreen)
             mainButtons.gameObject.SetActive(false);
         activeAnimators--;
+    }
+
+    //Lerps the jibbit label in or out
+    IEnumerator AnimateJibbitLabel(bool onScreen)
+    {
+        float timePassed = 0f;
+
+        Vector2 originalPivot = (onScreen ? new Vector2(0.5f, 0) : new Vector2(0.5f, 1));
+        Vector2 destPivot = (onScreen ? new Vector2(0.5f, 1) : new Vector2(0.5f, 0));
+
+        while (timePassed < 0.15f)
+        {
+            yield return null;
+            timePassed += Time.deltaTime;
+            float progress = Mathf.Clamp01(timePassed / 0.15f);
+            jibbitLabel.pivot = Vector2.Lerp(originalPivot, destPivot, progress);
+            jibbitLabel.anchoredPosition = Vector2.zero;
+        }
     }
 
     //Lerps a canvas group to visible/invisible
@@ -178,6 +235,20 @@ public class UIMainMenu : MonoBehaviour
         }
     }
 
+    public void JibbzButton()
+    {
+        if (!animating && state != MainMenuState.JIBBZ)
+        {
+            shoebox.SetBool("Open", true);
+            jibbzGroup.gameObject.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(jibbzInitial);
+            StartCoroutine(AnimateCamera(defaultPos, jibbzPos));
+            StartCoroutine(AnimateMainButtons(false));
+            StartCoroutine(AnimateCanvasGroup(jibbzGroup, true));
+            state = MainMenuState.JIBBZ;
+        }
+    }
+
     public void QuitButton()
     {
         Application.Quit();
@@ -199,6 +270,18 @@ public class UIMainMenu : MonoBehaviour
             else
             {
                 optionsPanes.PreviousPane();
+            }
+        }
+    }
+
+    IEnumerator OccassionallyWiggle()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(Random.Range(5.5f, 10f));
+            if (state == MainMenuState.MAIN)
+            {
+                shoebox.SetTrigger("Wiggle");
             }
         }
     }
