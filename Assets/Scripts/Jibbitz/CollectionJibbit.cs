@@ -124,7 +124,7 @@ public class CollectionJibbit : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     private void Awake()
     {
-        Invoke("CheckJibbitAcquired", 0.2f);
+        Invoke("CheckJibbitAcquired", 0.05f);
     }
 
     void Start()

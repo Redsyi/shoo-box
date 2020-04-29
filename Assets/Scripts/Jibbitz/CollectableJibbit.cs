@@ -9,6 +9,10 @@ public class CollectableJibbit : MonoBehaviour
     public VisualEffect effect;
     public TrailRenderer line;
     public AK.Wwise.Event collectSound;
+    public Color color;
+    public float size;
+    public float timeToCollectable;
+    public Jibbit jibbit;
 
     Jibbit myJibbit;
     float lifetime;
@@ -25,6 +29,11 @@ public class CollectableJibbit : MonoBehaviour
         transform.localScale = new Vector3(size, size, size);
     }
 
+    public void Launch(Vector3 force)
+    {
+        Launch(force, color, size, jibbit, timeToCollectable);
+    }
+
     private void Update()
     {
         lifetime += Time.deltaTime;
@@ -32,7 +41,7 @@ public class CollectableJibbit : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (lifetime >= maxLifetime && maxLifetime != 0)
+        if (lifetime >= maxLifetime && maxLifetime != 0 && other.gameObject.CompareTag("Player"))
         {
             JibbitManager.AcquireJibbit(myJibbit.id);
             collectSound.Post(gameObject);

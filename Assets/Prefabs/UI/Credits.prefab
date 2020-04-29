@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6128427733879356528}
+  - component: {fileID: 3996335813048604737}
   m_Layer: 5
   m_Name: Credits
   m_TagString: Untagged
@@ -37,6 +38,48 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3996335813048604737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7385961966944586295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc98870a85e3e4e08bfc2913bacc2d32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fromLeft: {fileID: 0}
+  fromRight: {fileID: 0}
+  timeCreditsShown: 4
+  distanceBetweenCredits: 5
+  leftRoleObject: {fileID: 0}
+  rightRoleObject: {fileID: 0}
+  leftName: {fileID: 0}
+  rightName: {fileID: 0}
+  role:
+  - Producer
+  - Assistant Producer
+  - Assistant Producer
+  - 3D Modeler, Rigger, Animator
+  - Audio Engineer, Composer
+  - Gameplay Programmer, Scrum Master
+  - Lead Designer, UI/Gameplay Programmer
+  - Gameplay/Shader Programmer
+  - 'UI Artist/Programmer, Cutscene Artist, Logo Designer '
+  - '3d Modeler, Character Artist '
+  names:
+  - Paul Toprac
+  - Ivan Olin
+  - Kadie Meroney
+  - Adriana Gonzales
+  - Delong "Miki" Lin
+  - Edwin Silerio
+  - Jake Crabtree
+  - Nathan Stubbs
+  - Olivia Schweers
+  - Yushan Sha
 --- !u!1001 &4913624887590910793
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44,10 +87,40 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6128427733879356528}
     m_Modifications:
+    - target: {fileID: 359962750243915087, guid: c3a7545c32125441a80829b0316a5e06,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -375
+      objectReference: {fileID: 0}
+    - target: {fileID: 2242256096865447419, guid: c3a7545c32125441a80829b0316a5e06,
+        type: 3}
+      propertyPath: m_Name
+      value: Role
+      objectReference: {fileID: 0}
     - target: {fileID: 2890887280990905112, guid: c3a7545c32125441a80829b0316a5e06,
         type: 3}
       propertyPath: m_Name
       value: LeftCredits
+      objectReference: {fileID: 0}
+    - target: {fileID: 4548985334394777024, guid: c3a7545c32125441a80829b0316a5e06,
+        type: 3}
+      propertyPath: m_textAlignment
+      value: 513
+      objectReference: {fileID: 0}
+    - target: {fileID: 4548985334394777024, guid: c3a7545c32125441a80829b0316a5e06,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 4548985334394777024, guid: c3a7545c32125441a80829b0316a5e06,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404125645104468167, guid: c3a7545c32125441a80829b0316a5e06,
+        type: 3}
+      propertyPath: m_Name
+      value: Name
       objectReference: {fileID: 0}
     - target: {fileID: 6814809397292441533, guid: c3a7545c32125441a80829b0316a5e06,
         type: 3}
@@ -154,11 +227,33 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8657000786720556881, guid: c3a7545c32125441a80829b0316a5e06,
+        type: 3}
+      propertyPath: leftRoleObject
+      value: 
+      objectReference: {fileID: 2076359104421702542}
+    - target: {fileID: 8657000786720556881, guid: c3a7545c32125441a80829b0316a5e06,
+        type: 3}
+      propertyPath: rightRoleObject
+      value: 
+      objectReference: {fileID: 3161006770489851153}
+    - target: {fileID: 8778559382118098959, guid: c3a7545c32125441a80829b0316a5e06,
+        type: 3}
+      propertyPath: m_textAlignment
+      value: 514
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8657000786720556881, guid: c3a7545c32125441a80829b0316a5e06, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c3a7545c32125441a80829b0316a5e06, type: 3}
 --- !u!224 &1919556842204423412 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6814809397292441533, guid: c3a7545c32125441a80829b0316a5e06,
+    type: 3}
+  m_PrefabInstance: {fileID: 4913624887590910793}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2076359104421702542 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6404125645104468167, guid: c3a7545c32125441a80829b0316a5e06,
     type: 3}
   m_PrefabInstance: {fileID: 4913624887590910793}
   m_PrefabAsset: {fileID: 0}
@@ -169,6 +264,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6128427733879356528}
     m_Modifications:
+    - target: {fileID: 1503667001957367567, guid: dd1ed0e31ce234fd691ce28eaedce1d6,
+        type: 3}
+      propertyPath: m_textAlignment
+      value: 516
+      objectReference: {fileID: 0}
+    - target: {fileID: 1503667001957367567, guid: dd1ed0e31ce234fd691ce28eaedce1d6,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1503667001957367567, guid: dd1ed0e31ce234fd691ce28eaedce1d6,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 2724486671159483516, guid: dd1ed0e31ce234fd691ce28eaedce1d6,
         type: 3}
       propertyPath: m_Name
@@ -232,7 +342,7 @@ PrefabInstance:
     - target: {fileID: 3134294368975594183, guid: dd1ed0e31ce234fd691ce28eaedce1d6,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 985
+      value: 1107
       objectReference: {fileID: 0}
     - target: {fileID: 3134294368975594183, guid: dd1ed0e31ce234fd691ce28eaedce1d6,
         type: 3}
@@ -279,11 +389,38 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4450590351180897966, guid: dd1ed0e31ce234fd691ce28eaedce1d6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 470
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064908997991969938, guid: dd1ed0e31ce234fd691ce28eaedce1d6,
+        type: 3}
+      propertyPath: m_Name
+      value: Name
+      objectReference: {fileID: 0}
+    - target: {fileID: 7091079063249147734, guid: dd1ed0e31ce234fd691ce28eaedce1d6,
+        type: 3}
+      propertyPath: m_textAlignment
+      value: 514
+      objectReference: {fileID: 0}
+    - target: {fileID: 9120950430058303675, guid: dd1ed0e31ce234fd691ce28eaedce1d6,
+        type: 3}
+      propertyPath: m_Name
+      value: Role
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5603752273856440839, guid: dd1ed0e31ce234fd691ce28eaedce1d6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: dd1ed0e31ce234fd691ce28eaedce1d6, type: 3}
 --- !u!224 &6092108529325009732 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3134294368975594183, guid: dd1ed0e31ce234fd691ce28eaedce1d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 9220210327881730435}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3161006770489851153 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6064908997991969938, guid: dd1ed0e31ce234fd691ce28eaedce1d6,
     type: 3}
   m_PrefabInstance: {fileID: 9220210327881730435}
   m_PrefabAsset: {fileID: 0}
