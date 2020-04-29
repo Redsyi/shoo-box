@@ -52,7 +52,7 @@ public class UIMainMenu : MonoBehaviour
     {
         EventSystem.current.SetSelectedGameObject(playButton);
         StartCoroutine(OccassionallyWiggle());
-        Player.PlayerState = null;
+        Player.prevState = null;
     }
 
     public void PlayButton()
