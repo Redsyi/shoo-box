@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -27309,6 +27309,7 @@ MonoBehaviour:
   scene: hotel_lobby
   canChangeLevels: 1
   lockChange: 0
+  delay: 0
   message: Out of the frying pan...
 --- !u!1 &1477394312
 GameObject:
@@ -31736,7 +31737,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: -1}
   m_Children: []
   m_Father: {fileID: 1848811244}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: -75.407005, y: 180, z: -14.012001}
 --- !u!108 &1757251472
 Light:
@@ -32744,9 +32745,9 @@ Transform:
   - {fileID: 775228809}
   - {fileID: 1741749997}
   - {fileID: 1480389633}
+  - {fileID: 1757251471}
   - {fileID: 125003704}
   - {fileID: 605833388}
-  - {fileID: 1757251471}
   m_Father: {fileID: 0}
   m_RootOrder: 59
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -33151,6 +33152,11 @@ PrefabInstance:
     - target: {fileID: 4233995589273524903, guid: 74e5f0686d7111949830223be0d00a38,
         type: 3}
       propertyPath: closeRequiredStates.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4233995589273524903, guid: 74e5f0686d7111949830223be0d00a38,
+        type: 3}
+      propertyPath: closeFor.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4233995589273524903, guid: 74e5f0686d7111949830223be0d00a38,
@@ -33163,6 +33169,11 @@ PrefabInstance:
         type: 3}
       propertyPath: closeRequiredStates.Array.data[0]
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4233995589273524903, guid: 74e5f0686d7111949830223be0d00a38,
+        type: 3}
+      propertyPath: closeFor.Array.data[0]
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74e5f0686d7111949830223be0d00a38, type: 3}
