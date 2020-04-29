@@ -33,11 +33,18 @@
 						<Action Name="" ID="{1A5646BE-3B8E-44B2-BFBE-829ACB2F7093}" ShortID="590805311">
 							<PropertyList>
 								<Property Name="ActionType" Type="int16" Value="3"/>
+								<Property Name="FadeOutCurve" Type="int16" Value="5"/>
+								<Property Name="FadeTime" Type="Real64" Value="3"/>
 								<Property Name="Scope" Type="int16" Value="1"/>
 							</PropertyList>
 							<ReferenceList/>
 						</Action>
 						<Action Name="" ID="{21C82124-C46D-401C-AC0E-AB71F3BB8317}" ShortID="223915697">
+							<PropertyList>
+								<Property Name="Delay" Type="Real64" Value="1"/>
+								<Property Name="FadeInCurve" Type="int16" Value="6"/>
+								<Property Name="FadeTime" Type="Real64" Value="5"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="City Battle" ID="{6516F90C-8707-4CAE-A5B4-9170E9A13616}" WorkUnitID="{6263F7BE-C00D-4A45-AEC3-DC8317EEF2A4}"/>
