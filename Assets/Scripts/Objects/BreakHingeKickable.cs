@@ -9,6 +9,7 @@ public class BreakHingeKickable : MonoBehaviour, IKickable, IAIInteractable
     // Start is called before the first frame update
     private List<HingeJoint> _hingeJoints;
     [SerializeField] private bool breakAllHinges;
+    public int intactJoints => (_hingeJoints != null ? _hingeJoints.Count : 2);
     private bool broken;
     [SerializeField] private int fixTime = 4;
     public AIInterest[] aIInterests;

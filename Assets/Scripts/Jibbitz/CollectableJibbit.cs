@@ -41,7 +41,7 @@ public class CollectableJibbit : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (lifetime >= maxLifetime && maxLifetime != 0)
+        if (lifetime >= maxLifetime && maxLifetime != 0 && other.gameObject.CompareTag("Player"))
         {
             JibbitManager.AcquireJibbit(myJibbit.id);
             collectSound.Post(gameObject);

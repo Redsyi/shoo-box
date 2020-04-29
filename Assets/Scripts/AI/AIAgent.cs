@@ -514,6 +514,21 @@ public class AIAgent : MonoBehaviour
         }
     }
 
+    public static void SummonAI(Vector3 location, float investigateTime, bool interruptInteract = false, params AIInterest[] interests)
+    {
+        foreach (AIAgent agent in FindObjectsOfType<AIAgent>())
+        {
+            foreach (AIInterest interest in interests)
+            {
+                if (System.Array.Exists<AIInterest>(agent.interests, element => element == interest))
+                {
+                    agent.Investigate(location, investigateTime, forceOverrideInteract: interruptInteract);
+                    break;
+                }
+            }
+        }
+    }
+
 #if UNITY_EDITOR
 
     private void OnDrawGizmos()
