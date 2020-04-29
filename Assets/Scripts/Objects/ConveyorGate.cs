@@ -8,6 +8,7 @@ public class ConveyorGate : MonoBehaviour
     public Vector3 openPos;
     public float speed = 1f;
     private Vector3 originalPos;
+    public bool pushLuggage;
 
     private void Start()
     {
@@ -23,5 +24,13 @@ public class ConveyorGate : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(transform.position + closedPos, transform.position + openPos);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (pushLuggage && collision.gameObject.CompareTag("Luggage"))
+        {
+            collision.gameObject.transform.position += transform.right * 2.2f;
+        }
     }
 }
