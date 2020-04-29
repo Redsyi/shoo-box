@@ -111,8 +111,8 @@ public class UICreditsHandler : MonoBehaviour
             print("Index: " + index);
             DisplayTag();
         }
-        else
-            Debug.LogError("Index out of bounds");
+        /*else
+            Debug.LogError("Index out of bounds");*/
             
     }
 
