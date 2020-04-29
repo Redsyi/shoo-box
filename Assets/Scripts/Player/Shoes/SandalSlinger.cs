@@ -125,10 +125,13 @@ public class SandalSlinger : MonoBehaviour
         List<SandalTarget> potentialTargets = new List<SandalTarget>();
         foreach (Transform target in targets)
         {
-            Vector3 vectToTarget = (target.position - transform.position);
-            Vector2 normalizedVectToTarget = new Vector2(vectToTarget.x, vectToTarget.z).normalized;
-            float angleDiff = Mathf.Acos(Vector2.Dot(desiredForward, normalizedVectToTarget));
-            potentialTargets.Add(new SandalTarget() { target = target, angleDiff = angleDiff });
+            if (target)
+            {
+                Vector3 vectToTarget = (target.position - transform.position);
+                Vector2 normalizedVectToTarget = new Vector2(vectToTarget.x, vectToTarget.z).normalized;
+                float angleDiff = Mathf.Acos(Vector2.Dot(desiredForward, normalizedVectToTarget));
+                potentialTargets.Add(new SandalTarget() { target = target, angleDiff = angleDiff });
+            }
         }
 
         currTarget = null;
