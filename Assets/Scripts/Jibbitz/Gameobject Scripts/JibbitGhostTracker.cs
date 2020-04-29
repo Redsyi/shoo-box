@@ -15,7 +15,7 @@ public class JibbitGhostTracker : MonoBehaviour
     static bool playedTutorial;
     static bool playedLobby;
 
-    private void Awake()
+    private void Start()
     {
         if (resetProgress)
         {
@@ -29,17 +29,18 @@ public class JibbitGhostTracker : MonoBehaviour
 
         if (markPlayedTutorial)
             playedTutorial = true;
+        
 
-        if (spawnIfQualified && qualified && playedTutorial && playedTutorial)
+        if (spawnIfQualified && qualified && playedTutorial && playedLobby)
         {
-            CollectableJibbit jib = Instantiate(jibbit, transform.position, Quaternion.identity);
-            jib.Launch(Vector3.up * 50);
+            CollectableJibbit jib = Instantiate(jibbit, transform.position, Quaternion.identity, transform);
+            jib.Launch(Vector3.up * 200);
         }
     }
 
     private void LateUpdate()
     {
-        if (disqualifier && disqualifier.currState.state == AIState.CHASE)
+        if (qualified && disqualifier && disqualifier.currState.state == AIState.CHASE)
         {
             qualified = false;
         }
