@@ -21,9 +21,15 @@ public class CollectableJibbit : MonoBehaviour
     public void Launch(Vector3 force, Color color, float size, Jibbit jibbit, float timeToCollectable)
     {
         rigidbody.AddForce(force);
-        effect.SetVector4("Color", color);
-        line.startColor = color;
-        line.endColor = color * new Color(1, 1, 1, 0.5f);
+        if (effect)
+        {
+            effect.SetVector4("Color", color);
+        }
+        if (line)
+        {
+            line.startColor = color;
+            line.endColor = color * new Color(1, 1, 1, 0.5f);
+        }
         myJibbit = jibbit;
         maxLifetime = timeToCollectable;
         transform.localScale = new Vector3(size, size, size);
