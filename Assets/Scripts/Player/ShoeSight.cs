@@ -75,6 +75,26 @@ public class ShoeSight : MonoBehaviour
             sightStrength -= Time.deltaTime / sightSpoolTime;
             yield return null;
         }
+        foreach (MeshRenderer renderer in renderers)
+        {
+            if (renderer)
+            {
+                foreach (Material material in renderer.materials)
+                {
+                    material.SetFloat("_SightBlend", 0);
+                }
+            }
+        }
+        foreach (SkinnedMeshRenderer renderer in skinnedMeshRenderers)
+        {
+            if (renderer)
+            {
+                foreach (Material material in renderer.materials)
+                {
+                    material.SetFloat("_SightBlend", 0);
+                }
+            }
+        }
         yield return new WaitForSeconds(sightCooldownTime);
         sighting = false;
     }
