@@ -7,7 +7,7 @@ public class LightSwitch : MonoBehaviour, IKickable, IAIInteractable
     private bool on;
     public Color ambientLightOnColor;
     public Color ambientLightOffColor;
-    public Transform lightsRoot;
+    public Transform[] lightsRoots;
     public AIInterest[] interestMask;
 
     private void Start()
@@ -21,12 +21,15 @@ public class LightSwitch : MonoBehaviour, IKickable, IAIInteractable
             on = true;
             RenderSettings.ambientLight = ambientLightOnColor;
             CameraScript.current.camera.backgroundColor = Color.white;
-            foreach (Transform lightTransform in lightsRoot)
+            foreach (Transform lightsRoot in lightsRoots)
             {
-                Light light = lightTransform.GetComponent<Light>();
-                if (light)
+                foreach (Transform lightTransform in lightsRoot)
                 {
-                    light.enabled = true;
+                    Light light = lightTransform.GetComponent<Light>();
+                    if (light)
+                    {
+                        light.enabled = false;
+                    }
                 }
             }
             AIAgent.blindAll = false;
@@ -65,12 +68,15 @@ public class LightSwitch : MonoBehaviour, IKickable, IAIInteractable
             on = false;
             RenderSettings.ambientLight = ambientLightOffColor;
             CameraScript.current.camera.backgroundColor = Color.black;
-            foreach (Transform lightTransform in lightsRoot)
+            foreach (Transform lightsRoot in lightsRoots)
             {
-                Light light = lightTransform.GetComponent<Light>();
-                if (light)
+                foreach (Transform lightTransform in lightsRoot)
                 {
-                    light.enabled = false;
+                    Light light = lightTransform.GetComponent<Light>();
+                    if (light)
+                    {
+                        light.enabled = false;
+                    }
                 }
             }
             AIAgent.blindAll = true;
