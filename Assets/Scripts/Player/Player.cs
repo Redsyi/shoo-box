@@ -384,17 +384,19 @@ public class Player : MonoBehaviour
 
         foreach (GameObject legg in leggs)
             legg.SetActive(legForm);
+
+        if (legShadow)
+            legShadow.SetActive(legForm);
+        if (boxShadow)
+            boxShadow.SetActive(!legForm);
+
         if (legForm)
         {
             transform.position += new Vector3(0, heightDifference);
-            legShadow?.SetActive(true);
-            boxShadow?.SetActive(false);
         }
         else
         {
             transform.position -= new Vector3(0, heightDifference);
-            legShadow?.SetActive(false);
-            boxShadow?.SetActive(true);
         }
         walkingParticleSystem.transform.localPosition = (legForm ? legParticlesPosition.localPosition : boxParticlesPosition.localPosition);
 

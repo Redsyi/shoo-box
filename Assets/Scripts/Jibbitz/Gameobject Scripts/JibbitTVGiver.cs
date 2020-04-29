@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class JibbitTVGiver : MonoBehaviour
 {
-    public Color color;
     public float launchVelocity;
-    public float size;
-    public Jibbit jibbit;
     public float stareTimeRequired;
     public CollectableJibbit jibbitPrefab;
 
@@ -24,8 +21,7 @@ public class JibbitTVGiver : MonoBehaviour
                 if (timeToJibbit >= stareTimeRequired)
                 {
                     CollectableJibbit jib = Instantiate(jibbitPrefab, transform.position, Quaternion.identity);
-                    jib.Launch(transform.forward * launchVelocity, color, size, jibbit, 1);
-                    //JibbitManager.LaunchCollectableJibbit(jibbit, transform.position, transform.forward * launchVelocity, size, color, 1);
+                    jib.Launch(transform.forward * launchVelocity);
                     givenJibbit = true;
                 }
             } else

@@ -9,6 +9,10 @@ public class CollectableJibbit : MonoBehaviour
     public VisualEffect effect;
     public TrailRenderer line;
     public AK.Wwise.Event collectSound;
+    public Color color;
+    public float size;
+    public float timeToCollectable;
+    public Jibbit jibbit;
 
     Jibbit myJibbit;
     float lifetime;
@@ -23,6 +27,11 @@ public class CollectableJibbit : MonoBehaviour
         myJibbit = jibbit;
         maxLifetime = timeToCollectable;
         transform.localScale = new Vector3(size, size, size);
+    }
+
+    public void Launch(Vector3 force)
+    {
+        Launch(force, color, size, jibbit, timeToCollectable);
     }
 
     private void Update()
