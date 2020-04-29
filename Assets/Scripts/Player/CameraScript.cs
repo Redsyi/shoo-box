@@ -145,7 +145,7 @@ public class CameraScript : MonoBehaviour
                 cameraRotation += rotationAmount;
             }
 
-            transform.position = player.transform.position + currScreenShake;
+            transform.position = (player.legForm ? player.transform.position : player.AISpotPoint.position) + currScreenShake;
 
             if (!CameraZoomZone.active)
             {

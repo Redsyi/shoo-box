@@ -8,6 +8,8 @@ public class AICar : MonoBehaviour, IKickable
     public bool canDrive;
     public float turnRate;
     public AK.Wwise.Event honkSound;
+    public CollectableJibbit trafficLightJibbit;
+    public float jibbitLaunchForce;
 
     Direction movingDirection;
     CityRoad currRoad;
@@ -15,9 +17,11 @@ public class AICar : MonoBehaviour, IKickable
     [HideInInspector]
     public bool moving;
     bool stuck;
+    static bool gaveTrafficLightJibbit;
 
     void Start()
     {
+        gaveTrafficLightJibbit = false;
         switch (transform.localEulerAngles.y)
         {
             case 0:
@@ -196,6 +200,12 @@ public class AICar : MonoBehaviour, IKickable
             {
                 Crash();
                 GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * 600);
+                if (!gaveTrafficLightJibbit)
+                {
+                    gaveTrafficLightJibbit = true;
+                    CollectableJibbit jib = Instantiate(trafficLightJibbit, transform.position + Vector3.up * 2, Quaternion.identity);
+                    jib.Launch(Vector3.up * jibbitLaunchForce);
+                }
             }
             else
             {

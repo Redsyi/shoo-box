@@ -18,6 +18,7 @@ public class TankShell : MonoBehaviour
     public float hitForce;
     public float damage;
     public AK.Wwise.Event onFire;
+    public bool firedByPlayer;
 
     public void Fire()
     {
@@ -64,7 +65,8 @@ public class TankShell : MonoBehaviour
         animator.SetTrigger("Fire");
         renderer.SetPosition(0, transform.position);
         onFire.Post(gameObject);
-        if (Physics.Raycast(transform.position, transform.forward, out raycastHit, 40, LayerMask.GetMask("Player", "Obstructions")))
+        LayerMask layers = (firedByPlayer ? LayerMask.GetMask("Obstructions", "Default") : LayerMask.GetMask("Player", "Obstructions", "Default"));
+        if (Physics.Raycast(transform.position, transform.forward, out raycastHit, 40, layers))
         {
             renderer.SetPosition(1, raycastHit.point);
             impactParticles.transform.position = raycastHit.point;
@@ -75,14 +77,25 @@ public class TankShell : MonoBehaviour
             }
             if (raycastHit.collider.CompareTag("Player"))
             {
-                print("Hit player");
-                if (raycastHit.collider.GetComponentInParent<Player>())
-                    print("Found player");
-
-                /*if (raycastHit.collider.gameObject.GetComponent<Player>())
-                    print("Found player");*/
                 raycastHit.collider.GetComponentInParent<Player>().HitByEnemy(damage);
                 raycastHit.rigidbody.AddForce(transform.forward * hitForce);
+                CameraScript.current.ShakeScreen(ShakeStrength.INTENSE, ShakeLength.SHORT);
+                Player.ControllerRumble(RumbleStrength.INTENSE, 0.3f);
+            }
+
+            foreach (IKickable kickable in raycastHit.collider.GetComponents<IKickable>())
+            {
+                kickable.OnKick(gameObject);
+            }
+
+            AITank tank = raycastHit.collider.GetComponentInParent<AITank>();
+            if (tank)
+            {
+                tank.Destroy();
+            }
+
+            if (firedByPlayer)
+            {
                 CameraScript.current.ShakeScreen(ShakeStrength.INTENSE, ShakeLength.SHORT);
                 Player.ControllerRumble(RumbleStrength.INTENSE, 0.3f);
             }

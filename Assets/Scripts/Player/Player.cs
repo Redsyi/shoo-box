@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     public Image health;
     public GameObject boxShadow;
     public GameObject legShadow;
+    public PlayerTank playerTankEasterEgg;
 
     [Header("Stats")]
     public ShoeType[] startingShoes;
@@ -542,6 +543,11 @@ public class Player : MonoBehaviour
 #endif
             if (StealFocusWhenSeen.activeThief.skippable || editorOverride || Devmode.active)
                 StealFocusWhenSeen.SkipActive();
+        }
+
+        if (playerTankEasterEgg != null && Controls.usingController)
+        {
+            playerTankEasterEgg.OnKonamiStart();
         }
     }
 

@@ -6,6 +6,7 @@ using UnityEngine;
 public class BuildingDestroyer : MonoBehaviour
 {
     public float minVelocity;
+    public bool isDonut;
     float minVelocitySqr => minVelocity * minVelocity;
     Rigidbody rigidbody;
     public AK.Wwise.Event groundImpactSound;
@@ -30,6 +31,15 @@ public class BuildingDestroyer : MonoBehaviour
                 } else
                 {
                     Debug.LogWarning($"{building.gameObject.name} has no AkEventOnKick");
+                }
+
+                if (isDonut && !JibbitDonutGiver.given)
+                {
+                    JibbitDonutGiver donutGiver = building.GetComponent<JibbitDonutGiver>();
+                    if (donutGiver)
+                    {
+                        donutGiver.HitByDonut();
+                    }
                 }
             }
         } else if (!collision.gameObject.CompareTag("Player"))

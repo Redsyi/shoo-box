@@ -7,8 +7,8 @@ public class CityDirector : MonoBehaviour
     public int intensity;
     float spawnDelay => 20 - intensity;
     private bool shouldSpawn => intensity > 0;
-    private int tankCap => (intensity / 2) + 1;
-    private int heliCap => (intensity / 2);
+    private int tankCap => (intensity / 2) + 1 + (PlayerTank.isTank ? intensity / 2 : 0);
+    private int heliCap => (PlayerTank.isTank ? 0 : (intensity / 2));
     private float internalIntensity;
     public static int numTanks;
     public static int numHelis;

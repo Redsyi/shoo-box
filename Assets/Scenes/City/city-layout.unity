@@ -5207,7 +5207,8 @@ GameObject:
   - component: {fileID: 165806287}
   - component: {fileID: 165806286}
   - component: {fileID: 165806285}
-  m_Layer: 0
+  - component: {fileID: 165806289}
+  m_Layer: 18
   m_Name: ChangeLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5242,6 +5243,7 @@ MonoBehaviour:
   scene: EndingCutscene
   canChangeLevels: 1
   lockChange: 0
+  delay: 1
   message: A tearful reunion...
 --- !u!65 &165806287
 BoxCollider:
@@ -5271,6 +5273,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 95
   m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 0}
+--- !u!114 &165806289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165806284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e880fbbb21e1bf34895207cbb47fe778, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jibbit: {fileID: 11400000, guid: e5f7c29112ce72c46a539ae1cdb69e75, type: 2}
 --- !u!1001 &165905012
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35268,6 +35283,11 @@ PrefabInstance:
       propertyPath: health
       value: 
       objectReference: {fileID: 1021058258}
+    - target: {fileID: 1461873589410616761, guid: 1e839009347a7644ea054440ee02595b,
+        type: 3}
+      propertyPath: playerTankEasterEgg
+      value: 
+      objectReference: {fileID: 988459545}
     - target: {fileID: 2104722110398112413, guid: 1e839009347a7644ea054440ee02595b,
         type: 3}
       propertyPath: m_IsActive
@@ -35333,6 +35353,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6194703013384568682, guid: 1e839009347a7644ea054440ee02595b,
+        type: 3}
+      propertyPath: deactivateWhenTank.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6194703013384568682, guid: 1e839009347a7644ea054440ee02595b,
+        type: 3}
+      propertyPath: deactivateWhenTank.Array.data[4]
+      value: 
+      objectReference: {fileID: 5232792028855507576}
+    - target: {fileID: 6194703013384568682, guid: 1e839009347a7644ea054440ee02595b,
+        type: 3}
+      propertyPath: deactivateWhenTank.Array.data[5]
+      value: 
+      objectReference: {fileID: 470349021524177178}
     - target: {fileID: 6409941001754761447, guid: 1e839009347a7644ea054440ee02595b,
         type: 3}
       propertyPath: m_IsActive
@@ -35393,6 +35428,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.226166, y: 1.4985029, z: 1.2916126}
   m_Center: {x: 0.058598008, y: 1.4520899, z: -0.020438215}
+--- !u!114 &988459545 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6194703013384568682, guid: 1e839009347a7644ea054440ee02595b,
+    type: 3}
+  m_PrefabInstance: {fileID: 988459535}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988459536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5d53492b66a15b4b82e8ebc00e52542, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &988620382
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40188,7 +40235,7 @@ PrefabInstance:
     - target: {fileID: 5546592752640602791, guid: 007f3037e51740f4398ac09eb6c169ed,
         type: 3}
       propertyPath: role.Array.data[7]
-      value: Gameplay/Shader Programmer
+      value: Gameplay/Shader/UI Programmer
       objectReference: {fileID: 0}
     - target: {fileID: 5546592752640602791, guid: 007f3037e51740f4398ac09eb6c169ed,
         type: 3}
@@ -59111,7 +59158,7 @@ GameObject:
   - component: {fileID: 1623577333}
   - component: {fileID: 1623577335}
   - component: {fileID: 1623577334}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: FocusStealer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82905,7 +82952,7 @@ Transform:
   m_Children:
   - {fileID: 8481424105747779552}
   m_Father: {fileID: 988459537}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: -89.003006, z: 0}
 --- !u!4 &6615567838143220565
 Transform:

@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &479163111051762833
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2497495729570126146}
+  m_Layer: 8
+  m_Name: jiblauncher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2497495729570126146
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479163111051762833}
+  m_LocalRotation: {x: -0.60951144, y: 0.24200784, z: 0.20284943, w: 0.7271727}
+  m_LocalPosition: {x: 1.645, y: 3.184, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4450357903871720401}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -79.939, y: 36.816, z: 0}
 --- !u!1 &1575109735833410592
 GameObject:
   m_ObjectHideFlags: 0
@@ -4901,6 +4931,7 @@ GameObject:
   - component: {fileID: 2284413467902299199}
   - component: {fileID: 4372243396608182014}
   - component: {fileID: 8860861740968556245}
+  - component: {fileID: 6916543180762641868}
   m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
@@ -4920,6 +4951,7 @@ Transform:
   m_LocalScale: {x: 0.2, y: 7.6687713, z: 0.2}
   m_Children:
   - {fileID: 2698410921061253209}
+  - {fileID: 2497495729570126146}
   m_Father: {fileID: 1575109736398513595}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4972,6 +5004,21 @@ MonoBehaviour:
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 5a35aaf5db66240f8b7fb8ba6d5a1a94,
       type: 2}
+--- !u!114 &6916543180762641868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2911330163408352237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23815c8eaf36c994a8546dd18a38cc8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jibbit: {fileID: 178497198408116740, guid: 9933a31829ee74a4396d9f6164891610, type: 3}
+  force: 350
+  launcher: {fileID: 2497495729570126146}
 --- !u!1001 &6919810106624158531
 PrefabInstance:
   m_ObjectHideFlags: 0
