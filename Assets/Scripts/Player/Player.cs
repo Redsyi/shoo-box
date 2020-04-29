@@ -162,6 +162,7 @@ public class Player : MonoBehaviour
     /// </summary>
     public void OnMove(InputValue value)
     {
+        JibbitHorseGiver.qualified = false;
         bool wasMoving = (currMovementInput == Vector2.zero);
         currMovementInput = value.Get<Vector2>();
         if (currMovementInput != Vector2.zero && !wasMoving && !makingFootsteps)

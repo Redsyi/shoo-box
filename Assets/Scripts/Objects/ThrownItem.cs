@@ -5,6 +5,9 @@ using UnityEngine.VFX;
 
 public class ThrownItem : MonoBehaviour
 {
+    public int type;
+    [HideInInspector] public GameObject thrower;
+
     [Header("Components")]
     public Rigidbody rigidbody;
 
@@ -35,6 +38,15 @@ public class ThrownItem : MonoBehaviour
             if (impactEffect)
             {
                 impactEffect.Play();
+            }
+
+            if (!JibbitHotdogGiver.given && collision.gameObject.CompareTag("Player"))
+            {
+                JibbitHotdogGiver jibGiver = thrower.GetComponent<JibbitHotdogGiver>();
+                if (jibGiver)
+                {
+                    jibGiver.NotifyHit(type);
+                }
             }
         }
     }

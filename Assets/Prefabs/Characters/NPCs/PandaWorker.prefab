@@ -141,6 +141,7 @@ Transform:
   - {fileID: 7893319147939239452}
   - {fileID: 771909757948346813}
   - {fileID: 2907134755933143683}
+  - {fileID: 703489146918231730}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -393,6 +394,36 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &2250036833837079085
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 703489146918231730}
+  m_Layer: 0
+  m_Name: jibthrower
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &703489146918231730
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2250036833837079085}
+  m_LocalRotation: {x: -0.12265517, y: -0, z: -0, w: 0.99244934}
+  m_LocalPosition: {x: -0.00001, y: 0.01109, z: 0.00663}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 771909758307835014}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: -14.091001, y: 0, z: 0}
 --- !u!1 &2907134755933143684
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,6 +435,7 @@ GameObject:
   - component: {fileID: 2907134755933143683}
   - component: {fileID: 2907134755933143681}
   - component: {fileID: 2907134755933143682}
+  - component: {fileID: 1426189069232605657}
   m_Layer: 0
   m_Name: PandaWorker
   m_TagString: Untagged
@@ -462,6 +494,20 @@ MonoBehaviour:
     type: 3}
   speed: 800
   spin: 200000
+--- !u!114 &1426189069232605657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2907134755933143684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f42a9fad6c31e24fac6a81f1a1fbce7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jibbit: {fileID: 178497198408116740, guid: 42506909ceff2214ab31fb332ebd15ec, type: 3}
+  launcher: {fileID: 703489146918231730}
 --- !u!1 &3361748970966664025
 GameObject:
   m_ObjectHideFlags: 0

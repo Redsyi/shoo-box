@@ -18,8 +18,10 @@ public class ThrowItem : MonoBehaviour
         ThrownItem item = Instantiate(objectToThrow, transform.parent.position, transform.parent.rotation);
         item.rigidbody.AddForce((target - transform.parent.position).normalized * speed);
         item.rigidbody.AddRelativeTorque(new Vector3(spin, 0));
+        item.thrower = gameObject;
     }
 
+    /*
     private IEnumerator Throwing(Vector3 position)
     {
         //yield return new WaitForSeconds(2.0f);
@@ -36,5 +38,5 @@ public class ThrowItem : MonoBehaviour
         if(myObject)
             Destroy(myObject);
 
-    }
+    }*/
 }
