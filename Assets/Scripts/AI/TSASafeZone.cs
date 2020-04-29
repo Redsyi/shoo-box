@@ -13,6 +13,8 @@ public class TSASafeZone : MonoBehaviour
     public Color safeColor;
     public Color safeFilledColor;
 
+    AIAgent[] activeAgents;
+
     private void OnTriggerEnter(Collider other)
     {
         TSAAlert alert = other.GetComponent<TSAAlert>();
@@ -23,9 +25,9 @@ public class TSASafeZone : MonoBehaviour
                 indicator.color = safeColor;
                 filledIndicator.color = safeFilledColor;
             }
-            foreach (AIAgent AI in FindObjectsOfType<AIAgent>())
+            foreach (AIAgent AI in activeAgents)
             {
-                if (AI.currState.state == AIState.INVESTIGATE && AI.currState.location == alert.transform)
+                if (AI && AI.currState.state == AIState.INVESTIGATE && AI.currState.location == alert.transform)
                 {
                     AI.Investigate(alert.transform.position, 1.5f);
                 }
@@ -48,6 +50,13 @@ public class TSASafeZone : MonoBehaviour
         TSAAlert alert = other.GetComponent<TSAAlert>();
         if (alert)
         {
+            foreach (AIAgent AI in activeAgents)
+            {
+                if (AI && AI.currState.state == AIState.INTERACT && AI.currState.location == alert.transform)
+                {
+                    return;
+                }
+            }
             alert.alertTimeRemaining = alert.alertTime;
         }
     }
@@ -57,6 +66,7 @@ public class TSASafeZone : MonoBehaviour
         AdjustIndicator();
         indicator.color = normalColor;
         filledIndicator.color = normalFilledColor;
+        activeAgents = FindObjectsOfType<AIAgent>();
     }
 
     private void OnDrawGizmosSelected()

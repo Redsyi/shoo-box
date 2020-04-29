@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    private class PlayerState
+    public class PlayerState
     {
         public Quaternion rotation;
         public bool legForm;
@@ -101,7 +101,7 @@ public class Player : MonoBehaviour
     [Header("Settings")]
     public float minY = -10f;
     public bool useSnapRotation;
-    static PlayerState prevState;
+    public static PlayerState prevState;
     public static Player current;
     public AK.Wwise.Event idleSound;
 
