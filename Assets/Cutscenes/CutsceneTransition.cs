@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// deprecated
+/// </summary>
 public class CutsceneTransition : MonoBehaviour
 {
     public Animator transition;
