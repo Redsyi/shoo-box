@@ -18,9 +18,6 @@ namespace AK
         static const AkUniqueID AI_QUESTION = 1201896862U;
         static const AkUniqueID AI_QUESTION_MALE = 2287570078U;
         static const AkUniqueID AIRPORT_AMBIENCE_CONVEYORBELT_01 = 4198451418U;
-        static const AkUniqueID AIRPORT_AMBIENCE_CONVEYORBELT_02 = 4198451417U;
-        static const AkUniqueID AIRPORT_AMBIENCE_CONVEYORBELT_03 = 4198451416U;
-        static const AkUniqueID AIRPORT_AMBIENCE_CONVEYORBELT_04 = 4198451423U;
         static const AkUniqueID AIRPORT_AMBIENCE_TUNNEL = 938863674U;
         static const AkUniqueID AIRPORT_CART_ROLLING = 3899537369U;
         static const AkUniqueID AIRPORT_FLIGHT_TAKING_OFF = 1943100584U;

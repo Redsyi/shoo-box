@@ -70,43 +70,6 @@
 								<ItemRef Name="Airport_SlidingGate_2" ID="{65898968-CCFF-4B2B-B726-5634BF19A2F4}"/>
 							</Playlist>
 						</RandomSequenceContainer>
-						<Sound Name="Airport_Ambience_ConveyorBelt" ID="{2E61B428-D3DA-486D-930E-E0CFEBDD9452}" ShortID="977026639">
-							<PropertyList>
-								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
-								<Property Name="Lowpass" Type="int16">
-									<ValueList>
-										<Value>35</Value>
-									</ValueList>
-								</Property>
-								<Property Name="Pitch" Type="int32">
-									<ValueList>
-										<Value>-100</Value>
-									</ValueList>
-								</Property>
-								<Property Name="Volume" Type="Real64">
-									<ValueList>
-										<Value>-4</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="Airport_Conveyor_Room_Tone" ID="{0A194D57-9858-4CC8-A8AB-C8CBDEB4BD06}" ShortID="473201607">
-									<Language>SFX</Language>
-									<AudioFile>Airport_Conveyor_Room_Tone.wav</AudioFile>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="Airport_Conveyor_Room_Tone" ID="{0A194D57-9858-4CC8-A8AB-C8CBDEB4BD06}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
 						<Sound Name="Airport_Annoucement" ID="{DA715ECC-47FF-4E5E-883F-78170FBF9FC5}" ShortID="749404689">
 							<PropertyList>
 								<Property Name="Volume" Type="Real64">
@@ -181,6 +144,43 @@
 						</Sound>
 					</ChildrenList>
 				</ActorMixer>
+				<Sound Name="Airport_Ambience_ConveyorBelt" ID="{2E61B428-D3DA-486D-930E-E0CFEBDD9452}" ShortID="977026639">
+					<PropertyList>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+						<Property Name="Lowpass" Type="int16">
+							<ValueList>
+								<Value>35</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Pitch" Type="int32">
+							<ValueList>
+								<Value>-100</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-4</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Ambience" ID="{A8515AC1-BBDF-44F3-B9D6-A6478A6FD597}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Airport_Conveyor_Room_Tone" ID="{0A194D57-9858-4CC8-A8AB-C8CBDEB4BD06}" ShortID="473201607">
+							<Language>SFX</Language>
+							<AudioFile>Airport_Conveyor_Room_Tone.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Airport_Conveyor_Room_Tone" ID="{0A194D57-9858-4CC8-A8AB-C8CBDEB4BD06}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>
