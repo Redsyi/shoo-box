@@ -18,6 +18,15 @@ public class SetCheckpointOnEnter : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        // Grab the checkpoint message object. Should be the only object where tag == Checkpoint Message
+        Animator message = GameObject.FindGameObjectWithTag("Checkpoint Message").GetComponent<Animator>();
+        if (message)
+        {
+            print("Found animator: " + message.gameObject.name);
+            message.SetTrigger("Checkpoint Hit");
+        }
+        else
+            Debug.LogError("Checkpoint message object not found");
         checkpointManager.SetCheckpoint(checkpointID);
         gameObject.SetActive(false);
     }
