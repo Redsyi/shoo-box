@@ -79,6 +79,14 @@ public class StealFocusWhenSeen : MonoBehaviour
     }
 
     /// <summary>
+    /// manually trigger this cutscene, with a delay
+    /// </summary>
+    public virtual void Trigger(float delay)
+    {
+        Invoke("Trigger", delay);
+    }
+
+    /// <summary>
     /// skip this cutscene
     /// </summary>
     public void Skip()
@@ -181,10 +189,10 @@ public class StealFocusWhenSeen : MonoBehaviour
             cameraScript.cameraDist = originalCameraDist;
         }
         Time.timeScale = 1;
+        activeThief = null;
 
         //invoke onStealEnd events
         onStealEnd.Invoke();
-        activeThief = null;
     }
 
     /// <summary>

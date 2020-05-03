@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using System.Collections;
 
 /// <summary>
 /// class that manages the checkpoint system
@@ -26,6 +27,15 @@ public class CheckpointManager : MonoBehaviour
                 break;
             }
         }
+        StartCoroutine(ReloadDelayed());
+    }
+
+    /// <summary>
+    /// calls ReloadCheckpointItems after one frame
+    /// </summary>
+    IEnumerator ReloadDelayed()
+    {
+        yield return null;
         ReloadCheckpointItems();
     }
 

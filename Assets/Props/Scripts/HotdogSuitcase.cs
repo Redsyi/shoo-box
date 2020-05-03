@@ -13,6 +13,7 @@ public class HotdogSuitcase : MonoBehaviour
     public Vector3 sandalPlaceOffset;
     public Vector3 placeOffset;
     public StealFocusWhenSeen cutscene;
+    public Transform agentHand;
 
     private void Start()
     {
@@ -58,7 +59,14 @@ public class HotdogSuitcase : MonoBehaviour
     /// </summary>
     public void Ransack()
     {
-        hotdog.SetActive(false);
+        if (agentHand) {
+            hotdog.transform.SetParent(agentHand);
+            hotdog.transform.localPosition = new Vector3(-0.0686f, 0.0003f, -0.0073f);
+            hotdog.transform.localEulerAngles = new Vector3(100.006f, -89.979f, -180f);
+        } else
+        {
+            hotdog.SetActive(false);
+        }
         sandals.transform.position += sandalPlaceOffset;
     }
 }

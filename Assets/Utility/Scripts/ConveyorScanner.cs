@@ -90,6 +90,7 @@ public class ConveyorScanner : MonoBehaviour, IAIInteractable
 
     public void CancelFakeAlarm()
     {
+        CancelInvoke("FakeAlarm");
         doFalseAlarm = false;
         foreach (Light light in warningLights)
         {
