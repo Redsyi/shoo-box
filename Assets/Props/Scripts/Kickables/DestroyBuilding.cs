@@ -35,7 +35,7 @@ public class DestroyBuilding : MonoBehaviour, IKickable
     /// </summary>
     private IEnumerator Destroy()
     {
-        CityDirector.current.SetIntensity(1);
+        CityDirector.current.SetIntensity(2);
         CityDirector.current.IncreaseIntensity(0.1f);
         numDestroys++;
         CameraScript.current.ShakeScreen(ShakeStrength.INTENSE, ShakeLength.MEDIUM);

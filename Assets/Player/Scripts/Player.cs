@@ -201,19 +201,6 @@ public class Player : MonoBehaviour
     }
 
     /// <summary>
-    /// take damage, and reload the level if dead
-    /// </summary>
-    public void HitByEnemy(float damage)
-    {
-        health.fillAmount -= damage;
-        if(health.fillAmount <= 0)
-        {
-            LevelBridge.Reload("Oh no! The military got you.");
-        }
-
-    }
-
-    /// <summary>
     /// manage actual player movement
     /// </summary>
     private void FixedUpdate()

@@ -7,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public class AICar : MonoBehaviour, IKickable
 {
+    public bool isLawEnforcement;
     public float speed;
     public bool canDrive;
     public float turnRate;
@@ -188,7 +189,7 @@ public class AICar : MonoBehaviour, IKickable
 
     public void OnKick(GameObject kicker)
     {
-        if (canDrive)
+        if (canDrive || isLawEnforcement)
         {
             Crash();
             CityDirector.current.IncreaseIntensity(0.2f);
@@ -200,30 +201,32 @@ public class AICar : MonoBehaviour, IKickable
     /// </summary>
     public void Crash()
     {
-        if (canDrive)
+        if (canDrive || isLawEnforcement)
         {
             canDrive = false;
             moving = false;
-            currRoad.assignedCar[movingDirection] = false;
+            if (currRoad)
+                currRoad.assignedCar[movingDirection] = false;
         }
     }
 
     //crashes with another car, allowing some exceptions to prevent accidents the player didn't have a hand in
     private void OnCollisionEnter(Collision collision)
     {
-        if (canDrive)
+        if (canDrive || isLawEnforcement)
         {
             AICar otherCar = collision.gameObject.GetComponent<AICar>();
-            if (otherCar && (!otherCar.canDrive || (moving && otherCar.moving)) && Utilities.OnScreen(transform.position))
+            if (otherCar && !isLawEnforcement && !otherCar.isLawEnforcement && (!otherCar.canDrive || (moving && otherCar.moving)) && Utilities.OnScreen(transform.position))
             {
-                Crash();
-                GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * 600);
-                if (!gaveTrafficLightJibbit)
+                if (!gaveTrafficLightJibbit && (moving && otherCar.moving))
                 {
                     gaveTrafficLightJibbit = true;
                     CollectableJibbit jib = Instantiate(trafficLightJibbit, transform.position + Vector3.up * 2, Quaternion.identity);
                     jib.Launch(Vector3.up * jibbitLaunchForce);
                 }
+
+                Crash();
+                GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * 600);
             }
             else
             {
@@ -232,6 +235,10 @@ public class AICar : MonoBehaviour, IKickable
                 {
                     Crash();
                 }
+
+                //alert police if player collided with car
+                if (collision.gameObject.CompareTag("Player"))
+                    CityDirector.current.SetIntensity(1);
             }
         }
     }

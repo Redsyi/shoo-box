@@ -7,10 +7,12 @@ using UnityEngine;
 /// </summary>
 public class RoadPlayerDetector : MonoBehaviour
 {
+    public CityRoad owningRoad;
     bool playerBlocking;
     [HideInInspector] public Direction vBlock;
     [HideInInspector] public Direction hBlock;
     Collider collider;
+    public static float timeOffRoad;
 
     private void Awake()
     {
@@ -20,6 +22,8 @@ public class RoadPlayerDetector : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         playerBlocking = true;
+        CityRoad.currPlayerRoad = owningRoad;
+        timeOffRoad = 0;
     }
 
     private void OnTriggerExit(Collider other)

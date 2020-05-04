@@ -9787,8 +9787,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03bb8f076ac840e4a82f0aeda7ff24a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trailLifetime: 5
   renderer: {fileID: 4184104154157929341}
+  animator: {fileID: 457154869}
+  impactParticles: {fileID: 7526277273369736071}
+  trailLifetime: 5
+  hitForce: 0
+  damage: 7.5
   initialGradient:
     serializedVersion: 2
     key0: {r: 0.6415094, g: 0.51428366, b: 0.2269491, a: 0.49803922}
@@ -9847,16 +9851,13 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 3
-  fadeBlend: 0
-  animator: {fileID: 457154869}
-  impactParticles: {fileID: 7526277273369736071}
-  hitForce: 0
-  damage: 0.1
   onFire:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 7cedd84dbec024894877e1dd5a0ad197,
       type: 2}
+  fadeBlend: 0
+  firedByPlayer: 0
 --- !u!95 &457154869
 Animator:
   serializedVersion: 3

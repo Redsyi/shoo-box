@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2847458133448496895}
   - component: {fileID: 4568299411967826672}
   - component: {fileID: 3629201902457413923}
+  - component: {fileID: 8717622399463840725}
   m_Layer: 0
   m_Name: Car3
   m_TagString: Untagged
@@ -49,6 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87c65f99711959f47a632f1c49d7a65e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLawEnforcement: 0
   speed: 5
   canDrive: 1
   turnRate: 360
@@ -132,10 +134,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minVelocity: 2
+  isDonut: 0
   groundImpactSound:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 0}
+--- !u!114 &8717622399463840725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5152007108599942209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7095d354cf4ec3742927c9a164929f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 3
 --- !u!1001 &7166088419653030142
 PrefabInstance:
   m_ObjectHideFlags: 0

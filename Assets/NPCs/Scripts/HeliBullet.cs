@@ -69,7 +69,7 @@ public class HeliBullet : MonoBehaviour
         //handles special case of hitting player
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponentInParent<Player>().HitByEnemy(damage);
+            collision.gameObject.GetComponentInParent<CityPlayerHelper>().TakeDamage(damage, DamageSource.HELICOPTER);
             Player.ControllerRumble(RumbleStrength.WEAK, 0.1f);
             if (impacts %30 == 0){
                 onPlayer.Post(gameObject);

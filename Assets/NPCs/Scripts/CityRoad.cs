@@ -19,6 +19,17 @@ public class CityRoad : MonoBehaviour
     public static CityRoad[] roads;                             //static array of all roads in the city
     const float posOffset = 1.3f;
     RoadPlayerDetector[] playerDetectors;
+    public int pathfindingID;                                   //unique ID for pathfinding, also can be used to index into roads array
+    public static bool finishedBuildingPathfinders;             //true if the road network has finished building a pathfinding grid to navigate with
+    bool visited;
+    [HideInInspector] public int[] nextRoadTo;                  //holds the pathfinding id of the next road to go to, where the index into the array represents the desired destination's id
+    int starterID;                                              //used for building pathfinders - holds the pathfinding id of the road that leads to this one
+    public static CityRoad currPlayerRoad;                      //road that the player is currently on
+
+    [Header("Pathfinding debug")]
+    public bool debug;
+    public bool setDebugDest;
+    static CityRoad debugDest;
 
     private void Awake()
     {
@@ -51,9 +62,79 @@ public class CityRoad : MonoBehaviour
     private void Start()
     {
         if (roads == null || roads.Length == 0)
+        {
+            finishedBuildingPathfinders = false;
             roads = FindObjectsOfType<CityRoad>();
+            //assign pathfinding IDs
+            for (int i = 0; i < roads.Length; ++i)
+            {
+                roads[i].pathfindingID = i;
+            }
+            //build pathfinders
+            StartCoroutine(BuildPathfinders());
+        }
         FindSurroundingRoads();
         StartCoroutine(SleepPlayerDetectors());
+    }
+
+    /// <summary>
+    /// calculates the shortest path between every road and every other road
+    /// note - this only stores the pathfinder ID of the next road to go to for each road, not the entire path.
+    /// </summary>
+    IEnumerator BuildPathfinders()
+    {
+        yield return null;
+        for (int startID = 0; startID < roads.Length; ++startID)
+        {
+            //clear visited status, except for starting point
+            foreach (CityRoad road in roads)
+            {
+                road.visited = false;
+            }
+            roads[startID].visited = true;
+
+            //create initial queue with surrounding roads, intializing their starterIDs to the correct values
+            Queue<int> roadsToVisit = new Queue<int>();
+            foreach (CityRoad road in roads[startID].surroundingRoads.Values)
+            {
+                if (road)
+                {
+                    roadsToVisit.Enqueue(road.pathfindingID);
+                    road.starterID = road.pathfindingID;
+                }
+            }
+
+            //initialize shortest-path array
+            roads[startID].nextRoadTo = new int[roads.Length];
+            roads[startID].nextRoadTo[startID] = startID;
+
+            //perform breadth-first iteration on road network
+            while (roadsToVisit.Count > 0)
+            {
+                int currID = roadsToVisit.Dequeue();
+                if (!roads[currID].visited)
+                {
+                    //mark as visited
+                    roads[currID].visited = true;
+                    //note the next road we have to go to from startID to get to currID
+                    roads[startID].nextRoadTo[currID] = roads[currID].starterID;
+                    //add currID's neighbors to the queue, setting their starterID properly
+                    foreach (CityRoad road in roads[currID].surroundingRoads.Values)
+                    {
+                        if (road && !road.visited)
+                        {
+                            roadsToVisit.Enqueue(road.pathfindingID);
+                            road.starterID = roads[currID].starterID;
+                        }
+                    }
+                }
+            }
+
+            //take a break every few roads to keep frametime low
+            if (startID % 8 == 0)
+                yield return null;
+        }
+        finishedBuildingPathfinders = true;
     }
 
     /// <summary>
@@ -204,7 +285,25 @@ public class CityRoad : MonoBehaviour
             if (assignedCar[Direction.SOUTH])
                 Gizmos.DrawCube(carPositions[Direction.SOUTH], Vector3.one);
         }
+
+
+        if (debug && finishedBuildingPathfinders && debugDest)
+        {
+            Gizmos.color = Color.black;
+            Gizmos.DrawSphere(roads[nextRoadTo[debugDest.pathfindingID]].transform.position, 2);
+        }
     }
+
+#if UNITY_EDITOR
+    private void Update()
+    {
+        if (setDebugDest)
+        {
+            setDebugDest = false;
+            debugDest = this;
+        }
+    }
+#endif
 
     /// <summary>
     /// Returns true if this road is blocked by the player in the given direction

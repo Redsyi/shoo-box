@@ -117,3 +117,8 @@ public enum GraphicsSetting
     FULLSCREEN,
     QUALITY_INDEX
 }
+
+public enum DamageSource {
+    TANK,
+    HELICOPTER
+}

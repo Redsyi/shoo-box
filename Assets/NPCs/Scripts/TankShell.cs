@@ -97,7 +97,7 @@ public class TankShell : MonoBehaviour
             //manages hitting the player
             if (raycastHit.collider.CompareTag("Player"))
             {
-                raycastHit.collider.GetComponentInParent<Player>().HitByEnemy(damage);
+                raycastHit.collider.GetComponentInParent<CityPlayerHelper>().TakeDamage(damage, DamageSource.TANK);
                 raycastHit.rigidbody.AddForce(transform.forward * hitForce);
                 CameraScript.current.ShakeScreen(ShakeStrength.INTENSE, ShakeLength.SHORT);
                 Player.ControllerRumble(RumbleStrength.INTENSE, 0.3f);

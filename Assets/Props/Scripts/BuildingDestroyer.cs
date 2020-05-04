@@ -6,13 +6,14 @@ using UnityEngine;
 /// class that can be attached to a physics object, allows that object to destroy buildings
 /// </summary>
 [RequireComponent(typeof(Rigidbody))]
-public class BuildingDestroyer : MonoBehaviour
+public class BuildingDestroyer : MonoBehaviour, IKickable
 {
     public float minVelocity;
     public bool isDonut;
     float minVelocitySqr => minVelocity * minVelocity;
     Rigidbody rigidbody;
     public AK.Wwise.Event groundImpactSound;
+    bool kicked;
 
     private void Start()
     {
@@ -21,38 +22,48 @@ public class BuildingDestroyer : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //on collision with building above minimum velocity, destroy it
-        DestroyBuilding building = collision.gameObject.GetComponent<DestroyBuilding>();
-        if (building)
+        //on collision with kickable above minimum velocity, kick it
+        if (kicked)
         {
-            if (rigidbody.velocity.sqrMagnitude >= minVelocitySqr)
+            IKickable[] kickables = collision.gameObject.GetComponents<IKickable>();
+            if (kickables.Length > 0)
             {
-                building.OnKick(gameObject);
-                AkEventOnKick soundComponent = building.GetComponent<AkEventOnKick>();
-                if (soundComponent)
+                if (rigidbody.velocity.sqrMagnitude >= minVelocitySqr)
                 {
-                    building.GetComponent<AkEventOnKick>().OnKick(gameObject);
-                } else
-                {
-                    Debug.LogWarning($"{building.gameObject.name} has no AkEventOnKick");
-                }
-
-                //special case; if we are the donut, and we hit the ice cream shop, award the jibbit
-                if (isDonut && !JibbitDonutGiver.given)
-                {
-                    JibbitDonutGiver donutGiver = building.GetComponent<JibbitDonutGiver>();
-                    if (donutGiver)
+                    foreach (IKickable kickable in kickables)
                     {
-                        donutGiver.HitByDonut();
+                        kickable.OnKick(gameObject);
+                    }
+
+                    //special case; if we are the donut, and we hit the ice cream shop, award the jibbit
+                    if (isDonut && !JibbitDonutGiver.given)
+                    {
+                        JibbitDonutGiver donutGiver = collision.gameObject.GetComponent<JibbitDonutGiver>();
+                        if (donutGiver)
+                        {
+                            donutGiver.HitByDonut();
+                        }
                     }
                 }
             }
-        } else if (!collision.gameObject.CompareTag("Player"))
-        {
-            if (rigidbody.velocity.sqrMagnitude >= minVelocitySqr)
+            else if (!collision.gameObject.CompareTag("Player"))
             {
-                groundImpactSound.Post(gameObject);
+                if (rigidbody.velocity.sqrMagnitude >= minVelocitySqr)
+                {
+                    groundImpactSound.Post(gameObject);
+                }
+
+                AIHeli helicopter = collision.gameObject.GetComponentInParent<AIHeli>();
+                if (helicopter)
+                {
+                    helicopter.HitBySandal();
+                }
             }
         }
+    }
+
+    public void OnKick(GameObject kicker)
+    {
+        kicked = true;
     }
 }
