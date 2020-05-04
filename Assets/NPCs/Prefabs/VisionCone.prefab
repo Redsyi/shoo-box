@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 3932428612226781268}
   - component: {fileID: 2122578981203800462}
   - component: {fileID: 2328054085374535326}
-  m_Layer: 11
+  - component: {fileID: 7132448007214303019}
+  m_Layer: 8
   m_Name: VisionConeImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,6 +74,19 @@ MonoBehaviour:
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7132448007214303019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243083177094341340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 0
 --- !u!1 &5552997622551124790
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,10 +215,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ai: {fileID: 0}
-  radius: 8
-  arc: 100
   visibleCone: {fileID: 2328054085374535326}
   collider: {fileID: 8772069339955420908}
+  radius: 8
+  arc: 100
   viewFloor: 5
   standingSpotTime: 0.2
   shuffleSpotTime: 0.7
