@@ -1631,6 +1631,50 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a11db65d8f87ee84faa99785fa160ea7, type: 3}
+--- !u!1 &91948133
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 91948134}
+  - component: {fileID: 91948135}
+  m_Layer: 0
+  m_Name: Luggage Blocker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &91948134
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91948133}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.4, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1875518998}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &91948135
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91948133}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.22, y: 1.4638854, z: 3.132296}
+  m_Center: {x: 0, y: 0.06990613, z: -0.044642586}
 --- !u!1 &93206913
 GameObject:
   m_ObjectHideFlags: 0
@@ -2181,6 +2225,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 135
       objectReference: {fileID: 0}
+    - target: {fileID: 4836719041817486767, guid: 007f3037e51740f4398ac09eb6c169ed,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4836719041817486767, guid: 007f3037e51740f4398ac09eb6c169ed,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4888233675168882664, guid: 007f3037e51740f4398ac09eb6c169ed,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -2234,7 +2288,7 @@ PrefabInstance:
     - target: {fileID: 6759842155964543995, guid: 007f3037e51740f4398ac09eb6c169ed,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 500.28
+      value: 490.28
       objectReference: {fileID: 0}
     - target: {fileID: 6759842155964543995, guid: 007f3037e51740f4398ac09eb6c169ed,
         type: 3}
@@ -3070,6 +3124,50 @@ MonoBehaviour:
   jibbit: {fileID: 178497198408116740, guid: 0fd90307af96cd54d9db75acf7b56efb, type: 3}
   attachedAgent: {fileID: 421386029}
   force: 150
+--- !u!1 &179873984
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 179873985}
+  - component: {fileID: 179873986}
+  m_Layer: 0
+  m_Name: Luggage Blocker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &179873985
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179873984}
+  m_LocalRotation: {x: 0.000000059604645, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.34, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 1, z: 1.0784347}
+  m_Children: []
+  m_Father: {fileID: 1937361374}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &179873986
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179873984}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.22, y: 1.4638854, z: 3.132296}
+  m_Center: {x: 0, y: 0.06990613, z: -0.044642586}
 --- !u!1001 &181348865
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3453,6 +3551,50 @@ Transform:
   m_Father: {fileID: 1955059972}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &206370675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 206370676}
+  - component: {fileID: 206370677}
+  m_Layer: 0
+  m_Name: Luggage Blocker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &206370676
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 206370675}
+  m_LocalRotation: {x: 0.000000059604645, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.26, y: -0, z: 0}
+  m_LocalScale: {x: 0.5, y: 1, z: 0.9965813}
+  m_Children: []
+  m_Father: {fileID: 585020805}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &206370677
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 206370675}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.22, y: 1.4638854, z: 3.132296}
+  m_Center: {x: 0, y: 0.06990613, z: -0.044642586}
 --- !u!1 &208309700
 GameObject:
   m_ObjectHideFlags: 0
@@ -4114,6 +4256,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animate: 0
+--- !u!1 &263416951 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 903440672359532603, guid: c0576c93953545c4c8b88a0c2263a4d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1875518997}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &263416955
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263416951}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.22, y: 1.4638855, z: 3.5051913}
+  m_Center: {x: 0, y: 0.069906116, z: 0.1418047}
 --- !u!1 &267976287
 GameObject:
   m_ObjectHideFlags: 0
@@ -7527,6 +7688,50 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 517361911}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &520174108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 520174109}
+  - component: {fileID: 520174110}
+  m_Layer: 0
+  m_Name: Luggage Blocker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &520174109
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520174108}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.25, y: 0, z: -1.86}
+  m_LocalScale: {x: 0.50959826, y: 0.9054336, z: 1.873072}
+  m_Children: []
+  m_Father: {fileID: 665965985}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &520174110
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520174108}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.21999998, y: 1.4638857, z: 1.4528794}
+  m_Center: {x: 0, y: 0.06990609, z: 0.9886234}
 --- !u!1 &531573124
 GameObject:
   m_ObjectHideFlags: 0
@@ -7739,6 +7944,50 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 532098459}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &535230538
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 535230539}
+  - component: {fileID: 535230540}
+  m_Layer: 0
+  m_Name: Luggage Blocker (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &535230539
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535230538}
+  m_LocalRotation: {x: 0.000000059604645, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.16, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 1, z: 1.0784347}
+  m_Children: []
+  m_Father: {fileID: 1937361374}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &535230540
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535230538}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.22, y: 1.4638854, z: 3.132296}
+  m_Center: {x: 0, y: 0.06990613, z: -0.04464259}
 --- !u!1 &535875913
 GameObject:
   m_ObjectHideFlags: 0
@@ -8495,7 +8744,7 @@ PrefabInstance:
     - target: {fileID: 903440672359532607, guid: c0576c93953545c4c8b88a0c2263a4d0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 26.44
+      value: 26.23
       objectReference: {fileID: 0}
     - target: {fileID: 903440672359532607, guid: c0576c93953545c4c8b88a0c2263a4d0,
         type: 3}
@@ -15107,6 +15356,50 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1010548666}
   m_Mesh: {fileID: 6806359279557329920, guid: c0bc87c4f01a64040adc80b7f05b95c9, type: 3}
+--- !u!1 &1010755248
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1010755249}
+  - component: {fileID: 1010755250}
+  m_Layer: 0
+  m_Name: Luggage Blocker (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1010755249
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010755248}
+  m_LocalRotation: {x: 0.000000059604645, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.22, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 1, z: 0.9965813}
+  m_Children: []
+  m_Father: {fileID: 585020805}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1010755250
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010755248}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.22, y: 1.4638854, z: 3.132296}
+  m_Center: {x: 0, y: 0.06990613, z: -0.04464259}
 --- !u!1 &1013646489
 GameObject:
   m_ObjectHideFlags: 0
@@ -15835,6 +16128,50 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8595119092948823036}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1068447461
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1068447462}
+  - component: {fileID: 1068447463}
+  m_Layer: 0
+  m_Name: Luggage Blocker (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1068447462
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068447461}
+  m_LocalRotation: {x: 0.000000059604645, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.17, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 1, z: 1.0784347}
+  m_Children: []
+  m_Father: {fileID: 1479467361}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1068447463
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068447461}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.22, y: 1.4638854, z: 3.132296}
+  m_Center: {x: 0, y: 0.06990613, z: -0.04464259}
 --- !u!1 &1074384681 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2341013820840572796, guid: b148de727e6b7b1418e405f31594f0fa,
@@ -15948,6 +16285,50 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1076032015}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1082078791
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1082078792}
+  - component: {fileID: 1082078793}
+  m_Layer: 0
+  m_Name: Luggage Blocker (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1082078792
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082078791}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.38, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1875518998}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1082078793
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082078791}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.22, y: 1.4638854, z: 3.132296}
+  m_Center: {x: 0, y: 0.06990613, z: -0.04464259}
 --- !u!1001 &1087802126
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16368,6 +16749,25 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1102090690}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1106625999 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 903440672359532603, guid: c0576c93953545c4c8b88a0c2263a4d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1937361373}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1106626003
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106625999}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.22, y: 1.4638855, z: 3.5051913}
+  m_Center: {x: 0, y: 0.069906116, z: 0.1418047}
 --- !u!1 &1107589920
 GameObject:
   m_ObjectHideFlags: 0
@@ -18371,6 +18771,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkpoint: 2
+--- !u!1 &1251050718 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 903440672359532603, guid: c0576c93953545c4c8b88a0c2263a4d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 665965984}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1251050722
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251050718}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.22, y: 1.4638855, z: 3.5051913}
+  m_Center: {x: 0, y: 0.069906116, z: 0.1418047}
 --- !u!1 &1254011279
 GameObject:
   m_ObjectHideFlags: 0
@@ -20634,6 +21053,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1407699599
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1407699600}
+  - component: {fileID: 1407699601}
+  m_Layer: 0
+  m_Name: Luggage Blocker (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1407699600
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407699599}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.15, y: 0, z: -1.86}
+  m_LocalScale: {x: 0.50959826, y: 0.9054336, z: 1.873072}
+  m_Children: []
+  m_Father: {fileID: 665965985}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1407699601
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407699599}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.21999998, y: 1.4638857, z: 1.4552077}
+  m_Center: {x: 0, y: 0.06990609, z: 0.98978776}
 --- !u!1 &1423454592
 GameObject:
   m_ObjectHideFlags: 0
@@ -21786,7 +22249,7 @@ PrefabInstance:
     - target: {fileID: 903440672359532607, guid: c0576c93953545c4c8b88a0c2263a4d0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.9
+      value: 4.832
       objectReference: {fileID: 0}
     - target: {fileID: 903440672359532607, guid: c0576c93953545c4c8b88a0c2263a4d0,
         type: 3}
@@ -21858,8 +22321,7 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5688363046985285652, guid: c0576c93953545c4c8b88a0c2263a4d0, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0576c93953545c4c8b88a0c2263a4d0, type: 3}
 --- !u!4 &1479467361 stripped
 Transform:
@@ -26552,6 +27014,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1723449883}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1732079966 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 903440672359532603, guid: c0576c93953545c4c8b88a0c2263a4d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1479467360}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1732079969
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732079966}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.22, y: 1.4638855, z: 3.5051913}
+  m_Center: {x: 0, y: 0.069906116, z: 0.1418047}
 --- !u!1 &1741721486
 GameObject:
   m_ObjectHideFlags: 0
@@ -27678,6 +28159,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animate: 0
+--- !u!1 &1849003694 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 903440672359532603, guid: c0576c93953545c4c8b88a0c2263a4d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 585020804}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1849003698
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849003694}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.22, y: 1.4638855, z: 3.5051913}
+  m_Center: {x: 0, y: 0.069906116, z: 0.1418047}
 --- !u!1 &1849862066
 GameObject:
   m_ObjectHideFlags: 0
@@ -30950,6 +31450,50 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &2126293060
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2126293061}
+  - component: {fileID: 2126293062}
+  m_Layer: 0
+  m_Name: Luggage Blocker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2126293061
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126293060}
+  m_LocalRotation: {x: 0.000000059604645, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.22, y: -0, z: 0}
+  m_LocalScale: {x: 0.5, y: 1, z: 1.0784347}
+  m_Children: []
+  m_Father: {fileID: 1479467361}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2126293062
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126293060}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.22, y: 1.4638854, z: 3.132296}
+  m_Center: {x: 0, y: 0.06990613, z: -0.044642586}
 --- !u!1001 &2138769959
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39615,7 +40159,7 @@ PrefabInstance:
     - target: {fileID: 6303738322544152145, guid: 5421066ddacddef4295d0cf9c070f88a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22.7
+      value: 28.9
       objectReference: {fileID: 0}
     - target: {fileID: 6303738322544152145, guid: 5421066ddacddef4295d0cf9c070f88a,
         type: 3}

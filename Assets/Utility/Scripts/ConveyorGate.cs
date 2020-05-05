@@ -29,10 +29,12 @@ public class ConveyorGate : MonoBehaviour
         Gizmos.DrawLine(transform.position + closedPos, transform.position + openPos);
     }
 
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider collision)
     {
         if (pushLuggage && collision.gameObject.CompareTag("Luggage"))
         {
+            print("Luggage collision enter");
             collision.gameObject.transform.position += transform.right * 2.2f;
         }
     }
