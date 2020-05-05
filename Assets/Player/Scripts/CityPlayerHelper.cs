@@ -53,7 +53,9 @@ public class CityPlayerHelper : MonoBehaviour
             arrestProgress = Mathf.Clamp01(arrestProgress + arrestRate * Time.deltaTime);
             if (arrestProgress >= 1f)
             {
-                LevelBridge.Reload("Busted!");
+                arrestProgress = 0;
+                CityDirector.current.IncreaseIntensity(1);
+                CityDirector.current.SpawnWave();
             }
         }
         else

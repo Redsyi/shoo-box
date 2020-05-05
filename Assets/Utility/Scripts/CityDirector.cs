@@ -11,7 +11,7 @@ public class CityDirector : MonoBehaviour
     public int intensity;
     float spawnDelay => 20 - intensity;
     private bool shouldSpawn => intensity > 0;
-    private int tankCap => ((intensity - 1) / 2) + (PlayerTank.isTank ? (intensity + 1) / 2 : 0);
+    private int tankCap => ((intensity) / 2) + (PlayerTank.isTank ? (intensity + 1) / 2 : 0);
     private int heliCap => (PlayerTank.isTank ? 0 : ((intensity - 3) / 2));
     private int copCap => (PlayerTank.isTank ? 0 : (intensity > 0 ? 3 : 0));
     private float internalIntensity;
@@ -28,6 +28,9 @@ public class CityDirector : MonoBehaviour
     public AK.Wwise.Event music;
     public CanvasGroup healthGroup;
     public Image healthFill;
+    public RectTransform starRoot;
+    public UICityStar starPrefab;
+    List<UICityStar> stars;
 
     void Start()
     {
@@ -37,6 +40,7 @@ public class CityDirector : MonoBehaviour
         StartCoroutine(Spawn());
         current = this;
         player = Player.current;
+        stars = new List<UICityStar>();
     }
 
     /// <summary>
@@ -48,14 +52,22 @@ public class CityDirector : MonoBehaviour
             yield return null;
         while (true)
         {
-            while (numTanks < tankCap)
-                SpawnTank();
-            while (numHelis < heliCap)
-                SpawnHeli();
-            while (numCops < copCap)
-                SpawnCop();
+            SpawnWave();
             yield return new WaitForSeconds(Mathf.Max(5, spawnDelay));
         }
+    }
+
+    /// <summary>
+    /// spawns the next wave of enemies
+    /// </summary>
+    public void SpawnWave()
+    {
+        while (numTanks < tankCap)
+            SpawnTank();
+        while (numHelis < heliCap)
+            SpawnHeli();
+        while (numCops < copCap)
+            SpawnCop();
     }
 
     /// <summary>
@@ -136,8 +148,22 @@ public class CityDirector : MonoBehaviour
                 music.Post(gameObject);
                 StartCoroutine(AnimateHealthBarIn());
             }
+
+            //spawn new city stars and move existing ones
+            for (int i = 0; i < stars.Count; ++i)
+            {
+                stars[i].SetPosition(i, newIntensity);
+            }
+            for (int i = intensity; i < newIntensity; ++i)
+            {
+                UICityStar newStar = Instantiate(starPrefab, starRoot);
+                newStar.SetPosition(i, newIntensity);
+                stars.Add(newStar);
+            }
+
             intensity = newIntensity;
-            internalIntensity = newIntensity;
+            if (internalIntensity < newIntensity)
+                internalIntensity = newIntensity;
         }
     }
 

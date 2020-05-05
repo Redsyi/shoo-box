@@ -24370,6 +24370,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1099995100}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &696481440 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1675445002726251420, guid: 007f3037e51740f4398ac09eb6c169ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 1099995100}
+  m_PrefabAsset: {fileID: 0}
 --- !u!225 &696481441 stripped
 CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 6698265904066417957, guid: 007f3037e51740f4398ac09eb6c169ed,
@@ -35467,7 +35473,7 @@ MonoBehaviour:
   healthBar: {fileID: 1021058258}
   arrestFill: {fileID: 1099995101}
   arrestBar: {fileID: 1099995102}
-  arrestRate: 0.15
+  arrestRate: 0.3
   arrestDecayRate: 0.8
 --- !u!65 &988459543
 BoxCollider:
@@ -35852,6 +35858,9 @@ MonoBehaviour:
     WwiseObjectReference: {fileID: 0}
   healthGroup: {fileID: 696481441}
   healthFill: {fileID: 1021058258}
+  starRoot: {fileID: 696481440}
+  starPrefab: {fileID: 2822979475228667773, guid: 4ee24f5b9ad3ea7439321a637e5e6842,
+    type: 3}
 --- !u!1001 &1005285351
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40385,6 +40394,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 6698265904066417957, guid: 007f3037e51740f4398ac09eb6c169ed,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6730991492419335454, guid: 007f3037e51740f4398ac09eb6c169ed,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -40413,7 +40427,7 @@ PrefabInstance:
     - target: {fileID: 6759842155964543995, guid: 007f3037e51740f4398ac09eb6c169ed,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 500.28
+      value: 490.28
       objectReference: {fileID: 0}
     - target: {fileID: 6759842155964543995, guid: 007f3037e51740f4398ac09eb6c169ed,
         type: 3}
@@ -81988,7 +82002,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitbox: {fileID: 2557209001346401885}
-  kickClip: {fileID: 0}
   kickParticleSystem: {fileID: 0}
 --- !u!4 &4678375727046894608
 Transform:

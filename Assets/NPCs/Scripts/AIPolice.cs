@@ -48,7 +48,7 @@ public class AIPolice : MonoBehaviour, IKickable
         }
 
         //see if we're arresting the player
-        arresting = (engaged && pathfinder.AtDestination());
+        arresting = (engaged && pathfinder.CloseToDestination() && Utilities.VectorsAreClose(transform.position, Player.current.transform.position, 10));
     }
 
     public void OnKick(GameObject kicker)
