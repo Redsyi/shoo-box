@@ -15,7 +15,7 @@ public class TestBreakable : MonoBehaviour, IAIInteractable
         renderer.material = fixedMaterial;
     }
 
-    public void AIFinishInteract()
+    public void AIFinishInteract(AIAgent ai)
     {
         broken = false;
         renderer.material = fixedMaterial;

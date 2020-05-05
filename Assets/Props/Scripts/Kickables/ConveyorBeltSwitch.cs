@@ -38,7 +38,7 @@ public class ConveyorBeltSwitch : MonoBehaviour, IKickable, ISandalable, IAIInte
         return .5f;
     }
 
-    public void AIFinishInteract()
+    public void AIFinishInteract(AIAgent ai)
     {
         Toggle();
     }

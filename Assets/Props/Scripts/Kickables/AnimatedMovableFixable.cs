@@ -14,9 +14,9 @@ public class AnimatedMovableFixable : AnimatedFixable
         originalPosition = transform.position;
     }
 
-    public override void AIFinishInteract()
+    public override void AIFinishInteract(AIAgent ai)
     {
-        base.AIFinishInteract();
+        base.AIFinishInteract(ai);
         transform.position = originalPosition;
     }
 }

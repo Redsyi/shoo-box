@@ -13,6 +13,8 @@ public class AIAgent : MonoBehaviour
     public Animator animator;
     public NavMeshAgent pathfinder;
     public ThrowItem thrower;
+    public Transform leftHand;
+    public Transform rightHand;
 
     [Header("Behavior")]
     public Transform[] patrolPoints;
@@ -137,7 +139,7 @@ public class AIAgent : MonoBehaviour
     /// <summary>
     /// returns if this npc is currently executing a sequence
     /// </summary>
-    bool InSequence()
+    public bool InSequence()
     {
         if (sequences == null || sequences.Length == 0)
             return false;
@@ -507,7 +509,7 @@ public class AIAgent : MonoBehaviour
                         {
                             IAIInteractable interactable = thingsToInteractWith.Dequeue();
                             if (interactable.NeedsInteraction())
-                                interactable.AIFinishInteract();
+                                interactable.AIFinishInteract(this);
                             if (thingsToInteractWith.Count > 0)
                             {
                                 IAIInteractable newInteractable = thingsToInteractWith.Peek();

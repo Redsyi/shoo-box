@@ -66,7 +66,7 @@ public class BreakHingeKickable : MonoBehaviour, IKickable, IAIInteractable
         return fixTime;
     }
 
-    public void AIFinishInteract()
+    public void AIFinishInteract(AIAgent ai)
     {
         broken = false;
         transform.position = originalPos;

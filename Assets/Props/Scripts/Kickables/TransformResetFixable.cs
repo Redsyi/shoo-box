@@ -18,7 +18,7 @@ public class TransformResetFixable : MonoBehaviour, IKickable, IAIInteractable
         originalPos = transform.localPosition;
         originalRot = transform.localRotation;
     }
-    public void AIFinishInteract()
+    public void AIFinishInteract(AIAgent ai)
     {
         broken = false;
         transform.localPosition = originalPos;

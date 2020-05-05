@@ -8,7 +8,7 @@ public class TriggerFixable : MonoBehaviour, IAIInteractable
     public float interactTime;
     public bool broken;
 
-    public void AIFinishInteract()
+    public void AIFinishInteract(AIAgent ai)
     {
         broken = true;
     }

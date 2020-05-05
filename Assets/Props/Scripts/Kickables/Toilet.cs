@@ -20,7 +20,7 @@ public class Toilet : MonoBehaviour, IKickable, IAIInteractable
         particles = GetComponent<VisualEffect>();
     }
 
-    public void AIFinishInteract()
+    public void AIFinishInteract(AIAgent ai)
     {
         broken = false;
         particles.Stop();
