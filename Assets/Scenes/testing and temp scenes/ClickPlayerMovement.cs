@@ -1,13 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
+using kTools.Decals;
 
 public class ClickPlayerMovement : MonoBehaviour
 {
 
     private NavMeshAgent agent;
     [SerializeField] private LayerMask movableLayer;
+    [SerializeField] private DecalData onClickDecal;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +25,7 @@ public class ClickPlayerMovement : MonoBehaviour
             if (Physics.Raycast(myRay, out hitInfo, 100, movableLayer))
             {
                 agent.SetDestination(hitInfo.point);
+                DecalSystem.GetDecal(onClickDecal, hitInfo.point, Vector3.down, Vector2.one);
             }
         }
     }
