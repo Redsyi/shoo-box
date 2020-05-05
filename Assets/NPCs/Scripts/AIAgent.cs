@@ -243,6 +243,16 @@ public class AIAgent : MonoBehaviour
             timer = 0f;
             chaseOverride.Invoke();
         }
+        if (chaseOverride.GetPersistentEventCount() == 0 && InSequence())
+        {
+            foreach (ScriptedSequence sequence in sequences)
+            {
+                if (sequence.running)
+                {
+                    sequence.Interrupt();
+                }
+            }
+        }
         stoppedTime = 0f;
         currState.state = AIState.CHASE;
         currState.location = player.transform;

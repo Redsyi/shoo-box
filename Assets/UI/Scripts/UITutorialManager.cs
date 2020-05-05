@@ -49,6 +49,9 @@ public class UITutorialManager : MonoBehaviour
 
     public GameObject controlsReminder;
 
+    public ScriptedSequence maidLeaveSequence;
+    public AIAgent maid;
+
     public AK.Wwise.Event onUIPopUp;
     public AK.Wwise.Event onSpaceBar;
 
@@ -286,5 +289,13 @@ public class UITutorialManager : MonoBehaviour
     {
         cart2.SetActive(false);
         cart2Fixed.SetActive(true);
+    }
+
+    public void MakeMaidLeave()
+    {
+        if (maid.currState.state == AIState.IDLE)
+        {
+            maidLeaveSequence.Trigger();
+        }
     }
 }

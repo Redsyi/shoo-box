@@ -31,7 +31,7 @@ public class CameraAngleZone : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (timeInBounds < 0.1f)
-            timeInBounds = Mathf.Clamp01(timeToAdjust - timeOutOfBounds);
+            timeInBounds = Mathf.Clamp(timeToAdjust - timeOutOfBounds, 0, timeToAdjust);
         timeOutOfBounds = 0f;
     }
 
@@ -44,21 +44,21 @@ public class CameraAngleZone : MonoBehaviour
             oobTimeout += Time.deltaTime;
             if (oobTimeout > 0.12f)
             {
-                timeOutOfBounds = Mathf.Clamp01(timeToAdjust - timeInBounds);
+                timeOutOfBounds = Mathf.Clamp(timeToAdjust - timeInBounds, 0, timeToAdjust);
                 timeInBounds = 0f;
             }
         }
 
         if (StealFocusWhenSeen.activeThief == null && !CameraScript.current.cinematicMode)
         {
-            timeOutOfBounds += Time.deltaTime;
             if (inBounds && CameraScript.current.cameraAngle != cameraAngle)
             {
                 CameraScript.current.cameraAngle = Mathf.LerpAngle(originalCameraAngle, cameraAngle, Mathf.Clamp01(timeInBounds / timeToAdjust));
-            } else if (!inBounds && CameraScript.current.cameraAngle != originalCameraAngle)
+            } else if (!inBounds && CameraScript.current.cameraAngle != originalCameraAngle && timeOutOfBounds < timeToAdjust)
             {
                 CameraScript.current.cameraAngle = Mathf.LerpAngle(cameraAngle, originalCameraAngle, Mathf.Clamp01(timeOutOfBounds / timeToAdjust));
             }
+            timeOutOfBounds += Time.deltaTime;
         }
     }
 }

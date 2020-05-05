@@ -20,6 +20,7 @@ public class CameraZoomZone : MonoBehaviour
     private void Start()
     {
         active = false;
+        timeOutOfBounds = timeToAdjust;
     }
 
     private void OnTriggerStay(Collider other)
@@ -33,7 +34,7 @@ public class CameraZoomZone : MonoBehaviour
     {
         active = true;
         if (timeInBounds < 0.1f)
-            timeInBounds = Mathf.Clamp01(timeToAdjust - timeOutOfBounds);
+            timeInBounds = Mathf.Clamp(timeToAdjust - timeOutOfBounds, 0, timeToAdjust);
         timeOutOfBounds = 0f;
     }
 
@@ -47,21 +48,21 @@ public class CameraZoomZone : MonoBehaviour
             if (oobTimeout > 0.12f)
             {
                 active = false;
-                timeOutOfBounds = Mathf.Clamp01(timeToAdjust - timeInBounds);
+                timeOutOfBounds = Mathf.Clamp(timeToAdjust - timeInBounds, 0, timeToAdjust);
                 timeInBounds = 0f;
             }
         }
 
         if (StealFocusWhenSeen.activeThief == null && !CameraScript.current.cinematicMode)
         {
-            timeOutOfBounds += Time.deltaTime;
             if (inBounds && CameraScript.current.camera.orthographicSize != cameraZoom)
             {
                 CameraScript.current.camera.orthographicSize = Mathf.Lerp(originalCameraZoom, cameraZoom, Mathf.Clamp01(timeInBounds / timeToAdjust));
-            } else if (!inBounds && CameraScript.current.camera.orthographicSize != originalCameraZoom)
+            } else if (!inBounds && CameraScript.current.camera.orthographicSize != originalCameraZoom && timeOutOfBounds < timeToAdjust)
             {
                 CameraScript.current.camera.orthographicSize = Mathf.Lerp(cameraZoom, originalCameraZoom, Mathf.Clamp01(timeOutOfBounds / timeToAdjust));
             }
+            timeOutOfBounds += Time.deltaTime;
         }
     }
 }

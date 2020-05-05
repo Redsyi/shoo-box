@@ -36,8 +36,15 @@ public class PlayerCheckpointManager : MonoBehaviour, ICheckpointItem
         player.EquipStartingShoes();
         if (checkpoints[checkpointID].resetCamera)
         {
-            CameraScript.current.camera.orthographicSize = (player.legForm ? CameraScript.current.farZoomLevel : CameraScript.current.closeZoomLevel);
+            //need a one frame delay on this because some cutscenes can still interfere
+            StartCoroutine(ResetCameraDelayed());
         }
+    }
+
+    IEnumerator ResetCameraDelayed()
+    {
+        yield return null;
+        CameraScript.current.camera.orthographicSize = (Player.current.legForm ? CameraScript.current.farZoomLevel : CameraScript.current.closeZoomLevel);
     }
 }
 

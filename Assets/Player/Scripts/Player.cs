@@ -66,7 +66,7 @@ public class Player : MonoBehaviour
     public bool lockMovement;
     public bool loadPreviousState;
 
-    private const float wiggleCD = 0.7f;
+    private const float wiggleCD = 0.9f;
     private float currWiggleCD;
     
     private Vector2 currMovementInput;

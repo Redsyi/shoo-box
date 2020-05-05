@@ -170,7 +170,7 @@ public class StealFocusWhenSeen : MonoBehaviour
         {
             if (!cameraScript.cinematicMode)
             {
-                cameraScript.transform.position = Vector3.Lerp(transform.position, player.transform.position, panProgress);
+                cameraScript.transform.position = Vector3.Lerp(transform.position, (player.legForm ? player.transform.position : player.AISpotPoint.position), panProgress);
                 camera.orthographicSize = Mathf.Lerp(cameraSize, finalZoomLevel, panProgress);
                 cameraScript.cameraRotation = Mathf.LerpAngle(destCameraYRotation, originalCameraRotation, panProgress);
                 cameraScript.cameraAngle = Mathf.LerpAngle(destCameraAngle, originalCameraAngle, panProgress);

@@ -26,7 +26,7 @@ public class CameraScript : MonoBehaviour
     public float closeZoomLevel = 2f;
     public float farZoomLevel = 7f;
     [Tooltip("How long in seconds it takes to switch between the zoom levels")]
-    public float zoomTime = 0.3f;
+    static float zoomTime = 0.75f;
     public bool zoomed => !player.legForm;
 
     //camera angle: rotation relative to ground
