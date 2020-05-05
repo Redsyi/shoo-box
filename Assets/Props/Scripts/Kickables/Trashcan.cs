@@ -20,7 +20,8 @@ public class Trashcan : MonoBehaviour, IKickable, IAIInteractable
     public AIInterest[] interestMask;
     public float launchVelocity;
     public Transform contentRoot;
-    public void AIFinishInteract()
+
+    public void AIFinishInteract(AIAgent ai)
     {
         foreach (TrashcanContent content in contents)
         {

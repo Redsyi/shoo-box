@@ -17,7 +17,7 @@ public class LightSwitch : MonoBehaviour, IKickable, IAIInteractable
     {
         on = true;
     }
-    public void AIFinishInteract()
+    public void AIFinishInteract(AIAgent ai)
     {
         if (!on)
         {

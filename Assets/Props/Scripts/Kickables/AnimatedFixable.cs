@@ -14,7 +14,7 @@ public class AnimatedFixable : MonoBehaviour, IAIInteractable
     public AIInterest[] interestLayers;
     private bool broken;
 
-    public virtual void AIFinishInteract()
+    public virtual void AIFinishInteract(AIAgent ai)
     {
         broken = false;
         animator.SetTrigger(fixTriggerName);

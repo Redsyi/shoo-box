@@ -116,7 +116,7 @@ public class ConveyorScanner : MonoBehaviour, IAIInteractable
         return 999;
     }
 
-    public void AIFinishInteract()
+    public void AIFinishInteract(AIAgent ai)
     {
     }
 

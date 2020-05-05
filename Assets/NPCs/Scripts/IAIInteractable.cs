@@ -10,12 +10,13 @@ public interface IAIInteractable
     /// <summary>
     /// Called when the AI has finished the interaction
     /// </summary>
-    void AIFinishInteract();
+    void AIFinishInteract(AIAgent ai);
     /// <summary>
     /// Called every frame during the interaction with the progress of the interaction
     /// If you see this line, this feature isn't actually implemented yet.
     /// </summary>
-    void AIInteracting(float interactProgress);
+    //void AIInteracting(float interactProgress);
+
     /// <summary>
     /// Returns true if this item needs interaction, false if the AI can ignore it
     /// </summary>
