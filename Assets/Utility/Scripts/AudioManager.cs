@@ -133,7 +133,12 @@ public class AudioManager : MonoBehaviour
 
 
 
-
+    private void OnDestroy()
+    {
+        currStress = 0f;
+        currRun = 0f;
+        UpdateRTPCValues();
+    }
 
     private void Awake()
     {
