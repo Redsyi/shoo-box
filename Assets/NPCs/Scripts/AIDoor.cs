@@ -40,6 +40,7 @@ public class AIDoor : MonoBehaviour
             if (openFor == null || openFor.Length == 0 || System.Array.Exists(openFor, interest => System.Array.Exists(ai.interests, aiinterest => aiinterest == interest)))
             {
                 currAI = ai;
+                currAI.animator.SetTrigger(ai.doorOpenAnimTrigger);
                 checkAIExists = true;
                 Open();
             }

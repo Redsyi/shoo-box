@@ -21,6 +21,7 @@ public class AIAgent : MonoBehaviour
     [Tooltip("If there are any events specified here, they will be performed INSTEAD of the npc chasing the player")]
     public UnityEngine.Events.UnityEvent chaseOverride;
     public float stopDist = 1f;
+    public string doorOpenAnimTrigger = "OpenDoor";
 
     [Header("Stats")]
     public float walkSpeed;
