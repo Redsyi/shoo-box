@@ -84,6 +84,7 @@ public class AIAgent : MonoBehaviour
     public AIStateNode currState;       //the current ai state
     public Queue<IAIInteractable> thingsToInteractWith; //current list of items the agent has detected need interaction
     float timer;        //general timer variable used across all states
+    [HideInInspector] public bool investigatingPlayer;
 
     void Start()
     {
@@ -106,6 +107,8 @@ public class AIAgent : MonoBehaviour
             originalSightColoring = shoeSightColoring.type;
         }
         sequences = GetComponents<ScriptedSequence>();
+
+        AudioManager.RegisterAgent(this);
     }
 
     /// <summary>
@@ -170,6 +173,7 @@ public class AIAgent : MonoBehaviour
             stoppedTime = 0f;
             currState.state = AIState.IDLE;
             currState.location = patrolPoints[currPatrolPoint];
+            investigatingPlayer = false;
         }
     }
 
@@ -188,6 +192,7 @@ public class AIAgent : MonoBehaviour
             if (currState.state != AIState.INVESTIGATE)
                 wwiseComponent?.StartedInvestigation();
             timer = investigateTime;
+            investigatingPlayer = false;
         }
     }
 
@@ -220,6 +225,7 @@ public class AIAgent : MonoBehaviour
                 timer = interactable.AIInteractTime() * interactSpeedMultiplier;
                 stoppedTime = 0f;
                 reachedInteractable = false;
+                investigatingPlayer = false;
             }
         }
     }
@@ -256,6 +262,7 @@ public class AIAgent : MonoBehaviour
         stoppedTime = 0f;
         currState.state = AIState.CHASE;
         currState.location = player.transform;
+        investigatingPlayer = false;
     }
 
     /// <summary>
@@ -276,7 +283,10 @@ public class AIAgent : MonoBehaviour
         }
         myBubble.Lost();
         if (chaseOverride.GetPersistentEventCount() == 0)
+        {
             Investigate(instantiatedTarget, forceOverrideChase: true);
+            investigatingPlayer = true;
+        }
         else
             Idle();
     }
@@ -285,6 +295,7 @@ public class AIAgent : MonoBehaviour
     {
         //this is the part where the player fucking dies
         wwiseComponent?.PlayerCaught();
+        AudioManager.playerWasCaught = true;
         LevelBridge.Reload($"Caught by {gameOverName}");
     }
 
