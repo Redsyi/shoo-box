@@ -36,6 +36,8 @@ public class UINPCBubble : MonoBehaviour
         }
     }
     private bool shouldInvestigate;
+    public float distanceScaleRange;
+    public Vector2 scaleRange;
 
     private void Start()
     {
@@ -88,6 +90,22 @@ public class UINPCBubble : MonoBehaviour
                     actualPoint.x = Mathf.Min(screenSize.x - investigateBounds.x, actualPoint.x);
                     actualPoint.y = Mathf.Max(investigateBounds.y, actualPoint.y);
                     actualPoint.y = Mathf.Min(screenSize.y - investigateBounds.y, actualPoint.y);
+                    
+                    //if off-screen, lerp scale
+                    float distOffScreen = (actualPoint != desiredPosition ? (actualPoint - desiredPosition).magnitude : 0);
+                    float scaleLerpValue = Mathf.InverseLerp(distanceScaleRange, 0, distOffScreen);
+                    float scale = Mathf.Lerp(scaleRange.x, scaleRange.y, scaleLerpValue);
+                    transform.localScale = new Vector3(scale, scale, scale);
+
+                    if (actualPoint.x == investigateBounds.x)
+                        actualPoint.x = investigateBounds.x * scale;
+                    if (actualPoint.x == screenSize.x - investigateBounds.x)
+                        actualPoint.x = screenSize.x - investigateBounds.x * scale;
+                    if (actualPoint.y == investigateBounds.y)
+                        actualPoint.y = investigateBounds.y * scale;
+                    if (actualPoint.y == screenSize.y - investigateBounds.y)
+                        actualPoint.y = screenSize.y - investigateBounds.y * scale;
+
                     float angle = Utilities.VectorToDegrees(desiredPoint - actualPoint);
                     investigateArrow.transform.localEulerAngles = new Vector3(0, 0, angle + investigateAngleOffset);
                     transform.position = actualPoint;
