@@ -9,7 +9,6 @@ using UnityEngine.UI;
 /// Class that plays Wwise events for UI elemetns
 /// </summary>
 [RequireComponent(typeof(AkGameObj))]
-[RequireComponent(typeof(Button))]
 public class AKEventUI : MonoBehaviour, IPointerEnterHandler, ISelectHandler
 {
     public Event hoverSound;
