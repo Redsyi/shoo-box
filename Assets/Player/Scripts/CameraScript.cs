@@ -187,17 +187,17 @@ public class CameraScript : MonoBehaviour
             }
             if (cinematicAngleDelta != 0f)
             {
-                float delta = cinematicAngleDelta * Time.deltaTime * cinematicAngleSensitivity;
+                float delta = cinematicAngleDelta * Time.unscaledDeltaTime * cinematicAngleSensitivity;
                 cameraAngle += delta;
             }
             if (cinematicZoomDelta != 0f)
             {
-                float delta = cinematicZoomDelta * Time.deltaTime * cinematicZoomSensitivity * -1;
+                float delta = cinematicZoomDelta * Time.unscaledDeltaTime * cinematicZoomSensitivity * -1;
                 camera.orthographicSize += delta;
             }
             if (cinematicRaiseDelta != 0f)
             {
-                float delta = cinematicRaiseDelta * Time.deltaTime * cinematicRaiseSensitivity;
+                float delta = cinematicRaiseDelta * Time.unscaledDeltaTime * cinematicRaiseSensitivity;
                 transform.position += new Vector3(0, delta);
             }
         }
@@ -222,7 +222,7 @@ public class CameraScript : MonoBehaviour
     {
         if (direction != 0)
         {
-            cameraRotation += direction * Time.deltaTime * smoothRotationSpeed * (cinematicMode ? cinematicRotateSensitivity : 1);
+            cameraRotation += direction * (cinematicMode ? Time.unscaledDeltaTime : Time.deltaTime) * smoothRotationSpeed * (cinematicMode ? cinematicRotateSensitivity : 1);
         }
     }
 
