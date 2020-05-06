@@ -12,6 +12,8 @@ public class AIDoor : MonoBehaviour
     public float openRate;
     public float closedAngle;
     public float openAngle;
+    [Tooltip("Time the AI is waiting at the door")]
+    public float waitTime;
     private float currAngle;
     private int openDir;
     public Transform hinge;
@@ -40,11 +42,22 @@ public class AIDoor : MonoBehaviour
             if (openFor == null || openFor.Length == 0 || System.Array.Exists(openFor, interest => System.Array.Exists(ai.interests, aiinterest => aiinterest == interest)))
             {
                 currAI = ai;
-                currAI.animator.SetTrigger(ai.doorOpenAnimTrigger);
+                if (!open) // Only play AI door anim if the door is closed
+                {
+                    currAI.animator.SetTrigger(ai.doorOpenAnimTrigger);
+                    ToggleStun();
+                }
                 checkAIExists = true;
                 Open();
+                if(currAI.stunned) // Only toggle if AI is currently stunned
+                    Invoke("ToggleStun", waitTime);
             }
         }
+    }
+
+    private void ToggleStun()
+    {
+        currAI.stunned = !currAI.stunned;
     }
 
     public void OnTriggerExit(Collider other)
@@ -93,6 +106,7 @@ public class AIDoor : MonoBehaviour
     /// <returns></returns>
     IEnumerator OpenDoor()
     {
+        yield return new WaitForSecondsRealtime(1.5f);
         while (animating)
             yield return null;
         doorOpenClip.Post(gameObject);

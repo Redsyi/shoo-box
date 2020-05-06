@@ -314,7 +314,7 @@ public class AIAgent : MonoBehaviour
         timeSinceLastOnSpot += Time.deltaTime;
         timeSinceLastOnInvestigate += Time.deltaTime;
 
-        if (stopped)
+        if (stopped && !stunned)
             stoppedTime += Time.deltaTime;
         else
             stoppedTime = 0f;
