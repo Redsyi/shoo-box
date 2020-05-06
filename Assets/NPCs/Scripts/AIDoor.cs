@@ -42,7 +42,7 @@ public class AIDoor : MonoBehaviour
             if (openFor == null || openFor.Length == 0 || System.Array.Exists(openFor, interest => System.Array.Exists(ai.interests, aiinterest => aiinterest == interest)))
             {
                 currAI = ai;
-                if (!open && ai.doorOpenAnimTrigger != "") // Only play AI door anim if the door is closed
+                if (!open && ai.doorOpenAnimTrigger != "") // Only play AI door anim if the door is closed and it has an anim
                 {
                     currAI.animator.SetTrigger(ai.doorOpenAnimTrigger);
                     ToggleStun();
