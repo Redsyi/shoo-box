@@ -42,7 +42,7 @@ public class AIDoor : MonoBehaviour
             if (openFor == null || openFor.Length == 0 || System.Array.Exists(openFor, interest => System.Array.Exists(ai.interests, aiinterest => aiinterest == interest)))
             {
                 currAI = ai;
-                if (!open) // Only play AI door anim if the door is closed
+                if (!open && ai.doorOpenAnimTrigger != "") // Only play AI door anim if the door is closed
                 {
                     currAI.animator.SetTrigger(ai.doorOpenAnimTrigger);
                     ToggleStun();
@@ -106,7 +106,8 @@ public class AIDoor : MonoBehaviour
     /// <returns></returns>
     IEnumerator OpenDoor()
     {
-        yield return new WaitForSecondsRealtime(1.5f);
+        if(currAI.doorOpenAnimTrigger != "")
+            yield return new WaitForSecondsRealtime(1.5f);
         while (animating)
             yield return null;
         doorOpenClip.Post(gameObject);

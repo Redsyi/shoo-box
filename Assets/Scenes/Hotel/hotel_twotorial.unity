@@ -152,8 +152,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.0336857, y: 1, z: 1}
-  m_Center: {x: -0.08599281, y: 0, z: 0}
+  m_Size: {x: 0.7828789, y: 1, z: 0.6209097}
+  m_Center: {x: -0.7113962, y: 0, z: -0.18954515}
 --- !u!1001 &8516359
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4865,6 +4865,11 @@ PrefabInstance:
         type: 3}
       propertyPath: interactSpeedMultiplier
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1093112627585354798, guid: 15ee64f2554e9e448b9e6e2ea27ccc0c,
+        type: 3}
+      propertyPath: doorOpenAnimTrigger
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1461066957809187520, guid: 15ee64f2554e9e448b9e6e2ea27ccc0c,
         type: 3}
@@ -11237,6 +11242,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: ab0d7872737f247f7aad460426de7a16,
         type: 2}
+    - target: {fileID: 1093112627585354798, guid: 15ee64f2554e9e448b9e6e2ea27ccc0c,
+        type: 3}
+      propertyPath: doorOpenAnimTrigger
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1461066957809187520, guid: 15ee64f2554e9e448b9e6e2ea27ccc0c,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -12066,17 +12076,17 @@ PrefabInstance:
     - target: {fileID: 3991350790992361259, guid: 5980f5c19cff9b94e828d3e80fbeeac2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 52.64
+      value: 52.9
       objectReference: {fileID: 0}
     - target: {fileID: 3991350790992361259, guid: 5980f5c19cff9b94e828d3e80fbeeac2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.6299996
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 3991350790992361259, guid: 5980f5c19cff9b94e828d3e80fbeeac2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3991350790992361259, guid: 5980f5c19cff9b94e828d3e80fbeeac2,
         type: 3}
@@ -13643,17 +13653,17 @@ PrefabInstance:
     - target: {fileID: 3991350790992361259, guid: 5980f5c19cff9b94e828d3e80fbeeac2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 37.54
+      value: 37.78
       objectReference: {fileID: 0}
     - target: {fileID: 3991350790992361259, guid: 5980f5c19cff9b94e828d3e80fbeeac2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.63
+      value: -2.8
       objectReference: {fileID: 0}
     - target: {fileID: 3991350790992361259, guid: 5980f5c19cff9b94e828d3e80fbeeac2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.74
+      value: -1.82
       objectReference: {fileID: 0}
     - target: {fileID: 3991350790992361259, guid: 5980f5c19cff9b94e828d3e80fbeeac2,
         type: 3}
@@ -21309,6 +21319,11 @@ PrefabInstance:
       propertyPath: interests.Array.data[0]
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 5137980083181321657, guid: d145fc1659706874092c0fa19a46a9d2,
+        type: 3}
+      propertyPath: doorOpenAnimTrigger
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5137980083181321658, guid: d145fc1659706874092c0fa19a46a9d2,
         type: 3}
       propertyPath: m_Name
@@ -22633,7 +22648,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1129843953}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.65, y: -0.13, z: -1.07}
+  m_LocalPosition: {x: 9.39, y: -0.13, z: -1.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -34370,7 +34385,7 @@ PrefabInstance:
     - target: {fileID: 4233995589273524903, guid: 74e5f0686d7111949830223be0d00a38,
         type: 3}
       propertyPath: closeFor.Array.data[0]
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74e5f0686d7111949830223be0d00a38, type: 3}
