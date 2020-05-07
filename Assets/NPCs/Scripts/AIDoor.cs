@@ -28,6 +28,8 @@ public class AIDoor : MonoBehaviour
     public AIInterest[] closeFor;
     private AIAgent currAI;
     private bool checkAIExists;
+    public GameObject[] lockedIcons;
+    public GameObject[] unlockedIcons;
 
     private void Start()
     {
@@ -100,6 +102,30 @@ public class AIDoor : MonoBehaviour
         }
     }
 
+    private void EnableLocked()
+    {
+        foreach (GameObject obj in lockedIcons)
+        {
+            obj.SetActive(true);
+        }
+        foreach (GameObject obj in unlockedIcons)
+        {
+            obj.SetActive(false);
+        }
+    }
+
+    private void EnableUnlocked()
+    {
+        foreach (GameObject obj in lockedIcons)
+        {
+            obj.SetActive(false);
+        }
+        foreach (GameObject obj in unlockedIcons)
+        {
+            obj.SetActive(true);
+        }
+    }
+
     /// <summary>
     /// honestly don't know why i didn't just make these animations. oh well
     /// </summary>
@@ -111,6 +137,7 @@ public class AIDoor : MonoBehaviour
         while (animating)
             yield return null;
         doorOpenClip.Post(gameObject);
+        EnableUnlocked();
         animating = true;
         while (openDir > 0 ? currAngle < openAngle : currAngle > openAngle)
         {
@@ -140,5 +167,6 @@ public class AIDoor : MonoBehaviour
         hinge.localEulerAngles = new Vector3(0, currAngle, 0);
         open = false;
         animating = false;
+        EnableLocked();
     }
 }
