@@ -138,6 +138,8 @@ public class Player : MonoBehaviour
         }
 
         idleSound.Post(gameObject);
+
+        PlayerData.CheckLoadedData();
     }
 
     void LoadPreviousState()
@@ -760,7 +762,11 @@ public class Player : MonoBehaviour
     /// </summary>
     public void OnTest()
     {
-        if (Devmode.active)
+        bool editorOverride = false;
+#if UNITY_EDITOR
+        editorOverride = true;
+#endif
+        if (Devmode.active || editorOverride)
         {
             Canvas UI = GameObject.Find("UI").GetComponent<Canvas>();
             if (UI)
@@ -807,7 +813,11 @@ public class Player : MonoBehaviour
     //cinematic camera controls start
     public void OnCinematicAngle(InputValue value)
     {
-        if (Devmode.active)
+        bool editorOverride = false;
+#if UNITY_EDITOR
+        editorOverride = true;
+#endif
+        if (Devmode.active || editorOverride)
         {
             myCamera.cinematicAngleDelta = value.Get<float>();
         }
@@ -815,7 +825,11 @@ public class Player : MonoBehaviour
 
     public void OnCinematicZoom(InputValue value)
     {
-        if (Devmode.active)
+        bool editorOverride = false;
+#if UNITY_EDITOR
+        editorOverride = true;
+#endif
+        if (Devmode.active || editorOverride)
         {
             myCamera.cinematicZoomDelta = value.Get<float>();
         }
@@ -823,7 +837,11 @@ public class Player : MonoBehaviour
 
     public void OnCinematicRaise(InputValue value)
     {
-        if (Devmode.active)
+        bool editorOverride = false;
+#if UNITY_EDITOR
+        editorOverride = true;
+#endif
+        if (Devmode.active || editorOverride)
         {
             myCamera.cinematicRaiseDelta = value.Get<float>();
         }
@@ -831,15 +849,35 @@ public class Player : MonoBehaviour
 
     public void OnCinematicMode()
     {
-        if (Devmode.active)
+        bool editorOverride = false;
+#if UNITY_EDITOR
+        editorOverride = true;
+#endif
+        if (Devmode.active || editorOverride)
         {
             myCamera.cinematicMode = !myCamera.cinematicMode;
         }
     }
 
+    public void OnCinematicPause()
+    {
+        bool editorOverride = false;
+#if UNITY_EDITOR
+        editorOverride = true;
+#endif
+        if (Devmode.active || editorOverride)
+        {
+            Time.timeScale = (Time.timeScale != 1 ? 1 : 0);
+        }
+    }
+
     public void OnLook(InputValue value)
     {
-        if (Devmode.active)
+        bool editorOverride = false;
+#if UNITY_EDITOR
+        editorOverride = true;
+#endif
+        if (Devmode.active || editorOverride)
         {
             Vector2 mouseDelta = value.Get<Vector2>();
             myCamera.mouseDelta = mouseDelta;

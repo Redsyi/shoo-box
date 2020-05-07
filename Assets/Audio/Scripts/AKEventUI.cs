@@ -23,7 +23,8 @@ public class AKEventUI : MonoBehaviour, IPointerEnterHandler, ISelectHandler
     private void Start()
     {
         button = GetComponent<Button>();
-        button.onClick.AddListener(() => clickSound?.Post(akObj.gameObject));
+        if (button)
+            button.onClick.AddListener(() => clickSound?.Post(akObj.gameObject));
     }
     public void OnPointerEnter(PointerEventData eventData)
     {

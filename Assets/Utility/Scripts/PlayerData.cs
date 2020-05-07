@@ -61,7 +61,7 @@ public class PlayerData : MonoBehaviour
     /// <summary>
     /// ensures that we have loaded settings since the game launched, if not, load them
     /// </summary>
-    static void CheckLoadedData()
+    public static void CheckLoadedData()
     {
         if (!loadedData)
         {
