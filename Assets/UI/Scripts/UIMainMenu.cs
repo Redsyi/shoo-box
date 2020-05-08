@@ -24,6 +24,7 @@ public class UIMainMenu : MonoBehaviour
     public GameObject playButton;
     public GameObject jibbzButton;
     public GameObject optionsButton;
+    public Text playButtonText;
     [Header("Play Group")]
     public CanvasGroup playGroup;
     public GameObject playGroupDefaultSelected;
@@ -56,22 +57,43 @@ public class UIMainMenu : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(playButton);
         StartCoroutine(OccassionallyWiggle());
         Player.prevState = null;
+
+        PlayerData.CheckLoadedData();
+        if (PlayerData.currCheckpoint != 0 || PlayerData.currLevel != PlayerData.defaultLevel.saveID)
+        {
+            playButtonText.text = "Continue";
+        }
     }
 
     /// <summary>
-    /// play/level select button pressed
+    /// level select button pressed
     /// </summary>
     public void PlayButton()
     {
         if (!animating && state != MainMenuState.PLAY)
         {
-            //LevelBridge.BridgeTo("IntroCutscene", "Our story begins here...");
             playGroup.gameObject.SetActive(true);
             EventSystem.current.SetSelectedGameObject(playGroupDefaultSelected);
             StartCoroutine(AnimateCamera(defaultPos, playPos));
             StartCoroutine(AnimateMainButtons(false));
             StartCoroutine(AnimateCanvasGroup(playGroup, true));
             state = MainMenuState.PLAY;
+        }
+    }
+
+    /// <summary>
+    /// continue/new game button pressed
+    /// </summary>
+    public void ContinueButton()
+    {
+        if (!animating && state == MainMenuState.MAIN)
+        {
+            PlayerData.CheckLoadedData();
+            CheckpointManager.currCheckpoint = PlayerData.currCheckpoint;
+            Level destLevel = PlayerData.levels[PlayerData.currLevel];
+            string levelName = (PlayerData.currCheckpoint == 0 ? destLevel.cutsceneBuildName : destLevel.levelBuildName);
+            string flavorText = (PlayerData.currCheckpoint == 0 ? destLevel.cutsceneFlavorText : destLevel.levelFlavorText);
+            LevelBridge.BridgeTo(levelName, flavorText);
         }
     }
 

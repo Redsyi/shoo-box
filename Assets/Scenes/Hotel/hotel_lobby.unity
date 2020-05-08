@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -13696,11 +13696,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33e44624bf18d945b1e5e86b56235f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: AirportCutscene
+  destLevel: {fileID: 11400000, guid: bc7e3cd565d8c9143b1f48375f27e9b9, type: 2}
   canChangeLevels: 1
   lockChange: 0
   delay: 0
-  message: The shoebox pursues their master...
+  saveProgress: 1
 --- !u!65 &1591268002
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16579,7 +16579,7 @@ PrefabInstance:
     - target: {fileID: 243081720102442257, guid: af045fe6ba44be247951af92825e16b3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 500.28
+      value: 490.28
       objectReference: {fileID: 0}
     - target: {fileID: 243081720102442257, guid: af045fe6ba44be247951af92825e16b3,
         type: 3}
@@ -20274,6 +20274,8 @@ MonoBehaviour:
   animator: {fileID: 4143616968842752213}
   pathfinder: {fileID: 1093112628044216073}
   thrower: {fileID: 0}
+  leftHand: {fileID: 0}
+  rightHand: {fileID: 0}
   patrolPoints:
   - {fileID: 1847713425}
   interests: 0d000000
@@ -20282,6 +20284,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   stopDist: 1
+  doorOpenAnimTrigger: OpenDoor
   walkSpeed: 2
   runSpeed: 5
   throwWaitTime: 0
@@ -20304,6 +20307,7 @@ MonoBehaviour:
   gameOverName: the doorman
   debug: 0
   stunned: 0
+  investigatingPlayer: 0
 --- !u!195 &1093112628044216073
 NavMeshAgent:
   m_ObjectHideFlags: 0

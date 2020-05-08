@@ -8,11 +8,11 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class ChangeLevel : MonoBehaviour
 {
-    public string scene;
+    public Level destLevel;
     public bool canChangeLevels = true;
     public bool lockChange;
     public float delay;
-    public string message;
+    public bool saveProgress = true;
 
     public void OnTriggerEnter(Collider other)
     {
@@ -28,6 +28,12 @@ public class ChangeLevel : MonoBehaviour
 
     void DoChangeLevel()
     {
-        LevelBridge.BridgeTo(scene, message);
+        if (saveProgress)
+        {
+            PlayerData.currLevel = destLevel.saveID;
+            PlayerData.currCheckpoint = 0;
+        }
+        CheckpointManager.currCheckpoint = 0;
+        LevelBridge.BridgeTo(destLevel.cutsceneBuildName, destLevel.cutsceneFlavorText);
     }
 }

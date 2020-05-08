@@ -7,11 +7,13 @@ using UnityEngine;
 /// </summary>
 public class UILevelSelect : MonoBehaviour
 {
-    public string buildName;
-    public string levelName;
+    public Level level;
 
     public void LevelSelect()
     {
-        LevelBridge.BridgeTo(buildName, levelName);
+        PlayerData.currCheckpoint = 0;
+        PlayerData.currLevel = level.saveID;
+        CheckpointManager.currCheckpoint = 0;
+        LevelBridge.BridgeTo(level.cutsceneBuildName, level.cutsceneFlavorText);
     }
 }

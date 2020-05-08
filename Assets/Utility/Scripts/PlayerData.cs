@@ -53,8 +53,54 @@ public class PlayerData : MonoBehaviour
     static string fullscreenSettingName = "GraphicsSettingsFullscreen";
     static string qualitySettingName = "GraphicsSettingsQuality";
 
+    static string currLevelName = "ContinueLevelName";
+    static string currCheckpointName = "ContinueCheckpoint";
+
+    static string _currLevel;
+    public static string currLevel
+    {
+        get
+        {
+            return _currLevel;
+        }
+        set
+        {
+            if (_currLevel != value)
+            {
+                _currLevel = value;
+                PlayerPrefs.SetString(currLevelName, value);
+            }
+        }
+    }
+    static int _currCheckpoint;
+    public static int currCheckpoint
+    {
+        get
+        {
+            return _currCheckpoint;
+        }
+        set
+        {
+            if (_currCheckpoint != value)
+            {
+                _currCheckpoint = value;
+                PlayerPrefs.SetInt(currCheckpointName, value);
+            }
+        }
+    }
+
+    public Level[] _levels;
+    public static Dictionary<string, Level> levels;
+    public static Level defaultLevel;
+
     private void Awake()
     {
+        levels = new Dictionary<string, Level>();
+        defaultLevel = _levels[0];
+        foreach (Level level in _levels)
+        {
+            levels[level.saveID] = level;
+        }
         CheckLoadedData();
     }
 
@@ -76,7 +122,24 @@ public class PlayerData : MonoBehaviour
             qualityNames = QualitySettings.names;
             dirtyGraphicsSettings = new Dictionary<GraphicsSetting, bool>();
             LoadGraphicsSettings();
+            LoadContinues();
         }
+    }
+    
+    /// <summary>
+    /// loads the furthest reached point in the game
+    /// </summary>
+    public static void LoadContinues()
+    {
+        if (PlayerPrefs.HasKey(currLevelName))
+            _currLevel = PlayerPrefs.GetString(currLevelName);
+        else
+            currLevel = defaultLevel.saveID;
+
+        if (PlayerPrefs.HasKey(currCheckpointName))
+            _currCheckpoint = PlayerPrefs.GetInt(currCheckpointName);
+        else
+            currCheckpoint = 0;
     }
 
     /// <summary>

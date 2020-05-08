@@ -17,7 +17,8 @@ public class CheckpointManager : MonoBehaviour
     void Start()
     {
         //checks if we are loading in a new level, if so, reset checkpoint. for loop required otherwise it will see the level bridge and always assume new level.
-        for (int i = 0; i < SceneManager.sceneCount; ++i)
+        //deprecated - now ChangeLevel manages resetting the checkpoint in a much cleaner way
+        /*for (int i = 0; i < SceneManager.sceneCount; ++i)
         {
             Scene scene = SceneManager.GetSceneAt(i);
             if (scene.name != "LevelBridge" && scene.buildIndex != currLevel)
@@ -26,7 +27,7 @@ public class CheckpointManager : MonoBehaviour
                 currCheckpoint = 0;
                 break;
             }
-        }
+        }*/
         StartCoroutine(ReloadDelayed());
     }
 
@@ -67,6 +68,7 @@ public class CheckpointManager : MonoBehaviour
             {
                 checkpointSaver.SaveCheckpoint(currCheckpoint);
             }
+            PlayerData.currCheckpoint = checkpointID;
         }
     }
 }

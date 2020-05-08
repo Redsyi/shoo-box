@@ -7,10 +7,9 @@ using UnityEngine;
 /// </summary>
 public class ChangeSceneAfterSeconds : MonoBehaviour
 {
-    public string destinationScene;
+    public Level destLevel;
     public float afterSeconds;
     public bool isCutscene;
-    public string message;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +39,6 @@ public class ChangeSceneAfterSeconds : MonoBehaviour
     IEnumerator TransitionWipe()
     {
         yield return new WaitForSeconds(1f);
-        LevelBridge.BridgeTo(destinationScene, message);
+        LevelBridge.BridgeTo(destLevel.levelBuildName, destLevel.levelFlavorText);
     }
 }

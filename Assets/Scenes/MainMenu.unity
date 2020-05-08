@@ -412,7 +412,7 @@ PrefabInstance:
     - target: {fileID: 199889818811180660, guid: d43b6a669eb164df595fbe8561698ba5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 199889818811180660, guid: d43b6a669eb164df595fbe8561698ba5,
         type: 3}
@@ -2462,8 +2462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922cf2687707846bababec6949fe7c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildName: CityTerminalCutscene
-  levelName: 'Chapter 3: The City'
+  level: {fileID: 0}
 --- !u!114 &390672629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3948,8 +3947,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922cf2687707846bababec6949fe7c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildName: IntroCutscene
-  levelName: A journey's beginning
+  level: {fileID: 11400000, guid: 3d113acb08011c741bce5744c8aabe12, type: 2}
 --- !u!1001 &588793742
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4221,8 +4219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922cf2687707846bababec6949fe7c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildName: hotel_lobby
-  levelName: Out of the frying pan...
+  level: {fileID: 11400000, guid: be3940dfe3bb3d34b8616273496fd1e2, type: 2}
 --- !u!1 &591564400
 GameObject:
   m_ObjectHideFlags: 0
@@ -4949,8 +4946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922cf2687707846bababec6949fe7c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildName: CityTerminalCutscene
-  levelName: 'Chapter 3: The City'
+  level: {fileID: 11400000, guid: 3166fe5d0e7443642abc2df92a6bed17, type: 2}
 --- !u!1 &671109283 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 199889818811180659, guid: d43b6a669eb164df595fbe8561698ba5,
@@ -5345,6 +5341,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1585003780}
     m_Modifications:
+    - target: {fileID: 199889818676038971, guid: d43b6a669eb164df595fbe8561698ba5,
+        type: 3}
+      propertyPath: m_Text
+      value: New Game
+      objectReference: {fileID: 0}
     - target: {fileID: 199889818811180659, guid: d43b6a669eb164df595fbe8561698ba5,
         type: 3}
       propertyPath: m_Name
@@ -5463,7 +5464,7 @@ PrefabInstance:
     - target: {fileID: 199889818811180661, guid: d43b6a669eb164df595fbe8561698ba5,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PlayButton
+      value: ContinueButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d43b6a669eb164df595fbe8561698ba5, type: 3}
@@ -5880,6 +5881,176 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0439ac749445fa243a95efcb9d15265b, type: 3}
+--- !u!1001 &928259556
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1585003780}
+    m_Modifications:
+    - target: {fileID: 199889818676038970, guid: d43b6a669eb164df595fbe8561698ba5,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 199889818676038970, guid: d43b6a669eb164df595fbe8561698ba5,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 199889818676038971, guid: d43b6a669eb164df595fbe8561698ba5,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 199889818676038971, guid: d43b6a669eb164df595fbe8561698ba5,
+        type: 3}
+      propertyPath: m_Text
+      value: Level Select
+      objectReference: {fileID: 0}
+    - target: {fileID: 199889818811180659, guid: d43b6a669eb164df595fbe8561698ba5,
+        type: 3}
+      propertyPath: m_Name
+      value: Levels
+      objectReference: {fileID: 0}
+    - target: {fileID: 199889818811180660, guid: d43b6a669eb164df595fbe8561698ba5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199889818811180660, guid: d43b6a669eb164df595fbe8561698ba5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199889818811180660, guid: d43b6a669eb164df595fbe8561698ba5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199889818811180660, guid: d43b6a669eb164df595fbe8561698ba5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199889818811180660, guid: d43b6a669eb164df595fbe8561698ba5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199889818811180660, guid: d43b6a669eb164df595fbe8561698ba5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199889818811180660, guid: d43b6a669eb164df595fbe8561698ba5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 199889818811180660, guid: d43b6a669eb164df595fbe8561698ba5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 199889818811180660, guid: d43b6a669eb164df595fbe8561698ba5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199889818811180660, guid: d43b6a669eb164df595fbe8561698ba5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199889818811180660, guid: d43b6a669eb164df595fbe8561698ba5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199889818811180660, guid: d43b6a669eb164df595fbe8561698ba5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199889818811180660, guid: d43b6a669eb164df595fbe8561698ba5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199889818811180660, guid: d43b6a669eb164df595fbe8561698ba5,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 361
+      objectReference: {fileID: 0}
+    - target: {fileID: 199889818811180660, guid: d43b6a669eb164df595fbe8561698ba5,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 250.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 199889818811180660, guid: d43b6a669eb164df595fbe8561698ba5,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199889818811180660, guid: d43b6a669eb164df595fbe8561698ba5,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199889818811180660, guid: d43b6a669eb164df595fbe8561698ba5,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199889818811180660, guid: d43b6a669eb164df595fbe8561698ba5,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199889818811180660, guid: d43b6a669eb164df595fbe8561698ba5,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 199889818811180660, guid: d43b6a669eb164df595fbe8561698ba5,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 199889818811180660, guid: d43b6a669eb164df595fbe8561698ba5,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.70904166
+      objectReference: {fileID: 0}
+    - target: {fileID: 199889818811180660, guid: d43b6a669eb164df595fbe8561698ba5,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.70904166
+      objectReference: {fileID: 0}
+    - target: {fileID: 199889818811180660, guid: d43b6a669eb164df595fbe8561698ba5,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.70904166
+      objectReference: {fileID: 0}
+    - target: {fileID: 199889818811180661, guid: d43b6a669eb164df595fbe8561698ba5,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1294804475}
+    - target: {fileID: 199889818811180661, guid: d43b6a669eb164df595fbe8561698ba5,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayButton
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d43b6a669eb164df595fbe8561698ba5, type: 3}
+--- !u!224 &928259557 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 199889818811180660, guid: d43b6a669eb164df595fbe8561698ba5,
+    type: 3}
+  m_PrefabInstance: {fileID: 928259556}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &959506938 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3870542540260393410, guid: dc364fcca1db27140ab91f04a0828353,
@@ -7032,8 +7203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922cf2687707846bababec6949fe7c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildName: StartCityCutscene
-  levelName: Take your owner home!
+  level: {fileID: 11400000, guid: a05bd349f4b03f740bee2aefc3a29074, type: 2}
 --- !u!1001 &1176152604
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8045,6 +8215,7 @@ MonoBehaviour:
   playButton: {fileID: 1832571594}
   jibbzButton: {fileID: 1735246613}
   optionsButton: {fileID: 1343885262}
+  playButtonText: {fileID: 1393892785}
   playGroup: {fileID: 159286089}
   playGroupDefaultSelected: {fileID: 573349464}
   optionsGroup: {fileID: 1105550249}
@@ -8359,6 +8530,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d09f405bd466fbf47878fd2303294f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _levels:
+  - {fileID: 11400000, guid: 3d113acb08011c741bce5744c8aabe12, type: 2}
+  - {fileID: 11400000, guid: be3940dfe3bb3d34b8616273496fd1e2, type: 2}
+  - {fileID: 11400000, guid: bc7e3cd565d8c9143b1f48375f27e9b9, type: 2}
+  - {fileID: 11400000, guid: 2840362758701174d949b585e93bb4e6, type: 2}
+  - {fileID: 11400000, guid: 3166fe5d0e7443642abc2df92a6bed17, type: 2}
+  - {fileID: 11400000, guid: a05bd349f4b03f740bee2aefc3a29074, type: 2}
+  - {fileID: 11400000, guid: d6343d6196c3f7b4ba12f124cadbe78c, type: 2}
 --- !u!114 &1294804485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9881,6 +10060,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1388046919}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1393892785 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 199889818676038971, guid: d43b6a669eb164df595fbe8561698ba5,
+    type: 3}
+  m_PrefabInstance: {fileID: 837424809}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1400725305
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9951,7 +10142,7 @@ PrefabInstance:
     - target: {fileID: 199889818811180660, guid: d43b6a669eb164df595fbe8561698ba5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 199889818811180660, guid: d43b6a669eb164df595fbe8561698ba5,
         type: 3}
@@ -10351,8 +10542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922cf2687707846bababec6949fe7c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildName: Terminal_All_in_1
-  levelName: The Terminal
+  level: {fileID: 11400000, guid: 2840362758701174d949b585e93bb4e6, type: 2}
 --- !u!1 &1449228800
 GameObject:
   m_ObjectHideFlags: 0
@@ -11055,8 +11245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922cf2687707846bababec6949fe7c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildName: IntroCutscene
-  levelName: A journey's beginning
+  level: {fileID: 0}
 --- !u!114 &1516045061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11093,8 +11282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922cf2687707846bababec6949fe7c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildName: hotel_lobby
-  levelName: Out of the frying pan...
+  level: {fileID: 0}
 --- !u!114 &1532735758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11332,8 +11520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922cf2687707846bababec6949fe7c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildName: StartCityCutscene
-  levelName: Take your owner home!
+  level: {fileID: 0}
 --- !u!114 &1568656616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11601,9 +11788,10 @@ RectTransform:
   m_GameObject: {fileID: 1585003779}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 1832571595}
+  - {fileID: 928259557}
   - {fileID: 14423878}
   - {fileID: 143956369}
   - {fileID: 1754594870}
@@ -13879,8 +14067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922cf2687707846bababec6949fe7c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildName: AirportCutscene
-  levelName: 'Chapter 2: The Aiport'
+  level: {fileID: 0}
 --- !u!114 &1995378017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13963,7 +14150,7 @@ PrefabInstance:
     - target: {fileID: 199889818811180660, guid: d43b6a669eb164df595fbe8561698ba5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 199889818811180660, guid: d43b6a669eb164df595fbe8561698ba5,
         type: 3}
@@ -14576,8 +14763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922cf2687707846bababec6949fe7c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildName: AirportCutscene
-  levelName: 'Chapter 2: The Aiport'
+  level: {fileID: 11400000, guid: bc7e3cd565d8c9143b1f48375f27e9b9, type: 2}
 --- !u!1 &2073479453
 GameObject:
   m_ObjectHideFlags: 0
@@ -14795,8 +14981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922cf2687707846bababec6949fe7c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildName: Terminal_All_in_1
-  levelName: The Terminal
+  level: {fileID: 0}
 --- !u!114 &2081593270
 MonoBehaviour:
   m_ObjectHideFlags: 0
