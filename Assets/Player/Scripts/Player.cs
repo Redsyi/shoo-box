@@ -773,9 +773,10 @@ public class Player : MonoBehaviour
             {
                 UI.enabled = !UI.enabled;
             }
-            Canvas Tutorial = GameObject.Find("Tutorial").GetComponent<Canvas>();
-            if (Tutorial)
+            GameObject tutorialObj = GameObject.Find("Tutorial");
+            if (tutorialObj)
             {
+                Canvas Tutorial = tutorialObj.GetComponent<Canvas>();
                 Tutorial.enabled = !Tutorial.enabled;
             }
         }
