@@ -48,6 +48,21 @@ public class JibbitManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Clear all jibbit progress on disk
+    /// </summary>
+    public static void ClearJibz()
+    {
+        if (staticJibs != null)
+        {
+            foreach (Jibbit jibbit in staticJibs)
+            {
+                acquired[jibbit.id] = false;
+                PlayerPrefs.SetInt("HasJibbit" + jibbit.id, 0);
+            }
+        }
+    }
+
+    /// <summary>
     /// acquire the jibbit given by jibbitID and save this fact to disk
     /// </summary>
     public static void AcquireJibbit(string jibbitID)

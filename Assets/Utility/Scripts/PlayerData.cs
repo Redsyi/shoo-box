@@ -92,16 +92,89 @@ public class PlayerData : MonoBehaviour
     public Level[] _levels;
     public static Dictionary<string, Level> levels;
     public static Level defaultLevel;
+    public static Dictionary<string, bool> unlockedLevels;
 
     private void Awake()
     {
+        InitLevels();
+        CheckLoadedData();
+    }
+
+    /// <summary>
+    /// loads the level information
+    /// </summary>
+    void InitLevels()
+    {
         levels = new Dictionary<string, Level>();
+        unlockedLevels = new Dictionary<string, bool>();
         defaultLevel = _levels[0];
         foreach (Level level in _levels)
         {
             levels[level.saveID] = level;
+            if (level.saveID == defaultLevel.saveID)
+            {
+                unlockedLevels[level.saveID] = true;
+            } else
+            {
+                string levelKey = "Unlocked" + level.saveID;
+                if (PlayerPrefs.HasKey(levelKey))
+                {
+                    unlockedLevels[level.saveID] = PlayerPrefs.GetInt(levelKey) != 0;
+                } else
+                {
+                    unlockedLevels[level.saveID] = false;
+                }
+            }
         }
-        CheckLoadedData();
+        LoadContinues();
+    }
+
+    /// <summary>
+    /// resets all player progress
+    /// </summary>
+    public static void ResetAllProgress()
+    {
+        //lock levels
+        if (levels != null)
+        {
+            foreach (Level level in levels.Values)
+            {
+                if (level.saveID != defaultLevel.saveID)
+                {
+                    LockLevel(level);
+                }
+            }
+        }
+
+        //reset checkpoints
+        currLevel = defaultLevel.saveID;
+        currCheckpoint = 0;
+
+        //lock jibbitz
+        JibbitManager.ClearJibz();
+    }
+
+    /// <summary>
+    /// unlocks the given level in the level select
+    /// </summary>
+    public static void UnlockLevel(Level level)
+    {
+        if (unlockedLevels != null) {
+            unlockedLevels[level.saveID] = true;
+            PlayerPrefs.SetInt("Unlocked" + level.saveID, 1);
+        }
+    }
+
+    /// <summary>
+    /// locks the given level in the level select
+    /// </summary>
+    public static void LockLevel(Level level)
+    {
+        if (unlockedLevels != null)
+        {
+            unlockedLevels[level.saveID] = false;
+            PlayerPrefs.SetInt("Unlocked" + level.saveID, 0);
+        }
     }
 
     /// <summary>
@@ -122,7 +195,6 @@ public class PlayerData : MonoBehaviour
             qualityNames = QualitySettings.names;
             dirtyGraphicsSettings = new Dictionary<GraphicsSetting, bool>();
             LoadGraphicsSettings();
-            LoadContinues();
         }
     }
     

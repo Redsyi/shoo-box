@@ -335,4 +335,13 @@ public class UIMainMenu : MonoBehaviour
             }
         }
     }
+
+    /// <summary>
+    /// resets the player's save
+    /// </summary>
+    public void ResetSave()
+    {
+        PlayerData.ResetAllProgress();
+        LevelBridge.Reload("Save data wiped");
+    }
 }

@@ -139,7 +139,7 @@ public class CollectionJibbit : MonoBehaviour, IPointerEnterHandler, IPointerExi
     /// <summary>
     /// Checks if the player has this jibbit yet, if not, set materials to appear black
     /// </summary>
-    void CheckJibbitAcquired()
+    public void CheckJibbitAcquired()
     {
         if (!JibbitManager.HasJibbit(jibbit.id))
         {

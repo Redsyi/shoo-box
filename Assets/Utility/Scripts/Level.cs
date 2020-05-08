@@ -6,6 +6,7 @@ using UnityEngine;
 public class Level : ScriptableObject
 {
     public string saveID;
+    public string displayName;
     public string cutsceneBuildName;
     public string levelBuildName;
     public string cutsceneFlavorText;

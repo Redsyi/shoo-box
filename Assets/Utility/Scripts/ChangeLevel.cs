@@ -32,6 +32,7 @@ public class ChangeLevel : MonoBehaviour
         {
             PlayerData.currLevel = destLevel.saveID;
             PlayerData.currCheckpoint = 0;
+            PlayerData.UnlockLevel(destLevel);
         }
         CheckpointManager.currCheckpoint = 0;
         LevelBridge.BridgeTo(destLevel.cutsceneBuildName, destLevel.cutsceneFlavorText);
