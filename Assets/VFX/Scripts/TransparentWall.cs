@@ -13,9 +13,16 @@ public class TransparentWall : MonoBehaviour
     public bool facingPositiveX;
     public bool facingNegativeX;
 
+    [Header("Culling")]
+    public bool cullTop;
+    public bool cullPositiveX;
+    public bool cullNegativeX;
+    public bool cullPositiveZ;
+    public bool cullNegativeZ;
+
     private List<Vector2> intervals;
     private const float lerpRange = 50;
-    private const float minAlpha = 0.55f;
+    private static readonly Vector2 minAlphas = new Vector2(0.2f, 0.55f);
     private List<Material> materials;
 
     public bool debug;
@@ -38,6 +45,22 @@ public class TransparentWall : MonoBehaviour
         foreach(MeshRenderer renderer in GetComponentsInChildren<MeshRenderer>())
         {
             materials.AddRange(renderer.materials);
+        }
+
+        foreach (Material material in materials)
+        {
+            material.SetFloat("_AlignedOnZ", facingPositiveZ || facingNegativeZ ? 1f : 0f);
+            material.SetFloat("_AlignedOnX", facingPositiveX || facingNegativeX ? 1f : 0f);
+            if (cullTop)
+                material.SetFloat("_ShowTop", 0f);
+            if (cullPositiveX)
+                material.SetFloat("_ShowPX", 0f);
+            if (cullNegativeX)
+                material.SetFloat("_ShowNX", 0f);
+            if (cullPositiveZ)
+                material.SetFloat("_ShowPZ", 0f);
+            if (cullNegativeZ)
+                material.SetFloat("_ShowNZ", 0f);
         }
     }
     
@@ -67,6 +90,7 @@ public class TransparentWall : MonoBehaviour
         if (debug)
             print($"lerping: {lerpControl}");
 
+        float minAlpha = Mathf.Lerp(minAlphas.x, minAlphas.y, CameraScript.current.anglePercent);
         //set material alphas based on previously determined maximum minimum difference
         foreach (Material material in materials)
         {

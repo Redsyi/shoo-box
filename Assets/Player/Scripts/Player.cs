@@ -100,7 +100,12 @@ public class Player : MonoBehaviour
     bool inFlingRoutine;
     bool holdingForceReload;
     float currSmoothRotation;
+    float currAngleRotation;
     float currSnapRotate;
+    bool usingMouseMovement;
+    bool usingMouseRotation;
+    bool usingMouseAim;
+    Vector2 mouseDelta;
     [Header("Settings")]
     public float minY = -10f;
     public bool useSnapRotation;
@@ -184,6 +189,26 @@ public class Player : MonoBehaviour
 
         if (currMovementInput.sqrMagnitude > 1)
             currMovementInput = currMovementInput.normalized;
+
+        usingMouseAim = false;
+    }
+
+    /// <summary>
+    /// Sets if the player is being moved by the mouse
+    /// </summary>
+    public void OnMouseMove(InputValue value)
+    {
+        usingMouseMovement = value.Get<float>() > 0.5f;
+        if (!usingMouseMovement)
+            currMovementInput = Vector2.zero;
+    }
+
+    /// <summary>
+    /// Sets if the player camera is being rotated by the mouse
+    /// </summary>
+    public void OnMouseRotate(InputValue value)
+    {
+        usingMouseRotation = value.Get<float>() > 0.5f;
     }
 
     /// <summary>
@@ -191,15 +216,12 @@ public class Player : MonoBehaviour
     /// </summary>
     public void OnSwap()
     {
-        if (legForm)
-        {
-            if (sandalTutorial)
-                sandalTutorial.HideSwapControls();
-            if (shoeManager.currShoe == ShoeType.BOOTS)
-                shoeManager.SwitchTo(ShoeType.FLIPFLOPS);
-            else if (shoeManager.currShoe == ShoeType.FLIPFLOPS)
-                shoeManager.SwitchTo(ShoeType.BOOTS);
-        }
+        if (sandalTutorial)
+            sandalTutorial.HideSwapControls();
+        if (shoeManager.currShoe == ShoeType.BOOTS)
+            shoeManager.SwitchTo(ShoeType.FLIPFLOPS);
+        else if (shoeManager.currShoe == ShoeType.FLIPFLOPS)
+            shoeManager.SwitchTo(ShoeType.BOOTS);
     }
 
     /// <summary>
@@ -272,6 +294,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         UpdateRumble();
+        UpdateMouseMovement();
         if (!legForm) Slide();
         InterpolateRotation();
         UpdateAnimator();
@@ -329,6 +352,33 @@ public class Player : MonoBehaviour
                     animator.SetBool("Walking", false);
                 }
                 animator.SetFloat("Idle Speed", (legForm ? 1f : 0f));
+            }
+        }
+    }
+
+    /// <summary>
+    /// updates movement vector and camera rotation according to mouse information
+    /// </summary>
+    void UpdateMouseMovement()
+    {
+        if (inputSystem.currentActionMap.name != "Player")
+        {
+            if (usingMouseMovement)
+                currMovementInput = Vector2.zero;
+            return;
+        }
+
+        if (!Controls.usingController)
+        {
+            if (usingMouseMovement || (usingMouseAim && inFlingRoutine))
+            {
+                currMovementInput = -(myCamera.camera.WorldToScreenPoint(legForm ? transform.position : AISpotPoint.position) - Input.mousePosition).normalized;
+            }
+
+            if (usingMouseRotation)
+            {
+                myCamera.SmoothRotate(mouseDelta.x * PlayerData.mouseRotateSensitivity);
+                myCamera.SmoothAngleRotate(-mouseDelta.y * PlayerData.mouseRotateSensitivity);
             }
         }
     }
@@ -451,21 +501,9 @@ public class Player : MonoBehaviour
     {
         if (wigglesRequired == 0)
         {
-            float val = value.Get<float>();
-            //deprecated snap rotation code
-            if (useSnapRotation)
-            {
-                if (Mathf.Abs(val) >= 0.5f && (currSnapRotate == 0 || Mathf.Sign(val) != Mathf.Sign(currSnapRotate)) && StealFocusWhenSeen.activeThief == null)
-                {
-                    RotationDirection direction = (val > 0 ? RotationDirection.CLOCKWISE : RotationDirection.COUNTERCLOCKWISE);
-                    myCamera.Rotate(direction);
-                }
-                currSnapRotate = val;
-            } else
-            //much nicer smooth rotation code
-            {
-                currSmoothRotation = val;
-            }
+            Vector2 vect = value.Get<Vector2>();
+            currSmoothRotation = vect.x;
+            currAngleRotation = vect.y;
         }
     }
 
@@ -474,8 +512,13 @@ public class Player : MonoBehaviour
     /// </summary>
     private void DoSmoothRotation()
     {
-        if (!useSnapRotation && currSmoothRotation != 0 && StealFocusWhenSeen.activeThief == null)
-            myCamera.SmoothRotate(currSmoothRotation);
+        if (StealFocusWhenSeen.activeThief == null)
+        {
+            if (!useSnapRotation && currSmoothRotation != 0)
+                myCamera.SmoothRotate(currSmoothRotation);
+            if (currAngleRotation != 0)
+                myCamera.SmoothAngleRotate(currAngleRotation);
+        }
     }
 
     /// <summary>
@@ -590,6 +633,8 @@ public class Player : MonoBehaviour
         //fire
         shoeManager.UseShoes();
         shoeManager.sandalSlinger.holdingShot = false;
+        if (usingMouseAim)
+            currMovementInput = Vector2.zero;
         inFlingRoutine = false;
     }
 
@@ -874,13 +919,16 @@ public class Player : MonoBehaviour
 
     public void OnLook(InputValue value)
     {
+        usingMouseAim = !Controls.usingController;
+        if (usingMouseAim)
+            mouseDelta = value.Get<Vector2>();
+
         bool editorOverride = false;
 #if UNITY_EDITOR
         editorOverride = true;
 #endif
         if (Devmode.active || editorOverride)
         {
-            Vector2 mouseDelta = value.Get<Vector2>();
             myCamera.mouseDelta = mouseDelta;
         }
     }

@@ -28,6 +28,15 @@ public class CameraScript : MonoBehaviour
     [Tooltip("How long in seconds it takes to switch between the zoom levels")]
     static float zoomTime = 0.75f;
     public bool zoomed => !player.legForm;
+    [Tooltip("Range of the possible angles from the ground the camera can be")]
+    private Vector2 angleRange = new Vector2(20f, 75f);
+    public float anglePercent
+    {
+        get
+        {
+            return Mathf.InverseLerp(angleRange.x, angleRange.y, cameraAngle);
+        }
+    }
 
     //camera angle: rotation relative to ground
     private float _cameraAngle;
@@ -127,7 +136,7 @@ public class CameraScript : MonoBehaviour
 
     private void Awake()
     {
-        _cameraAngle = -transform.localEulerAngles.x;
+        _cameraAngle = Utilities.ClampAngle0360(-transform.localEulerAngles.x);
         originalAngle = _cameraAngle;
         _cameraRotation = transform.localEulerAngles.y;
         camera = GetComponentInChildren<Camera>();
@@ -223,6 +232,17 @@ public class CameraScript : MonoBehaviour
         if (direction != 0)
         {
             cameraRotation += direction * (cinematicMode ? Time.unscaledDeltaTime : Time.deltaTime) * smoothRotationSpeed * (cinematicMode ? cinematicRotateSensitivity : 1);
+        }
+    }
+
+    /// <summary>
+    /// smoothly rotate the angle to ground in the specified direction
+    /// </summary>
+    public void SmoothAngleRotate(float direction)
+    {
+        if (direction != 0)
+        {
+            cameraAngle = Mathf.Clamp(cameraAngle + direction * (cinematicMode ? Time.unscaledDeltaTime : Time.deltaTime) * smoothRotationSpeed * (cinematicMode ? cinematicRotateSensitivity : 1), angleRange.x, angleRange.y);
         }
     }
 

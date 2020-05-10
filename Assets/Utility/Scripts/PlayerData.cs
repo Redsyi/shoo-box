@@ -93,6 +93,7 @@ public class PlayerData : MonoBehaviour
     public static Dictionary<string, Level> levels;
     public static Level defaultLevel;
     public static Dictionary<string, bool> unlockedLevels;
+    public static float mouseRotateSensitivity = 0.1f;
 
     private void Awake()
     {

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
+/// DEPRECATED
 /// class that overrides the camera angle from floor when the player is inside it (combine with a trigger collider on the PlayerCatcher layer)
 /// </summary>
 [RequireComponent(typeof(Collider))]
 public class CameraAngleZone : MonoBehaviour
-{
+{/*
     public float cameraAngle;
     private float originalCameraAngle;
     private float timeInBounds;
@@ -60,5 +61,5 @@ public class CameraAngleZone : MonoBehaviour
             }
             timeOutOfBounds += Time.deltaTime;
         }
-    }
+    }*/
 }
