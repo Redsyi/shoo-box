@@ -227,7 +227,6 @@ public class UITutorialManager : MonoBehaviour
         {
             list.Fade();
             yield return new WaitForSeconds(5);
-            print("Fading objective list out");
             list.Fade();
         }
     }

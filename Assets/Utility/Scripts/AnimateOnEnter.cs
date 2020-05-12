@@ -11,9 +11,9 @@ public class AnimateOnEnter : MonoBehaviour
     public string triggerName;
 
     public void OnTriggerEnter(Collider other)
-    {
-        print("Should be animating");
-        animator.SetTrigger(triggerName);
+    { 
+        if(other.CompareTag("Player"))
+            animator.SetTrigger(triggerName);
     }
 
     private void Start()
