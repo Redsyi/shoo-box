@@ -51,7 +51,8 @@ public enum AIInterest
     MAID_CRISIS,
     MAID_CRISIS_2,
     SUITCASE_PACKER_2,
-    STOOL_BOI_2
+    STOOL_BOI_2,
+    OWNER
 }
 
 public enum ShoeSightType

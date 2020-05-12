@@ -19,6 +19,8 @@ public class TSAAlert : MonoBehaviour, IAIInteractable
     public Transform alertBarCanvas;
     public Image alertProgressBar;
     public RectTransform alertBarTSA;
+    public Animator alertAnimator;
+    public bool active = true;
 
     Vector3 alertCanvasOffset;
     Vector3 originalOffset;
@@ -57,6 +59,11 @@ public class TSAAlert : MonoBehaviour, IAIInteractable
         {
             LevelBridge.Reload("Caught by the TSA");
         }
+    }
+
+    public void Activate()
+    {
+        active = true;
     }
 
     public void AIInteracting(float interactProgress)
@@ -110,7 +117,7 @@ public class TSAAlert : MonoBehaviour, IAIInteractable
             }
         }
 
-        if (alertTimeRemaining > 0)
+        if (alertTimeRemaining > 0 && active)
         {
             alertTimeRemaining -= Time.deltaTime;
             if (alertTimeRemaining <= 0 && !caught)
@@ -118,5 +125,7 @@ public class TSAAlert : MonoBehaviour, IAIInteractable
                 AIAgent.SummonAI(gameObject, 2, true, interestMask);
             }
         }
+
+        alertAnimator.SetBool("Active", alertTimeRemaining <= 0);
     }
 }
