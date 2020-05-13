@@ -164,23 +164,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b2f666398a565843b8ca12a5d16f059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolPoints:
-  - {fileID: 2826333146306930983}
   animator: {fileID: 3975052868650960515}
   pathfinder: {fileID: 2826333146306930980}
+  thrower: {fileID: 0}
+  leftHand: {fileID: 0}
+  rightHand: {fileID: 0}
+  patrolPoints:
+  - {fileID: 2826333146306930983}
+  interests: 07000000
+  deaf: 0
+  chaseOverride:
+    m_PersistentCalls:
+      m_Calls: []
+  stopDist: 1
+  doorOpenAnimTrigger: 
+  walkSpeed: 6
+  runSpeed: 12
+  throwWaitTime: 0
+  interactSpeedMultiplier: 1
   targetPrefab: {fileID: 1146112242645686859, guid: fc24d7070b2a9d2499e6d4fe165d1da6,
     type: 3}
   bubblePrefab: {fileID: 2357252479239045825, guid: 8522aaf13fec9104b99d9a29a33fe02d,
     type: 3}
   bubbleAnchor: {fileID: 1559498222388483440}
-  debug: 0
-  walkSpeed: 6
-  runSpeed: 12
-  interests: 07000000
-  beingRepelled: 0
-  deaf: 0
-  thrower: {fileID: 0}
-  throwWaitTime: 0
   onSpot:
     idInternal: 0
     valueGuidInternal: 
@@ -192,6 +198,9 @@ MonoBehaviour:
     WwiseObjectReference: {fileID: 11400000, guid: ab0d7872737f247f7aad460426de7a16,
       type: 2}
   gameOverName: the TSA
+  debug: 0
+  stunned: 0
+  investigatingPlayer: 0
 --- !u!114 &8746756210803101035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,6 +242,7 @@ MonoBehaviour:
   destCameraYRotation: 75
   destCameraAngle: 55
   destCameraDist: 20
+  skippable: 1
 --- !u!95 &3975052868650960515
 Animator:
   serializedVersion: 3

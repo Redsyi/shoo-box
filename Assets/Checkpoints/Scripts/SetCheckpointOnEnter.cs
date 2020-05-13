@@ -22,7 +22,6 @@ public class SetCheckpointOnEnter : MonoBehaviour
         Animator message = GameObject.FindGameObjectWithTag("Checkpoint Message").GetComponent<Animator>();
         if (message)
         {
-            print("Found animator: " + message.gameObject.name);
             message.SetTrigger("Checkpoint Hit");
         }
         else

@@ -34,7 +34,6 @@ public class ConveyorGate : MonoBehaviour
     {
         if (pushLuggage && collision.gameObject.CompareTag("Luggage"))
         {
-            print("Luggage collision enter");
             collision.gameObject.transform.position += transform.right * 2.2f;
         }
     }
