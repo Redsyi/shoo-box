@@ -56,6 +56,8 @@ public class PlayerData : MonoBehaviour
     static string currLevelName = "ContinueLevelName";
     static string currCheckpointName = "ContinueCheckpoint";
 
+    static string rotateSensitivityName = "LookSensitivity";
+
     static string _currLevel;
     public static string currLevel
     {
@@ -93,7 +95,21 @@ public class PlayerData : MonoBehaviour
     public static Dictionary<string, Level> levels;
     public static Level defaultLevel;
     public static Dictionary<string, bool> unlockedLevels;
-    public static float mouseRotateSensitivity = 0.05f;
+    public static float mouseRotateSensitivity = 0.035f;
+    public static float normalizedRotateSensitivity;
+    public static float sensitivityMultiplier
+    {
+        get
+        {
+            print($"{sensitivityScale}, {normalizedRotateSensitivity}, {Mathf.Lerp(sensitivityScale.x, sensitivityScale.y, normalizedRotateSensitivity)}");
+            return Mathf.Lerp(sensitivityScale.x, sensitivityScale.y, normalizedRotateSensitivity);
+        }
+        set
+        {
+            normalizedRotateSensitivity = Mathf.InverseLerp(sensitivityScale.x, sensitivityScale.y, value);
+        }
+    }
+    public static readonly Vector2 sensitivityScale = new Vector2(0.05f, 2.5f);
 
     private void Awake()
     {
@@ -196,9 +212,29 @@ public class PlayerData : MonoBehaviour
             qualityNames = QualitySettings.names;
             dirtyGraphicsSettings = new Dictionary<GraphicsSetting, bool>();
             LoadGraphicsSettings();
+            LoadControlSettings();
         }
     }
+
+    /// <summary>
+    /// loads the saved controls info (currently just sensitivity)
+    /// </summary>
+    public static void LoadControlSettings()
+    {
+        if (PlayerPrefs.HasKey(rotateSensitivityName))
+            normalizedRotateSensitivity = PlayerPrefs.GetFloat(rotateSensitivityName);
+        else
+            normalizedRotateSensitivity = 0.4f;
+    }
     
+    /// <summary>
+    /// saves the controls info (currently just sensitivity)
+    /// </summary>
+    public static void SaveControlSettings()
+    {
+        PlayerPrefs.SetFloat(rotateSensitivityName, normalizedRotateSensitivity);
+    }
+
     /// <summary>
     /// loads the furthest reached point in the game
     /// </summary>

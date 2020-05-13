@@ -86,7 +86,7 @@ MonoBehaviour:
   buttonPane: {fileID: 4391488878837822699}
   panes:
   - pane: {fileID: 3042438957657067535}
-    defaultSelected: {fileID: 0}
+    defaultSelected: {fileID: 4185301948647402000}
     onAppear:
       m_PersistentCalls:
         m_Calls:
@@ -101,9 +101,31 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 8593580503980704761}
+          m_MethodName: LoadSensitivity
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     onDisappear:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 8593580503980704761}
+          m_MethodName: SaveSensitivity
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - pane: {fileID: 8341457943598958366}
     defaultSelected: {fileID: 6367545606080264984}
     onAppear:
@@ -874,6 +896,24 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 4080910463606396555}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4185301948647402000 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 195734525145250971, guid: dc364fcca1db27140ab91f04a0828353,
+    type: 3}
+  m_PrefabInstance: {fileID: 4080910463606396555}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8593580503980704761 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5755821883544114546, guid: dc364fcca1db27140ab91f04a0828353,
+    type: 3}
+  m_PrefabInstance: {fileID: 4080910463606396555}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4185301948647402000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e3ccae316f49b644b72439d986cda49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5888199653164563707 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7572055186485324400, guid: dc364fcca1db27140ab91f04a0828353,

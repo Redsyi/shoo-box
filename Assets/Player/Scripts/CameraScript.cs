@@ -231,7 +231,7 @@ public class CameraScript : MonoBehaviour
     {
         if (direction != 0)
         {
-            cameraRotation += direction * (cinematicMode ? Time.unscaledDeltaTime : Time.deltaTime) * smoothRotationSpeed * (cinematicMode ? cinematicRotateSensitivity : 1);
+            cameraRotation += direction * (cinematicMode ? Time.unscaledDeltaTime : Time.deltaTime) * smoothRotationSpeed * (cinematicMode ? cinematicRotateSensitivity : 1) * PlayerData.sensitivityMultiplier;
         }
     }
 
@@ -242,7 +242,7 @@ public class CameraScript : MonoBehaviour
     {
         if (direction != 0)
         {
-            cameraAngle = Mathf.Clamp(cameraAngle + direction * (cinematicMode ? Time.unscaledDeltaTime : Time.deltaTime) * smoothRotationSpeed * (cinematicMode ? cinematicRotateSensitivity : 1), angleRange.x, angleRange.y);
+            cameraAngle = Mathf.Clamp(cameraAngle + direction * (cinematicMode ? Time.unscaledDeltaTime : Time.deltaTime) * smoothRotationSpeed * (cinematicMode ? cinematicRotateSensitivity : 1) * PlayerData.sensitivityMultiplier, angleRange.x, angleRange.y);
         }
     }
 
