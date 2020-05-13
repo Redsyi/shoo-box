@@ -6855,6 +6855,13 @@ MonoBehaviour:
     legForm: 0
     startingShoes: 01000000
     resetCamera: 1
+  - wigglesRequired: 0
+    lockChangeForm: 0
+    lockShoeSight: 0
+    setLegForm: 0
+    legForm: 0
+    startingShoes: 01000000
+    resetCamera: 1
 --- !u!114 &334485367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6871,7 +6878,8 @@ MonoBehaviour:
   - {x: -1.04826, y: -1.207, z: 1.497435}
   - {x: 6.04, y: 0, z: 2.38}
   - {x: 13.97, y: 0, z: 4.71}
-  - {x: 22.3, y: 0, z: 30.14}
+  - {x: 29.45, y: 0, z: 30.14}
+  - {x: 16.2, y: 0, z: 35.6}
 --- !u!4 &334485372 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2212071707321504981, guid: 903210885735bc04c82ce1fe71788233,
@@ -21285,7 +21293,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_Extents: {x: 0.5, y: 0.84, z: 0.5}
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1
@@ -26729,12 +26737,12 @@ PrefabInstance:
     - target: {fileID: 2084560751307611776, guid: 400d7b0c55a87e54f965dbbf1b04d0b4,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 13.58
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2084560751307611776, guid: 400d7b0c55a87e54f965dbbf1b04d0b4,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 13.58
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2084560751307611776, guid: 400d7b0c55a87e54f965dbbf1b04d0b4,
         type: 3}
@@ -26841,7 +26849,7 @@ PrefabInstance:
     - target: {fileID: 5567573036701778410, guid: 400d7b0c55a87e54f965dbbf1b04d0b4,
         type: 3}
       propertyPath: radius
-      value: 6.79
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5567573036701778410, guid: 400d7b0c55a87e54f965dbbf1b04d0b4,
         type: 3}
@@ -26851,7 +26859,7 @@ PrefabInstance:
     - target: {fileID: 6035866520718282808, guid: 400d7b0c55a87e54f965dbbf1b04d0b4,
         type: 3}
       propertyPath: m_Radius
-      value: 6.79
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8415129927553961403, guid: 400d7b0c55a87e54f965dbbf1b04d0b4,
         type: 3}
@@ -36107,7 +36115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ed012afafc4f844ca8a08021dbd0112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkpointID: 3
+  checkpointID: 4
 --- !u!114 &1946848071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39235,7 +39243,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_Extents: {x: 0.5, y: 0.5, z: 0.65}
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1
