@@ -25,7 +25,6 @@ public class InvokeOnCheckpointLoad : MonoBehaviour, ICheckpointItem
 
     private void LoadCheckpointSafe(int checkpointID)
     {
-        print("Invoking based on checkpoint: " + checkpointID);
         invocations[checkpointID].Invoke();
     }
 }
