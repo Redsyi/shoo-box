@@ -40,7 +40,7 @@ public class JibbitGhostTracker : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (qualified && disqualifier && disqualifier.currState.state == AIState.CHASE)
+        if (qualified && disqualifier && disqualifier.state == AIState.CHASE)
         {
             qualified = false;
         }

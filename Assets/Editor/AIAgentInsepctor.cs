@@ -9,6 +9,12 @@ public class AIAgentInsepctor : Editor
         AIAgent agent = (AIAgent)target;
 
         base.DrawDefaultInspector();
+
+        if (agent.chaseBehavior == ChaseBehaviors.SEQUENCE)
+        {
+            agent.chaseOverrideSequence = (ScriptedSequence)EditorGUILayout.ObjectField(agent.chaseOverrideSequence, typeof(ScriptedSequence), true);
+        }
+
         if (GUILayout.Button("Create Patrol Point"))
         {
             GameObject patrolPoint = PrefabUtility.InstantiatePrefab(agent.targetPrefab) as GameObject;

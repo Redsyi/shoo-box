@@ -123,3 +123,12 @@ public enum DamageSource {
     TANK,
     HELICOPTER
 }
+
+public enum ChaseBehaviors
+{
+    CATCH,
+    SUMMON,
+    SEQUENCE
+}
+
+public enum AIState { IDLE, INVESTIGATE, INVESTIGATING, CHASE, INTERACT }

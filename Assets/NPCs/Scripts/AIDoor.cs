@@ -39,7 +39,7 @@ public class AIDoor : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         AIAgent ai = other.gameObject.GetComponentInParent<AIAgent>();
-        if (ai && (openRequiredStates.Length == 0 || System.Array.Exists(openRequiredStates, item => item == ai.currState.state)))
+        if (ai && (openRequiredStates.Length == 0 || System.Array.Exists(openRequiredStates, item => item == ai.state)))
         {
             if (openFor == null || openFor.Length == 0 || System.Array.Exists(openFor, interest => System.Array.Exists(ai.interests, aiinterest => aiinterest == interest)))
             {
@@ -70,7 +70,7 @@ public class AIDoor : MonoBehaviour
             currAI = null;
             checkAIExists = false;
         }
-        if (ai && (closeRequiredStates.Length == 0 || System.Array.Exists(closeRequiredStates, item => item == ai.currState.state)))
+        if (ai && (closeRequiredStates.Length == 0 || System.Array.Exists(closeRequiredStates, item => item == ai.state)))
         {
             if (closeFor == null || closeFor.Length == 0 || System.Array.Exists(closeFor, interest => System.Array.Exists(ai.interests, aiinterest => aiinterest == interest)))
                 Close();

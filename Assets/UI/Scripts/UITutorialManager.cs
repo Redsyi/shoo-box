@@ -271,7 +271,7 @@ public class UITutorialManager : MonoBehaviour
         dadDoingRoomCheck = true;
         foreach (AIPatrolPoint point in dadRoomInvestigatePoints)
         {
-            while (dad.currState.state == AIState.INVESTIGATE || dad.currState.state == AIState.INVESTIGATING || dad.currState.state == AIState.INTERACT)
+            while (dad.state == AIState.INVESTIGATE || dad.state == AIState.INVESTIGATING || dad.state == AIState.INTERACT)
                 yield return null;
             dad.Investigate(point.gameObject, investigateTime: 2);
         }
@@ -292,7 +292,7 @@ public class UITutorialManager : MonoBehaviour
 
     public void MakeMaidLeave()
     {
-        if (maid.currState.state == AIState.IDLE)
+        if (maid.state == AIState.IDLE)
         {
             maidLeaveSequence.Trigger();
         }

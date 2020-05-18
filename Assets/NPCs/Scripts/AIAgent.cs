@@ -20,8 +20,6 @@ public class AIAgent : MonoBehaviour
     public Transform[] patrolPoints;
     public AIInterest[] interests;
     public bool deaf;
-    [Tooltip("If there are any events specified here, they will be performed INSTEAD of the npc chasing the player")]
-    public UnityEngine.Events.UnityEvent chaseOverride;
     public float stopDist = 1f;
     public string doorOpenAnimTrigger = "OpenDoor";
 
@@ -44,6 +42,34 @@ public class AIAgent : MonoBehaviour
     [Tooltip("The name displayed in \"you were caught by _____\" when you get caught")]
     public string gameOverName;
     public bool debug;
+
+    public ChaseBehaviors chaseBehavior;
+    [HideInInspector] public AIInterest[] chaseBroadcastInterests;
+    [HideInInspector] public ScriptedSequence chaseOverrideSequence;
+
+
+    private AIState _state;
+    public AIState state
+    {
+        get
+        {
+            return _state;
+        }
+        set
+        {
+            if (_state != value || !initializedState)
+            {
+                if (initializedState)
+                    OnStateExit(_state);
+                OnStateEnter(value);
+                _state = value;
+                initializedState = true;
+            }
+        }
+    }
+    [HideInInspector]
+    public Transform destination;
+    bool initializedState;
 
     private UINPCBubble myBubble;           //reference to instantiated ?/! bubble
     private GameObject instantiatedTarget;  //reference to a reusable "target point" gameobject
@@ -84,15 +110,15 @@ public class AIAgent : MonoBehaviour
     ScriptedSequence[] sequences;   //refs to all possible sequences on this agent
     float timeSinceLastOnSpot;          //this and below help prevent sound spam with rapid changing of states
     float timeSinceLastOnInvestigate;
-    public AIStateNode currState;       //the current ai state
     public Queue<IAIInteractable> thingsToInteractWith; //current list of items the agent has detected need interaction
     float timer;        //general timer variable used across all states
     [HideInInspector] public bool investigatingPlayer;
+    const float updateInterval = 0.05f;
+    static List<AIAgent> activeAgents;
 
     void Start()
     {
         blindAll = false;
-        currState = new AIStateNode();
         thingsToInteractWith = new Queue<IAIInteractable>();
         Idle();
         
@@ -106,12 +132,14 @@ public class AIAgent : MonoBehaviour
         wwiseComponent = GetComponent<AKEventNPC>();
         shoeSightColoring = GetComponent<CustomShoeSight>();
         if (shoeSightColoring)
-        {
             originalSightColoring = shoeSightColoring.type;
-        }
         sequences = GetComponents<ScriptedSequence>();
 
+        if (activeAgents == null)
+            activeAgents = new List<AIAgent>();
+        activeAgents.Add(this);
         AudioManager.RegisterAgent(this);
+        StartCoroutine(UpdateState());
     }
 
     /// <summary>
@@ -125,9 +153,9 @@ public class AIAgent : MonoBehaviour
             stopped = (prevPos - transform.position).sqrMagnitude <= walkSpeed*.05f;
 
             if (!InSequence() && !stunned) {
-                if (stopped && currState.state != AIState.IDLE)
+                if (stopped && state != AIState.IDLE)
                 {
-                    Face(currState.location.position);
+                    Face(destination.position);
                 }
             }
             prevPos = transform.position;
@@ -171,13 +199,8 @@ public class AIAgent : MonoBehaviour
     /// </summary>
     public void Idle()
     {
-        if (currState.state != AIState.IDLE || patrolPoints.Length > 1 || !currState.location)
-        { 
-            stoppedTime = 0f;
-            currState.state = AIState.IDLE;
-            currState.location = patrolPoints[currPatrolPoint];
-            investigatingPlayer = false;
-        }
+        if (state != AIState.IDLE || patrolPoints.Length > 1 || !destination)
+            state = AIState.IDLE;
     }
 
     /// <summary>
@@ -187,13 +210,12 @@ public class AIAgent : MonoBehaviour
     /// <param name="forceOverrideChase">Whether this trigger can interrupt a chase state</param>
     public void Investigate(GameObject location, float investigateTime = 3f, bool forceOverrideChase = false, bool forceOverrideInteract = true)
     {
-        if ((currState.state != AIState.CHASE || forceOverrideChase) && (currState.state != AIState.INTERACT || forceOverrideInteract))
+        if ((state != AIState.CHASE || forceOverrideChase) && (state != AIState.INTERACT || forceOverrideInteract))
         {
-            stoppedTime = 0f;
-            currState.state = AIState.INVESTIGATE;
-            currState.location = location.transform;
-            if (currState.state != AIState.INVESTIGATE)
+            if (state != AIState.INVESTIGATE)
                 wwiseComponent?.StartedInvestigation();
+            state = AIState.INVESTIGATE;
+            destination = location.transform;
             timer = investigateTime;
             investigatingPlayer = false;
         }
@@ -220,16 +242,8 @@ public class AIAgent : MonoBehaviour
         {
             thingsToInteractWith.Enqueue(interactable);
 
-            if (currState.state != AIState.CHASE && currState.state != AIState.INTERACT && thingsToInteractWith.Count == 1)
-            {
-                wwiseComponent?.SomethingWrong();
-                currState.state = AIState.INTERACT;
-                currState.location = (interactable as MonoBehaviour).transform;
-                timer = interactable.AIInteractTime() * interactSpeedMultiplier;
-                stoppedTime = 0f;
-                reachedInteractable = false;
-                investigatingPlayer = false;
-            }
+            if (state != AIState.CHASE && state != AIState.INTERACT && thingsToInteractWith.Count == 1)
+                state = AIState.INTERACT;
         }
     }
 
@@ -239,33 +253,8 @@ public class AIAgent : MonoBehaviour
     /// <param name="player"></param>
     public void Chase(Player player)
     {
-        if (currState.state != AIState.CHASE)
-        {
-            wwiseComponent?.PlayerSpotted();
-            myBubble.Spotted();
-            if (timeSinceLastOnSpot > 2)
-            {
-                onSpot.Post(gameObject);
-                timeSinceLastOnSpot = 0;
-            }
-            player.npcsChasing++;
-            timer = 0f;
-            chaseOverride.Invoke();
-        }
-        if (chaseOverride.GetPersistentEventCount() == 0 && InSequence())
-        {
-            foreach (ScriptedSequence sequence in sequences)
-            {
-                if (sequence.running)
-                {
-                    sequence.Interrupt();
-                }
-            }
-        }
-        stoppedTime = 0f;
-        currState.state = AIState.CHASE;
-        currState.location = player.transform;
-        investigatingPlayer = false;
+        if (state != AIState.CHASE)
+            state = AIState.CHASE;
     }
 
     /// <summary>
@@ -273,7 +262,7 @@ public class AIAgent : MonoBehaviour
     /// </summary>
     public void LosePlayer(Player player)
     {
-        if (currState.state == AIState.CHASE)
+        if (state == AIState.CHASE)
         {
             player.npcsChasing--;
         }
@@ -285,7 +274,7 @@ public class AIAgent : MonoBehaviour
             instantiatedTarget.transform.position = player.transform.position;
         }
         myBubble.Lost();
-        if (chaseOverride.GetPersistentEventCount() == 0)
+        if (chaseBehavior != ChaseBehaviors.SEQUENCE)
         {
             Investigate(instantiatedTarget, forceOverrideChase: true);
             investigatingPlayer = true;
@@ -306,9 +295,7 @@ public class AIAgent : MonoBehaviour
     {
         currPatrolPoint = index;
     }
-
-
-    //this is a big boi function and should probably be a coroutine instead but whatever
+    
     void Update()
     {
         timeSinceLastOnSpot += Time.deltaTime;
@@ -322,51 +309,12 @@ public class AIAgent : MonoBehaviour
         //being in a sequence will temporarily stop this behavior
         if (!InSequence())
         {
-            //handles our current target being unexpectedly destroyed
-            if (currState.state != AIState.IDLE && !currState.location)
-            {
-                if (currState.state == AIState.INTERACT)
-                {
-                    IAIInteractable invalid = thingsToInteractWith.Dequeue();
-                    while (thingsToInteractWith.Count > 0)
-                    {
-                        IAIInteractable newInteractable = thingsToInteractWith.Peek();
-                        if (newInteractable as MonoBehaviour)
-                        {
-                            timer = newInteractable.AIInteractTime() * interactSpeedMultiplier;
-                            currState.state = AIState.INTERACT;
-                            currState.location = (newInteractable as MonoBehaviour).transform;
-                            stoppedTime = 0f;
-                            reachedInteractable = false;
-                            break;
-                        }
-                        else
-                        {
-                            thingsToInteractWith.Dequeue();
-                        }
-                    }
-                    if (thingsToInteractWith.Count == 0)
-                    {
-                        Idle();
-                    }
-                }
-            }
-
-            //detects whether we are close to our target; or if we tried to reach the target but ended up stopped (which is enough for some states)
-            bool closeToTarget = (transform.position - currState.location.position).sqrMagnitude < (stopDist * stopDist);
-            bool closeEnough = (reachedInteractable && currState.state == AIState.INTERACT) || (stoppedTime >= giveUpTime) || closeToTarget;
-
-            //manages npc speed depending on state
-            if (pathfinder)
-                pathfinder.speed = (stunned ? 0f : (currState.state == AIState.CHASE || currState.state == AIState.INTERACT ? runSpeed : walkSpeed));
-
-            //manages npc animations
-            animator.SetBool("Moving", stoppedTime < 0.1f && !stunned);
-            animator.SetBool("Running", currState.state == AIState.CHASE || currState.state == AIState.INTERACT);
-            animator.SetBool("Interacting", currState.state == AIState.INTERACT && closeEnough && !stunned);
+            CheckInvalidLocation();
+            UpdatePathfinder();
+            UpdateAnimationState();
 
             if (debug)
-                print($"{gameObject.name}: {currState.state}, {currState.location}, {thingsToInteractWith.Count} | {stoppedTime}");
+                print($"{gameObject.name}: {state}, {destination}, {thingsToInteractWith.Count} | {stoppedTime}");
 
             //manages shoe sight coloring if everyone is blind
             if (shoeSightColoring)
@@ -380,183 +328,22 @@ public class AIAgent : MonoBehaviour
                     shoeSightColoring.SetType(originalSightColoring);
                 }
             }
-
-            //take action depending on the current state
-            switch (currState.state)
-            {
-                case AIState.IDLE:
-                    //haven't reached current patrol node: just keep going
-                    if (!closeToTarget && pathfinder && pathfinder.enabled)
-                    {
-                        pathfinder.destination = currState.location.position;
-                        timer = -1;
-                    }
-                    //reached current patrol node: take a break there
-                    else if (timer == -1)
-                    {
-                        AIPatrolPoint patrolPoint = patrolPoints[currPatrolPoint].GetComponent<AIPatrolPoint>();
-                        timer = patrolPoint.stopTime;
-                    }
-                    else
-                    {
-                        //at current patrol node: keep waiting
-                        timer -= Time.deltaTime;
-                        //enought time passed: proceed to next patrol point
-                        if (timer <= 0)
-                        {
-                            currPatrolPoint = (currPatrolPoint + 1) % patrolPoints.Length;
-                            Idle();
-                        }
-                        //face patrol point direction if needed
-                        AIPatrolPoint patrolPoint = patrolPoints[currPatrolPoint].GetComponent<AIPatrolPoint>();
-                        if (patrolPoint && patrolPoint.faceDirection)
-                        {
-                            transform.rotation = patrolPoint.transform.rotation;
-                        }
-                    }
-                    investigateSoundPlayed = false;
-                    myBubble.StopInvestigating();
-                    break;
-
-                case AIState.INVESTIGATE:
-                    //haven't gotten to the point we want to investigate: just keep going
-                    if (!closeEnough && pathfinder && pathfinder.enabled)
-                    {
-                        pathfinder.destination = currState.location.position;
-                    }
-                    //reached point we want to investigate: switch states to INVESTIGATING
-                    else
-                    {
-                        if (pathfinder && pathfinder.enabled)
-                            pathfinder.destination = transform.position;
-                        currState.state = AIState.INVESTIGATING;
-                        animator.SetTrigger("Investigate");
-                    }
-
-                    //manages playing the "hmm?" sound
-                    myBubble.Investigating();
-                    if (!investigateSoundPlayed)
-                    {
-                        investigateSoundPlayed = true;
-                        if (timeSinceLastOnInvestigate > 2)
-                        {
-                            onInvestigate.Post(gameObject);
-                            timeSinceLastOnInvestigate = 0;
-                        }
-                    }
-                    break;
-
-                case AIState.INVESTIGATING:
-                    timer -= Time.deltaTime;
-                    //finshed investigating the point: switch to INTERACT if we have something in queue, otherwise IDLE
-                    if (timer <= 0f)
-                    {
-                        if (thingsToInteractWith.Count > 0)
-                        {
-                            IAIInteractable newInteractable = thingsToInteractWith.Peek();
-                            timer = newInteractable.AIInteractTime() * interactSpeedMultiplier;
-                            currState.state = AIState.INTERACT;
-                            currState.location = (newInteractable as MonoBehaviour).transform;
-                            stoppedTime = 0f;
-                            reachedInteractable = false;
-                        }
-                        else
-                        {
-                            wwiseComponent?.GiveUp();
-                            Idle();
-                        }
-                    }
-
-                    //haven't finished investigating the point: manage playing the "hmm?" sound
-                    else
-                    {
-                        myBubble.Investigating();
-                        if (!investigateSoundPlayed)
-                        {
-                            investigateSoundPlayed = true;
-                            if (timeSinceLastOnInvestigate > 2)
-                            {
-                                onInvestigate.Post(gameObject);
-                                timeSinceLastOnInvestigate = 0;
-                            }
-                        }
-                    }
-                    break;
-
-                case AIState.INTERACT:
-                    //haven't reached what we want to interact with yet: keep going
-                    if (!closeEnough && pathfinder && pathfinder.enabled)
-                    {
-                        pathfinder.destination = currState.location.position;
-                    }
-                
-                    //reached point:
-                    else
-                    {
-                        if (pathfinder && pathfinder.enabled)
-                            pathfinder.destination = transform.position;
-                        if (!reachedInteractable)
-                            wwiseComponent?.Fixing();
-                        reachedInteractable = true;
-                        //still haven't interacted with it for long enough: keep interacting
-                        if (timer >= 0 && thingsToInteractWith.Peek().NeedsInteraction())
-                        {
-                            timer -= Time.deltaTime;
-                            //TODO: call interactable.AIInteracting(float progress)
-                        }
-                        //finished interacting with current interactable: fix it, dequeue it, then either move to next interactable in queue or IDLE if nothing left to interact with
-                        else
-                        {
-                            IAIInteractable interactable = thingsToInteractWith.Dequeue();
-                            if (interactable.NeedsInteraction())
-                                interactable.AIFinishInteract(this);
-                            if (thingsToInteractWith.Count > 0)
-                            {
-                                IAIInteractable newInteractable = thingsToInteractWith.Peek();
-                                timer = newInteractable.AIInteractTime() * interactSpeedMultiplier;
-                                currState.location = (newInteractable as MonoBehaviour).transform;
-                                stoppedTime = 0f;
-                            }
-                            else
-                            {
-                                Idle();
-                            }
-                            reachedInteractable = false;
-                        }
-                    }
-                    myBubble.StopInvestigating();
-                    investigateSoundPlayed = false;
-                    break;
-
-                case AIState.CHASE:
-                    //haven't reached player: keep going
-                    if (!closeToTarget && !closeEnough && pathfinder)
-                    {
-                        if (chaseOverride.GetPersistentEventCount() == 0)
-                            pathfinder.destination = currState.location.position;
-                    }
-                    //unable to reach player: give up
-                    else if (!closeToTarget && pathfinder)
-                    {
-                        LosePlayer(Player.current);
-                    }
-                    //throw shit at player if applicable
-                    if (thrower)
-                    {
-                        //new WaitForSeconds(2.0f);
-                        timer -= Time.deltaTime;
-                        if (timer <= 0)
-                        {
-                            timer = throwWaitTime;
-                            thrower.Throw(Player.current.AISpotPoint.position);
-                        }
-
-                    }
-                    investigateSoundPlayed = false;
-                    myBubble.StopInvestigating();
-                    break;
-            }
         }
+    }
+
+    void UpdatePathfinder()
+    {
+        //manages npc speed depending on state
+        if (pathfinder)
+            pathfinder.speed = (stunned ? 0f : (state == AIState.CHASE || state == AIState.INTERACT ? runSpeed : walkSpeed));
+    }
+
+    void UpdateAnimationState()
+    {
+        //manages npc animations
+        animator.SetBool("Moving", stoppedTime < 0.1f && !stunned);
+        animator.SetBool("Running", state == AIState.CHASE || state == AIState.INTERACT);
+        animator.SetBool("Interacting", state == AIState.INTERACT && reachedInteractable && !stunned);
     }
 
     public void ImConfused()
@@ -574,14 +361,17 @@ public class AIAgent : MonoBehaviour
     /// </summary>
     public static void SummonAI(GameObject to, float investigateTime, bool interruptInteract = false, params AIInterest[] interests)
     {
-        foreach (AIAgent agent in FindObjectsOfType<AIAgent>())
+        foreach (AIAgent agent in activeAgents)
         {
-            foreach (AIInterest interest in interests)
+            if (agent)
             {
-                if (System.Array.Exists<AIInterest>(agent.interests, element => element == interest))
+                foreach (AIInterest interest in interests)
                 {
-                    agent.Investigate(to, investigateTime, forceOverrideInteract: interruptInteract);
-                    break;
+                    if (System.Array.Exists<AIInterest>(agent.interests, element => element == interest))
+                    {
+                        agent.Investigate(to, investigateTime, forceOverrideInteract: interruptInteract);
+                        break;
+                    }
                 }
             }
         }
@@ -592,26 +382,371 @@ public class AIAgent : MonoBehaviour
     /// </summary>
     public static void SummonAI(Vector3 location, float investigateTime, bool interruptInteract = false, params AIInterest[] interests)
     {
-        foreach (AIAgent agent in FindObjectsOfType<AIAgent>())
+        foreach (AIAgent agent in activeAgents)
         {
-            foreach (AIInterest interest in interests)
+            if (agent)
             {
-                if (System.Array.Exists<AIInterest>(agent.interests, element => element == interest))
+                foreach (AIInterest interest in interests)
                 {
-                    agent.Investigate(location, investigateTime, forceOverrideInteract: interruptInteract);
-                    break;
+                    if (System.Array.Exists<AIInterest>(agent.interests, element => element == interest))
+                    {
+                        agent.Investigate(location, investigateTime, forceOverrideInteract: interruptInteract);
+                        break;
+                    }
                 }
             }
         }
+    }
+
+    void CheckInvalidLocation()
+    {
+        //handles our current target being unexpectedly destroyed
+        if (state != AIState.IDLE && !destination)
+        {
+            if (state == AIState.INTERACT)
+            {
+                IAIInteractable invalid = thingsToInteractWith.Dequeue();
+                while (thingsToInteractWith.Count > 0)
+                {
+                    IAIInteractable newInteractable = thingsToInteractWith.Peek();
+                    if (newInteractable as MonoBehaviour)
+                    {
+                        InteractWithNextInQueue();
+                        break;
+                    }
+                    else
+                    {
+                        thingsToInteractWith.Dequeue();
+                    }
+                }
+                if (thingsToInteractWith.Count == 0)
+                {
+                    Idle();
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// code that runs when a state is switched to from a different state
+    /// </summary>
+    void OnStateEnter(AIState state)
+    {
+        switch(state)
+        {
+            case AIState.IDLE:
+                stoppedTime = 0f;
+                destination = patrolPoints[currPatrolPoint];
+                investigatingPlayer = false;
+                break;
+            case AIState.INVESTIGATE:
+                stoppedTime = 0f;
+                break;
+            case AIState.INTERACT:
+                IAIInteractable interactable = thingsToInteractWith.Peek();
+                destination = (interactable as MonoBehaviour).transform;
+                wwiseComponent?.SomethingWrong();
+                timer = interactable.AIInteractTime() * interactSpeedMultiplier;
+                stoppedTime = 0f;
+                reachedInteractable = false;
+                investigatingPlayer = false;
+                break;
+            case AIState.CHASE:
+                wwiseComponent?.PlayerSpotted();
+                myBubble.Spotted();
+                if (timeSinceLastOnSpot > 2)
+                {
+                    onSpot.Post(gameObject);
+                    timeSinceLastOnSpot = 0;
+                }
+                Player.current.npcsChasing++;
+                destination = Player.current.transform;
+                investigatingPlayer = false;
+                stoppedTime = 0f;
+                timer = 0f;
+                
+                if (chaseBehavior == ChaseBehaviors.SEQUENCE)
+                    chaseOverrideSequence.Trigger();
+
+                if (chaseBehavior != ChaseBehaviors.SEQUENCE && InSequence())
+                {
+                    foreach (ScriptedSequence sequence in sequences)
+                    {
+                        if (sequence.running)
+                        {
+                            sequence.Interrupt();
+                        }
+                    }
+                }
+                break;
+        }
+    }
+
+    /// <summary>
+    /// runs state update code on an interval
+    /// </summary>
+    IEnumerator UpdateState()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(updateInterval);
+            while (InSequence())
+                yield return null;
+            OnStateUpdate(state);
+        }
+    }
+
+    /// <summary>
+    /// updates ourself based on state
+    /// </summary>
+    void OnStateUpdate(AIState state)
+    {
+        //detects whether we are close to our target; or if we tried to reach the target but ended up stopped (which is enough for some states)
+        bool closeToTarget = (transform.position - destination.position).sqrMagnitude < (stopDist * stopDist);
+        bool closeEnough = (reachedInteractable && state == AIState.INTERACT) || (stoppedTime >= giveUpTime) || closeToTarget;
+
+        //take action depending on the current state
+        switch (state)
+        {
+            case AIState.IDLE:
+                OnIdleUpdate(closeToTarget);
+                break;
+
+            case AIState.INVESTIGATE:
+                OnInvestigateUpdate(closeEnough);
+                break;
+
+            case AIState.INVESTIGATING:
+                OnInvestigatingUpdate();
+                break;
+
+            case AIState.INTERACT:
+                OnInteractUpdate(closeEnough);
+                break;
+
+            case AIState.CHASE:
+                OnChaseUpdate(closeEnough, closeToTarget);
+                break;
+        }
+    }
+
+    /// <summary>
+    /// updates based on idle state
+    /// </summary>
+    void OnIdleUpdate(bool closeToTarget)
+    {
+        //haven't reached current patrol node: just keep going
+        if (!closeToTarget && pathfinder && pathfinder.enabled)
+        {
+            pathfinder.destination = destination.position;
+            timer = -1;
+        }
+        //reached current patrol node: take a break there
+        else if (timer == -1)
+        {
+            AIPatrolPoint patrolPoint = patrolPoints[currPatrolPoint].GetComponent<AIPatrolPoint>();
+            timer = patrolPoint.stopTime;
+        }
+        else
+        {
+            //at current patrol node: keep waiting
+            timer -= updateInterval;
+            //enought time passed: proceed to next patrol point
+            if (timer <= 0)
+            {
+                currPatrolPoint = (currPatrolPoint + 1) % patrolPoints.Length;
+                Idle();
+            }
+            //face patrol point direction if needed
+            AIPatrolPoint patrolPoint = patrolPoints[currPatrolPoint].GetComponent<AIPatrolPoint>();
+            if (patrolPoint && patrolPoint.faceDirection)
+            {
+                transform.rotation = patrolPoint.transform.rotation;
+            }
+        }
+        investigateSoundPlayed = false;
+        myBubble.StopInvestigating();
+    }
+
+    /// <summary>
+    /// updates based on investigate state
+    /// </summary>
+    void OnInvestigateUpdate(bool closeEnough)
+    {
+        //haven't gotten to the point we want to investigate: just keep going
+        if (!closeEnough && pathfinder && pathfinder.enabled)
+        {
+            pathfinder.destination = destination.position;
+        }
+        //reached point we want to investigate: switch states to INVESTIGATING
+        else
+        {
+            if (pathfinder && pathfinder.enabled)
+                pathfinder.destination = transform.position;
+            state = AIState.INVESTIGATING;
+            animator.SetTrigger("Investigate");
+        }
+
+        //manages playing the "hmm?" sound
+        myBubble.Investigating();
+        if (!investigateSoundPlayed)
+        {
+            investigateSoundPlayed = true;
+            if (timeSinceLastOnInvestigate > 2)
+            {
+                onInvestigate.Post(gameObject);
+                timeSinceLastOnInvestigate = 0;
+            }
+        }
+    }
+
+    /// <summary>
+    /// updates based on investigating state
+    /// </summary>
+    void OnInvestigatingUpdate()
+    {
+        timer -= updateInterval;
+        //finshed investigating the point: switch to INTERACT if we have something in queue, otherwise IDLE
+        if (timer <= 0f)
+        {
+            CheckInteractQueue();
+            wwiseComponent?.GiveUp();
+        }
+
+        //haven't finished investigating the point: manage playing the "hmm?" sound
+        else
+        {
+            myBubble.Investigating();
+            if (!investigateSoundPlayed)
+            {
+                investigateSoundPlayed = true;
+                if (timeSinceLastOnInvestigate > 2)
+                {
+                    onInvestigate.Post(gameObject);
+                    timeSinceLastOnInvestigate = 0;
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// updates based on interact state
+    /// </summary>
+    void OnInteractUpdate(bool closeEnough)
+    {
+        //haven't reached what we want to interact with yet: keep going
+        if (!closeEnough && pathfinder && pathfinder.enabled)
+        {
+            pathfinder.destination = destination.position;
+        }
+
+        //reached point:
+        else
+        {
+            if (pathfinder && pathfinder.enabled)
+                pathfinder.destination = transform.position;
+            if (!reachedInteractable)
+                wwiseComponent?.Fixing();
+            reachedInteractable = true;
+            //still haven't interacted with it for long enough: keep interacting
+            if (timer >= 0 && thingsToInteractWith.Peek().NeedsInteraction())
+            {
+                timer -= updateInterval;
+                //TODO: call interactable.AIInteracting(float progress)
+            }
+            //finished interacting with current interactable: fix it, dequeue it, then either move to next interactable in queue or IDLE if nothing left to interact with
+            else
+            {
+                IAIInteractable interactable = thingsToInteractWith.Dequeue();
+                if (interactable.NeedsInteraction())
+                    interactable.AIFinishInteract(this);
+                CheckInteractQueue();
+            }
+        }
+        myBubble.StopInvestigating();
+        investigateSoundPlayed = false;
+    }
+
+    /// <summary>
+    /// updates based on chase state
+    /// </summary>
+    void OnChaseUpdate(bool closeEnough, bool closeToTarget)
+    {
+        //haven't reached player: keep going
+        if (!closeToTarget && !closeEnough && pathfinder)
+        {
+            if (chaseBehavior != ChaseBehaviors.SEQUENCE)
+                pathfinder.destination = destination.position;
+        }
+        //unable to reach player: give up
+        else if (!closeToTarget && pathfinder)
+        {
+            LosePlayer(Player.current);
+        }
+        //throw shit at player if applicable
+        if (thrower)
+        {
+            //new WaitForSeconds(2.0f);
+            timer -= updateInterval;
+            if (timer <= 0)
+            {
+                timer = throwWaitTime;
+                thrower.Throw(Player.current.AISpotPoint.position);
+            }
+
+        }
+        investigateSoundPlayed = false;
+        myBubble.StopInvestigating();
+    }
+
+    /// <summary>
+    /// runs when a state is switched off to a different state
+    /// </summary>
+    void OnStateExit(AIState state)
+    {
+
+    }
+
+    /// <summary>
+    /// interacts with the next object in the interact queue if there's something there, else idles
+    /// </summary>
+    void CheckInteractQueue()
+    {
+        if (thingsToInteractWith.Count > 0)
+        {
+            InteractWithNextInQueue();
+        }
+        else
+        {
+            Idle();
+        }
+        reachedInteractable = false;
+    }
+
+    /// <summary>
+    /// interacts with the next object in the interact queue
+    /// </summary>
+    void InteractWithNextInQueue()
+    {
+        IAIInteractable newInteractable = thingsToInteractWith.Peek();
+        timer = newInteractable.AIInteractTime() * interactSpeedMultiplier;
+        destination = (newInteractable as MonoBehaviour).transform;
+        stoppedTime = 0f;
+        state = AIState.INTERACT;
+    }
+
+    private void OnDestroy()
+    {
+        activeAgents.Remove(this);
     }
 
 #if UNITY_EDITOR
 
     private void OnDrawGizmos()
     {
-        if (currState != null && currState.location)
+        if (destination)
         {
-            switch (currState.state)
+            switch (state)
             {
                 case AIState.IDLE:
                     Gizmos.color = Color.white;
@@ -629,7 +764,7 @@ public class AIAgent : MonoBehaviour
                     Gizmos.color = Color.cyan;
                     break;
             }
-            Gizmos.DrawLine(transform.position, currState.location.position);
+            Gizmos.DrawLine(transform.position, destination.position);
         }
     }
 

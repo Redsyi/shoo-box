@@ -21,7 +21,7 @@ public class AIRotateInPlace : MonoBehaviour
 
     private void Update()
     {
-        if(agent.currState.state == AIState.IDLE && (agent.transform.position - agent.currState.location.position).sqrMagnitude < 0.4f)
+        if(agent.state == AIState.IDLE && (agent.transform.position - agent.destination.position).sqrMagnitude < 0.4f)
         {
             //print("Should be rotating");
             agent.transform.rotation = currDirection.rotation;

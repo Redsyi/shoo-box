@@ -125,7 +125,7 @@ public class AIVision : MonoBehaviour
                 }
 
                 //lose the player if line of sight became blocked
-                else if (ai.currState.state == AIState.CHASE)
+                else if (ai.state == AIState.CHASE)
                     ai.LosePlayer(player);
             }
         }
@@ -137,7 +137,7 @@ public class AIVision : MonoBehaviour
         if (player != null)
         {
             playerInVision = false;
-            if (ai.currState.state == AIState.CHASE)
+            if (ai.state == AIState.CHASE)
             {
                 ai.LosePlayer(player);
             }

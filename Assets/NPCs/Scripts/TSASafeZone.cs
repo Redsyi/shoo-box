@@ -36,7 +36,7 @@ public class TSASafeZone : MonoBehaviour
             //throw any agents investigating the alert off the scent
             foreach (AIAgent AI in activeAgents)
             {
-                if (AI && AI.currState.state == AIState.INVESTIGATE && AI.currState.location == alert.transform)
+                if (AI && AI.state == AIState.INVESTIGATE && AI.destination == alert.transform)
                 {
                     AI.Investigate(alert.transform.position, 1.5f);
                 }
@@ -63,7 +63,7 @@ public class TSASafeZone : MonoBehaviour
             //resets the alert timer on alerts in the zone, IF an ai hasn't started interacting with it yet
             foreach (AIAgent AI in activeAgents)
             {
-                if (AI && AI.currState.state == AIState.INTERACT && AI.currState.location == alert.transform)
+                if (AI && AI.state == AIState.INTERACT && AI.destination == alert.transform)
                 {
                     return;
                 }

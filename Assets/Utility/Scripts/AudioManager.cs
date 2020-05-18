@@ -54,7 +54,7 @@ public class AudioManager : MonoBehaviour
         {
             foreach (AIAgent agent in registeredNPCs)
             {
-                if (agent && agent.currState.state == AIState.CHASE)
+                if (agent && agent.state == AIState.CHASE)
                     return true;
             }
         }

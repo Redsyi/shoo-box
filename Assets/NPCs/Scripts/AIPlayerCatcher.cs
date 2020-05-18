@@ -11,7 +11,7 @@ public class AIPlayerCatcher : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Player player = other.GetComponentInParent<Player>();
-        if (agent.currState.state == AIState.CHASE && player != null)
+        if (agent.state == AIState.CHASE && player != null)
         {
             agent.CatchPlayer(player);
         }
