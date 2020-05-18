@@ -44,7 +44,7 @@ public class AIAgent : MonoBehaviour
     public bool debug;
 
     public ChaseBehaviors chaseBehavior;
-    [HideInInspector] public AIInterest[] chaseBroadcastInterests;
+    public AIInterest[] chaseBroadcastInterests;
     [HideInInspector] public ScriptedSequence chaseOverrideSequence;
 
 
@@ -85,6 +85,7 @@ public class AIAgent : MonoBehaviour
     private ShoeSightType originalSightColoring;    //original sight coloring, helps us know not to change to red if we weren't originally red
     private bool investigateSoundPlayed;
     private float _spotProgress;
+    AIVision vision;
 
     /// <summary>
     /// clamped value from 0..1 representing how "spotted" the player is by this agent
@@ -140,6 +141,7 @@ public class AIAgent : MonoBehaviour
         activeAgents.Add(this);
         AudioManager.RegisterAgent(this);
         StartCoroutine(UpdateState());
+        vision = GetComponentInChildren<AIVision>();
     }
 
     /// <summary>
@@ -334,8 +336,10 @@ public class AIAgent : MonoBehaviour
     void UpdatePathfinder()
     {
         //manages npc speed depending on state
+        bool inGoodSightDistance = (vision && state == AIState.CHASE && chaseBehavior == ChaseBehaviors.SUMMON && Utilities.Flatten(transform.position - Player.current.transform.position).sqrMagnitude < Mathf.Pow(vision.radius * 0.3f, 2));
+
         if (pathfinder)
-            pathfinder.speed = (stunned ? 0f : (state == AIState.CHASE || state == AIState.INTERACT ? runSpeed : walkSpeed));
+            pathfinder.speed = (stunned || inGoodSightDistance ? 0f : (state == AIState.CHASE || state == AIState.INTERACT ? runSpeed : walkSpeed));
     }
 
     void UpdateAnimationState()
@@ -683,6 +687,12 @@ public class AIAgent : MonoBehaviour
         {
             LosePlayer(Player.current);
         }
+
+        if (chaseBehavior == ChaseBehaviors.SUMMON)
+        {
+            SummonAI(Player.current.transform.position, 2.5f, true, chaseBroadcastInterests);
+        }
+
         //throw shit at player if applicable
         if (thrower)
         {

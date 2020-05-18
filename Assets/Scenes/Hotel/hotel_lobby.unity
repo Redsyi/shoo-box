@@ -5333,6 +5333,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 704f18e77faabe5409b40fb591076885, type: 2}
+    - target: {fileID: 4548335996074239775, guid: 400d7b0c55a87e54f965dbbf1b04d0b4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5567573035820658164, guid: 400d7b0c55a87e54f965dbbf1b04d0b4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5400,6 +5405,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5567573035820658166, guid: 400d7b0c55a87e54f965dbbf1b04d0b4,
         type: 3}
+      propertyPath: chaseBroadcastInterests.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567573035820658166, guid: 400d7b0c55a87e54f965dbbf1b04d0b4,
+        type: 3}
       propertyPath: interests.Array.data[0]
       value: 4
       objectReference: {fileID: 0}
@@ -5422,6 +5432,26 @@ PrefabInstance:
         type: 3}
       propertyPath: gameOverName
       value: a hotel guest
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567573035820658166, guid: 400d7b0c55a87e54f965dbbf1b04d0b4,
+        type: 3}
+      propertyPath: chaseBehavior
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567573035820658166, guid: 400d7b0c55a87e54f965dbbf1b04d0b4,
+        type: 3}
+      propertyPath: chaseBroadcastInterests.Array.data[0]
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567573035820658166, guid: 400d7b0c55a87e54f965dbbf1b04d0b4,
+        type: 3}
+      propertyPath: chaseBroadcastInterests.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567573035820658166, guid: 400d7b0c55a87e54f965dbbf1b04d0b4,
+        type: 3}
+      propertyPath: chaseBroadcastInterests.Array.data[2]
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5567573036701778410, guid: 400d7b0c55a87e54f965dbbf1b04d0b4,
         type: 3}
@@ -5556,6 +5586,17 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1591268001}
+        m_MethodName: SetCanChangeLevel
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
   onStealEnd:
     m_PersistentCalls:
@@ -12422,7 +12463,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 720c6c4eaaf01eb4ea0d812689ab8a22, type: 2}
+      objectReference: {fileID: 2100000, guid: f302137aeedfad64ca8e1771d0a090d7, type: 2}
+    - target: {fileID: 4548335996074239775, guid: 400d7b0c55a87e54f965dbbf1b04d0b4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5567573035820658164, guid: 400d7b0c55a87e54f965dbbf1b04d0b4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12490,6 +12536,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5567573035820658166, guid: 400d7b0c55a87e54f965dbbf1b04d0b4,
         type: 3}
+      propertyPath: chaseBroadcastInterests.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567573035820658166, guid: 400d7b0c55a87e54f965dbbf1b04d0b4,
+        type: 3}
       propertyPath: interests.Array.data[0]
       value: 15
       objectReference: {fileID: 0}
@@ -12507,6 +12558,21 @@ PrefabInstance:
         type: 3}
       propertyPath: gameOverName
       value: a hotel guest
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567573035820658166, guid: 400d7b0c55a87e54f965dbbf1b04d0b4,
+        type: 3}
+      propertyPath: chaseBehavior
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567573035820658166, guid: 400d7b0c55a87e54f965dbbf1b04d0b4,
+        type: 3}
+      propertyPath: chaseBroadcastInterests.Array.data[1]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567573035820658166, guid: 400d7b0c55a87e54f965dbbf1b04d0b4,
+        type: 3}
+      propertyPath: chaseBroadcastInterests.Array.data[2]
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5567573036701778410, guid: 400d7b0c55a87e54f965dbbf1b04d0b4,
         type: 3}
@@ -12997,7 +13063,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destLevel: {fileID: 11400000, guid: bc7e3cd565d8c9143b1f48375f27e9b9, type: 2}
-  canChangeLevels: 1
+  canChangeLevels: 0
   lockChange: 0
   delay: 0
   saveProgress: 1
@@ -13877,6 +13943,12 @@ Rigidbody:
   m_CorrespondingSourceObject: {fileID: 8833728592767341092, guid: e48a9284acc2bc747aef62f5e5ba66bb,
     type: 3}
   m_PrefabInstance: {fileID: 1745676097}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1749185848 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -3330053268038453995, guid: ec32b3d1cef97834b85320cd60dffc52,
+    type: 3}
+  m_PrefabInstance: {fileID: 6715869855345875758}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1750535115
 PrefabInstance:
@@ -17095,12 +17167,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2043308249}
   m_Mesh: {fileID: -8061540986286507860, guid: 8b770dc3337f9d24fb700c5d4d88fe9e, type: 3}
---- !u!4 &2056571789 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -3657392252390964406, guid: ec32b3d1cef97834b85320cd60dffc52,
-    type: 3}
-  m_PrefabInstance: {fileID: 6715869855345875758}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2057107759
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17533,13 +17599,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2074632958}
-  m_LocalRotation: {x: -0, y: -0.00092504604, z: -0, w: 0.9999996}
-  m_LocalPosition: {x: 43.254284, y: -14.9158745, z: -27.455711}
-  m_LocalScale: {x: 0.15319997, y: 0.16040634, z: 0.15319997}
+  m_LocalRotation: {x: -0.00000058970176, y: -0.000925046, z: -9.2556726e-11, w: 0.9999996}
+  m_LocalPosition: {x: 43.25459, y: -15.255891, z: -27.454643}
+  m_LocalScale: {x: 0.15319996, y: 0.16040632, z: 0.15319996}
   m_Children:
   - {fileID: 928835522}
   - {fileID: 871095764}
-  m_Father: {fileID: 2056571789}
+  m_Father: {fileID: 1749185848}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2076438412
@@ -19426,9 +19492,6 @@ MonoBehaviour:
   - {fileID: 1847713425}
   interests: 0d000000
   deaf: 0
-  chaseOverride:
-    m_PersistentCalls:
-      m_Calls: []
   stopDist: 1
   doorOpenAnimTrigger: OpenDoor
   walkSpeed: 2
@@ -19452,6 +19515,10 @@ MonoBehaviour:
       type: 2}
   gameOverName: the doorman
   debug: 0
+  chaseBehavior: 0
+  chaseBroadcastInterests: 
+  chaseOverrideSequence: {fileID: 0}
+  destination: {fileID: 0}
   stunned: 0
   investigatingPlayer: 0
 --- !u!195 &1093112628044216073

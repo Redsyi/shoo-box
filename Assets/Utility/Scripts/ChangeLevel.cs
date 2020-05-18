@@ -37,4 +37,9 @@ public class ChangeLevel : MonoBehaviour
         CheckpointManager.currCheckpoint = 0;
         LevelBridge.BridgeTo(destLevel.cutsceneBuildName, destLevel.cutsceneFlavorText);
     }
+
+    public void SetCanChangeLevel(bool value)
+    {
+        canChangeLevels = value;
+    }
 }

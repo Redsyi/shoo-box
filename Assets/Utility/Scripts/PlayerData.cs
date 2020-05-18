@@ -101,7 +101,6 @@ public class PlayerData : MonoBehaviour
     {
         get
         {
-            print($"{sensitivityScale}, {normalizedRotateSensitivity}, {Mathf.Lerp(sensitivityScale.x, sensitivityScale.y, normalizedRotateSensitivity)}");
             return Mathf.Lerp(sensitivityScale.x, sensitivityScale.y, normalizedRotateSensitivity);
         }
         set
