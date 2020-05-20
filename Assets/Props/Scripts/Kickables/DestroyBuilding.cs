@@ -11,6 +11,7 @@ public class DestroyBuilding : MonoBehaviour, IKickable
     public float toGround;
     public ParticleSystem dust;
     public float speed;
+    
 
     [Header("Debug")]
     public int viewPosition = -1;
@@ -19,15 +20,17 @@ public class DestroyBuilding : MonoBehaviour, IKickable
     private float newY;
     private int numKicks = 0;
     private int numDestroys = 0;
+    private float limit = -11f;
    
     public void OnKick(GameObject kicker)
     {
         if (numKicks < positions.Length)
         {
-         
+            
             newY = positions[numKicks++];
             StartCoroutine(Destroy());
         }
+            
     }
 
     /// <summary>
@@ -47,6 +50,8 @@ public class DestroyBuilding : MonoBehaviour, IKickable
             Player.ControllerRumble(RumbleStrength.MEDIUM, 0.1f);
             yield return null;
         }
+        if (transform.position.y < limit)
+            gameObject.SetActive(false);
         yield return new WaitForSeconds(1.5f);
         numDestroys--;
         if (numDestroys == 0)
