@@ -8,19 +8,23 @@ using UnityEngine.UI;
 /// </summary>
 public class UINPCBubble : MonoBehaviour
 {
+    [Header("References")]
     public Transform worldAnchor;
     public GameObject spottedBubble;
     public GameObject investigateBubble;
     public RectTransform investigateBG;
+    public GameObject radioBubbles;
+    public GameObject stealthMeter;
+    public Image stealthProgressMeter;
+    public GameObject investigateArrow;
+
+    [Header("Stats")]
     public Vector2 investigateOffset;
     public Vector2 offset;
     public Vector2 investigateBounds;
     private bool spotting;
     private bool investigating => (shouldInvestigate || stealthProgress > 0) && !spotting;
-    public GameObject stealthMeter;
-    public Image stealthProgressMeter;
     private float investigateAngleOffset;
-    public GameObject investigateArrow;
     private float _stealthProgress;
     public float stealthProgress
     {
@@ -33,6 +37,13 @@ public class UINPCBubble : MonoBehaviour
             _stealthProgress = value;
             stealthMeter.SetActive(value > 0);
             stealthProgressMeter.fillAmount = value;
+        }
+    }
+    public bool useRadioBubbles
+    {
+        set
+        {
+            radioBubbles.SetActive(value);
         }
     }
     private bool shouldInvestigate;

@@ -128,6 +128,7 @@ public class AIAgent : MonoBehaviour
             Debug.LogError("AIAgent couldn't find bubble canvas");
         myBubble = Instantiate(bubblePrefab, bubbleCanvas.transform);
         myBubble.worldAnchor = bubbleAnchor;
+        myBubble.useRadioBubbles = chaseBehavior == ChaseBehaviors.SUMMON;
 
         StartCoroutine(CheckPos());
         wwiseComponent = GetComponent<AKEventNPC>();
