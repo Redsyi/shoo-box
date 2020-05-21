@@ -22,7 +22,7 @@ public class JibbitAcquiredPopup : MonoBehaviour
 
     public void Acquire(Jibbit jibbit)
     {
-        text.text = $"Collectable acquired: {jibbit.displayName}!";
+        text.text = $"Shoe-dad acquired: {jibbit.displayName}!";
         animator.SetTrigger("Collect");
     }
 }

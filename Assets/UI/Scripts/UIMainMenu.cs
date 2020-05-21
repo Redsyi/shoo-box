@@ -24,7 +24,10 @@ public class UIMainMenu : MonoBehaviour
     public GameObject playButton;
     public GameObject jibbzButton;
     public GameObject optionsButton;
-    public Text playButtonText;
+    //public Text playButtonText;
+    public GameObject continueButton;
+    public GameObject firstPlayButton;
+    public GameObject newGameButton;
     [Header("Play Group")]
     public CanvasGroup playGroup;
     public GameObject playGroupDefaultSelected;
@@ -61,7 +64,10 @@ public class UIMainMenu : MonoBehaviour
         PlayerData.CheckLoadedData();
         if (PlayerData.currCheckpoint != 0 || PlayerData.currLevel != PlayerData.defaultLevel.saveID)
         {
-            playButtonText.text = "Continue";
+            //playButtonText.text = "Continue";
+            continueButton.SetActive(true);
+            firstPlayButton.SetActive(false);
+            newGameButton.SetActive(true);
         }
     }
 
