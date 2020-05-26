@@ -24,7 +24,6 @@ public class UIMainMenu : MonoBehaviour
     public GameObject playButton;
     public GameObject jibbzButton;
     public GameObject optionsButton;
-    //public Text playButtonText;
     public GameObject continueButton;
     public GameObject firstPlayButton;
     public GameObject newGameButton;
@@ -64,7 +63,8 @@ public class UIMainMenu : MonoBehaviour
         PlayerData.CheckLoadedData();
         if (PlayerData.currCheckpoint != 0 || PlayerData.currLevel != PlayerData.defaultLevel.saveID)
         {
-            //playButtonText.text = "Continue";
+            //The game has been played before, so the continue button appears
+            //and the first playthrough button is replaced with the new game button
             continueButton.SetActive(true);
             firstPlayButton.SetActive(false);
             newGameButton.SetActive(true);
@@ -92,7 +92,7 @@ public class UIMainMenu : MonoBehaviour
     /// </summary>
     public void ContinueButton()
     {
-        if (!animating && state == MainMenuState.MAIN)
+        if (!animating && state == MainMenuState.PLAY)
         {
             PlayerData.CheckLoadedData();
             CheckpointManager.currCheckpoint = PlayerData.currCheckpoint;
