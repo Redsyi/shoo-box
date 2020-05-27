@@ -233,6 +233,7 @@ public class UITutorialManager : MonoBehaviour
 
     IEnumerator ShowerSwitch()
     {
+        toiletDummyFixable.AIFinishInteract(maid);
         yield return new WaitForSeconds(1.6f);
         Destroy(toiletDummyFixable.gameObject);
     }
