@@ -33,7 +33,7 @@ public class CityPlayerHelper : MonoBehaviour
             healthBar.fillAmount = Mathf.Clamp01(HP / maxHP);
             if (HP <= 0)
             {
-                LevelBridge.Reload((source == DamageSource.HELICOPTER ? "Tip: A well-flung sandal can take down a helicopter" : "Tip: Boots are especially effective versus tanks"));
+                LevelBridge.Reload((source == DamageSource.HELICOPTER ? "Tip: Well-flung sandals can take down helicopters" : "Tip: Boots are especially effective versus tanks"));
             }
         }
     }
