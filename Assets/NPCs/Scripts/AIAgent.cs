@@ -22,6 +22,7 @@ public class AIAgent : MonoBehaviour
     public bool deaf;
     public float stopDist = 1f;
     public string doorOpenAnimTrigger = "OpenDoor";
+    public int startingPatrolPoint = 0;
 
     [Header("Stats")]
     public float walkSpeed;
@@ -121,6 +122,7 @@ public class AIAgent : MonoBehaviour
     {
         blindAll = false;
         thingsToInteractWith = new Queue<IAIInteractable>();
+        currPatrolPoint = startingPatrolPoint;
         Idle();
         
         GameObject bubbleCanvas = GameObject.FindGameObjectWithTag("NPC Bubble Canvas");
@@ -203,7 +205,10 @@ public class AIAgent : MonoBehaviour
     public void Idle()
     {
         if (state != AIState.IDLE || patrolPoints.Length > 1 || !destination)
+        {
             state = AIState.IDLE;
+            OnStateEnter(AIState.IDLE);
+        }
     }
 
     /// <summary>
