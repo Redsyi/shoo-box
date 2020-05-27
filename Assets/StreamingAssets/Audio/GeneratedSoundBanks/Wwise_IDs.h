@@ -15,6 +15,7 @@ namespace AK
     {
         static const AkUniqueID AI_EXCLAMATION = 3757163913U;
         static const AkUniqueID AI_EXCLAMATION_MALE = 1905840283U;
+        static const AkUniqueID AI_MAID_CLEANING = 3626494691U;
         static const AkUniqueID AI_QUESTION = 1201896862U;
         static const AkUniqueID AI_QUESTION_MALE = 2287570078U;
         static const AkUniqueID AIRPORT_AMBIENCE_CONVEYORBELT_01 = 4198451418U;
@@ -76,6 +77,7 @@ namespace AK
         static const AkUniqueID PLAYER_WALK_BAREFOOT = 1367845377U;
         static const AkUniqueID PLAYER_WALK_BOOTS = 2951788940U;
         static const AkUniqueID PLAYER_WALK_SANDALS = 472219199U;
+        static const AkUniqueID UI_ACHIEVEMENT = 2686482007U;
         static const AkUniqueID UI_CLOSE = 2519197294U;
         static const AkUniqueID UI_CONFIRM = 216067002U;
         static const AkUniqueID UI_HOVER = 2118900976U;

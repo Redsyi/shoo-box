@@ -41,6 +41,7 @@
 			<IncludedEvents>
 				<Event Id="2343448698" Name="Music_Level_Bridge_Stop_Music" ObjectPath="\Events\Music\Music_Level_Bridge_Stop_Music" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="1598298728" Name="Music_Menu" ObjectPath="\Events\Music\Music_Menu" DurationType="Infinite"/>
+				<Event Id="2686482007" Name="UI_Achievement" ObjectPath="\Events\UI\UI_Achievement" DurationType="OneShot" DurationMin="0.495996" DurationMax="0.495996"/>
 				<Event Id="2519197294" Name="UI_Close" ObjectPath="\Events\UI\UI_Close" DurationType="OneShot" DurationMin="0.248427" DurationMax="0.248427"/>
 				<Event Id="216067002" Name="UI_Confirm" ObjectPath="\Events\UI\UI_Confirm" DurationType="OneShot" DurationMin="1.231437" DurationMax="1.231437"/>
 				<Event Id="2118900976" Name="UI_Hover" ObjectPath="\Events\UI\UI_Hover" DurationType="OneShot" DurationMin="0.313207" DurationMax="0.313207"/>
@@ -74,7 +75,11 @@
 				</File>
 				<File Id="361414907" Language="SFX">
 					<ShortName>UI_Hover_New.wav</ShortName>
-					<Path>SFX/UI_Hover_New_CB55FD00.wem</Path>
+					<Path>SFX/UI_Hover_New_8CD2408A.wem</Path>
+				</File>
+				<File Id="375628852" Language="SFX">
+					<ShortName>UI_Achievement.wav</ShortName>
+					<Path>SFX/UI_Achievement_B2FA9C0A.wem</Path>
 				</File>
 				<File Id="454841983" Language="SFX">
 					<ShortName>UI_Shoe Tag Swap.wav</ShortName>
@@ -153,10 +158,6 @@
 					<ShortName>Bare Footsteps.wav</ShortName>
 					<Path>SFX/Bare Footsteps_F244207D.wem</Path>
 				</File>
-				<File Id="102166803" Language="SFX">
-					<ShortName>Shoe's Revenge.wav</ShortName>
-					<Path>SFX/Shoe's Revenge_D79FB2B7.wem</Path>
-				</File>
 				<File Id="112695585" Language="SFX">
 					<ShortName>Menu Open.wav</ShortName>
 					<Path>SFX/Menu Open_90A83339.wem</Path>
@@ -211,7 +212,7 @@
 				</File>
 				<File Id="361414907" Language="SFX">
 					<ShortName>UI_Hover_New.wav</ShortName>
-					<Path>SFX/UI_Hover_New_CB55FD00.wem</Path>
+					<Path>SFX/UI_Hover_New_8CD2408A.wem</Path>
 				</File>
 				<File Id="366139683" Language="SFX">
 					<ShortName>Boots_Concrete_3.wav</ShortName>
@@ -296,6 +297,10 @@
 				<File Id="971163192" Language="SFX">
 					<ShortName>Bare Footsteps.wav</ShortName>
 					<Path>SFX/Bare Footsteps_B316D79A.wem</Path>
+				</File>
+				<File Id="1040140105" Language="SFX">
+					<ShortName>Shoe's Revenge Remastered.wav</ShortName>
+					<Path>SFX/Shoe's Revenge Remastered_D79FB2B7.wem</Path>
 				</File>
 				<File Id="1048682405" Language="SFX">
 					<ShortName>Boots_Concrete_7.wav</ShortName>
@@ -420,7 +425,7 @@
 				</File>
 				<File Id="361414907" Language="SFX">
 					<ShortName>UI_Hover_New.wav</ShortName>
-					<Path>SFX/UI_Hover_New_CB55FD00.wem</Path>
+					<Path>SFX/UI_Hover_New_8CD2408A.wem</Path>
 				</File>
 				<File Id="366139683" Language="SFX">
 					<ShortName>Boots_Concrete_3.wav</ShortName>
@@ -587,11 +592,12 @@
 			<IncludedEvents>
 				<Event Id="3757163913" Name="AI_Exclamation" ObjectPath="\Events\AI\AI_Exclamation" DurationType="OneShot" DurationMin="1.161521" DurationMax="1.161521"/>
 				<Event Id="1905840283" Name="AI_Exclamation_Male" ObjectPath="\Events\AI\AI_Exclamation_Male" DurationType="OneShot" DurationMin="1.161521" DurationMax="1.161521"/>
+				<Event Id="3626494691" Name="AI_Maid_Cleaning" ObjectPath="\Events\AI\AI_Maid_Cleaning" DurationType="Infinite"/>
 				<Event Id="1201896862" Name="AI_Question" ObjectPath="\Events\AI\AI_Question" DurationType="OneShot" DurationMin="1.161521" DurationMax="1.161521"/>
 				<Event Id="2287570078" Name="AI_Question_Male" ObjectPath="\Events\AI\AI_Question_Male" DurationType="OneShot" DurationMin="1.161521" DurationMax="1.161521"/>
 				<Event Id="1861298689" Name="Hotel_Ambience_Lobby" ObjectPath="\Events\Hotel\Hotel_Ambience_Lobby" DurationType="Infinite"/>
 				<Event Id="3727140126" Name="Hotel_Ambience_Room" ObjectPath="\Events\Hotel\Hotel_Ambience_Room" DurationType="Infinite"/>
-				<Event Id="4049972243" Name="Hotel_Door_Open" ObjectPath="\Events\Hotel\Hotel_Door_Open" DurationType="OneShot" DurationMin="1.172187" DurationMax="1.172187"/>
+				<Event Id="4049972243" Name="Hotel_Door_Open" ObjectPath="\Events\Hotel\Hotel_Door_Open" DurationType="OneShot" DurationMin="0.614870" DurationMax="0.614870"/>
 				<Event Id="142307676" Name="Hotel_Door_Slam" ObjectPath="\Events\Hotel\Hotel_Door_Slam" DurationType="OneShot" DurationMin="1.172187" DurationMax="1.172187"/>
 				<Event Id="442557581" Name="Hotel_Door_Squeak" ObjectPath="\Events\Hotel\Hotel_Door_Squeak" DurationType="OneShot" DurationMin="0.398979" DurationMax="0.398979"/>
 				<Event Id="378060898" Name="Hotel_ElevatorDing" ObjectPath="\Events\Hotel\Hotel_ElevatorDing" DurationType="OneShot" DurationMin="3.892188" DurationMax="3.892188"/>
@@ -640,10 +646,6 @@
 					<ShortName>Bare Footsteps.wav</ShortName>
 					<Path>SFX/Bare Footsteps_F244207D.wem</Path>
 				</File>
-				<File Id="102166803" Language="SFX">
-					<ShortName>Shoe's Revenge.wav</ShortName>
-					<Path>SFX/Shoe's Revenge_D79FB2B7.wem</Path>
-				</File>
 				<File Id="112695585" Language="SFX">
 					<ShortName>Menu Open.wav</ShortName>
 					<Path>SFX/Menu Open_90A83339.wem</Path>
@@ -667,6 +669,10 @@
 				<File Id="240057628" Language="SFX">
 					<ShortName>UI_ShoeSight.wav</ShortName>
 					<Path>SFX/UI_ShoeSight_C8F54E0E.wem</Path>
+				</File>
+				<File Id="249427342" Language="SFX">
+					<ShortName>Hotel_Door_Open_New.wav</ShortName>
+					<Path>SFX/Hotel_Door_Open_New_18288274.wem</Path>
 				</File>
 				<File Id="249889442" Language="SFX">
 					<ShortName>Boots_Concrete_1.wav</ShortName>
@@ -694,7 +700,7 @@
 				</File>
 				<File Id="361414907" Language="SFX">
 					<ShortName>UI_Hover_New.wav</ShortName>
-					<Path>SFX/UI_Hover_New_CB55FD00.wem</Path>
+					<Path>SFX/UI_Hover_New_8CD2408A.wem</Path>
 				</File>
 				<File Id="366139683" Language="SFX">
 					<ShortName>Boots_Concrete_3.wav</ShortName>
@@ -756,10 +762,6 @@
 					<ShortName>Hotel_Lobby.wav</ShortName>
 					<Path>SFX/Hotel_Lobby_D79FB2B7.wem</Path>
 				</File>
-				<File Id="688545077" Language="SFX">
-					<ShortName>Hotel_Door_Open.wav</ShortName>
-					<Path>SFX/Hotel_Door_Open_10C4C929.wem</Path>
-				</File>
 				<File Id="692739449" Language="SFX">
 					<ShortName>Bare Footsteps.wav</ShortName>
 					<Path>SFX/Bare Footsteps_6A2AD69F.wem</Path>
@@ -792,6 +794,10 @@
 					<ShortName>AI_Exclamation.wav</ShortName>
 					<Path>SFX/AI_Exclamation_10C4C929.wem</Path>
 				</File>
+				<File Id="870557340" Language="SFX">
+					<ShortName>AI_Maid_Hotel_Cleaning.wav</ShortName>
+					<Path>SFX/AI_Maid_Hotel_Cleaning_D79FB2B7.wem</Path>
+				</File>
 				<File Id="885577297" Language="SFX">
 					<ShortName>UI_Close.wav</ShortName>
 					<Path>SFX/UI_Close_AFFC24AF.wem</Path>
@@ -819,6 +825,10 @@
 				<File Id="1028398700" Language="SFX">
 					<ShortName>General Object Fall.wav</ShortName>
 					<Path>SFX/General Object Fall_10C4C929.wem</Path>
+				</File>
+				<File Id="1040140105" Language="SFX">
+					<ShortName>Shoe's Revenge Remastered.wav</ShortName>
+					<Path>SFX/Shoe's Revenge Remastered_D79FB2B7.wem</Path>
 				</File>
 				<File Id="1048682405" Language="SFX">
 					<ShortName>Boots_Concrete_7.wav</ShortName>
@@ -925,7 +935,7 @@
 				</File>
 				<File Id="361414907" Language="SFX">
 					<ShortName>UI_Hover_New.wav</ShortName>
-					<Path>SFX/UI_Hover_New_CB55FD00.wem</Path>
+					<Path>SFX/UI_Hover_New_8CD2408A.wem</Path>
 				</File>
 				<File Id="397666653" Language="SFX">
 					<ShortName>City_Car_Honking_3.wav</ShortName>

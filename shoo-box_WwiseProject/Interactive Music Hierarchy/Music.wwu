@@ -469,6 +469,13 @@
 					</Playlist>
 				</MusicPlaylistContainer>
 				<MusicPlaylistContainer Name="Level Music" ID="{58DE4379-BD74-48C8-8E49-7DF2F88B5B96}" ShortID="130873318">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-3</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
@@ -480,7 +487,7 @@
 					<ChildrenList>
 						<MusicSegment Name="Shoe's Revenge" ID="{3D10F759-74C2-40DC-BE75-DB86CE0FED78}" ShortID="279652415">
 							<PropertyList>
-								<Property Name="EndPosition" Type="Real64" Value="158677.68707483"/>
+								<Property Name="EndPosition" Type="Real64" Value="317355.37414966"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -492,6 +499,13 @@
 							</ReferenceList>
 							<ChildrenList>
 								<MusicTrack Name="Shoe's Revenge" ID="{1B542587-818A-403C-A474-7C58614A736B}" ShortID="613876906">
+									<PropertyList>
+										<Property Name="Inclusion" Type="bool">
+											<ValueList>
+												<Value>False</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
@@ -501,6 +515,13 @@
 										<AudioFileSource Name="Shoe's Revenge" ID="{A2C36A8F-F8FF-479C-BAE6-A885BF2A3B38}" ShortID="102166803">
 											<Language>SFX</Language>
 											<AudioFile>Shoe's Revenge.wav</AudioFile>
+										</AudioFileSource>
+										<AudioFileSource Name="Shoe's Revenge Remastered" ID="{E9B32CA9-2B1C-4A09-BFAF-56A6C889E46E}" ShortID="48082838">
+											<Language>SFX</Language>
+											<AudioFile>Shoe's Revenge Remastered.wav</AudioFile>
+											<ConvertedFileIDList>
+												<File ID="1040140105"/>
+											</ConvertedFileIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<TransitionList>
@@ -521,6 +542,51 @@
 														<Property Name="FadeOutMode" Type="int16" Value="0"/>
 													</PropertyList>
 													<AudioSourceRef Name="Shoe's Revenge" ID="{A2C36A8F-F8FF-479C-BAE6-A885BF2A3B38}"/>
+												</MusicClip>
+												<MusicClip Name="Shoe's Revenge Remastered" ID="{C87D75DF-8A8C-4E38-88FA-8B4C7D7BDF84}">
+													<PropertyList>
+														<Property Name="EndTrimOffset" Type="Real64" Value="158677.68707483"/>
+														<Property Name="FadeInMode" Type="int16" Value="0"/>
+														<Property Name="FadeOutMode" Type="int16" Value="0"/>
+														<Property Name="PlayAt" Type="Real64" Value="158677.68707483"/>
+													</PropertyList>
+													<AudioSourceRef Name="Shoe's Revenge Remastered" ID="{E9B32CA9-2B1C-4A09-BFAF-56A6C889E46E}"/>
+												</MusicClip>
+											</ClipList>
+										</MusicTrackSequence>
+									</SequenceList>
+								</MusicTrack>
+								<MusicTrack Name="Shoe's Revenge Remastered" ID="{332DA71D-5B23-448E-AE28-8573A58E5F1D}" ShortID="789450517">
+									<ReferenceList>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Shoe's Revenge Remastered" ID="{070E363B-ABCA-4F20-A188-4499D49D2244}" ShortID="1040140105">
+											<Language>SFX</Language>
+											<AudioFile>Shoe's Revenge Remastered.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<TransitionList>
+										<MusicTransition Name="Root" ID="{19BFAF79-8293-412B-B497-898C969B6071}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList/>
+											<TransitionInfo/>
+										</MusicTransition>
+									</TransitionList>
+									<SequenceList>
+										<MusicTrackSequence Name="" ID="{1282F482-6C93-4D6C-A530-830A4FA6D98D}">
+											<ClipList>
+												<MusicClip Name="Shoe's Revenge Remastered" ID="{70D6EF2A-05AA-403A-A0AF-A629CC898CC0}">
+													<PropertyList>
+														<Property Name="EndTrimOffset" Type="Real64" Value="158677.68707483"/>
+														<Property Name="FadeInMode" Type="int16" Value="0"/>
+														<Property Name="FadeOutMode" Type="int16" Value="0"/>
+													</PropertyList>
+													<AudioSourceRef Name="Shoe's Revenge Remastered" ID="{070E363B-ABCA-4F20-A188-4499D49D2244}"/>
 												</MusicClip>
 											</ClipList>
 										</MusicTrackSequence>
