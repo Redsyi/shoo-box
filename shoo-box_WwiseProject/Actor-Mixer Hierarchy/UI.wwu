@@ -27,9 +27,13 @@
 									<Language>SFX</Language>
 									<AudioFile>UI_Click.wav</AudioFile>
 								</AudioFileSource>
+								<AudioFileSource Name="UI_Click_New" ID="{5FD7BB89-6493-414E-A606-9FB8F4979381}" ShortID="171747138">
+									<Language>SFX</Language>
+									<AudioFile>UI_Click_New.wav</AudioFile>
+								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="UI_Click" ID="{569D16F1-1018-4323-B465-57CC33BCB668}" Platform="Linked"/>
+								<ActiveSource Name="UI_Click_New" ID="{5FD7BB89-6493-414E-A606-9FB8F4979381}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="UI_Close" ID="{E86F7B26-BEA2-4D2C-932E-5301D071619C}" ShortID="576489801">
@@ -61,12 +65,17 @@
 							<PropertyList>
 								<Property Name="Lowpass" Type="int16">
 									<ValueList>
-										<Value>33</Value>
+										<Value>48</Value>
 									</ValueList>
 								</Property>
 								<Property Name="Pitch" Type="int32">
 									<ValueList>
 										<Value>200</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-6</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -88,9 +97,17 @@
 									<Language>SFX</Language>
 									<AudioFile>UI_Hover.wav</AudioFile>
 								</AudioFileSource>
+								<AudioFileSource Name="UI_Hover_New" ID="{B40E85D0-DBE4-4255-87B6-5B5BA1E6F60E}" ShortID="361414907">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.3515625"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>UI_Hover_New.wav</AudioFile>
+								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="UI_Hover" ID="{5737D6D0-94DD-47A3-A58D-E2D64B5875BB}" Platform="Linked"/>
+								<ActiveSource Name="UI_Hover_New" ID="{B40E85D0-DBE4-4255-87B6-5B5BA1E6F60E}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="UI_ObjectiveCheck" ID="{434E7915-2A14-42A2-B858-45F37B5F5A0A}" ShortID="809852972">
@@ -261,6 +278,25 @@
 							</ChildrenList>
 							<ActiveSourceList>
 								<ActiveSource Name="UI_ShoeSight" ID="{0DCB72B0-2E5E-400E-8B94-1BE49C4292C8}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="UI_Achievement" ID="{C4E3A844-1A79-4084-BBFA-8803DEF5ADB4}" ShortID="862095812">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="UI_Achievement" ID="{2DB50BEC-DDCD-48D4-BF93-D6FD26572C05}" ShortID="375628852">
+									<Language>SFX</Language>
+									<AudioFile>UI_Achievement.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="UI_Achievement" ID="{2DB50BEC-DDCD-48D4-BF93-D6FD26572C05}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>

@@ -31,7 +31,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 22178d79115b0b47a78389e1469b9d8a
     GuidInternal: 
-    m_lastTime: -8586131563794775808
+    m_lastTime: -8586110670414775808
     List:
     - name: Airport
       guid: 685580a00462b0419121f5f5c6db4e9e
@@ -92,7 +92,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: a10c1617807fb84a98fd030ab8f29867
     GuidInternal: 
-    m_lastTime: -8586140403844775808
+    m_lastTime: -8586110670414775808
     List:
     - name: AI_Exclamation
       guid: c1e470b0b671af4f932951d4ccd0581e
@@ -118,6 +118,18 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 1.161521
       minDuration: 1.161521
+    - name: AI_Maid_Cleaning
+      guid: 177f78e89ff90e469941d60089e06ef4
+      id: 3626494691
+      PathAndIcons:
+      - ElementName: AI
+        ObjectType: 12
+      - ElementName: AI_Maid_Cleaning
+        ObjectType: 3
+      Path: AI/AI_Maid_Cleaning
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: AI_Question
       guid: 9cca75a5c61d244aa41de011345dbcbb
       id: 1201896862
@@ -902,8 +914,20 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 8da93751e862e943b1a413eb176f964b
     GuidInternal: 
-    m_lastTime: -8586141048534775808
+    m_lastTime: -8586110670414775808
     List:
+    - name: UI_Achievement
+      guid: bd2dfa50ce88924bbb010a8568df81a8
+      id: 2686482007
+      PathAndIcons:
+      - ElementName: UI
+        ObjectType: 12
+      - ElementName: UI_Achievement
+        ObjectType: 3
+      Path: UI/UI_Achievement
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: UI_Close
       guid: d34117b033acb34eabb496d9c82d5689
       id: 2519197294
@@ -926,8 +950,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: UI/UI_Confirm
       maxAttenuation: 0
-      maxDuration: 3
-      minDuration: 3
+      maxDuration: 1.231437
+      minDuration: 1.231437
     - name: UI_Hover
       guid: ab1b9c393ce3084896e6740c09e89137
       id: 2118900976
@@ -938,8 +962,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: UI/UI_Hover
       maxAttenuation: 0
-      maxDuration: 0.152002
-      minDuration: 0.152002
+      maxDuration: 0.313207
+      minDuration: 0.313207
     - name: UI_ObjectiveCheck
       guid: 4b9df2a332ded84c8ba9edce2076df76
       id: 1708033489

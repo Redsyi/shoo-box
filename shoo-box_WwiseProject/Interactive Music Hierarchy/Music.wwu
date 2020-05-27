@@ -254,6 +254,13 @@
 							</ReferenceList>
 							<ChildrenList>
 								<MusicTrack Name="Shoobox Menu Music" ID="{345CBFC4-E2CE-4345-9CF2-40AA1944D358}" ShortID="853508931">
+									<PropertyList>
+										<Property Name="Inclusion" Type="bool">
+											<ValueList>
+												<Value>False</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
@@ -380,6 +387,41 @@
 															</Curve>
 														</PropertyCurve>
 													</PropertyCurveList>
+												</MusicClip>
+											</ClipList>
+										</MusicTrackSequence>
+									</SequenceList>
+								</MusicTrack>
+								<MusicTrack Name="Shoobox Menu Music_ New" ID="{9D3FF4CD-B006-4F43-8E2B-0504913B3766}" ShortID="825032161">
+									<ReferenceList>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Shoobox Menu Music_ New" ID="{9D4FDAE7-7CF8-4BB6-9DF9-A2F3CA391BD1}" ShortID="467597909">
+											<Language>SFX</Language>
+											<AudioFile>Shoobox Menu Music_ New.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<TransitionList>
+										<MusicTransition Name="Root" ID="{09957AE3-F3E2-489C-A312-3EB41EA49BE0}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</TransitionList>
+									<SequenceList>
+										<MusicTrackSequence Name="" ID="{2390C58C-282F-40BA-9BB6-BF44EAA065CA}">
+											<ClipList>
+												<MusicClip Name="Shoobox Menu Music_ New" ID="{7B916E80-BF0E-49D9-BA40-632E60382468}">
+													<PropertyList>
+														<Property Name="EndTrimOffset" Type="Real64" Value="30666.6666666667"/>
+														<Property Name="FadeInMode" Type="int16" Value="0"/>
+														<Property Name="FadeOutMode" Type="int16" Value="0"/>
+													</PropertyList>
+													<AudioSourceRef Name="Shoobox Menu Music_ New" ID="{9D4FDAE7-7CF8-4BB6-9DF9-A2F3CA391BD1}"/>
 												</MusicClip>
 											</ClipList>
 										</MusicTrackSequence>

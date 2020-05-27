@@ -69,6 +69,13 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="AI_Exclamation_Male" ID="{3DB531CA-38D8-4CC1-B93D-88ECBE05F11F}" ShortID="384644333">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-4</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
@@ -104,6 +111,42 @@
 							</ChildrenList>
 							<ActiveSourceList>
 								<ActiveSource Name="AI_Question_Male" ID="{8E888527-22F7-4F2E-9B0D-231F9445E5D2}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="AI_Maid_Hotel_Cleaning" ID="{7A3C9E0B-6BAA-4112-9FF7-15280D1C2138}" ShortID="132142888">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="OverrideOutput" Type="bool" Value="True"/>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{33A3FCD1-ECC4-4C7D-942F-636E88572866}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="278"/>
+													<Property Name="Min" Type="Real64" Value="-202"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{5BE723C4-A722-4CC4-B2CF-953556D64375}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="SFX" ID="{E6E0FB3C-828B-4E03-A458-DEB3207DD893}" WorkUnitID="{14CFC50A-F654-4D0D-B9D9-96129AA2A3EC}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="AI_Maid_Hotel_Cleaning" ID="{6B277ECD-5FE4-4A34-AB73-90984174184A}" ShortID="870557340">
+									<Language>SFX</Language>
+									<AudioFile>AI_Maid_Hotel_Cleaning.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="AI_Maid_Hotel_Cleaning" ID="{6B277ECD-5FE4-4A34-AB73-90984174184A}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
