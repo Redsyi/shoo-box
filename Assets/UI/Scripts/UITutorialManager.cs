@@ -34,6 +34,7 @@ public class UITutorialManager : MonoBehaviour
     public UIPopup hideTutorialPopup;
     public StealFocusWhenSeen maidFocusStealer;
     public UIPopup changeFormPopup;
+    public UIPopup shoesightColorPopup;
     public Animator objectiveTrackerAnimator;
     public UIPopup kickPopup;
 
@@ -202,6 +203,12 @@ public class UITutorialManager : MonoBehaviour
     public void DoKickTutorial()
     {
         kickPopup.Activate();
+        onUIPopUp.Post(gameObject);
+    }
+
+    public void DoShoesightColorTutorial()
+    {
+        shoesightColorPopup.Activate();
         onUIPopUp.Post(gameObject);
     }
 
