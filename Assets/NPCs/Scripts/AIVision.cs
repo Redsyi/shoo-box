@@ -11,6 +11,7 @@ public class AIVision : MonoBehaviour
     [Header("Components")]
     public AIAgent ai;
     public Image visibleCone;
+    public Image coneEdge;
     public CapsuleCollider collider;
     [Header("Stats")]
     [Range(0, 15)]
@@ -146,10 +147,13 @@ public class AIVision : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        (visibleCone.transform as RectTransform).sizeDelta = new Vector2(radius * 2, radius * 2);
         collider.radius = radius;
+        (visibleCone.transform as RectTransform).sizeDelta = new Vector2(radius * 2, radius * 2);
         visibleCone.transform.localEulerAngles = new Vector3(0, 0, -(360-arc) / 2f);
         visibleCone.fillAmount = arc / 360f;
+        (coneEdge.transform as RectTransform).sizeDelta = new Vector2(radius * 2, radius * 2);
+        coneEdge.transform.localEulerAngles = new Vector3(0, 0, -(360 - arc) / 2f);
+        coneEdge.fillAmount = arc / 360f;
         Gizmos.color = Color.magenta;
         Gizmos.DrawLine(transform.position, transform.position + new Vector3(0, -viewFloor));
     }

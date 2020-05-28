@@ -45,8 +45,11 @@ public class UITutorialManager : MonoBehaviour
 
     public GameObject cart1;
     public GameObject cart1Fixed;
+    public GameObject cart1Glasses;
     public GameObject cart2;
     public GameObject cart2Fixed;
+    public GameObject cart2Glasses;
+
 
     public GameObject controlsReminder;
 
@@ -257,6 +260,11 @@ public class UITutorialManager : MonoBehaviour
         StartCoroutine(DoDadInvestigateHallway());
     }
 
+    public void AlertOtherKid(AIAgent kid)
+    {
+        kid.Chase(player);
+    }
+
     IEnumerator DoDadInvestigateHallway()
     {
         ScriptedSequence dadSequence = dad.GetComponent<ScriptedSequence>();
@@ -289,12 +297,14 @@ public class UITutorialManager : MonoBehaviour
     public void FixFirstCart()
     {
         cart1.SetActive(false);
+        cart1Glasses.SetActive(false);
         cart1Fixed.SetActive(true);
     }
 
     public void FixSecondCart()
     {
         cart2.SetActive(false);
+        cart2Glasses.SetActive(false);
         cart2Fixed.SetActive(true);
     }
 

@@ -11,6 +11,7 @@ public class TriggerShoesightTut : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             tutorial.DoShoesightColorTutorial();
+            Destroy(gameObject);
         }
     }
 }

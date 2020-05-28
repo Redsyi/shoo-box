@@ -431,7 +431,10 @@ public class PlayerData : MonoBehaviour
         }
         else
         {
-            floatSettings[prefsName] = 1;
+            if (rtpcName == masterSettingName)
+                floatSettings[prefsName] = 0.7f;
+            else
+                floatSettings[prefsName] = 1;
         }
     }
 
