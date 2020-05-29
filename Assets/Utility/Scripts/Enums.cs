@@ -101,7 +101,8 @@ public enum MainMenuState
     MAIN,
     PLAY,
     OPTIONS,
-    JIBBZ
+    JIBBZ,
+    LEVELS
 }
 
 public enum SoundSettings

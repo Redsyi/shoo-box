@@ -7754,7 +7754,7 @@ PrefabInstance:
     - target: {fileID: 199889818676038971, guid: d43b6a669eb164df595fbe8561698ba5,
         type: 3}
       propertyPath: m_Text
-      value: Continue
+      value: Level Select
       objectReference: {fileID: 0}
     - target: {fileID: 199889818676038971, guid: d43b6a669eb164df595fbe8561698ba5,
         type: 3}
@@ -9231,6 +9231,7 @@ MonoBehaviour:
   newGameButton: {fileID: 1914522628}
   playGroup: {fileID: 159286089}
   playGroupDefaultSelected: {fileID: 1121515863}
+  playPaneManager: {fileID: 1430012849}
   optionsGroup: {fileID: 1105550249}
   optionsInitial: {fileID: 462602276}
   optionsPanes: {fileID: 2073479456}
@@ -11804,7 +11805,7 @@ MonoBehaviour:
   buttonPane: {fileID: 1320966021}
   panes:
   - pane: {fileID: 1320966018}
-    defaultSelected: {fileID: 0}
+    defaultSelected: {fileID: 1121515863}
     onAppear:
       m_PersistentCalls:
         m_Calls:
@@ -11837,10 +11838,32 @@ MonoBehaviour:
     defaultSelected: {fileID: 573349464}
     onAppear:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 1294804475}
+          m_MethodName: SetInLevelSelect
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
     onDisappear:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 1294804475}
+          m_MethodName: SetInLevelSelect
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   currPaneIdx: 0
   paneSwipeSpeed: 0.3
   swipeSound:

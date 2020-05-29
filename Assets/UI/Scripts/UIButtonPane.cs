@@ -63,7 +63,8 @@ public class UIButtonPane : MonoBehaviour
     public void Activate()
     {
         Select(currTabIdx);
-        StartCoroutine(DoAnimateIn());
+        if (gameObject.activeInHierarchy)
+            StartCoroutine(DoAnimateIn());
     }
 
     //kicks off the animation out

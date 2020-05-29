@@ -30,6 +30,7 @@ public class UIMainMenu : MonoBehaviour
     [Header("Play Group")]
     public CanvasGroup playGroup;
     public GameObject playGroupDefaultSelected;
+    public UIPaneManager playPaneManager;
     [Header("Options Group")]
     public CanvasGroup optionsGroup;
     public GameObject optionsInitial;
@@ -79,6 +80,7 @@ public class UIMainMenu : MonoBehaviour
         if (!animating && state != MainMenuState.PLAY)
         {
             playGroup.gameObject.SetActive(true);
+            playPaneManager.Appear();
             EventSystem.current.SetSelectedGameObject(playGroupDefaultSelected);
             StartCoroutine(AnimateCamera(defaultPos, playPos));
             StartCoroutine(AnimateMainButtons(false));
@@ -110,34 +112,47 @@ public class UIMainMenu : MonoBehaviour
     {
         if (!animating && state != MainMenuState.MAIN)
         {
-            StartCoroutine(AnimateMainButtons(true));
 
             switch (state)
             {
                 case MainMenuState.PLAY:
+                    StartCoroutine(AnimateMainButtons(true));
+                    playPaneManager.Disappear();
                     StartCoroutine(AnimateCamera(playPos, defaultPos));
                     StartCoroutine(AnimateCanvasGroup(playGroup, false));
                     StartCoroutine(DeactivateDelayed(playGroup.gameObject));
                     EventSystem.current.SetSelectedGameObject(playButton);
+                    state = MainMenuState.MAIN;
+                    break;
+                case MainMenuState.LEVELS:
+                    playPaneManager.PreviousPane();
                     break;
                 case MainMenuState.JIBBZ:
+                    StartCoroutine(AnimateMainButtons(true));
                     StartCoroutine(AnimateCamera(jibbzPos, defaultPos));
                     StartCoroutine(AnimateCanvasGroup(jibbzGroup, false));
                     StartCoroutine(DeactivateDelayed(jibbzGroup.gameObject));
                     EventSystem.current.SetSelectedGameObject(jibbzButton);
                     shoebox.SetBool("Open", false);
+                    state = MainMenuState.MAIN;
                     break;
                 case MainMenuState.OPTIONS:
+                    StartCoroutine(AnimateMainButtons(true));
                     StartCoroutine(AnimateCamera(settingsPos, defaultPos));
                     StartCoroutine(AnimateCanvasGroup(optionsGroup, false));
                     StartCoroutine(DeactivateDelayed(optionsGroup.gameObject));
                     StartCoroutine(SetSelectedDelayed(optionsButton, 0.1f));
                     optionsPanes.Disappear();
+                    state = MainMenuState.MAIN;
                     break;
             }
 
-            state = MainMenuState.MAIN;
         }
+    }
+
+    public void SetInLevelSelect(bool inLevelSelect)
+    {
+        state = inLevelSelect ? MainMenuState.LEVELS : MainMenuState.PLAY;
     }
 
     /// <summary>
