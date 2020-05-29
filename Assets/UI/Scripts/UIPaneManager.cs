@@ -37,7 +37,8 @@ public class UIPaneManager : MonoBehaviour
 
     private void Awake()
     {
-        buttonPane.panes = this;
+        if (buttonPane != null)
+            buttonPane.panes = this;
     }
 
     /// <summary>
@@ -80,7 +81,8 @@ public class UIPaneManager : MonoBehaviour
             AnimateOut(currPane, oldTo);
             currPaneIdx = newIndex;
             AnimateIn(currPane, newFrom);
-            buttonPane.Select(currPaneIdx);
+            if (buttonPane != null)
+                buttonPane.Select(currPaneIdx);
             EventSystem.current.SetSelectedGameObject(currPane.defaultSelected);
             currPane.onAppear.Invoke();
         }
@@ -91,11 +93,14 @@ public class UIPaneManager : MonoBehaviour
     /// </summary>
     public void Appear()
     {
-        buttonPane.currTabIdx = currPaneIdx;
-        buttonPane.Activate();
+        if (buttonPane != null)
+        {
+            buttonPane.currTabIdx = currPaneIdx;
+            buttonPane.Activate();
+        }
+        EventSystem.current.SetSelectedGameObject(currPane.defaultSelected);
         currPane.onAppear.Invoke();
         AnimateIn(currPane, UIDirection.DOWN);
-        EventSystem.current.SetSelectedGameObject(currPane.defaultSelected);
     }
 
     /// <summary>
@@ -104,7 +109,8 @@ public class UIPaneManager : MonoBehaviour
     public void Disappear()
     {
         currPane.onDisappear.Invoke();
-        buttonPane.Deactivate();
+        if (buttonPane != null)
+            buttonPane.Deactivate();
         AnimateOut(currPane, UIDirection.DOWN);
         EventSystem.current.SetSelectedGameObject(null);
     }

@@ -62,14 +62,6 @@ public class UIMainMenu : MonoBehaviour
         Player.prevState = null;
 
         PlayerData.CheckLoadedData();
-        if (PlayerData.currCheckpoint != 0 || PlayerData.currLevel != PlayerData.defaultLevel.saveID)
-        {
-            //The game has been played before, so the continue button appears
-            //and the first playthrough button is replaced with the new game button
-            continueButton.SetActive(true);
-            firstPlayButton.SetActive(false);
-            newGameButton.SetActive(true);
-        }
     }
 
     /// <summary>
@@ -90,7 +82,7 @@ public class UIMainMenu : MonoBehaviour
     }
 
     /// <summary>
-    /// continue/new game button pressed
+    /// continue button pressed
     /// </summary>
     public void ContinueButton()
     {
@@ -101,6 +93,22 @@ public class UIMainMenu : MonoBehaviour
             Level destLevel = PlayerData.levels[PlayerData.currLevel];
             string levelName = (PlayerData.currCheckpoint == 0 ? destLevel.cutsceneBuildName : destLevel.levelBuildName);
             string flavorText = (PlayerData.currCheckpoint == 0 ? destLevel.cutsceneFlavorText : destLevel.levelFlavorText);
+            LevelBridge.BridgeTo(levelName, flavorText);
+        }
+    }
+
+    /// <summary>
+    /// new game button pressed
+    /// </summary>
+    public void NewGameButton()
+    {
+        if (!animating && state == MainMenuState.PLAY)
+        {
+            PlayerData.CheckLoadedData();
+            CheckpointManager.currCheckpoint = 0;
+            Level destLevel = PlayerData.defaultLevel;
+            string levelName = destLevel.cutsceneBuildName;
+            string flavorText = destLevel.cutsceneFlavorText;
             LevelBridge.BridgeTo(levelName, flavorText);
         }
     }

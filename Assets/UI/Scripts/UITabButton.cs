@@ -12,6 +12,7 @@ public class UITabButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHan
     [HideInInspector] public Sprite selectedImage;
     [HideInInspector] public Sprite unselectedImage;
     [HideInInspector] public int index;
+    public Text text;
     private bool _selected;
     [HideInInspector] public bool selected
     {
@@ -26,6 +27,19 @@ public class UITabButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHan
                 buttonImage.sprite = selectedImage;
             else if (!hovering)
                 buttonImage.sprite = unselectedImage;
+            if (!_hovering && text)
+            {
+                if (_selected)
+                {
+                    text.transform.localScale = Vector3.one;
+                    text.transform.localEulerAngles = new Vector3(0, 0, -2);
+                }
+                else
+                {
+                    text.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+                    text.transform.localEulerAngles = new Vector3(0, 0, 0);
+                }
+            }
         }
     }
     bool _hovering;
@@ -42,6 +56,19 @@ public class UITabButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHan
                 buttonImage.sprite = selectedImage;
             else if (!selected)
                 buttonImage.sprite = unselectedImage;
+            if (!_selected && text)
+            {
+                if (_hovering)
+                {
+                    text.transform.localScale = Vector3.one;
+                    text.transform.localEulerAngles = new Vector3(0, 0, -2);
+                }
+                else
+                {
+                    text.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+                    text.transform.localEulerAngles = new Vector3(0, 0, 0);
+                }
+            }
         }
     }
     UIButtonPane parent;
@@ -59,7 +86,6 @@ public class UITabButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHan
             parent.ButtonSelected(index);
         }
     }
-
     public void OnPointerEnter(PointerEventData eventData)
     {
         hovering = true;
@@ -69,6 +95,8 @@ public class UITabButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHan
     private void Awake()
     {
         parent = GetComponentInParent<UIButtonPane>();
+        if (!text)
+            text = GetComponentInChildren<Text>();
     }
 
     public void OnPointerExit(PointerEventData eventData)
