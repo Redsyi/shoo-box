@@ -37,6 +37,14 @@ public class AIVision : MonoBehaviour
 
     private void Start()
     {
+        collider.radius = radius;
+        (visibleCone.transform as RectTransform).sizeDelta = new Vector2(radius * 2, radius * 2);
+        visibleCone.transform.localEulerAngles = new Vector3(0, 0, -(360 - arc) / 2f);
+        visibleCone.fillAmount = arc / 360f;
+        (coneEdge.transform as RectTransform).sizeDelta = new Vector2(radius * 2, radius * 2);
+        coneEdge.transform.localEulerAngles = new Vector3(0, 0, -(360 - arc) / 2f);
+        coneEdge.fillAmount = arc / 360f;
+
         player = Player.current;
         if (ai == null)
             ai = GetComponentInParent<AIAgent>();
