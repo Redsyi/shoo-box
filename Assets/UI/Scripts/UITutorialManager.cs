@@ -297,14 +297,16 @@ public class UITutorialManager : MonoBehaviour
     public void FixFirstCart()
     {
         cart1.SetActive(false);
-        cart1Glasses.SetActive(false);
+        if (cart1Glasses)
+            cart1Glasses.SetActive(false);
         cart1Fixed.SetActive(true);
     }
 
     public void FixSecondCart()
     {
         cart2.SetActive(false);
-        cart2Glasses.SetActive(false);
+        if (cart2Glasses)
+            cart2Glasses.SetActive(false);
         cart2Fixed.SetActive(true);
     }
 
