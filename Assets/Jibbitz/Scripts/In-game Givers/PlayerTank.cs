@@ -42,7 +42,7 @@ public class PlayerTank : MonoBehaviour
             CameraScript.current.closeZoomLevel = 14;
             CameraScript.current.farZoomLevel = 20;
             CameraScript.current.camera.orthographicSize = 14;
-            JibbitManager.AcquireJibbit(jibbit.id);
+            JibbitManager.AcquireJibbit(jibbit);
             JibbitAcquiredPopup.current.Acquire(jibbit);
         }
     }

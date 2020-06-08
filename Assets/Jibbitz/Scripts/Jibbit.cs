@@ -8,4 +8,5 @@ public class Jibbit : ScriptableObject
     public string id;
     public string displayName;
     public string hint;
+    public string steamAchievementID;
 }

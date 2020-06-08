@@ -12,7 +12,7 @@ public class JibbitPeaceAwarder : MonoBehaviour
         if (!given && CityDirector.current && CityDirector.current.intensity == 0)
         {
             given = true;
-            JibbitManager.AcquireJibbit(jibbit.id);
+            JibbitManager.AcquireJibbit(jibbit);
             JibbitAcquiredPopup.current.Acquire(jibbit);
         }
     }

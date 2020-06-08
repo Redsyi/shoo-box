@@ -65,12 +65,17 @@ public class JibbitManager : MonoBehaviour
     /// <summary>
     /// acquire the jibbit given by jibbitID and save this fact to disk
     /// </summary>
-    public static void AcquireJibbit(string jibbitID)
+    public static void AcquireJibbit(Jibbit jibbit)
     {
-        if (acquired != null && acquired.ContainsKey(jibbitID) && !acquired[jibbitID])
+        if (acquired != null && acquired.ContainsKey(jibbit.id) && !acquired[jibbit.id])
         {
-            acquired[jibbitID] = true;
-            PlayerPrefs.SetInt("HasJibbit" + jibbitID, 1);
+            if (!acquired[jibbit.id])
+            {
+                Steamworks.SteamUserStats.SetAchievement(jibbit.steamAchievementID);
+                Steamworks.SteamUserStats.StoreStats();
+            }
+            acquired[jibbit.id] = true;
+            PlayerPrefs.SetInt("HasJibbit" + jibbit.id, 1);
         }
     }
 

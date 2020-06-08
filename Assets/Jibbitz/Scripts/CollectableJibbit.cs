@@ -55,7 +55,7 @@ public class CollectableJibbit : MonoBehaviour
     {
         if (lifetime >= maxLifetime && maxLifetime != 0 && other.gameObject.CompareTag("Player"))
         {
-            JibbitManager.AcquireJibbit(myJibbit.id);
+            JibbitManager.AcquireJibbit(myJibbit);
             collectSound.Post(gameObject);
             JibbitAcquiredPopup.current.Acquire(myJibbit);
             Destroy(gameObject);
