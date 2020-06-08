@@ -29,7 +29,7 @@ public class CameraScript : MonoBehaviour
     static float zoomTime = 0.75f;
     public bool zoomed => !player.legForm;
     [Tooltip("Range of the possible angles from the ground the camera can be")]
-    private Vector2 angleRange = new Vector2(20f, 75f);
+    public Vector2 angleRange = new Vector2(20f, 75f);
     public float anglePercent
     {
         get
