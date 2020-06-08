@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b2f666398a565843b8ca12a5d16f059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 7561678006580591515}
   pathfinder: {fileID: 4483651408995513043}
   thrower: {fileID: 0}
   leftHand: {fileID: 0}
@@ -188,11 +188,9 @@ MonoBehaviour:
   patrolPoints: []
   interests: 11000000
   deaf: 1
-  chaseOverride:
-    m_PersistentCalls:
-      m_Calls: []
   stopDist: 1
   doorOpenAnimTrigger: 
+  startingPatrolPoint: 0
   walkSpeed: 5
   runSpeed: 10
   throwWaitTime: 0
@@ -214,6 +212,10 @@ MonoBehaviour:
       type: 2}
   gameOverName: wtf did you do
   debug: 0
+  chaseBehavior: 0
+  chaseBroadcastInterests: 
+  chaseOverrideSequence: {fileID: 0}
+  destination: {fileID: 0}
   stunned: 0
   investigatingPlayer: 0
 --- !u!114 &3078050345256766057
