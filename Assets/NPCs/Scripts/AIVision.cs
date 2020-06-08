@@ -169,6 +169,7 @@ public class AIVision : MonoBehaviour
     private void Update()
     {
         visibleCone.enabled = !AIAgent.blindAll;
+        coneEdge.enabled = !AIAgent.blindAll;
         
         if(!playerInVision) // Only decay if the player isn't in the vision
             ai.spotProgress -= Time.deltaTime / spotDecay;

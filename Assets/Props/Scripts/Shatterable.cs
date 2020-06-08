@@ -24,6 +24,14 @@ public class Shatterable : MonoBehaviour
     public AK.Wwise.Event impactSound;
 
     bool hit;
+    static int recentSoundPlays;
+    const int maxRecentSoundPlays = 2;
+    const float recentSoundPlaysExpiry = 0.6f;
+
+    private void Start()
+    {
+        recentSoundPlays = 0;
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -43,13 +51,22 @@ public class Shatterable : MonoBehaviour
                 }
             }
 
-            //play vfx
-            if (impactEffect)
-            {
-                impactEffect.Play();
-            }
+            if (recentSoundPlays < maxRecentSoundPlays)
+                StartCoroutine(PlayImpactSound());
 
             rigidbody.isKinematic = true;
         }
+    }
+
+    IEnumerator PlayImpactSound()
+    {
+        recentSoundPlays++;
+        //play vfx
+        if (impactEffect)
+        {
+            impactEffect.Play();
+        }
+        yield return new WaitForSeconds(recentSoundPlaysExpiry);
+        recentSoundPlays--;
     }
 }
