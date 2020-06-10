@@ -21,5 +21,6 @@ public class LuggageCartManager : MonoBehaviour, IKickable
             kickedFromLeft = !kickedFromLeft;
             leftTrigger.enabled = kickedFromLeft; // If kicked from left, turn off this object. Vice versa
             rightTrigger.enabled = !kickedFromLeft; // Similar to previous line but from the right
+
     }
 }

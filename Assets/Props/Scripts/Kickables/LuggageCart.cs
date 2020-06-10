@@ -10,8 +10,9 @@ public class LuggageCart : MonoBehaviour, IKickable
     public Vector3 move;
     public float speed;
     public float dist;
+    public LuggageJostle jostle;
     private float distMoved;
-    private bool kicked;
+    private bool kicked = false;
 
     private void OnDrawGizmos()
     {
@@ -38,6 +39,7 @@ public class LuggageCart : MonoBehaviour, IKickable
         {
             distMoved = 0;
             kicked = false;
+            jostle.SwitchJostles();
         }
     }
 
