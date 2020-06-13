@@ -21,12 +21,12 @@ public class UIButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             {
                 if (_hovering)
                 {
-                    text.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
+                    text.transform.localScale = new Vector3(1f, 1f, 1f);
                     text.transform.localEulerAngles = new Vector3(0, 0, -2);
                 }
                 else
                 {
-                    text.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+                    text.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
                     text.transform.localEulerAngles = new Vector3(0, 0, 0);
                 }
             }
@@ -46,12 +46,12 @@ public class UIButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             {
                 if (_selected)
                 {
-                    text.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
+                    text.transform.localScale = new Vector3(1f, 1f, 1f);
                     text.transform.localEulerAngles = new Vector3(0, 0, -2);
                 }
                 else
                 {
-                    text.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+                    text.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
                     text.transform.localEulerAngles = new Vector3(0, 0, 0);
                 }
             }

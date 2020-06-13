@@ -31,12 +31,12 @@ public class UITabButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHan
             {
                 if (_selected)
                 {
-                    text.transform.localScale = Vector3.one;
+                    text.transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
                     text.transform.localEulerAngles = new Vector3(0, 0, -2);
                 }
                 else
                 {
-                    text.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+                    text.transform.localScale = new Vector3(1f, 1f, 1f);
                     text.transform.localEulerAngles = new Vector3(0, 0, 0);
                 }
             }
@@ -60,12 +60,12 @@ public class UITabButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHan
             {
                 if (_hovering)
                 {
-                    text.transform.localScale = Vector3.one;
+                    text.transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
                     text.transform.localEulerAngles = new Vector3(0, 0, -2);
                 }
                 else
                 {
-                    text.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+                    text.transform.localScale = new Vector3(1f, 1f, 1f);
                     text.transform.localEulerAngles = new Vector3(0, 0, 0);
                 }
             }
