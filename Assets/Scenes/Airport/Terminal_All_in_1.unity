@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -31403,6 +31403,7 @@ GameObject:
   - component: {fileID: 1475781599}
   - component: {fileID: 1475781601}
   - component: {fileID: 1475781600}
+  - component: {fileID: 1475781602}
   m_Layer: 8
   m_Name: Door
   m_TagString: Untagged
@@ -31417,13 +31418,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1475781598}
-  m_LocalRotation: {x: -0, y: -0.9692311, z: -0, w: 0.24615277}
-  m_LocalPosition: {x: -0.36, y: -2.35, z: -2.57}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -0.36, y: -2.35, z: -3.07}
   m_LocalScale: {x: -275.318, y: 489.62357, z: 35.325916}
   m_Children: []
   m_Father: {fileID: 1798861209}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -151.5, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!23 &1475781600
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -31472,6 +31473,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1475781598}
   m_Mesh: {fileID: 4068373912626513877, guid: a0862e2955d99474cb04afd365ab216e, type: 3}
+--- !u!65 &1475781602
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475781598}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.01, y: 0.010000001, z: 0.016527118}
+  m_Center: {x: 0, y: 0.0000000020954758, z: 0.0032636034}
 --- !u!1 &1481178107
 GameObject:
   m_ObjectHideFlags: 0
@@ -45672,22 +45686,22 @@ PrefabInstance:
     - target: {fileID: 6759842155964543995, guid: 007f3037e51740f4398ac09eb6c169ed,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6759842155964543995, guid: 007f3037e51740f4398ac09eb6c169ed,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6759842155964543995, guid: 007f3037e51740f4398ac09eb6c169ed,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 490.28
+      value: 329
       objectReference: {fileID: 0}
     - target: {fileID: 6759842155964543995, guid: 007f3037e51740f4398ac09eb6c169ed,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -126.5
       objectReference: {fileID: 0}
     - target: {fileID: 6759842155964543995, guid: 007f3037e51740f4398ac09eb6c169ed,
         type: 3}
