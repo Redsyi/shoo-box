@@ -31,14 +31,35 @@ public class CityDirector : MonoBehaviour
     public RectTransform starRoot;
     public UICityStar starPrefab;
     List<UICityStar> stars;
+    public ChangeLevel levelEndTrigger;
+    public Level partialDestructionLevel;
+    public Level superDestructionLevel;
+    int remainingBuildings;
+    public int RemainingBuildings
+    {
+        get
+        {
+            return remainingBuildings;
+        }
+        set
+        {
+            remainingBuildings = value;
+            if (value == 0)
+                levelEndTrigger.destLevel = superDestructionLevel;
+        }
+    }
 
-    void Start()
+    private void Awake()
     {
         numTanks = 0;
         numHelis = 0;
         numCops = 0;
-        StartCoroutine(Spawn());
         current = this;
+    }
+
+    void Start()
+    {
+        StartCoroutine(Spawn());
         player = Player.current;
         stars = new List<UICityStar>();
     }
@@ -147,6 +168,7 @@ public class CityDirector : MonoBehaviour
             {
                 music.Post(gameObject);
                 StartCoroutine(AnimateHealthBarIn());
+                levelEndTrigger.destLevel = partialDestructionLevel;
             }
 
             //spawn new city stars and move existing ones

@@ -26,9 +26,10 @@ public class DestroyBuilding : MonoBehaviour, IKickable
     {
         if (numKicks < positions.Length)
         {
-            
             newY = positions[numKicks++];
             StartCoroutine(Destroy());
+            if (numKicks == positions.Length)
+                --CityDirector.current.RemainingBuildings;
         }
             
     }
@@ -64,6 +65,7 @@ public class DestroyBuilding : MonoBehaviour, IKickable
     private void Start()
     {
         newY = transform.position.y;
+        ++CityDirector.current.RemainingBuildings;
     }
 
     private void OnDrawGizmosSelected()
