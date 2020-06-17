@@ -56,6 +56,8 @@ public class UITutorialManager : MonoBehaviour
     public ScriptedSequence maidLeaveSequence;
     public AIAgent maid;
 
+    public StealFocusWhenSeen ownerCutscene;
+
     public AK.Wwise.Event onUIPopUp;
     public AK.Wwise.Event onSpaceBar;
 
@@ -201,6 +203,7 @@ public class UITutorialManager : MonoBehaviour
     {
         StartCoroutine(ShowObjectiveList());
         controlsReminder.SetActive(true);
+        ownerCutscene.Trigger();
     }
 
     public void DoKickTutorial()
