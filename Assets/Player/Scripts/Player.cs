@@ -948,7 +948,7 @@ public class Player : MonoBehaviour
     //changes current tab in the pause menu
     public void OnChangeTab(InputValue val)
     {
-        if (UIPauseMenu.instance)
+        if (UIPauseMenu.instance && UIPauseMenu.instance.paused)
         {
             float value = val.Get<float>();
             if (value > 0)
