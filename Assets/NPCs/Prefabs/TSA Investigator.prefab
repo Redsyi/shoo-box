@@ -173,11 +173,9 @@ MonoBehaviour:
   - {fileID: 2826333146306930983}
   interests: 07000000
   deaf: 0
-  chaseOverride:
-    m_PersistentCalls:
-      m_Calls: []
   stopDist: 1
   doorOpenAnimTrigger: 
+  startingPatrolPoint: 0
   walkSpeed: 6
   runSpeed: 12
   throwWaitTime: 0
@@ -197,8 +195,12 @@ MonoBehaviour:
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: ab0d7872737f247f7aad460426de7a16,
       type: 2}
-  gameOverName: the TSA
+  gameOverName: security
   debug: 0
+  chaseBehavior: 0
+  chaseBroadcastInterests: 
+  chaseOverrideSequence: {fileID: 0}
+  destination: {fileID: 0}
   stunned: 0
   investigatingPlayer: 0
 --- !u!114 &8746756210803101035

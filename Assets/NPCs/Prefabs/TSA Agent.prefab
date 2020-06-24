@@ -192,11 +192,9 @@ MonoBehaviour:
   patrolPoints: []
   interests: 07000000
   deaf: 0
-  chaseOverride:
-    m_PersistentCalls:
-      m_Calls: []
   stopDist: 1
   doorOpenAnimTrigger: 
+  startingPatrolPoint: 0
   walkSpeed: 7
   runSpeed: 15
   throwWaitTime: 0
@@ -216,8 +214,12 @@ MonoBehaviour:
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 56cf2d558f3a8df40a17eea9e4595141,
       type: 2}
-  gameOverName: the TSA
+  gameOverName: security
   debug: 0
+  chaseBehavior: 0
+  chaseBroadcastInterests: 
+  chaseOverrideSequence: {fileID: 0}
+  destination: {fileID: 0}
   stunned: 0
   investigatingPlayer: 0
 --- !u!114 &7909816712632288364
@@ -373,6 +375,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4335328239626904148}
     m_Modifications:
+    - target: {fileID: 1046237624194522282, guid: 52f9f729b12ff6e4f86bf7afb1f656e0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.85491186
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046237624194522282, guid: 52f9f729b12ff6e4f86bf7afb1f656e0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.51877326
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046237624194522282, guid: 52f9f729b12ff6e4f86bf7afb1f656e0,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046237624194522282, guid: 52f9f729b12ff6e4f86bf7afb1f656e0,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 2328054085374535326, guid: 52f9f729b12ff6e4f86bf7afb1f656e0,
         type: 3}
       propertyPath: m_Color.r
@@ -482,6 +504,11 @@ PrefabInstance:
         type: 3}
       propertyPath: arc
       value: 125
+      objectReference: {fileID: 0}
+    - target: {fileID: 8122928734554702868, guid: 52f9f729b12ff6e4f86bf7afb1f656e0,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 0.3472222
       objectReference: {fileID: 0}
     - target: {fileID: 8772069339955420908, guid: 52f9f729b12ff6e4f86bf7afb1f656e0,
         type: 3}
