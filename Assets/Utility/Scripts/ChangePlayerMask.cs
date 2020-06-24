@@ -16,13 +16,10 @@ public class ChangePlayerMask : MonoBehaviour
             if(interestMask.Length > 1)
             {
                 current = (leavingFirstArea ? interestMask[1] : interestMask[0]);
-                print("Player leaving first area: " + leavingFirstArea);
                 leavingFirstArea = !leavingFirstArea;
                 if (playerTSAALert.interestMask.Length > 0)
                 {
                     playerTSAALert.interestMask[0] = current;
-                    
-                    print("Player TSA iMask: " + playerTSAALert.interestMask[0]);
                 }
             }
             

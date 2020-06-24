@@ -715,14 +715,15 @@ MonoBehaviour:
   animator: {fileID: 9186340266482976149}
   pathfinder: {fileID: 0}
   thrower: {fileID: 9186340266482976148}
+  leftHand: {fileID: 0}
+  rightHand: {fileID: 0}
   patrolPoints:
   - {fileID: 0}
   interests: 0a000000
   deaf: 0
-  chaseOverride:
-    m_PersistentCalls:
-      m_Calls: []
   stopDist: 1
+  doorOpenAnimTrigger: OpenDoor
+  startingPatrolPoint: 0
   walkSpeed: 0
   runSpeed: 0
   throwWaitTime: 0.5
@@ -744,7 +745,12 @@ MonoBehaviour:
       type: 2}
   gameOverName: 
   debug: 0
+  chaseBehavior: 1
+  chaseBroadcastInterests: 07000000
+  chaseOverrideSequence: {fileID: 0}
+  destination: {fileID: 0}
   stunned: 0
+  investigatingPlayer: 0
 --- !u!114 &3976865127419148606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -886,6 +892,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9186340266272236760}
     m_Modifications:
+    - target: {fileID: 1046237624194522282, guid: 52f9f729b12ff6e4f86bf7afb1f656e0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.9469301
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046237624194522282, guid: 52f9f729b12ff6e4f86bf7afb1f656e0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.32143947
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046237624194522282, guid: 52f9f729b12ff6e4f86bf7afb1f656e0,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046237624194522282, guid: 52f9f729b12ff6e4f86bf7afb1f656e0,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 2328054085374535326, guid: 52f9f729b12ff6e4f86bf7afb1f656e0,
         type: 3}
       propertyPath: m_FillAmount
@@ -1005,6 +1031,11 @@ PrefabInstance:
         type: 3}
       propertyPath: radius
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8122928734554702868, guid: 52f9f729b12ff6e4f86bf7afb1f656e0,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 0.20833333
       objectReference: {fileID: 0}
     - target: {fileID: 8772069339955420908, guid: 52f9f729b12ff6e4f86bf7afb1f656e0,
         type: 3}

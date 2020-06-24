@@ -79,11 +79,13 @@ MonoBehaviour:
   thrower: {fileID: 0}
   leftHand: {fileID: 0}
   rightHand: {fileID: 0}
-  patrolPoints: []
+  patrolPoints:
+  - {fileID: 0}
   interests: 08000000
   deaf: 1
   stopDist: 1
   doorOpenAnimTrigger: OpenDoor
+  startingPatrolPoint: 0
   walkSpeed: 2
   runSpeed: 5
   throwWaitTime: 0
@@ -105,8 +107,8 @@ MonoBehaviour:
       type: 2}
   gameOverName: a terminal walker
   debug: 0
-  chaseBehavior: 0
-  chaseBroadcastInterests: 
+  chaseBehavior: 1
+  chaseBroadcastInterests: 07000000
   chaseOverrideSequence: {fileID: 0}
   destination: {fileID: 0}
   stunned: 0
@@ -299,6 +301,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 163345623258312482}
     m_Modifications:
+    - target: {fileID: 1046237624194522282, guid: 52f9f729b12ff6e4f86bf7afb1f656e0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.9659258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046237624194522282, guid: 52f9f729b12ff6e4f86bf7afb1f656e0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.25881907
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046237624194522282, guid: 52f9f729b12ff6e4f86bf7afb1f656e0,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046237624194522282, guid: 52f9f729b12ff6e4f86bf7afb1f656e0,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2328054085374535326, guid: 52f9f729b12ff6e4f86bf7afb1f656e0,
         type: 3}
       propertyPath: m_FillAmount
@@ -418,6 +440,11 @@ PrefabInstance:
         type: 3}
       propertyPath: arc
       value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8122928734554702868, guid: 52f9f729b12ff6e4f86bf7afb1f656e0,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 0.16666667
       objectReference: {fileID: 0}
     - target: {fileID: 8772069339955420908, guid: 52f9f729b12ff6e4f86bf7afb1f656e0,
         type: 3}
