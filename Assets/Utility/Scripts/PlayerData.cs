@@ -7,34 +7,30 @@ using UnityEngine;
 /// </summary>
 public class PlayerData : MonoBehaviour
 {
-    public class ResolutionComparer : IComparer
+    public class ResolutionComparer : IComparer<Resolution>
     {
-        public int Compare(object res1, object res2)
+        public int Compare(Resolution r1, Resolution r2)
         {
-            Resolution? r1 = res1 as Resolution?;
-            Resolution? r2 = res2 as Resolution?;
-            if (r1 == null || r2 == null)
-                return 0;
-            else
+            if (r1.width == r2.width)
             {
-                if (r1.Value.width == r2.Value.width)
-                {
-                    if (r1.Value.height > r2.Value.height)
-                        return 1;
-                    else
-                        return -1;
-                } else
-                {
-                    if (r1.Value.width > r2.Value.width)
-                        return 1;
-                    else
-                        return -1;
-                }
+                if (r1.height > r2.height)
+                    return 1;
+                else if (r1.height < r2.height)
+                    return -1;
+                else
+                    return 0;
+            } else
+            {
+                if (r1.width > r2.width)
+                    return 1;
+                else
+                    return -1;
             }
+
         }
     }
 
-    static Resolution[] resolutions;
+    static List<Resolution> resolutions;
     static string[] qualityNames;
 
     static bool loadedData;
@@ -206,8 +202,16 @@ public class PlayerData : MonoBehaviour
             stringSettings = new Dictionary<string, string>();
             LoadSoundSettings();
 
-            resolutions = Screen.resolutions;
-            System.Array.Sort(resolutions, new ResolutionComparer());
+            resolutions = new List<Resolution>();
+            foreach (Resolution resolution in Screen.resolutions)
+            {
+                if (resolution.height >= 480 && !resolutions.Contains(resolution))
+                {
+                    resolutions.Add(resolution);
+                }
+            }
+            resolutions.Sort(new ResolutionComparer());
+
             qualityNames = QualitySettings.names;
             dirtyGraphicsSettings = new Dictionary<GraphicsSetting, bool>();
             LoadGraphicsSettings();
@@ -256,7 +260,7 @@ public class PlayerData : MonoBehaviour
     public static void SetResolutionIndex(int index)
     {
         CheckLoadedData();
-        if (index < 0 || index >= resolutions.Length)
+        if (index < 0 || index >= resolutions.Count)
             return;
 
         intSettings[resolutionSettingName] = index;
@@ -319,8 +323,8 @@ public class PlayerData : MonoBehaviour
     public static string[] GetResolutionNames()
     {
         CheckLoadedData();
-        string[] results = new string[resolutions.Length];
-        for (int i = 0; i < resolutions.Length; ++i)
+        string[] results = new string[resolutions.Count];
+        for (int i = 0; i < resolutions.Count; ++i)
         {
             results[i] = $"{resolutions[i].width}x{resolutions[i].height}";
         }
@@ -368,14 +372,14 @@ public class PlayerData : MonoBehaviour
         if (PlayerPrefs.HasKey(resolutionSettingName))
         {
             int index = PlayerPrefs.GetInt(resolutionSettingName);
-            if (index < 0 || index >= resolutions.Length)
+            if (index < 0 || index >= resolutions.Count)
             {
-                index = resolutions.Length - 1;
+                index = resolutions.Count - 1;
             }
             intSettings[resolutionSettingName] = index;
         } else
         {
-            intSettings[resolutionSettingName] = resolutions.Length - 1;
+            intSettings[resolutionSettingName] = resolutions.Count - 1;
         }
 
         if (PlayerPrefs.HasKey(qualitySettingName))

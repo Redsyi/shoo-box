@@ -71,8 +71,8 @@ public class JibbitManager : MonoBehaviour
         {
             if (!acquired[jibbit.id])
             {
-                Steamworks.SteamUserStats.SetAchievement(jibbit.steamAchievementID);
-                Steamworks.SteamUserStats.StoreStats();
+                //Steamworks.SteamUserStats.SetAchievement(jibbit.steamAchievementID);
+                //Steamworks.SteamUserStats.StoreStats();
             }
             acquired[jibbit.id] = true;
             PlayerPrefs.SetInt("HasJibbit" + jibbit.id, 1);
