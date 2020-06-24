@@ -18,6 +18,7 @@ public class NewContinue : MonoBehaviour
         {
             continueButton.SetActive(true);
             selectContinue = true;
+            newGameButton.SetActive(false);
         } else
         {
             selectNew = true;
