@@ -2,7 +2,7 @@
 // Copyright (c) 2013-2019 Riley Labrecque
 // Please see the included LICENSE.txt for additional information.
 
-/*#if UNITY_ANDROID || UNITY_IOS || UNITY_TIZEN || UNITY_TVOS || UNITY_WEBGL || UNITY_WSA || UNITY_PS4 || UNITY_WII || UNITY_XBOXONE || UNITY_SWITCH
+#if UNITY_ANDROID || UNITY_IOS || UNITY_TIZEN || UNITY_TVOS || UNITY_WEBGL || UNITY_WSA || UNITY_PS4 || UNITY_WII || UNITY_XBOXONE || UNITY_SWITCH
 #define DISABLESTEAMWORKS
 #endif
 
@@ -129,4 +129,4 @@ public class RedistCopy {
 	}
 }
 
-#endif // !DISABLESTEAMWORKS*/
+#endif // !DISABLESTEAMWORKS

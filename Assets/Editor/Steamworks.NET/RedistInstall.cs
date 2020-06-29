@@ -5,7 +5,7 @@
 // Uncomment this out or add it to your custom platform defines to disable checking the plugin platform settings.
 //#define DISABLEPLATFORMSETTINGS
 
-/*using UnityEngine;
+using UnityEngine;
 using UnityEditor;
 using System.IO;
 
@@ -271,4 +271,4 @@ public class RedistInstall {
 		return true;
 	}
 #endif // UNITY_5 || UNITY_2017 || UNITY_2017_1_OR_NEWER
-}*/
+}

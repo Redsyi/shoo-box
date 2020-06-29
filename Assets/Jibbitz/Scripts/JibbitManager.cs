@@ -71,11 +71,11 @@ public class JibbitManager : MonoBehaviour
         {
             if (!acquired[jibbit.id])
             {
-                /*if (Steamworks.SteamManager.initialized)
+                if (SteamManager.Initialized)
                 {
                     Steamworks.SteamUserStats.SetAchievement(jibbit.steamAchievementID);
                     Steamworks.SteamUserStats.StoreStats();
-                }*/
+                }
             }
             acquired[jibbit.id] = true;
             PlayerPrefs.SetInt("HasJibbit" + jibbit.id, 1);
