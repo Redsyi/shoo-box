@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class ConveyorScanner : MonoBehaviour, IAIInteractable
 {
+    [SerializeField] private string bridgeText = "You were scanned by security";
     public float playerCatchWaitTime;
     private Player player;
     private bool caught;
@@ -71,7 +72,7 @@ public class ConveyorScanner : MonoBehaviour, IAIInteractable
             yield return null;
             remainingWaitTime -= Time.deltaTime;
         }
-        LevelBridge.Reload("You were scanned by TSA");
+        LevelBridge.Reload(bridgeText);
     }
 
     /// <summary>
