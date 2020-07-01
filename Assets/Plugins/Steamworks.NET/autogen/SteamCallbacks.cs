@@ -1416,6 +1416,115 @@ namespace Steamworks {
 		public int m_eSNetSocketState;				// socket state, ESNetSocketState
 	}
 
+	/// Callback struct used to notify when a connection has changed state
+	/// This callback is posted whenever a connection is created, destroyed, or changes state.
+	/// The m_info field will contain a complete description of the connection at the time the
+	/// change occurred and the callback was posted.  In particular, m_eState will have the
+	/// new connection state.
+	///
+	/// You will usually need to listen for this callback to know when:
+	/// - A new connection arrives on a listen socket.
+	///   m_info.m_hListenSocket will be set, m_eOldState = k_ESteamNetworkingConnectionState_None,
+	///   and m_info.m_eState = k_ESteamNetworkingConnectionState_Connecting.
+	///   See ISteamNetworkigSockets::AcceptConnection.
+	/// - A connection you initiated has been accepted by the remote host.
+	///   m_eOldState = k_ESteamNetworkingConnectionState_Connecting, and
+	///   m_info.m_eState = k_ESteamNetworkingConnectionState_Connected.
+	///   Some connections might transition to k_ESteamNetworkingConnectionState_FindingRoute first.
+	/// - A connection has been actively rejected or closed by the remote host.
+	///   m_eOldState = k_ESteamNetworkingConnectionState_Connecting or k_ESteamNetworkingConnectionState_Connected,
+	///   and m_info.m_eState = k_ESteamNetworkingConnectionState_ClosedByPeer.  m_info.m_eEndReason
+	///   and m_info.m_szEndDebug will have for more details.
+	///   NOTE: upon receiving this callback, you must still destroy the connection using
+	///   ISteamNetworkingSockets::CloseConnection to free up local resources.  (The details
+	///   passed to the function are not used in this case, since the connection is already closed.)
+	/// - A problem was detected with the connection, and it has been closed by the local host.
+	///   The most common failure is timeout, but other configuration or authentication failures
+	///   can cause this.  m_eOldState = k_ESteamNetworkingConnectionState_Connecting or
+	///   k_ESteamNetworkingConnectionState_Connected, and m_info.m_eState = k_ESteamNetworkingConnectionState_ProblemDetectedLocally.
+	///   m_info.m_eEndReason and m_info.m_szEndDebug will have for more details.
+	///   NOTE: upon receiving this callback, you must still destroy the connection using
+	///   ISteamNetworkingSockets::CloseConnection to free up local resources.  (The details
+	///   passed to the function are not used in this case, since the connection is already closed.)
+	///
+	/// Remember that callbacks are posted to a queue, and networking connections can
+	/// change at any time.  It is possible that the connection has already changed
+	/// state by the time you process this callback.
+	///
+	/// Also note that callbacks will be posted when connections are created and destroyed by your own API calls.
+	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
+	[CallbackIdentity(Constants.k_iSteamNetworkingSocketsCallbacks + 1)]
+	public struct SteamNetConnectionStatusChangedCallback_t {
+		public const int k_iCallback = Constants.k_iSteamNetworkingSocketsCallbacks + 1;
+		
+		/// Connection handle
+		public HSteamNetConnection m_hConn;
+		
+		/// Full connection info
+		public SteamNetConnectionInfo_t m_info;
+		
+		/// Previous state.  (Current state is in m_info.m_eState)
+		public ESteamNetworkingConnectionState m_eOldState;
+	}
+
+	/// A struct used to describe our readiness to participate in authenticated,
+	/// encrypted communication.  In order to do this we need:
+	///
+	/// - The list of trusted CA certificates that might be relevant for this
+	///   app.
+	/// - A valid certificate issued by a CA.
+	///
+	/// This callback is posted whenever the state of our readiness changes.
+	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
+	[CallbackIdentity(Constants.k_iSteamNetworkingSocketsCallbacks + 2)]
+	public struct SteamNetAuthenticationStatus_t {
+		public const int k_iCallback = Constants.k_iSteamNetworkingSocketsCallbacks + 2;
+		
+		/// Status
+		public ESteamNetworkingAvailability m_eAvail;
+		
+		/// Non-localized English language status.  For diagnostic/debugging
+		/// purposes only.
+		[MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
+		public string m_debugMsg;
+	}
+
+	/// A struct used to describe our readiness to use the relay network.
+	/// To do this we first need to fetch the network configuration,
+	/// which describes what POPs are available.
+	[CallbackIdentity(Constants.k_iSteamNetworkingUtilsCallbacks + 1)]
+	public struct SteamRelayNetworkStatus_t {
+		public const int k_iCallback = Constants.k_iSteamNetworkingUtilsCallbacks + 1;
+		
+		/// Summary status.  When this is "current", initialization has
+		/// completed.  Anything else means you are not ready yet, or
+		/// there is a significant problem.
+		public ESteamNetworkingAvailability m_eAvail;
+		
+		/// Nonzero if latency measurement is in progress (or pending,
+		/// awaiting a prerequisite).
+		public int m_bPingMeasurementInProgress;
+		
+		/// Status obtaining the network config.  This is a prerequisite
+		/// for relay network access.
+		///
+		/// Failure to obtain the network config almost always indicates
+		/// a problem with the local internet connection.
+		public ESteamNetworkingAvailability m_eAvailNetworkConfig;
+		
+		/// Current ability to communicate with ANY relay.  Note that
+		/// the complete failure to communicate with any relays almost
+		/// always indicates a problem with the local Internet connection.
+		/// (However, just because you can reach a single relay doesn't
+		/// mean that the local connection is in perfect health.)
+		public ESteamNetworkingAvailability m_eAvailAnyRelay;
+		
+		/// Non-localized English language status.  For diagnostic/debugging
+		/// purposes only.
+		[MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
+		public string m_debugMsg;
+	}
+
 	//-----------------------------------------------------------------------------
 	// Purpose: Callback for querying UGC
 	//-----------------------------------------------------------------------------
@@ -1429,14 +1538,14 @@ namespace Steamworks {
 	[CallbackIdentity(Constants.k_iSteamRemotePlayCallbacks + 1)]
 	public struct SteamRemotePlaySessionConnected_t {
 		public const int k_iCallback = Constants.k_iSteamRemotePlayCallbacks + 1;
-		public uint m_unSessionID;
+		public RemotePlaySessionID_t m_unSessionID;
 	}
 
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamRemotePlayCallbacks + 2)]
 	public struct SteamRemotePlaySessionDisconnected_t {
 		public const int k_iCallback = Constants.k_iSteamRemotePlayCallbacks + 2;
-		public uint m_unSessionID;
+		public RemotePlaySessionID_t m_unSessionID;
 	}
 
 	// callbacks
@@ -2227,8 +2336,8 @@ namespace Steamworks {
 
 	//-----------------------------------------------------------------------------
 	// Purpose: sent for games with enabled anti indulgence / duration control, for
-	// enabled users. Lets the game know whether persistent rewards or XP should be
-	// granted at normal rate, half rate, or zero rate.
+	// enabled users. Lets the game know whether the user can keep playing or
+	// whether the game should exit, and returns info about remaining gameplay time.
 	//
 	// This callback is fired asynchronously in response to timers triggering.
 	// It is also fired in response to calls to GetDurationControl().
@@ -2243,9 +2352,13 @@ namespace Steamworks {
 		
 		[MarshalAs(UnmanagedType.I1)]
 		public bool m_bApplicable;							// is duration control applicable to user + game combination
-		public int m_csecsLast5h;							// playtime in trailing 5 hour window plus current session, in seconds
-		public EDurationControlProgress m_progress;			// recommended progress
+		public int m_csecsLast5h;							// playtime since most recent 5 hour gap in playtime, only counting up to regulatory limit of playtime, in seconds
+		
+		public EDurationControlProgress m_progress;			// recommended progress (either everything is fine, or please exit game)
 		public EDurationControlNotification m_notification;	// notification to show, if any (always k_EDurationControlNotification_None for API calls)
+		
+		public int m_csecsToday;							// playtime on current calendar day
+		public int m_csecsRemaining;						// playtime remaining until the user hits a regulatory limit
 	}
 
 	// callbacks

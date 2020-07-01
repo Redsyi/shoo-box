@@ -47,7 +47,7 @@ namespace Steamworks {
 		/// </summary>
 		public static int GetConnectedControllers(ControllerHandle_t[] handlesOut) {
 			InteropHelp.TestIfAvailableClient();
-			if (handlesOut.Length != Constants.STEAM_CONTROLLER_MAX_COUNT) {
+			if (handlesOut != null && handlesOut.Length != Constants.STEAM_CONTROLLER_MAX_COUNT) {
 				throw new System.ArgumentException("handlesOut must be the same size as Constants.STEAM_CONTROLLER_MAX_COUNT!");
 			}
 			return NativeMethods.ISteamController_GetConnectedControllers(CSteamAPIContext.GetSteamController(), handlesOut);
@@ -106,7 +106,7 @@ namespace Steamworks {
 		/// </summary>
 		public static int GetActiveActionSetLayers(ControllerHandle_t controllerHandle, ControllerActionSetHandle_t[] handlesOut) {
 			InteropHelp.TestIfAvailableClient();
-			if (handlesOut.Length != Constants.STEAM_CONTROLLER_MAX_ACTIVE_LAYERS) {
+			if (handlesOut != null && handlesOut.Length != Constants.STEAM_CONTROLLER_MAX_ACTIVE_LAYERS) {
 				throw new System.ArgumentException("handlesOut must be the same size as Constants.STEAM_CONTROLLER_MAX_ACTIVE_LAYERS!");
 			}
 			return NativeMethods.ISteamController_GetActiveActionSetLayers(CSteamAPIContext.GetSteamController(), controllerHandle, handlesOut);
@@ -128,7 +128,7 @@ namespace Steamworks {
 		/// <summary>
 		/// <para> Returns the current state of the supplied digital game action</para>
 		/// </summary>
-		public static ControllerDigitalActionData_t GetDigitalActionData(ControllerHandle_t controllerHandle, ControllerDigitalActionHandle_t digitalActionHandle) {
+		public static InputDigitalActionData_t GetDigitalActionData(ControllerHandle_t controllerHandle, ControllerDigitalActionHandle_t digitalActionHandle) {
 			InteropHelp.TestIfAvailableClient();
 			return NativeMethods.ISteamController_GetDigitalActionData(CSteamAPIContext.GetSteamController(), controllerHandle, digitalActionHandle);
 		}
@@ -140,7 +140,7 @@ namespace Steamworks {
 		/// </summary>
 		public static int GetDigitalActionOrigins(ControllerHandle_t controllerHandle, ControllerActionSetHandle_t actionSetHandle, ControllerDigitalActionHandle_t digitalActionHandle, EControllerActionOrigin[] originsOut) {
 			InteropHelp.TestIfAvailableClient();
-			if (originsOut.Length != Constants.STEAM_CONTROLLER_MAX_ORIGINS) {
+			if (originsOut != null && originsOut.Length != Constants.STEAM_CONTROLLER_MAX_ORIGINS) {
 				throw new System.ArgumentException("originsOut must be the same size as Constants.STEAM_CONTROLLER_MAX_ORIGINS!");
 			}
 			return NativeMethods.ISteamController_GetDigitalActionOrigins(CSteamAPIContext.GetSteamController(), controllerHandle, actionSetHandle, digitalActionHandle, originsOut);
@@ -159,7 +159,7 @@ namespace Steamworks {
 		/// <summary>
 		/// <para> Returns the current state of these supplied analog game action</para>
 		/// </summary>
-		public static ControllerAnalogActionData_t GetAnalogActionData(ControllerHandle_t controllerHandle, ControllerAnalogActionHandle_t analogActionHandle) {
+		public static InputAnalogActionData_t GetAnalogActionData(ControllerHandle_t controllerHandle, ControllerAnalogActionHandle_t analogActionHandle) {
 			InteropHelp.TestIfAvailableClient();
 			return NativeMethods.ISteamController_GetAnalogActionData(CSteamAPIContext.GetSteamController(), controllerHandle, analogActionHandle);
 		}
@@ -171,7 +171,7 @@ namespace Steamworks {
 		/// </summary>
 		public static int GetAnalogActionOrigins(ControllerHandle_t controllerHandle, ControllerActionSetHandle_t actionSetHandle, ControllerAnalogActionHandle_t analogActionHandle, EControllerActionOrigin[] originsOut) {
 			InteropHelp.TestIfAvailableClient();
-			if (originsOut.Length != Constants.STEAM_CONTROLLER_MAX_ORIGINS) {
+			if (originsOut != null && originsOut.Length != Constants.STEAM_CONTROLLER_MAX_ORIGINS) {
 				throw new System.ArgumentException("originsOut must be the same size as Constants.STEAM_CONTROLLER_MAX_ORIGINS!");
 			}
 			return NativeMethods.ISteamController_GetAnalogActionOrigins(CSteamAPIContext.GetSteamController(), controllerHandle, actionSetHandle, analogActionHandle, originsOut);
@@ -201,7 +201,7 @@ namespace Steamworks {
 		/// <summary>
 		/// <para> Returns raw motion data from the specified controller</para>
 		/// </summary>
-		public static ControllerMotionData_t GetMotionData(ControllerHandle_t controllerHandle) {
+		public static InputMotionData_t GetMotionData(ControllerHandle_t controllerHandle) {
 			InteropHelp.TestIfAvailableClient();
 			return NativeMethods.ISteamController_GetMotionData(CSteamAPIContext.GetSteamController(), controllerHandle);
 		}
