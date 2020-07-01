@@ -98,9 +98,16 @@ public class UIPaneManager : MonoBehaviour
             buttonPane.currTabIdx = currPaneIdx;
             buttonPane.Activate();
         }
-        EventSystem.current.SetSelectedGameObject(currPane.defaultSelected);
+        StartCoroutine(SetSelectedDelayed(currPane.defaultSelected));
         currPane.onAppear.Invoke();
         AnimateIn(currPane, UIDirection.DOWN);
+    }
+
+    IEnumerator SetSelectedDelayed(GameObject objToSelect)
+    {
+        yield return null;
+        yield return null;
+        EventSystem.current.SetSelectedGameObject(objToSelect);
     }
 
     /// <summary>
