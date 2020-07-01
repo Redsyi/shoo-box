@@ -56,7 +56,7 @@ public class PlayerTank : MonoBehaviour
             Vector2 aimDirection = Vector2.zero;
             if (Controls.usingController)
             {
-                aimDirection = controllerAim;
+                aimDirection = Vector2.up;
             } else
             {
                 aimDirection = mousePos - (Vector2) CameraScript.current.camera.WorldToScreenPoint(tankTurrets[0].position);
@@ -76,11 +76,11 @@ public class PlayerTank : MonoBehaviour
         {
             if (Controls.usingController)
             {
-                Vector2 input = val.Get<Vector2>();
+                /*Vector2 input = val.Get<Vector2>();
                 if (input != Vector2.zero)
                 {
                     controllerAim = input;
-                }
+                }*/
             }
             else
             {

@@ -960,4 +960,17 @@ public class Player : MonoBehaviour
             }
         }
     }
+
+    private void OnApplicationQuit()
+    {
+        ClearRumble();
+    }
+
+    private void OnApplicationFocus(bool focus)
+    {
+        if (!focus)
+        {
+            ClearRumble();
+        }
+    }
 }

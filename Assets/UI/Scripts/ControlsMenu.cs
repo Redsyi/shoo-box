@@ -12,7 +12,7 @@ public class ControlsMenu : MonoBehaviour
     {
         bool usingGamepad = Controls.usingController;
         gamepadControls.SetActive(usingGamepad);
-        gamepadSwitcher.SetActive(usingGamepad);
+        //gamepadSwitcher.SetActive(usingGamepad);
         keyboardControls.SetActive(!usingGamepad);
     }
 }
