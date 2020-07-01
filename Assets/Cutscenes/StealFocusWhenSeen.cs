@@ -231,4 +231,9 @@ public class StealFocusWhenSeen : MonoBehaviour
             transform.localPosition = Vector3.Lerp(original, destination, progress);
         }
     }
+
+    public void SetScrollSpeed(float newScrollSpeed)
+    {
+        cameraScrollSpeed = newScrollSpeed;
+    }
 }

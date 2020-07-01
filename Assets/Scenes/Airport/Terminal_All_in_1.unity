@@ -34939,7 +34939,7 @@ PrefabInstance:
     - target: {fileID: 163345623258312480, guid: a76996cfc3861d74080bba20efeed067,
         type: 3}
       propertyPath: debug
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 163345623258312480, guid: a76996cfc3861d74080bba20efeed067,
         type: 3}
@@ -36465,7 +36465,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   padding: 0
   cameraSize: 5
-  cameraScrollSpeed: 1.2
+  cameraScrollSpeed: 0
   cameraStealTime: 8
   onSteal:
     m_PersistentCalls:
@@ -47654,12 +47654,12 @@ PrefabInstance:
     - target: {fileID: 4812544884738370117, guid: 007f3037e51740f4398ac09eb6c169ed,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.38
+      value: 94.1
       objectReference: {fileID: 0}
     - target: {fileID: 4812544884738370117, guid: 007f3037e51740f4398ac09eb6c169ed,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 32.24
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 4812544884738370117, guid: 007f3037e51740f4398ac09eb6c169ed,
         type: 3}
@@ -55933,13 +55933,13 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1549705231}
-          m_MethodName: Refocus
-          m_Mode: 2
+          m_MethodName: SetScrollSpeed
+          m_Mode: 4
           m_Arguments:
-            m_ObjectArgument: {fileID: 1334857848}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
-            m_FloatArgument: 0
+            m_FloatArgument: 1.1
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
@@ -55951,6 +55951,17 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1549705231}
+          m_MethodName: Refocus
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1334857848}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 1.1
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
