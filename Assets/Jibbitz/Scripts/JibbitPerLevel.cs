@@ -87,6 +87,7 @@ public class JibbitPerLevel : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     /// </summary>
     void CheckJibList()
     {
+        jibzCollected = 0;
         foreach (Jibbit jib in JibzInLevel) {
             if (JibbitManager.HasJibbit(jib.id) == true)
             {
