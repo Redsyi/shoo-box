@@ -47,9 +47,9 @@ public class JibbitPerLevel : MonoBehaviour, IPointerEnterHandler, IPointerExitH
             if (EventSystem.current.currentSelectedGameObject != lastSelected)
             {
                 totalCollectable.text = "- / -";
-                totalCollectable.color = new Color(254, 245, 224);
             }
         }
+
     }
 
     /// <summary>
@@ -93,11 +93,6 @@ public class JibbitPerLevel : MonoBehaviour, IPointerEnterHandler, IPointerExitH
             {
                 jibzCollected += 1;
             }
-            if (JibbitManager.HasJibbit(jib.id) == false)
-            {
-                //if not, reset color to white
-                totalCollectable.color = new Color(254, 245, 224);
-            }
         }
 
         UpdateJibFraction();
@@ -105,7 +100,7 @@ public class JibbitPerLevel : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         if (jibzCollected == jibCounter)
         {
             //turn jibbitz fraction green when all from a level are collected
-            totalCollectable.color = new Color(39,209,39);
+            totalCollectable.text = "<color=#3BFF3B>" + totalCollectable.text + "</color>";
         }
         
     }
