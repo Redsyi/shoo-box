@@ -26,6 +26,11 @@ public class JibbitPerLevel : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
         //Load what jibbitz the player has collected
         JibbitManager.LoadJibz();
+        if (gameObject.tag == "BackButton")
+        {
+            //Skip back button when loading jibbit counter
+            return;
+        }
         UpdateJibFraction();
     }
 
@@ -36,11 +41,7 @@ public class JibbitPerLevel : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     /// </summary>
     void Update()
     {
-        ///
-        /// This only works with keyboard controls, I don't know
-        /// how to get it to work with the mouse pointer since the pointer
-        /// doesn't select, it just hovers.
-        ///
+        /// This only works with keyboard controls
         if (hoverOnLevel && EventSystem.current.currentSelectedGameObject != gameObject)
         {
             hoverOnLevel = false;
@@ -99,8 +100,19 @@ public class JibbitPerLevel : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
         if (jibzCollected == jibCounter)
         {
-            //turn jibbitz fraction green when all from a level are collected
-            totalCollectable.text = "<color=#3BFF3B>" + totalCollectable.text + "</color>";
+            //handles level hover code when no other level is selected
+            //only works with pointer
+            if (JibzInLevel.Count <=0 || JibzInLevel.Count ==  null)
+            {
+                //This is the back button
+                totalCollectable.text = "- / -";
+            }
+
+            if (jibCounter != 0)
+            {
+                //turn jibbitz fraction green when all from a level are collected
+                totalCollectable.text = "<color=#3BFF3B>" + totalCollectable.text + "</color>";
+            }
         }
         
     }
