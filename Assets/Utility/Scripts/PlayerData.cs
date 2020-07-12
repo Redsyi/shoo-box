@@ -205,7 +205,8 @@ public class PlayerData : MonoBehaviour
             resolutions = new List<Resolution>();
             foreach (Resolution resolution in Screen.resolutions)
             {
-                if (resolution.height >= 480 && !resolutions.Contains(resolution))
+                //enforce minimum resolution so UI is always usable; discard duplicate resolutions with different refresh rates
+                if (resolution.height >= 700 && !AlreadyLoadedResolution(resolution))
                 {
                     resolutions.Add(resolution);
                 }
@@ -217,6 +218,16 @@ public class PlayerData : MonoBehaviour
             LoadGraphicsSettings();
             LoadControlSettings();
         }
+    }
+
+    static bool AlreadyLoadedResolution(Resolution resolution)
+    {
+        foreach (var res in resolutions)
+        {
+            if (res.width == resolution.width && res.height == resolution.height)
+                return true;
+        }
+        return false;
     }
 
     /// <summary>

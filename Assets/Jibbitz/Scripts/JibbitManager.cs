@@ -38,6 +38,11 @@ public class JibbitManager : MonoBehaviour
                 if (PlayerPrefs.HasKey("HasJibbit" + jibbit.id))
                 {
                     acquired[jibbit.id] = PlayerPrefs.GetInt("HasJibbit" + jibbit.id) != 0;
+                    if (acquired[jibbit.id] && SteamManager.Initialized)
+                    {
+                        Steamworks.SteamUserStats.SetAchievement(jibbit.steamAchievementID);
+                        Steamworks.SteamUserStats.StoreStats();
+                    }
                 } else
                 {
                     PlayerPrefs.SetInt("HasJibbit" + jibbit.id, 0);
